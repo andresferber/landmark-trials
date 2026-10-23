@@ -116,7 +116,7 @@
   <ol class="list" id="rrmm-list"></ol>
 
   <div class="lt-foot">
-    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA actions for belantamab (Oct 23, 2025), linvoseltamab (Jul 2, 2025) and teclistamab-daratumumab (Mar 5, 2026) were confirmed from FDA or ASCO Post reports; other regulatory dates marked "verify" are from general knowledge. Guideline positions summarize NCCN v5.2026 and the ASCO-Ontario 2026 living guideline at a high level; regimen-specific placements marked "verify" need checking against the current documents. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA actions for belantamab (Oct 23, 2025), linvoseltamab (Jul 2, 2025) and teclistamab-daratumumab (Mar 5, 2026) were confirmed from FDA or ASCO Post reports; other regulatory dates marked "verify" are from general knowledge. Guideline positions summarize NCCN v5.2026 and the ASCO-Ontario 2026 living guideline at a high level; regimen-specific placements marked "verify" need checking against the current documents. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
   </div>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -395,7 +395,12 @@ const T = [
  q:"Infection mortality and immune reconstitution? Fixed duration? How to sequence with CAR-T, now both available at first relapse?",
  cm:[],reg:"FDA approval March 5, 2026 (≥1 prior line including a PI and an IMiD).",gl:"Too recent for confirmed NCCN placement (verify).",acc:"On-label."}
 ];
+// Trial registry numbers (ClinicalTrials.gov, ISRCTN or EudraCT), taken from each paper's PubMed record or the registry, Oct 22, 2026.
+// Shown as links next to the source and used by the monthly update to find later follow-up publications.
+const REG = {"APEX (Richardson)": ["NCT00048230"],"MM-009 / MM-010 (Weber, Dimopoulos)": ["NCT00056160"],"MM-003 (San Miguel)": ["NCT01311687"],"PANORAMA-1 (San-Miguel)": ["NCT01023308"],"ASPIRE (Stewart)": ["NCT01080391"],"ENDEAVOR (Dimopoulos)": ["NCT01568866"],"TOURMALINE-MM1 (Moreau)": ["NCT01564537"],"OPTIMISMM (Richardson)": ["NCT01734928"],"CASTOR (Palumbo)": ["NCT02136134"],"POLLUX (Dimopoulos)": ["NCT02076009"],"ICARIA-MM (Attal)": ["NCT02990338"],"CANDOR (Dimopoulos)": ["NCT03158688"],"APOLLO (Dimopoulos)": ["NCT03180736"],"IKEMA (Moreau)": ["NCT03275285"],"ELOQUENT-2 (Lonial)": ["NCT01239797"],"STORM (Chari)": ["NCT02336815"],"BOSTON (Grosicki)": ["NCT03110562"],"BELLINI (Kumar)": ["NCT02755597"],"DREAMM-2 (Lonial)": ["NCT03525678"],"OCEAN (Schjesvold)": ["NCT03151811"],"DREAMM-3 (Dimopoulos)": ["NCT04162210"],"DREAMM-7 (Hungria)": ["NCT04246047"],"DREAMM-8 (Dimopoulos)": ["NCT04484623"],"CANOVA (Popat)": ["NCT03539744"],"KarMMa (Munshi)": ["NCT03361748"],"CARTITUDE-1 (Berdeja)": ["NCT03548207"],"MajesTEC-1 (Moreau)": ["NCT03145181","NCT04557098"],"MonumenTAL-1 (Chari)": ["NCT03399799"],"KarMMa-3 (Rodriguez-Otero)": ["NCT03651128"],"CARTITUDE-4 (San-Miguel)": ["NCT04181827"],"MagnetisMM-3 (Lesokhin)": ["NCT04649359"],"LINKER-MM1 (Bumma)": ["NCT03761108"],"MajesTEC-3 (Costa)": ["NCT05083169"]};
+const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
 T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, reg:t.reg, gl:t.gl, acc:t.acc}; });
+T.forEach(t => { t.trn = REG[t.n] || []; });
 
 let active = "all", sortMode = "setting";
 try { const s = localStorage.getItem("rrmm-sort"); if (s) sortMode = s; } catch(e) {}
@@ -448,7 +453,7 @@ function render(){
           <dt>Changed</dt><dd>${esc(t.i)}</dd>
           <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
           <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
-          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
         </dl>
       </div>
     </li>`).join("");

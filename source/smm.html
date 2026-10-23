@@ -1,0 +1,369 @@
+<title>Smoldering Myeloma Landmark Studies</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column; sticky control strip; each trial is a ruled entry with a year gutter */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --fg: #1b2230;
+  --muted: #5d6677;
+  --rule: #dde1e8;
+  --accent: #2c4a8a;
+  --s-young: #1f6f5c; --s-young-bg: #e3f2ed;
+  --s-old: #8a5a12;   --s-old-bg: #f7eedd;
+  --s-p2: #5b4a9a;    --s-p2-bg: #ece8f7;
+  --s-rr: #9a2f3d;    --s-rr-bg: #f7e4e6;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+    --s-young: #7fd3bb; --s-young-bg: #163029;
+    --s-old: #e6b86a;   --s-old-bg: #33270f;
+    --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+    --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+  --s-young: #7fd3bb; --s-young-bg: #163029;
+  --s-old: #e6b86a;   --s-old-bg: #33270f;
+  --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+  --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
+header h1 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.7rem, 4.5vw, 2.3rem); line-height: 1.15; margin: 0 0 6px; text-wrap: balance; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--muted); max-width: 62ch; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+.controls { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 14px 12px; margin-top: 20px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 10px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 13px/1 var(--font-body); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.row2 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+input[type="search"] { flex: 1 1 220px; min-width: 0; font: 400 14px var(--font-body); padding: 9px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+select { font: 400 14px var(--font-body); padding: 9px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+.count { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+ol.list { list-style: none; margin: 0; padding: 0; }
+.trial { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 14px; padding-block: 18px; border-bottom: 1px solid var(--rule); }
+.yr { font-family: var(--font-mono); font-weight: 500; font-size: 15px; color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.name { font-family: var(--font-display); font-weight: 650; font-size: 1.15rem; margin: 0; }
+.tag { font: 500 11px/1 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; }
+.tag.young { color: var(--s-young); background: var(--s-young-bg); }
+.tag.old { color: var(--s-old); background: var(--s-old-bg); }
+.tag.p2 { color: var(--s-p2); background: var(--s-p2-bg); }
+.tag.rr { color: var(--s-rr); background: var(--s-rr-bg); }
+.phase { font: 400 12px var(--font-mono); color: var(--muted); }
+.design { margin: 0; color: var(--fg); }
+dl { margin: 2px 0 0; display: grid; grid-template-columns: max-content minmax(0,1fr); gap: 4px 12px; font-size: 14px; }
+dt { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+dd { margin: 0; min-width: 0; }
+.result { font-variant-numeric: tabular-nums; }
+.stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; padding-block: 4px; }
+.stats b { font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.rec { display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; }
+.rec .rk { font: 500 10.5px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.rec .rk:first-child { margin-top: 0; }
+.rec ul { margin: 0; padding-left: 16px; }
+.rec li { margin: 1px 0; }
+.rec li.none { list-style: none; margin-left: -16px; color: var(--muted); }
+.rec p { margin: 0; }
+.rec a { color: var(--accent); text-underline-offset: 2px; }
+.qs { color: var(--accent); }
+.cite { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.cite a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.cite a:hover { text-decoration-thickness: 2px; }
+.cite a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.ok { color: var(--s-young); font-size: 12.5px; white-space: nowrap; }
+.flag { color: var(--s-old); font-size: 12.5px; }
+.empty { padding: 32px 0; color: var(--muted); }
+footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch; }
+@media (max-width: 480px) {
+  .trial { grid-template-columns: 1fr; gap: 4px; }
+  dl { grid-template-columns: 1fr; gap: 0 0; }
+  dt { line-height: 1.6; margin-top: 4px; }
+}
+.credit { margin: 10px 0 0; font-size: 11.5px; color: var(--muted); opacity: .8; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Smoldering multiple myeloma · 2000–2026</div>
+    <h1>Landmark studies in smoldering myeloma</h1>
+    <p>Definitions, risk models, early-intervention trials and guidelines: design, verified results, what each built on, how it changed practice, the questions it left open, and how it was received.</p>
+  </header>
+
+  <div class="controls">
+    <div class="chips" role="group" aria-label="Filter by category" id="chips"></div>
+    <div class="row2">
+      <input type="search" id="q" placeholder="Search study, drug, risk factor…" aria-label="Search trials">
+      <select id="sort" aria-label="Sort order">
+        <option value="setting">Sort: category, then year</option>
+        <option value="asc">Sort: oldest first</option>
+        <option value="desc">Sort: newest first</option>
+      </select>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+
+  <ol class="list" id="list"></ol>
+
+  <footer>
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Guideline positions: NCCN and ASCO-Ontario as summarized from January 2026 versions; items marked "verify" need checking against the current documents. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+  </footer>
+  <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
+</div>
+
+<script>
+const SETTINGS = {
+  def: "Definition & risk",
+  rct: "Randomized intervention",
+  p2: "Single-arm & curative intent",
+  gl: "Guidelines & evidence"
+};
+const CLS = { def: "p2", rct: "young", p2: "old", gl: "rr" };
+const order = ["def","rct","p2","gl"];
+const PM = id => "https://pubmed.ncbi.nlm.nih.gov/" + id + "/";
+
+// Every entry's numbers were checked against its PubMed abstract (Oct 18, 2026). b/i/q are interpretive.
+const T = [
+{y:2007,n:"Mayo natural history (Kyle)",s:"def",ph:"Retrospective cohort",d:"276 patients meeting SMM criteria at Mayo over 26 years, followed for progression to myeloma or amyloidosis",ep:"Progression",
+ r:"Progression 10%/yr for 5 yr, ~3%/yr for the next 5, then ~1%/yr; 73% at 15 yr. BMPC% and M-protein defined three risk groups",N:"276",hr:"n/a",fu:"2,131 person-years",
+ c:"N Engl J Med 2007;356:2582",p:17582068,
+ b:"Earlier SMM definitions (Kyle and Greipp 1980) rested on small series; this was the first large population with long follow-up.",
+ i:"Showed SMM is heterogeneous with front-loaded risk, and gave the first widely used risk model (Mayo BMPC/M-protein).",
+ q:"Which biomarkers identify the patients who progress early? Is the high early risk a sign of unrecognized active myeloma?",
+ cm:[[17823992,"Focosi D, N Engl J Med 2007","Correspondence: Smoldering multiple myeloma"],[17804853,"Prasad HK, N Engl J Med 2007","Correspondence"],[21812699,"Rajkumar SV, N Engl J Med 2011","Diagnosis of smoldering multiple myeloma"]],
+ reg:"No regulatory action.",gl:"Basis for the 'observe until progression' standard and for later risk models.",acc:"—"},
+{y:2007,n:"PETHEMA flow-cytometry risk (Pérez-Persona)",s:"def",ph:"Prospective cohort",d:"Bone marrow flow cytometry in 407 MGUS and 93 SMM patients",ep:"PFS",
+ r:"≥95% aberrant plasma cells and immunoparesis identified SMM groups with 5-yr progression 4%, 46% and 72%",N:"93 SMM (407 MGUS)",hr:"n/a",fu:"not reported in abstract",
+ c:"Blood 2007;110:2586",p:17576818,
+ b:"Added immunophenotyping to the Mayo clinical model.",
+ i:"Became the Spanish (PETHEMA) high-risk definition and was used to select patients for QuiRedex.",
+ q:"How to harmonize flow-based and serum-based risk definitions across trials? Can flow be done on blood instead of marrow?",
+ cm:[],reg:"No regulatory action.",gl:"Used in Spanish practice and trial eligibility.",acc:"—"},
+{y:2008,n:"Free light chain ratio (Dispenzieri)",s:"def",ph:"Retrospective cohort",d:"Baseline serum FLC ratio in 273 Mayo SMM patients",ep:"Progression",
+ r:"FLC ratio ≤0.125 or ≥8 predicted progression (HR 2.3); adding it to the Mayo model gave 5-yr progression of 76%, 51% and 25%",N:"273",hr:"2.3 (abnormal FLC ratio)",fu:"12.4 yr (survivors)",
+ c:"Blood 2008;111:785",p:17942755,
+ b:"Extended the Kyle 2007 model with the then-new serum FLC assay.",
+ i:"FLC ratio became a core SMM biomarker; extreme ratios later became a myeloma-defining event (IMWG 2014).",
+ q:"What FLC threshold best captures near-certain progression? How should FLC trajectories be used?",
+ cm:[],reg:"No regulatory action.",gl:"FLC ratio incorporated into Mayo and IMWG risk models.",acc:"—"},
+{y:2008,n:"Thalidomide + pamidronate (Barlogie)",s:"p2",ph:"Phase 2",d:"Thalidomide 200 mg/d with monthly pamidronate in SMM",ep:"Response / progression",
+ r:"Thalidomide dose reduced in 86% and stopped in 50% within 2 yr; PR 25%; 4-yr OS 91%, EFS 60%",N:"76",hr:"n/a (single arm)",fu:"not reported in abstract",
+ c:"Blood 2008;112:3122",p:18669874,
+ b:"Followed small thalidomide pilots in SMM (Rajkumar 2001) and the drug's activity in active myeloma.",
+ i:"Showed early therapy was feasible but poorly tolerated with thalidomide, and that responses did not clearly mean benefit.",
+ q:"Is there a better-tolerated agent? Does early therapy select for resistant disease? A randomized trial was needed.",
+ cm:[],reg:"No regulatory action.",gl:"Thalidomide not adopted for SMM.",acc:"—"},
+{y:2013,n:"Thalidomide + zoledronic acid (Witzig)",s:"rct",ph:"Phase 3",d:"Thalidomide + zoledronic acid vs zoledronic acid alone in asymptomatic myeloma",ep:"Time to progression",
+ r:"Median TTP 2.4 vs 1.2 yr; 1-yr progression-free 86% vs 55%; ORR 37% vs no responses",N:"68",hr:"2.05 (zoledronic acid alone vs combination)",fu:"not reported in abstract",
+ c:"Leukemia 2013;27:220",p:22902362,
+ b:"Randomized follow-up to the single-arm thalidomide studies.",
+ i:"First randomized signal that an anti-myeloma agent delays progression of SMM, though too small and toxic to change practice.",
+ q:"Would a less toxic immunomodulator do better? Would benefit translate into survival?",
+ cm:[],reg:"No regulatory action.",gl:"Not adopted.",acc:"—"},
+{y:2013,n:"QuiRedex (Mateos)",s:"rct",ph:"Phase 3",d:"Lenalidomide-dexamethasone induction then lenalidomide maintenance vs observation in high-risk SMM (Mayo and/or PETHEMA criteria)",ep:"Time to progression",
+ r:"Median TTP not reached vs 21 mo; 3-yr OS 94% vs 80%. Long-term (75 mo): TTP HR 0.24; OS HR 0.43",N:"119 randomized",hr:"0.18 (TTP); 0.31 (OS)",fu:"40 mo; 75 mo (update)",
+ c:"N Engl J Med 2013;369:438",p:23902483,extra:["Long-term update, Lancet Oncol 2016", 27402145],
+ b:"First randomized trial of a modern agent in risk-selected SMM, building on the Mayo and PETHEMA risk models.",
+ i:"First evidence that early treatment can improve overall survival in high-risk SMM; launched the early-intervention era.",
+ q:"How many patients would now be classified as active myeloma under SLiM-CRAB criteria (no advanced imaging used)? Was the survival gain driven by suboptimal therapy at progression in the observation arm?",
+ cm:[[23999214,"Rajkumar SV, Nat Rev Clin Oncol 2013","Treatment of smoldering multiple myeloma"],[24171527,"Kristinsson SY, N Engl J Med 2013","Correspondence: Treatment for high-risk smoldering myeloma"],[24171529,"Dispenzieri A, N Engl J Med 2013","Correspondence"],[27402144,"Ludwig H, Lancet Oncol 2016","Early treatment for high-risk smouldering myeloma: has the time come?"]],
+ reg:"No regulatory filing; lenalidomide is not labeled for SMM.",gl:"Cited in guidelines as support for considering early therapy in high-risk SMM; most recommended trials or observation at the time.",acc:"Off-label."},
+{y:2014,n:"IMWG updated criteria (Rajkumar)",s:"def",ph:"Consensus criteria",d:"Redefined myeloma to include biomarkers predicting near-certain progression",ep:"—",
+ r:"Added SLiM criteria (≥60% clonal plasma cells, involved/uninvolved FLC ratio ≥100, >1 focal MRI lesion) as myeloma-defining events",N:"n/a",hr:"n/a",fu:"n/a",
+ c:"Lancet Oncol 2014;15:e538",p:25439696,
+ b:"Drew on the FLC, marrow and MRI risk studies showing ~80% 2-yr progression in these subsets.",
+ i:"Moved the highest-risk 'SMM' patients into active myeloma, shrinking and redefining the SMM population for all later trials.",
+ q:"How do older trials (QuiRedex) apply to the redefined SMM? Which risk model works under the new definition?",
+ cm:[],reg:"Adopted by regulators and trials as the disease definition.",gl:"Standard diagnostic criteria in NCCN, IMWG and European guidelines.",acc:"—"},
+{y:2018,n:"Mayo 20/2/20 model (Lakshman)",s:"def",ph:"Retrospective cohort",d:"421 SMM patients classified under 2014 IMWG criteria",ep:"Time to progression",
+ r:"BMPC >20%, M-protein >2 g/dL and FLC ratio >20 each predicted progression; median TTP 110, 68 and 29 mo for 0, 1 and ≥2 factors",N:"421",hr:"2.28 (BMPC); 1.56 (M-protein); 2.13 (FLC ratio)",fu:"not reported in abstract",
+ c:"Blood Cancer J 2018;8:59",p:29895887,
+ b:"Re-derived risk factors after IMWG 2014 removed the ultra-high-risk group.",
+ i:"Introduced the simple 20/2/20 model used to define high-risk SMM in later trials and the FDA label.",
+ q:"Does the model validate internationally? Do cytogenetics add information?",
+ cm:[],reg:"High-risk definition used in the AQUILA-based FDA indication (≥2 of 3 factors).",gl:"Recommended risk tool in Mayo (mSMART) and IMWG practice.",acc:"—"},
+{y:2019,n:"Siltuximab (Brighton)",s:"rct",ph:"Phase 2 (randomized, placebo-controlled)",d:"Anti-IL-6 siltuximab vs placebo in high-risk SMM",ep:"1-yr PFS",
+ r:"1-yr PFS 84.5% vs 74.4%; primary hypothesis not met; median PFS not reached vs 23.5 mo",N:"85",hr:"0.50 (95% CI 0.24–1.04)",fu:"29.2 mo",
+ c:"Clin Cancer Res 2019;25:3772",p:30890552,
+ b:"Tested a microenvironment-targeted, non-cytotoxic approach after QuiRedex.",
+ i:"Negative trial; IL-6 blockade was not pursued further in SMM.",
+ q:"Is targeting the microenvironment enough without direct anti-plasma-cell activity?",
+ cm:[],reg:"No regulatory action.",gl:"Not adopted.",acc:"—"},
+{y:2020,n:"ECOG E3A06 (Lonial)",s:"rct",ph:"Phase 3",d:"Lenalidomide 25 mg vs observation in intermediate- or high-risk SMM",ep:"PFS (end-organ damage)",
+ r:"3-yr PFS 91% vs 66%; ORR 50%; grade 3–4 nonhematologic toxicity 28%; no OS difference (6 deaths)",N:"182",hr:"0.28",fu:"35 mo",
+ c:"J Clin Oncol 2020;38:1126",p:31652094,
+ b:"Single-agent version of QuiRedex in a US cooperative group, using end-organ progression as the endpoint.",
+ i:"Confirmed that early lenalidomide delays progression, mainly in high-risk patients (20/2/20); supported treatment of high-risk SMM in NCCN.",
+ q:"Is the benefit confined to high-risk patients? Is 28% grade 3–4 toxicity acceptable without survival benefit? Should treatment be fixed-duration?",
+ cm:[[32004107,"Raje N, J Clin Oncol 2020","How we approach smoldering multiple myeloma"],[32160077,"Biran N, J Clin Oncol 2020","Treatment of smoldering myeloma: problems with study design…"],[32160076,"Lonial S, J Clin Oncol 2020","Reply"]],
+ reg:"No regulatory filing; lenalidomide not labeled for SMM.",gl:"NCCN (January 2026) lists lenalidomide as a treatment option with shared decision-making; ASCO-Ontario (2026) does not routinely recommend it.",acc:"Off-label; coverage depends on compendium listing (verify)."},
+{y:2020,n:"CENTAURUS (Landgren)",s:"p2",ph:"Phase 2 (randomized dosing)",d:"Daratumumab IV on three dosing schedules in intermediate- or high-risk SMM",ep:"CR rate; PD/death rate",
+ r:"CR co-primary endpoint (>15%) not met (0–4.9%); median PFS ≥24 mo in all arms; best with the most intense schedule",N:"123",hr:"n/a",fu:"15.8 mo",
+ c:"Leukemia 2020;34:1840",p:32024950,
+ b:"First anti-CD38 trial in SMM, after daratumumab's success in active myeloma.",
+ i:"Chose the long-duration dosing taken into the phase 3 AQUILA trial.",
+ q:"Does delaying progression without deep response matter clinically? Will a randomized trial show survival benefit?",
+ cm:[],reg:"No regulatory action.",gl:"Led to AQUILA.",acc:"—"},
+{y:2020,n:"IMWG 2/20/20 risk model (Mateos)",s:"def",ph:"International cohort",d:"1,996 SMM patients meeting 2014 IMWG criteria",ep:"2-yr progression",
+ r:"M-protein >2 g/dL, FLC ratio >20 and BMPC >20%: 2-yr progression 6%, 18% and 44% for low, intermediate and high risk; adding cytogenetics gave 6–63%",N:"1,996",hr:"2.1 (M-protein); 2.7 (FLC ratio); 2.4 (BMPC)",fu:"not reported in abstract",
+ c:"Blood Cancer J 2020;10:102",p:33067414,
+ b:"International validation and extension of the Mayo 20/2/20 model, adding high-risk cytogenetics.",
+ i:"Became the standard international risk tool and the eligibility basis for current trials.",
+ q:"Do dynamic changes (evolving M-protein, hemoglobin) add to a single-timepoint model? How to integrate genomics?",
+ cm:[],reg:"Used to define high-risk SMM in regulatory submissions.",gl:"Recommended in IMWG, EMN and NCCN-referenced practice.",acc:"—"},
+{y:2021,n:"EMN consensus statement (Musto)",s:"gl",ph:"Consensus",d:"European Myeloma Network review and recommendations on SMM",ep:"—",
+ r:"Observation remains the conventional approach outside trials; acknowledges two randomized trials showing benefit of early therapy in high-risk SMM",N:"n/a",hr:"n/a",fu:"n/a",
+ c:"Haematologica 2021;106:2799",p:34261295,
+ b:"Synthesized QuiRedex, E3A06 and the risk models.",
+ i:"Framed European practice: risk stratification, close monitoring, and early therapy mainly within trials.",
+ q:"Should high-risk patients be treated off-trial? With what, and for how long?",
+ cm:[],reg:"—",gl:"European consensus (pre-AQUILA).",acc:"—"},
+{y:2021,n:"NCI KRd (Korde, Kazandjian)",s:"p2",ph:"Phase 2",d:"Carfilzomib-lenalidomide-dexamethasone then lenalidomide maintenance in high-risk SMM",ep:"MRD-negative CR rate",
+ r:"MRD-negative CR 70.4%, median duration 5.5 yr; 8-yr freedom from progression to myeloma 91.2%; no deaths",N:"54",hr:"n/a (single arm)",fu:"31.9 mo (median potential)",
+ c:"JAMA Oncol 2021;7:1678",p:34529025,extra:["Pilot, JAMA Oncol 2015", 26181891],
+ b:"Applied modern triplet induction (used in active myeloma) to high-risk SMM, beyond single-agent lenalidomide.",
+ i:"Showed deep, durable MRD-negative remissions are achievable, supporting a curative-intent approach.",
+ q:"Is aggressive therapy justified when some high-risk patients would not progress for years? Randomized comparison with observation or single agents needed.",
+ cm:[[26181637,"Sonneveld P, JAMA Oncol 2015","Multiple myeloma—better drugs ask for more stringent evaluations"]],
+ reg:"No regulatory action.",gl:"Not a guideline regimen; trial-only.",acc:"Off-label."},
+{y:2023,n:"iStopMM screening (Thorsteinsdóttir)",s:"def",ph:"Population screening",d:"Nationwide screening of Icelanders aged ≥40 for myeloma precursors",ep:"Prevalence",
+ r:"SMM prevalence 0.53% at ≥40 years (0.67% men, 0.39% women), rising with age; most screen-detected SMM had low M-protein",N:"75,422 screened (193 SMM)",hr:"n/a",fu:"n/a",
+ c:"Nat Med 2023;29:467",p:36747117,
+ b:"First population-based estimate; earlier SMM data came from referral cohorts.",
+ i:"Showed SMM is far more common than assumed, and that screen-detected SMM is mostly lower-risk.",
+ q:"Do referral-based risk models and trial results apply to screen-detected SMM? What are the harms of screening and early treatment?",
+ cm:[[36755165,"Nat Med 2023","Population screening for smoldering multiple myeloma reveals high prevalence"]],
+ reg:"No regulatory action.",gl:"Informs debate on overtreatment; no screening recommendation.",acc:"—"},
+{y:2024,n:"GEM-CESAR (Mateos)",s:"p2",ph:"Phase 2",d:"KRd induction, high-dose melphalan and ASCT, KRd consolidation and Rd maintenance in high-risk SMM",ep:"uMRD after ASCT",
+ r:"uMRD 62% after ASCT, sustained in 31% at 4 yr; 5 patients progressed to myeloma; 70-mo OS 92%; one treatment-related death",N:"90",hr:"n/a (single arm)",fu:"70.1 mo",
+ c:"J Clin Oncol 2024;42:3247",p:39038268,
+ b:"Same Spanish group as QuiRedex, now testing full active-myeloma intensity with curative intent.",
+ i:"Strongest evidence for a curative approach in high-risk SMM; patients with any SLiM-CRAB feature did worse.",
+ q:"Is the toxicity of transplant justified in asymptomatic patients? Which patients (by MRD or genomics) benefit? Randomized data needed.",
+ cm:[],reg:"No regulatory action.",gl:"Trial-only.",acc:"—"},
+{y:2025,n:"I-PRISM (Nadeem)",s:"p2",ph:"Phase 2",d:"Ixazomib-lenalidomide-dexamethasone in high-risk SMM",ep:"PFS",
+ r:"Median PFS not reached; biochemical PFS 48.6 mo; ORR 93%, CR 31%; MRD negativity predicted 5-yr biochemical PFS 100% vs 40%",N:"55",hr:"n/a (single arm)",fu:"50 mo",
+ c:"Nat Commun 2025;16:358",p:39753553,
+ b:"All-oral triplet bridging single-agent lenalidomide and intensive KRd approaches.",
+ i:"Linked depth of response (CR, MRD) to long-term control in high-risk SMM.",
+ q:"Is biochemical progression an acceptable endpoint? Should treatment target MRD negativity?",
+ cm:[],reg:"No regulatory action.",gl:"Trial-only.",acc:"—"},
+{y:2025,n:"AQUILA (Dimopoulos)",s:"rct",ph:"Phase 3",d:"Subcutaneous daratumumab (up to 3 yr) vs active monitoring in high-risk SMM",ep:"PFS (IRC)",
+ r:"5-yr PFS 63.1% vs 40.8%; deaths 7.7% vs 13.3%; 5-yr OS 93.0% vs 86.9%; discontinuation for AEs 5.7%",N:"390",hr:"0.49 (PFS); 0.52 (OS)",fu:"65.2 mo",
+ c:"N Engl J Med 2025;392:1777",p:39652675,
+ b:"Phase 3 test of the CENTAURUS schedule, in patients defined by modern IMWG criteria and advanced imaging.",
+ i:"First approved therapy for high-risk SMM (EU July 2025; FDA November 6, 2025); moved early treatment from trials into routine care.",
+ q:"Is the OS benefit robust given its size and the open-label design? Did patients in the monitoring arm get optimal therapy at progression? Is the 2-of-3 high-risk definition too broad (FDA noted 41% met ≥2 factors)? How does it compare with lenalidomide or bispecifics?",
+ cm:[[40768725,"Shanmugam SP, N Engl J Med 2025","Correspondence: Daratumumab for high-risk SMM"],[40768726,"Dimopoulos MA, N Engl J Med 2025","Reply"]],
+ reg:"European Commission approval (July 2025) and FDA approval (November 6, 2025) of subcutaneous daratumumab for adults with high-risk SMM.",
+ gl:"NCCN (January 2026) recommends treatment with careful selection and shared decision-making, including daratumumab. ASCO-Ontario living guideline (2026): daratumumab may be offered for high-risk SMM (up to 36 months).",
+ acc:"On-label in the US and EU for high-risk SMM; payer criteria for 'high risk' may follow the label (verify)."},
+{y:2026,n:"ASCO-Ontario Health living guideline (Hicks)",s:"gl",ph:"Guideline",d:"Updated systematic review (161 randomized trials) and recommendations for myeloma",ep:"—",
+ r:"Daratumumab may be offered to high-risk SMM; lenalidomide not routinely recommended; no therapy for non-high-risk SMM",N:"n/a",hr:"n/a",fu:"n/a",
+ c:"J Clin Oncol 2026;44:914",p:41494138,
+ b:"First major guideline after AQUILA.",
+ i:"Endorsed daratumumab as an option for high-risk SMM, while declining to recommend lenalidomide.",
+ q:"How to define high risk in practice (2/20/20, PANGEA, imaging)? How to weigh shared decision-making with modest evidence?",
+ cm:[],reg:"—",gl:"North American guideline. Differs from NCCN on lenalidomide.",acc:"—"},
+{y:2026,n:"Cochrane review: early intervention (Chen)",s:"gl",ph:"Systematic review",d:"Randomized trials of early treatment vs observation or active control in high-risk SMM",ep:"PFS, OS, QoL, AEs",
+ r:"Daratumumab: low-certainty evidence for lower risk of progression or death (HR 0.49) and death (HR 0.52); evidence for immunomodulators very uncertain",N:"7 trial comparisons",hr:"0.49 (daratumumab, PFS)",fu:"29.2–150 mo",
+ c:"Cochrane Database Syst Rev 2026;3:CD015494",p:41848424,
+ b:"Pooled AQUILA, QuiRedex, E3A06, the thalidomide trials, older alkylator trials and siltuximab.",
+ i:"Grades the evidence for early intervention as low certainty, a counterweight to enthusiasm after AQUILA.",
+ q:"Will larger and blinded trials (DETER-SMM, ITHACA) raise the certainty? Which outcomes matter most to patients?",
+ cm:[],reg:"—",gl:"Evidence synthesis.",acc:"—"},
+{y:2026,n:"PANGEA-SMM dynamic risk (Chabrun)",s:"def",ph:"International cohort",d:"Longitudinal biomarker data from 2,344 SMM patients at seven centers",ep:"Time to progression",
+ r:"Rising M-protein, FLC ratio and creatinine, and falling hemoglobin predicted progression; C-statistic 0.79, outperforming 20/2/20 and IMWG models",N:"2,344",hr:"n/a",fu:"not reported in abstract",
+ c:"Nat Med 2026;32:1745",p:41876650,
+ b:"Built on the evolving-biomarker observations (Ravi 2016) and the static 2/20/20 model.",
+ i:"Offers an open-access dynamic risk tool that works even without a recent marrow biopsy.",
+ q:"Should PANGEA replace 2/20/20 for trial eligibility and treatment decisions? Will it be used in labels or guidelines?",
+ cm:[],reg:"No regulatory action.",gl:"Too recent for guideline uptake (verify).",acc:"—"},
+{y:2026,n:"ImmunoPRISM (Nadeem)",s:"rct",ph:"Phase 2 (randomized)",d:"Fixed-duration teclistamab vs lenalidomide-dexamethasone in high-risk SMM",ep:"CR rate",
+ r:"CR 77.8% vs 0%; MRD negativity (10⁻⁵) 82.2% with teclistamab; 2-yr PFS 92% vs 49%; grade 1–2 CRS, no neurotoxicity",N:"59 treated (45 vs 14)",hr:"not reported in abstract",fu:"24.5 mo",
+ c:"Nat Med 2026;32:3812",p:42728379,
+ b:"Moves BCMA-directed T-cell engagers from relapsed myeloma into the precursor setting, against the E3A06/QuiRedex comparator.",
+ i:"First randomized evidence for a bispecific antibody in SMM, with very high MRD-negative CR rates.",
+ q:"Is this cure or overtreatment? What are the long-term infection and immune costs? How will it compare with daratumumab, now the approved standard?",
+ cm:[],reg:"No regulatory action.",gl:"Trial-only.",acc:"Off-label."}
+];
+// Trial registry numbers (ClinicalTrials.gov, ISRCTN or EudraCT), taken from each paper's PubMed record or the registry, Oct 22, 2026.
+// Shown as links next to the source and used by the monthly update to find later follow-up publications.
+const REG = {"Thalidomide + pamidronate (Barlogie)": ["NCT00083382"],"Thalidomide + zoledronic acid (Witzig)": ["NCT00432458"],"QuiRedex (Mateos)": ["NCT00480363"],"Siltuximab (Brighton)": ["NCT01484275"],"ECOG E3A06 (Lonial)": ["NCT01169337"],"CENTAURUS (Landgren)": ["NCT02316106"],"NCI KRd (Korde, Kazandjian)": ["NCT01572480"],"iStopMM screening (Thorsteinsdóttir)": ["NCT03327597"],"GEM-CESAR (Mateos)": ["NCT02415413"],"I-PRISM (Nadeem)": ["NCT02916771"],"AQUILA (Dimopoulos)": ["NCT03301220"],"ImmunoPRISM (Nadeem)": ["NCT05469893"]};
+const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
+T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, reg:t.reg, gl:t.gl, acc:t.acc}; });
+T.forEach(t => { t.trn = REG[t.n] || []; });
+
+let active = "all", sortMode = "setting";
+try { const s = localStorage.getItem("smm-sort"); if (s) sortMode = s; } catch(e) {}
+const chipsEl = document.getElementById("chips");
+[["all","All"], ...order.map(k => [k, SETTINGS[k]])].forEach(([k,label]) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.id = "chip-" + k; b.textContent = label;
+  b.setAttribute("aria-pressed", k === active);
+  b.addEventListener("click", () => { active = k; chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b)); render(); });
+  chipsEl.appendChild(b);
+});
+const sortEl = document.getElementById("sort"); sortEl.value = sortMode;
+sortEl.addEventListener("change", () => { sortMode = sortEl.value; try { localStorage.setItem("smm-sort", sortMode); } catch(e) {} render(); });
+const qEl = document.getElementById("q"); qEl.addEventListener("input", render);
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function recHTML(t){
+  const r = t.rc; if (!r) return "";
+  const cm = r.cm.length
+    ? r.cm.map(c => `<li><a href="https://pubmed.ncbi.nlm.nih.gov/${c[0]}/" target="_blank" rel="noopener">${esc(c[1])}</a>: ${esc(c[2])}</li>`).join("")
+    : '<li class="none">No commentary linked to this paper in PubMed</li>';
+  return `<div class="rk">Commentary</div><ul>${cm}</ul>
+    <div class="rk">Regulatory</div><p>${esc(r.reg)}</p>
+    <div class="rk">Guidelines</div><p>${esc(r.gl)}</p>
+    <div class="rk">Access</div><p>${esc(r.acc)}</p>`;
+}
+function render(){
+  const q = qEl.value.trim().toLowerCase();
+  let rows = T.filter(t => (active === "all" || t.s === active) &&
+    (!q || [t.n,t.d,t.r,t.i,t.b,t.q,t.c,t.ph,String(t.y),t.reg,t.gl,t.acc,t.cm.map(c=>c[1]+" "+c[2]).join(" ")].join(" ").toLowerCase().includes(q)));
+  rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
+    : (order.indexOf(a.s) - order.indexOf(b.s)) || (a.y - b.y));
+  document.getElementById("count").textContent = rows.length + " of " + T.length + " studies";
+  const list = document.getElementById("list");
+  if (!rows.length) { list.innerHTML = '<li class="empty">No studies match that search. Clear the search or pick another category.</li>'; return; }
+  list.innerHTML = rows.map(t => `
+    <li class="trial">
+      <div class="yr">${t.y}</div>
+      <div class="body">
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span></div>
+        <p class="design">${esc(t.d)}</p>
+        <div class="stats">
+          <span><b>N</b>${esc(t.N)}</span>
+          <span><b>HR</b>${esc(t.hr)}</span>
+          <span><b>Median F/U</b>${esc(t.fu)}</span>
+        </div>
+        <dl>
+          <dt>Endpoint</dt><dd>${esc(t.ep)}</dd>
+          <dt>Result</dt><dd class="result">${esc(t.r)} <span class="ok" title="Checked against the PubMed abstract">✓ checked</span></dd>
+          <dt>Builds on</dt><dd>${esc(t.b)}</dd>
+          <dt>Changed</dt><dd>${esc(t.i)}</dd>
+          <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
+          <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
+        </dl>
+      </div>
+    </li>`).join("");
+}
+render();
+</script>

@@ -116,7 +116,7 @@
   <ol class="list" id="ndmm-list"></ol>
 
   <div class="lt-foot">
-    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Regulatory dates marked "verify" are from general knowledge and were not rechecked for this page. Guideline positions summarize NCCN v5.2026 and the ASCO-Ontario 2026 living guideline at a high level; regimen-specific placements marked "verify" need checking against the current documents. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Regulatory dates marked "verify" are from general knowledge and were not rechecked for this page. Guideline positions summarize NCCN v5.2026 and the ASCO-Ontario 2026 living guideline at a high level; regimen-specific placements marked "verify" need checking against the current documents. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
   </div>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -387,7 +387,12 @@ const T = [
  q:"Should high-risk patients receive different therapy (tandem transplant, carfilzomib, anti-CD38 maintenance, early CAR-T)?",
  cm:[],reg:"—",gl:"Consensus definition; adoption in NCCN to verify.",acc:"—"}
 ];
+// Trial registry numbers (ClinicalTrials.gov, ISRCTN or EudraCT), taken from each paper's PubMed record or the registry, Oct 22, 2026.
+// Shown as links next to the source and used by the monthly update to find later follow-up publications.
+const REG = {"GIMEMA VTD vs TD (Cavo)": ["NCT01134484"],"IFM 2009 (Attal)": ["NCT01191060"],"CASSIOPEIA (Moreau)": ["NCT02541383"],"EMN02/HO95 (Cavo)": ["NCT01208766"],"GRIFFIN (Voorhees)": ["NCT02874742"],"FORTE (Gay)": ["NCT02203643"],"DETERMINATION (Richardson)": ["NCT01208662"],"MASTER (Costa)": ["NCT03224507"],"GMMG-HD7 (Goldschmidt)": ["NCT03617731"],"PERSEUS (Sonneveld)": ["NCT03710603"],"EMN24 IsKia (Gay)": ["NCT04483739"],"IFM 99-06: MPT (Facon)": ["NCT00367185"],"VISTA (San Miguel)": ["NCT00111319"],"FIRST (Benboubker)": ["NCT00689936"],"SWOG S0777 (Durie)": ["NCT00644228"],"ALCYONE (Mateos)": ["NCT02195479"],"MAIA (Facon)": ["NCT02252172"],"ECOG E1A11 ENDURANCE (Kumar)": ["NCT01863550"],"IMROZ (Facon)": ["NCT03319667"],"CEPHEUS (Usmani)": ["NCT03652064"],"CALGB 100104 (McCarthy)": ["NCT00114101"],"IFM 2005-02 (Attal)": ["NCT00430365"],"Myeloma XI maintenance (Jackson)": ["ISRCTN49407852"],"Continuous vs fixed-duration lenalidomide (Kumar)": ["NCT01863550"]};
+const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
 T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, reg:t.reg, gl:t.gl, acc:t.acc}; });
+T.forEach(t => { t.trn = REG[t.n] || []; });
 
 let active = "all", sortMode = "setting";
 try { const s = localStorage.getItem("ndmm-sort"); if (s) sortMode = s; } catch(e) {}
@@ -440,7 +445,7 @@ function render(){
           <dt>Changed</dt><dd>${esc(t.i)}</dd>
           <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
           <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
-          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
         </dl>
       </div>
     </li>`).join("");

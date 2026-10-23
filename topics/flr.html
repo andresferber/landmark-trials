@@ -116,7 +116,7 @@
   <ol class="list" id="flr-list"></ol>
 
   <div class="lt-foot">
-    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA approvals of tafasitamab-R2 (June 18, 2025) and epcoritamab-R2 (November 2025) were confirmed from published reports and the FDA approval summary; other regulatory dates and withdrawals marked "verify" are from general knowledge. Guideline placements marked "verify" need checking against the current NCCN B-cell lymphomas document. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA approvals of tafasitamab-R2 (June 18, 2025) and epcoritamab-R2 (November 2025) were confirmed from published reports and the FDA approval summary; other regulatory dates and withdrawals marked "verify" are from general knowledge. Guideline placements marked "verify" need checking against the current NCCN B-cell lymphomas document. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
   </div>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -282,7 +282,12 @@ const T = [
  q:"Is the added toxicity justified at second line? Comparison with tafasitamab-R2? Sequencing with CAR-T?",
  cm:[],reg:"FDA traditional approval November 2025 (epcoritamab + R2, relapsed or refractory FL).",gl:"Verify NCCN placement.",acc:"On-label."}
 ];
+// Trial registry numbers (ClinicalTrials.gov, ISRCTN or EudraCT), taken from each paper's PubMed record or the registry, Oct 22, 2026.
+// Shown as links next to the source and used by the monthly update to find later follow-up publications.
+const REG = {"GADOLIN (Sehn)": ["NCT01059630"],"AUGMENT (Leonard)": ["NCT01938001"],"inMIND (Sehn)": ["NCT04680052"],"Idelalisib (Gopal)": ["NCT01282424"],"CHRONOS-1 (Dreyling)": ["NCT01660451"],"DYNAMO (Flinn)": ["NCT01882803"],"Tazemetostat (Morschhauser)": ["NCT01897571"],"UNITY-NHL (Fowler)": ["NCT02793583"],"CHRONOS-3 (Matasar)": ["NCT02367040"],"ROSEWOOD (Zinzani)": ["NCT03332017"],"ZUMA-5 (Jacobson)": ["NCT03105336"],"ELARA (Fowler)": ["NCT03568461"],"TRANSCEND FL (Morschhauser)": ["NCT04245839"],"Mosunetuzumab (Budde)": ["NCT02500407"],"EPCORE NHL-1 FL cohort (Linton)": ["NCT03625037"],"ELM-2 FL cohort: odronextamab (Kim)": ["NCT03888105"],"EPCORE FL-1 (Falchi)": ["NCT05409066"]};
+const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
 T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, reg:t.reg, gl:t.gl, acc:t.acc}; });
+T.forEach(t => { t.trn = REG[t.n] || []; });
 
 let active = "all", sortMode = "setting";
 try { const s = localStorage.getItem("fl2-sort"); if (s) sortMode = s; } catch(e) {}
@@ -335,7 +340,7 @@ function render(){
           <dt>Changed</dt><dd>${esc(t.i)}</dd>
           <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
           <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
-          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
         </dl>
       </div>
     </li>`).join("");

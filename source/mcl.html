@@ -1,0 +1,561 @@
+<title>MCL Landmark Trials</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column; sticky control strip; each trial is a ruled entry with a year gutter */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --fg: #1b2230;
+  --muted: #5d6677;
+  --rule: #dde1e8;
+  --accent: #2c4a8a;
+  --s-young: #1f6f5c; --s-young-bg: #e3f2ed;
+  --s-old: #8a5a12;   --s-old-bg: #f7eedd;
+  --s-p2: #5b4a9a;    --s-p2-bg: #ece8f7;
+  --s-rr: #9a2f3d;    --s-rr-bg: #f7e4e6;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+    --s-young: #7fd3bb; --s-young-bg: #163029;
+    --s-old: #e6b86a;   --s-old-bg: #33270f;
+    --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+    --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+  --s-young: #7fd3bb; --s-young-bg: #163029;
+  --s-old: #e6b86a;   --s-old-bg: #33270f;
+  --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+  --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
+header h1 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.7rem, 4.5vw, 2.3rem); line-height: 1.15; margin: 0 0 6px; text-wrap: balance; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--muted); max-width: 62ch; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+.controls { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 14px 12px; margin-top: 20px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 10px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 13px/1 var(--font-body); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.row2 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+input[type="search"] { flex: 1 1 220px; min-width: 0; font: 400 14px var(--font-body); padding: 9px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+select { font: 400 14px var(--font-body); padding: 9px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+.count { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+ol.list { list-style: none; margin: 0; padding: 0; }
+.trial { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 14px; padding-block: 18px; border-bottom: 1px solid var(--rule); }
+.yr { font-family: var(--font-mono); font-weight: 500; font-size: 15px; color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.name { font-family: var(--font-display); font-weight: 650; font-size: 1.15rem; margin: 0; }
+.tag { font: 500 11px/1 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; }
+.tag.young { color: var(--s-young); background: var(--s-young-bg); }
+.tag.old { color: var(--s-old); background: var(--s-old-bg); }
+.tag.p2 { color: var(--s-p2); background: var(--s-p2-bg); }
+.tag.rr { color: var(--s-rr); background: var(--s-rr-bg); }
+.phase { font: 400 12px var(--font-mono); color: var(--muted); }
+.design { margin: 0; color: var(--fg); }
+dl { margin: 2px 0 0; display: grid; grid-template-columns: max-content minmax(0,1fr); gap: 4px 12px; font-size: 14px; }
+dt { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+dd { margin: 0; min-width: 0; }
+.result { font-variant-numeric: tabular-nums; }
+.stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; padding-block: 4px; }
+.stats b { font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.rec { display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; }
+.rec .rk { font: 500 10.5px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.rec .rk:first-child { margin-top: 0; }
+.rec ul { margin: 0; padding-left: 16px; }
+.rec li { margin: 1px 0; }
+.rec li.none { list-style: none; margin-left: -16px; color: var(--muted); }
+.rec p { margin: 0; }
+.rec a { color: var(--accent); text-underline-offset: 2px; }
+.qs { color: var(--accent); }
+.cite { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.cite a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.cite a:hover { text-decoration-thickness: 2px; }
+.cite a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.ok { color: var(--s-young); font-size: 12.5px; white-space: nowrap; }
+.flag { color: var(--s-old); font-size: 12.5px; }
+.empty { padding: 32px 0; color: var(--muted); }
+footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch; }
+@media (max-width: 480px) {
+  .trial { grid-template-columns: 1fr; gap: 4px; }
+  dl { grid-template-columns: 1fr; gap: 0 0; }
+  dt { line-height: 1.6; margin-top: 4px; }
+}
+.credit { margin: 10px 0 0; font-size: 11.5px; color: var(--muted); opacity: .8; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Mantle cell lymphoma · 2000–2026</div>
+    <h1>Landmark trials in MCL</h1>
+    <p>Practice-changing studies by setting: design, result, what each built on, how it changed practice, and the questions it left open.</p>
+  </header>
+
+  <div class="controls">
+    <div class="chips" role="group" aria-label="Filter by setting" id="chips"></div>
+    <div class="row2">
+      <input type="search" id="q" placeholder="Search trial, drug, journal…" aria-label="Search trials">
+      <select id="sort" aria-label="Sort order">
+        <option value="setting">Sort: setting, then year</option>
+        <option value="asc">Sort: oldest first</option>
+        <option value="desc">Sort: newest first</option>
+      </select>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+
+  <ol class="list" id="list"></ol>
+
+  <footer>
+    Results marked with a check were verified against each paper's PubMed abstract on October 18, 2026. "Not reported in abstract" means the figure needs the full text. E4151 is the only entry still based on a conference presentation. The "Builds on", "Changed" and "Open questions" notes are interpretive summaries, not data from the papers. In the N / HR / follow-up line, "—" marks a value not confirmed for this page; hazard ratios refer to the primary endpoint unless labeled otherwise. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record for each paper (PMIDs checked against journal, volume, pages and first author). E4151 has no full publication yet and links to a Google Scholar search. Check the primary paper before using any number clinically or in teaching material. Reception notes: commentaries are those PubMed links to each paper ("Comment in") plus a PubMed search for editorials. NCCN items marked as v4.2026 come from published coverage of that version (September 2026); items marked "verify" are from earlier guideline versions or general knowledge and should be checked against the current NCCN document. No public data report insurance approval rates by regimen; US coverage generally follows the FDA label and NCCN compendium listing, which Medicare is required to recognize for anticancer drugs.
+  </footer>
+  <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
+</div>
+
+<script>
+const SETTINGS = {
+  young: "Frontline · fit",
+  old: "Frontline · older/unfit",
+  p2: "Frontline · phase 2",
+  rr: "Relapsed/refractory"
+};
+const T = [
+  // Frontline fit
+  {y:2005,n:"European MCL Network (Dreyling)",s:"young",ph:"Phase 3",d:"Myeloablative radiochemotherapy + auto-HCT vs interferon-α maintenance in first remission",ep:"PFS",r:"3-yr PFS 54% vs 25%",i:"Established auto-HCT consolidation in first remission for fit patients",c:"Blood 2005;105:2677"},
+  {y:2005,n:"R-HyperCVAD/MA (Romaguera, MDACC)",s:"young",ph:"Phase 2",d:"Rituximab + HyperCVAD alternating with high-dose MTX/cytarabine, no transplant",ep:"FFS",r:"CR 87%; 3-yr FFS 64%",i:"Intensive non-transplant option; SWOG S0213 later showed high toxicity and early discontinuation outside single centers",c:"J Clin Oncol 2005;23:7013"},
+  {y:2008,n:"Nordic MCL2 (Geisler)",s:"young",ph:"Phase 2",d:"Maxi-R-CHOP alternating with high-dose cytarabine, then BEAM/BEAC auto-HCT",ep:"EFS",r:"6-yr EFS 56%, OS 70%",i:"Showed the value of high-dose cytarabine; long follow-up became a reference benchmark",c:"Blood 2008;112:2687"},
+  {y:2016,n:"MCL Younger (Hermine)",s:"young",ph:"Phase 3",d:"R-CHOP/R-DHAP alternating + cytarabine-containing auto-HCT vs R-CHOP ×6 + auto-HCT",ep:"TTF",r:"Median TTF 9.1 vs 3.9 yr",i:"Made cytarabine a standard part of induction before transplant",c:"Lancet 2016;388:565"},
+  {y:2017,n:"LyMa (Le Gouill)",s:"young",ph:"Phase 3",d:"R-DHAP ×4 + auto-HCT, then rituximab maintenance q2mo ×3 yr vs observation",ep:"EFS",r:"4-yr EFS 79% vs 61%; OS 89% vs 80%",i:"Rituximab maintenance after auto-HCT became standard",c:"N Engl J Med 2017;377:1250"},
+  {y:2024,n:"TRIANGLE (Dreyling)",s:"young",ph:"Phase 3",d:"Three arms: A (R-CHOP/R-DHAP + auto-HCT), A+I (ibrutinib added to induction and 2-yr maintenance), I (ibrutinib, no auto-HCT)",ep:"FFS",r:"3-yr FFS 72% (A) vs 88% (A+I) vs 86% (I); A+I superior to A",i:"Added a BTKi to frontline therapy for fit patients and opened the question of omitting auto-HCT",c:"Lancet 2024;403:2293"},
+  {y:2024,n:"ECOG-ACRIN E4151",s:"young",ph:"Phase 3",d:"Patients MRD-negative in first CR: auto-HCT + rituximab maintenance vs rituximab maintenance alone",ep:"OS",r:"No OS benefit from auto-HCT in MRD-negative patients",i:"Supports MRD-guided omission of transplant",c:"ASH 2024 (Fenske et al.)",f:1},
+  // Frontline older
+  {y:2012,n:"MCL Elderly (Kluin-Nelemans)",s:"old",ph:"Phase 3",d:"R-CHOP vs R-FC induction; then rituximab vs interferon-α maintenance",ep:"CR rate; remission duration",r:"R-CHOP: 4-yr OS 62% vs 47% (R-FC). R maintenance after R-CHOP: 4-yr OS 87% vs 63%",i:"Established R-CHOP plus rituximab maintenance in older patients; R-FC abandoned",c:"N Engl J Med 2012;367:520"},
+  {y:2013,n:"StiL NHL1 (Rummel)",s:"old",ph:"Phase 3",d:"BR vs R-CHOP in indolent lymphomas and MCL",ep:"PFS",r:"MCL subgroup median PFS 35.4 vs 22.1 mo",i:"Made BR the most common frontline backbone for older patients",c:"Lancet 2013;381:1203"},
+  {y:2014,n:"BRIGHT (Flinn)",s:"old",ph:"Phase 3",d:"BR vs R-CHOP or R-CVP",ep:"CR rate (noninferiority)",r:"BR noninferior; favorable CR and PFS in the MCL subgroup",i:"Confirmed BR internationally with a different toxicity profile",c:"Blood 2014;123:2944; J Clin Oncol 2019;37:984"},
+  {y:2015,n:"LYM-3002 (Robak)",s:"old",ph:"Phase 3",d:"VR-CAP (bortezomib replacing vincristine) vs R-CHOP, transplant-ineligible",ep:"PFS",r:"Median PFS 24.7 vs 14.4 mo; later OS benefit (90.7 vs 55.7 mo)",i:"Bortezomib approved frontline; first proteasome-inhibitor induction",c:"N Engl J Med 2015;372:944; Lancet Oncol 2018;19:1449"},
+  {y:2022,n:"SHINE (Wang)",s:"old",ph:"Phase 3",d:"BR + ibrutinib vs BR + placebo, then rituximab maintenance, age ≥65",ep:"PFS",r:"Median PFS 80.6 vs 52.9 mo; no OS difference; more toxicity",i:"First BTKi-chemo combination in frontline MCL",c:"N Engl J Med 2022;386:2482"},
+  {y:2022,n:"ENRICH (UK)",s:"old",ph:"Phase 3",d:"Ibrutinib-rituximab vs rituximab-chemotherapy (R-CHOP or BR), age ≥60",ep:"PFS",r:"PFS favored ibrutinib-rituximab; benefit driven by the R-CHOP comparison",i:"First randomized support for chemo-free frontline therapy",c:"ASH 2022 (Lewis et al.)",f:1},
+  {y:2025,n:"ECHO (Wang)",s:"old",ph:"Phase 3",d:"BR + acalabrutinib vs BR + placebo, then rituximab maintenance, age ≥65",ep:"PFS",r:"Median PFS 66.4 vs 49.6 mo",i:"FDA approval January 2025; better-tolerated BTKi with BR",c:"J Clin Oncol 2025"},
+  // Frontline phase 2
+  {y:2015,n:"R2 frontline (Ruan)",s:"p2",ph:"Phase 2",d:"Lenalidomide + rituximab induction and maintenance",ep:"ORR",r:"ORR 92%, CR 64%",i:"Proof that chemo-free induction can be durable",c:"N Engl J Med 2015;373:1835"},
+  {y:2022,n:"WINDOW-1 (Wang, MDACC)",s:"p2",ph:"Phase 2",d:"Ibrutinib-rituximab followed by abbreviated R-HyperCVAD/MA",ep:"ORR",r:"High CR rates with reduced chemotherapy exposure",i:"Chemotherapy de-escalation for younger patients",c:"J Clin Oncol 2022",f:1},
+  {y:2026,n:"OASIS",s:"p2",ph:"Phase 2",d:"Ibrutinib + venetoclax + obinutuzumab, newly diagnosed",ep:"PFS",r:"5-yr PFS 80%",i:"Strong long-term data for a chemo-free triplet",c:"Consultant360 summary, 2026"},
+  {y:2026,n:"MRD-driven acalabrutinib-lenalidomide-anti-CD20",s:"p2",ph:"Phase 2",d:"Multicenter, open-label; treatment duration guided by MRD",ep:"Molecular CR",r:"High molecular complete response rates",i:"Supports MRD-adapted, time-limited chemo-free therapy",c:"Consultant360 summary, May 2026"},
+  // R/R
+  {y:2006,n:"PINNACLE (Fisher)",s:"rr",ph:"Phase 2",d:"Bortezomib monotherapy",ep:"ORR",r:"ORR 33%",i:"First FDA approval specific to MCL (2006)",c:"J Clin Oncol 2006;24:4867"},
+  {y:2009,n:"Temsirolimus (Hess)",s:"rr",ph:"Phase 3",d:"Temsirolimus (two doses) vs investigator's choice",ep:"PFS",r:"Median PFS 4.8 vs 1.9 mo (175/75 mg)",i:"EU approval; validated mTOR as a target",c:"J Clin Oncol 2009;27:3822"},
+  {y:2013,n:"EMERGE (Goy)",s:"rr",ph:"Phase 2",d:"Lenalidomide after bortezomib",ep:"ORR",r:"ORR 28%",i:"FDA approval 2013",c:"J Clin Oncol 2013;31:3688"},
+  {y:2013,n:"PCYC-1104 (Wang)",s:"rr",ph:"Phase 2",d:"Ibrutinib monotherapy",ep:"ORR",r:"ORR 68%, CR 21%",i:"Introduced BTK inhibition to MCL; accelerated approval 2013 (US MCL indication later withdrawn, 2023)",c:"N Engl J Med 2013;369:507"},
+  {y:2016,n:"RAY (Dreyling)",s:"rr",ph:"Phase 3",d:"Ibrutinib vs temsirolimus",ep:"PFS",r:"Median PFS 14.6 vs 6.2 mo",i:"Randomized confirmation of BTKi superiority",c:"Lancet 2016;387:770"},
+  {y:2016,n:"SPRINT (Trněný)",s:"rr",ph:"Phase 2 (randomized)",d:"Lenalidomide vs investigator's choice",ep:"PFS",r:"Median PFS 8.7 vs 5.2 mo",i:"EU approval of lenalidomide",c:"Lancet Oncol 2016;17:319"},
+  {y:2018,n:"ACE-LY-004 (Wang)",s:"rr",ph:"Phase 2",d:"Acalabrutinib monotherapy",ep:"ORR",r:"ORR 81%, CR 40%",i:"FDA approval 2017; more selective BTKi",c:"Lancet 2018;391:659"},
+  {y:2018,n:"AIM (Tam)",s:"rr",ph:"Phase 2",d:"Ibrutinib + venetoclax",ep:"CR at week 16",r:"CR 42% by CT at wk 16; high MRD negativity",i:"First BTKi–BCL2 combination; deep responses",c:"N Engl J Med 2018;378:1211",f:1},
+  {y:2019,n:"BGB-3111-206 (Song)",s:"rr",ph:"Phase 2",d:"Zanubrutinib monotherapy",ep:"ORR",r:"ORR 84%, CR ~69%",i:"FDA accelerated approval 2019",c:"Clin Cancer Res 2020;26:4216",f:1},
+  {y:2020,n:"ZUMA-2 (Wang)",s:"rr",ph:"Phase 2",d:"Brexucabtagene autoleucel (CD19 CAR-T) after BTKi",ep:"ORR",r:"ORR 93%, CR 67%",i:"Accelerated approval 2020; traditional approval April 2, 2026 with cohort 3 (BTKi-naïve)",c:"N Engl J Med 2020;382:1331"},
+  {y:2021,n:"BRUIN (Wang)",s:"rr",ph:"Phase 1/2",d:"Pirtobrutinib, noncovalent BTKi, after covalent BTKi",ep:"ORR",r:"ORR ~57% after covalent BTKi",i:"Accelerated approval 2023; option after covalent BTKi failure",c:"Lancet 2021;397:892; J Clin Oncol 2023"},
+  {y:2024,n:"TRANSCEND NHL-001, MCL cohort",s:"rr",ph:"Phase 1",d:"Lisocabtagene maraleucel",ep:"ORR",r:"ORR 83%, CR 72%",i:"Second CAR-T approved in MCL (2024)",c:"J Clin Oncol 2024"},
+  {y:2024,n:"Glofitamab (Phillips)",s:"rr",ph:"Phase 1/2",d:"CD20×CD3 bispecific after obinutuzumab pretreatment",ep:"ORR / CR",r:"ORR 85%, CR 78%; high activity after BTKi",i:"Established bispecifics in R/R MCL; phase 3 GLOBRYTE ongoing",c:"J Clin Oncol 2024"},
+  {y:2025,n:"SYMPATICO (Wang)",s:"rr",ph:"Phase 3",d:"Ibrutinib + venetoclax vs ibrutinib + placebo",ep:"PFS",r:"Median PFS 31.9 vs 22.1 mo",i:"First phase 3 support for BTKi–BCL2 combination",c:"Lancet Oncol 2025"},
+  {y:2026,n:"Sonrotoclax (BCL2 inhibitor)",s:"rr",ph:"Phase 1/2",d:"Sonrotoclax monotherapy after prior BTKi",ep:"ORR",r:"Supported accelerated approval",i:"FDA accelerated approval May 2026 (Beqalzi)",c:"FDA, May 14, 2026"}
+];
+
+// N (enrolled or randomized), hazard ratio for primary endpoint, median follow-up. "—" = not confidently known; "~" = approximate.
+const M = {
+  "European MCL Network (Dreyling)": ["122 randomized","—","—"],
+  "R-HyperCVAD/MA (Romaguera, MDACC)": ["97","n/a (single arm)","40 mo"],
+  "Nordic MCL2 (Geisler)": ["160","n/a (single arm)","—"],
+  "MCL Younger (Hermine)": ["497","~0.56 (TTF)","6.1 yr"],
+  "LyMa (Le Gouill)": ["299 enrolled; 240 randomized","—","50 mo"],
+  "TRIANGLE (Dreyling)": ["870","0.52 (A+I vs A)","31 mo"],
+  "ECOG-ACRIN E4151": ["—","—","—"],
+  "MCL Elderly (Kluin-Nelemans)": ["560","—","—"],
+  "StiL NHL1 (Rummel)": ["514 (94 MCL)","0.58 (all histologies)","45 mo"],
+  "BRIGHT (Flinn)": ["447 (74 MCL)","—","5 yr (final)"],
+  "LYM-3002 (Robak)": ["487","0.63","40 mo"],
+  "SHINE (Wang)": ["523","0.75","84.7 mo"],
+  "ENRICH (UK)": ["397","~0.69","—"],
+  "ECHO (Wang)": ["598","0.73","44.9 mo"],
+  "R2 frontline (Ruan)": ["38","n/a (single arm)","30 mo"],
+  "WINDOW-1 (Wang, MDACC)": ["131","n/a (single arm)","—"],
+  "OASIS": ["—","n/a (single arm)","~5 yr"],
+  "MRD-driven acalabrutinib-lenalidomide-anti-CD20": ["—","n/a (single arm)","—"],
+  "PINNACLE (Fisher)": ["155","n/a (single arm)","—"],
+  "Temsirolimus (Hess)": ["162","~0.44 (175/75 mg arm)","—"],
+  "EMERGE (Goy)": ["134","n/a (single arm)","—"],
+  "PCYC-1104 (Wang)": ["111","n/a (single arm)","15.3 mo"],
+  "RAY (Dreyling)": ["280","0.43","20 mo"],
+  "SPRINT (Trněný)": ["254","0.61","15.9 mo"],
+  "ACE-LY-004 (Wang)": ["124","n/a (single arm)","15.2 mo"],
+  "AIM (Tam)": ["24","n/a (single arm)","—"],
+  "BGB-3111-206 (Song)": ["86","n/a (single arm)","—"],
+  "ZUMA-2 (Wang)": ["74 enrolled; 68 infused","n/a (single arm)","12.3 mo (primary)"],
+  "BRUIN (Wang)": ["90 (cBTKi-pretreated MCL)","n/a (single arm)","—"],
+  "TRANSCEND NHL-001, MCL cohort": ["~88 infused","n/a (single arm)","—"],
+  "Glofitamab (Phillips)": ["60","n/a (single arm)","—"],
+  "SYMPATICO (Wang)": ["267","~0.65","~51 mo"],
+  "Sonrotoclax (BCL2 inhibitor)": ["—","n/a (single arm)","—"]
+};
+// Reference links: PubMed PMIDs, each confirmed against journal, volume, pages and first author via NCBI E-utilities (Oct 18, 2026).
+const PMID = id => "https://pubmed.ncbi.nlm.nih.gov/" + id + "/";
+const P = {
+  "European MCL Network (Dreyling)": 15591112,
+  "R-HyperCVAD/MA (Romaguera, MDACC)": 16145068,
+  "Nordic MCL2 (Geisler)": 18625886,
+  "MCL Younger (Hermine)": 27313086,
+  "LyMa (Le Gouill)": 28953447,
+  "TRIANGLE (Dreyling)": 38705160,
+  "MCL Elderly (Kluin-Nelemans)": 22873532,
+  "StiL NHL1 (Rummel)": 23433739,
+  "BRIGHT (Flinn)": 24591201,
+  "LYM-3002 (Robak)": 25738670,
+  "SHINE (Wang)": 35657079,
+  "ENRICH (UK)": 41052510,
+  "ECHO (Wang)": 40311141,
+  "R2 frontline (Ruan)": 26535512,
+  "WINDOW-1 (Wang, MDACC)": 35074072,
+  "OASIS": 33181832,
+  "MRD-driven acalabrutinib-lenalidomide-anti-CD20": 41289154,
+  "PINNACLE (Fisher)": 17001068,
+  "Temsirolimus (Hess)": 19581539,
+  "EMERGE (Goy)": 24002500,
+  "PCYC-1104 (Wang)": 23782157,
+  "RAY (Dreyling)": 26673811,
+  "SPRINT (Trněný)": 26899778,
+  "ACE-LY-004 (Wang)": 29241979,
+  "AIM (Tam)": 29590547,
+  "BGB-3111-206 (Song)": 32461234,
+  "ZUMA-2 (Wang)": 32242358,
+  "BRUIN (Wang)": 37192437,
+  "TRANSCEND NHL-001, MCL cohort": 38072625,
+  "Glofitamab (Phillips)": 39365960,
+  "SYMPATICO (Wang)": 39914418,
+  "Sonrotoclax (BCL2 inhibitor)": 42385124
+};
+const L = {};
+Object.entries(P).forEach(([k,v]) => L[k] = PMID(v));
+L["ECOG-ACRIN E4151"] = "https://scholar.google.com/scholar?q=" + encodeURIComponent("E4151 mantle cell lymphoma MRD autologous transplant rituximab maintenance");
+// Second links: companion papers and approval coverage
+const EXTRA = {
+  "BRIGHT (Flinn)": ["5-yr update, PMID 30811293", PMID(30811293)],
+  "LYM-3002 (Robak)": ["OS update, PMID 30348538", PMID(30348538)],
+  "BRUIN (Wang)": ["phase 1/2 Lancet 2021, PMID 33676628", PMID(33676628)],
+  "ZUMA-2 (Wang)": ["2026 approval", "https://www.onclive.com/view/dr-wang-on-the-full-fda-approval-of-brexu-cel-in-r-r-mantle-cell-lymphoma"]
+};
+// Citation corrections confirmed in PubMed
+const CITE = {
+  "ENRICH (UK)": "Lancet 2025;406:1953 (Lewis)",
+  "ECHO (Wang)": "J Clin Oncol 2025;43:2276",
+  "WINDOW-1 (Wang, MDACC)": "Lancet Oncol 2022;23:406",
+  "OASIS": "Blood 2021;137:877 (Le Gouill; initial report); 5-yr data 2026",
+  "MRD-driven acalabrutinib-lenalidomide-anti-CD20": "Blood Adv 2026;10:1381 (Ruan)",
+  "BRUIN (Wang)": "J Clin Oncol 2023;41:3988 (MCL cohort)",
+  "TRANSCEND NHL-001, MCL cohort": "J Clin Oncol 2024;42:1146",
+  "Glofitamab (Phillips)": "J Clin Oncol 2025;43:318",
+  "SYMPATICO (Wang)": "Lancet Oncol 2025;26:200",
+  "Sonrotoclax (BCL2 inhibitor)": "J Clin Oncol 2026;44:2233 (Eyre); FDA approval May 14, 2026"
+};
+T.forEach(t => { if (CITE[t.n]) t.c = CITE[t.n]; });
+T.forEach(t => { if (t.n === "ENRICH (UK)") { t.f = 0; t.y = 2025; } if (t.n === "WINDOW-1 (Wang, MDACC)") t.f = 0; if (t.n === "Glofitamab (Phillips)") t.y = 2025; });
+// Trial registry numbers (ClinicalTrials.gov, ISRCTN or EudraCT), taken from each paper's PubMed record or the registry, Oct 22, 2026.
+// Shown as links next to the source and used by the monthly update to find later follow-up publications.
+const REG = {"Nordic MCL2 (Geisler)": ["ISRCTN87866680"],"MCL Younger (Hermine)": ["NCT00209222"],"LyMa (Le Gouill)": ["NCT00921414"],"TRIANGLE (Dreyling)": ["NCT02858258"],"ECOG-ACRIN E4151": ["NCT03267433"],"MCL Elderly (Kluin-Nelemans)": ["NCT00209209"],"StiL NHL1 (Rummel)": ["NCT00991211"],"BRIGHT (Flinn)": ["NCT00877006"],"LYM-3002 (Robak)": ["NCT00722137"],"SHINE (Wang)": ["NCT01776840"],"ENRICH (UK)": ["2015-000832-13"],"ECHO (Wang)": ["NCT02972840"],"R2 frontline (Ruan)": ["NCT01472562"],"WINDOW-1 (Wang, MDACC)": ["NCT02427620"],"OASIS": ["NCT02558816"],"MRD-driven acalabrutinib-lenalidomide-anti-CD20": ["NCT03863184"],"Temsirolimus (Hess)": ["NCT00117598"],"EMERGE (Goy)": ["NCT00737529"],"PCYC-1104 (Wang)": ["NCT01236391"],"RAY (Dreyling)": ["NCT01646021"],"SPRINT (Trněný)": ["NCT00875667"],"ACE-LY-004 (Wang)": ["NCT02213926"],"AIM (Tam)": ["NCT02471391"],"BGB-3111-206 (Song)": ["NCT03206970"],"ZUMA-2 (Wang)": ["NCT02601313"],"BRUIN (Wang)": ["NCT03740529"],"TRANSCEND NHL-001, MCL cohort": ["NCT02631044"],"Glofitamab (Phillips)": ["NCT03075696"],"SYMPATICO (Wang)": ["NCT03112174"],"Sonrotoclax (BCL2 inhibitor)": ["NCT05471843"]};
+const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
+T.forEach(t => { t.url = L[t.n]; t.extra = EXTRA[t.n]; });
+T.forEach(t => { t.trn = REG[t.n] || []; });
+
+T.forEach(t => { const m = M[t.n] || ["—","—","—"]; t.N = m[0]; t.hr = m[1]; t.fu = m[2]; });
+
+// Values checked against each PubMed abstract (Oct 18, 2026). Fields: r result, N, hr, fu.
+const V = {
+  "European MCL Network (Dreyling)": {r:"Median PFS 39 vs 17 mo; 3-yr OS 83% vs 77% (NS)", N:"122", hr:"not reported in abstract", fu:"not reported in abstract"},
+  "R-HyperCVAD/MA (Romaguera, MDACC)": {r:"CR/CRu 87%; 3-yr FFS 64%, OS 82%; 8% treatment-related deaths", N:"97"},
+  "Nordic MCL2 (Geisler)": {r:"6-yr OS 70%, EFS 56%, PFS 66%; no relapses after 5 yr", fu:"not reported in abstract"},
+  "MCL Younger (Hermine)": {r:"Median TTF 9.1 vs 3.9 yr; 5-yr TTF 65% vs 40%", N:"497", hr:"0.56 (TTF)", fu:"6.1 yr"},
+  "LyMa (Le Gouill)": {r:"4-yr EFS 79% vs 61%; PFS 83% vs 64%; OS 89% vs 80%", hr:"0.50 (OS, unadjusted)", fu:"50.2 mo"},
+  "TRIANGLE (Dreyling)": {r:"3-yr FFS 72% (A) vs 88% (A+I) vs 86% (I); A+I superior to A; A not superior to I", N:"870", hr:"0.52 (A+I vs A)", fu:"31 mo"},
+  "MCL Elderly (Kluin-Nelemans)": {r:"4-yr OS 62% R-CHOP vs 47% R-FC. Rituximab maintenance: 58% vs 29% in remission at 4 yr; after R-CHOP, 4-yr OS 87% vs 63%", N:"560", hr:"0.55 (maintenance, PFS)", fu:"not reported in abstract"},
+  "StiL NHL1 (Rummel)": {r:"All histologies: median PFS 69.5 vs 31.2 mo. MCL subgroup 35.4 vs 22.1 mo (full paper; not in abstract)", N:"549 randomized; 514 assessed (94 MCL)", hr:"0.58 (all histologies)", fu:"45 mo"},
+  "BRIGHT (Flinn)": {r:"CR 31% vs 25% (noninferior); 5-yr PFS 65.5% vs 55.8%; no OS difference", N:"447 (74 MCL)", hr:"0.61 (5-yr PFS)", fu:"≥5 yr after treatment"},
+  "LYM-3002 (Robak)": {r:"Median PFS 24.7 vs 14.4 mo; final median OS 90.7 vs 55.7 mo", N:"487", hr:"0.63 (PFS); 0.66 (OS)", fu:"40 mo (PFS); 82 mo (OS)"},
+  "SHINE (Wang)": {r:"Median PFS 80.6 vs 52.9 mo; CR 65.5% vs 57.6%; OS similar", N:"523", hr:"0.75", fu:"84.7 mo"},
+  "ENRICH (UK)": {r:"PFS superior with ibrutinib-rituximab. HR 0.37 vs R-CHOP; 0.91 vs BR (not significant)", ph:"Phase 2/3", N:"397", hr:"0.69 (adjusted)", fu:"47.9 mo"},
+  "ECHO (Wang)": {r:"Median PFS 66.4 vs 49.6 mo; CR 66.6% vs 53.5%; OS not different (HR 0.86)", N:"598", hr:"0.73", fu:"49.8 mo"},
+  "R2 frontline (Ruan)": {r:"ORR 92%, CR 64%; 2-yr PFS 85%", N:"38", fu:"30 mo"},
+  "WINDOW-1 (Wang, MDACC)": {r:"ORR 98% to ibrutinib-rituximab (part A), then reduced chemotherapy", N:"131", fu:"not reported in abstract"},
+  "OASIS": {r:"Untreated cohort: PET-CR 86.6%, MRD clearance 100%. 5-yr PFS 80% from 2026 update (not in this paper)", N:"48 (relapsed + untreated)", fu:"14 mo untreated (initial report)"},
+  "MRD-driven acalabrutinib-lenalidomide-anti-CD20": {r:"ALR cohort: ORR 100%, CR 83%, molecular CR 67% after induction; 4-yr PFS 76%, OS 91%", fu:"53 mo"},
+  "PINNACLE (Fisher)": {r:"ORR 33% (CR/CRu 8%); median TTP 6.2 mo", N:"155", fu:"13.4 mo"},
+  "Temsirolimus (Hess)": {r:"Median PFS 4.8 vs 1.9 mo (175/75 mg vs investigator's choice); ORR 22% vs 2%", N:"162", hr:"0.44 (175/75 mg)"},
+  "EMERGE (Goy)": {r:"ORR 28% (CR/CRu 7.5%); median DOR 16.6 mo", N:"134"},
+  "PCYC-1104 (Wang)": {r:"ORR 68%, CR 21%; median PFS 13.9 mo", N:"111", fu:"15.3 mo"},
+  "RAY (Dreyling)": {r:"Median PFS 14.6 vs 6.2 mo", N:"280", hr:"0.43"},
+  "SPRINT (Trněný)": {r:"Median PFS 8.7 vs 5.2 mo", N:"254", hr:"0.61", fu:"15.9 mo"},
+  "ACE-LY-004 (Wang)": {r:"ORR 81%, CR 40%; 12-mo PFS 67%", N:"124", fu:"15.2 mo"},
+  "AIM (Tam)": {r:"CR 42% by CT, 62% by PET at week 16; MRD-negative 67% by flow", N:"24", f:0, fu:"not reported in abstract"},
+  "BGB-3111-206 (Song)": {r:"ORR 84%, CR 68.6%; median PFS 22.1 mo", N:"86", f:0, fu:"18.4 mo"},
+  "ZUMA-2 (Wang)": {r:"ORR 93%, CR 67% (primary efficacy set, n=60); ITT ORR 85%, CR 59%", N:"74 enrolled; 68 infused", fu:"12.3 mo (primary)"},
+  "BRUIN (Wang)": {r:"ORR 57.8%, CR 20% after covalent BTKi; median DOR 21.6 mo", N:"90", fu:"12 mo"},
+  "TRANSCEND NHL-001, MCL cohort": {r:"ORR 83.1%, CR 72.3%; median PFS 15.3 mo", N:"104 leukapheresed; 88 infused", fu:"16.1 mo"},
+  "Glofitamab (Phillips)": {r:"ORR 85%, CR 78.3%; after prior BTKi CR 71%", N:"61 enrolled; 60 evaluable", fu:"not reported in abstract"},
+  "SYMPATICO (Wang)": {r:"Median PFS 31.9 vs 22.1 mo", N:"267", hr:"0.65", fu:"51.2 mo"},
+  "Sonrotoclax (BCL2 inhibitor)": {r:"ORR 52.4%, CR 15.5%; median DOR 15.8 mo; median PFS 6.5 mo", N:"125", fu:"14.2 mo"}
+};
+T.forEach(t => { const v = V[t.n]; if (!v) return; Object.assign(t, v); t.ok = 1; });
+
+// Interpretive layer: how each trial relates to earlier work (b), how it changed practice (i, replaces earlier impact text), and the questions it opened (q).
+const X = {
+  "European MCL Network (Dreyling)": {
+    b:"Followed CHOP-era data showing MCL was rarely controlled by conventional chemotherapy, with median survival of 3–4 years.",
+    i:"First randomized evidence that auto-HCT consolidation prolongs PFS in first remission; set the template of intensive induction plus transplant for fit patients.",
+    q:"Does auto-HCT improve OS, or only PFS? Can better induction (rituximab, cytarabine) achieve the same depth of response without transplant?"},
+  "R-HyperCVAD/MA (Romaguera, MDACC)": {
+    b:"Built on single-center HyperCVAD experience and added rituximab, offering an intensive regimen without transplant as an alternative to the European approach.",
+    i:"Became a US option for fit patients; its 8% treatment-related mortality and poor results over 65 tempered enthusiasm, and SWOG S0213 confirmed toxicity in cooperative-group use.",
+    q:"Is intensity without transplant equivalent to intensity with it? Which patients over 60 can tolerate cytarabine-based induction?"},
+  "Nordic MCL2 (Geisler)": {
+    b:"Improved on the historical Nordic MCL1 trial by adding rituximab and high-dose cytarabine to dose-intensified CHOP before auto-HCT.",
+    i:"Showed that a plateau of long remissions was achievable in a subset; identified Ki-67 as the main prognostic factor; introduced in vivo purging and PCR-based MRD into MCL trials.",
+    q:"Is a subset cured? Can MRD identify who needs less therapy? Which part of the package (cytarabine, rituximab, transplant) drives the benefit?"},
+  "MCL Younger (Hermine)": {
+    b:"Randomized test of the cytarabine question raised by Nordic MCL2 and the MDACC experience, on the backbone of Dreyling 2005.",
+    i:"Made alternating R-CHOP/R-DHAP followed by auto-HCT the European standard for fit patients; became the control arm (A) of TRIANGLE.",
+    q:"Is the benefit from induction cytarabine, conditioning cytarabine, or both? Does maintenance add to it? Is transplant still needed after cytarabine induction?"},
+  "LyMa (Le Gouill)": {
+    b:"Extended the maintenance benefit seen in older patients (MCL Elderly) to transplanted younger patients, after R-DHAP induction.",
+    i:"Rituximab maintenance after auto-HCT became standard, the first post-transplant intervention to improve OS in MCL.",
+    q:"Optimal duration of maintenance? Is it needed in MRD-negative patients? Does it remain beneficial when a BTKi is given in induction or maintenance?"},
+  "TRIANGLE (Dreyling)": {
+    b:"Used the MCL Younger regimen (arm A) as control and tested BTKi addition (from SHINE-era and R/R data), plus omission of auto-HCT.",
+    i:"Added ibrutinib to frontline therapy for fit patients and made the routine need for auto-HCT an open question.",
+    q:"Is A+I better than I (transplant on top of BTKi)? Which patients still benefit from transplant (TP53, high Ki-67, MRD-positive)? Can acalabrutinib or zanubrutinib replace ibrutinib, and can chemotherapy be reduced further?"},
+  "ECOG-ACRIN E4151": {
+    b:"Tests the MRD hypothesis from Nordic MCL2 and the transplant question raised by TRIANGLE, in a rituximab-maintenance era.",
+    i:"Supports omitting auto-HCT in patients MRD-negative in first CR.",
+    q:"How durable is MRD negativity without transplant? Which MRD assay and threshold to use? How does this combine with BTKi-containing induction? Full publication pending."},
+  "MCL Elderly (Kluin-Nelemans)": {
+    b:"Older patients had been largely excluded from transplant trials; this tested fludarabine-based versus anthracycline-based induction and maintenance strategy.",
+    i:"Established R-CHOP followed by rituximab maintenance to progression; abandoned R-FC; provided the first OS benefit from maintenance in MCL.",
+    q:"Would bendamustine-based induction be better? How long should maintenance continue? Does maintenance help after BR?"},
+  "StiL NHL1 (Rummel)": {
+    b:"Compared BR with the R-CHOP standard set by MCL Elderly, across indolent lymphomas and MCL.",
+    i:"BR became the most widely used frontline backbone for older patients with MCL because of better PFS and tolerability.",
+    q:"Is the MCL subgroup large enough to be conclusive? Does rituximab maintenance after BR help? Which novel agent pairs best with BR?"},
+  "BRIGHT (Flinn)": {
+    b:"Independent test of BR versus R-CHOP or R-CVP, confirming the StiL NHL1 signal in a global population.",
+    i:"Consolidated BR as a frontline standard; long-term data showed durable PFS benefit and no OS difference, with more secondary malignancies after BR.",
+    q:"What is the long-term infection and second-cancer cost of bendamustine? Is there an OS benefit for any MCL subgroup?"},
+  "LYM-3002 (Robak)": {
+    b:"Moved bortezomib from the relapsed setting (PINNACLE) into frontline therapy, replacing vincristine in R-CHOP.",
+    i:"Gave a randomized PFS and later OS benefit; VR-CAP became an approved frontline option, though uptake was limited by toxicity and the shift to BR plus BTKi.",
+    q:"How does VR-CAP compare with BR? Does adding a proteasome inhibitor matter once BTKi are in frontline? Role of maintenance after VR-CAP?"},
+  "SHINE (Wang)": {
+    b:"First phase 3 test of adding a BTKi (from PCYC-1104 and RAY) to frontline BR plus rituximab maintenance in older patients.",
+    i:"Proved that a BTKi plus chemoimmunotherapy improves PFS in frontline MCL; also showed excess toxicity and no OS gain, shaping the move to more selective BTKi.",
+    q:"Would a more selective BTKi preserve the PFS gain with fewer deaths? Does continuous BTKi after chemotherapy beat BTKi held for relapse? Is chemotherapy needed at all?"},
+  "ENRICH (UK)": {
+    b:"Tested whether the BTKi could replace chemotherapy altogether, using the SHINE-era control options (R-CHOP or BR) as comparator.",
+    i:"First randomized evidence that chemo-free ibrutinib-rituximab can improve PFS in untreated MCL; benefit clear against R-CHOP but not against BR.",
+    q:"Is chemo-free therapy really superior to BR, or just non-inferior? Would a second agent (venetoclax, lenalidomide) close the gap? Is continuous BTKi preferable to fixed duration?"},
+  "ECHO (Wang)": {
+    b:"Repeated the SHINE design with acalabrutinib, based on CLL head-to-head data showing better tolerability than ibrutinib.",
+    i:"Led to FDA approval of BR plus acalabrutinib for frontline MCL in 2025; a more tolerable version of BTKi plus chemoimmunotherapy.",
+    q:"OS benefit still not shown: is upfront BTKi better than BTKi at relapse? How does BR-acalabrutinib compare with chemo-free combinations? Which subgroups (TP53, blastoid) still do poorly?"},
+  "R2 frontline (Ruan)": {
+    b:"Moved lenalidomide (EMERGE, SPRINT) and rituximab into first-line therapy as a chemotherapy-free alternative.",
+    i:"Early proof that frontline chemo-free therapy could give durable responses; provided the backbone for later acalabrutinib-lenalidomide-rituximab regimens.",
+    q:"Can a BTKi be added safely? Can treatment be stopped after deep remission? How does it compare with BR in a randomized trial?"},
+  "WINDOW-1 (Wang, MDACC)": {
+    b:"Combined the BTKi activity from R/R trials with the R-HyperCVAD approach, giving the BTKi first to shorten chemotherapy.",
+    i:"Showed that a BTKi-first approach can reduce the chemotherapy needed in younger patients.",
+    q:"Can chemotherapy be dropped completely in low-risk patients? Do responses hold with fewer cycles? Would a next-generation BTKi (WINDOW-2) do better?"},
+  "OASIS": {
+    b:"Combined BTKi with BCL2 inhibition (from AIM) and anti-CD20 antibody in relapsed and then untreated patients.",
+    i:"Very high MRD-negative response rates in untreated patients; long-term data support a chemo-free triplet.",
+    q:"Can therapy be fixed-duration and MRD-guided? Is obinutuzumab needed? How will it compare with BTKi plus chemotherapy in randomized trials?"},
+  "MRD-driven acalabrutinib-lenalidomide-anti-CD20": {
+    b:"Built on the R2 frontline regimen by adding acalabrutinib and using MRD to decide when to stop.",
+    i:"Supports time-limited, MRD-adapted chemo-free therapy in frontline MCL.",
+    q:"How should TP53-mutated patients be handled, given their worse PFS? Which MRD platform and timepoint are best? Randomized comparison needed."},
+  "PINNACLE (Fisher)": {
+    b:"First targeted-agent trial in R/R MCL, following bortezomib's success in myeloma.",
+    i:"Gave the first FDA approval specific to MCL and showed targeted therapy had a role.",
+    q:"Can bortezomib combinations improve response depth? Is there a frontline role (later tested in LYM-3002)?"},
+  "Temsirolimus (Hess)": {
+    b:"Tested mTOR inhibition after earlier phase 2 activity, in one of the first randomized R/R MCL trials.",
+    i:"Gave European approval and became the comparator arm for the RAY trial.",
+    q:"Which dosing schedule is optimal? Is mTOR a durable target, or are responses short-lived?"},
+  "EMERGE (Goy)": {
+    b:"Studied lenalidomide after bortezomib failure, extending the immunomodulator data from myeloma and other lymphomas.",
+    i:"Led to US approval of lenalidomide in MCL in 2013.",
+    q:"Does rituximab improve lenalidomide's activity? Can lenalidomide be moved earlier (later shown in R2 frontline)?"},
+  "PCYC-1104 (Wang)": {
+    b:"First large study of BTK inhibition in MCL, following phase 1 activity in B-cell malignancies.",
+    i:"Changed R/R MCL by introducing an oral targeted agent with high response rates and tolerability.",
+    q:"How do patients fare after BTKi failure? Is a more selective BTKi safer? Can BTKi move into frontline therapy?"},
+  "RAY (Dreyling)": {
+    b:"Randomized comparison of ibrutinib with temsirolimus, the European approved option.",
+    i:"Confirmed in a randomized trial that BTK inhibition was the best second-line option.",
+    q:"What is the outcome after progression on ibrutinib, which proved poor? Which combinations could deepen response?"},
+  "SPRINT (Trněný)": {
+    b:"Randomized confirmation of lenalidomide activity after EMERGE, versus investigator's choice.",
+    i:"Gave European approval of lenalidomide in R/R MCL.",
+    q:"Where does lenalidomide fit relative to BTKi? Can it be combined with BTKi or anti-CD20 antibodies?"},
+  "ACE-LY-004 (Wang)": {
+    b:"Followed ibrutinib's success with a more selective BTKi intended to reduce off-target toxicity.",
+    i:"Gave accelerated FDA approval in 2017; acalabrutinib later became the BTKi used in ECHO and frontline chemo-free regimens.",
+    q:"Is it truly better tolerated in MCL (cardiac events, bleeding)? Can it replace ibrutinib in combinations?"},
+  "AIM (Tam)": {
+    b:"Combined BTK inhibition with BCL2 inhibition, after venetoclax activity in MCL and synergy seen in the laboratory.",
+    i:"Showed that dual targeting gives deep, MRD-negative responses even in TP53-aberrant disease; led to SYMPATICO and OASIS.",
+    q:"Does dual targeting improve PFS in a randomized trial? Can therapy stop after MRD negativity? What is the TLS risk in bulky disease?"},
+  "BGB-3111-206 (Song)": {
+    b:"Tested another selective BTKi designed to give sustained BTK occupancy.",
+    i:"Gave accelerated FDA approval in 2019; added a third BTKi option with high CR rates.",
+    q:"Is it more effective or safer than ibrutinib or acalabrutinib in MCL? Can it be used safely in combinations?"},
+  "ZUMA-2 (Wang)": {
+    b:"Addressed the poor outcomes after BTKi failure, which RAY and other studies had shown, with CD19 CAR-T.",
+    i:"First cellular therapy approved in MCL; gave a durable, potentially curative option after BTKi failure; traditional approval in 2026.",
+    q:"Should CAR-T move earlier, before BTKi failure (cohort 3)? How to manage neurotoxicity? Who relapses and why?"},
+  "BRUIN (Wang)": {
+    b:"Tested a noncovalent BTKi that binds BTK independently of C481, the site of resistance mutations to covalent BTKi.",
+    i:"First BTKi to show durable activity after covalent BTKi failure; gave accelerated approval in 2023.",
+    q:"Does it work as well as covalent BTKi earlier in the disease (BRUIN MCL-321)? What resistance mechanisms emerge?"},
+  "TRANSCEND NHL-001, MCL cohort": {
+    b:"Second CD19 CAR-T, tested in a population similar to ZUMA-2 but with lower rates of severe CRS and neurotoxicity.",
+    i:"Second CAR-T approved in MCL (2024); widened access to cellular therapy, including for older patients.",
+    q:"How do the two CAR-T products compare? What is the best sequence of CAR-T, bispecifics and pirtobrutinib?"},
+  "Glofitamab (Phillips)": {
+    b:"Extended CD20xCD3 bispecifics from DLBCL into R/R MCL, with obinutuzumab pretreatment to limit CRS.",
+    i:"Established fixed-duration bispecifics as an off-the-shelf option with high CR rates after BTKi.",
+    q:"How durable are the responses? Should glofitamab come before or after CAR-T? Phase 3 GLOBRYTE will test it against investigator's choice."},
+  "SYMPATICO (Wang)": {
+    b:"Randomized test of the BTKi plus venetoclax combination pioneered in AIM.",
+    i:"First phase 3 evidence that adding venetoclax to ibrutinib improves PFS in R/R MCL.",
+    q:"Can the combination be fixed-duration? Is it better earlier, including in TP53-mutated frontline disease?"},
+  "Sonrotoclax (BCL2 inhibitor)": {
+    b:"Next-generation BCL2 inhibitor following venetoclax, tested after prior BTKi.",
+    i:"Received FDA accelerated approval in May 2026, adding a BCL2 option after BTKi failure.",
+    q:"Is it more potent or easier to give than venetoclax (TLS risk, ramp-up)? Where does it fit relative to CAR-T and bispecifics? Combinations with BTKi or bispecifics?"}
+};
+T.forEach(t => { const x = X[t.n]; if (!x) return; t.b = x.b; t.i = x.i; t.q = x.q; });
+
+// Reception layer. cm = commentaries linked to the paper in PubMed ("Comment in") or found by PubMed search, [pmid, byline, title].
+// reg = regulatory; gl = guidelines (NCCN v4.2026 items confirmed from CURE coverage, Oct 2026; others marked "verify"); acc = access/coverage.
+const R = {
+  "European MCL Network (Dreyling)": {cm:[], reg:"No regulatory action (strategy trial).", gl:"Formed the basis for auto-HCT consolidation in fit patients in European and NCCN guidelines for two decades; NCCN v4.2026 now allows omitting it in MRD-negative CR.", acc:"Transplant coverage standard in first remission."},
+  "R-HyperCVAD/MA (Romaguera, MDACC)": {cm:[], reg:"No regulatory action.", gl:"Long listed as an intensive induction option in NCCN (verify current status); not adopted in European guidelines.", acc:"—"},
+  "Nordic MCL2 (Geisler)": {cm:[], reg:"No regulatory action.", gl:"Nordic regimen became a recognized intensive induction option; superseded as preferred by TRIANGLE in NCCN v4.2026 (verify whether still listed).", acc:"—"},
+  "MCL Younger (Hermine)": {cm:[[27313085,"Martin P, Lancet 2016","Mantle cell lymphoma treatment: plus ça change…"],[27349195,"Romero D, Nat Rev Clin Oncol 2016","Cytarabine - new standard of care for MCL"]], reg:"No regulatory action.", gl:"R-CHOP/R-DHAP + auto-HCT became the European standard; it is arm A of TRIANGLE, now replaced as preferred by TRIANGLE (A+I) in NCCN v4.2026.", acc:"—"},
+  "LyMa (Le Gouill)": {cm:[], reg:"Rituximab maintenance in MCL is off-label in the US.", gl:"Rituximab maintenance after auto-HCT entered NCCN and European guidelines; NCCN v4.2026 keeps rituximab maintenance (± BTKi) after induction, with or without transplant.", acc:"Off-label use covered through NCCN compendium listing (verify payer policy)."},
+  "TRIANGLE (Dreyling)": {cm:[[38705162,"Martin P, Lancet 2024","Does TRIANGLE take down transplantation in mantle cell lymphoma?"]], reg:"EMA CHMP positive opinion (June 2025) for ibrutinib with R-CHOP/R-DHAP in transplant-eligible patients. No US label: ibrutinib's MCL indications were withdrawn in 2023.", gl:"NCCN v4.2026: TRIANGLE is the preferred regimen for fit patients without TP53 mutation; acalabrutinib or zanubrutinib may substitute for ibrutinib (not tested in the trial).", acc:"US use of ibrutinib is off-label; coverage relies on NCCN listing (verify payer policy)."},
+  "ECOG-ACRIN E4151": {cm:[], reg:"No regulatory action (strategy trial).", gl:"NCCN v4.2026 cites it: patients in MRD-negative CR may skip auto-HCT and go to rituximab maintenance ± BTKi. Reported 3-yr OS 82.1% vs 82.7% in 516 patients (ASH 2024).", acc:"Reduces transplant use; MRD testing coverage varies (verify)."},
+  "MCL Elderly (Kluin-Nelemans)": {cm:[[22910684,"Hutchinson L, Nat Rev Clin Oncol 2012","For elderly, R-CHOP and maintain"],[23113500,"Takahashi Y, N Engl J Med 2012","Treatment of older patients with mantle-cell lymphoma (correspondence)"]], reg:"No regulatory action.", gl:"R-CHOP + rituximab maintenance became the standard for older patients; later displaced as preferred by BR-based options (NCCN v4.2026 preferred: BR ± acalabrutinib, acalabrutinib-rituximab).", acc:"—"},
+  "StiL NHL1 (Rummel)": {cm:[[23433738,"Jacobson CA, Lancet 2013","First-line treatment of indolent lymphoma: axing CHOP?"],[23591322,"Doucet S, Nat Rev Clin Oncol 2013","Indolent lymphoma—why not to sprint at the start of a marathon"],[24075045,"Zucca E, Lancet 2013","Treatment for patients with indolent and mantle cell lymphoma (correspondence)"]], reg:"Bendamustine has no FDA label for MCL.", gl:"BR became a preferred frontline option for older patients; NCCN v4.2026 lists BR alone among preferred options.", acc:"Off-label but compendium-listed; widely covered (verify payer policy)."},
+  "BRIGHT (Flinn)": {cm:[[24810622,"Fowler N, Blood 2014","Indolent and mantle cell NHL: the future is BRIGHT"],[31735051,"Visco C, Chin Clin Oncol 2020","Bendamustine plus rituximab: is it a BRIGHT idea?"]], reg:"No new label for MCL.", gl:"Reinforced BR in guidelines; long-term data raised awareness of second malignancies and infection risk.", acc:"As for BR."},
+  "LYM-3002 (Robak)": {cm:[[26039612,"Cavalli F, N Engl J Med 2015","Correspondence"],[26039613,"Baccarani M, N Engl J Med 2015","Correspondence"],[30348536,"Rule S, Lancet Oncol 2018","Bortezomib-based chemotherapy in mantle cell lymphoma"]], reg:"FDA approved bortezomib for previously untreated MCL (2014); EMA approval for VR-CAP.", gl:"VR-CAP listed as a frontline option for older patients; seldom used in practice once BR and BTKi combinations arrived (verify current NCCN listing).", acc:"On-label; covered."},
+  "SHINE (Wang)": {cm:[[35750854,"Killock D, Nat Rev Clin Oncol 2022","SHINE a light: frontline ibrutinib for MCL"],[36130007,"Cliff ERS, N Engl J Med 2022","Treatment of mantle-cell lymphoma (correspondence)"],[36130008,"Ferhanoglu B, N Engl J Med 2022","Correspondence"]], reg:"Presented at ASCO 2022. No FDA approval followed; in 2023 the ibrutinib MCL accelerated approval was withdrawn in the US.", gl:"Correspondence and editorials focused on the lack of OS benefit and excess deaths; BR-ibrutinib was not adopted as a preferred regimen.", acc:"Ibrutinib now off-label for MCL in the US."},
+  "ENRICH (UK)": {cm:[], reg:"No regulatory filing reported (academic trial).", gl:"Supports chemo-free BTKi-rituximab; NCCN v4.2026 lists acalabrutinib-rituximab (not ibrutinib) as a preferred option for older or less fit patients.", acc:"Ibrutinib off-label in the US."},
+  "ECHO (Wang)": {cm:[], reg:"Presented at EHA 2024. FDA approval January 2025 for acalabrutinib + BR in untreated MCL ineligible for auto-HCT.", gl:"NCCN v4.2026: acalabrutinib + BR is a preferred option for older or less fit patients.", acc:"On-label; generally covered."},
+  "R2 frontline (Ruan)": {cm:[[26933862,"Ruan J, N Engl J Med 2016","Author reply"],[26933863,"Tsuda K, N Engl J Med 2016","Correspondence"]], reg:"No frontline label.", gl:"Listed as a chemo-free option for older patients in earlier NCCN versions (verify current listing).", acc:"Off-label frontline; coverage depends on compendium listing."},
+  "WINDOW-1 (Wang, MDACC)": {cm:[[35074073,"Vitolo U, Lancet Oncol 2022","Frontline chemotherapy-free induction for mantle cell lymphoma"]], reg:"No regulatory action.", gl:"Mostly an institutional (MDACC) approach; not a guideline-preferred regimen.", acc:"—"},
+  "OASIS": {cm:[[33599764,"Maddocks K, Blood 2021","Building on BTK inhibition in MCL"]], reg:"No regulatory action.", gl:"Supports the NCCN v4.2026 TP53-mutated option of venetoclax + zanubrutinib + obinutuzumab (a related triplet; trial participation strongly recommended).", acc:"Off-label combination."},
+  "MRD-driven acalabrutinib-lenalidomide-anti-CD20": {cm:[], reg:"No regulatory action.", gl:"Phase 2; not yet a guideline regimen.", acc:"Off-label."},
+  "PINNACLE (Fisher)": {cm:[[17375060,"Ludwig H, Nat Clin Pract Oncol 2007","Is bortezomib active in patients with mantle cell lymphoma?"]], reg:"FDA approval for R/R MCL (2006).", gl:"Listed as a second-line option; largely displaced by BTKi.", acc:"On-label."},
+  "Temsirolimus (Hess)": {cm:[], reg:"EMA approval (2009); no FDA approval for MCL.", gl:"European option for R/R MCL until BTKi; rarely used now.", acc:"Not labeled in the US."},
+  "EMERGE (Goy)": {cm:[], reg:"FDA approval of lenalidomide for R/R MCL after two prior therapies including bortezomib (2013).", gl:"Remains a listed later-line option (verify current NCCN).", acc:"On-label."},
+  "PCYC-1104 (Wang)": {cm:[[23924008,"Zucca E, N Engl J Med 2013","Toward new treatments for mantle-cell lymphoma?"]], reg:"FDA accelerated approval (2013); US MCL indication withdrawn in 2023 after confirmatory requirements were not met. Remains approved in the EU.", gl:"Ibrutinib was the dominant second-line therapy for a decade; NCCN now favors acalabrutinib, zanubrutinib or pirtobrutinib (verify).", acc:"Off-label in the US since 2023."},
+  "RAY (Dreyling)": {cm:[[26673812,"Martin P, Lancet 2016","Ibrutinib—a new standard treatment for relapsed mantle cell lymphoma?"],[26718106,"Killock D, Nat Rev Clin Oncol 2016","Ibrutinib paves way to a brighter future in MCL"]], reg:"Supported EU approval of ibrutinib in R/R MCL.", gl:"Established BTKi as second-line standard in European guidelines.", acc:"—"},
+  "SPRINT (Trněný)": {cm:[[26899779,"Dunleavy K, Lancet Oncol 2016","Immunomodulatory agents in mantle cell lymphoma"],[26925960,"Hutchinson L, Nat Rev Clin Oncol 2016","Lenalidomide—SPRINT to a new standard?"]], reg:"EMA approval of lenalidomide for R/R MCL (2016).", gl:"Later-line option in European guidelines.", acc:"—"},
+  "ACE-LY-004 (Wang)": {cm:[[29241978,"Kapoor P, Lancet 2018","Acalabrutinib in mantle cell lymphoma"]], reg:"FDA accelerated approval (2017); converted to full approval in January 2025 alongside the ECHO frontline approval.", gl:"Preferred second-line BTKi in NCCN (verify current version).", acc:"On-label."},
+  "AIM (Tam)": {cm:[[29662152,"Killock D, Nat Rev Clin Oncol 2018","Targeted combination has synergy in MCL"]], reg:"No approval; venetoclax has never been FDA-approved for MCL.", gl:"Venetoclax-based regimens listed as options, notably for TP53-mutated disease.", acc:"Off-label."},
+  "BGB-3111-206 (Song)": {cm:[], reg:"FDA accelerated approval (2019).", gl:"Preferred second-line BTKi; NCCN v4.2026 also allows zanubrutinib in the TRIANGLE regimen.", acc:"On-label in R/R."},
+  "ZUMA-2 (Wang)": {cm:[[32278358,"Stirrups R, Lancet Oncol 2020","CAR T-cell therapy for relapsed or refractory mantle-cell lymphoma"],[32516587,"Sauter CS, Cancer Cell 2020","CAR T Cells for Mantle Cell Lymphoma: Is it Time to Reshuffle the Deck?"],[32317773,"Romero D, Nat Rev Clin Oncol 2020","KTE-X19 active in MCL"]], reg:"FDA accelerated approval (2020); traditional approval April 2, 2026. EMA approval (2020).", gl:"Recommended after BTKi failure.", acc:"Access limited by certified centers, manufacturing time, cost and prior authorization; Medicare covers CAR-T under a national coverage determination (verify current terms)."},
+  "BRUIN (Wang)": {cm:[[33676615,"Michot JM, Lancet 2021","Pirtobrutinib shows evidence to inaugurate a third generation of BTK inhibitors"],[33758377,"Romero D, Nat Rev Clin Oncol 2021","Initial pirtobrutinib data show promise"]], reg:"FDA accelerated approval for R/R MCL after a BTKi (2023).", gl:"Recommended after covalent BTKi failure.", acc:"On-label."},
+  "TRANSCEND NHL-001, MCL cohort": {cm:[[40486643,"Khan A, Ann Med Surg 2025","Navigating the risks and benefits of newly approved lisocabtagene maraleucel in MCL"]], reg:"FDA approval for R/R MCL after a BTKi (2024).", gl:"Recommended after BTKi failure.", acc:"Same CAR-T access constraints as brexu-cel."},
+  "Glofitamab (Phillips)": {cm:[], reg:"No FDA approval for MCL confirmed for this page (verify); phase 3 GLOBRYTE ongoing.", gl:"Verify current NCCN listing.", acc:"Off-label unless listed in compendia."},
+  "SYMPATICO (Wang)": {cm:[[42289297,"Eyre TA, Br J Haematol 2026","Where next for BTKi-BCL2i combinations in mantle cell lymphoma?"],[42752835,"Lew TE, Blood 2026","VEN-IBR in older and TP53-mt MCL: have sympathy for SYMPATICO"]], reg:"No FDA approval.", gl:"Supports BTKi + venetoclax as a listed option, particularly in TP53-mutated disease (verify NCCN category).", acc:"Off-label."},
+  "Sonrotoclax (BCL2 inhibitor)": {cm:[[42676089,"Lawrence L, Cancer 2026","FDA grants accelerated approval to BCL-2 inhibitor sonrotoclax for mantle cell lymphoma (news)"]], reg:"FDA accelerated approval May 14, 2026 after prior BTKi; first BCL2 inhibitor approved for MCL.", gl:"Too recent to confirm NCCN placement for this page (verify).", acc:"On-label; payer policies still forming."}
+};
+T.forEach(t => { t.rc = R[t.n]; });
+
+T.forEach(t => { if (t.n === "ECOG-ACRIN E4151") { t.N = "516 (MRD-negative CR)"; t.r = "3-yr OS 82.1% (auto-HCT + R maintenance) vs 82.7% (R maintenance alone)"; t.fu = "3-yr analysis"; } });
+
+
+
+const order = ["young","old","p2","rr"];
+let active = "all", sortMode = "setting";
+try { const s = localStorage.getItem("mcl-sort"); if (s) sortMode = s; } catch(e) {}
+
+const chipsEl = document.getElementById("chips");
+[["all","All"], ...order.map(k => [k, SETTINGS[k]])].forEach(([k,label]) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.id = "chip-" + k; b.textContent = label;
+  b.setAttribute("aria-pressed", k === active);
+  b.addEventListener("click", () => { active = k; chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b)); render(); });
+  chipsEl.appendChild(b);
+});
+const sortEl = document.getElementById("sort"); sortEl.value = sortMode;
+sortEl.addEventListener("change", () => { sortMode = sortEl.value; try { localStorage.setItem("mcl-sort", sortMode); } catch(e) {} render(); });
+const qEl = document.getElementById("q"); qEl.addEventListener("input", render);
+
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+
+function recHTML(t){
+  const r = t.rc; if (!r) return "";
+  const cm = r.cm.length
+    ? r.cm.map(c => `<li><a href="https://pubmed.ncbi.nlm.nih.gov/${c[0]}/" target="_blank" rel="noopener">${esc(c[1])}</a>: ${esc(c[2])}</li>`).join("")
+    : '<li class="none">No commentary linked to this paper in PubMed</li>';
+  return `<div class="rk">Commentary</div><ul>${cm}</ul>
+    <div class="rk">Regulatory</div><p>${esc(r.reg)}</p>
+    <div class="rk">Guidelines</div><p>${esc(r.gl)}</p>
+    <div class="rk">Access</div><p>${esc(r.acc)}</p>`;
+}
+function render(){
+  const q = qEl.value.trim().toLowerCase();
+  let rows = T.filter(t => (active === "all" || t.s === active) &&
+    (!q || [t.n,t.d,t.r,t.i,t.b,t.q,t.c,t.ph,String(t.y), t.rc ? [t.rc.reg,t.rc.gl,t.rc.acc,t.rc.cm.map(c=>c[1]+" "+c[2]).join(" ")].join(" ") : ""].join(" ").toLowerCase().includes(q)));
+  rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
+    : (order.indexOf(a.s) - order.indexOf(b.s)) || (a.y - b.y));
+  document.getElementById("count").textContent = rows.length + " of " + T.length + " trials";
+  const list = document.getElementById("list");
+  if (!rows.length) { list.innerHTML = '<li class="empty">No trials match that search. Clear the search or pick another setting.</li>'; return; }
+  list.innerHTML = rows.map(t => `
+    <li class="trial">
+      <div class="yr">${t.y}</div>
+      <div class="body">
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${t.s}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span></div>
+        <p class="design">${esc(t.d)}</p>
+        <div class="stats">
+          <span><b>N</b>${esc(t.N)}</span>
+          <span><b>HR</b>${esc(t.hr)}</span>
+          <span><b>Median F/U</b>${esc(t.fu)}</span>
+        </div>
+        <dl>
+          <dt>Endpoint</dt><dd>${esc(t.ep)}</dd>
+          <dt>Result</dt><dd class="result">${esc(t.r)}${t.f ? ' <span class="flag" title="Conference data or approximate figure">⚑ verify</span>' : ''}${t.ok ? ' <span class="ok" title="Checked against the PubMed abstract">✓ checked</span>' : ''}</dd>
+          <dt>Builds on</dt><dd>${esc(t.b||"")}</dd>
+          <dt>Changed</dt><dd>${esc(t.i)}</dd>
+          <dt>Open questions</dt><dd class="qs">${esc(t.q||"")}</dd>
+          <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
+          <dt>Source</dt><dd class="cite">${t.url ? `<a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>` : esc(t.c)}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
+        </dl>
+      </div>
+    </li>`).join("");
+}
+render();
+</script>

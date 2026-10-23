@@ -1,0 +1,457 @@
+<title>Newly Diagnosed Myeloma Trials</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column; sticky control strip; each trial is a ruled entry with a year gutter */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --fg: #1b2230;
+  --muted: #5d6677;
+  --rule: #dde1e8;
+  --accent: #2c4a8a;
+  --s-young: #1f6f5c; --s-young-bg: #e3f2ed;
+  --s-old: #8a5a12;   --s-old-bg: #f7eedd;
+  --s-p2: #5b4a9a;    --s-p2-bg: #ece8f7;
+  --s-rr: #9a2f3d;    --s-rr-bg: #f7e4e6;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+    --s-young: #7fd3bb; --s-young-bg: #163029;
+    --s-old: #e6b86a;   --s-old-bg: #33270f;
+    --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+    --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+  --s-young: #7fd3bb; --s-young-bg: #163029;
+  --s-old: #e6b86a;   --s-old-bg: #33270f;
+  --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+  --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
+header h1 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.7rem, 4.5vw, 2.3rem); line-height: 1.15; margin: 0 0 6px; text-wrap: balance; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--muted); max-width: 62ch; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+.controls { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 14px 12px; margin-top: 20px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 10px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 13px/1 var(--font-body); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.row2 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+input[type="search"] { flex: 1 1 220px; min-width: 0; font: 400 14px var(--font-body); padding: 9px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+select { font: 400 14px var(--font-body); padding: 9px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+.count { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+ol.list { list-style: none; margin: 0; padding: 0; }
+.trial { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 14px; padding-block: 18px; border-bottom: 1px solid var(--rule); }
+.yr { font-family: var(--font-mono); font-weight: 500; font-size: 15px; color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.name { font-family: var(--font-display); font-weight: 650; font-size: 1.15rem; margin: 0; }
+.tag { font: 500 11px/1 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; }
+.tag.young { color: var(--s-young); background: var(--s-young-bg); }
+.tag.old { color: var(--s-old); background: var(--s-old-bg); }
+.tag.p2 { color: var(--s-p2); background: var(--s-p2-bg); }
+.tag.rr { color: var(--s-rr); background: var(--s-rr-bg); }
+.phase { font: 400 12px var(--font-mono); color: var(--muted); }
+.design { margin: 0; color: var(--fg); }
+dl { margin: 2px 0 0; display: grid; grid-template-columns: max-content minmax(0,1fr); gap: 4px 12px; font-size: 14px; }
+dt { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+dd { margin: 0; min-width: 0; }
+.result { font-variant-numeric: tabular-nums; }
+.stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; padding-block: 4px; }
+.stats b { font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.rec { display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; }
+.rec .rk { font: 500 10.5px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.rec .rk:first-child { margin-top: 0; }
+.rec ul { margin: 0; padding-left: 16px; }
+.rec li { margin: 1px 0; }
+.rec li.none { list-style: none; margin-left: -16px; color: var(--muted); }
+.rec p { margin: 0; }
+.rec a { color: var(--accent); text-underline-offset: 2px; }
+.qs { color: var(--accent); }
+.cite { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.cite a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.cite a:hover { text-decoration-thickness: 2px; }
+.cite a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.ok { color: var(--s-young); font-size: 12.5px; white-space: nowrap; }
+.flag { color: var(--s-old); font-size: 12.5px; }
+.empty { padding: 32px 0; color: var(--muted); }
+footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch; }
+@media (max-width: 480px) {
+  .trial { grid-template-columns: 1fr; gap: 4px; }
+  dl { grid-template-columns: 1fr; gap: 0 0; }
+  dt { line-height: 1.6; margin-top: 4px; }
+}
+.credit { margin: 10px 0 0; font-size: 11.5px; color: var(--muted); opacity: .8; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Newly diagnosed multiple myeloma · 2000–2026</div>
+    <h1>Landmark trials in newly diagnosed myeloma</h1>
+    <p>Transplant-eligible and transplant-ineligible induction, maintenance, and risk and response tools: design, verified results, what each built on, how it changed practice, the questions it left open, and how it was received.</p>
+  </header>
+
+  <div class="controls">
+    <div class="chips" role="group" aria-label="Filter by category" id="chips"></div>
+    <div class="row2">
+      <input type="search" id="q" placeholder="Search trial, drug, regimen…" aria-label="Search trials">
+      <select id="sort" aria-label="Sort order">
+        <option value="setting">Sort: category, then year</option>
+        <option value="asc">Sort: oldest first</option>
+        <option value="desc">Sort: newest first</option>
+      </select>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+
+  <ol class="list" id="list"></ol>
+
+  <footer>
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Regulatory dates marked "verify" are from general knowledge and were not rechecked for this page. Guideline positions summarize NCCN v5.2026 and the ASCO-Ontario 2026 living guideline at a high level; regimen-specific placements marked "verify" need checking against the current documents. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+  </footer>
+  <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
+</div>
+
+<script>
+const SETTINGS = {
+  te: "Transplant-eligible",
+  tie: "Transplant-ineligible / deferred",
+  mnt: "Maintenance",
+  risk: "Risk & response"
+};
+const CLS = { te: "young", tie: "old", mnt: "p2", risk: "rr" };
+const order = ["te","tie","mnt","risk"];
+const PM = id => "https://pubmed.ncbi.nlm.nih.gov/" + id + "/";
+const NCCN = "NCCN v5.2026 and ASCO-Ontario (2026): anti-CD38 quadruplet induction for transplant-eligible and fit transplant-ineligible patients; lenalidomide maintenance after transplant.";
+
+const T = [
+// ---------- Transplant-eligible ----------
+{y:2003,n:"MRC Myeloma VII (Child)",s:"te",ph:"Phase 3",d:"High-dose melphalan and autologous transplant vs conventional chemotherapy, age <65",ep:"OS",
+ r:"CR 44% vs 8%; median OS 54.1 vs 42.3 mo; PFS and OS both improved",N:"407",hr:"not reported in abstract",fu:"not reported in abstract",
+ c:"N Engl J Med 2003;348:1875",p:12736280,
+ b:"Confirmed the French IFM 90 result (1996) in a larger UK population.",
+ i:"Established high-dose melphalan with autologous transplant as standard for younger patients.",
+ q:"Would transplant still matter once more effective induction drugs arrived?",
+ cm:[[14695853,"Anderson KC, Curr Hematol Rep 2004","Stem cell transplantation for myeloma"]],
+ reg:"No regulatory action (strategy trial).",gl:"Basis for transplant as standard of care; still recommended after quadruplet induction (NCCN v5.2026).",acc:"Transplant covered as standard care."},
+{y:2003,n:"IFM 94: single vs tandem transplant (Attal)",s:"te",ph:"Phase 3",d:"Single vs double autologous transplant, age <60",ep:"EFS, OS",
+ r:"7-yr EFS 20% vs 10%, 7-yr OS 42% vs 21% with tandem; benefit mainly in patients without VGPR after the first transplant",N:"399",hr:"not reported in abstract",fu:"7-yr estimates",
+ c:"N Engl J Med 2003;349:2495",p:14695409,
+ b:"Built on IFM 90 and MRC7 to ask whether more high-dose therapy helps.",
+ i:"Made tandem transplant a common option for patients with suboptimal response; tandem later reserved mainly for high-risk disease.",
+ q:"Is tandem transplant still useful with novel-agent induction (later tested in EMN02 and StaMINA)?",
+ cm:[[14695416,"Stadtmauer EA, N Engl J Med 2003","Multiple myeloma, 2004—one or two transplants?"]],
+ reg:"No regulatory action.",gl:"Tandem transplant listed for selected high-risk patients (verify current NCCN wording).",acc:"—"},
+{y:2010,n:"IFM 2005-01: bortezomib-dex induction (Harousseau)",s:"te",ph:"Phase 3",d:"Bortezomib-dexamethasone vs VAD induction (± DCEP) before transplant",ep:"Post-induction CR/nCR",
+ r:"CR/nCR 14.8% vs 6.4%; ≥VGPR after first transplant 54.3% vs 37.2%; median PFS 36.0 vs 29.7 mo (P=.064); no toxic deaths vs 7",N:"482",hr:"not reported in abstract",fu:"32.2 mo",
+ c:"J Clin Oncol 2010;28:4621",p:20823406,
+ b:"Moved bortezomib, approved in relapse (APEX), into induction before transplant.",
+ i:"Ended VAD and made bortezomib-based induction the European standard.",
+ q:"Would a triplet (adding an immunomodulator) deepen responses further?",
+ cm:[[21554151,"Kortüm M, Expert Opin Pharmacother 2011","Results of the first bortezomib-based induction therapy…"]],
+ reg:"Bortezomib later received frontline approvals; induction use pre-transplant was guideline-driven.",gl:"Bortezomib-based induction became standard.",acc:"—"},
+{y:2010,n:"GIMEMA VTD vs TD (Cavo)",s:"te",ph:"Phase 3",d:"Bortezomib-thalidomide-dexamethasone vs thalidomide-dexamethasone before tandem transplant",ep:"CR/nCR after induction",
+ r:"CR/nCR 31% vs 11%; grade 3–4 events 56% vs 33%; peripheral neuropathy 10% vs 2%",N:"480",hr:"not reported in abstract",fu:"not reported in abstract",
+ c:"Lancet 2010;376:2075",p:21146205,
+ b:"Combined bortezomib (IFM 2005-01) with thalidomide in a triplet.",
+ i:"VTD became the European triplet standard and later the backbone of CASSIOPEIA.",
+ q:"Is lenalidomide a better partner than thalidomide (later VRd)? How to limit neuropathy?",
+ cm:[[21146204,"Richardson PG, Lancet 2010","A new standard of care in newly diagnosed multiple myeloma"]],
+ reg:"No separate approval.",gl:"VTD long a European standard induction; largely replaced by quadruplets.",acc:"—"},
+{y:2017,n:"IFM 2009 (Attal)",s:"te",ph:"Phase 3",d:"RVD × 8 vs RVD × 3 + transplant + RVD × 2, both with 1 yr lenalidomide maintenance",ep:"PFS",
+ r:"Median PFS 50 vs 36 mo with transplant; MRD-negative 79% vs 65%; 4-yr OS 81% vs 82%",N:"700",hr:"0.65 (PFS, adjusted)",fu:"not reported in abstract",
+ c:"N Engl J Med 2017;376:1311",p:28379796,
+ b:"First major test of transplant in the novel-agent era, with VRd induction.",
+ i:"Showed transplant still improves PFS with modern induction, without an OS gain; kept transplant as standard.",
+ q:"Does the lack of OS benefit justify deferring transplant? Would continuous maintenance change the picture (DETERMINATION)?",
+ cm:[[28607521,"Morgan GJ, Nat Rev Clin Oncol 2017","Where are we now with the treatment of multiple myeloma?"],[28679086,"Jethava YS, N Engl J Med 2017","Correspondence: Drug combinations with transplantation for myeloma"]],
+ reg:"No regulatory action.",gl:"Basis for transplant after VRd-type induction.",acc:"—"},
+{y:2019,n:"CASSIOPEIA (Moreau)",s:"te",ph:"Phase 3",d:"Daratumumab-VTd vs VTd induction and consolidation around transplant",ep:"sCR at day 100",
+ r:"sCR 29% vs 20%; ≥CR 39% vs 26%; MRD-negative (10⁻⁵) 64% vs 44%",N:"1,085",hr:"0.47 (PFS)",fu:"not reported in abstract",
+ c:"Lancet 2019;394:29",p:31171419,
+ b:"Added daratumumab (proven in relapse: CASTOR, POLLUX) to the European VTd standard.",
+ i:"First quadruplet approved for transplant-eligible patients (FDA 2019, verify date); opened the quadruplet era.",
+ q:"Would daratumumab add to VRd (GRIFFIN, PERSEUS)? Is anti-CD38 maintenance needed after quadruplet induction?",
+ cm:[[31171418,"Hofmeister CC, Lancet 2019","Registering a CD38 antibody upfront for multiple myeloma"],[31213700,"Killock D, Nat Rev Clin Oncol 2019","New daratumumab quadruplets and triplets for newly diagnosed MM"]],
+ reg:"FDA and EMA approval of D-VTd for transplant-eligible NDMM (2019; verify dates).",gl:NCCN,acc:"On-label."},
+{y:2020,n:"EMN02/HO95 (Cavo)",s:"te",ph:"Phase 3",d:"Autologous transplant vs bortezomib-melphalan-prednisone intensification after VCD; then VRD consolidation vs none",ep:"PFS",
+ r:"Median PFS 56.7 vs 41.9 mo with transplant",N:"1,503 enrolled; 1,197 randomized (first)",hr:"0.73",fu:"60.3 mo",
+ c:"Lancet Haematol 2020;7:e456",p:32359506,
+ b:"European counterpart to IFM 2009, also testing consolidation.",
+ i:"Confirmed transplant superiority over non-transplant intensification.",
+ q:"Is consolidation still needed after quadruplet induction? Who benefits from a second transplant?",
+ cm:[[32359505,"Nadeem O, Lancet Haematol 2020","Intensification and consolidation therapy in multiple myeloma in the current era"]],
+ reg:"No regulatory action.",gl:"Supports transplant as standard.",acc:"—"},
+{y:2020,n:"GRIFFIN (Voorhees)",s:"te",ph:"Phase 2 (randomized)",d:"Daratumumab-RVd vs RVd induction, transplant, consolidation, then lenalidomide ± daratumumab maintenance",ep:"sCR after consolidation",
+ r:"sCR 42.4% vs 32.0% (met one-sided α 0.10); with longer follow-up, sCR 62.6% vs 45.4%",N:"207",hr:"not reported in abstract",fu:"22.1 mo",
+ c:"Blood 2020;136:936",p:32325490,
+ b:"Tested daratumumab with the US standard VRd, after CASSIOPEIA used VTd.",
+ i:"Made D-VRd widely used in the US before phase 3 confirmation.",
+ q:"Will the deeper responses translate into PFS (PERSEUS)?",
+ cm:[[32818244,"Harousseau JL, Blood 2020","Daratumumab in transplant regimens for myeloma?"]],
+ reg:"No separate approval.",gl:"Led to D-VRd adoption; superseded by PERSEUS.",acc:"—"},
+{y:2021,n:"FORTE (Gay)",s:"te",ph:"Phase 2 (randomized)",d:"KRd + transplant vs KRd × 12 vs KCd + transplant; then carfilzomib-lenalidomide vs lenalidomide maintenance",ep:"≥VGPR after induction",
+ r:"≥VGPR 70% (KRd) vs 53% (KCd); 3-yr PFS on maintenance 75% (KR) vs 65% (R)",N:"474",hr:"not reported in abstract",fu:"50.9 mo",
+ c:"Lancet Oncol 2021;22:1705",p:34774221,
+ b:"Tested carfilzomib (stronger PI) in induction and maintenance.",
+ i:"Supported KRd induction and showed carfilzomib-lenalidomide maintenance prolongs PFS, especially in high-risk disease.",
+ q:"Should carfilzomib be in maintenance routinely? Does KRd beat VRd outside high-risk disease (ENDURANCE said no)?",
+ cm:[],reg:"No approval for KRd induction or KR maintenance.",gl:"NCCN lists carfilzomib-based options; carfilzomib may be added to maintenance in selected high-risk patients.",acc:"Off-label."},
+{y:2022,n:"DETERMINATION (Richardson)",s:"te",ph:"Phase 3",d:"RVD alone vs RVD + transplant, both with lenalidomide maintenance until progression (US)",ep:"PFS",
+ r:"Median PFS 46.2 vs 67.5 mo (favoring transplant); 5-yr OS 79.2% vs 80.7%; grade ≥3 events 78.2% vs 94.2%",N:"722",hr:"1.53 (RVD alone vs transplant)",fu:"76.0 mo",
+ c:"N Engl J Med 2022;387:132",p:35660812,
+ b:"US companion of IFM 2009, with maintenance until progression.",
+ i:"Confirmed transplant improves PFS but not OS; supported deferred transplant as a reasonable choice for some patients.",
+ q:"With quadruplet induction and MRD testing, who still needs upfront transplant?",
+ cm:[[37334674,"Hashmi H, Expert Rev Hematol 2023","'A stitch in time saves nine': early stem cell transplant…"]],
+ reg:"No regulatory action.",gl:"NCCN recommends early referral and stem cell collection even when transplant is deferred.",acc:"—"},
+{y:2022,n:"MASTER (Costa)",s:"te",ph:"Phase 2",d:"Dara-KRd induction, transplant, and MRD-guided consolidation and treatment cessation",ep:"MRD negativity",
+ r:"MRD-negative 80%; 2-yr PFS 87% (58% with ≥2 high-risk abnormalities); MRD resurgence 27% at 12 mo off therapy with ≥2 high-risk abnormalities",N:"123",hr:"n/a (single arm)",fu:"25.1 mo",
+ c:"J Clin Oncol 2022;40:2901",p:34898239,
+ b:"Combined the quadruplet approach with MRD-adapted therapy.",
+ i:"Showed treatment cessation guided by MRD is feasible in standard-risk disease, but not in ultra-high-risk disease.",
+ q:"Can MRD guide stopping therapy in randomized trials? How to treat ultra-high-risk disease?",
+ cm:[],reg:"No regulatory action.",gl:"Trial-only approach.",acc:"—"},
+{y:2022,n:"GMMG-HD7 (Goldschmidt)",s:"te",ph:"Phase 3",d:"Isatuximab-RVd vs RVd induction, transplant, then lenalidomide ± isatuximab maintenance",ep:"MRD negativity after induction",
+ r:"MRD-negative after induction 50% vs 36%; grade 3–4 neutropenia 23% vs 7%; MRD-negative after transplant 66% vs 48% (2025 update)",N:"662",hr:"not reported in abstract",fu:"induction phase",
+ c:"Lancet Haematol 2022;9:e810",p:36328040,extra:["Post-transplant update, J Clin Oncol 2025",39652594],
+ b:"Isatuximab counterpart to GRIFFIN and PERSEUS.",
+ i:"First phase 3 evidence for isatuximab quadruplet in transplant-eligible patients.",
+ q:"Will the MRD benefit become PFS and OS benefit? Is isatuximab maintenance needed?",
+ cm:[[36328036,"Chen X, Lancet Haematol 2022","Maximising response depth is important in multiple myeloma"]],
+ reg:"Supported EU use of isatuximab-VRd (verify label scope).",gl:NCCN,acc:"—"},
+{y:2024,n:"PERSEUS (Sonneveld)",s:"te",ph:"Phase 3",d:"Subcutaneous daratumumab-VRd vs VRd induction and consolidation, then lenalidomide maintenance (with daratumumab in the D-VRd group)",ep:"PFS",
+ r:"4-yr PFS 84.3% vs 67.7%; ≥CR 87.9% vs 70.1%; MRD-negative 75.2% vs 47.5%",N:"709",hr:"0.42",fu:"47.5 mo",
+ c:"N Engl J Med 2024;390:301",p:38084760,
+ b:"Phase 3 confirmation of GRIFFIN.",
+ i:"Made D-VRd the standard transplant-eligible induction; FDA approval 2024 (verify date).",
+ q:"Is daratumumab maintenance needed in MRD-negative patients? Can transplant be omitted in sustained MRD negativity?",
+ cm:[[38631009,"Sampath VS, N Engl J Med 2024","Correspondence: Four-drug therapy for multiple myeloma"],[38631010,"Sonneveld P, N Engl J Med 2024","Reply"]],
+ reg:"FDA and EMA approval of D-VRd for transplant-eligible NDMM (2024; verify dates).",gl:NCCN,acc:"On-label."},
+{y:2026,n:"EMN24 IsKia (Gay)",s:"te",ph:"Phase 3",d:"Isatuximab-KRd vs KRd induction and consolidation around transplant",ep:"NGS-MRD negativity after consolidation",
+ r:"MRD-negative (10⁻⁵) 77% vs 67%; (10⁻⁶) 68% vs 48%; PFS immature",N:"302",hr:"not reported (PFS immature)",fu:"not reported in abstract",
+ c:"Nat Med 2026;32:1773",p:41942646,
+ b:"Tests the carfilzomib-based quadruplet (FORTE backbone) with isatuximab.",
+ i:"Shows deeper MRD negativity with Isa-KRd; PFS impact still unknown.",
+ q:"Is carfilzomib better than bortezomib in quadruplets? Will MRD benefit become survival benefit?",
+ cm:[],reg:"No regulatory action.",gl:"Too recent for guideline placement (verify).",acc:"—"},
+// ---------- Transplant-ineligible / not transplanted upfront ----------
+{y:2007,n:"IFM 99-06: MPT (Facon)",s:"tie",ph:"Phase 3",d:"Melphalan-prednisone (MP) vs MP + thalidomide vs reduced-intensity transplant (MEL100), age 65–75",ep:"OS",
+ r:"Median OS 51.6 mo (MPT) vs 33.2 (MP) vs 38.3 (MEL100)",N:"447",hr:"0.59 (MPT vs MP)",fu:"51.5 mo",
+ c:"Lancet 2007;370:1209",p:17920916,
+ b:"First major change to MP, the standard for older patients since the 1960s.",
+ i:"Made MPT the reference regimen for older patients.",
+ q:"Would bortezomib do better with MP (VISTA)? Can melphalan be dropped altogether (FIRST)?",
+ cm:[[17920906,"Palumbo A, Lancet 2007","A new standard of care for elderly patients with myeloma"]],
+ reg:"Thalidomide approved in the EU with MP for older NDMM (verify).",gl:"Historical standard; replaced by lenalidomide- and anti-CD38-based regimens.",acc:"—"},
+{y:2008,n:"VISTA (San Miguel)",s:"tie",ph:"Phase 3",d:"Bortezomib-melphalan-prednisone (VMP) vs MP",ep:"Time to progression",
+ r:"TTP 24.0 vs 16.6 mo; CR 30% vs 4%",N:"682",hr:"0.48 (TTP); 0.61 (OS)",fu:"not reported in abstract",
+ c:"N Engl J Med 2008;359:906",p:18753647,
+ b:"Moved bortezomib into frontline therapy for older patients, alongside MPT.",
+ i:"VMP became a standard and later the backbone for ALCYONE; led to frontline bortezomib approval (2008).",
+ q:"Can melphalan-free regimens do as well with less toxicity?",
+ cm:[[18753654,"Durie BG, N Engl J Med 2008","Treatment of myeloma—are we making progress?"],[19390550,"Berenson JR, Nat Rev Clin Oncol 2009","Bortezomib in newly diagnosed multiple myeloma"]],
+ reg:"FDA frontline approval of bortezomib (2008).",gl:"Historical standard; VMP still used outside the US.",acc:"On-label."},
+{y:2014,n:"FIRST (Benboubker)",s:"tie",ph:"Phase 3",d:"Continuous lenalidomide-dexamethasone vs Rd for 18 cycles vs MPT",ep:"PFS",
+ r:"Median PFS 25.5 vs 20.7 (Rd18) vs 21.2 mo (MPT); 4-yr OS 59% vs 56% vs 51%",N:"1,623",hr:"0.72 (Rd vs MPT); 0.70 (Rd vs Rd18)",fu:"not reported in abstract",
+ c:"N Engl J Med 2014;371:906",p:25184863,
+ b:"Tested a melphalan-free, continuous regimen against MPT.",
+ i:"Established continuous Rd as a standard; backbone for SWOG S0777 and MAIA.",
+ q:"What to add to Rd (bortezomib, daratumumab)? Is continuous therapy always better than fixed duration?",
+ cm:[[25184869,"Avigan D, N Engl J Med 2014","Current treatment for multiple myeloma"]],
+ reg:"FDA approval of lenalidomide for NDMM (2015; verify).",gl:"Rd replaced by triplets and quadruplets; still used in frail patients.",acc:"On-label."},
+{y:2017,n:"SWOG S0777 (Durie)",s:"tie",ph:"Phase 3",d:"VRd vs Rd without intent for immediate transplant",ep:"PFS",
+ r:"Median PFS 43 vs 30 mo; median OS 75 vs 64 mo",N:"525",hr:"0.712 (PFS); 0.709 (OS)",fu:"not reported in abstract",
+ c:"Lancet 2017;389:519",p:28017406,
+ b:"Added bortezomib to the FIRST Rd backbone.",
+ i:"Made VRd the US frontline standard and the comparator for later quadruplet trials.",
+ q:"Is KRd better than VRd (ENDURANCE)? Will adding an anti-CD38 antibody improve further?",
+ cm:[[28017404,"Ludwig H, Lancet 2017","Multiple myeloma: new treatments gain momentum"],[28094265,"Killock D, Nat Rev Clin Oncol 2017","Landmark survival achieved in MM"]],
+ reg:"No separate approval for VRd.",gl:"Long the US standard; now the backbone of quadruplets.",acc:"Components on-label."},
+{y:2018,n:"ALCYONE (Mateos)",s:"tie",ph:"Phase 3",d:"Daratumumab-VMP vs VMP in transplant-ineligible patients",ep:"PFS",
+ r:"18-mo PFS 71.6% vs 50.2%; ORR 90.9% vs 73.9%; MRD-negative 22.3% vs 6.2%",N:"706",hr:"0.50",fu:"16.5 mo",
+ c:"N Engl J Med 2018;378:518",p:29231133,
+ b:"First frontline daratumumab trial, on the VISTA backbone.",
+ i:"First anti-CD38 frontline approval (2018; verify).",
+ q:"Is a melphalan-free daratumumab regimen (MAIA) better?",
+ cm:[],reg:"FDA and EMA approval of D-VMP (2018; verify).",gl:"Used mainly outside the US.",acc:"—"},
+{y:2019,n:"MAIA (Facon)",s:"tie",ph:"Phase 3",d:"Daratumumab-Rd vs Rd in transplant-ineligible patients",ep:"PFS",
+ r:"30-mo PFS 70.6% vs 55.6%; ≥CR 47.6% vs 24.9%. Update: median PFS not reached vs 34.4 mo; OS HR 0.68",N:"737",hr:"0.56 (PFS); 0.68 (OS, update)",fu:"28.0 mo; 56.2 mo (update)",
+ c:"N Engl J Med 2019;380:2104",p:31141632,extra:["OS update, Lancet Oncol 2021",34655533],
+ b:"Added daratumumab to the FIRST Rd backbone.",
+ i:"D-Rd became a standard for older patients, with an overall survival benefit.",
+ q:"Does adding bortezomib to D-Rd (CEPHEUS, IMROZ) help older patients, or just add toxicity?",
+ cm:[[31141641,"Laubach J, N Engl J Med 2019","Initial therapy in older patients with multiple myeloma"]],
+ reg:"FDA approval of D-Rd for transplant-ineligible NDMM (2019; verify).",gl:"Remains a standard for frail or older patients; quadruplets preferred for fit patients (NCCN v5.2026).",acc:"On-label."},
+{y:2020,n:"ECOG E1A11 ENDURANCE (Kumar)",s:"tie",ph:"Phase 3",d:"KRd vs VRd induction in patients without intent for immediate transplant (most high-risk cytogenetics excluded)",ep:"PFS",
+ r:"Median PFS 34.6 vs 34.4 mo; no difference",N:"1,087",hr:"1.04",fu:"9 mo (interim; median)",
+ c:"Lancet Oncol 2020;21:1317",p:32866432,
+ b:"Head-to-head test of carfilzomib vs bortezomib after SWOG S0777 and FORTE.",
+ i:"Kept VRd as the standard triplet backbone for standard-risk disease.",
+ q:"Does carfilzomib help in high-risk disease (excluded here)? How long should maintenance last (second randomization)?",
+ cm:[[33271097,"Landgren O, Lancet Oncol 2020","Correspondence: when endurance is interrupted"]],
+ reg:"No regulatory action.",gl:"Supports VRd over KRd for standard-risk patients.",acc:"—"},
+{y:2024,n:"IMROZ (Facon)",s:"tie",ph:"Phase 3",d:"Isatuximab-VRd vs VRd, then Isa-Rd vs Rd, in transplant-ineligible patients up to 80",ep:"PFS",
+ r:"5-yr PFS 63.2% vs 45.2%; ≥CR 74.7% vs 64.1%; MRD-negative CR 55.5% vs 40.9%",N:"446",hr:"0.60",fu:"59.7 mo",
+ c:"N Engl J Med 2024;391:1597",p:38832972,
+ b:"Added an anti-CD38 antibody to the S0777 VRd backbone in older patients.",
+ i:"First quadruplet approved for transplant-ineligible patients (FDA 2024; verify).",
+ q:"Which older patients can tolerate quadruplets? How does Isa-VRd compare with D-Rd?",
+ cm:[[39879604,"Sampath VS, N Engl J Med 2025","Correspondence: Isatuximab-based therapy"],[39879605,"Facon T, N Engl J Med 2025","Reply"]],
+ reg:"FDA and EMA approval of Isa-VRd for transplant-ineligible NDMM (2024; verify dates).",gl:NCCN,acc:"On-label."},
+{y:2025,n:"CEPHEUS (Usmani)",s:"tie",ph:"Phase 3",d:"Daratumumab-VRd vs VRd then D-Rd vs Rd, transplant-ineligible or transplant-deferred",ep:"MRD negativity (10⁻⁵)",
+ r:"MRD-negative 60.9% vs 39.4%; ≥CR 81.2% vs 61.6%; sustained MRD-negative 48.7% vs 26.3%",N:"395",hr:"0.57 (PFS)",fu:"58.7 mo",
+ c:"Nat Med 2025;31:1195",p:39910273,extra:["Transplant-ineligible subgroup, J Clin Oncol 2026",42789828],
+ b:"Daratumumab counterpart to IMROZ, including transplant-deferred patients.",
+ i:"Supports D-VRd for fit transplant-ineligible and deferred patients.",
+ q:"Is MRD negativity an adequate basis for approval? How to choose between Isa-VRd and D-VRd?",
+ cm:[],reg:"EU approval of D-VRd for transplant-ineligible patients (verify).",gl:NCCN,acc:"—"},
+// ---------- Maintenance ----------
+{y:2012,n:"CALGB 100104 (McCarthy)",s:"mnt",ph:"Phase 3",d:"Lenalidomide vs placebo maintenance after transplant",ep:"Time to progression",
+ r:"Median TTP 46 vs 27 mo; deaths 15% vs 23%; 86 of 128 placebo patients crossed over",N:"460",hr:"not reported in abstract",fu:"34 mo",
+ c:"N Engl J Med 2012;366:1770",p:22571201,
+ b:"Tested lenalidomide, effective in relapse, as continuous therapy after transplant.",
+ i:"Together with IFM 2005-02, made lenalidomide maintenance standard; later OS benefit in meta-analysis.",
+ q:"What is the cost in second primary cancers? How long should maintenance last?",
+ cm:[[22571206,"Badros AZ, N Engl J Med 2012","Lenalidomide in myeloma—a high-maintenance friend"]],
+ reg:"FDA approval of lenalidomide maintenance after transplant (2017; verify).",gl:"Lenalidomide maintenance recommended after transplant (NCCN v5.2026).",acc:"On-label."},
+{y:2012,n:"IFM 2005-02 (Attal)",s:"mnt",ph:"Phase 3",d:"Lenalidomide vs placebo maintenance after transplant",ep:"PFS",
+ r:"Median PFS 41 vs 23 mo; second primary cancers 3.1 vs 1.2 per 100 patient-years",N:"614",hr:"0.50",fu:"45 mo",
+ c:"N Engl J Med 2012;366:1782",p:22571202,
+ b:"European counterpart of CALGB 100104.",
+ i:"Confirmed PFS benefit and flagged second primary cancers.",
+ q:"Is there an OS benefit (no, in this trial)? Is maintenance needed in deep responders?",
+ cm:[[22571206,"Badros AZ, N Engl J Med 2012","Lenalidomide in myeloma—a high-maintenance friend"]],
+ reg:"Supported lenalidomide maintenance approvals.",gl:"Lenalidomide maintenance recommended.",acc:"On-label."},
+{y:2019,n:"Myeloma XI maintenance (Jackson)",s:"mnt",ph:"Phase 3",d:"Lenalidomide maintenance vs observation, transplant-eligible and ineligible",ep:"PFS, OS",
+ r:"Median PFS 39 vs 20 mo; 3-yr OS 78.6% vs 75.8% (NS); benefit across subgroups",N:"1,917 randomized to maintenance",hr:"0.46 (PFS); 0.87 (OS)",fu:"31 mo",
+ c:"Lancet Oncol 2019;20:57",p:30559051,
+ b:"Largest maintenance trial, extending CALGB/IFM to transplant-ineligible patients.",
+ i:"Confirmed lenalidomide maintenance benefit regardless of transplant status and cytogenetics.",
+ q:"Should maintenance be risk-adapted (adding PI or anti-CD38 in high risk)?",
+ cm:[[30559052,"Mateos MV, Lancet Oncol 2019","Lenalidomide as maintenance for every newly diagnosed patient…"]],
+ reg:"Supported EU maintenance label.",gl:"Lenalidomide maintenance standard.",acc:"—"},
+{y:2026,n:"Continuous vs fixed-duration lenalidomide (Kumar)",s:"mnt",ph:"Phase 3",d:"Indefinite vs 2-yr lenalidomide after PI-lenalidomide induction, standard-risk, no upfront transplant",ep:"OS",
+ r:"7-yr OS 68.6% vs 69.0%; 7-yr PFS 36.1% vs 29.7% (NS)",N:"516",hr:"not reported in abstract",fu:"86 mo",
+ c:"N Engl J Med 2026;395:221",p:42456135,
+ b:"Second randomization of the ENDURANCE program, addressing maintenance duration after FIRST and Myeloma XI.",
+ i:"Suggests 2 years of lenalidomide may suffice for standard-risk patients not transplanted upfront.",
+ q:"Does this apply after quadruplet induction, after transplant, or in high-risk disease? Can MRD guide stopping?",
+ cm:[],reg:"No regulatory action.",gl:"Too recent for guideline placement (verify).",acc:"—"},
+// ---------- Risk & response ----------
+{y:2005,n:"International Staging System (Greipp)",s:"risk",ph:"Prognostic model",d:"Large international dataset with training and validation sets",ep:"OS",
+ r:"Three stages by β2-microglobulin and albumin: median OS 62, 44 and 29 mo",N:"not reported in abstract",hr:"n/a",fu:"n/a",
+ c:"J Clin Oncol 2005;23:3412",p:15809451,
+ b:"Replaced the Durie-Salmon system with two simple serum markers.",
+ i:"Became the universal staging system.",
+ q:"How to add cytogenetics and LDH (R-ISS)?",
+ cm:[],reg:"—",gl:"Standard staging.",acc:"—"},
+{y:2015,n:"Revised ISS (Palumbo)",s:"risk",ph:"Prognostic model",d:"ISS combined with FISH high-risk abnormalities and LDH",ep:"OS, PFS",
+ r:"5-yr OS 82%, 62% and 40% for R-ISS I, II and III",N:"3,060 (of 4,445)",hr:"n/a",fu:"46 mo",
+ c:"J Clin Oncol 2015;33:2863",p:26240224,
+ b:"Integrated cytogenetics and LDH into ISS.",
+ i:"Became the standard risk model in trials and guidelines.",
+ q:"Most patients fall in R-ISS II; how to subdivide it (R2-ISS)?",
+ cm:[],reg:"—",gl:"Standard staging.",acc:"—"},
+{y:2017,n:"MRD meta-analysis (Munshi)",s:"risk",ph:"Meta-analysis",d:"Studies reporting MRD and outcomes",ep:"PFS, OS",
+ r:"MRD negativity associated with better PFS (HR 0.41) and OS (HR 0.57), including in patients in CR",N:"1,273 (PFS); 1,100 (OS)",hr:"0.41 (PFS); 0.57 (OS)",fu:"n/a",
+ c:"JAMA Oncol 2017;3:28",p:27632282,
+ b:"Pooled evidence that MRD adds prognostic value beyond conventional CR.",
+ i:"Supported MRD as an endpoint; later basis for FDA advisory committee support of MRD for accelerated approval (2024; verify).",
+ q:"Is MRD a valid surrogate at trial level, not just patient level? Which assay and threshold?",
+ cm:[[28494064,"Little RF, JAMA Oncol 2017","Myeloma minimal residual disease and surrogacy"]],
+ reg:"Informed FDA consideration of MRD as an accelerated-approval endpoint (verify).",gl:"MRD assessment recommended at defined timepoints (verify NCCN wording).",acc:"MRD test coverage varies (verify)."},
+{y:2022,n:"R2-ISS (D'Agostino)",s:"risk",ph:"Prognostic model",d:"Additive score from ISS, del(17p), LDH, t(4;14) and 1q+",ep:"OS, PFS",
+ r:"Four groups; median OS not reached, 109.2, 68.5 and 37.9 mo",N:"7,072 (training)",hr:"n/a",fu:"75 mo",
+ c:"J Clin Oncol 2022;40:3406",p:35605179,
+ b:"Refined R-ISS, adding 1q gain and weighting each factor.",
+ i:"Better separates the large intermediate group.",
+ q:"Will it hold up with quadruplet therapy? How does it fit with genomic definitions of high risk?",
+ cm:[],reg:"—",gl:"Increasingly used alongside R-ISS (verify).",acc:"—"},
+{y:2025,n:"IMS/IMWG high-risk consensus (Avet-Loiseau)",s:"risk",ph:"Consensus",d:"New genomic definition of high-risk myeloma",ep:"—",
+ r:"High risk = del(17p) >20% and/or TP53 mutation; t(4;14)/t(14;16)/t(14;20) with 1q+ and/or del(1p32); monoallelic del(1p32) with 1q+ or biallelic del(1p32); or β2M ≥5.5 mg/L with normal creatinine",N:"n/a",hr:"n/a",fu:"n/a",
+ c:"J Clin Oncol 2025;43:2739",p:40489728,
+ b:"Updated the R-ISS-era definition with genomic and 1p/1q data.",
+ i:"Provides a common high-risk definition for trials and practice in the quadruplet era.",
+ q:"Should high-risk patients receive different therapy (tandem transplant, carfilzomib, anti-CD38 maintenance, early CAR-T)?",
+ cm:[],reg:"—",gl:"Consensus definition; adoption in NCCN to verify.",acc:"—"}
+];
+// Trial registry numbers (ClinicalTrials.gov, ISRCTN or EudraCT), taken from each paper's PubMed record or the registry, Oct 22, 2026.
+// Shown as links next to the source and used by the monthly update to find later follow-up publications.
+const REG = {"GIMEMA VTD vs TD (Cavo)": ["NCT01134484"],"IFM 2009 (Attal)": ["NCT01191060"],"CASSIOPEIA (Moreau)": ["NCT02541383"],"EMN02/HO95 (Cavo)": ["NCT01208766"],"GRIFFIN (Voorhees)": ["NCT02874742"],"FORTE (Gay)": ["NCT02203643"],"DETERMINATION (Richardson)": ["NCT01208662"],"MASTER (Costa)": ["NCT03224507"],"GMMG-HD7 (Goldschmidt)": ["NCT03617731"],"PERSEUS (Sonneveld)": ["NCT03710603"],"EMN24 IsKia (Gay)": ["NCT04483739"],"IFM 99-06: MPT (Facon)": ["NCT00367185"],"VISTA (San Miguel)": ["NCT00111319"],"FIRST (Benboubker)": ["NCT00689936"],"SWOG S0777 (Durie)": ["NCT00644228"],"ALCYONE (Mateos)": ["NCT02195479"],"MAIA (Facon)": ["NCT02252172"],"ECOG E1A11 ENDURANCE (Kumar)": ["NCT01863550"],"IMROZ (Facon)": ["NCT03319667"],"CEPHEUS (Usmani)": ["NCT03652064"],"CALGB 100104 (McCarthy)": ["NCT00114101"],"IFM 2005-02 (Attal)": ["NCT00430365"],"Myeloma XI maintenance (Jackson)": ["ISRCTN49407852"],"Continuous vs fixed-duration lenalidomide (Kumar)": ["NCT01863550"]};
+const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
+T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, reg:t.reg, gl:t.gl, acc:t.acc}; });
+T.forEach(t => { t.trn = REG[t.n] || []; });
+
+let active = "all", sortMode = "setting";
+try { const s = localStorage.getItem("ndmm-sort"); if (s) sortMode = s; } catch(e) {}
+const chipsEl = document.getElementById("chips");
+[["all","All"], ...order.map(k => [k, SETTINGS[k]])].forEach(([k,label]) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.id = "chip-" + k; b.textContent = label;
+  b.setAttribute("aria-pressed", k === active);
+  b.addEventListener("click", () => { active = k; chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b)); render(); });
+  chipsEl.appendChild(b);
+});
+const sortEl = document.getElementById("sort"); sortEl.value = sortMode;
+sortEl.addEventListener("change", () => { sortMode = sortEl.value; try { localStorage.setItem("ndmm-sort", sortMode); } catch(e) {} render(); });
+const qEl = document.getElementById("q"); qEl.addEventListener("input", render);
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function recHTML(t){
+  const r = t.rc; if (!r) return "";
+  const cm = r.cm.length
+    ? r.cm.map(c => `<li><a href="https://pubmed.ncbi.nlm.nih.gov/${c[0]}/" target="_blank" rel="noopener">${esc(c[1])}</a>: ${esc(c[2])}</li>`).join("")
+    : '<li class="none">No commentary linked to this paper in PubMed</li>';
+  return `<div class="rk">Commentary</div><ul>${cm}</ul>
+    <div class="rk">Regulatory</div><p>${esc(r.reg)}</p>
+    <div class="rk">Guidelines</div><p>${esc(r.gl)}</p>
+    <div class="rk">Access</div><p>${esc(r.acc)}</p>`;
+}
+function render(){
+  const q = qEl.value.trim().toLowerCase();
+  let rows = T.filter(t => (active === "all" || t.s === active) &&
+    (!q || [t.n,t.d,t.r,t.i,t.b,t.q,t.c,t.ph,String(t.y),t.reg,t.gl,t.acc,t.cm.map(c=>c[1]+" "+c[2]).join(" ")].join(" ").toLowerCase().includes(q)));
+  rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
+    : (order.indexOf(a.s) - order.indexOf(b.s)) || (a.y - b.y));
+  document.getElementById("count").textContent = rows.length + " of " + T.length + " trials";
+  const list = document.getElementById("list");
+  if (!rows.length) { list.innerHTML = '<li class="empty">No trials match that search. Clear the search or pick another category.</li>'; return; }
+  list.innerHTML = rows.map(t => `
+    <li class="trial">
+      <div class="yr">${t.y}</div>
+      <div class="body">
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span></div>
+        <p class="design">${esc(t.d)}</p>
+        <div class="stats">
+          <span><b>N</b>${esc(t.N)}</span>
+          <span><b>HR</b>${esc(t.hr)}</span>
+          <span><b>Median F/U</b>${esc(t.fu)}</span>
+        </div>
+        <dl>
+          <dt>Endpoint</dt><dd>${esc(t.ep)}</dd>
+          <dt>Result</dt><dd class="result">${esc(t.r)} <span class="ok" title="Checked against the PubMed abstract">✓ checked</span></dd>
+          <dt>Builds on</dt><dd>${esc(t.b)}</dd>
+          <dt>Changed</dt><dd>${esc(t.i)}</dd>
+          <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
+          <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
+        </dl>
+      </div>
+    </li>`).join("");
+}
+render();
+</script>

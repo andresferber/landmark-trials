@@ -1,0 +1,371 @@
+<title>Untreated Follicular Lymphoma</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column; sticky control strip; each trial is a ruled entry with a year gutter */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --fg: #1b2230;
+  --muted: #5d6677;
+  --rule: #dde1e8;
+  --accent: #2c4a8a;
+  --s-young: #1f6f5c; --s-young-bg: #e3f2ed;
+  --s-old: #8a5a12;   --s-old-bg: #f7eedd;
+  --s-p2: #5b4a9a;    --s-p2-bg: #ece8f7;
+  --s-rr: #9a2f3d;    --s-rr-bg: #f7e4e6;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+    --s-young: #7fd3bb; --s-young-bg: #163029;
+    --s-old: #e6b86a;   --s-old-bg: #33270f;
+    --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+    --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+  --s-young: #7fd3bb; --s-young-bg: #163029;
+  --s-old: #e6b86a;   --s-old-bg: #33270f;
+  --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+  --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
+header h1 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.7rem, 4.5vw, 2.3rem); line-height: 1.15; margin: 0 0 6px; text-wrap: balance; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--muted); max-width: 62ch; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+.controls { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 14px 12px; margin-top: 20px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 10px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 13px/1 var(--font-body); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.row2 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+input[type="search"] { flex: 1 1 220px; min-width: 0; font: 400 14px var(--font-body); padding: 9px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+select { font: 400 14px var(--font-body); padding: 9px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+.count { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+ol.list { list-style: none; margin: 0; padding: 0; }
+.trial { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 14px; padding-block: 18px; border-bottom: 1px solid var(--rule); }
+.yr { font-family: var(--font-mono); font-weight: 500; font-size: 15px; color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.name { font-family: var(--font-display); font-weight: 650; font-size: 1.15rem; margin: 0; }
+.tag { font: 500 11px/1 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; }
+.tag.young { color: var(--s-young); background: var(--s-young-bg); }
+.tag.old { color: var(--s-old); background: var(--s-old-bg); }
+.tag.p2 { color: var(--s-p2); background: var(--s-p2-bg); }
+.tag.rr { color: var(--s-rr); background: var(--s-rr-bg); }
+.phase { font: 400 12px var(--font-mono); color: var(--muted); }
+.design { margin: 0; color: var(--fg); }
+dl { margin: 2px 0 0; display: grid; grid-template-columns: max-content minmax(0,1fr); gap: 4px 12px; font-size: 14px; }
+dt { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+dd { margin: 0; min-width: 0; }
+.result { font-variant-numeric: tabular-nums; }
+.stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; padding-block: 4px; }
+.stats b { font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.rec { display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; }
+.rec .rk { font: 500 10.5px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.rec .rk:first-child { margin-top: 0; }
+.rec ul { margin: 0; padding-left: 16px; }
+.rec li { margin: 1px 0; }
+.rec li.none { list-style: none; margin-left: -16px; color: var(--muted); }
+.rec p { margin: 0; }
+.rec a { color: var(--accent); text-underline-offset: 2px; }
+.qs { color: var(--accent); }
+.cite { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.cite a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.cite a:hover { text-decoration-thickness: 2px; }
+.cite a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.ok { color: var(--s-young); font-size: 12.5px; white-space: nowrap; }
+.flag { color: var(--s-old); font-size: 12.5px; }
+.empty { padding: 32px 0; color: var(--muted); }
+footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch; }
+@media (max-width: 480px) {
+  .trial { grid-template-columns: 1fr; gap: 4px; }
+  dl { grid-template-columns: 1fr; gap: 0 0; }
+  dt { line-height: 1.6; margin-top: 4px; }
+}
+.credit { margin: 10px 0 0; font-size: 11.5px; color: var(--muted); opacity: .8; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Untreated follicular lymphoma · 2003–2026</div>
+    <h1>Landmark studies in untreated follicular lymphoma</h1>
+    <p>Observation and low tumor burden strategies, early-stage radiotherapy, induction, maintenance and risk tools: design, verified results, context, open questions and reception.</p>
+  </header>
+
+  <div class="controls">
+    <div class="chips" role="group" aria-label="Filter by category" id="chips"></div>
+    <div class="row2">
+      <input type="search" id="q" placeholder="Search trial, drug, regimen…" aria-label="Search trials">
+      <select id="sort" aria-label="Sort order">
+        <option value="setting">Sort: category, then year</option>
+        <option value="asc">Sort: oldest first</option>
+        <option value="desc">Sort: newest first</option>
+      </select>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+
+  <ol class="list" id="list"></ol>
+
+  <footer>
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Regulatory dates marked "verify" are from general knowledge and were not rechecked for this page. Guideline placements marked "verify" need checking against the current NCCN B-cell lymphomas document. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+  </footer>
+  <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
+</div>
+
+<script>
+const SETTINGS = {
+  lt: "Low tumor burden & early stage",
+  ind: "Induction",
+  mnt: "Maintenance & consolidation",
+  risk: "Risk & response"
+};
+const CLS = { lt: "p2", ind: "young", mnt: "old", risk: "rr" };
+const order = ["lt","ind","mnt","risk"];
+const PM = id => "https://pubmed.ncbi.nlm.nih.gov/" + id + "/";
+
+const T = [
+// ---------- Low tumor burden & early stage ----------
+{y:2003,n:"BNLI watch and wait (Ardeshna)",s:"lt",ph:"Phase 3",d:"Immediate chlorambucil vs observation in asymptomatic advanced-stage low-grade lymphoma (recruited 1981–1990)",ep:"OS",
+ r:"No difference in OS (median 5.9 vs 6.7 yr) or cause-specific survival",N:"309",hr:"n/a (P=0.84)",fu:"16 yr",
+ c:"Lancet 2003;362:516",p:12932382,
+ b:"Long-term report of the British trial that, with NCI and GELF data, tested early chemotherapy in asymptomatic disease.",
+ i:"Cemented watch and wait as standard for asymptomatic, low tumor burden FL.",
+ q:"Does rituximab, unlike chlorambucil, justify early treatment?",
+ cm:[],reg:"No regulatory action.",gl:"Observation remains an NCCN and ESMO option for asymptomatic low tumor burden FL (verify current wording).",acc:"—"},
+{y:2004,n:"SAKK 35/98 rituximab schedule (Ghielmini)",s:"lt",ph:"Phase 3",d:"Rituximab ×4 weekly, then responders/stable randomized to no further therapy vs 4 doses every 2 months (new and relapsed FL)",ep:"EFS",
+ r:"Median EFS 12 vs 23 mo with prolonged rituximab; 19 vs 36 mo in chemotherapy-naive patients",N:"202",hr:"not reported in abstract",fu:"35 mo",
+ c:"Blood 2004;103:4416",p:14976046,
+ b:"Built on single-agent rituximab activity in FL.",
+ i:"First randomized evidence that extended rituximab prolongs remission; foundation for rituximab-only and maintenance strategies.",
+ q:"Is maintenance better than retreatment at progression (RESORT)? Is rituximab alone enough upfront?",
+ cm:[],reg:"No regulatory action.",gl:"Rituximab monotherapy listed for low tumor burden FL (verify).",acc:"—"},
+{y:2014,n:"UK rituximab vs watch and wait (Ardeshna)",s:"lt",ph:"Phase 3",d:"Watch and wait vs rituximab induction ± maintenance in asymptomatic advanced-stage FL",ep:"Time to new treatment",
+ r:"No new treatment at 3 yr: 46% watch and wait vs 88% rituximab maintenance (HR 0.21) and 78% rituximab induction alone",N:"379 (+84 induction-only)",hr:"0.21",fu:"not reported in abstract",
+ c:"Lancet Oncol 2014;15:424",p:24602760,
+ b:"Revisited the BNLI question with rituximab instead of chlorambucil.",
+ i:"Made early single-agent rituximab a reasonable alternative to observation, though without proven survival gain.",
+ q:"Does delaying chemotherapy matter for survival or quality of life? Is the anxiety of watching ('watch and worry') a valid reason to treat?",
+ cm:[[24602759,"Ansell SM, Lancet Oncol 2014","Follicular lymphoma: watch and wait is watch and worry"]],
+ reg:"No regulatory action.",gl:"Rituximab monotherapy listed as an option for low tumor burden FL (verify).",acc:"—"},
+{y:2014,n:"ECOG E4402 RESORT (Kahl)",s:"lt",ph:"Phase 3",d:"Rituximab maintenance vs rituximab retreatment at progression in low tumor burden FL",ep:"Time to treatment failure",
+ r:"Median TTF 4.3 (maintenance) vs 3.9 yr (retreatment); median rituximab doses 18 vs 4; 3-yr freedom from cytotoxic therapy 95% vs 84%",N:"289",hr:"not reported (P=.54)",fu:"4.5 yr",
+ c:"J Clin Oncol 2014;32:3096",p:25154829,
+ b:"Tested whether SAKK-style maintenance was needed in low tumor burden disease.",
+ i:"Supported rituximab retreatment rather than maintenance in low tumor burden FL.",
+ q:"Which patients need any treatment at all?",
+ cm:[[25154826,"Friedberg JW, J Clin Oncol 2014","End of rituximab maintenance for low-tumor burden follicular lymphoma"]],
+ reg:"No regulatory action.",gl:"Retreatment strategy accepted (verify).",acc:"—"},
+{y:2014,n:"FORT: 4 Gy vs 24 Gy (Hoskin)",s:"lt",ph:"Phase 3",d:"Radiotherapy dose in indolent lymphoma (mostly FL), randomized by site",ep:"Local progression (non-inferiority)",
+ r:"4 Gy not non-inferior: 70 vs 21 local progressions",N:"614 sites",hr:"3.42 (4 Gy vs 24 Gy)",fu:"26 mo",
+ c:"Lancet Oncol 2014;15:457",p:24572077,
+ b:"Tested low-dose palliative radiotherapy against standard dose.",
+ i:"24 Gy remained standard for curative-intent radiotherapy; 4 Gy kept for palliation.",
+ q:"When is 2×2 Gy sufficient for palliation?",
+ cm:[[24572076,"Specht L, Lancet Oncol 2014","Radiotherapy for indolent lymphomas: how much is enough?"]],
+ reg:"—",gl:"24 Gy standard involved-site radiotherapy for early-stage FL.",acc:"—"},
+{y:2018,n:"TROG 99.03 (MacManus)",s:"lt",ph:"Phase 3",d:"Involved-field radiotherapy ± CVP or R-CVP in stage I–II FL",ep:"PFS",
+ r:"10-yr PFS 59% vs 41% with added systemic therapy; R-CVP drove the benefit",N:"150",hr:"0.57",fu:"9.6 yr",
+ c:"J Clin Oncol 2018;36:2918",p:29975623,
+ b:"Only randomized trial adding systemic therapy to radiotherapy in early-stage FL.",
+ i:"Supports adding rituximab-based therapy to radiotherapy for some early-stage patients; no OS difference reported.",
+ q:"Is the PFS gain worth the toxicity in a potentially curable setting? Does PET staging change the picture?",
+ cm:[[30153098,"Yang JC, J Clin Oncol 2018","Early-stage follicular lymphoma: what is the preferred treatment strategy?"],[31254657,"Campbell BA, Int J Radiat Oncol Biol Phys 2019","Reaffirming the role of radiation therapy…"]],
+ reg:"—",gl:"Radiotherapy remains standard for stage I–II FL; systemic therapy may be added (verify).",acc:"—"},
+// ---------- Induction ----------
+{y:2005,n:"R-CVP vs CVP (Marcus)",s:"ind",ph:"Phase 3",d:"CVP ± rituximab, 8 cycles, untreated stage III–IV FL",ep:"Time to treatment failure",
+ r:"ORR 81% vs 57%, CR 41% vs 10%; median TTP 32 vs 15 mo; median TTF 27 vs 7 mo",N:"321",hr:"not reported in abstract",fu:"30 mo",
+ c:"Blood 2005;105:1417",p:15494430,
+ b:"First phase 3 test of adding rituximab to frontline chemotherapy.",
+ i:"Established chemoimmunotherapy as standard for advanced FL.",
+ q:"Does rituximab improve survival? Which chemotherapy backbone is best?",
+ cm:[],reg:"FDA approved rituximab with CVP for untreated FL (2006; verify).",gl:"R-CVP listed as an induction option.",acc:"On-label."},
+{y:2005,n:"GLSG R-CHOP vs CHOP (Hiddemann)",s:"ind",ph:"Phase 3",d:"CHOP ± rituximab in untreated advanced FL",ep:"Time to treatment failure",
+ r:"60% lower risk of treatment failure; ORR 96% vs 90%; OS improved (6 vs 17 deaths at 3 yr)",N:"428",hr:"not reported in abstract",fu:"not reported in abstract",
+ c:"Blood 2005;106:3725",p:16123223,
+ b:"Confirmed the R-CVP result with an anthracycline backbone.",
+ i:"R-CHOP became a standard induction, especially for bulky or high-risk disease.",
+ q:"Is anthracycline needed in FL (FOLL05)? Is bendamustine better (StiL)?",
+ cm:[],reg:"—",gl:"R-CHOP listed as an induction option.",acc:"—"},
+{y:2013,n:"FOLL05 (Federico)",s:"ind",ph:"Phase 3",d:"R-CVP vs R-CHOP vs R-FM in untreated advanced FL",ep:"TTF",
+ r:"3-yr TTF 46% (R-CVP), 62% (R-CHOP), 59% (R-FM); R-FM more neutropenia and second cancers",N:"534",hr:"not reported in abstract",fu:"34 mo",
+ c:"J Clin Oncol 2013;31:1506",p:23530110,
+ b:"Head-to-head comparison of the three common rituximab-chemotherapy backbones.",
+ i:"Favored R-CHOP for its balance of efficacy and toxicity; ended fludarabine-based induction.",
+ q:"How does bendamustine compare (StiL NHL1, BRIGHT)?",
+ cm:[[23530108,"Press OW, J Clin Oncol 2013","Selection of first-line therapy for advanced follicular lymphoma"]],
+ reg:"—",gl:"R-CHOP and R-CVP remain listed options.",acc:"—"},
+{y:2013,n:"StiL NHL1 (Rummel)",s:"ind",ph:"Phase 3",d:"Bendamustine-rituximab vs R-CHOP in indolent lymphomas and MCL",ep:"PFS (non-inferiority)",
+ r:"Median PFS 69.5 vs 31.2 mo (all histologies); less toxicity with BR",N:"549 randomized; 514 assessed",hr:"0.58",fu:"45 mo",
+ c:"Lancet 2013;381:1203",p:23433739,
+ b:"Compared BR with the R-CHOP standard.",
+ i:"BR became the most widely used frontline regimen for FL.",
+ q:"Long-term infection and second-cancer risk with bendamustine; is maintenance after BR helpful?",
+ cm:[[23433738,"Jacobson CA, Lancet 2013","First-line treatment of indolent lymphoma: axing CHOP?"]],
+ reg:"Bendamustine labeled for rituximab-refractory indolent NHL; frontline use guideline-based (verify).",gl:"BR listed as a preferred induction (verify).",acc:"Compendium-listed."},
+{y:2014,n:"BRIGHT (Flinn)",s:"ind",ph:"Phase 3",d:"BR vs R-CHOP or R-CVP in untreated indolent NHL or MCL",ep:"CR rate (non-inferiority)",
+ r:"CR 31% vs 25% (non-inferior); 5-yr PFS 65.5% vs 55.8%; no OS difference",N:"447",hr:"0.61 (5-yr PFS)",fu:"≥5 yr",
+ c:"Blood 2014;123:2944",p:24591201,extra:["5-yr update, J Clin Oncol 2019",30811293],
+ b:"Global confirmation of StiL NHL1.",
+ i:"Reinforced BR as frontline standard; long-term data flagged more second malignancies.",
+ q:"Is the PFS gain worth the infection risk, especially with obinutuzumab (GALLIUM)?",
+ cm:[[24810622,"Fowler N, Blood 2014","Indolent and mantle cell NHL: the future is BRIGHT"]],
+ reg:"—",gl:"Supports BR.",acc:"—"},
+{y:2017,n:"GALLIUM (Marcus)",s:"ind",ph:"Phase 3",d:"Obinutuzumab vs rituximab with chemotherapy (CHOP, CVP or bendamustine), then antibody maintenance",ep:"PFS",
+ r:"3-yr PFS 80.0% vs 73.3%; response rates similar",N:"1,202",hr:"0.66",fu:"34.5 mo",
+ c:"N Engl J Med 2017;377:1331",p:28976863,
+ b:"Tested a glycoengineered anti-CD20 antibody against rituximab in the PRIMA framework.",
+ i:"Led to obinutuzumab approval for untreated FL (2017; verify); used selectively due to toxicity, especially with bendamustine.",
+ q:"No OS difference; excess infections and deaths with bendamustine-obinutuzumab; which patients benefit?",
+ cm:[[28976852,"Armitage JO, N Engl J Med 2017","Which anti-CD20 antibody is better in follicular lymphoma?"]],
+ reg:"FDA approval of obinutuzumab for untreated FL (2017; verify).",gl:"Obinutuzumab-chemotherapy listed as an option (verify preferred status).",acc:"On-label."},
+{y:2018,n:"RELEVANCE (Morschhauser)",s:"ind",ph:"Phase 3",d:"Rituximab-lenalidomide (R2) vs rituximab-chemotherapy, then rituximab maintenance",ep:"CR/CRu at 120 wk; PFS",
+ r:"CR/CRu 48% vs 53%; 3-yr PFS 77% vs 78%. 10-yr final: median PFS 110.6 vs 102.8 mo; 10-yr PFS 46.4% vs 46.6%",N:"1,030",hr:"not reported in abstract",fu:"120 mo (final)",
+ c:"N Engl J Med 2018;379:934",p:30184451,extra:["10-yr final analysis, Blood 2026",41915772],
+ b:"First phase 3 chemotherapy-free alternative to chemoimmunotherapy.",
+ i:"Showed R2 is a chemo-free option with similar long-term outcomes; not superior.",
+ q:"Is R2 preferable for patients wanting to avoid chemotherapy? Role of bispecific-based frontline regimens?",
+ cm:[[42313442,"Falconer J, Blood 2026","The RELEVANCE of long-term follow-up in follicular lymphoma"]],
+ reg:"No frontline label for R2 (verify).",gl:"R2 listed as a frontline option (verify).",acc:"Frontline use off-label; compendium-dependent."},
+{y:2026,n:"Mosunetuzumab ± polatuzumab-obinutuzumab frontline (Lynch)",s:"ind",ph:"Phase 2",d:"Mosunetuzumab with response-adapted polatuzumab vedotin and obinutuzumab in untreated FL",ep:"Response",
+ r:"End-of-treatment ORR 100%, CR 86% (71% with mosunetuzumab alone); 2-yr PFS 89%; all CRS grade 1",N:"42",hr:"n/a (single arm)",fu:"34 mo",
+ c:"J Clin Oncol 2026;44:2625",p:42600120,
+ b:"Moves CD20×CD3 bispecifics from relapse into first line.",
+ i:"Early evidence for chemotherapy-free, bispecific-based frontline therapy.",
+ q:"Randomized comparison with chemoimmunotherapy needed; CD20 loss as a resistance mechanism.",
+ cm:[],reg:"No regulatory action.",gl:"Trial-only.",acc:"—"},
+// ---------- Maintenance & consolidation ----------
+{y:2008,n:"FIT: 90Y-ibritumomab consolidation (Morschhauser)",s:"mnt",ph:"Phase 3",d:"Radioimmunotherapy consolidation vs observation after first-line induction (mostly without rituximab)",ep:"PFS",
+ r:"Median PFS 36.5 vs 13.3 mo; benefit in PR and CR",N:"414",hr:"0.465",fu:"3.5 yr",
+ c:"J Clin Oncol 2008;26:5156",p:18854568,
+ b:"Tested single-dose radioimmunotherapy after induction.",
+ i:"Led to consolidation approval (verify), but use declined with rituximab-based induction and maintenance.",
+ q:"Benefit after rituximab-containing induction? Long-term secondary MDS/AML?",
+ cm:[[18854559,"Press OW, J Clin Oncol 2008","Evidence mounts for the efficacy of radioimmunotherapy for B-cell lymphomas"]],
+ reg:"FDA approval of ibritumomab consolidation (2009; verify).",gl:"Rarely used now.",acc:"—"},
+{y:2011,n:"PRIMA (Salles)",s:"mnt",ph:"Phase 3",d:"Rituximab maintenance (every 8 wk for 2 yr) vs observation after chemoimmunotherapy in high tumor burden FL",ep:"PFS",
+ r:"PFS 74.9% vs 57.6% at 3 yr. Long-term: median PFS 10.5 vs 4.1 yr; no OS difference (10-yr OS ~80% both)",N:"1,018",hr:"0.55; 0.61 (long-term)",fu:"36 mo; >9 yr (long-term)",
+ c:"Lancet 2011;377:42",p:21176949,extra:["Long-term follow-up, J Clin Oncol 2019",31339826],
+ b:"Built on SAKK 35/98 and EORTC 20981 (relapsed) maintenance data.",
+ i:"Made rituximab maintenance a standard option after induction; no survival benefit, so now often individualized.",
+ q:"Is maintenance needed after BR or in PET-negative patients? Is the infection and cost burden justified without OS benefit?",
+ cm:[[21176951,"Friedberg JW, Lancet 2011","Rituximab maintenance in follicular lymphoma: PRIMA"],[29596546,"Hilal T, JAMA Oncol 2018","Rituximab maintenance after first-line induction…"]],
+ reg:"FDA approval of rituximab maintenance (2011; verify).",gl:"Rituximab maintenance listed as optional after induction (verify).",acc:"On-label."},
+// ---------- Risk & response ----------
+{y:2004,n:"FLIPI (Solal-Céligny)",s:"risk",ph:"Prognostic model",d:"Characteristics of 4,167 patients diagnosed 1985–1992; validated in 919",ep:"OS",
+ r:"Five factors (age >60, stage III–IV, Hb <12, >4 nodal areas, high LDH) define low (36%), intermediate (37%, HR 2.3) and poor (27%, HR 4.3) risk",N:"4,167",hr:"2.3 (intermediate); 4.3 (poor)",fu:"n/a",
+ c:"Blood 2004;104:1258",p:15126323,
+ b:"Replaced the IPI, designed for aggressive lymphoma.",
+ i:"Became the standard prognostic index in FL.",
+ q:"Is it still valid in the rituximab era (FLIPI-2)?",
+ cm:[[15933062,"Ghielmini M, Blood 2005","Correspondence: Does the FLIPI apply to grade 3 FL?"]],
+ reg:"—",gl:"Standard risk tool.",acc:"—"},
+{y:2009,n:"FLIPI-2 (Federico)",s:"risk",ph:"Prognostic model",d:"Prospective cohort treated in the rituximab era",ep:"PFS",
+ r:"β2M, node >6 cm, marrow involvement, Hb <12, age >60; 3-yr PFS 91%, 69% and 51% by risk group",N:"not reported in abstract",hr:"n/a",fu:"38 mo",
+ c:"J Clin Oncol 2009;27:4555",p:19652063,
+ b:"Prospectively derived update of FLIPI.",
+ i:"Added a PFS-based tool for the rituximab era.",
+ q:"How to add biology (m7-FLIPI) and imaging (PET)?",
+ cm:[],reg:"—",gl:"Used alongside FLIPI.",acc:"—"},
+{y:2014,n:"PET after induction (Trotman)",s:"risk",ph:"Pooled analysis",d:"Centrally reviewed post-induction PET-CT from three trials",ep:"PFS, OS",
+ r:"Positive post-induction PET (Deauville ≥4) in 17%: PFS HR 3.9, OS HR 6.7",N:"246 central review (439 with PET)",hr:"3.9 (PFS); 6.7 (OS)",fu:"54.8 mo",
+ c:"Lancet Haematol 2014;1:e17",p:27030064,
+ b:"Applied the Deauville scale to FL response assessment.",
+ i:"Made end-of-induction PET the standard response assessment and a strong prognostic marker.",
+ q:"Can PET guide maintenance or intensification? Combined with ctDNA?",
+ cm:[],reg:"—",gl:"End-of-treatment PET recommended (verify).",acc:"—"},
+{y:2015,n:"m7-FLIPI (Pastore)",s:"risk",ph:"Clinicogenetic model",d:"Mutations in seven genes (EZH2, ARID1A, MEF2B, EP300, FOXO1, CREBBP, CARD11) plus FLIPI and ECOG",ep:"Failure-free survival",
+ r:"High-risk group 28%: 5-yr FFS 38% vs 77%",N:"151 (training)",hr:"4.14 (bootstrap-corrected 2.02)",fu:"not reported in abstract",
+ c:"Lancet Oncol 2015;16:1111",p:26256760,
+ b:"First clinicogenetic risk model in FL.",
+ i:"Showed genetics refine risk; also highlighted EZH2 (later targeted by tazemetostat).",
+ q:"Validation across regimens; practical use in routine care?",
+ cm:[[26256759,"López-Guillermo A, Lancet Oncol 2015","A novel clinicogenetic prognostic score for follicular lymphoma"]],
+ reg:"—",gl:"Research tool; not routine (verify).",acc:"—"},
+{y:2015,n:"POD24 (Casulo)",s:"risk",ph:"Cohort (National LymphoCare Study)",d:"Progression within 2 years of first-line R-CHOP",ep:"OS",
+ r:"Early progression in 19%: 5-yr OS 50% vs 90%; FLIPI-adjusted HR 6.44",N:"588",hr:"6.44",fu:"not reported in abstract",
+ c:"J Clin Oncol 2015;33:2516",p:26124482,
+ b:"Shifted prognostication from baseline factors to early treatment response.",
+ i:"Defined the high-risk POD24 group; now an eligibility criterion in trials and a trigger for biopsy and early cellular therapy.",
+ q:"Can POD24 be predicted at diagnosis (PET, ctDNA, genetics)? Which therapy works best for POD24?",
+ cm:[[26169620,"Jacobson CA, J Clin Oncol 2015","Rethinking prognosis and therapy for follicular lymphoma"]],
+ reg:"—",gl:"NCCN emphasizes identifying POD24 and biopsy to exclude transformation.",acc:"—"}
+];
+// Trial registry numbers (ClinicalTrials.gov, ISRCTN or EudraCT), taken from each paper's PubMed record or the registry, Oct 22, 2026.
+// Shown as links next to the source and used by the monthly update to find later follow-up publications.
+const REG = {"UK rituximab vs watch and wait (Ardeshna)": ["NCT00112931"],"ECOG E4402 RESORT (Kahl)": ["NCT00075946"],"FORT: 4 Gy vs 24 Gy (Hoskin)": ["NCT00310167"],"TROG 99.03 (MacManus)": ["NCT00115700"],"FOLL05 (Federico)": ["NCT00774826"],"StiL NHL1 (Rummel)": ["NCT00991211"],"BRIGHT (Flinn)": ["NCT00877006"],"GALLIUM (Marcus)": ["NCT01332968"],"RELEVANCE (Morschhauser)": ["NCT01476787","NCT01650701"],"Mosunetuzumab ± polatuzumab-obinutuzumab frontline (Lynch)": ["NCT05169658"],"PRIMA (Salles)": ["NCT00140582"]};
+const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
+T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, reg:t.reg, gl:t.gl, acc:t.acc}; });
+T.forEach(t => { t.trn = REG[t.n] || []; });
+
+let active = "all", sortMode = "setting";
+try { const s = localStorage.getItem("fl1-sort"); if (s) sortMode = s; } catch(e) {}
+const chipsEl = document.getElementById("chips");
+[["all","All"], ...order.map(k => [k, SETTINGS[k]])].forEach(([k,label]) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.id = "chip-" + k; b.textContent = label;
+  b.setAttribute("aria-pressed", k === active);
+  b.addEventListener("click", () => { active = k; chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b)); render(); });
+  chipsEl.appendChild(b);
+});
+const sortEl = document.getElementById("sort"); sortEl.value = sortMode;
+sortEl.addEventListener("change", () => { sortMode = sortEl.value; try { localStorage.setItem("fl1-sort", sortMode); } catch(e) {} render(); });
+const qEl = document.getElementById("q"); qEl.addEventListener("input", render);
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function recHTML(t){
+  const r = t.rc; if (!r) return "";
+  const cm = r.cm.length
+    ? r.cm.map(c => `<li><a href="https://pubmed.ncbi.nlm.nih.gov/${c[0]}/" target="_blank" rel="noopener">${esc(c[1])}</a>: ${esc(c[2])}</li>`).join("")
+    : '<li class="none">No commentary linked to this paper in PubMed</li>';
+  return `<div class="rk">Commentary</div><ul>${cm}</ul>
+    <div class="rk">Regulatory</div><p>${esc(r.reg)}</p>
+    <div class="rk">Guidelines</div><p>${esc(r.gl)}</p>
+    <div class="rk">Access</div><p>${esc(r.acc)}</p>`;
+}
+function render(){
+  const q = qEl.value.trim().toLowerCase();
+  let rows = T.filter(t => (active === "all" || t.s === active) &&
+    (!q || [t.n,t.d,t.r,t.i,t.b,t.q,t.c,t.ph,String(t.y),t.reg,t.gl,t.acc,t.cm.map(c=>c[1]+" "+c[2]).join(" ")].join(" ").toLowerCase().includes(q)));
+  rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
+    : (order.indexOf(a.s) - order.indexOf(b.s)) || (a.y - b.y));
+  document.getElementById("count").textContent = rows.length + " of " + T.length + " studies";
+  const list = document.getElementById("list");
+  if (!rows.length) { list.innerHTML = '<li class="empty">No studies match that search. Clear the search or pick another category.</li>'; return; }
+  list.innerHTML = rows.map(t => `
+    <li class="trial">
+      <div class="yr">${t.y}</div>
+      <div class="body">
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span></div>
+        <p class="design">${esc(t.d)}</p>
+        <div class="stats">
+          <span><b>N</b>${esc(t.N)}</span>
+          <span><b>HR</b>${esc(t.hr)}</span>
+          <span><b>Median F/U</b>${esc(t.fu)}</span>
+        </div>
+        <dl>
+          <dt>Endpoint</dt><dd>${esc(t.ep)}</dd>
+          <dt>Result</dt><dd class="result">${esc(t.r)} <span class="ok" title="Checked against the PubMed abstract">✓ checked</span></dd>
+          <dt>Builds on</dt><dd>${esc(t.b)}</dd>
+          <dt>Changed</dt><dd>${esc(t.i)}</dd>
+          <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
+          <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
+        </dl>
+      </div>
+    </li>`).join("");
+}
+render();
+</script>

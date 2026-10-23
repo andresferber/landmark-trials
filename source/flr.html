@@ -1,0 +1,352 @@
+<title>Relapsed Follicular Lymphoma</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column; sticky control strip; each trial is a ruled entry with a year gutter */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --fg: #1b2230;
+  --muted: #5d6677;
+  --rule: #dde1e8;
+  --accent: #2c4a8a;
+  --s-young: #1f6f5c; --s-young-bg: #e3f2ed;
+  --s-old: #8a5a12;   --s-old-bg: #f7eedd;
+  --s-p2: #5b4a9a;    --s-p2-bg: #ece8f7;
+  --s-rr: #9a2f3d;    --s-rr-bg: #f7e4e6;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+    --s-young: #7fd3bb; --s-young-bg: #163029;
+    --s-old: #e6b86a;   --s-old-bg: #33270f;
+    --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+    --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+  --s-young: #7fd3bb; --s-young-bg: #163029;
+  --s-old: #e6b86a;   --s-old-bg: #33270f;
+  --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+  --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
+header h1 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.7rem, 4.5vw, 2.3rem); line-height: 1.15; margin: 0 0 6px; text-wrap: balance; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--muted); max-width: 62ch; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+.controls { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 14px 12px; margin-top: 20px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 10px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 13px/1 var(--font-body); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.row2 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+input[type="search"] { flex: 1 1 220px; min-width: 0; font: 400 14px var(--font-body); padding: 9px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+select { font: 400 14px var(--font-body); padding: 9px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+.count { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+ol.list { list-style: none; margin: 0; padding: 0; }
+.trial { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 14px; padding-block: 18px; border-bottom: 1px solid var(--rule); }
+.yr { font-family: var(--font-mono); font-weight: 500; font-size: 15px; color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.name { font-family: var(--font-display); font-weight: 650; font-size: 1.15rem; margin: 0; }
+.tag { font: 500 11px/1 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; }
+.tag.young { color: var(--s-young); background: var(--s-young-bg); }
+.tag.old { color: var(--s-old); background: var(--s-old-bg); }
+.tag.p2 { color: var(--s-p2); background: var(--s-p2-bg); }
+.tag.rr { color: var(--s-rr); background: var(--s-rr-bg); }
+.phase { font: 400 12px var(--font-mono); color: var(--muted); }
+.design { margin: 0; color: var(--fg); }
+dl { margin: 2px 0 0; display: grid; grid-template-columns: max-content minmax(0,1fr); gap: 4px 12px; font-size: 14px; }
+dt { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+dd { margin: 0; min-width: 0; }
+.result { font-variant-numeric: tabular-nums; }
+.stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; padding-block: 4px; }
+.stats b { font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.rec { display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; }
+.rec .rk { font: 500 10.5px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.rec .rk:first-child { margin-top: 0; }
+.rec ul { margin: 0; padding-left: 16px; }
+.rec li { margin: 1px 0; }
+.rec li.none { list-style: none; margin-left: -16px; color: var(--muted); }
+.rec p { margin: 0; }
+.rec a { color: var(--accent); text-underline-offset: 2px; }
+.qs { color: var(--accent); }
+.cite { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.cite a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.cite a:hover { text-decoration-thickness: 2px; }
+.cite a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.ok { color: var(--s-young); font-size: 12.5px; white-space: nowrap; }
+.flag { color: var(--s-old); font-size: 12.5px; }
+.empty { padding: 32px 0; color: var(--muted); }
+footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch; }
+@media (max-width: 480px) {
+  .trial { grid-template-columns: 1fr; gap: 4px; }
+  dl { grid-template-columns: 1fr; gap: 0 0; }
+  dt { line-height: 1.6; margin-top: 4px; }
+}
+.credit { margin: 10px 0 0; font-size: 11.5px; color: var(--muted); opacity: .8; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Relapsed/refractory follicular lymphoma · 2002–2026</div>
+    <h1>Landmark trials in relapsed and refractory follicular lymphoma</h1>
+    <p>Antibody and lenalidomide combinations, targeted agents including the withdrawn PI3K inhibitors, CAR-T and bispecific antibodies: design, verified results, context, open questions and reception.</p>
+  </header>
+
+  <div class="controls">
+    <div class="chips" role="group" aria-label="Filter by category" id="chips"></div>
+    <div class="row2">
+      <input type="search" id="q" placeholder="Search trial, drug, regimen…" aria-label="Search trials">
+      <select id="sort" aria-label="Sort order">
+        <option value="setting">Sort: category, then year</option>
+        <option value="asc">Sort: oldest first</option>
+        <option value="desc">Sort: newest first</option>
+      </select>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+
+  <ol class="list" id="list"></ol>
+
+  <footer>
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA approvals of tafasitamab-R2 (June 18, 2025) and epcoritamab-R2 (November 2025) were confirmed from published reports and the FDA approval summary; other regulatory dates and withdrawals marked "verify" are from general knowledge. Guideline placements marked "verify" need checking against the current NCCN B-cell lymphomas document. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+  </footer>
+  <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
+</div>
+
+<script>
+const SETTINGS = {
+  ab: "Antibody & IMiD combinations",
+  tgt: "Targeted agents",
+  cart: "CAR-T",
+  bs: "Bispecific antibodies"
+};
+const CLS = { ab: "young", tgt: "p2", cart: "rr", bs: "old" };
+const order = ["ab","tgt","cart","bs"];
+const PM = id => "https://pubmed.ncbi.nlm.nih.gov/" + id + "/";
+
+const T = [
+// ---------- Antibody & IMiD combinations ----------
+{y:2002,n:"90Y-ibritumomab vs rituximab (Witzig)",s:"ab",ph:"Phase 3",d:"Single-dose radioimmunotherapy vs rituximab ×4 in relapsed or refractory low-grade, follicular or transformed lymphoma",ep:"ORR",
+ r:"ORR 80% vs 56%; CR 30% vs 16%; TTP 11.2 vs 10.1 mo (NS)",N:"143",hr:"not reported in abstract",fu:"not reported in abstract",
+ c:"J Clin Oncol 2002;20:2453",p:12011122,
+ b:"First radioimmunotherapy compared with rituximab, then the new standard.",
+ i:"Led to the first FDA-approved radioimmunotherapy (2002; verify), later rarely used because of logistics and myelosuppression.",
+ q:"Higher responses without longer TTP: is RIT worth the marrow toxicity and secondary MDS risk?",
+ cm:[],reg:"FDA approval of ibritumomab (2002; verify).",gl:"Rarely used now.",acc:"—"},
+{y:2006,n:"EORTC 20981 (van Oers)",s:"ab",ph:"Phase 3",d:"CHOP vs R-CHOP induction, then rituximab maintenance (every 3 mo for 2 yr) vs observation, relapsed FL",ep:"PFS",
+ r:"Induction: PFS 33.1 vs 20.2 mo with R-CHOP. Maintenance: median PFS 51.5 vs 14.9 mo",N:"465",hr:"0.65 (induction); 0.40 (maintenance)",fu:"not reported in abstract",
+ c:"Blood 2006;108:3295",p:16873669,
+ b:"Combined the SAKK extended-rituximab concept with chemoimmunotherapy at relapse.",
+ i:"Established rituximab maintenance at relapse; foundation for PRIMA in first line.",
+ q:"Does maintenance help after rituximab-containing first-line therapy and maintenance?",
+ cm:[],reg:"Supported rituximab maintenance labeling (verify).",gl:"Maintenance after second-line therapy remains an option (verify).",acc:"—"},
+{y:2016,n:"GADOLIN (Sehn)",s:"ab",ph:"Phase 3",d:"Obinutuzumab + bendamustine then obinutuzumab maintenance vs bendamustine alone, rituximab-refractory indolent NHL",ep:"PFS",
+ r:"Median PFS not reached vs 14.9 mo; grade 3–5 events 68% vs 62%",N:"396",hr:"0.55",fu:"21.9 vs 20.3 mo",
+ c:"Lancet Oncol 2016;17:1081",p:27345636,
+ b:"First trial focused on rituximab-refractory disease, with a glycoengineered anti-CD20.",
+ i:"Led to obinutuzumab-bendamustine approval for rituximab-refractory FL (2016; verify).",
+ q:"Control arm lacked an antibody; role now that most patients get bendamustine first line?",
+ cm:[[27345637,"Hamlin PA, Lancet Oncol 2016","Obinutuzumab plus bendamustine in rituximab-refractory indolent lymphoma"]],
+ reg:"FDA approval (2016; verify).",gl:"Option for rituximab-refractory disease not previously given bendamustine.",acc:"On-label."},
+{y:2019,n:"AUGMENT (Leonard)",s:"ab",ph:"Phase 3",d:"Lenalidomide + rituximab (R2) vs placebo + rituximab, relapsed FL or MZL",ep:"PFS",
+ r:"Median PFS 39.4 vs 14.1 mo; grade 3–4 neutropenia 50% vs 13%",N:"358",hr:"0.46",fu:"not reported in abstract",
+ c:"J Clin Oncol 2019;37:1188",p:30897038,
+ b:"Randomized test of the chemo-free R2 combination in relapse.",
+ i:"R2 became a standard second-line backbone (FDA 2019; verify) and the comparator for inMIND and EPCORE FL-1.",
+ q:"What can be added to R2 (tafasitamab, bispecifics)?",
+ cm:[[30901301,"Barr PM, J Clin Oncol 2019","Augmenting indolent lymphoma treatment options with lenalidomide and rituximab"]],
+ reg:"FDA approval of R2 for previously treated FL and MZL (2019; verify).",gl:"R2 a standard second-line option.",acc:"On-label."},
+{y:2026,n:"inMIND (Sehn)",s:"ab",ph:"Phase 3",d:"Tafasitamab (anti-CD19) + R2 vs placebo + R2, relapsed or refractory FL",ep:"PFS",
+ r:"Median PFS 22.4 vs 13.9 mo (investigator), confirmed by independent review; no treatment-related deaths with tafasitamab",N:"548",hr:"0.43",fu:"not reported in abstract",
+ c:"Lancet 2026;407:133",p:41360064,
+ b:"Added an anti-CD19 antibody to the AUGMENT R2 backbone.",
+ i:"FDA approval June 18, 2025 for relapsed or refractory FL; described as an NCCN category 1 option after anti-CD20 therapy.",
+ q:"How does tafasitamab-R2 compare with epcoritamab-R2? Effect in POD24 and double-refractory disease?",
+ cm:[],reg:"FDA approval June 18, 2025 (tafasitamab with lenalidomide and rituximab, relapsed or refractory FL).",gl:"NCCN category 1 in relapsed or refractory FL after anti-CD20 therapy (per 2026 coverage; verify version).",acc:"On-label."},
+// ---------- Targeted agents ----------
+{y:2014,n:"Idelalisib (Gopal)",s:"tgt",ph:"Phase 2",d:"PI3Kδ inhibitor in double-refractory indolent NHL (72 FL)",ep:"ORR",
+ r:"ORR 57%, CR 6%; median PFS 11 mo; grade ≥3 transaminitis 13%, diarrhea 13%",N:"125",hr:"n/a",fu:"not reported in abstract",
+ c:"N Engl J Med 2014;370:1008",p:24450858,
+ b:"First PI3K inhibitor in refractory FL.",
+ i:"Accelerated approval for FL (2014; verify); later withdrawn for FL as confirmatory requirements and toxicity concerns mounted (verify date).",
+ q:"Immune-mediated toxicity and infections; can PI3K inhibitors be given safely?",
+ cm:[[24620870,"Fruman DA, N Engl J Med 2014","Idelalisib—a PI3Kδ inhibitor for B-cell cancers"]],
+ reg:"FDA accelerated approval 2014; FL indication later withdrawn (verify).",gl:"No longer recommended (verify).",acc:"—"},
+{y:2017,n:"CHRONOS-1 (Dreyling)",s:"tgt",ph:"Phase 2",d:"Copanlisib (IV pan-class I PI3K) after ≥2 lines",ep:"ORR",
+ r:"ORR 59%, CR 12%; median PFS 11.2 mo; grade 3–4 hyperglycemia 41%",N:"142",hr:"n/a",fu:"not reported in abstract",
+ c:"J Clin Oncol 2017;35:3898",p:28976790,
+ b:"Intermittent IV PI3K inhibition aimed at reducing idelalisib-type toxicity.",
+ i:"Accelerated approval (2017; verify); later withdrawn (verify).",
+ q:"Can it be combined with rituximab (CHRONOS-3)?",
+ cm:[],reg:"FDA accelerated approval 2017; later withdrawn (verify).",gl:"No longer recommended (verify).",acc:"—"},
+{y:2019,n:"DYNAMO (Flinn)",s:"tgt",ph:"Phase 2",d:"Duvelisib (PI3Kδ/γ) in double-refractory indolent NHL",ep:"ORR",
+ r:"ORR 47.3% (FL 42.2%); median PFS 9.5 mo; grade ≥3 events 88.4%",N:"129",hr:"n/a",fu:"not reported in abstract",
+ c:"J Clin Oncol 2019;37:912",p:30742566,
+ b:"Dual PI3K isoform inhibitor after idelalisib.",
+ i:"FL accelerated approval (2018; verify) later withdrawn by the sponsor (verify).",
+ q:"Class-wide toxicity and overall survival concerns.",
+ cm:[[30811291,"Fruman DA, J Clin Oncol 2019","Targeting PI3K-gamma in non-Hodgkin lymphoma"]],
+ reg:"FL indication withdrawn (verify).",gl:"No longer recommended (verify).",acc:"—"},
+{y:2020,n:"Tazemetostat (Morschhauser)",s:"tgt",ph:"Phase 2",d:"Oral EZH2 inhibitor, EZH2-mutant and wild-type cohorts",ep:"ORR",
+ r:"ORR 69% (EZH2-mutant) vs 35% (wild-type); median DOR 10.9 and 13.0 mo",N:"99",hr:"n/a",fu:"22.0 and 35.9 mo",
+ c:"Lancet Oncol 2020;21:1433",p:33035457,
+ b:"Targeted therapy built on EZH2 mutation biology (m7-FLIPI genes).",
+ i:"Accelerated approval (2020; verify); a well-tolerated oral option, including for wild-type patients without alternatives.",
+ q:"Confirmatory combination trial (SYMPHONY-1 with R2) results?",
+ cm:[[33035458,"Groisberg R, Lancet Oncol 2020","EZH2 inhibition for epithelioid sarcoma and follicular lymphoma"]],
+ reg:"FDA accelerated approval 2020 (verify).",gl:"Listed third-line option (verify).",acc:"On-label."},
+{y:2021,n:"UNITY-NHL (Fowler)",s:"tgt",ph:"Phase 2b",d:"Umbralisib (PI3Kδ/CK1ε) in relapsed indolent NHL",ep:"ORR",
+ r:"ORR 47.1%; FL median PFS 10.6 mo; discontinuation for AEs 15.4%",N:"not reported in abstract",hr:"n/a",fu:"27.7 mo",
+ c:"J Clin Oncol 2021;39:1609",p:33683917,
+ b:"Next-generation PI3K inhibitor designed for better tolerability.",
+ i:"Accelerated approval (2021; verify) withdrawn in 2022 over an overall survival signal in a CLL trial (verify).",
+ q:"Became the emblem of FDA scrutiny of single-arm PI3K approvals.",
+ cm:[[33861621,"Smith SD, J Clin Oncol 2021","Umbralisib: walking the tightrope of PI3K inhibition in indolent NHL"]],
+ reg:"Withdrawn (verify).",gl:"Not recommended.",acc:"—"},
+{y:2021,n:"CHRONOS-3 (Matasar)",s:"tgt",ph:"Phase 3",d:"Copanlisib + rituximab vs placebo + rituximab, relapsed indolent NHL",ep:"PFS",
+ r:"Median PFS 21.5 vs 13.8 mo",N:"458",hr:"0.52",fu:"19.2 mo",
+ c:"Lancet Oncol 2021;22:678",p:33848462,
+ b:"Randomized confirmation attempt for copanlisib.",
+ i:"Positive PFS, yet the class later lost US FL indications (verify).",
+ q:"Can PFS gains offset toxicity and OS uncertainty for PI3K inhibitors?",
+ cm:[[33879868,"Killock D, Nat Rev Clin Oncol 2021","Copanlisib safe and active in combination"]],
+ reg:"No new approval; copanlisib withdrawn (verify).",gl:"—",acc:"—"},
+{y:2023,n:"ROSEWOOD (Zinzani)",s:"tgt",ph:"Phase 2 (randomized)",d:"Zanubrutinib + obinutuzumab vs obinutuzumab after ≥2 lines",ep:"ORR",
+ r:"ORR 69% vs 46%; CR 39% vs 19%; median PFS 28.0 vs 10.4 mo",N:"217",hr:"0.50 (PFS)",fu:"20.2 mo",
+ c:"J Clin Oncol 2023;41:5107",p:37506346,
+ b:"BTK inhibition, modest alone in FL, combined with an anti-CD20 antibody.",
+ i:"Accelerated approval (2024; verify); a non-cellular, non-bispecific option in later lines.",
+ q:"Confirmatory phase 3 (MAHOGANY) results; place relative to bispecifics?",
+ cm:[],reg:"FDA accelerated approval 2024 (verify).",gl:"Listed third-line option (verify).",acc:"On-label."},
+// ---------- CAR-T ----------
+{y:2022,n:"ZUMA-5 (Jacobson)",s:"cart",ph:"Phase 2",d:"Axicabtagene ciloleucel in relapsed indolent NHL after ≥2 lines",ep:"ORR",
+ r:"ORR 92%, CR 74% (primary analysis set of 104; 84 FL)",N:"153 enrolled; 148 infused",hr:"n/a",fu:"17.5 mo",
+ c:"Lancet Oncol 2022;23:91",p:34895487,
+ b:"Extended CD19 CAR-T from aggressive to indolent lymphoma.",
+ i:"First CAR-T approved in FL (2021 accelerated; verify current status).",
+ q:"Is a one-time therapy worth the toxicity in an indolent disease? Long-term remission or cure?",
+ cm:[[34895488,"Holtzman NG, Lancet Oncol 2022","CAR T-cell therapy for indolent lymphoma: a new treatment paradigm?"]],
+ reg:"FDA accelerated approval 2021 (verify current status).",gl:"Third-line or later option (verify).",acc:"Certified centers, cost, prior authorization."},
+{y:2022,n:"ELARA (Fowler)",s:"cart",ph:"Phase 2",d:"Tisagenlecleucel after ≥2 lines or relapse after autologous transplant",ep:"CR rate",
+ r:"CR 69.1%, ORR 86.2%; CRS 48.5% (no grade ≥3)",N:"98 enrolled; 97 infused",hr:"n/a",fu:"16.6 mo",
+ c:"Nat Med 2022;28:325",p:34921238,
+ b:"Second CD19 CAR-T in FL, with a 4-1BB costimulatory domain.",
+ i:"Accelerated approval (2022; verify), with lower severe CRS and neurotoxicity.",
+ q:"How durable are remissions? Outpatient administration?",
+ cm:[],reg:"FDA accelerated approval 2022 (verify).",gl:"Third-line or later option (verify).",acc:"As for CAR-T."},
+{y:2024,n:"TRANSCEND FL (Morschhauser)",s:"cart",ph:"Phase 2",d:"Lisocabtagene maraleucel, including high-risk second-line patients (POD24)",ep:"ORR",
+ r:"Third line or later: ORR 97%, CR 94%. Second line (n=23): ORR 96%, all CR. CRS 58% (grade ≥3, 1%)",N:"130 infused",hr:"n/a",fu:"18.9 mo",
+ c:"Nat Med 2024;30:2199",p:38830991,
+ b:"First CAR-T trial to include second-line high-risk FL.",
+ i:"Accelerated approval (2024; verify); supports earlier CAR-T for POD24 disease.",
+ q:"Should CAR-T be used at second line for POD24 rather than after bispecifics?",
+ cm:[],reg:"FDA accelerated approval 2024 (verify).",gl:"Verify NCCN placement.",acc:"As for CAR-T."},
+// ---------- Bispecific antibodies ----------
+{y:2022,n:"Mosunetuzumab (Budde)",s:"bs",ph:"Phase 2",d:"Fixed-duration CD20×CD3 bispecific after ≥2 lines",ep:"CR rate",
+ r:"CR 60.0%; CRS 44% (mostly grade 1–2). 3-yr update: ORR 77.8%, median PFS 24.0 mo, 36-mo OS 82.4%",N:"90",hr:"n/a",fu:"18.3 mo; 37.4 mo (update)",
+ c:"Lancet Oncol 2022;23:1055",p:35803286,extra:["3-yr follow-up, Blood 2025",39447094],
+ b:"First bispecific in FL; fixed duration, off the shelf.",
+ i:"Accelerated approval (2022; verify); an outpatient alternative to CAR-T.",
+ q:"How does it compare with CAR-T? Combinations (mosunetuzumab-lenalidomide) and earlier use?",
+ cm:[[35803285,"Buske C, Lancet Oncol 2022","Mosunetuzumab, a bispecific antibody, in R/R FL"],[39946154,"Karmali R, Blood 2025","Mosunetuzumab next up to bat… is it a home run?"]],
+ reg:"FDA accelerated approval 2022 (verify).",gl:"Third-line or later option (verify).",acc:"On-label."},
+{y:2024,n:"EPCORE NHL-1 FL cohort (Linton)",s:"bs",ph:"Phase 1/2",d:"Subcutaneous epcoritamab monotherapy after ≥2 lines",ep:"ORR",
+ r:"ORR 82.0%, CR 62.5%; grade 3 CRS 2%",N:"128",hr:"n/a",fu:"17.4 mo",
+ c:"Lancet Haematol 2024;11:e593",p:38889737,
+ b:"Subcutaneous, continuous CD20×CD3 bispecific.",
+ i:"Accelerated approval (2024; verify).",
+ q:"Continuous vs fixed duration? Combination with R2 (EPCORE FL-1)?",
+ cm:[],reg:"FDA accelerated approval 2024 (verify).",gl:"Third-line or later option (verify).",acc:"On-label."},
+{y:2024,n:"ELM-2 FL cohort: odronextamab (Kim)",s:"bs",ph:"Phase 2",d:"Odronextamab (CD20×CD3) after ≥2 lines",ep:"ORR",
+ r:"ORR 80.0%, CR 73.4%; median PFS 20.7 mo; discontinuation for AEs 16%",N:"128",hr:"n/a",fu:"20.1 mo",
+ c:"Ann Oncol 2024;35:1039",p:39147364,
+ b:"Third CD20×CD3 bispecific with step-up dosing.",
+ i:"Approved in the EU (2024); US approval not confirmed for this page (BLA resubmission accepted February 2025).",
+ q:"Will it be approved in the US? How to choose among bispecifics?",
+ cm:[],reg:"EU approval 2024; US BLA resubmission accepted Feb 2025, approval not confirmed (verify).",gl:"Verify.",acc:"—"},
+{y:2026,n:"EPCORE FL-1 (Falchi)",s:"bs",ph:"Phase 3",d:"Epcoritamab + R2 vs R2 in relapsed or refractory FL",ep:"ORR and PFS (dual)",
+ r:"ORR 95% vs 79%; 16-mo PFS 85.5% vs 40.2%; grade ≥3 events 90% vs 68%",N:"488",hr:"0.21",fu:"14.8 mo",
+ c:"Lancet 2026;407:161",p:41371238,extra:["FDA approval summary, Clin Cancer Res 2026",42820870],
+ b:"First phase 3 bispecific trial in FL, built on the AUGMENT R2 backbone.",
+ i:"FDA traditional approval November 2025 for epcoritamab with R2 in relapsed or refractory FL; moves bispecifics to second line.",
+ q:"Is the added toxicity justified at second line? Comparison with tafasitamab-R2? Sequencing with CAR-T?",
+ cm:[],reg:"FDA traditional approval November 2025 (epcoritamab + R2, relapsed or refractory FL).",gl:"Verify NCCN placement.",acc:"On-label."}
+];
+// Trial registry numbers (ClinicalTrials.gov, ISRCTN or EudraCT), taken from each paper's PubMed record or the registry, Oct 22, 2026.
+// Shown as links next to the source and used by the monthly update to find later follow-up publications.
+const REG = {"GADOLIN (Sehn)": ["NCT01059630"],"AUGMENT (Leonard)": ["NCT01938001"],"inMIND (Sehn)": ["NCT04680052"],"Idelalisib (Gopal)": ["NCT01282424"],"CHRONOS-1 (Dreyling)": ["NCT01660451"],"DYNAMO (Flinn)": ["NCT01882803"],"Tazemetostat (Morschhauser)": ["NCT01897571"],"UNITY-NHL (Fowler)": ["NCT02793583"],"CHRONOS-3 (Matasar)": ["NCT02367040"],"ROSEWOOD (Zinzani)": ["NCT03332017"],"ZUMA-5 (Jacobson)": ["NCT03105336"],"ELARA (Fowler)": ["NCT03568461"],"TRANSCEND FL (Morschhauser)": ["NCT04245839"],"Mosunetuzumab (Budde)": ["NCT02500407"],"EPCORE NHL-1 FL cohort (Linton)": ["NCT03625037"],"ELM-2 FL cohort: odronextamab (Kim)": ["NCT03888105"],"EPCORE FL-1 (Falchi)": ["NCT05409066"]};
+const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
+T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, reg:t.reg, gl:t.gl, acc:t.acc}; });
+T.forEach(t => { t.trn = REG[t.n] || []; });
+
+let active = "all", sortMode = "setting";
+try { const s = localStorage.getItem("fl2-sort"); if (s) sortMode = s; } catch(e) {}
+const chipsEl = document.getElementById("chips");
+[["all","All"], ...order.map(k => [k, SETTINGS[k]])].forEach(([k,label]) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.id = "chip-" + k; b.textContent = label;
+  b.setAttribute("aria-pressed", k === active);
+  b.addEventListener("click", () => { active = k; chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b)); render(); });
+  chipsEl.appendChild(b);
+});
+const sortEl = document.getElementById("sort"); sortEl.value = sortMode;
+sortEl.addEventListener("change", () => { sortMode = sortEl.value; try { localStorage.setItem("fl2-sort", sortMode); } catch(e) {} render(); });
+const qEl = document.getElementById("q"); qEl.addEventListener("input", render);
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function recHTML(t){
+  const r = t.rc; if (!r) return "";
+  const cm = r.cm.length
+    ? r.cm.map(c => `<li><a href="https://pubmed.ncbi.nlm.nih.gov/${c[0]}/" target="_blank" rel="noopener">${esc(c[1])}</a>: ${esc(c[2])}</li>`).join("")
+    : '<li class="none">No commentary linked to this paper in PubMed</li>';
+  return `<div class="rk">Commentary</div><ul>${cm}</ul>
+    <div class="rk">Regulatory</div><p>${esc(r.reg)}</p>
+    <div class="rk">Guidelines</div><p>${esc(r.gl)}</p>
+    <div class="rk">Access</div><p>${esc(r.acc)}</p>`;
+}
+function render(){
+  const q = qEl.value.trim().toLowerCase();
+  let rows = T.filter(t => (active === "all" || t.s === active) &&
+    (!q || [t.n,t.d,t.r,t.i,t.b,t.q,t.c,t.ph,String(t.y),t.reg,t.gl,t.acc,t.cm.map(c=>c[1]+" "+c[2]).join(" ")].join(" ").toLowerCase().includes(q)));
+  rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
+    : (order.indexOf(a.s) - order.indexOf(b.s)) || (a.y - b.y));
+  document.getElementById("count").textContent = rows.length + " of " + T.length + " studies";
+  const list = document.getElementById("list");
+  if (!rows.length) { list.innerHTML = '<li class="empty">No studies match that search. Clear the search or pick another category.</li>'; return; }
+  list.innerHTML = rows.map(t => `
+    <li class="trial">
+      <div class="yr">${t.y}</div>
+      <div class="body">
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span></div>
+        <p class="design">${esc(t.d)}</p>
+        <div class="stats">
+          <span><b>N</b>${esc(t.N)}</span>
+          <span><b>HR</b>${esc(t.hr)}</span>
+          <span><b>Median F/U</b>${esc(t.fu)}</span>
+        </div>
+        <dl>
+          <dt>Endpoint</dt><dd>${esc(t.ep)}</dd>
+          <dt>Result</dt><dd class="result">${esc(t.r)} <span class="ok" title="Checked against the PubMed abstract">✓ checked</span></dd>
+          <dt>Builds on</dt><dd>${esc(t.b)}</dd>
+          <dt>Changed</dt><dd>${esc(t.i)}</dd>
+          <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
+          <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
+        </dl>
+      </div>
+    </li>`).join("");
+}
+render();
+</script>
