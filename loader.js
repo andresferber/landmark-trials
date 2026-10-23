@@ -35,7 +35,8 @@
     ".lta button.lta-head{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:14px;width:100%;padding:14px 16px 14px 18px;cursor:pointer;background:var(--gt);color:var(--lta-fg);border-radius:0 9px 9px 0}",
     ".lta button.lta-head:hover{filter:brightness(.97)}",
     ".lta button.lta-head:focus-visible{outline:3px solid var(--g);outline-offset:-3px}",
-    ".lta button.lta-head[aria-expanded='true']{position:sticky;top:0;z-index:30;border-radius:0 9px 0 0;border-bottom:1px solid var(--lta-rule);box-shadow:0 4px 10px -6px rgba(0,0,0,.25)}",
+    ".lta button.lta-head[aria-expanded='true']{border-radius:0 9px 0 0;border-bottom:1px solid var(--lta-rule)}",
+    ".lta button.lta-head.lta-pinned{position:fixed;z-index:9999;border-radius:0;border-left:6px solid var(--g);box-shadow:0 6px 14px -6px rgba(0,0,0,.35)}",
     ".lta .lta-title{flex:1;min-width:0;font-size:18px;font-weight:600;line-height:1.3;color:var(--lta-fg)}",
     ".lta .lta-meta{font:500 12px/1.4 'IBM Plex Mono',ui-monospace,Menlo,monospace;color:var(--lta-muted);white-space:nowrap}",
     ".lta .lta-icon{flex:none;width:38px;height:38px;border-radius:50%;background:var(--g);color:#fff;display:flex;align-items:center;justify-content:center;font:400 30px/1 system-ui,sans-serif;transition:transform .2s ease}",
@@ -74,6 +75,63 @@
     var d = new Date(iso + "T12:00:00");
     return isNaN(d) ? iso : d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
   }
+
+  /* Pin the open section's title bar to the top while scrolling through it.
+     Done in script (not CSS sticky) because site themes often wrap content in
+     containers that disable CSS sticky. Allows for fixed site headers. */
+  var heads = [];
+  function siteHeaderOffset() {
+    var off = 0;
+    try {
+      var xs = [window.innerWidth * 0.25, window.innerWidth * 0.5, window.innerWidth * 0.75];
+      xs.forEach(function (x) {
+        (document.elementsFromPoint(x, 2) || []).forEach(function (el) {
+          if (mount.contains(el)) return;
+          for (var n = el; n && n !== document.body; n = n.parentElement) {
+            var pos = getComputedStyle(n).position;
+            if (pos === "fixed" || pos === "sticky") {
+              var r = n.getBoundingClientRect();
+              if (r.top <= 2 && r.bottom > off && r.bottom < window.innerHeight * 0.4) off = r.bottom;
+              break;
+            }
+          }
+        });
+      });
+    } catch (e) {}
+    return off;
+  }
+  var ticking = false;
+  function updatePins() {
+    ticking = false;
+    var off = null;
+    heads.forEach(function (o) {
+      var open = o.head.getAttribute("aria-expanded") === "true";
+      var sr = o.sec.getBoundingClientRect();
+      if (off === null) off = siteHeaderOffset();
+      var h = o.ph.offsetHeight || o.head.offsetHeight;
+      var pin = open && sr.top < off && sr.bottom > off + h + 40;
+      if (pin) {
+        if (!o.pinned) {
+          o.ph.style.height = o.head.offsetHeight + "px";
+          o.ph.hidden = false;
+          o.head.classList.add("lta-pinned");
+          o.pinned = true;
+        }
+        o.head.style.top = off + "px";
+        o.head.style.left = sr.left + "px";
+        o.head.style.width = sr.width + "px";
+      } else if (o.pinned) {
+        o.head.classList.remove("lta-pinned");
+        o.head.style.top = o.head.style.left = o.head.style.width = "";
+        o.ph.hidden = true;
+        o.pinned = false;
+      }
+    });
+  }
+  function requestPins() { if (!ticking) { ticking = true; requestAnimationFrame(updatePins); } }
+  window.addEventListener("scroll", requestPins, { passive: true });
+  window.addEventListener("resize", requestPins);
+  document.addEventListener("scroll", requestPins, { passive: true, capture: true });
 
   function build(data) {
     mount.innerHTML = "";
@@ -135,15 +193,21 @@
       head.addEventListener("click", function () {
         var open = head.getAttribute("aria-expanded") === "true";
         setOpen(!open);
-        if (open) sec.scrollIntoView({ block: "nearest" });
+        if (open) sec.scrollIntoView({ block: "start" }); window.scrollBy(0, -siteHeaderOffset());
+        requestPins();
       });
       foot.querySelector(".lta-close").addEventListener("click", function () {
         setOpen(false);
-        sec.scrollIntoView({ block: "start", behavior: "smooth" });
+        sec.scrollIntoView({ block: "start" }); window.scrollBy(0, -siteHeaderOffset());
+        requestPins();
       });
 
+      var ph = document.createElement("div");
+      ph.hidden = true;
       sec.appendChild(head);
+      sec.appendChild(ph);
       sec.appendChild(body);
+      heads.push({ head: head, sec: sec, body: body, ph: ph, pinned: false });
       mount.appendChild(sec);
     });
     var h = (location.hash || "").replace("#", "");
