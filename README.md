@@ -4,7 +4,7 @@ Educational reference of practice-changing trials in hematologic malignancies, c
 
 ## How it works
 
-- `topics.json` lists the topics shown, in order.
+- `topics.json` lists the topics shown. Sections appear in the order listed; "group" (Lymphoma, Myeloma) sets the group label and colour.
 - `topics/<key>.html` holds each topic's self-contained content.
 - `loader.js` builds the accordion on any page that includes:
 

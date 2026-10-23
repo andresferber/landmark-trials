@@ -1,11 +1,53 @@
 {
   "title": "Landmark trials",
   "topics": [
-    { "key": "mcl",  "title": "Mantle cell lymphoma",                     "count": "33 trials",  "file": "topics/mcl.html",  "updated": "2026-10-18" },
-    { "key": "flu",  "title": "Follicular lymphoma, untreated",           "count": "21 studies", "file": "topics/flu.html",  "updated": "2026-10-18" },
-    { "key": "flr",  "title": "Follicular lymphoma, relapsed/refractory", "count": "19 trials",  "file": "topics/flr.html",  "updated": "2026-10-18" },
-    { "key": "smm",  "title": "Smoldering multiple myeloma",              "count": "22 studies", "file": "topics/smm.html",  "updated": "2026-10-18" },
-    { "key": "ndmm", "title": "Multiple myeloma, newly diagnosed",        "count": "32 trials",  "file": "topics/ndmm.html", "updated": "2026-10-18" },
-    { "key": "rrmm", "title": "Multiple myeloma, relapsed/refractory",    "count": "33 trials",  "file": "topics/rrmm.html", "updated": "2026-10-18" }
+    {
+      "key": "mcl",
+      "title": "Mantle cell lymphoma",
+      "count": "33 trials",
+      "file": "topics/mcl.html",
+      "updated": "2026-10-18",
+      "group": "Lymphoma"
+    },
+    {
+      "key": "flu",
+      "title": "Follicular lymphoma, untreated",
+      "count": "21 studies",
+      "file": "topics/flu.html",
+      "updated": "2026-10-18",
+      "group": "Lymphoma"
+    },
+    {
+      "key": "flr",
+      "title": "Follicular lymphoma, relapsed/refractory",
+      "count": "19 trials",
+      "file": "topics/flr.html",
+      "updated": "2026-10-18",
+      "group": "Lymphoma"
+    },
+    {
+      "key": "smm",
+      "title": "Smoldering multiple myeloma",
+      "count": "22 studies",
+      "file": "topics/smm.html",
+      "updated": "2026-10-18",
+      "group": "Myeloma"
+    },
+    {
+      "key": "ndmm",
+      "title": "Multiple myeloma, newly diagnosed",
+      "count": "32 trials",
+      "file": "topics/ndmm.html",
+      "updated": "2026-10-18",
+      "group": "Myeloma"
+    },
+    {
+      "key": "rrmm",
+      "title": "Multiple myeloma, relapsed/refractory",
+      "count": "33 trials",
+      "file": "topics/rrmm.html",
+      "updated": "2026-10-18",
+      "group": "Myeloma"
+    }
   ]
 }
