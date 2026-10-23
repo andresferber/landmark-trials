@@ -116,7 +116,7 @@
   <ol class="list" id="ndmm-list"></ol>
 
   <div class="lt-foot">
-    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Regulatory dates marked "verify" are from general knowledge and were not rechecked for this page. Guideline positions summarize NCCN v5.2026 and the ASCO-Ontario 2026 living guideline at a high level; regimen-specific placements marked "verify" need checking against the current documents. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Regulatory dates marked "verify" are from general knowledge and were not rechecked for this page. Guideline positions summarize NCCN v5.2026 and the ASCO-Ontario 2026 living guideline at a high level; regimen-specific placements marked "verify" need checking against the current documents. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
   </div>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -138,7 +138,7 @@ const NCCN = "NCCN v5.2026 and ASCO-Ontario (2026): anti-CD38 quadruplet inducti
 const T = [
 // ---------- Transplant-eligible ----------
 {y:2003,n:"MRC Myeloma VII (Child)",s:"te",ph:"Phase 3",d:"High-dose melphalan and autologous transplant vs conventional chemotherapy, age <65",ep:"OS",
- r:"CR 44% vs 8%; median OS 54.1 vs 42.3 mo; PFS and OS both improved",N:"407",hr:"not reported in abstract",fu:"not reported in abstract",
+ r:"CR 44% vs 8%; median OS 54.1 vs 42.3 mo; median PFS 31.6 vs 19.6 mo (full paper)",N:"407",hr:"not reported in paper (OS P=0.04, log-rank); full paper",fu:"42 mo among survivors (full paper)",
  c:"N Engl J Med 2003;348:1875",p:12736280,
  b:"Confirmed the French IFM 90 result (1996) in a larger UK population.",
  i:"Established high-dose melphalan with autologous transplant as standard for younger patients.",
@@ -146,7 +146,7 @@ const T = [
  cm:[[14695853,"Anderson KC, Curr Hematol Rep 2004","Stem cell transplantation for myeloma"]],
  reg:"No regulatory action (strategy trial).",gl:"Basis for transplant as standard of care; still recommended after quadruplet induction (NCCN v5.2026).",acc:"Transplant covered as standard care."},
 {y:2003,n:"IFM 94: single vs tandem transplant (Attal)",s:"te",ph:"Phase 3",d:"Single vs double autologous transplant, age <60",ep:"EFS, OS",
- r:"7-yr EFS 20% vs 10%, 7-yr OS 42% vs 21% with tandem; benefit mainly in patients without VGPR after the first transplant",N:"399",hr:"not reported in abstract",fu:"7-yr estimates",
+ r:"7-yr EFS 20% vs 10%, 7-yr OS 42% vs 21% with tandem; benefit mainly in patients without VGPR after the first transplant",N:"399",hr:"not reported in paper (OS P=0.01, log-rank); full paper",fu:"75 mo (full paper)",
  c:"N Engl J Med 2003;349:2495",p:14695409,
  b:"Built on IFM 90 and MRC7 to ask whether more high-dose therapy helps.",
  i:"Made tandem transplant a common option for patients with suboptimal response; tandem later reserved mainly for high-risk disease.",
@@ -154,7 +154,7 @@ const T = [
  cm:[[14695416,"Stadtmauer EA, N Engl J Med 2003","Multiple myeloma, 2004—one or two transplants?"]],
  reg:"No regulatory action.",gl:"Tandem transplant listed for selected high-risk patients (verify current NCCN wording).",acc:"—"},
 {y:2010,n:"IFM 2005-01: bortezomib-dex induction (Harousseau)",s:"te",ph:"Phase 3",d:"Bortezomib-dexamethasone vs VAD induction (± DCEP) before transplant",ep:"Post-induction CR/nCR",
- r:"CR/nCR 14.8% vs 6.4%; ≥VGPR after first transplant 54.3% vs 37.2%; median PFS 36.0 vs 29.7 mo (P=.064); no toxic deaths vs 7",N:"482",hr:"not reported in abstract",fu:"32.2 mo",
+ r:"CR/nCR 14.8% vs 6.4%; ≥VGPR after first transplant 54.3% vs 37.2%; median PFS 36.0 vs 29.7 mo (P=.064); no toxic deaths vs 7",N:"482",hr:"not reported in paper (PFS P=.064); full paper",fu:"32.2 mo",
  c:"J Clin Oncol 2010;28:4621",p:20823406,
  b:"Moved bortezomib, approved in relapse (APEX), into induction before transplant.",
  i:"Ended VAD and made bortezomib-based induction the European standard.",
@@ -162,7 +162,7 @@ const T = [
  cm:[[21554151,"Kortüm M, Expert Opin Pharmacother 2011","Results of the first bortezomib-based induction therapy…"]],
  reg:"Bortezomib later received frontline approvals; induction use pre-transplant was guideline-driven.",gl:"Bortezomib-based induction became standard.",acc:"—"},
 {y:2010,n:"GIMEMA VTD vs TD (Cavo)",s:"te",ph:"Phase 3",d:"Bortezomib-thalidomide-dexamethasone vs thalidomide-dexamethasone before tandem transplant",ep:"CR/nCR after induction",
- r:"CR/nCR 31% vs 11%; grade 3–4 events 56% vs 33%; peripheral neuropathy 10% vs 2%",N:"480",hr:"not reported in abstract",fu:"not reported in abstract",
+ r:"CR/nCR 31% vs 11%; grade 3–4 events 56% vs 33%; peripheral neuropathy 10% vs 2%; 3-yr PFS 68% vs 56% (full paper)",N:"480",hr:"0.63 (PFS; full paper)",fu:"36 mo (full paper)",
  c:"Lancet 2010;376:2075",p:21146205,
  b:"Combined bortezomib (IFM 2005-01) with thalidomide in a triplet.",
  i:"VTD became the European triplet standard and later the backbone of CASSIOPEIA.",
@@ -178,7 +178,7 @@ const T = [
  cm:[[28607521,"Morgan GJ, Nat Rev Clin Oncol 2017","Where are we now with the treatment of multiple myeloma?"],[28679086,"Jethava YS, N Engl J Med 2017","Correspondence: Drug combinations with transplantation for myeloma"]],
  reg:"No regulatory action.",gl:"Basis for transplant after VRd-type induction.",acc:"—"},
 {y:2019,n:"CASSIOPEIA (Moreau)",s:"te",ph:"Phase 3",d:"Daratumumab-VTd vs VTd induction and consolidation around transplant",ep:"sCR at day 100",
- r:"sCR 29% vs 20%; ≥CR 39% vs 26%; MRD-negative (10⁻⁵) 64% vs 44%",N:"1,085",hr:"0.47 (PFS)",fu:"not reported in abstract",
+ r:"sCR 29% vs 20%; ≥CR 39% vs 26%; MRD-negative (10⁻⁵) 64% vs 44%",N:"1,085",hr:"0.47 (PFS)",fu:"18.8 mo (full paper)",
  c:"Lancet 2019;394:29",p:31171419,
  b:"Added daratumumab (proven in relapse: CASTOR, POLLUX) to the European VTd standard.",
  i:"First quadruplet approved for transplant-eligible patients (FDA 2019, verify date); opened the quadruplet era.",
@@ -202,7 +202,7 @@ const T = [
  cm:[[32818244,"Harousseau JL, Blood 2020","Daratumumab in transplant regimens for myeloma?"]],
  reg:"No separate approval.",gl:"Led to D-VRd adoption; superseded by PERSEUS.",acc:"—"},
 {y:2021,n:"FORTE (Gay)",s:"te",ph:"Phase 2 (randomized)",d:"KRd + transplant vs KRd × 12 vs KCd + transplant; then carfilzomib-lenalidomide vs lenalidomide maintenance",ep:"≥VGPR after induction",
- r:"≥VGPR 70% (KRd) vs 53% (KCd); 3-yr PFS on maintenance 75% (KR) vs 65% (R)",N:"474",hr:"not reported in abstract",fu:"50.9 mo",
+ r:"≥VGPR 70% (KRd) vs 53% (KCd); 3-yr PFS on maintenance 75% (KR) vs 65% (R)",N:"474",hr:"0.64 (KR vs R maintenance, PFS); 0.54 (KRd-ASCT vs KCd-ASCT, PFS); full paper",fu:"50.9 mo",
  c:"Lancet Oncol 2021;22:1705",p:34774221,
  b:"Tested carfilzomib (stronger PI) in induction and maintenance.",
  i:"Supported KRd induction and showed carfilzomib-lenalidomide maintenance prolongs PFS, especially in high-risk disease.",
@@ -224,7 +224,7 @@ const T = [
  q:"Can MRD guide stopping therapy in randomized trials? How to treat ultra-high-risk disease?",
  cm:[],reg:"No regulatory action.",gl:"Trial-only approach.",acc:"—"},
 {y:2022,n:"GMMG-HD7 (Goldschmidt)",s:"te",ph:"Phase 3",d:"Isatuximab-RVd vs RVd induction, transplant, then lenalidomide ± isatuximab maintenance",ep:"MRD negativity after induction",
- r:"MRD-negative after induction 50% vs 36%; grade 3–4 neutropenia 23% vs 7%; MRD-negative after transplant 66% vs 48% (2025 update)",N:"662",hr:"not reported in abstract",fu:"induction phase",
+ r:"MRD-negative after induction 50% vs 36%; grade 3–4 neutropenia 23% vs 7%; MRD-negative after transplant 66% vs 48% (2025 update)",N:"662",hr:"OR 1.82 for MRD negativity after induction (full paper)",fu:"induction phase",
  c:"Lancet Haematol 2022;9:e810",p:36328040,extra:["Post-transplant update, J Clin Oncol 2025",39652594],
  b:"Isatuximab counterpart to GRIFFIN and PERSEUS.",
  i:"First phase 3 evidence for isatuximab quadruplet in transplant-eligible patients.",
@@ -256,7 +256,7 @@ const T = [
  cm:[[17920906,"Palumbo A, Lancet 2007","A new standard of care for elderly patients with myeloma"]],
  reg:"Thalidomide approved in the EU with MP for older NDMM (verify).",gl:"Historical standard; replaced by lenalidomide- and anti-CD38-based regimens.",acc:"—"},
 {y:2008,n:"VISTA (San Miguel)",s:"tie",ph:"Phase 3",d:"Bortezomib-melphalan-prednisone (VMP) vs MP",ep:"Time to progression",
- r:"TTP 24.0 vs 16.6 mo; CR 30% vs 4%",N:"682",hr:"0.48 (TTP); 0.61 (OS)",fu:"not reported in abstract",
+ r:"TTP 24.0 vs 16.6 mo; CR 30% vs 4%",N:"682",hr:"0.48 (TTP); 0.61 (OS)",fu:"16.3 mo (full paper)",
  c:"N Engl J Med 2008;359:906",p:18753647,
  b:"Moved bortezomib into frontline therapy for older patients, alongside MPT.",
  i:"VMP became a standard and later the backbone for ALCYONE; led to frontline bortezomib approval (2008).",
@@ -264,7 +264,7 @@ const T = [
  cm:[[18753654,"Durie BG, N Engl J Med 2008","Treatment of myeloma—are we making progress?"],[19390550,"Berenson JR, Nat Rev Clin Oncol 2009","Bortezomib in newly diagnosed multiple myeloma"]],
  reg:"FDA frontline approval of bortezomib (2008).",gl:"Historical standard; VMP still used outside the US.",acc:"On-label."},
 {y:2014,n:"FIRST (Benboubker)",s:"tie",ph:"Phase 3",d:"Continuous lenalidomide-dexamethasone vs Rd for 18 cycles vs MPT",ep:"PFS",
- r:"Median PFS 25.5 vs 20.7 (Rd18) vs 21.2 mo (MPT); 4-yr OS 59% vs 56% vs 51%",N:"1,623",hr:"0.72 (Rd vs MPT); 0.70 (Rd vs Rd18)",fu:"not reported in abstract",
+ r:"Median PFS 25.5 vs 20.7 (Rd18) vs 21.2 mo (MPT); 4-yr OS 59% vs 56% vs 51%",N:"1,623",hr:"0.72 (Rd vs MPT); 0.70 (Rd vs Rd18)",fu:"37.0 mo among survivors (full paper)",
  c:"N Engl J Med 2014;371:906",p:25184863,
  b:"Tested a melphalan-free, continuous regimen against MPT.",
  i:"Established continuous Rd as a standard; backbone for SWOG S0777 and MAIA.",
@@ -351,7 +351,7 @@ const T = [
  cm:[],reg:"No regulatory action.",gl:"Too recent for guideline placement (verify).",acc:"—"},
 // ---------- Risk & response ----------
 {y:2005,n:"International Staging System (Greipp)",s:"risk",ph:"Prognostic model",d:"Large international dataset with training and validation sets",ep:"OS",
- r:"Three stages by β2-microglobulin and albumin: median OS 62, 44 and 29 mo",N:"not reported in abstract",hr:"n/a",fu:"n/a",
+ r:"Three stages by β2-microglobulin and albumin: median OS 62, 44 and 29 mo",N:"10,750 (full paper)",hr:"n/a",fu:"n/a",
  c:"J Clin Oncol 2005;23:3412",p:15809451,
  b:"Replaced the Durie-Salmon system with two simple serum markers.",
  i:"Became the universal staging system.",

@@ -116,7 +116,7 @@
   <ol class="list" id="mcl-list"></ol>
 
   <div class="lt-foot">
-    Results marked with a check were verified against each paper's PubMed abstract on October 18, 2026. "Not reported in abstract" means the figure needs the full text. E4151 is the only entry still based on a conference presentation. The "Builds on", "Changed" and "Open questions" notes are interpretive summaries, not data from the papers. In the N / HR / follow-up line, "—" marks a value not confirmed for this page; hazard ratios refer to the primary endpoint unless labeled otherwise. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record for each paper (PMIDs checked against journal, volume, pages and first author). E4151 has no full publication yet and links to a Google Scholar search. Check the primary paper before using any number clinically or in teaching material. Reception notes: commentaries are those PubMed links to each paper ("Comment in") plus a PubMed search for editorials. NCCN items marked as v4.2026 come from published coverage of that version (September 2026); items marked "verify" are from earlier guideline versions or general knowledge and should be checked against the current NCCN document. No public data report insurance approval rates by regimen; US coverage generally follows the FDA label and NCCN compendium listing, which Medicare is required to recognize for anticancer drugs.
+    Results marked with a check were verified against each paper's PubMed abstract on October 18, 2026. "Not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). E4151 is the only entry still based on a conference presentation. The "Builds on", "Changed" and "Open questions" notes are interpretive summaries, not data from the papers. In the N / HR / follow-up line, "—" marks a value not confirmed for this page; hazard ratios refer to the primary endpoint unless labeled otherwise. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record for each paper (PMIDs checked against journal, volume, pages and first author). E4151 has no full publication yet and links to a Google Scholar search. Check the primary paper before using any number clinically or in teaching material. Reception notes: commentaries are those PubMed links to each paper ("Comment in") plus a PubMed search for editorials. NCCN items marked as v4.2026 come from published coverage of that version (September 2026); items marked "verify" are from earlier guideline versions or general knowledge and should be checked against the current NCCN document. No public data report insurance approval rates by regimen; US coverage generally follows the FDA label and NCCN compendium listing, which Medicare is required to recognize for anticancer drugs.
   </div>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -278,13 +278,13 @@ T.forEach(t => { const m = M[t.n] || ["—","—","—"]; t.N = m[0]; t.hr = m[1
 
 // Values checked against each PubMed abstract (Oct 18, 2026). Fields: r result, N, hr, fu.
 const V = {
-  "European MCL Network (Dreyling)": {r:"Median PFS 39 vs 17 mo; 3-yr OS 83% vs 77% (NS)", N:"122", hr:"not reported in abstract", fu:"not reported in abstract"},
+  "European MCL Network (Dreyling)": {r:"Median PFS 39 vs 17 mo; 3-yr OS 83% vs 77% (NS)", N:"122", hr:"0.42 (PFS, multivariable; full paper)", fu:"25 mo for PFS, 34 mo for OS (full paper)"},
   "R-HyperCVAD/MA (Romaguera, MDACC)": {r:"CR/CRu 87%; 3-yr FFS 64%, OS 82%; 8% treatment-related deaths", N:"97"},
   "Nordic MCL2 (Geisler)": {r:"6-yr OS 70%, EFS 56%, PFS 66%; no relapses after 5 yr", fu:"not reported in abstract"},
   "MCL Younger (Hermine)": {r:"Median TTF 9.1 vs 3.9 yr; 5-yr TTF 65% vs 40%", N:"497", hr:"0.56 (TTF)", fu:"6.1 yr"},
   "LyMa (Le Gouill)": {r:"4-yr EFS 79% vs 61%; PFS 83% vs 64%; OS 89% vs 80%", hr:"0.50 (OS, unadjusted)", fu:"50.2 mo"},
   "TRIANGLE (Dreyling)": {r:"3-yr FFS 72% (A) vs 88% (A+I) vs 86% (I); A+I superior to A; A not superior to I", N:"870", hr:"0.52 (A+I vs A)", fu:"31 mo"},
-  "MCL Elderly (Kluin-Nelemans)": {r:"4-yr OS 62% R-CHOP vs 47% R-FC. Rituximab maintenance: 58% vs 29% in remission at 4 yr; after R-CHOP, 4-yr OS 87% vs 63%", N:"560", hr:"0.55 (maintenance, PFS)", fu:"not reported in abstract"},
+  "MCL Elderly (Kluin-Nelemans)": {r:"4-yr OS 62% R-CHOP vs 47% R-FC. Rituximab maintenance: 58% vs 29% in remission at 4 yr; after R-CHOP, 4-yr OS 87% vs 63%", N:"560", hr:"0.55 (maintenance, PFS)", fu:"37 mo induction, 36 mo maintenance (full paper)"},
   "StiL NHL1 (Rummel)": {r:"All histologies: median PFS 69.5 vs 31.2 mo. MCL subgroup 35.4 vs 22.1 mo (full paper; not in abstract)", N:"549 randomized; 514 assessed (94 MCL)", hr:"0.58 (all histologies)", fu:"45 mo"},
   "BRIGHT (Flinn)": {r:"CR 31% vs 25% (noninferior); 5-yr PFS 65.5% vs 55.8%; no OS difference", N:"447 (74 MCL)", hr:"0.61 (5-yr PFS)", fu:"≥5 yr after treatment"},
   "LYM-3002 (Robak)": {r:"Median PFS 24.7 vs 14.4 mo; final median OS 90.7 vs 55.7 mo", N:"487", hr:"0.63 (PFS); 0.66 (OS)", fu:"40 mo (PFS); 82 mo (OS)"},
@@ -302,7 +302,7 @@ const V = {
   "RAY (Dreyling)": {r:"Median PFS 14.6 vs 6.2 mo", N:"280", hr:"0.43"},
   "SPRINT (Trněný)": {r:"Median PFS 8.7 vs 5.2 mo", N:"254", hr:"0.61", fu:"15.9 mo"},
   "ACE-LY-004 (Wang)": {r:"ORR 81%, CR 40%; 12-mo PFS 67%", N:"124", fu:"15.2 mo"},
-  "AIM (Tam)": {r:"CR 42% by CT, 62% by PET at week 16; MRD-negative 67% by flow", N:"24", f:0, fu:"not reported in abstract"},
+  "AIM (Tam)": {r:"CR 42% by CT, 62% by PET at week 16; MRD-negative 67% by flow", N:"24", f:0, fu:"15.9 mo (full paper)"},
   "BGB-3111-206 (Song)": {r:"ORR 84%, CR 68.6%; median PFS 22.1 mo", N:"86", f:0, fu:"18.4 mo"},
   "ZUMA-2 (Wang)": {r:"ORR 93%, CR 67% (primary efficacy set, n=60); ITT ORR 85%, CR 59%", N:"74 enrolled; 68 infused", fu:"12.3 mo (primary)"},
   "BRUIN (Wang)": {r:"ORR 57.8%, CR 20% after covalent BTKi; median DOR 21.6 mo", N:"90", fu:"12 mo"},
