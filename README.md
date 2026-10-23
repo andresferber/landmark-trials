@@ -26,6 +26,7 @@ Each topic page is one HTML file with:
 
 - **Data**: a JavaScript array `T`, one entry per trial: `y` year, `n` name, `s` category, `ph` phase, `d` design, `ep` endpoint, `r` result, `N`, `hr`, `fu`, `c` citation, `p` PMID, optional `extra` [label, PMID], `b` builds on, `i` what it changed, `q` open questions, `cm` commentaries [[pmid, byline, title]], `reg` regulatory, `gl` guidelines, `acc` access. (The MCL page predates this layout and keeps the same information in separate objects.)
 - **Registry numbers**: object `REG` mapping each entry name to its registry IDs (ClinicalTrials.gov NCT, ISRCTN or EudraCT), taken from the paper's PubMed record. Shown as links next to the source and used by the monthly update to find later follow-up publications.
+- **Full-text links**: object `FT` mapping each entry name to `["pmc", PMCID]` (free full text in PubMed Central, not embargoed) or `["doi", DOI]` (publisher page), taken from the PubMed record.
 - **Verification rules**: every number checked against the PubMed abstract or PubMed Central full text; "not reported in abstract" rather than a guess; PMIDs confirmed by journal, volume, pages and first author; unconfirmed regulatory or guideline statements marked "verify"; no invented insurance approval rates.
 - **Credit line** in small type under the footer: "Created by Andres Ferber, MD, with the assistance of Claude (Anthropic)."
 
