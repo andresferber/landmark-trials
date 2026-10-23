@@ -121,7 +121,7 @@ footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch
   <ol class="list" id="list"></ol>
 
   <footer>
-    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA actions for belantamab (Oct 23, 2025), linvoseltamab (Jul 2, 2025) and teclistamab-daratumumab (Mar 5, 2026) were confirmed from FDA or ASCO Post reports; other regulatory dates marked "verify" are from general knowledge. Guideline positions summarize NCCN v5.2026 and the ASCO-Ontario 2026 living guideline at a high level; regimen-specific placements marked "verify" need checking against the current documents. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA actions for belantamab (Oct 23, 2025), linvoseltamab (Jul 2, 2025) and teclistamab-daratumumab (Mar 5, 2026) were confirmed from FDA or ASCO Post reports; other regulatory dates marked "verify" are from general knowledge. Guideline positions summarize NCCN v5.2026 and the ASCO-Ontario 2026 living guideline at a high level; regimen-specific placements marked "verify" need checking against the current documents. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
   </footer>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -141,7 +141,7 @@ const GL = "NCCN v5.2026 and ASCO-Ontario (2026): triplet therapy at early relap
 const T = [
 // ---------- PI / IMiD backbones ----------
 {y:2005,n:"APEX (Richardson)",s:"bb",ph:"Phase 3",d:"Bortezomib vs high-dose dexamethasone after 1–3 prior therapies",ep:"Time to progression",
- r:"ORR 38% vs 18%; median TTP 6.22 vs 3.49 mo; 1-yr OS 80% vs 66%",N:"669",hr:"0.55 (TTP)",fu:"not reported in abstract",
+ r:"ORR 38% vs 18%; median TTP 6.22 vs 3.49 mo; 1-yr OS 80% vs 66%",N:"669",hr:"0.55 (TTP)",fu:"8.3 mo among survivors (full paper)",
  c:"N Engl J Med 2005;352:2487",p:15958804,
  b:"Randomized confirmation of the phase 2 SUMMIT data that led to accelerated approval in 2003.",
  i:"Established proteasome inhibition; first new drug class in myeloma in decades.",
@@ -149,7 +149,7 @@ const T = [
  cm:[[15958811,"Dispenzieri A, N Engl J Med 2005","Bortezomib for myeloma—much ado about something"]],
  reg:"FDA full approval for relapsed myeloma (2005; verify).",gl:"Bortezomib remains a backbone in many relapse triplets.",acc:"On-label; generic bortezomib now available (verify)."},
 {y:2007,n:"MM-009 / MM-010 (Weber, Dimopoulos)",s:"bb",ph:"Phase 3 (two trials)",d:"Lenalidomide-dexamethasone vs dexamethasone in relapsed myeloma (North America and international)",ep:"Time to progression",
- r:"MM-009: TTP 11.1 vs 4.7 mo, OS 29.6 vs 20.2 mo. MM-010: TTP 11.3 vs 4.7 mo, OS HR 0.66",N:"353 (MM-009); MM-010 not in abstract",hr:"0.66 (OS, MM-010)",fu:"not reported in abstract",
+ r:"MM-009: TTP 11.1 vs 4.7 mo, OS 29.6 vs 20.2 mo. MM-010: TTP 11.3 vs 4.7 mo, OS HR 0.66",N:"353 (MM-009); MM-010 not in abstract",hr:"0.66 (OS, MM-010)",fu:"17.6 mo in MM-009 (full paper)",
  c:"N Engl J Med 2007;357:2133",p:18032763,extra:["MM-010, N Engl J Med 2007",18032762],
  b:"Followed thalidomide's activity with a more potent, less neurotoxic immunomodulator.",
  i:"Rd became a standard relapse backbone and later of ASPIRE, ELOQUENT-2, TOURMALINE and POLLUX.",
@@ -173,7 +173,7 @@ const T = [
  cm:[[25242046,"Rajkumar SV, Lancet Oncol 2014","Panobinostat for the treatment of multiple myeloma"]],
  reg:"FDA accelerated approval (2015); US marketing later discontinued (verify).",gl:"Rarely used now.",acc:"—"},
 {y:2015,n:"ASPIRE (Stewart)",s:"bb",ph:"Phase 3",d:"Carfilzomib + Rd vs Rd after 1–3 prior lines",ep:"PFS",
- r:"Median PFS 26.3 vs 17.6 mo; 24-mo OS 73.3% vs 65.0% (HR 0.79); ≥CR 31.8% vs 9.3%",N:"792",hr:"0.69",fu:"not reported in abstract",
+ r:"Median PFS 26.3 vs 17.6 mo; 24-mo OS 73.3% vs 65.0% (HR 0.79); ≥CR 31.8% vs 9.3%",N:"792",hr:"0.69",fu:"32.3 vs 31.5 mo (full paper)",
  c:"N Engl J Med 2015;372:142",p:25482145,
  b:"Added a second-generation PI to the Rd backbone.",
  i:"KRd became a standard relapse triplet and later a frontline induction option.",
@@ -245,7 +245,7 @@ const T = [
  q:"What after anti-CD38 refractoriness?",
  cm:[],reg:"FDA approval of DPd (2021; verify).",gl:GL,acc:"On-label."},
 {y:2021,n:"IKEMA (Moreau)",s:"cd38",ph:"Phase 3",d:"Isatuximab + Kd vs Kd after 1–3 lines",ep:"PFS",
- r:"Median PFS not reached vs 19.15 mo",N:"302",hr:"0.53",fu:"not reported in abstract",
+ r:"Median PFS not reached vs 19.15 mo",N:"302",hr:"0.53",fu:"20.7 mo (full paper)",
  c:"Lancet 2021;397:2361",p:34097854,
  b:"Isatuximab counterpart to CANDOR.",
  i:"Isa-Kd a standard for lenalidomide-refractory relapse.",
@@ -261,7 +261,7 @@ const T = [
  q:"Why does elotuzumab lack single-agent activity? Role with pomalidomide (ELOQUENT-3)?",
  cm:[],reg:"FDA approval of Elo-Rd (2015; verify).",gl:"Listed option; used less.",acc:"On-label."},
 {y:2019,n:"STORM (Chari)",s:"oth",ph:"Phase 2b",d:"Selinexor (XPO1 inhibitor) + dexamethasone in triple-class refractory disease",ep:"ORR",
- r:"ORR 26%; median PFS 3.7 mo, OS 8.6 mo; median 7 prior regimens",N:"122",hr:"n/a (single arm)",fu:"not reported in abstract",
+ r:"ORR 26%; median PFS 3.7 mo, OS 8.6 mo; median 7 prior regimens",N:"122",hr:"n/a (single arm)",fu:"not reported in paper; median treatment 9.0 wk (full paper)",
  c:"N Engl J Med 2019;381:727",p:31433920,
  b:"New mechanism for patients refractory to PI, IMiD and anti-CD38.",
  i:"Accelerated approval (2019; verify) for penta-refractory disease, with substantial toxicity.",
@@ -285,7 +285,7 @@ const T = [
  cm:[[33129377,"Ghobrial I, Lancet Oncol 2020","BELLINI: a renaissance for an era of precision therapy in multiple myeloma"]],
  reg:"No approval; venetoclax not approved for myeloma.",gl:"Venetoclax used off-label for t(11;14) (verify NCCN).",acc:"Off-label."},
 {y:2020,n:"DREAMM-2 (Lonial)",s:"oth",ph:"Phase 2",d:"Belantamab mafodotin (anti-BCMA ADC) at 2.5 or 3.4 mg/kg",ep:"ORR",
- r:"ORR 31% (2.5 mg/kg) and 34% (3.4 mg/kg); grade 3–4 keratopathy 27% and 21%",N:"196",hr:"n/a",fu:"not reported in abstract",
+ r:"ORR 31% (2.5 mg/kg) and 34% (3.4 mg/kg); grade 3–4 keratopathy 27% and 21%",N:"196",hr:"n/a",fu:"6.3 and 6.9 mo by dose cohort (full paper)",
  c:"Lancet Oncol 2020;21:207",p:31859245,
  b:"First BCMA-directed therapy approved.",
  i:"Accelerated approval (2020), withdrawn in the US after DREAMM-3 (verify date).",

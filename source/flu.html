@@ -121,7 +121,7 @@ footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch
   <ol class="list" id="list"></ol>
 
   <footer>
-    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Regulatory dates marked "verify" are from general knowledge and were not rechecked for this page. Guideline placements marked "verify" need checking against the current NCCN B-cell lymphomas document. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Regulatory dates marked "verify" are from general knowledge and were not rechecked for this page. Guideline placements marked "verify" need checking against the current NCCN B-cell lymphomas document. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
   </footer>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -147,14 +147,14 @@ const T = [
  q:"Does rituximab, unlike chlorambucil, justify early treatment?",
  cm:[],reg:"No regulatory action.",gl:"Observation remains an NCCN and ESMO option for asymptomatic low tumor burden FL (verify current wording).",acc:"—"},
 {y:2004,n:"SAKK 35/98 rituximab schedule (Ghielmini)",s:"lt",ph:"Phase 3",d:"Rituximab ×4 weekly, then responders/stable randomized to no further therapy vs 4 doses every 2 months (new and relapsed FL)",ep:"EFS",
- r:"Median EFS 12 vs 23 mo with prolonged rituximab; 19 vs 36 mo in chemotherapy-naive patients",N:"202",hr:"not reported in abstract",fu:"35 mo",
+ r:"Median EFS 12 vs 23 mo with prolonged rituximab; 19 vs 36 mo in chemotherapy-naive patients",N:"202",hr:"0.61 (EFS; full paper)",fu:"35 mo",
  c:"Blood 2004;103:4416",p:14976046,
  b:"Built on single-agent rituximab activity in FL.",
  i:"First randomized evidence that extended rituximab prolongs remission; foundation for rituximab-only and maintenance strategies.",
  q:"Is maintenance better than retreatment at progression (RESORT)? Is rituximab alone enough upfront?",
  cm:[],reg:"No regulatory action.",gl:"Rituximab monotherapy listed for low tumor burden FL (verify).",acc:"—"},
 {y:2014,n:"UK rituximab vs watch and wait (Ardeshna)",s:"lt",ph:"Phase 3",d:"Watch and wait vs rituximab induction ± maintenance in asymptomatic advanced-stage FL",ep:"Time to new treatment",
- r:"No new treatment at 3 yr: 46% watch and wait vs 88% rituximab maintenance (HR 0.21) and 78% rituximab induction alone",N:"379 (+84 induction-only)",hr:"0.21",fu:"not reported in abstract",
+ r:"No new treatment at 3 yr: 46% watch and wait vs 88% rituximab maintenance (HR 0.21) and 78% rituximab induction alone",N:"379 (+84 induction-only)",hr:"0.21",fu:"46 mo for the two-arm comparison (full paper)",
  c:"Lancet Oncol 2014;15:424",p:24602760,
  b:"Revisited the BNLI question with rituximab instead of chlorambucil.",
  i:"Made early single-agent rituximab a reasonable alternative to observation, though without proven survival gain.",
@@ -187,21 +187,21 @@ const T = [
  reg:"—",gl:"Radiotherapy remains standard for stage I–II FL; systemic therapy may be added (verify).",acc:"—"},
 // ---------- Induction ----------
 {y:2005,n:"R-CVP vs CVP (Marcus)",s:"ind",ph:"Phase 3",d:"CVP ± rituximab, 8 cycles, untreated stage III–IV FL",ep:"Time to treatment failure",
- r:"ORR 81% vs 57%, CR 41% vs 10%; median TTP 32 vs 15 mo; median TTF 27 vs 7 mo",N:"321",hr:"not reported in abstract",fu:"30 mo",
+ r:"ORR 81% vs 57%, CR 41% vs 10%; median TTP 32 vs 15 mo; median TTF 27 vs 7 mo",N:"321",hr:"not reported in paper (TTF P<.0001, log-rank); full paper",fu:"30 mo",
  c:"Blood 2005;105:1417",p:15494430,
  b:"First phase 3 test of adding rituximab to frontline chemotherapy.",
  i:"Established chemoimmunotherapy as standard for advanced FL.",
  q:"Does rituximab improve survival? Which chemotherapy backbone is best?",
  cm:[],reg:"FDA approved rituximab with CVP for untreated FL (2006; verify).",gl:"R-CVP listed as an induction option.",acc:"On-label."},
 {y:2005,n:"GLSG R-CHOP vs CHOP (Hiddemann)",s:"ind",ph:"Phase 3",d:"CHOP ± rituximab in untreated advanced FL",ep:"Time to treatment failure",
- r:"60% lower risk of treatment failure; ORR 96% vs 90%; OS improved (6 vs 17 deaths at 3 yr)",N:"428",hr:"not reported in abstract",fu:"not reported in abstract",
+ r:"60% lower risk of treatment failure; ORR 96% vs 90%; OS improved (6 vs 17 deaths at 3 yr)",N:"428",hr:"RR about 0.40 for treatment failure (60% reduction; full paper)",fu:"18 mo median observation (full paper)",
  c:"Blood 2005;106:3725",p:16123223,
  b:"Confirmed the R-CVP result with an anthracycline backbone.",
  i:"R-CHOP became a standard induction, especially for bulky or high-risk disease.",
  q:"Is anthracycline needed in FL (FOLL05)? Is bendamustine better (StiL)?",
  cm:[],reg:"—",gl:"R-CHOP listed as an induction option.",acc:"—"},
 {y:2013,n:"FOLL05 (Federico)",s:"ind",ph:"Phase 3",d:"R-CVP vs R-CHOP vs R-FM in untreated advanced FL",ep:"TTF",
- r:"3-yr TTF 46% (R-CVP), 62% (R-CHOP), 59% (R-FM); R-FM more neutropenia and second cancers",N:"534",hr:"not reported in abstract",fu:"34 mo",
+ r:"3-yr TTF 46% (R-CVP), 62% (R-CHOP), 59% (R-FM); R-FM more neutropenia and second cancers",N:"534",hr:"0.62 R-CHOP vs R-CVP, 0.63 R-FM vs R-CVP (TTF, FLIPI-adjusted; full paper)",fu:"34 mo",
  c:"J Clin Oncol 2013;31:1506",p:23530110,
  b:"Head-to-head comparison of the three common rituximab-chemotherapy backbones.",
  i:"Favored R-CHOP for its balance of efficacy and toxicity; ended fludarabine-based induction.",
@@ -274,7 +274,7 @@ const T = [
  cm:[[15933062,"Ghielmini M, Blood 2005","Correspondence: Does the FLIPI apply to grade 3 FL?"]],
  reg:"—",gl:"Standard risk tool.",acc:"—"},
 {y:2009,n:"FLIPI-2 (Federico)",s:"risk",ph:"Prognostic model",d:"Prospective cohort treated in the rituximab era",ep:"PFS",
- r:"β2M, node >6 cm, marrow involvement, Hb <12, age >60; 3-yr PFS 91%, 69% and 51% by risk group",N:"not reported in abstract",hr:"n/a",fu:"38 mo",
+ r:"β2M, node >6 cm, marrow involvement, Hb <12, age >60; 3-yr PFS 91%, 69% and 51% by risk group",N:"1,093 registered; 832 used to build the score (full paper)",hr:"n/a",fu:"38 mo",
  c:"J Clin Oncol 2009;27:4555",p:19652063,
  b:"Prospectively derived update of FLIPI.",
  i:"Added a PFS-based tool for the rituximab era.",
@@ -288,7 +288,7 @@ const T = [
  q:"Can PET guide maintenance or intensification? Combined with ctDNA?",
  cm:[],reg:"—",gl:"End-of-treatment PET recommended (verify).",acc:"—"},
 {y:2015,n:"m7-FLIPI (Pastore)",s:"risk",ph:"Clinicogenetic model",d:"Mutations in seven genes (EZH2, ARID1A, MEF2B, EP300, FOXO1, CREBBP, CARD11) plus FLIPI and ECOG",ep:"Failure-free survival",
- r:"High-risk group 28%: 5-yr FFS 38% vs 77%",N:"151 (training)",hr:"4.14 (bootstrap-corrected 2.02)",fu:"not reported in abstract",
+ r:"High-risk group 28%: 5-yr FFS 38% vs 77%",N:"151 (training)",hr:"4.14 (bootstrap-corrected 2.02)",fu:"7.7 yr training, 6.7 yr validation cohort (full paper)",
  c:"Lancet Oncol 2015;16:1111",p:26256760,
  b:"First clinicogenetic risk model in FL.",
  i:"Showed genetics refine risk; also highlighted EZH2 (later targeted by tazemetostat).",

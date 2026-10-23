@@ -121,7 +121,7 @@ footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch
   <ol class="list" id="list"></ol>
 
   <footer>
-    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA approvals of tafasitamab-R2 (June 18, 2025) and epcoritamab-R2 (November 2025) were confirmed from published reports and the FDA approval summary; other regulatory dates and withdrawals marked "verify" are from general knowledge. Guideline placements marked "verify" need checking against the current NCCN B-cell lymphomas document. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA approvals of tafasitamab-R2 (June 18, 2025) and epcoritamab-R2 (November 2025) were confirmed from published reports and the FDA approval summary; other regulatory dates and withdrawals marked "verify" are from general knowledge. Guideline placements marked "verify" need checking against the current NCCN B-cell lymphomas document. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
   </footer>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -140,14 +140,14 @@ const PM = id => "https://pubmed.ncbi.nlm.nih.gov/" + id + "/";
 const T = [
 // ---------- Antibody & IMiD combinations ----------
 {y:2002,n:"90Y-ibritumomab vs rituximab (Witzig)",s:"ab",ph:"Phase 3",d:"Single-dose radioimmunotherapy vs rituximab ×4 in relapsed or refractory low-grade, follicular or transformed lymphoma",ep:"ORR",
- r:"ORR 80% vs 56%; CR 30% vs 16%; TTP 11.2 vs 10.1 mo (NS)",N:"143",hr:"not reported in abstract",fu:"not reported in abstract",
+ r:"ORR 80% vs 56%; CR 30% vs 16%; TTP 11.2 vs 10.1 mo (NS)",N:"143",hr:"not reported in paper",fu:"not reported in paper",
  c:"J Clin Oncol 2002;20:2453",p:12011122,
  b:"First radioimmunotherapy compared with rituximab, then the new standard.",
  i:"Led to the first FDA-approved radioimmunotherapy (2002; verify), later rarely used because of logistics and myelosuppression.",
  q:"Higher responses without longer TTP: is RIT worth the marrow toxicity and secondary MDS risk?",
  cm:[],reg:"FDA approval of ibritumomab (2002; verify).",gl:"Rarely used now.",acc:"—"},
 {y:2006,n:"EORTC 20981 (van Oers)",s:"ab",ph:"Phase 3",d:"CHOP vs R-CHOP induction, then rituximab maintenance (every 3 mo for 2 yr) vs observation, relapsed FL",ep:"PFS",
- r:"Induction: PFS 33.1 vs 20.2 mo with R-CHOP. Maintenance: median PFS 51.5 vs 14.9 mo",N:"465",hr:"0.65 (induction); 0.40 (maintenance)",fu:"not reported in abstract",
+ r:"Induction: PFS 33.1 vs 20.2 mo with R-CHOP. Maintenance: median PFS 51.5 vs 14.9 mo",N:"465",hr:"0.65 (induction); 0.40 (maintenance)",fu:"39.4 mo from first, 33.3 mo from second randomization (full paper)",
  c:"Blood 2006;108:3295",p:16873669,
  b:"Combined the SAKK extended-rituximab concept with chemoimmunotherapy at relapse.",
  i:"Established rituximab maintenance at relapse; foundation for PRIMA in first line.",
@@ -170,7 +170,7 @@ const T = [
  cm:[[30901301,"Barr PM, J Clin Oncol 2019","Augmenting indolent lymphoma treatment options with lenalidomide and rituximab"]],
  reg:"FDA approval of R2 for previously treated FL and MZL (2019; verify).",gl:"R2 a standard second-line option.",acc:"On-label."},
 {y:2026,n:"inMIND (Sehn)",s:"ab",ph:"Phase 3",d:"Tafasitamab (anti-CD19) + R2 vs placebo + R2, relapsed or refractory FL",ep:"PFS",
- r:"Median PFS 22.4 vs 13.9 mo (investigator), confirmed by independent review; no treatment-related deaths with tafasitamab",N:"548",hr:"0.43",fu:"not reported in abstract",
+ r:"Median PFS 22.4 vs 13.9 mo (investigator), confirmed by independent review; no treatment-related deaths with tafasitamab",N:"548",hr:"0.43",fu:"14.1 mo (full paper)",
  c:"Lancet 2026;407:133",p:41360064,
  b:"Added an anti-CD19 antibody to the AUGMENT R2 backbone.",
  i:"FDA approval June 18, 2025 for relapsed or refractory FL; described as an NCCN category 1 option after anti-CD20 therapy.",
@@ -186,14 +186,14 @@ const T = [
  cm:[[24620870,"Fruman DA, N Engl J Med 2014","Idelalisib—a PI3Kδ inhibitor for B-cell cancers"]],
  reg:"FDA accelerated approval 2014; FL indication later withdrawn (verify).",gl:"No longer recommended (verify).",acc:"—"},
 {y:2017,n:"CHRONOS-1 (Dreyling)",s:"tgt",ph:"Phase 2",d:"Copanlisib (IV pan-class I PI3K) after ≥2 lines",ep:"ORR",
- r:"ORR 59%, CR 12%; median PFS 11.2 mo; grade 3–4 hyperglycemia 41%",N:"142",hr:"n/a",fu:"not reported in abstract",
+ r:"ORR 59%, CR 12%; median PFS 11.2 mo; grade 3–4 hyperglycemia 41%",N:"142",hr:"n/a",fu:"24 wk median safety follow-up; no efficacy follow-up reported (full paper)",
  c:"J Clin Oncol 2017;35:3898",p:28976790,
  b:"Intermittent IV PI3K inhibition aimed at reducing idelalisib-type toxicity.",
  i:"Accelerated approval (2017; verify); later withdrawn (verify).",
  q:"Can it be combined with rituximab (CHRONOS-3)?",
  cm:[],reg:"FDA accelerated approval 2017; later withdrawn (verify).",gl:"No longer recommended (verify).",acc:"—"},
 {y:2019,n:"DYNAMO (Flinn)",s:"tgt",ph:"Phase 2",d:"Duvelisib (PI3Kδ/γ) in double-refractory indolent NHL",ep:"ORR",
- r:"ORR 47.3% (FL 42.2%); median PFS 9.5 mo; grade ≥3 events 88.4%",N:"129",hr:"n/a",fu:"not reported in abstract",
+ r:"ORR 47.3% (FL 42.2%); median PFS 9.5 mo; grade ≥3 events 88.4%",N:"129",hr:"n/a",fu:"32.1 mo (full paper)",
  c:"J Clin Oncol 2019;37:912",p:30742566,
  b:"Dual PI3K isoform inhibitor after idelalisib.",
  i:"FL accelerated approval (2018; verify) later withdrawn by the sponsor (verify).",
