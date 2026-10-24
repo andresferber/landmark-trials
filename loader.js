@@ -32,6 +32,7 @@
     ".lta *{box-sizing:border-box}",
     /* search */
     ".lta .lta-search{position:relative;margin-bottom:4px}",
+    ".lta .lta-intro{margin:0 0 12px;font:400 14.5px/1.5 'IBM Plex Sans',system-ui,sans-serif;color:var(--lta-muted)}",
     ".lta .lta-search input{all:unset;box-sizing:border-box;display:block;width:100%;font:400 16px/1.3 'IBM Plex Sans',system-ui,sans-serif;color:var(--lta-fg);background:#fff;border:1px solid var(--lta-rule);border-radius:12px;padding:13px 16px 13px 44px;box-shadow:0 1px 2px rgba(16,24,40,.05)}",
     ".lta .lta-search input:focus{border-color:#2c4a8a;box-shadow:0 0 0 3px rgba(44,74,138,.18)}",
     ".lta .lta-search .lta-mag{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--lta-muted);pointer-events:none}",
@@ -246,6 +247,10 @@
     mount.innerHTML = "";
     var topicsByKey = {};
     (data.topics || []).forEach(function (t) { topicsByKey[t.key] = t; });
+    var intro = document.createElement("p");
+    intro.className = "lta-intro";
+    intro.textContent = "Each topic is reviewed and updated at regular intervals as new trials, longer follow-up and new drugs are published.";
+    mount.appendChild(intro);
     if (index && index.length) mount.appendChild(buildSearch(index, topicsByKey));
     var nb = buildNews(news, topicsByKey);
     if (nb) mount.appendChild(nb);
