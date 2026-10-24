@@ -17,7 +17,9 @@ All data is in the main `<script>`:
   `ep` endpoint, `r` result, `N`, `hr`, `fu`, `c` citation, `p` PMID, optional `extra`
   [label, PMID], `b` builds on, `i` changed, `q` open questions, `cm` commentaries
   [[pmid, byline, title]], `reg` regulatory, `gl` guidelines, `acc` access.
-  (The MCL page keeps the same information in separate objects M, P, EXTRA, CITE, V, X, R.)
+  (The MCL page keeps the same information in separate objects M, P, EXTRA, CITE, V, X, R.
+  V and CITE are applied on top of T, and the card displays them: to change what a reader sees
+  on the MCL page, edit V or CITE, not T. If a trial has both, keep them consistent.)
 - `REG`: name -> registry IDs (NCT, ISRCTN or EudraCT), from the PubMed DataBank list or abstract.
 - `FT`: name -> `["pmc", PMCID]` (free full text, not embargoed), `["doi", DOI]` (publisher page),
   `["doi", DOI, "free"]` (free to read at the publisher, per Unpaywall) or
@@ -154,3 +156,18 @@ a reply to this message.
 ## 6. If Andres replies with PDFs
 Read them, fill in the missing details (mark each value "(full paper)"), then publish as in step 4
 and confirm what changed.
+
+## 7. Applying a proofread report
+A quarterly scheduled proofread (15th of Jan, Apr, Jul, Oct) runs in a fresh session, reports only,
+and sends Andres a findings list. When he brings that list to a session to fix:
+- Verify each finding against its source before changing anything; the proofreader can be wrong.
+  Say which findings you rejected and why.
+- Edit the layer the card actually displays (see section 1), in source/<key>.html, then copy it to
+  the working page that is published to the artifact.
+- Perspective text lives in tools/review/persp_<key>.py (tools/review/rrmm_review.py for RRMM).
+  Edit there and rebuild with build_persp.py (or rrmm_review.py); never hand-edit the rendered
+  <details class="review"> block, which the next rebuild overwrites.
+- Render every changed page in a headless browser, confirm each corrected text appears and the old
+  text is gone, with no script errors. Then publish as in step 4.
+- Do not apply fixes on the 1st or 2nd of a month, when the topic updates and health check run.
+
