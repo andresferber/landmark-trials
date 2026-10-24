@@ -44,6 +44,17 @@ All data is in the main `<script>`:
   authors, trial names that come from the sponsor, company code names for drugs (e.g. when there is no
   generic name yet), links to sponsored protocols or registry records, and FDA prescribing information.
   When unsure, ask Andres.
+- Independence: this is Andres's independent project, done on his own time and funds. No links or
+  references to his employer (Jefferson Health) and no preference for its publications; cite them
+  when they are the best fit, like any other source. The only contact address is
+  andresferber@hotmail.com, used for "Report an error" and the footer "send a comment" link.
+- Narrative review (`<details class="review">` under the header; pilot on rrmm): built by
+  tools/review/<key>_review.py, where every number comes from a trial entry and [[Trial name]]
+  becomes a numbered reference to that trial's card. When an entry changes, update only the
+  affected sentences and the "Last updated" date. Small factual edits go live automatically and are
+  listed in the summary; rewrites of a section (for example after a new practice-changing trial)
+  wait for Andres's approval. While the block says "Pilot draft, pending review", to_weebly.py
+  keeps it off the website.
 - `TOX`: name -> one line of key toxicity from the abstract (or full paper, marked "(full paper)").
 - `CORE`: names of core teaching trials. Andres chooses these: never add or remove names yourself.
   If a new trial looks core-worthy, suggest it in the summary.

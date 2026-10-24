@@ -78,6 +78,12 @@ GUARD = """
 .ltw .reportall { margin: 12px 0 0; }
 .ltw .moafree { color: var(--s-young) !important; }
 .ltw .moa b { color: var(--fg) !important; }
+.ltw .review .rv-title, .ltw .review h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; }
+.ltw .review > summary { list-style: none !important; }
+.ltw .review .rv-body ul { list-style: disc !important; padding-left: 20px !important; }
+.ltw .review .rv-refs { list-style: decimal !important; padding-left: 22px !important; }
+.ltw .rv-tl ol, .ltw .rv-tl li { list-style: none !important; background: none !important; }
+.ltw .review sup a { text-decoration: none !important; }
 .ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 """
 
@@ -90,6 +96,9 @@ def main(src, key, dst):
     js = next(x for x in scripts if "const T" in x and "function render" in x)
     start = s.index('<div class="wrap">')
     html = s[start:s.index("<script>", start)].replace("</style>", "")
+    # A review still marked as a pilot draft stays off the website until Andres approves it.
+    if "Pilot draft, pending review" in html:
+        html = re.sub(r'  <details class="review".*?</details>\n', "", html, flags=re.S)
     html = html.replace("<header>", '<div class="lt-head">').replace("</header>", "</div>")
     html = html.replace("<footer>", '<div class="lt-foot">').replace("</footer>", "</div>")
     for el in ["chips", "q", "sort", "count", "list"]:

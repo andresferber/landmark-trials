@@ -104,6 +104,36 @@
 .ltw .moa a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
 .ltw .moa a:hover { text-decoration-thickness: 2px; }
 .ltw .moafree { font: 500 11px var(--font-mono); color: var(--s-young); border: 1px solid var(--rule); border-radius: 4px; padding: 0 4px; }
+.ltw .review { margin-top: 18px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+.ltw .review > summary { list-style: none; cursor: pointer; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 14px 18px; }
+.ltw .review > summary::-webkit-details-marker { display: none; }
+.ltw .review .rv-kicker { font: 500 11px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.ltw .review .rv-title { font-family: var(--font-display); font-weight: 650; font-size: 1.05rem; flex: 1 1 260px; }
+.ltw .review .rv-open { font: 500 13px/1 var(--font-body); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.ltw .review[open] .rv-open::before { content: "Close "; }
+.ltw .review[open] .rv-open { font-size: 0; }
+.ltw .review[open] .rv-open::before { font-size: 13px; }
+.ltw .review .rv-body { padding: 0 18px 18px; max-width: 72ch; font-size: 15.5px; line-height: 1.65; }
+.ltw .review .rv-body h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.12rem; margin: 22px 0 6px; }
+.ltw .review .rv-body p { margin: 0 0 12px; }
+.ltw .review .rv-body ul { margin: 0 0 12px; padding-left: 20px; }
+.ltw .review .rv-body li { margin: 4px 0; }
+.ltw .review .rv-meta { font-size: 12.5px; color: var(--muted); }
+.ltw .review .rv-take { border-left: 3px solid var(--accent); background: var(--bg); padding: 4px 14px 6px; margin: 12px 0 16px; border-radius: 0 8px 8px 0; }
+.ltw .review .rv-take h3 { margin-top: 10px; }
+.ltw .review sup a { font: 600 11px var(--font-mono); text-decoration: none; color: var(--accent); padding: 0 1px; }
+.ltw .review a { color: var(--accent); }
+.ltw .review .rv-refs { font-size: 13.5px; padding-left: 22px; }
+.ltw .rv-tl { margin: 8px 0 18px; }
+.ltw .rv-tl figcaption { font: 500 11px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.ltw .rv-tl ol { list-style: none; margin: 0; padding: 0 0 0 4px; border-left: 2px solid var(--rule); }
+.ltw .rv-tl li { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 10px; padding: 5px 0 5px 14px; font-size: 14px; line-height: 1.45; }
+.ltw .rv-tl li::before { content: ""; position: absolute; left: -7px; top: 10px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2px solid var(--muted); }
+.ltw .rv-tl li.tl-bb::before { border-color: var(--s-old); background: var(--s-old-bg); }
+.ltw .rv-tl li.tl-cd38::before { border-color: var(--s-young); background: var(--s-young-bg); }
+.ltw .rv-tl li.tl-oth::before { border-color: var(--s-p2); background: var(--s-p2-bg); }
+.ltw .rv-tl li.tl-imm::before { border-color: var(--s-rr); background: var(--s-rr-bg); }
+.ltw .rv-tl .tl-y { font: 500 13px var(--font-mono); color: var(--muted); }
 @media (max-width: 480px) {
 .ltw .trial { grid-template-columns: 1fr; gap: 4px; }
 .ltw dl { grid-template-columns: 1fr; gap: 0 0; }
@@ -123,6 +153,10 @@
 }
 @media print {
 .ltw .report { display: none !important; }
+}
+@media print {
+.ltw .review { break-inside: auto; }
+.ltw .review .rv-open { display: none; }
 }
 
 .ltw { display: block; text-align: left; border-radius: 6px; }
@@ -150,6 +184,12 @@
 .ltw .reportall { margin: 12px 0 0; }
 .ltw .moafree { color: var(--s-young) !important; }
 .ltw .moa b { color: var(--fg) !important; }
+.ltw .review .rv-title, .ltw .review h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; }
+.ltw .review > summary { list-style: none !important; }
+.ltw .review .rv-body ul { list-style: disc !important; padding-left: 20px !important; }
+.ltw .review .rv-refs { list-style: decimal !important; padding-left: 22px !important; }
+.ltw .rv-tl ol, .ltw .rv-tl li { list-style: none !important; background: none !important; }
+.ltw .review sup a { text-decoration: none !important; }
 .ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 
 </style>
@@ -160,6 +200,7 @@
     <h1>Landmark trials in relapsed and refractory myeloma</h1>
     <p>Proteasome inhibitor and immunomodulator backbones, anti-CD38 combinations, other mechanisms, CAR-T and bispecific antibodies: design, verified results, context, open questions and reception.</p>
   </div>
+
 
   <div class="controls">
     <div class="chips" role="group" aria-label="Filter by category" id="rrmm-chips"></div>
@@ -183,7 +224,7 @@
 
   <div class="lt-foot">
     Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). "Key toxicity" summarizes the main adverse events reported in the abstract (or the full paper where marked); it is not a complete safety profile. "Drug mechanism" links one recent review per drug or drug class on how it works and how resistance develops, chosen from peer-reviewed journals as the most recent, comprehensive and high-quality review available (no promotional material), with free full text preferred when quality was comparable (October 23, 2026). "★ Core" marks trials selected as essential for teaching. Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Free at publisher" links open a publisher page that is free to read; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed; "Free copy (repository)" links open a legal free copy in a university repository (sometimes the authors' manuscript). Free copies were found with Unpaywall (October 23, 2026). Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA actions for belantamab (Oct 23, 2025), linvoseltamab (Jul 2, 2025) and teclistamab-daratumumab (Mar 5, 2026) were confirmed from FDA or ASCO Post reports; other regulatory dates and withdrawals were checked against FDA, EMA and sponsor announcements and published reports (October 23, 2026). Guideline positions summarize NCCN v5.2026 and the ASCO-Ontario 2026 living guideline at a high level; regimen-specific placements marked "NCCN not checked" could not be confirmed, because the NCCN guidelines require a login. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
-    <p class="reportall">Spotted an error or a missing trial? Use "Report an error" on any trial, or email <a href="mailto:andresferber@hotmail.com?subject=Landmark%20trials">andresferber@hotmail.com</a>.</p>
+    <p class="reportall">Comments and suggestions are welcome: <a href="mailto:andresferber@hotmail.com?subject=Landmark%20trials%20%28Relapsed/refractory%20myeloma%29%3A%20comment">send a comment</a>. Spotted an error or a missing trial? Use "Report an error" on any trial. Both go to andresferber@hotmail.com.</p>
   </div>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -571,6 +612,24 @@ render();
     '</span>' + (w.note ? '<span class="wd">' + esc(w.note) + '</span>' : '') + '</li>').join("") + '</ul>';
 })();
 
+
+(function setupReviewRefs(){
+  const listEl = document.getElementById("rrmm-list");
+  const box = listEl.parentNode.querySelector(".review");
+  if (!box) return;
+  box.addEventListener("click", e => {
+    const a = e.target.closest("a.rref");
+    if (!a) return;
+    e.preventDefault();
+    const first = chipsEl.querySelector(".chip");
+    if (first && first.getAttribute("aria-pressed") !== "true") first.click();
+    if (qEl.value) { qEl.value = ""; render(); }
+    const li = listEl.querySelector('li[data-trial="' + a.getAttribute("data-slug") + '"]');
+    if (!li) return;
+    li.scrollIntoView({ behavior: "smooth", block: "start" });
+    li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+  });
+})();
 (function setupShare(){
   const listEl = document.getElementById("rrmm-list");
   listEl.addEventListener("click", e => {
