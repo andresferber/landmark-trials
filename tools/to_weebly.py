@@ -89,6 +89,11 @@ GUARD = """
 .ltw ol.list li.grp h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; background: none !important; }
 .ltw ol.list li.grp { border-bottom: 2px solid var(--fg) !important; }
 .ltw .rv-tl li { list-style: none !important; }
+.ltw .tabs button { background: none !important; box-shadow: none !important; color: var(--muted) !important; text-transform: none !important; height: auto !important; min-width: 0 !important; border-radius: 0 !important; }
+.ltw .tabs button[aria-selected="true"] { color: var(--fg) !important; border-bottom: 3px solid var(--accent) !important; }
+.ltw .tabs .tabmail { color: var(--accent) !important; }
+.ltw .newdrugs .nd-name, .ltw .newdrugs h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; }
+.ltw .newdrugs .nd-log { list-style: disc !important; padding-left: 20px !important; }
 .ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 """
 

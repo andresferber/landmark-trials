@@ -138,6 +138,30 @@
 .ltw .rv-tl li.tl-p2::before { border-color: var(--s-p2); background: var(--s-p2-bg); }
 .ltw .rv-tl li.tl-rr::before { border-color: var(--s-rr); background: var(--s-rr-bg); }
 .ltw .rv-tl .tl-y { font: 500 13px var(--font-mono); color: var(--muted); }
+.ltw .tabs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-top: 18px; border-bottom: 1px solid var(--rule); }
+.ltw .tabs button { all: unset; cursor: pointer; font: 600 14px/1 var(--font-body); padding: 12px 14px; color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -1px; }
+.ltw .tabs button:hover { color: var(--fg); }
+.ltw .tabs button[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--accent); }
+.ltw .tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.ltw .tabs .tcount { font: 500 11px var(--font-mono); color: var(--muted); margin-left: 6px; }
+.ltw .tabs .tabmail { margin-left: auto; font: 500 13px/1 var(--font-body); color: var(--accent); text-decoration: none; padding: 8px 4px; }
+.ltw .tabs .tabmail:hover { text-decoration: underline; }
+.ltw .newdrugs[hidden] { display: none; }
+.ltw .newdrugs { padding-top: 12px; }
+.ltw .newdrugs .nd-note { font-size: 13.5px; color: var(--muted); margin: 4px 0 14px; max-width: 72ch; }
+.ltw .newdrugs .nd-mods { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.ltw .newdrugs .nd-item { border-top: 1px solid var(--rule); padding: 16px 0; display: flex; flex-direction: column; gap: 6px; }
+.ltw .newdrugs .nd-top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.ltw .newdrugs .nd-name { font-family: var(--font-display); font-weight: 650; font-size: 1.12rem; margin: 0; }
+.ltw .newdrugs .nd-mod { font: 500 11px/1 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; color: var(--s-p2); background: var(--s-p2-bg); }
+.ltw .newdrugs .nd-ev { font: 500 11.5px var(--font-mono); color: var(--muted); }
+.ltw .newdrugs .nd-ev.pr { color: var(--s-young); }
+.ltw .newdrugs dl { margin: 2px 0 0; }
+.ltw .newdrugs a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.ltw .newdrugs h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.1rem; margin: 22px 0 6px; }
+.ltw .newdrugs .nd-log { padding-left: 20px; }
+.ltw .newdrugs .nd-log li { margin: 6px 0; font-size: 14px; }
+.ltw .newdrugs .nd-rules { font-size: 12.5px; color: var(--muted); margin-top: 16px; max-width: 72ch; }
 @media (max-width: 480px) {
 .ltw .trial { grid-template-columns: 1fr; gap: 4px; }
 .ltw dl { grid-template-columns: 1fr; gap: 0 0; }
@@ -160,6 +184,9 @@
 }
 @media print {
 .ltw .review .rv-open { display: none; }
+}
+@media print {
+.ltw .tabs { display: none; }
 }
 
 .ltw { display: block; text-align: left; border-radius: 6px; }
@@ -198,6 +225,11 @@
 .ltw ol.list li.grp h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; background: none !important; }
 .ltw ol.list li.grp { border-bottom: 2px solid var(--fg) !important; }
 .ltw .rv-tl li { list-style: none !important; }
+.ltw .tabs button { background: none !important; box-shadow: none !important; color: var(--muted) !important; text-transform: none !important; height: auto !important; min-width: 0 !important; border-radius: 0 !important; }
+.ltw .tabs button[aria-selected="true"] { color: var(--fg) !important; border-bottom: 3px solid var(--accent) !important; }
+.ltw .tabs .tabmail { color: var(--accent) !important; }
+.ltw .newdrugs .nd-name, .ltw .newdrugs h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; }
+.ltw .newdrugs .nd-log { list-style: disc !important; padding-left: 20px !important; }
 .ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 
 </style>
@@ -260,6 +292,14 @@
       <ol class="rv-refs"><li><a class="rref" href="#t-flu-bnli-watch-and-wait-ardeshna" data-slug="bnli-watch-and-wait-ardeshna">BNLI watch and wait (Ardeshna)</a>. Lancet 2003;362:516. <a href="https://pubmed.ncbi.nlm.nih.gov/12932382/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-sakk-35-98-rituximab-schedule-ghielmini" data-slug="sakk-35-98-rituximab-schedule-ghielmini">SAKK 35/98 rituximab schedule (Ghielmini)</a>. Blood 2004;103:4416. <a href="https://pubmed.ncbi.nlm.nih.gov/14976046/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-uk-rituximab-vs-watch-and-wait-ardeshna" data-slug="uk-rituximab-vs-watch-and-wait-ardeshna">UK rituximab vs watch and wait (Ardeshna)</a>. Lancet Oncol 2014;15:424. <a href="https://pubmed.ncbi.nlm.nih.gov/24602760/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-ecog-e4402-resort-kahl" data-slug="ecog-e4402-resort-kahl">ECOG E4402 RESORT (Kahl)</a>. J Clin Oncol 2014;32:3096. <a href="https://pubmed.ncbi.nlm.nih.gov/25154829/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-fort-4-gy-vs-24-gy-hoskin" data-slug="fort-4-gy-vs-24-gy-hoskin">FORT: 4 Gy vs 24 Gy (Hoskin)</a>. Lancet Oncol 2014;15:457. <a href="https://pubmed.ncbi.nlm.nih.gov/24572077/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-trog-99-03-macmanus" data-slug="trog-99-03-macmanus">TROG 99.03 (MacManus)</a>. J Clin Oncol 2018;36:2918. <a href="https://pubmed.ncbi.nlm.nih.gov/29975623/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-r-cvp-vs-cvp-marcus" data-slug="r-cvp-vs-cvp-marcus">R-CVP vs CVP (Marcus)</a>. Blood 2005;105:1417. <a href="https://pubmed.ncbi.nlm.nih.gov/15494430/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-glsg-r-chop-vs-chop-hiddemann" data-slug="glsg-r-chop-vs-chop-hiddemann">GLSG R-CHOP vs CHOP (Hiddemann)</a>. Blood 2005;106:3725. <a href="https://pubmed.ncbi.nlm.nih.gov/16123223/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-foll05-federico" data-slug="foll05-federico">FOLL05 (Federico)</a>. J Clin Oncol 2013;31:1506. <a href="https://pubmed.ncbi.nlm.nih.gov/23530110/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-stil-nhl1-rummel" data-slug="stil-nhl1-rummel">StiL NHL1 (Rummel)</a>. Lancet 2013;381:1203. <a href="https://pubmed.ncbi.nlm.nih.gov/23433739/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-bright-flinn" data-slug="bright-flinn">BRIGHT (Flinn)</a>. Blood 2014;123:2944. <a href="https://pubmed.ncbi.nlm.nih.gov/24591201/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-gallium-marcus" data-slug="gallium-marcus">GALLIUM (Marcus)</a>. N Engl J Med 2017;377:1331. <a href="https://pubmed.ncbi.nlm.nih.gov/28976863/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-relevance-morschhauser" data-slug="relevance-morschhauser">RELEVANCE (Morschhauser)</a>. N Engl J Med 2018;379:934. <a href="https://pubmed.ncbi.nlm.nih.gov/30184451/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-fit-90y-ibritumomab-consolidation-morschhauser" data-slug="fit-90y-ibritumomab-consolidation-morschhauser">FIT: 90Y-ibritumomab consolidation (Morschhauser)</a>. J Clin Oncol 2008;26:5156. <a href="https://pubmed.ncbi.nlm.nih.gov/18854568/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-prima-salles" data-slug="prima-salles">PRIMA (Salles)</a>. Lancet 2011;377:42. <a href="https://pubmed.ncbi.nlm.nih.gov/21176949/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-flipi-solal-c-ligny" data-slug="flipi-solal-c-ligny">FLIPI (Solal-Céligny)</a>. Blood 2004;104:1258. <a href="https://pubmed.ncbi.nlm.nih.gov/15126323/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-flipi-2-federico" data-slug="flipi-2-federico">FLIPI-2 (Federico)</a>. J Clin Oncol 2009;27:4555. <a href="https://pubmed.ncbi.nlm.nih.gov/19652063/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-m7-flipi-pastore" data-slug="m7-flipi-pastore">m7-FLIPI (Pastore)</a>. Lancet Oncol 2015;16:1111. <a href="https://pubmed.ncbi.nlm.nih.gov/26256760/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-pet-after-induction-trotman" data-slug="pet-after-induction-trotman">PET after induction (Trotman)</a>. Lancet Haematol 2014;1:e17. <a href="https://pubmed.ncbi.nlm.nih.gov/27030064/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-pod24-casulo" data-slug="pod24-casulo">POD24 (Casulo)</a>. J Clin Oncol 2015;33:2516. <a href="https://pubmed.ncbi.nlm.nih.gov/26124482/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flu-mosunetuzumab-polatuzumab-obinutuzumab-frontline-lynch" data-slug="mosunetuzumab-polatuzumab-obinutuzumab-frontline-lynch">Mosunetuzumab ± polatuzumab-obinutuzumab frontline (Lynch)</a>. J Clin Oncol 2026;44:2625. <a href="https://pubmed.ncbi.nlm.nih.gov/42600120/" target="_blank" rel="noopener">PubMed ↗</a></li></ol>
     </div>
   </details>
+
+  <div class="tabs" role="tablist" aria-label="Page sections">
+    <button type="button" role="tab" aria-selected="true" data-tab="trials">Landmark trials</button>
+    <button type="button" role="tab" aria-selected="false" data-tab="watch">Trials to watch<span class="tcount"></span></button>
+    <button type="button" role="tab" aria-selected="false" data-tab="newdrugs">New drugs to watch<span class="tcount"></span></button>
+    <a class="tabmail" href="mailto:andresferber@hotmail.com?subject=Landmark%20trials%20%28Untreated%20follicular%20lymphoma%29%3A%20comment">✉ Send a comment</a>
+  </div>
+  <section class="newdrugs" hidden aria-label="New drugs to watch"></section>
 
   <div class="controls">
     <div class="chips" role="group" aria-label="Filter by category" id="flu-chips"></div>
@@ -491,6 +531,8 @@ const MOA = {"benda": {"l": "Bendamustine", "a": "Lalic H", "j": "Oncol Rep", "y
 const MOAMAP = {"SAKK 35/98 rituximab schedule (Ghielmini)": ["cd20"], "UK rituximab vs watch and wait (Ardeshna)": ["cd20"], "ECOG E4402 RESORT (Kahl)": ["cd20"], "R-CVP vs CVP (Marcus)": ["cd20"], "GLSG R-CHOP vs CHOP (Hiddemann)": ["cd20"], "StiL NHL1 (Rummel)": ["benda"], "BRIGHT (Flinn)": ["benda"], "GALLIUM (Marcus)": ["cd20"], "RELEVANCE (Morschhauser)": ["imidL"], "Mosunetuzumab ± polatuzumab-obinutuzumab frontline (Lynch)": ["cd20tce"], "FIT: 90Y-ibritumomab consolidation (Morschhauser)": ["rit"], "PRIMA (Salles)": ["cd20"]};
 const MOAURL = m => m.pmc ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + m.pmc + '/' : 'https://pubmed.ncbi.nlm.nih.gov/' + m.p + '/';
 const MOAHTML = t => (MOAMAP[t.n] || []).map(k => MOA[k]).filter(Boolean).map(m => '<span class="moa"><b>' + esc(m.l) + ':</b> <a href="' + esc(MOAURL(m)) + '" target="_blank" rel="noopener" title="' + esc(m.t) + '">' + esc(m.a) + ', ' + esc(m.j) + ' ' + esc(m.y) + ' ↗</a>' + (m.pmc ? ' <span class="moafree">free</span>' : '') + '</span>').join('');
+// NEWD: new drugs to watch (shared per disease).
+const NEWD = {"checked": "October 24, 2026", "note": "Agents with a new mechanism, target or modality that are not yet approved for this disease, selected from peer-reviewed early-phase trials and major meetings. Early response rates often fall with more patients and longer follow-up; meeting data are not peer-reviewed.", "scope": "This list is shared by the two follicular lymphoma topics.", "items": [{"n": "Golcadomide", "mod": "Oral small molecule (cereblon modulator)", "tgt": "Cereblon E3 ligase modulator (Ikaros/Aiolos degrader)", "ev": "Phase 1/2, meeting data (not yet peer-reviewed)", "pub": "EHA 2026", "why": "A next-generation cereblon modulator, more potent than lenalidomide, that also stimulates T cells; oral and chemotherapy-free, and active after lenalidomide and T-cell-redirecting therapy.", "data": "With rituximab, in patients with a median of three prior lines: ORR 97% and complete response 78% at 0.4 mg (36 evaluable); ORR 77% and complete response 41% at 0.2 mg (22 evaluable). Median follow-up 14 months.", "safety": "Grade 3–4 neutropenia 68% at 0.4 mg and 59% at 0.2 mg, the most common severe adverse event.", "next": "Phase 3 GOLSEEK-4: golcadomide-rituximab vs investigator's choice after at least one prior line (recruiting).", "src": [["EHA 2026 report (Blood Cancers Today)", "https://www.bloodcancerstoday.com/post/golcadomide-combo-produces-durable-responses-with-manageable-safety-in-relapsed-or-refractory-follicular-lymphoma"], ["NCT06911502", "https://clinicaltrials.gov/study/NCT06911502"]]}, {"n": "Surovatamig", "mod": "Bispecific antibody (new target in FL)", "tgt": "CD19 × CD3", "ev": "Phase 1, meeting data (not yet peer-reviewed)", "pub": "ASH 2025", "why": "A T-cell engager directed at CD19 rather than CD20, so it may remain active after anti-CD20 therapy and when CD20 is lost.", "data": "61 patients after ≥2 prior lines: complete response 86–100% across dose levels; estimated 12-month PFS 87.9%.", "safety": "Cytokine release syndrome 57%, all grade 1–2.", "next": "Phase 3 with rituximab vs chemoimmunotherapy in untreated FL (recruiting).", "src": [["ASH 2025 report (Lymphoma Hub)", "https://lymphomahub.com/medical-information/surovatamig-for-patients-with-rr-fl-3-year-follow-up-results"], ["NCT06549595", "https://clinicaltrials.gov/study/NCT06549595"]]}, {"n": "Loncastuximab tesirine with rituximab", "mod": "Antibody-drug conjugate", "tgt": "CD19 (pyrrolobenzodiazepine payload)", "ev": "Peer-reviewed phase 2 (single centre)", "pub": "Lancet Haematol 2025", "why": "A CD19-directed antibody-drug conjugate, approved for large B-cell lymphoma, tested as a time-limited outpatient option in FL, including POD24 disease.", "data": "39 patients after ≥1 line (51% with POD24): complete response at week 12 in 67%; median follow-up 18.2 months.", "safety": "Grade ≥3 lymphopenia 21% and neutropenia 13%; edema mostly grade 1–2; no treatment-related deaths.", "next": "Investigator-initiated phase 2 continuing; no phase 3 in FL identified.", "src": [["Alderuccio JP, Lancet Haematol 2025", "https://pubmed.ncbi.nlm.nih.gov/39662486/"], ["NCT04998669", "https://clinicaltrials.gov/study/NCT04998669"]]}], "grad": [], "disc": []};
 const TOX = {"BNLI watch and wait (Ardeshna)": "Chlorambucil side effects not formally recorded; 26 observation patients (17%) died without needing chemotherapy, mostly of non-lymphoma causes (full paper)", "SAKK 35/98 rituximab schedule (Ghielmini)": "No increase in AEs with the prolonged schedule; longer B-cell and IgM depletion", "UK rituximab vs watch and wait (Ardeshna)": "18 serious AEs in the rituximab arms (12 grade 3–4: infections, allergic reactions, neutropenia), all resolved", "ECOG E4402 RESORT (Kahl)": "Grade 3–4 toxicity infrequent in both arms", "FORT: 4 Gy vs 24 Gy (Hoskin)": "Acute grade 3–4 toxicity 3% (24 Gy) vs 1% (4 Gy); late toxicity 1% in each", "TROG 99.03 (MacManus)": "Radiotherapy: acute grade 3–4 toxicity 2%; R-CVP: late grade 3 vincristine neuropathy in 2 patients (full paper)", "R-CVP vs CVP (Marcus)": "Rituximab did not add significant toxicity to CVP", "GLSG R-CHOP vs CHOP (Hiddemann)": "Mainly myelosuppression; severe infections 5% vs 7%", "FOLL05 (Federico)": "Grade 3–4 neutropenia 64% (R-FM) vs 50% (R-CHOP) vs 28% (R-CVP); second cancers 14 with R-FM vs 5 and 4", "StiL NHL1 (Rummel)": "BR vs R-CHOP: less hematologic toxicity (30% vs 68%), infections (37% vs 50%), neuropathy (7% vs 29%) and no alopecia", "BRIGHT (Flinn)": "BR: more vomiting and drug hypersensitivity; R-CHOP/R-CVP: more neuropathy and alopecia", "GALLIUM (Marcus)": "Grade 3–5 AEs 74.6% vs 67.8%; serious AEs 46.1% vs 39.9%; fatal AEs 4.0% vs 3.4%; infusion reactions 59.3% vs 48.9%", "RELEVANCE (Morschhauser)": "R2 vs R-chemo: grade 3–4 neutropenia 32% vs 50%; grade 3–4 skin reactions 7% vs 1%", "Mosunetuzumab ± polatuzumab-obinutuzumab frontline (Lynch)": "CRS 64%, all grade 1", "FIT: 90Y-ibritumomab consolidation (Morschhauser)": "Mainly hematologic; grade 3–4 infections 8%", "PRIMA (Salles)": "Grade 3–4 AEs 24% vs 17%; grade 2–4 infections 39% vs 24%", "FLIPI (Solal-Céligny)": "Not applicable (prognostic index)", "FLIPI-2 (Federico)": "Not applicable (prognostic index)", "PET after induction (Trotman)": "Not applicable (imaging analysis)", "m7-FLIPI (Pastore)": "Not applicable (prognostic model)", "POD24 (Casulo)": "Not applicable (outcome analysis)"};
 const CORE = ["BNLI watch and wait (Ardeshna)", "UK rituximab vs watch and wait (Ardeshna)", "StiL NHL1 (Rummel)", "GALLIUM (Marcus)", "RELEVANCE (Morschhauser)", "PRIMA (Salles)", "FLIPI (Solal-Céligny)", "POD24 (Casulo)"];
 const WATCH = {"note": "Ongoing phase 3 trials selected from ClinicalTrials.gov (checked October 23, 2026). Status and primary completion dates are as registered; some trials may already have presented results at meetings.", "items": [{"n": "EPCORE FL-2", "d": "Epcoritamab-R2 vs chemoimmunotherapy in untreated FL", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2037-11", "ep": "CR at 30 months; PFS", "nct": "NCT06191744"}, {"n": "MorningLyte (LYSA)", "d": "Mosunetuzumab-lenalidomide vs anti-CD20 + chemotherapy in high-risk (FLIPI 2–5) untreated FL", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2028-11", "ep": "PFS", "nct": "NCT06284122"}, {"n": "OLYMPIA-1", "d": "Odronextamab vs rituximab-chemotherapy in untreated FL", "ph": "Phase 3", "st": "Recruiting", "pcd": "2028-02-07", "ep": "CR at 30 months", "nct": "NCT06091254"}, {"n": "OLYMPIA-2", "d": "Odronextamab + chemotherapy vs rituximab + chemotherapy in untreated FL", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2029-07-29", "ep": "CR at 30 months", "nct": "NCT06097364"}, {"n": "Surovatamig + rituximab", "d": "Surovatamig (CD19×CD3) + rituximab vs chemoimmunotherapy in untreated FL", "ph": "Phase 3", "st": "Recruiting", "pcd": "2031-11-26", "ep": "Dual primary (phase 3 part)", "nct": "NCT06549595"}]};
@@ -598,6 +640,46 @@ render();
     li.scrollIntoView({ behavior: "smooth", block: "start" });
     li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
   });
+})();
+
+(function setupTabs(){
+  const listEl = document.getElementById("flu-list");
+  const root = listEl.parentNode;
+  const tabs = root.querySelector(".tabs"), panel = root.querySelector(".newdrugs"), watch = root.querySelector(".watch"), controls = root.querySelector(".controls");
+  if (!tabs) return;
+  const L = (s) => '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + ' ↗</a>';
+  const nW = (typeof WATCH !== "undefined" && WATCH.items) ? WATCH.items.length : 0;
+  const nD = (typeof NEWD !== "undefined") ? NEWD.items.length : 0;
+  const cw = tabs.querySelector('[data-tab="watch"] .tcount'), cd = tabs.querySelector('[data-tab="newdrugs"] .tcount');
+  if (cw) cw.textContent = nW; if (cd) cd.textContent = nD;
+  let mod = "all";
+  function draw(){
+    if (!panel || !nD) return;
+    const mods = [...new Set(NEWD.items.map(d => d.mod))];
+    const items = NEWD.items.filter(d => mod === "all" || d.mod === mod);
+    const log = (arr, none) => '<ul class="nd-log">' + (arr.length ? arr.map(g => '<li><b>' + esc(g.n) + ':</b> ' + esc(g.txt) + ' ' + g.src.map(L).join(" · ") + '</li>').join("") : '<li>' + none + '</li>') + '</ul>';
+    panel.innerHTML = '<p class="nd-note">' + esc(NEWD.note) + (NEWD.scope ? ' ' + esc(NEWD.scope) : '') + ' Status checked ' + esc(NEWD.checked) + '.</p>' +
+      (mods.length > 1 ? '<div class="nd-mods">' + [["all","All"]].concat(mods.map(m => [m, m])).map(([k, l]) => '<button type="button" class="chip" data-mod="' + esc(k) + '" aria-pressed="' + (k === mod) + '">' + esc(l) + '</button>').join("") + '</div>' : '') +
+      items.map(d => '<div class="nd-item"><div class="nd-top"><h2 class="nd-name">' + esc(d.n) + '</h2><span class="nd-mod">' + esc(d.mod) + '</span><span class="nd-ev' + (/^Peer-reviewed/.test(d.ev) ? ' pr' : '') + '">' + esc(d.ev) + ' · ' + esc(d.pub) + '</span></div>' +
+        '<dl><dt>Target</dt><dd>' + esc(d.tgt) + '</dd><dt>Why it matters</dt><dd>' + esc(d.why) + '</dd><dt>Key data</dt><dd>' + esc(d.data) + '</dd><dt>Safety</dt><dd>' + esc(d.safety) + '</dd><dt>Next step</dt><dd>' + esc(d.next) + '</dd><dt>Sources</dt><dd class="nd-src">' + d.src.map(L).join(" · ") + '</dd></dl></div>').join("") +
+      '<h3>Moved on to phase 3 results</h3>' + log(NEWD.grad, "None so far.") +
+      '<h3>Discontinued</h3>' + log(NEWD.disc, "None so far.") +
+      '<p class="nd-rules">How this list is kept: agents with a new mechanism, target or modality (including phase 1 when the approach is new, and repurposed drugs with credible clinical data; no biosimilars and no preclinical-only agents). An agent moves to "Moved on" when phase 3 results are published, and to "Discontinued", with the reason and date, when development stops or a pivotal trial fails; discontinued entries are removed after 2 years. Checked at each scheduled update and after major meetings (ASH, ASCO, EHA, AACR, ESMO, IMS).</p>';
+    panel.querySelectorAll(".nd-mods .chip").forEach(b => b.addEventListener("click", () => { mod = b.getAttribute("data-mod"); draw(); }));
+  }
+  draw();
+  function show(which){
+    tabs.querySelectorAll("button[data-tab]").forEach(x => x.setAttribute("aria-selected", x.getAttribute("data-tab") === which));
+    if (controls) controls.style.display = which === "trials" ? "" : "none";
+    listEl.style.display = which === "trials" ? "" : "none";
+    if (watch) watch.style.display = (which === "newdrugs" || !nW) ? "none" : "";
+    if (panel) panel.hidden = which !== "newdrugs";
+  }
+  tabs.addEventListener("click", e => {
+    const b = e.target.closest("button[data-tab]"); if (!b) return;
+    show(b.getAttribute("data-tab"));
+  });
+  show("trials");
 })();
 (function setupShare(){
   const listEl = document.getElementById("flu-list");

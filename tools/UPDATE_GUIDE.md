@@ -60,7 +60,10 @@ All data is in the main `<script>`:
   listed in the summary; rewrites of a section (for example after a new practice-changing trial)
   wait for Andres's approval. While the block says "Pilot draft, pending review", to_weebly.py
   keeps it off the website.
-- New drugs to watch (`NEWD`, own tab; pilot on rrmm, built by tools/newdrugs/<key>_newdrugs.py): agents
+- Tabs: every page has Landmark trials | Trials to watch | New drugs to watch, plus a "Send a comment"
+  mailto link (tools/newdrugs/install_tabs.py installs them).
+- New drugs to watch (`NEWD`): one list per disease, shared by its topics (myeloma: smm, ndmm, rrmm;
+  follicular lymphoma: flu, flr; mcl). Keep the copies identical when editing. Agents
   with a new mechanism, target or modality not yet approved for the disease (examples Andres gave:
   RNA vaccines, new targets such as menin inhibitors, XPO1 inhibition, BTK degraders), including
   phase 1 when the approach is new and repurposed drugs with credible clinical data. No biosimilars,
@@ -70,7 +73,7 @@ All data is in the main `<script>`:
   and propose the trial for the landmark list; when development stops or a pivotal trial fails, move
   it to "Discontinued" with reason and date, and remove it after 2 years; review entries with no new
   data for 24 months. Refresh at each scheduled update and in an extra pass after ASH, ASCO, EHA,
-  AACR, ESMO and IMS. While wrapped in <!--pilot-start--> markers, to_weebly.py keeps it off the website.
+  AACR, ESMO and IMS.
 - `TOX`: name -> one line of key toxicity from the abstract (or full paper, marked "(full paper)").
 - `CORE`: names of core teaching trials. Andres chooses these: never add or remove names yourself.
   If a new trial looks core-worthy, suggest it in the summary.
