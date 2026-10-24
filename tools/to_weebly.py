@@ -84,6 +84,8 @@ GUARD = """
 .ltw .review .rv-refs { list-style: decimal !important; padding-left: 22px !important; }
 .ltw .rv-tl ol, .ltw .rv-tl li { list-style: none !important; background: none !important; }
 .ltw .review sup a { text-decoration: none !important; }
+.ltw .sitedisc { color: var(--muted) !important; }
+.ltw .review .rv-disc { color: var(--fg) !important; }
 .ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 """
 

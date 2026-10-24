@@ -99,9 +99,10 @@ def build(h):
     tl = ''.join(f'<li class="tl-{c}"><span class="tl-y">{y}</span><span class="tl-e">{html.escape(e)}</span></li>' for y, e, c in TIMELINE)
     words = len(re.sub(r'<[^>]+>', ' ', body).split())
     block = f'''  <details class="review" id="review">
-    <summary><span class="rv-kicker">Review</span><span class="rv-title">{TITLE}</span><span class="rv-open">Read the review</span></summary>
+    <summary><span class="rv-kicker">Perspective</span><span class="rv-title">{TITLE}</span><span class="rv-open">Read the perspective</span></summary>
     <div class="rv-body">
       <p class="rv-meta">Andres Ferber, MD, with the assistance of Claude (Anthropic) · Last updated {UPDATED} · Pilot draft, pending review · About {round(words, -2):,} words. Numbers are taken from the verified trial entries on this page; numbered references jump to each trial.</p>
+      <p class="rv-disc"><b>Personal perspective, for education only.</b> This text reflects the author's own reading and opinion of the published evidence. It is not a clinical practice guideline, medical advice or a substitute for clinical judgment. Patient care should follow the primary literature, current guidelines (such as NCCN, ESMO, IMWG and ASCO), approved prescribing information and the individual patient's circumstances.</p>
       <div class="rv-take"><h3>Key points</h3><ul>{take}</ul></div>
       <figure class="rv-tl"><figcaption>Timeline of key trials and US regulatory milestones</figcaption><ol>{tl}</ol></figure>
       {body}
@@ -130,6 +131,7 @@ CSS = '''
 .review .rv-body ul { margin: 0 0 12px; padding-left: 20px; }
 .review .rv-body li { margin: 4px 0; }
 .review .rv-meta { font-size: 12.5px; color: var(--muted); }
+.review .rv-disc { font-size: 13px; line-height: 1.5; color: var(--fg); background: var(--s-old-bg); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; margin: 8px 0 14px; }
 .review .rv-take { border-left: 3px solid var(--accent); background: var(--bg); padding: 4px 14px 6px; margin: 12px 0 16px; border-radius: 0 8px 8px 0; }
 .review .rv-take h3 { margin-top: 10px; }
 .review sup a { font: 600 11px var(--font-mono); text-decoration: none; color: var(--accent); padding: 0 1px; }
