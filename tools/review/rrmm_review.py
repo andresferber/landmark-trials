@@ -30,7 +30,7 @@ TIMELINE = [
     ('2023', 'Talquetamab (first GPRC5D agent) and elranatamab', 'imm'),
     ('2024', 'CAR-T moves to earlier relapse (KarMMa-3, CARTITUDE-4)', 'imm'),
     ('2025', 'Linvoseltamab; belantamab returns in combination (BVd, DREAMM-7)', 'oth'),
-    ('2026', 'Teclistamab-daratumumab at early relapse (MajesTEC-3); CANOVA misses its endpoint', 'imm'),
+    ('2026', 'Teclistamab-daratumumab at early relapse (MajesTEC-3); first phase 3 results for cereblon E3 ligase modulators (SUCCESSOR-2, EXCALIBER-RRMM); CANOVA misses its endpoint', 'imm'),
 ]
 
 BODY = """
@@ -72,7 +72,8 @@ BODY = """
 </ul>
 
 <h3>What is coming</h3>
-<p>Ongoing phase 3 trials (listed under Trials to watch at the end of this page) test cereblon E3 ligase modulators (mezigdomide and iberdomide), talquetamab combinations, elranatamab and linvoseltamab against standard regimens, and new CAR-T products, including anitocabtagene autoleucel and the GPRC5D-directed arlocabtagene autoleucel. Their results will decide whether immunotherapy becomes the default at first relapse.</p>
+<p>The next class is already reporting. Cereblon E3 ligase modulators (CELMoDs) degrade the same targets as lenalidomide and pomalidomide more potently and retain activity in refractory disease. Mezigdomide with carfilzomib-dexamethasone more than doubled median PFS (18.0 vs 8.3 months; HR 0.48) in a population that was largely refractory to both lenalidomide and an anti-CD38 antibody, at the cost of more neutropenia and infection [[SUCCESSOR-2 (Dimopoulos)]], and its US application is under review. Iberdomide with daratumumab-dexamethasone doubled the MRD-negative complete response rate compared with daratumumab-bortezomib-dexamethasone, with PFS still to come [[EXCALIBER-RRMM (Lonial)]]. CELMoDs could offer an oral, off-the-shelf alternative or partner to T-cell redirection.</p>
+<p>Ongoing phase 3 trials (listed under Trials to watch at the end of this page) test talquetamab combinations, elranatamab and linvoseltamab against standard regimens, and new CAR-T products, including anitocabtagene autoleucel and the GPRC5D-directed arlocabtagene autoleucel. Their results will decide whether immunotherapy becomes the default at first relapse.</p>
 """
 
 
@@ -101,7 +102,7 @@ def build(h):
     block = f'''  <details class="review" id="review">
     <summary><span class="rv-kicker">Perspective</span><span class="rv-title">{TITLE}</span><span class="rv-open">Read the perspective</span></summary>
     <div class="rv-body">
-      <p class="rv-meta">Andres Ferber, MD, with the assistance of Claude (Anthropic) · Last updated {UPDATED} · Pilot draft, pending review · About {round(words, -2):,} words. Numbers are taken from the verified trial entries on this page; numbered references jump to each trial.</p>
+      <p class="rv-meta">Andres Ferber, MD, with the assistance of Claude (Anthropic) · Last updated {UPDATED} · About {round(words, -2):,} words. Numbers are taken from the verified trial entries on this page; numbered references jump to each trial.</p>
       <p class="rv-disc"><b>Personal perspective, for education only.</b> This text reflects the author's own reading and opinion of the published evidence. It is not a clinical practice guideline, medical advice or a substitute for clinical judgment. Patient care should follow the primary literature, current guidelines (such as NCCN, ESMO, IMWG and ASCO), approved prescribing information and the individual patient's circumstances.</p>
       <div class="rv-take"><h3>Key points</h3><ul>{take}</ul></div>
       <figure class="rv-tl"><figcaption>Timeline of key trials and US regulatory milestones</figcaption><ol>{tl}</ol></figure>
