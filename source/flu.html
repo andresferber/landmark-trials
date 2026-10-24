@@ -124,6 +124,24 @@ footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch
   .watch { break-inside: avoid; }
   a { text-decoration: none; }
 }
+
+/* Added Oct 23, 2026: share link and abbreviations */
+.share { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font: 500 12px/1 var(--font-body); padding: 4px 6px; border-radius: 6px; }
+.share:hover { color: var(--accent); background: var(--rule); }
+.share:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.share .lbl { display: none; }
+.share.copied .lbl { display: inline; color: var(--s-young); }
+.gloss { margin-top: 24px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); padding: 0 18px; }
+.gloss summary { cursor: pointer; padding: 14px 0; font-weight: 600; }
+.gloss dl { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 4px 16px; margin: 0 0 16px; font-size: 14px; }
+.gloss dt { font: 500 13px var(--font-mono); color: var(--fg); text-transform: none; letter-spacing: normal; }
+.gloss dd { margin: 0; color: var(--muted); }
+@media print { .share { display: none !important; } .gloss { break-inside: avoid; } }
+
+/* Added Oct 23, 2026: report link */
+.report { color: var(--muted); font-size: 12px; }
+.report:hover { color: var(--accent); }
+@media print { .report { display: none !important; } }
 </style>
 
 <div class="wrap">
@@ -151,8 +169,11 @@ footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch
 
   <section class="watch" hidden aria-label="Trials to watch"></section>
 
+  <details class="gloss"><summary>Abbreviations (46)</summary><dl><dt>AEs</dt><dd>Adverse events</dd><dt>AML</dt><dd>Acute myeloid leukemia</dd><dt>BNLI</dt><dd>British National Lymphoma Investigation</dd><dt>BR</dt><dd>Bendamustine, rituximab</dd><dt>CHOP</dt><dd>Cyclophosphamide, doxorubicin, vincristine, prednisone</dd><dt>CR</dt><dd>Complete response</dd><dt>CRS</dt><dd>Cytokine release syndrome</dd><dt>CRu</dt><dd>Complete response, unconfirmed</dd><dt>CVP</dt><dd>Cyclophosphamide, vincristine, prednisone</dd><dt>ECOG</dt><dd>Eastern Cooperative Oncology Group (also the performance-status scale)</dd><dt>EFS</dt><dd>Event-free survival</dd><dt>EORTC</dt><dd>European Organisation for Research and Treatment of Cancer</dd><dt>ESMO</dt><dd>European Society for Medical Oncology</dd><dt>EZH2</dt><dd>Enhancer of zeste homolog 2 (tazemetostat target)</dd><dt>FDA</dt><dd>US Food and Drug Administration</dd><dt>FFS</dt><dd>Failure-free survival</dd><dt>FL</dt><dd>Follicular lymphoma</dd><dt>FLIPI</dt><dd>Follicular Lymphoma International Prognostic Index</dd><dt>FLIPI-2</dt><dd>Follicular Lymphoma International Prognostic Index 2</dd><dt>GELF</dt><dd>Groupe d&#x27;Etude des Lymphomes Folliculaires (treatment criteria)</dd><dt>GLSG</dt><dd>German Low-Grade Lymphoma Study Group</dd><dt>HR</dt><dd>Hazard ratio</dd><dt>IPI</dt><dd>International Prognostic Index</dd><dt>LDH</dt><dd>Lactate dehydrogenase</dd><dt>MCL</dt><dd>Mantle cell lymphoma</dd><dt>MDS</dt><dd>Myelodysplastic syndrome</dd><dt>NCCN</dt><dd>National Comprehensive Cancer Network</dd><dt>NCI</dt><dd>US National Cancer Institute</dd><dt>NHL</dt><dd>Non-Hodgkin lymphoma</dd><dt>ORR</dt><dd>Overall response rate</dd><dt>OS</dt><dd>Overall survival</dd><dt>PET</dt><dd>Positron emission tomography</dd><dt>PET-CT</dt><dd>PET combined with computed tomography</dd><dt>PFS</dt><dd>Progression-free survival</dd><dt>POD24</dt><dd>Progression of disease within 24 months of first-line chemoimmunotherapy</dd><dt>PR</dt><dd>Partial response</dd><dt>R-CHOP</dt><dd>Rituximab, cyclophosphamide, doxorubicin, vincristine, prednisone</dd><dt>R-CVP</dt><dd>Rituximab, cyclophosphamide, vincristine, prednisone</dd><dt>R-FM</dt><dd>Rituximab, fludarabine, mitoxantrone</dd><dt>R2</dt><dd>Lenalidomide (Revlimid), rituximab</dd><dt>RR</dt><dd>Relative risk</dd><dt>SAKK</dt><dd>Swiss Group for Clinical Cancer Research</dd><dt>StiL</dt><dd>Study Group Indolent Lymphomas (Germany)</dd><dt>TROG</dt><dd>Trans-Tasman Radiation Oncology Group</dd><dt>TTF</dt><dd>Time to treatment failure</dd><dt>TTP</dt><dd>Time to progression</dd></dl></details>
+
   <footer>
-    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). "Key toxicity" summarizes the main adverse events reported in the abstract (or the full paper where marked); it is not a complete safety profile. "★ Core" marks trials selected as essential for teaching. Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Regulatory dates marked "verify" are from general knowledge and were not rechecked for this page. Guideline placements marked "verify" need checking against the current NCCN B-cell lymphomas document. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). "Key toxicity" summarizes the main adverse events reported in the abstract (or the full paper where marked); it is not a complete safety profile. "★ Core" marks trials selected as essential for teaching. Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Free at publisher" links open a publisher page that is free to read; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed; "Free copy (repository)" links open a legal free copy in a university repository (sometimes the authors' manuscript). Free copies were found with Unpaywall (October 23, 2026). Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Regulatory dates and withdrawals were checked against FDA, EMA and sponsor announcements and published reports (October 23, 2026). Guideline placements marked "NCCN not checked" could not be confirmed, because the NCCN guidelines require a login. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    <p class="reportall">Spotted an error or a missing trial? Use "Report an error" on any trial, or email <a href="mailto:andresferber@hotmail.com?subject=Landmark%20trials">andresferber@hotmail.com</a>.</p>
   </footer>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -176,14 +197,14 @@ const T = [
  b:"Long-term report of the British trial that, with NCI and GELF data, tested early chemotherapy in asymptomatic disease.",
  i:"Cemented watch and wait as standard for asymptomatic, low tumor burden FL.",
  q:"Does rituximab, unlike chlorambucil, justify early treatment?",
- cm:[],reg:"No regulatory action.",gl:"Observation remains an NCCN and ESMO option for asymptomatic low tumor burden FL (verify current wording).",acc:"—"},
+ cm:[],reg:"No regulatory action.",gl:"Observation remains an NCCN and ESMO option for asymptomatic low tumor burden FL (NCCN not checked).",acc:"—"},
 {y:2004,n:"SAKK 35/98 rituximab schedule (Ghielmini)",s:"lt",ph:"Phase 3",d:"Rituximab ×4 weekly, then responders/stable randomized to no further therapy vs 4 doses every 2 months (new and relapsed FL)",ep:"EFS",
  r:"Median EFS 12 vs 23 mo with prolonged rituximab; 19 vs 36 mo in chemotherapy-naive patients",N:"202",hr:"0.61 (EFS; full paper)",fu:"35 mo",
  c:"Blood 2004;103:4416",p:14976046,
  b:"Built on single-agent rituximab activity in FL.",
  i:"First randomized evidence that extended rituximab prolongs remission; foundation for rituximab-only and maintenance strategies.",
  q:"Is maintenance better than retreatment at progression (RESORT)? Is rituximab alone enough upfront?",
- cm:[],reg:"No regulatory action.",gl:"Rituximab monotherapy listed for low tumor burden FL (verify).",acc:"—"},
+ cm:[],reg:"No regulatory action.",gl:"Rituximab monotherapy listed for low tumor burden FL (NCCN not checked).",acc:"—"},
 {y:2014,n:"UK rituximab vs watch and wait (Ardeshna)",s:"lt",ph:"Phase 3",d:"Watch and wait vs rituximab induction ± maintenance in asymptomatic advanced-stage FL",ep:"Time to new treatment",
  r:"No new treatment at 3 yr: 46% watch and wait vs 88% rituximab maintenance (HR 0.21) and 78% rituximab induction alone",N:"379 (+84 induction-only)",hr:"0.21",fu:"46 mo for the two-arm comparison (full paper)",
  c:"Lancet Oncol 2014;15:424",p:24602760,
@@ -191,7 +212,7 @@ const T = [
  i:"Made early single-agent rituximab a reasonable alternative to observation, though without proven survival gain.",
  q:"Does delaying chemotherapy matter for survival or quality of life? Is the anxiety of watching ('watch and worry') a valid reason to treat?",
  cm:[[24602759,"Ansell SM, Lancet Oncol 2014","Follicular lymphoma: watch and wait is watch and worry"]],
- reg:"No regulatory action.",gl:"Rituximab monotherapy listed as an option for low tumor burden FL (verify).",acc:"—"},
+ reg:"No regulatory action.",gl:"Rituximab monotherapy listed as an option for low tumor burden FL (NCCN not checked).",acc:"—"},
 {y:2014,n:"ECOG E4402 RESORT (Kahl)",s:"lt",ph:"Phase 3",d:"Rituximab maintenance vs rituximab retreatment at progression in low tumor burden FL",ep:"Time to treatment failure",
  r:"Median TTF 4.3 (maintenance) vs 3.9 yr (retreatment); median rituximab doses 18 vs 4; 3-yr freedom from cytotoxic therapy 95% vs 84%",N:"289",hr:"not reported (P=.54)",fu:"4.5 yr",
  c:"J Clin Oncol 2014;32:3096",p:25154829,
@@ -199,7 +220,7 @@ const T = [
  i:"Supported rituximab retreatment rather than maintenance in low tumor burden FL.",
  q:"Which patients need any treatment at all?",
  cm:[[25154826,"Friedberg JW, J Clin Oncol 2014","End of rituximab maintenance for low-tumor burden follicular lymphoma"]],
- reg:"No regulatory action.",gl:"Retreatment strategy accepted (verify).",acc:"—"},
+ reg:"No regulatory action.",gl:"Retreatment strategy accepted (NCCN not checked).",acc:"—"},
 {y:2014,n:"FORT: 4 Gy vs 24 Gy (Hoskin)",s:"lt",ph:"Phase 3",d:"Radiotherapy dose in indolent lymphoma (mostly FL), randomized by site",ep:"Local progression (non-inferiority)",
  r:"4 Gy not non-inferior: 70 vs 21 local progressions",N:"614 sites",hr:"3.42 (4 Gy vs 24 Gy)",fu:"26 mo",
  c:"Lancet Oncol 2014;15:457",p:24572077,
@@ -215,7 +236,7 @@ const T = [
  i:"Supports adding rituximab-based therapy to radiotherapy for some early-stage patients; no OS difference reported.",
  q:"Is the PFS gain worth the toxicity in a potentially curable setting? Does PET staging change the picture?",
  cm:[[30153098,"Yang JC, J Clin Oncol 2018","Early-stage follicular lymphoma: what is the preferred treatment strategy?"],[31254657,"Campbell BA, Int J Radiat Oncol Biol Phys 2019","Reaffirming the role of radiation therapy…"]],
- reg:"—",gl:"Radiotherapy remains standard for stage I–II FL; systemic therapy may be added (verify).",acc:"—"},
+ reg:"—",gl:"Radiotherapy remains standard for stage I–II FL; systemic therapy may be added (NCCN not checked).",acc:"—"},
 // ---------- Induction ----------
 {y:2005,n:"R-CVP vs CVP (Marcus)",s:"ind",ph:"Phase 3",d:"CVP ± rituximab, 8 cycles, untreated stage III–IV FL",ep:"Time to treatment failure",
  r:"ORR 81% vs 57%, CR 41% vs 10%; median TTP 32 vs 15 mo; median TTF 27 vs 7 mo",N:"321",hr:"not reported in paper (TTF P<.0001, log-rank); full paper",fu:"30 mo",
@@ -223,7 +244,7 @@ const T = [
  b:"First phase 3 test of adding rituximab to frontline chemotherapy.",
  i:"Established chemoimmunotherapy as standard for advanced FL.",
  q:"Does rituximab improve survival? Which chemotherapy backbone is best?",
- cm:[],reg:"FDA approved rituximab with CVP for untreated FL (2006; verify).",gl:"R-CVP listed as an induction option.",acc:"On-label."},
+ cm:[],reg:"FDA approved rituximab with CVP for previously untreated FL (2006).",gl:"R-CVP listed as an induction option.",acc:"On-label."},
 {y:2005,n:"GLSG R-CHOP vs CHOP (Hiddemann)",s:"ind",ph:"Phase 3",d:"CHOP ± rituximab in untreated advanced FL",ep:"Time to treatment failure",
  r:"60% lower risk of treatment failure; ORR 96% vs 90%; OS improved (6 vs 17 deaths at 3 yr)",N:"428",hr:"RR about 0.40 for treatment failure (60% reduction; full paper)",fu:"18 mo median observation (full paper)",
  c:"Blood 2005;106:3725",p:16123223,
@@ -246,7 +267,7 @@ const T = [
  i:"BR became the most widely used frontline regimen for FL.",
  q:"Long-term infection and second-cancer risk with bendamustine; is maintenance after BR helpful?",
  cm:[[23433738,"Jacobson CA, Lancet 2013","First-line treatment of indolent lymphoma: axing CHOP?"]],
- reg:"Bendamustine labeled for rituximab-refractory indolent NHL; frontline use guideline-based (verify).",gl:"BR listed as a preferred induction (verify).",acc:"Compendium-listed."},
+ reg:"Bendamustine is FDA-labeled for indolent B-cell NHL progressing during or within 6 months of rituximab (2008); frontline BR use rests on guidelines, not the label.",gl:"BR listed as a preferred induction (NCCN not checked).",acc:"Compendium-listed."},
 {y:2014,n:"BRIGHT (Flinn)",s:"ind",ph:"Phase 3",d:"BR vs R-CHOP or R-CVP in untreated indolent NHL or MCL",ep:"CR rate (non-inferiority)",
  r:"CR 31% vs 25% (non-inferior); 5-yr PFS 65.5% vs 55.8%; no OS difference",N:"447",hr:"0.61 (5-yr PFS)",fu:"≥5 yr",
  c:"Blood 2014;123:2944",p:24591201,extra:["5-yr update, J Clin Oncol 2019",30811293],
@@ -259,18 +280,18 @@ const T = [
  r:"3-yr PFS 80.0% vs 73.3%; response rates similar",N:"1,202",hr:"0.66",fu:"34.5 mo",
  c:"N Engl J Med 2017;377:1331",p:28976863,
  b:"Tested a glycoengineered anti-CD20 antibody against rituximab in the PRIMA framework.",
- i:"Led to obinutuzumab approval for untreated FL (2017; verify); used selectively due to toxicity, especially with bendamustine.",
+ i:"Led to obinutuzumab approval for untreated FL (FDA, November 16, 2017); used selectively due to toxicity, especially with bendamustine.",
  q:"No OS difference; excess infections and deaths with bendamustine-obinutuzumab; which patients benefit?",
  cm:[[28976852,"Armitage JO, N Engl J Med 2017","Which anti-CD20 antibody is better in follicular lymphoma?"]],
- reg:"FDA approval of obinutuzumab for untreated FL (2017; verify).",gl:"Obinutuzumab-chemotherapy listed as an option (verify preferred status).",acc:"On-label."},
+ reg:"FDA approval of obinutuzumab with chemotherapy for untreated advanced FL (November 16, 2017).",gl:"Obinutuzumab-chemotherapy listed as an option (NCCN not checked).",acc:"On-label."},
 {y:2018,n:"RELEVANCE (Morschhauser)",s:"ind",ph:"Phase 3",d:"Rituximab-lenalidomide (R2) vs rituximab-chemotherapy, then rituximab maintenance",ep:"CR/CRu at 120 wk; PFS",
- r:"CR/CRu 48% vs 53%; 3-yr PFS 77% vs 78%. 10-yr final: median PFS 110.6 vs 102.8 mo; 10-yr PFS 46.4% vs 46.6%",N:"1,030",hr:"not reported in abstract",fu:"120 mo (final)",
+ r:"CR/CRu 48% vs 53%; 3-yr PFS 77% vs 78%. 10-yr final: median PFS 110.6 vs 102.8 mo; 10-yr PFS 46.4% vs 46.6%",N:"1,030",hr:"1.10 (PFS, independent review; full paper)",fu:"120 mo (final)",
  c:"N Engl J Med 2018;379:934",p:30184451,extra:["10-yr final analysis, Blood 2026",41915772],
  b:"First phase 3 chemotherapy-free alternative to chemoimmunotherapy.",
  i:"Showed R2 is a chemo-free option with similar long-term outcomes; not superior.",
  q:"Is R2 preferable for patients wanting to avoid chemotherapy? Role of bispecific-based frontline regimens?",
  cm:[[42313442,"Falconer J, Blood 2026","The RELEVANCE of long-term follow-up in follicular lymphoma"]],
- reg:"No frontline label for R2 (verify).",gl:"R2 listed as a frontline option (verify).",acc:"Frontline use off-label; compendium-dependent."},
+ reg:"No frontline label for R2; the lenalidomide FL label (2019) covers previously treated disease only.",gl:"R2 listed as a frontline option (NCCN not checked).",acc:"Frontline use off-label; compendium-dependent."},
 {y:2026,n:"Mosunetuzumab ± polatuzumab-obinutuzumab frontline (Lynch)",s:"ind",ph:"Phase 2",d:"Mosunetuzumab with response-adapted polatuzumab vedotin and obinutuzumab in untreated FL",ep:"Response",
  r:"End-of-treatment ORR 100%, CR 86% (71% with mosunetuzumab alone); 2-yr PFS 89%; all CRS grade 1",N:"42",hr:"n/a (single arm)",fu:"34 mo",
  c:"J Clin Oncol 2026;44:2625",p:42600120,
@@ -283,10 +304,10 @@ const T = [
  r:"Median PFS 36.5 vs 13.3 mo; benefit in PR and CR",N:"414",hr:"0.465",fu:"3.5 yr",
  c:"J Clin Oncol 2008;26:5156",p:18854568,
  b:"Tested single-dose radioimmunotherapy after induction.",
- i:"Led to consolidation approval (verify), but use declined with rituximab-based induction and maintenance.",
+ i:"Led to consolidation approval (FDA, September 2009), but use declined with rituximab-based induction and maintenance.",
  q:"Benefit after rituximab-containing induction? Long-term secondary MDS/AML?",
  cm:[[18854559,"Press OW, J Clin Oncol 2008","Evidence mounts for the efficacy of radioimmunotherapy for B-cell lymphomas"]],
- reg:"FDA approval of ibritumomab consolidation (2009; verify).",gl:"Rarely used now.",acc:"—"},
+ reg:"FDA approval of ibritumomab consolidation after response to first-line chemotherapy (September 2009).",gl:"Rarely used now.",acc:"—"},
 {y:2011,n:"PRIMA (Salles)",s:"mnt",ph:"Phase 3",d:"Rituximab maintenance (every 8 wk for 2 yr) vs observation after chemoimmunotherapy in high tumor burden FL",ep:"PFS",
  r:"PFS 74.9% vs 57.6% at 3 yr. Long-term: median PFS 10.5 vs 4.1 yr; no OS difference (10-yr OS ~80% both)",N:"1,018",hr:"0.55; 0.61 (long-term)",fu:"36 mo; >9 yr (long-term)",
  c:"Lancet 2011;377:42",p:21176949,extra:["Long-term follow-up, J Clin Oncol 2019",31339826],
@@ -294,7 +315,7 @@ const T = [
  i:"Made rituximab maintenance a standard option after induction; no survival benefit, so now often individualized.",
  q:"Is maintenance needed after BR or in PET-negative patients? Is the infection and cost burden justified without OS benefit?",
  cm:[[21176951,"Friedberg JW, Lancet 2011","Rituximab maintenance in follicular lymphoma: PRIMA"],[29596546,"Hilal T, JAMA Oncol 2018","Rituximab maintenance after first-line induction…"]],
- reg:"FDA approval of rituximab maintenance (2011; verify).",gl:"Rituximab maintenance listed as optional after induction (verify).",acc:"On-label."},
+ reg:"FDA approval of rituximab maintenance after response to first-line induction (January 2011).",gl:"Rituximab maintenance listed as optional after induction (NCCN not checked).",acc:"On-label."},
 // ---------- Risk & response ----------
 {y:2004,n:"FLIPI (Solal-Céligny)",s:"risk",ph:"Prognostic model",d:"Characteristics of 4,167 patients diagnosed 1985–1992; validated in 919",ep:"OS",
  r:"Five factors (age >60, stage III–IV, Hb <12, >4 nodal areas, high LDH) define low (36%), intermediate (37%, HR 2.3) and poor (27%, HR 4.3) risk",N:"4,167",hr:"2.3 (intermediate); 4.3 (poor)",fu:"n/a",
@@ -317,7 +338,7 @@ const T = [
  b:"Applied the Deauville scale to FL response assessment.",
  i:"Made end-of-induction PET the standard response assessment and a strong prognostic marker.",
  q:"Can PET guide maintenance or intensification? Combined with ctDNA?",
- cm:[],reg:"—",gl:"End-of-treatment PET recommended (verify).",acc:"—"},
+ cm:[],reg:"—",gl:"End-of-treatment PET recommended (NCCN not checked).",acc:"—"},
 {y:2015,n:"m7-FLIPI (Pastore)",s:"risk",ph:"Clinicogenetic model",d:"Mutations in seven genes (EZH2, ARID1A, MEF2B, EP300, FOXO1, CREBBP, CARD11) plus FLIPI and ECOG",ep:"Failure-free survival",
  r:"High-risk group 28%: 5-yr FFS 38% vs 77%",N:"151 (training)",hr:"4.14 (bootstrap-corrected 2.02)",fu:"7.7 yr training, 6.7 yr validation cohort (full paper)",
  c:"Lancet Oncol 2015;16:1111",p:26256760,
@@ -325,7 +346,7 @@ const T = [
  i:"Showed genetics refine risk; also highlighted EZH2 (later targeted by tazemetostat).",
  q:"Validation across regimens; practical use in routine care?",
  cm:[[26256759,"López-Guillermo A, Lancet Oncol 2015","A novel clinicogenetic prognostic score for follicular lymphoma"]],
- reg:"—",gl:"Research tool; not routine (verify).",acc:"—"},
+ reg:"—",gl:"Research tool; not routine (NCCN not checked).",acc:"—"},
 {y:2015,n:"POD24 (Casulo)",s:"risk",ph:"Cohort (National LymphoCare Study)",d:"Progression within 2 years of first-line R-CHOP",ep:"OS",
  r:"Early progression in 19%: 5-yr OS 50% vs 90%; FLIPI-adjusted HR 6.44",N:"588",hr:"6.44",fu:"not reported in abstract",
  c:"J Clin Oncol 2015;33:2516",p:26124482,
@@ -339,7 +360,10 @@ const T = [
 // Shown as links next to the source and used by the monthly update to find later follow-up publications.
 const REG = {"UK rituximab vs watch and wait (Ardeshna)": ["NCT00112931"],"ECOG E4402 RESORT (Kahl)": ["NCT00075946"],"FORT: 4 Gy vs 24 Gy (Hoskin)": ["NCT00310167"],"TROG 99.03 (MacManus)": ["NCT00115700"],"FOLL05 (Federico)": ["NCT00774826"],"StiL NHL1 (Rummel)": ["NCT00991211"],"BRIGHT (Flinn)": ["NCT00877006"],"GALLIUM (Marcus)": ["NCT01332968"],"RELEVANCE (Morschhauser)": ["NCT01476787","NCT01650701"],"Mosunetuzumab ± polatuzumab-obinutuzumab frontline (Lynch)": ["NCT05169658"],"PRIMA (Salles)": ["NCT00140582"]};
 // Full-text links: free full text in PubMed Central where available, otherwise the publisher's page via DOI (from PubMed, Oct 22, 2026).
-const FT = {"BNLI watch and wait (Ardeshna)": ["doi", "10.1016/s0140-6736(03)14110-4"], "SAKK 35/98 rituximab schedule (Ghielmini)": ["doi", "10.1182/blood-2003-10-3411"], "UK rituximab vs watch and wait (Ardeshna)": ["doi", "10.1016/S1470-2045(14)70027-0"], "ECOG E4402 RESORT (Kahl)": ["pmc", "PMC4171355"], "FORT: 4 Gy vs 24 Gy (Hoskin)": ["doi", "10.1016/S1470-2045(14)70036-1"], "TROG 99.03 (MacManus)": ["doi", "10.1200/JCO.2018.77.9892"], "R-CVP vs CVP (Marcus)": ["doi", "10.1182/blood-2004-08-3175"], "GLSG R-CHOP vs CHOP (Hiddemann)": ["doi", "10.1182/blood-2005-01-0016"], "FOLL05 (Federico)": ["doi", "10.1200/JCO.2012.45.0866"], "StiL NHL1 (Rummel)": ["doi", "10.1016/S0140-6736(12)61763-2"], "BRIGHT (Flinn)": ["pmc", "PMC4260975"], "GALLIUM (Marcus)": ["doi", "10.1056/NEJMoa1614598"], "RELEVANCE (Morschhauser)": ["pmc", "PMC11003525"], "Mosunetuzumab ± polatuzumab-obinutuzumab frontline (Lynch)": ["doi", "10.1200/JCO-25-02906"], "FIT: 90Y-ibritumomab consolidation (Morschhauser)": ["doi", "10.1200/JCO.2008.17.2015"], "PRIMA (Salles)": ["doi", "10.1016/S0140-6736(10)62175-7"], "FLIPI (Solal-Céligny)": ["doi", "10.1182/blood-2003-12-4434"], "FLIPI-2 (Federico)": ["doi", "10.1200/JCO.2008.21.3991"], "PET after induction (Trotman)": ["doi", "10.1016/S2352-3026(14)70008-0"], "m7-FLIPI (Pastore)": ["doi", "10.1016/S1470-2045(15)00169-2"], "POD24 (Casulo)": ["pmc", "PMC4879714"]};
+const FT = {"BNLI watch and wait (Ardeshna)": ["doi", "10.1016/s0140-6736(03)14110-4"], "SAKK 35/98 rituximab schedule (Ghielmini)": ["doi", "10.1182/blood-2003-10-3411"], "UK rituximab vs watch and wait (Ardeshna)": ["doi", "10.1016/S1470-2045(14)70027-0"], "ECOG E4402 RESORT (Kahl)": ["pmc", "PMC4171355"], "FORT: 4 Gy vs 24 Gy (Hoskin)": ["doi", "10.1016/S1470-2045(14)70036-1"], "TROG 99.03 (MacManus)": ["doi", "10.1200/JCO.2018.77.9892"], "R-CVP vs CVP (Marcus)": ["doi", "10.1182/blood-2004-08-3175"], "GLSG R-CHOP vs CHOP (Hiddemann)": ["doi", "10.1182/blood-2005-01-0016", "free"], "FOLL05 (Federico)": ["doi", "10.1200/JCO.2012.45.0866", "free"], "StiL NHL1 (Rummel)": ["doi", "10.1016/S0140-6736(12)61763-2"], "BRIGHT (Flinn)": ["pmc", "PMC4260975"], "GALLIUM (Marcus)": ["doi", "10.1056/NEJMoa1614598", "free"], "RELEVANCE (Morschhauser)": ["pmc", "PMC11003525"], "Mosunetuzumab ± polatuzumab-obinutuzumab frontline (Lynch)": ["doi", "10.1200/JCO-25-02906"], "FIT: 90Y-ibritumomab consolidation (Morschhauser)": ["doi", "10.1200/JCO.2008.17.2015"], "PRIMA (Salles)": ["doi", "10.1016/S0140-6736(10)62175-7"], "FLIPI (Solal-Céligny)": ["doi", "10.1182/blood-2003-12-4434", "free"], "FLIPI-2 (Federico)": ["doi", "10.1200/JCO.2008.21.3991"], "PET after induction (Trotman)": ["doi", "10.1016/S2352-3026(14)70008-0", "repo", "http://hdl.handle.net/11380/1079064"], "m7-FLIPI (Pastore)": ["doi", "10.1016/S1470-2045(15)00169-2"], "POD24 (Casulo)": ["pmc", "PMC4879714"]};
+const FTLABEL = x => x[0] === 'pmc' ? 'Free full text' : (x[2] === 'free' ? 'Free at publisher' : 'Publisher');
+const FTTITLE = x => x[0] === 'pmc' ? 'Free full text in PubMed Central' : (x[2] === 'free' ? 'Free to read on the publisher site (checked with Unpaywall)' : 'Publisher page; full text may need a subscription or institutional access');
+const REPORT = t => 'mailto:andresferber@hotmail.com?subject=' + encodeURIComponent('Landmark trials (' + PAGETITLE + '): ' + t.n);
 const FTURL = x => x[0] === 'pmc' ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + x[1] + '/' : 'https://doi.org/' + x[1];
 const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
 T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, reg:t.reg, gl:t.gl, acc:t.acc}; });
@@ -350,7 +374,9 @@ T.forEach(t => { t.trn = REG[t.n] || []; t.ft = FT[t.n] || null; });
 // WATCH: ongoing trials to watch, from ClinicalTrials.gov.
 const TOX = {"BNLI watch and wait (Ardeshna)": "Not reported in abstract", "SAKK 35/98 rituximab schedule (Ghielmini)": "No increase in AEs with the prolonged schedule; longer B-cell and IgM depletion", "UK rituximab vs watch and wait (Ardeshna)": "18 serious AEs in the rituximab arms (12 grade 3–4: infections, allergic reactions, neutropenia), all resolved", "ECOG E4402 RESORT (Kahl)": "Grade 3–4 toxicity infrequent in both arms", "FORT: 4 Gy vs 24 Gy (Hoskin)": "Acute grade 3–4 toxicity 3% (24 Gy) vs 1% (4 Gy); late toxicity 1% in each", "TROG 99.03 (MacManus)": "Not reported in abstract", "R-CVP vs CVP (Marcus)": "Rituximab did not add significant toxicity to CVP", "GLSG R-CHOP vs CHOP (Hiddemann)": "Mainly myelosuppression; severe infections 5% vs 7%", "FOLL05 (Federico)": "Grade 3–4 neutropenia 64% (R-FM) vs 50% (R-CHOP) vs 28% (R-CVP); second cancers 14 with R-FM vs 5 and 4", "StiL NHL1 (Rummel)": "BR vs R-CHOP: less hematologic toxicity (30% vs 68%), infections (37% vs 50%), neuropathy (7% vs 29%) and no alopecia", "BRIGHT (Flinn)": "BR: more vomiting and drug hypersensitivity; R-CHOP/R-CVP: more neuropathy and alopecia", "GALLIUM (Marcus)": "Grade 3–5 AEs 74.6% vs 67.8%; serious AEs 46.1% vs 39.9%; fatal AEs 4.0% vs 3.4%; infusion reactions 59.3% vs 48.9%", "RELEVANCE (Morschhauser)": "R2 vs R-chemo: grade 3–4 neutropenia 32% vs 50%; grade 3–4 skin reactions 7% vs 1%", "Mosunetuzumab ± polatuzumab-obinutuzumab frontline (Lynch)": "CRS 64%, all grade 1", "FIT: 90Y-ibritumomab consolidation (Morschhauser)": "Mainly hematologic; grade 3–4 infections 8%", "PRIMA (Salles)": "Grade 3–4 AEs 24% vs 17%; grade 2–4 infections 39% vs 24%", "FLIPI (Solal-Céligny)": "Not applicable (prognostic index)", "FLIPI-2 (Federico)": "Not applicable (prognostic index)", "PET after induction (Trotman)": "Not applicable (imaging analysis)", "m7-FLIPI (Pastore)": "Not applicable (prognostic model)", "POD24 (Casulo)": "Not applicable (outcome analysis)"};
 const CORE = ["BNLI watch and wait (Ardeshna)", "UK rituximab vs watch and wait (Ardeshna)", "StiL NHL1 (Rummel)", "GALLIUM (Marcus)", "RELEVANCE (Morschhauser)", "PRIMA (Salles)", "FLIPI (Solal-Céligny)", "POD24 (Casulo)"];
-const WATCH = {"note": "", "items": []};
+const WATCH = {"note": "Ongoing phase 3 trials selected from ClinicalTrials.gov (checked October 23, 2026). Status and primary completion dates are as registered; some trials may already have presented results at meetings.", "items": [{"n": "EPCORE FL-2", "d": "Epcoritamab-R2 vs chemoimmunotherapy in untreated FL", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2037-11", "ep": "CR at 30 months; PFS", "nct": "NCT06191744"}, {"n": "MorningLyte (LYSA)", "d": "Mosunetuzumab-lenalidomide vs anti-CD20 + chemotherapy in high-risk (FLIPI 2–5) untreated FL", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2028-11", "ep": "PFS", "nct": "NCT06284122"}, {"n": "OLYMPIA-1", "d": "Odronextamab vs rituximab-chemotherapy in untreated FL", "ph": "Phase 3", "st": "Recruiting", "pcd": "2028-02-07", "ep": "CR at 30 months", "nct": "NCT06091254"}, {"n": "OLYMPIA-2", "d": "Odronextamab + chemotherapy vs rituximab + chemotherapy in untreated FL", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2029-07-29", "ep": "CR at 30 months", "nct": "NCT06097364"}, {"n": "Surovatamig + rituximab (AZD0486)", "d": "Surovatamig (AZD0486, CD19xCD3) + rituximab vs chemoimmunotherapy in untreated FL", "ph": "Phase 3", "st": "Recruiting", "pcd": "2031-11-26", "ep": "Dual primary (phase 3 part)", "nct": "NCT06549595"}]};
+const PAGEKEY = "flu";
+const PAGETITLE = "Untreated follicular lymphoma";
 const SLUG = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 T.forEach(t => { t.tx = TOX[t.n] || "Not reported in abstract"; t.core = CORE.includes(t.n); t.slug = SLUG(t.n);
   t.full = [t.r, t.N, t.hr, t.fu, t.tx].some(x => /full paper/.test(String(x || ""))); });
@@ -398,7 +424,7 @@ function render(){
     <li class="trial" data-trial="${t.slug}">
       <div class="yr">${t.y}</div>
       <div class="body">
-        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span>${t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : ''}</div>
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span>${t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : ''}<button type="button" class="share" data-slug="${t.slug}" title="Copy a link to this trial" aria-label="Copy a link to ${esc(t.n)}"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M8.5 11.5a3 3 0 0 0 4.2 0l2.6-2.6a3 3 0 0 0-4.2-4.2l-1 1M11.5 8.5a3 3 0 0 0-4.2 0l-2.6 2.6a3 3 0 0 0 4.2 4.2l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="lbl">Link copied</span></button></div>
         <p class="design">${esc(t.d)}</p>
         <div class="stats">
           <span><b>N</b>${esc(t.N)}</span>
@@ -413,7 +439,7 @@ function render(){
           <dt>Changed</dt><dd>${esc(t.i)}</dd>
           <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
           <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
-          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${t.ft[0] === 'pmc' ? 'Free full text in PubMed Central' : 'Publisher page; full text may need a subscription or institutional access'}">${t.ft[0] === 'pmc' ? 'Free full text' : 'Publisher'} ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${FTTITLE(t.ft)}">${FTLABEL(t.ft)} ↗</a>` : ''}${t.ft && t.ft[2] === 'repo' ? ` · <a class="ft" href="${esc(t.ft[3])}" target="_blank" rel="noopener" title="Free legal copy in a university repository, found through Unpaywall; it may be the authors' manuscript rather than the final journal version">Free copy (repository) ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')} · <a class="report" href="${esc(REPORT(t))}" title="Email a correction for this trial">Report an error</a></dd>
         </dl>
       </div>
     </li>`).join("");
@@ -431,6 +457,21 @@ render();
     [w.ph, w.st, w.pcd ? "primary completion " + w.pcd : "", w.ep ? "primary endpoint: " + w.ep : ""].filter(Boolean).map(esc).join(" · ") +
     (w.nct ? ' · <a href="https://clinicaltrials.gov/study/' + esc(w.nct) + '" target="_blank" rel="noopener">' + esc(w.nct) + ' ↗</a>' : "") +
     '</span>' + (w.note ? '<span class="wd">' + esc(w.note) + '</span>' : '') + '</li>').join("") + '</ul>';
+})();
+
+(function setupShare(){
+  const listEl = document.getElementById("list");
+  listEl.addEventListener("click", e => {
+    const b = e.target.closest(".share");
+    if (!b) return;
+    const slug = b.getAttribute("data-slug");
+    const inSite = !!listEl.closest(".ltw");
+    const base = inSite ? location.href.split("#")[0] : "https://andresferber.github.io/landmark-trials/";
+    const url = base + "#t-" + PAGEKEY + "-" + slug;
+    const done = () => { b.classList.add("copied"); setTimeout(() => b.classList.remove("copied"), 1800); };
+    const fallback = () => { const t = document.createElement("textarea"); t.value = url; t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); done(); } catch (x) {} t.remove(); };
+    try { navigator.clipboard.writeText(url).then(done, fallback); } catch (x) { fallback(); }
+  });
 })();
 (function setupPrint(){
   const listEl = document.getElementById("list");

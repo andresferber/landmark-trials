@@ -26,9 +26,10 @@ Each topic page is one HTML file with:
 
 - **Data**: a JavaScript array `T`, one entry per trial: `y` year, `n` name, `s` category, `ph` phase, `d` design, `ep` endpoint, `r` result, `N`, `hr`, `fu`, `c` citation, `p` PMID, optional `extra` [label, PMID], `b` builds on, `i` what it changed, `q` open questions, `cm` commentaries [[pmid, byline, title]], `reg` regulatory, `gl` guidelines, `acc` access. (The MCL page predates this layout and keeps the same information in separate objects.)
 - **Registry numbers**: object `REG` mapping each entry name to its registry IDs (ClinicalTrials.gov NCT, ISRCTN or EudraCT), taken from the paper's PubMed record. Shown as links next to the source and used by the monthly update to find later follow-up publications.
-- **Full-text links**: object `FT` mapping each entry name to `["pmc", PMCID]` (free full text in PubMed Central, not embargoed) or `["doi", DOI]` (publisher page), taken from the PubMed record.
+- **Full-text links**: object `FT` mapping each entry name to `["pmc", PMCID]` (free full text in PubMed Central, not embargoed) or `["doi", DOI]` (publisher page), taken from the PubMed record; DOI entries carry a third value "free" or "repo" when Unpaywall finds a legal free copy (see tools/UPDATE_GUIDE.md).
+- **Share, report, abbreviations**: each trial has a copy-link button (deep link `#t-<key>-<slug>`) and a "Report an error" mailto to andresferber@hotmail.com; each page ends with an abbreviations list (`details.gloss`).
 - **Key toxicity** (`TOX`), **core trials** (`CORE`, chosen by Andres) and **trials to watch** (`WATCH`): see tools/UPDATE_GUIDE.md.
-- **Verification rules**: every number checked against the PubMed abstract or PubMed Central full text; "not reported in abstract" rather than a guess; PMIDs confirmed by journal, volume, pages and first author; unconfirmed regulatory or guideline statements marked "verify"; no invented insurance approval rates.
+- **Verification rules**: every number checked against the PubMed abstract or PubMed Central full text; "not reported in abstract" rather than a guess; PMIDs confirmed by journal, volume, pages and first author; unconfirmed regulatory statements marked "verify"; guideline placements that need NCCN (login) marked "(NCCN not checked)"; no invented insurance approval rates.
 - **Credit line** in small type under the footer: "Created by Andres Ferber, MD, with the assistance of Claude (Anthropic)."
 
 ## Search and news

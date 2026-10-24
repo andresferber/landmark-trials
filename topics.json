@@ -6,7 +6,7 @@
       "title": "Mantle cell lymphoma",
       "count": "33 trials",
       "file": "topics/mcl.html",
-      "updated": "2026-10-18",
+      "updated": "2026-10-23",
       "group": "Lymphoma"
     },
     {
@@ -14,7 +14,7 @@
       "title": "Follicular lymphoma, untreated",
       "count": "21 studies",
       "file": "topics/flu.html",
-      "updated": "2026-10-18",
+      "updated": "2026-10-23",
       "group": "Lymphoma"
     },
     {
@@ -22,7 +22,7 @@
       "title": "Follicular lymphoma, relapsed/refractory",
       "count": "19 trials",
       "file": "topics/flr.html",
-      "updated": "2026-10-18",
+      "updated": "2026-10-23",
       "group": "Lymphoma"
     },
     {
@@ -30,7 +30,7 @@
       "title": "Smoldering multiple myeloma",
       "count": "22 studies",
       "file": "topics/smm.html",
-      "updated": "2026-10-18",
+      "updated": "2026-10-23",
       "group": "Myeloma"
     },
     {
@@ -38,7 +38,7 @@
       "title": "Multiple myeloma, newly diagnosed",
       "count": "32 trials",
       "file": "topics/ndmm.html",
-      "updated": "2026-10-18",
+      "updated": "2026-10-23",
       "group": "Myeloma"
     },
     {
@@ -46,7 +46,7 @@
       "title": "Multiple myeloma, relapsed/refractory",
       "count": "33 trials",
       "file": "topics/rrmm.html",
-      "updated": "2026-10-18",
+      "updated": "2026-10-23",
       "group": "Myeloma"
     }
   ]

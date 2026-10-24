@@ -87,6 +87,18 @@
 .ltw .watch .wm { font: 400 12.5px var(--font-mono); color: var(--muted); }
 .ltw .watch .wd { font-size: 14px; }
 .ltw .watch a { color: var(--accent); }
+.ltw .share { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font: 500 12px/1 var(--font-body); padding: 4px 6px; border-radius: 6px; }
+.ltw .share:hover { color: var(--accent); background: var(--rule); }
+.ltw .share:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ltw .share .lbl { display: none; }
+.ltw .share.copied .lbl { display: inline; color: var(--s-young); }
+.ltw .gloss { margin-top: 24px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); padding: 0 18px; }
+.ltw .gloss summary { cursor: pointer; padding: 14px 0; font-weight: 600; }
+.ltw .gloss dl { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 4px 16px; margin: 0 0 16px; font-size: 14px; }
+.ltw .gloss dt { font: 500 13px var(--font-mono); color: var(--fg); text-transform: none; letter-spacing: normal; }
+.ltw .gloss dd { margin: 0; color: var(--muted); }
+.ltw .report { color: var(--muted); font-size: 12px; }
+.ltw .report:hover { color: var(--accent); }
 @media (max-width: 480px) {
 .ltw .trial { grid-template-columns: 1fr; gap: 4px; }
 .ltw dl { grid-template-columns: 1fr; gap: 0 0; }
@@ -99,6 +111,13 @@
 .ltw .trial { break-inside: avoid; page-break-inside: avoid; }
 .ltw .watch { break-inside: avoid; }
 .ltw a { text-decoration: none; }
+}
+@media print {
+.ltw .share { display: none !important; }
+.ltw .gloss { break-inside: avoid; }
+}
+@media print {
+.ltw .report { display: none !important; }
 }
 
 .ltw { display: block; text-align: left; border-radius: 6px; }
@@ -119,6 +138,11 @@
 .ltw input[type="search"], .ltw select { color: var(--fg) !important; background: var(--surface) !important; height: auto !important; box-shadow: none !important; }
 .ltw button.printbtn { color: var(--fg) !important; background: var(--surface) !important; text-transform: none !important; box-shadow: none !important; height: auto !important; }
 .ltw .watch ul, .ltw .watch li { list-style: none !important; margin-left: 0 !important; padding-left: 0 !important; background: none !important; }
+.ltw button.share { background: none !important; box-shadow: none !important; color: var(--muted) !important; height: auto !important; padding: 4px 6px !important; text-transform: none !important; min-width: 0 !important; }
+.ltw .gloss dt { color: var(--fg) !important; text-transform: none !important; }
+.ltw .gloss summary { color: var(--fg) !important; list-style: revert !important; }
+.ltw a.report { color: var(--muted) !important; font-size: 12px !important; }
+.ltw .reportall { margin: 12px 0 0; }
 .ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 
 </style>
@@ -148,8 +172,11 @@
 
   <section class="watch" hidden aria-label="Trials to watch"></section>
 
+  <details class="gloss"><summary>Abbreviations (34)</summary><dl><dt>AE</dt><dd>Adverse event</dd><dt>AEs</dt><dd>Adverse events</dd><dt>ASCO</dt><dd>American Society of Clinical Oncology</dd><dt>ASCT</dt><dd>Autologous stem-cell transplantation</dd><dt>BCMA</dt><dd>B-cell maturation antigen</dd><dt>BMPC</dt><dd>Bone marrow plasma cells</dd><dt>CI</dt><dd>Confidence interval</dd><dt>CR</dt><dd>Complete response</dd><dt>CRS</dt><dd>Cytokine release syndrome</dd><dt>ECOG</dt><dd>Eastern Cooperative Oncology Group (also the performance-status scale)</dd><dt>EFS</dt><dd>Event-free survival</dd><dt>EMN</dt><dd>European Myeloma Network</dd><dt>FDA</dt><dd>US Food and Drug Administration</dd><dt>FLC</dt><dd>Free light chain</dd><dt>HR</dt><dd>Hazard ratio</dd><dt>IMWG</dt><dd>International Myeloma Working Group</dd><dt>IRC</dt><dd>Independent review committee</dd><dt>KRd</dt><dd>Carfilzomib, lenalidomide, dexamethasone</dd><dt>MGUS</dt><dd>Monoclonal gammopathy of undetermined significance</dd><dt>MRD</dt><dd>Minimal (measurable) residual disease</dd><dt>MRI</dt><dd>Magnetic resonance imaging</dd><dt>NCCN</dt><dd>National Comprehensive Cancer Network</dd><dt>NCI</dt><dd>US National Cancer Institute</dd><dt>ORR</dt><dd>Overall response rate</dd><dt>OS</dt><dd>Overall survival</dd><dt>PD</dt><dd>Progressive disease</dd><dt>PETHEMA</dt><dd>Programa Español de Tratamientos en Hematología</dd><dt>PFS</dt><dd>Progression-free survival</dd><dt>PR</dt><dd>Partial response</dd><dt>QoL</dt><dd>Quality of life</dd><dt>Rd</dt><dd>Lenalidomide, dexamethasone</dd><dt>SMM</dt><dd>Smoldering multiple myeloma</dd><dt>TTP</dt><dd>Time to progression</dd><dt>uMRD</dt><dd>Undetectable minimal residual disease</dd></dl></details>
+
   <div class="lt-foot">
-    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). "Key toxicity" summarizes the main adverse events reported in the abstract (or the full paper where marked); it is not a complete safety profile. "★ Core" marks trials selected as essential for teaching. Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Guideline positions: NCCN and ASCO-Ontario as summarized from January 2026 versions; items marked "verify" need checking against the current documents. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). "Key toxicity" summarizes the main adverse events reported in the abstract (or the full paper where marked); it is not a complete safety profile. "★ Core" marks trials selected as essential for teaching. Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Free at publisher" links open a publisher page that is free to read; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed; "Free copy (repository)" links open a legal free copy in a university repository (sometimes the authors' manuscript). Free copies were found with Unpaywall (October 23, 2026). Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Guideline positions: NCCN and ASCO-Ontario as summarized from January 2026 versions; items marked "NCCN not checked" could not be confirmed, because the NCCN guidelines require a login. Regulatory dates were checked against FDA and EMA announcements (October 23, 2026). No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    <p class="reportall">Spotted an error or a missing trial? Use "Report an error" on any trial, or email <a href="mailto:andresferber@hotmail.com?subject=Landmark%20trials">andresferber@hotmail.com</a>.</p>
   </div>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -199,7 +226,7 @@ const T = [
  q:"Is there a better-tolerated agent? Does early therapy select for resistant disease? A randomized trial was needed.",
  cm:[],reg:"No regulatory action.",gl:"Thalidomide not adopted for SMM.",acc:"—"},
 {y:2013,n:"Thalidomide + zoledronic acid (Witzig)",s:"rct",ph:"Phase 3",d:"Thalidomide + zoledronic acid vs zoledronic acid alone in asymptomatic myeloma",ep:"Time to progression",
- r:"Median TTP 2.4 vs 1.2 yr; 1-yr progression-free 86% vs 55%; ORR 37% vs no responses",N:"68",hr:"2.05 (zoledronic acid alone vs combination)",fu:"not reported in abstract",
+ r:"Median TTP 2.4 vs 1.2 yr; 1-yr progression-free 86% vs 55%; ORR 37% vs no responses",N:"68",hr:"2.05 (zoledronic acid alone vs combination)",fu:"5.9 yr (full paper)",
  c:"Leukemia 2013;27:220",p:22902362,
  b:"Randomized follow-up to the single-arm thalidomide studies.",
  i:"First randomized signal that an anti-myeloma agent delays progression of SMM, though too small and toxic to change practice.",
@@ -221,7 +248,7 @@ const T = [
  q:"How do older trials (QuiRedex) apply to the redefined SMM? Which risk model works under the new definition?",
  cm:[],reg:"Adopted by regulators and trials as the disease definition.",gl:"Standard diagnostic criteria in NCCN, IMWG and European guidelines.",acc:"—"},
 {y:2018,n:"Mayo 20/2/20 model (Lakshman)",s:"def",ph:"Retrospective cohort",d:"421 SMM patients classified under 2014 IMWG criteria",ep:"Time to progression",
- r:"BMPC >20%, M-protein >2 g/dL and FLC ratio >20 each predicted progression; median TTP 110, 68 and 29 mo for 0, 1 and ≥2 factors",N:"421",hr:"2.28 (BMPC); 1.56 (M-protein); 2.13 (FLC ratio)",fu:"not reported in abstract",
+ r:"BMPC >20%, M-protein >2 g/dL and FLC ratio >20 each predicted progression; median TTP 110, 68 and 29 mo for 0, 1 and ≥2 factors",N:"421",hr:"2.28 (BMPC); 1.56 (M-protein); 2.13 (FLC ratio)",fu:"74.8 mo (full paper)",
  c:"Blood Cancer J 2018;8:59",p:29895887,
  b:"Re-derived risk factors after IMWG 2014 removed the ultra-high-risk group.",
  i:"Introduced the simple 20/2/20 model used to define high-risk SMM in later trials and the FDA label.",
@@ -241,7 +268,7 @@ const T = [
  i:"Confirmed that early lenalidomide delays progression, mainly in high-risk patients (20/2/20); supported treatment of high-risk SMM in NCCN.",
  q:"Is the benefit confined to high-risk patients? Is 28% grade 3–4 toxicity acceptable without survival benefit? Should treatment be fixed-duration?",
  cm:[[32004107,"Raje N, J Clin Oncol 2020","How we approach smoldering multiple myeloma"],[32160077,"Biran N, J Clin Oncol 2020","Treatment of smoldering myeloma: problems with study design…"],[32160076,"Lonial S, J Clin Oncol 2020","Reply"]],
- reg:"No regulatory filing; lenalidomide not labeled for SMM.",gl:"NCCN (January 2026) lists lenalidomide as a treatment option with shared decision-making; ASCO-Ontario (2026) does not routinely recommend it.",acc:"Off-label; coverage depends on compendium listing (verify)."},
+ reg:"No regulatory filing; lenalidomide not labeled for SMM.",gl:"NCCN (January 2026) lists lenalidomide as a treatment option with shared decision-making; ASCO-Ontario (2026) does not routinely recommend it.",acc:"Off-label; coverage depends on compendium listing."},
 {y:2020,n:"CENTAURUS (Landgren)",s:"p2",ph:"Phase 2 (randomized dosing)",d:"Daratumumab IV on three dosing schedules in intermediate- or high-risk SMM",ep:"CR rate; PD/death rate",
  r:"CR co-primary endpoint (>15%) not met (0–4.9%); median PFS ≥24 mo in all arms; best with the most intense schedule",N:"123",hr:"n/a",fu:"15.8 mo",
  c:"Leukemia 2020;34:1840",p:32024950,
@@ -250,7 +277,7 @@ const T = [
  q:"Does delaying progression without deep response matter clinically? Will a randomized trial show survival benefit?",
  cm:[],reg:"No regulatory action.",gl:"Led to AQUILA.",acc:"—"},
 {y:2020,n:"IMWG 2/20/20 risk model (Mateos)",s:"def",ph:"International cohort",d:"1,996 SMM patients meeting 2014 IMWG criteria",ep:"2-yr progression",
- r:"M-protein >2 g/dL, FLC ratio >20 and BMPC >20%: 2-yr progression 6%, 18% and 44% for low, intermediate and high risk; adding cytogenetics gave 6–63%",N:"1,996",hr:"2.1 (M-protein); 2.7 (FLC ratio); 2.4 (BMPC)",fu:"not reported in abstract",
+ r:"M-protein >2 g/dL, FLC ratio >20 and BMPC >20%: 2-yr progression 6%, 18% and 44% for low, intermediate and high risk; adding cytogenetics gave 6–63%",N:"1,996",hr:"2.1 (M-protein); 2.7 (FLC ratio); 2.4 (BMPC)",fu:"3.0 yr from diagnosis (full paper)",
  c:"Blood Cancer J 2020;10:102",p:33067414,
  b:"International validation and extension of the Mayo 20/2/20 model, adding high-risk cytogenetics.",
  i:"Became the standard international risk tool and the eligibility basis for current trials.",
@@ -302,7 +329,7 @@ const T = [
  cm:[[40768725,"Shanmugam SP, N Engl J Med 2025","Correspondence: Daratumumab for high-risk SMM"],[40768726,"Dimopoulos MA, N Engl J Med 2025","Reply"]],
  reg:"European Commission approval (July 2025) and FDA approval (November 6, 2025) of subcutaneous daratumumab for adults with high-risk SMM.",
  gl:"NCCN (January 2026) recommends treatment with careful selection and shared decision-making, including daratumumab. ASCO-Ontario living guideline (2026): daratumumab may be offered for high-risk SMM (up to 36 months).",
- acc:"On-label in the US and EU for high-risk SMM; payer criteria for 'high risk' may follow the label (verify)."},
+ acc:"On-label in the US and EU for high-risk SMM; payer criteria for 'high risk' may follow the label."},
 {y:2026,n:"ASCO-Ontario Health living guideline (Hicks)",s:"gl",ph:"Guideline",d:"Updated systematic review (161 randomized trials) and recommendations for myeloma",ep:"—",
  r:"Daratumumab may be offered to high-risk SMM; lenalidomide not routinely recommended; no therapy for non-high-risk SMM",N:"n/a",hr:"n/a",fu:"n/a",
  c:"J Clin Oncol 2026;44:914",p:41494138,
@@ -318,14 +345,14 @@ const T = [
  q:"Will larger and blinded trials (DETER-SMM, ITHACA) raise the certainty? Which outcomes matter most to patients?",
  cm:[],reg:"—",gl:"Evidence synthesis.",acc:"—"},
 {y:2026,n:"PANGEA-SMM dynamic risk (Chabrun)",s:"def",ph:"International cohort",d:"Longitudinal biomarker data from 2,344 SMM patients at seven centers",ep:"Time to progression",
- r:"Rising M-protein, FLC ratio and creatinine, and falling hemoglobin predicted progression; C-statistic 0.79, outperforming 20/2/20 and IMWG models",N:"2,344",hr:"n/a",fu:"not reported in abstract",
+ r:"Rising M-protein, FLC ratio and creatinine, and falling hemoglobin predicted progression; C-statistic 0.79, outperforming 20/2/20 and IMWG models",N:"2,344",hr:"n/a",fu:"3.7 yr training cohort; 1.6–6.4 yr validation cohorts (full paper)",
  c:"Nat Med 2026;32:1745",p:41876650,
  b:"Built on the evolving-biomarker observations (Ravi 2016) and the static 2/20/20 model.",
  i:"Offers an open-access dynamic risk tool that works even without a recent marrow biopsy.",
  q:"Should PANGEA replace 2/20/20 for trial eligibility and treatment decisions? Will it be used in labels or guidelines?",
- cm:[],reg:"No regulatory action.",gl:"Too recent for guideline uptake (verify).",acc:"—"},
+ cm:[],reg:"No regulatory action.",gl:"Too recent for guideline uptake (NCCN not checked).",acc:"—"},
 {y:2026,n:"ImmunoPRISM (Nadeem)",s:"rct",ph:"Phase 2 (randomized)",d:"Fixed-duration teclistamab vs lenalidomide-dexamethasone in high-risk SMM",ep:"CR rate",
- r:"CR 77.8% vs 0%; MRD negativity (10⁻⁵) 82.2% with teclistamab; 2-yr PFS 92% vs 49%; grade 1–2 CRS, no neurotoxicity",N:"59 treated (45 vs 14)",hr:"not reported in abstract",fu:"24.5 mo",
+ r:"CR 77.8% vs 0%; MRD negativity (10⁻⁵) 82.2% with teclistamab; 2-yr PFS 92% vs 49%; grade 1–2 CRS, no neurotoxicity",N:"59 treated (45 vs 14)",hr:"0.15 (PFS; full paper)",fu:"24.5 mo",
  c:"Nat Med 2026;32:3812",p:42728379,
  b:"Moves BCMA-directed T-cell engagers from relapsed myeloma into the precursor setting, against the E3A06/QuiRedex comparator.",
  i:"First randomized evidence for a bispecific antibody in SMM, with very high MRD-negative CR rates.",
@@ -336,7 +363,10 @@ const T = [
 // Shown as links next to the source and used by the monthly update to find later follow-up publications.
 const REG = {"Thalidomide + pamidronate (Barlogie)": ["NCT00083382"],"Thalidomide + zoledronic acid (Witzig)": ["NCT00432458"],"QuiRedex (Mateos)": ["NCT00480363"],"Siltuximab (Brighton)": ["NCT01484275"],"ECOG E3A06 (Lonial)": ["NCT01169337"],"CENTAURUS (Landgren)": ["NCT02316106"],"NCI KRd (Korde, Kazandjian)": ["NCT01572480"],"iStopMM screening (Thorsteinsdóttir)": ["NCT03327597"],"GEM-CESAR (Mateos)": ["NCT02415413"],"I-PRISM (Nadeem)": ["NCT02916771"],"AQUILA (Dimopoulos)": ["NCT03301220"],"ImmunoPRISM (Nadeem)": ["NCT05469893"]};
 // Full-text links: free full text in PubMed Central where available, otherwise the publisher's page via DOI (from PubMed, Oct 22, 2026).
-const FT = {"Mayo natural history (Kyle)": ["doi", "10.1056/NEJMoa070389"], "PETHEMA flow-cytometry risk (Pérez-Persona)": ["doi", "10.1182/blood-2007-05-088443"], "Free light chain ratio (Dispenzieri)": ["pmc", "PMC2200851"], "Thalidomide + pamidronate (Barlogie)": ["pmc", "PMC2569167"], "Thalidomide + zoledronic acid (Witzig)": ["pmc", "PMC3912579"], "QuiRedex (Mateos)": ["doi", "10.1056/NEJMoa1300439"], "IMWG updated criteria (Rajkumar)": ["doi", "10.1016/S1470-2045(14)70442-5"], "Mayo 20/2/20 model (Lakshman)": ["pmc", "PMC5997745"], "Siltuximab (Brighton)": ["doi", "10.1158/1078-0432.CCR-18-3470"], "ECOG E3A06 (Lonial)": ["pmc", "PMC7145586"], "CENTAURUS (Landgren)": ["pmc", "PMC7326703"], "IMWG 2/20/20 risk model (Mateos)": ["pmc", "PMC7567803"], "EMN consensus statement (Musto)": ["pmc", "PMC8561280"], "NCI KRd (Korde, Kazandjian)": ["pmc", "PMC8446896"], "iStopMM screening (Thorsteinsdóttir)": ["pmc", "PMC11099842"], "GEM-CESAR (Mateos)": ["pmc", "PMC11404760"], "I-PRISM (Nadeem)": ["pmc", "PMC11698957"], "AQUILA (Dimopoulos)": ["doi", "10.1056/NEJMoa2409029"], "ASCO-Ontario Health living guideline (Hicks)": ["doi", "10.1200/JCO-25-02587"], "Cochrane review: early intervention (Chen)": ["doi", "10.1002/14651858.CD015494.pub2"], "PANGEA-SMM dynamic risk (Chabrun)": ["pmc", "PMC13190242"], "ImmunoPRISM (Nadeem)": ["pmc", "PMC13668702"]};
+const FT = {"Mayo natural history (Kyle)": ["doi", "10.1056/NEJMoa070389", "free"], "PETHEMA flow-cytometry risk (Pérez-Persona)": ["doi", "10.1182/blood-2007-05-088443", "free"], "Free light chain ratio (Dispenzieri)": ["pmc", "PMC2200851"], "Thalidomide + pamidronate (Barlogie)": ["pmc", "PMC2569167"], "Thalidomide + zoledronic acid (Witzig)": ["pmc", "PMC3912579"], "QuiRedex (Mateos)": ["doi", "10.1056/NEJMoa1300439", "free"], "IMWG updated criteria (Rajkumar)": ["doi", "10.1016/S1470-2045(14)70442-5", "repo", "https://orbi.uliege.be/handle/2268/174646"], "Mayo 20/2/20 model (Lakshman)": ["pmc", "PMC5997745"], "Siltuximab (Brighton)": ["doi", "10.1158/1078-0432.CCR-18-3470"], "ECOG E3A06 (Lonial)": ["pmc", "PMC7145586"], "CENTAURUS (Landgren)": ["pmc", "PMC7326703"], "IMWG 2/20/20 risk model (Mateos)": ["pmc", "PMC7567803"], "EMN consensus statement (Musto)": ["pmc", "PMC8561280"], "NCI KRd (Korde, Kazandjian)": ["pmc", "PMC8446896"], "iStopMM screening (Thorsteinsdóttir)": ["pmc", "PMC11099842"], "GEM-CESAR (Mateos)": ["pmc", "PMC11404760"], "I-PRISM (Nadeem)": ["pmc", "PMC11698957"], "AQUILA (Dimopoulos)": ["doi", "10.1056/NEJMoa2409029"], "ASCO-Ontario Health living guideline (Hicks)": ["doi", "10.1200/JCO-25-02587"], "Cochrane review: early intervention (Chen)": ["doi", "10.1002/14651858.CD015494.pub2"], "PANGEA-SMM dynamic risk (Chabrun)": ["pmc", "PMC13190242"], "ImmunoPRISM (Nadeem)": ["pmc", "PMC13668702"]};
+const FTLABEL = x => x[0] === 'pmc' ? 'Free full text' : (x[2] === 'free' ? 'Free at publisher' : 'Publisher');
+const FTTITLE = x => x[0] === 'pmc' ? 'Free full text in PubMed Central' : (x[2] === 'free' ? 'Free to read on the publisher site (checked with Unpaywall)' : 'Publisher page; full text may need a subscription or institutional access');
+const REPORT = t => 'mailto:andresferber@hotmail.com?subject=' + encodeURIComponent('Landmark trials (' + PAGETITLE + '): ' + t.n);
 const FTURL = x => x[0] === 'pmc' ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + x[1] + '/' : 'https://doi.org/' + x[1];
 const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
 T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, reg:t.reg, gl:t.gl, acc:t.acc}; });
@@ -345,9 +375,11 @@ T.forEach(t => { t.trn = REG[t.n] || []; t.ft = FT[t.n] || null; });
 // Added Oct 23, 2026. TOX: key toxicity per trial from the PubMed abstract (or full paper where marked).
 // CORE: trials every trainee should know (chosen by Andres; edit this list to change the star and the "Core trials" filter).
 // WATCH: ongoing trials to watch, from ClinicalTrials.gov.
-const TOX = {"Mayo natural history (Kyle)": "Not applicable (observational cohort)", "PETHEMA flow-cytometry risk (Pérez-Persona)": "Not applicable (prognostic study)", "Free light chain ratio (Dispenzieri)": "Not applicable (prognostic study)", "Thalidomide + pamidronate (Barlogie)": "Thalidomide dose reduced in 86% and stopped in 50% within 2 years", "Thalidomide + zoledronic acid (Witzig)": "Not reported in abstract", "QuiRedex (Mateos)": "Mostly grade ≤2", "IMWG updated criteria (Rajkumar)": "Not applicable (consensus criteria)", "Mayo 20/2/20 model (Lakshman)": "Not applicable (risk model)", "Siltuximab (Brighton)": "Similar to placebo; mostly grade 2–3; deaths 3 vs 4", "ECOG E3A06 (Lonial)": "Grade 3–4 nonhematologic AEs 28% on lenalidomide", "CENTAURUS (Landgren)": "No new safety signals (rates not in abstract)", "IMWG 2/20/20 risk model (Mateos)": "Not applicable (risk model)", "EMN consensus statement (Musto)": "Not applicable (consensus statement)", "NCI KRd (Korde, Kazandjian)": "Grade 3 nonhematologic AEs 38.9% (thromboembolism, rash, lung infection); no grade 4 events; no deaths", "iStopMM screening (Thorsteinsdóttir)": "Not applicable (screening study)", "GEM-CESAR (Mateos)": "Neutropenia and infections most frequent; 1 treatment-related death; 3 second primary malignancies", "I-PRISM (Nadeem)": "Not reported in abstract", "AQUILA (Dimopoulos)": "Most common grade 3–4: hypertension 5.7% vs 4.6%; AE discontinuation 5.7%", "ASCO-Ontario Health living guideline (Hicks)": "Not applicable (guideline)", "Cochrane review: early intervention (Chen)": "More overall and serious AEs with daratumumab, very uncertain evidence", "PANGEA-SMM dynamic risk (Chabrun)": "Not applicable (risk model)", "ImmunoPRISM (Nadeem)": "Teclistamab: grade 1–2 CRS only, no neurotoxicity; grade 3 infections 20% vs 21% (Rd); no deaths"};
+const TOX = {"Mayo natural history (Kyle)": "Not applicable (observational cohort)", "PETHEMA flow-cytometry risk (Pérez-Persona)": "Not applicable (prognostic study)", "Free light chain ratio (Dispenzieri)": "Not applicable (prognostic study)", "Thalidomide + pamidronate (Barlogie)": "Thalidomide dose reduced in 86% and stopped in 50% within 2 years", "Thalidomide + zoledronic acid (Witzig)": "Neuropathy 80% vs 18% (grade 2 in 34%, no grade 3–4); grade ≥3 AEs in 17 vs 13 patients (full paper)", "QuiRedex (Mateos)": "Mostly grade ≤2", "IMWG updated criteria (Rajkumar)": "Not applicable (consensus criteria)", "Mayo 20/2/20 model (Lakshman)": "Not applicable (risk model)", "Siltuximab (Brighton)": "Similar to placebo; mostly grade 2–3; deaths 3 vs 4", "ECOG E3A06 (Lonial)": "Grade 3–4 nonhematologic AEs 28% on lenalidomide", "CENTAURUS (Landgren)": "No new safety signals (rates not in abstract)", "IMWG 2/20/20 risk model (Mateos)": "Not applicable (risk model)", "EMN consensus statement (Musto)": "Not applicable (consensus statement)", "NCI KRd (Korde, Kazandjian)": "Grade 3 nonhematologic AEs 38.9% (thromboembolism, rash, lung infection); no grade 4 events; no deaths", "iStopMM screening (Thorsteinsdóttir)": "Not applicable (screening study)", "GEM-CESAR (Mateos)": "Neutropenia and infections most frequent; 1 treatment-related death; 3 second primary malignancies", "I-PRISM (Nadeem)": "Not reported in abstract", "AQUILA (Dimopoulos)": "Most common grade 3–4: hypertension 5.7% vs 4.6%; AE discontinuation 5.7%", "ASCO-Ontario Health living guideline (Hicks)": "Not applicable (guideline)", "Cochrane review: early intervention (Chen)": "More overall and serious AEs with daratumumab, very uncertain evidence", "PANGEA-SMM dynamic risk (Chabrun)": "Not applicable (risk model)", "ImmunoPRISM (Nadeem)": "Teclistamab: grade 1–2 CRS only, no neurotoxicity; grade 3 infections 20% vs 21% (Rd); no deaths"};
 const CORE = ["Mayo natural history (Kyle)", "IMWG updated criteria (Rajkumar)", "IMWG 2/20/20 risk model (Mateos)", "QuiRedex (Mateos)", "ECOG E3A06 (Lonial)", "AQUILA (Dimopoulos)"];
-const WATCH = {"note": "", "items": []};
+const WATCH = {"note": "Ongoing phase 3 trials selected from ClinicalTrials.gov (checked October 23, 2026). Status and primary completion dates are as registered; some trials may already have presented results at meetings.", "items": [{"n": "ECOG-ACRIN EAA173 (DETER-SMM)", "d": "Daratumumab-Rd vs Rd in high-risk SMM", "ph": "Phase 3", "st": "Recruiting", "pcd": "2029-12-31", "ep": "Overall survival", "nct": "NCT03937635"}, {"n": "ITHACA", "d": "Isatuximab-Rd vs Rd in high-risk SMM", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2030-10-14", "ep": "PFS", "nct": "NCT04270409"}, {"n": "LINKER-SMM2", "d": "Linvoseltamab vs daratumumab in high-risk SMM", "ph": "Phase 3", "st": "Recruiting", "pcd": "2033-07-27", "ep": "Clinical and biochemical PFS", "nct": "NCT07393282"}]};
+const PAGEKEY = "smm";
+const PAGETITLE = "Smoldering myeloma";
 const SLUG = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 T.forEach(t => { t.tx = TOX[t.n] || "Not reported in abstract"; t.core = CORE.includes(t.n); t.slug = SLUG(t.n);
   t.full = [t.r, t.N, t.hr, t.fu, t.tx].some(x => /full paper/.test(String(x || ""))); });
@@ -395,7 +427,7 @@ function render(){
     <li class="trial" data-trial="${t.slug}">
       <div class="yr">${t.y}</div>
       <div class="body">
-        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span>${t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : ''}</div>
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span>${t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : ''}<button type="button" class="share" data-slug="${t.slug}" title="Copy a link to this trial" aria-label="Copy a link to ${esc(t.n)}"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M8.5 11.5a3 3 0 0 0 4.2 0l2.6-2.6a3 3 0 0 0-4.2-4.2l-1 1M11.5 8.5a3 3 0 0 0-4.2 0l-2.6 2.6a3 3 0 0 0 4.2 4.2l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="lbl">Link copied</span></button></div>
         <p class="design">${esc(t.d)}</p>
         <div class="stats">
           <span><b>N</b>${esc(t.N)}</span>
@@ -410,7 +442,7 @@ function render(){
           <dt>Changed</dt><dd>${esc(t.i)}</dd>
           <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
           <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
-          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${t.ft[0] === 'pmc' ? 'Free full text in PubMed Central' : 'Publisher page; full text may need a subscription or institutional access'}">${t.ft[0] === 'pmc' ? 'Free full text' : 'Publisher'} ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${FTTITLE(t.ft)}">${FTLABEL(t.ft)} ↗</a>` : ''}${t.ft && t.ft[2] === 'repo' ? ` · <a class="ft" href="${esc(t.ft[3])}" target="_blank" rel="noopener" title="Free legal copy in a university repository, found through Unpaywall; it may be the authors' manuscript rather than the final journal version">Free copy (repository) ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')} · <a class="report" href="${esc(REPORT(t))}" title="Email a correction for this trial">Report an error</a></dd>
         </dl>
       </div>
     </li>`).join("");
@@ -428,6 +460,21 @@ render();
     [w.ph, w.st, w.pcd ? "primary completion " + w.pcd : "", w.ep ? "primary endpoint: " + w.ep : ""].filter(Boolean).map(esc).join(" · ") +
     (w.nct ? ' · <a href="https://clinicaltrials.gov/study/' + esc(w.nct) + '" target="_blank" rel="noopener">' + esc(w.nct) + ' ↗</a>' : "") +
     '</span>' + (w.note ? '<span class="wd">' + esc(w.note) + '</span>' : '') + '</li>').join("") + '</ul>';
+})();
+
+(function setupShare(){
+  const listEl = document.getElementById("smm-list");
+  listEl.addEventListener("click", e => {
+    const b = e.target.closest(".share");
+    if (!b) return;
+    const slug = b.getAttribute("data-slug");
+    const inSite = !!listEl.closest(".ltw");
+    const base = inSite ? location.href.split("#")[0] : "https://andresferber.github.io/landmark-trials/";
+    const url = base + "#t-" + PAGEKEY + "-" + slug;
+    const done = () => { b.classList.add("copied"); setTimeout(() => b.classList.remove("copied"), 1800); };
+    const fallback = () => { const t = document.createElement("textarea"); t.value = url; t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); done(); } catch (x) {} t.remove(); };
+    try { navigator.clipboard.writeText(url).then(done, fallback); } catch (x) { fallback(); }
+  });
 })();
 (function setupPrint(){
   const listEl = document.getElementById("smm-list");

@@ -87,6 +87,18 @@
 .ltw .watch .wm { font: 400 12.5px var(--font-mono); color: var(--muted); }
 .ltw .watch .wd { font-size: 14px; }
 .ltw .watch a { color: var(--accent); }
+.ltw .share { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font: 500 12px/1 var(--font-body); padding: 4px 6px; border-radius: 6px; }
+.ltw .share:hover { color: var(--accent); background: var(--rule); }
+.ltw .share:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ltw .share .lbl { display: none; }
+.ltw .share.copied .lbl { display: inline; color: var(--s-young); }
+.ltw .gloss { margin-top: 24px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); padding: 0 18px; }
+.ltw .gloss summary { cursor: pointer; padding: 14px 0; font-weight: 600; }
+.ltw .gloss dl { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 4px 16px; margin: 0 0 16px; font-size: 14px; }
+.ltw .gloss dt { font: 500 13px var(--font-mono); color: var(--fg); text-transform: none; letter-spacing: normal; }
+.ltw .gloss dd { margin: 0; color: var(--muted); }
+.ltw .report { color: var(--muted); font-size: 12px; }
+.ltw .report:hover { color: var(--accent); }
 @media (max-width: 480px) {
 .ltw .trial { grid-template-columns: 1fr; gap: 4px; }
 .ltw dl { grid-template-columns: 1fr; gap: 0 0; }
@@ -99,6 +111,13 @@
 .ltw .trial { break-inside: avoid; page-break-inside: avoid; }
 .ltw .watch { break-inside: avoid; }
 .ltw a { text-decoration: none; }
+}
+@media print {
+.ltw .share { display: none !important; }
+.ltw .gloss { break-inside: avoid; }
+}
+@media print {
+.ltw .report { display: none !important; }
 }
 
 .ltw { display: block; text-align: left; border-radius: 6px; }
@@ -119,6 +138,11 @@
 .ltw input[type="search"], .ltw select { color: var(--fg) !important; background: var(--surface) !important; height: auto !important; box-shadow: none !important; }
 .ltw button.printbtn { color: var(--fg) !important; background: var(--surface) !important; text-transform: none !important; box-shadow: none !important; height: auto !important; }
 .ltw .watch ul, .ltw .watch li { list-style: none !important; margin-left: 0 !important; padding-left: 0 !important; background: none !important; }
+.ltw button.share { background: none !important; box-shadow: none !important; color: var(--muted) !important; height: auto !important; padding: 4px 6px !important; text-transform: none !important; min-width: 0 !important; }
+.ltw .gloss dt { color: var(--fg) !important; text-transform: none !important; }
+.ltw .gloss summary { color: var(--fg) !important; list-style: revert !important; }
+.ltw a.report { color: var(--muted) !important; font-size: 12px !important; }
+.ltw .reportall { margin: 12px 0 0; }
 .ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 
 </style>
@@ -148,8 +172,11 @@
 
   <section class="watch" hidden aria-label="Trials to watch"></section>
 
+  <details class="gloss"><summary>Abbreviations (44)</summary><dl><dt>ADC</dt><dd>Antibody-drug conjugate</dd><dt>AE</dt><dd>Adverse event</dd><dt>AEs</dt><dd>Adverse events</dd><dt>BCL2</dt><dd>B-cell lymphoma 2 protein (venetoclax target)</dd><dt>BCMA</dt><dd>B-cell maturation antigen</dd><dt>BPd</dt><dd>Belantamab mafodotin, pomalidomide, dexamethasone</dd><dt>BVd</dt><dd>Belantamab mafodotin, bortezomib, dexamethasone</dd><dt>CAR-T</dt><dd>Chimeric antigen receptor T-cell therapy</dd><dt>CR</dt><dd>Complete response</dd><dt>CRS</dt><dd>Cytokine release syndrome</dd><dt>D-Rd</dt><dd>Daratumumab, lenalidomide, dexamethasone</dd><dt>DKd</dt><dd>Daratumumab, carfilzomib, dexamethasone</dd><dt>DOR</dt><dd>Duration of response</dd><dt>DPd</dt><dd>Daratumumab, pomalidomide, dexamethasone</dd><dt>DRd</dt><dd>Daratumumab, lenalidomide, dexamethasone</dd><dt>DVd</dt><dd>Daratumumab, bortezomib, dexamethasone</dd><dt>Elo-Rd</dt><dd>Elotuzumab, lenalidomide, dexamethasone</dd><dt>FDA</dt><dd>US Food and Drug Administration</dd><dt>GPRC5D</dt><dd>G protein-coupled receptor class C group 5 member D (myeloma target)</dd><dt>HDAC</dt><dd>Histone deacetylase</dd><dt>HR</dt><dd>Hazard ratio</dd><dt>ICANS</dt><dd>Immune effector cell-associated neurotoxicity syndrome</dd><dt>IMiD</dt><dd>Immunomodulatory drug</dd><dt>Isa-Kd</dt><dd>Isatuximab, carfilzomib, dexamethasone</dd><dt>Isa-Pd</dt><dd>Isatuximab, pomalidomide, dexamethasone</dd><dt>Kd</dt><dd>Carfilzomib, dexamethasone</dd><dt>KRd</dt><dd>Carfilzomib, lenalidomide, dexamethasone</dd><dt>MRD</dt><dd>Minimal (measurable) residual disease</dd><dt>NCCN</dt><dd>National Comprehensive Cancer Network</dd><dt>ORR</dt><dd>Overall response rate</dd><dt>OS</dt><dd>Overall survival</dd><dt>Pd</dt><dd>Pomalidomide, dexamethasone</dd><dt>PFS</dt><dd>Progression-free survival</dd><dt>PI</dt><dd>Proteasome inhibitor</dd><dt>PVd</dt><dd>Pomalidomide, bortezomib, dexamethasone</dd><dt>Rd</dt><dd>Lenalidomide, dexamethasone</dd><dt>REMS</dt><dd>Risk Evaluation and Mitigation Strategy (FDA safety program)</dd><dt>RRMM</dt><dd>Relapsed or refractory multiple myeloma</dd><dt>sCR</dt><dd>Stringent complete response</dd><dt>SVd</dt><dd>Selinexor, bortezomib, dexamethasone</dd><dt>TTP</dt><dd>Time to progression</dd><dt>Vd</dt><dd>Bortezomib, dexamethasone</dd><dt>VRd</dt><dd>Bortezomib, lenalidomide, dexamethasone</dd><dt>XPO1</dt><dd>Exportin 1 (selinexor target)</dd></dl></details>
+
   <div class="lt-foot">
-    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). "Key toxicity" summarizes the main adverse events reported in the abstract (or the full paper where marked); it is not a complete safety profile. "★ Core" marks trials selected as essential for teaching. Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA actions for belantamab (Oct 23, 2025), linvoseltamab (Jul 2, 2025) and teclistamab-daratumumab (Mar 5, 2026) were confirmed from FDA or ASCO Post reports; other regulatory dates marked "verify" are from general knowledge. Guideline positions summarize NCCN v5.2026 and the ASCO-Ontario 2026 living guideline at a high level; regimen-specific placements marked "verify" need checking against the current documents. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). "Key toxicity" summarizes the main adverse events reported in the abstract (or the full paper where marked); it is not a complete safety profile. "★ Core" marks trials selected as essential for teaching. Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Free at publisher" links open a publisher page that is free to read; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed; "Free copy (repository)" links open a legal free copy in a university repository (sometimes the authors' manuscript). Free copies were found with Unpaywall (October 23, 2026). Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA actions for belantamab (Oct 23, 2025), linvoseltamab (Jul 2, 2025) and teclistamab-daratumumab (Mar 5, 2026) were confirmed from FDA or ASCO Post reports; other regulatory dates and withdrawals were checked against FDA, EMA and sponsor announcements and published reports (October 23, 2026). Guideline positions summarize NCCN v5.2026 and the ASCO-Ontario 2026 living guideline at a high level; regimen-specific placements marked "NCCN not checked" could not be confirmed, because the NCCN guidelines require a login. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    <p class="reportall">Spotted an error or a missing trial? Use "Report an error" on any trial, or email <a href="mailto:andresferber@hotmail.com?subject=Landmark%20trials">andresferber@hotmail.com</a>.</p>
   </div>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -166,7 +193,7 @@ const SETTINGS = {
 const CLS = { bb: "old", cd38: "young", oth: "p2", imm: "rr" };
 const order = ["bb","cd38","oth","imm"];
 const PM = id => "https://pubmed.ncbi.nlm.nih.gov/" + id + "/";
-const GL = "NCCN v5.2026 and ASCO-Ontario (2026): triplet therapy at early relapse using agents of a different class from prior lines; T-cell redirecting therapy by principle-based selection (specific NCCN placement: verify).";
+const GL = "NCCN v5.2026 and ASCO-Ontario (2026): triplet therapy at early relapse using agents of a different class from prior lines; T-cell redirecting therapy by principle-based selection (specific NCCN placement not checked).";
 
 const T = [
 // ---------- PI / IMiD backbones ----------
@@ -177,7 +204,7 @@ const T = [
  i:"Established proteasome inhibition; first new drug class in myeloma in decades.",
  q:"How to combine bortezomib with other agents? Can it move to frontline (VISTA)? How to limit neuropathy?",
  cm:[[15958811,"Dispenzieri A, N Engl J Med 2005","Bortezomib for myeloma—much ado about something"]],
- reg:"FDA full approval for relapsed myeloma (2005; verify).",gl:"Bortezomib remains a backbone in many relapse triplets.",acc:"On-label; generic bortezomib now available (verify)."},
+ reg:"FDA full approval for relapsed myeloma after at least one prior therapy (March 2005), converting the May 2003 accelerated approval.",gl:"Bortezomib remains a backbone in many relapse triplets.",acc:"On-label; generic bortezomib now available."},
 {y:2007,n:"MM-009 / MM-010 (Weber, Dimopoulos)",s:"bb",ph:"Phase 3 (two trials)",d:"Lenalidomide-dexamethasone vs dexamethasone in relapsed myeloma (North America and international)",ep:"Time to progression",
  r:"MM-009: TTP 11.1 vs 4.7 mo, OS 29.6 vs 20.2 mo. MM-010: TTP 11.3 vs 4.7 mo, OS HR 0.66",N:"353 (MM-009) + 351 (MM-010) (full paper)",hr:"0.66 (OS, MM-010)",fu:"17.6 mo (MM-009), 16.4 mo (MM-010) (full paper)",
  c:"N Engl J Med 2007;357:2133",p:18032763,extra:["MM-010, N Engl J Med 2007",18032762],
@@ -185,7 +212,7 @@ const T = [
  i:"Rd became a standard relapse backbone and later of ASPIRE, ELOQUENT-2, TOURMALINE and POLLUX.",
  q:"What to add to Rd? Should it move to frontline (FIRST)?",
  cm:[[18032768,"List AF, N Engl J Med 2007","Lenalidomide—the phoenix rises"]],
- reg:"FDA approval of lenalidomide with dexamethasone after one prior therapy (2006; verify).",gl:"Lenalidomide-based triplets used when not refractory (now uncommon after frontline lenalidomide).",acc:"On-label; generic lenalidomide available (verify)."},
+ reg:"FDA approval of lenalidomide with dexamethasone after at least one prior therapy (June 29, 2006).",gl:"Lenalidomide-based triplets used when not refractory (now uncommon after frontline lenalidomide).",acc:"On-label; generic lenalidomide available."},
 {y:2013,n:"MM-003 (San Miguel)",s:"bb",ph:"Phase 3",d:"Pomalidomide + low-dose dexamethasone vs high-dose dexamethasone, refractory to lenalidomide and bortezomib",ep:"PFS",
  r:"Median PFS 4.0 vs 1.9 mo",N:"455",hr:"0.48",fu:"10.0 mo",
  c:"Lancet Oncol 2013;14:1055",p:24007748,
@@ -193,15 +220,15 @@ const T = [
  i:"Pd became the backbone for later triplets (ICARIA, APOLLO, OPTIMISMM, DREAMM-8).",
  q:"Which partner works best with pomalidomide?",
  cm:[[24007745,"Leleu X, Lancet Oncol 2013","New hope for relapsed and refractory multiple myeloma"]],
- reg:"FDA approval of pomalidomide (2013; verify).",gl:"Pomalidomide-based triplets standard after lenalidomide exposure.",acc:"On-label."},
+ reg:"FDA approval of pomalidomide (February 8, 2013).",gl:"Pomalidomide-based triplets standard after lenalidomide exposure.",acc:"On-label."},
 {y:2014,n:"PANORAMA-1 (San-Miguel)",s:"bb",ph:"Phase 3",d:"Panobinostat + bortezomib-dexamethasone vs placebo + Vd",ep:"PFS",
  r:"Median PFS 11.99 vs 8.08 mo; OS immature",N:"768",hr:"0.63",fu:"6.47 mo (median)",
  c:"Lancet Oncol 2014;15:1195",p:25242045,
  b:"First HDAC inhibitor in myeloma, combined with bortezomib.",
- i:"Accelerated approval (2015) despite toxicity; later withdrawn in the US (verify date).",
+ i:"Accelerated approval (February 23, 2015) despite toxicity; the US approval was withdrawn in November 2021 because the confirmatory trial was not completed.",
  q:"Is PFS benefit worth the gastrointestinal toxicity? Was the comparator adequate?",
  cm:[[25242046,"Rajkumar SV, Lancet Oncol 2014","Panobinostat for the treatment of multiple myeloma"]],
- reg:"FDA accelerated approval (2015); US marketing later discontinued (verify).",gl:"Rarely used now.",acc:"—"},
+ reg:"FDA accelerated approval (February 23, 2015); US NDA withdrawn (November 2021).",gl:"Rarely used now.",acc:"—"},
 {y:2015,n:"ASPIRE (Stewart)",s:"bb",ph:"Phase 3",d:"Carfilzomib + Rd vs Rd after 1–3 prior lines",ep:"PFS",
  r:"Median PFS 26.3 vs 17.6 mo; 24-mo OS 73.3% vs 65.0% (HR 0.79); ≥CR 31.8% vs 9.3%",N:"792",hr:"0.69",fu:"32.3 vs 31.5 mo (full paper)",
  c:"N Engl J Med 2015;372:142",p:25482145,
@@ -209,7 +236,7 @@ const T = [
  i:"KRd became a standard relapse triplet and later a frontline induction option.",
  q:"Is KRd better than VRd upfront (ENDURANCE)? How to manage cardiac toxicity?",
  cm:[[25533945,"Killock D, Nat Rev Clin Oncol 2015","ASPIRE for unprecedented benefit with carfilzomib in MM"]],
- reg:"FDA approval of KRd (2015; verify).",gl:GL,acc:"On-label."},
+ reg:"FDA approval of KRd (July 24, 2015).",gl:GL,acc:"On-label."},
 {y:2016,n:"ENDEAVOR (Dimopoulos)",s:"bb",ph:"Phase 3",d:"Carfilzomib-dexamethasone vs bortezomib-dexamethasone",ep:"PFS",
  r:"Median PFS 18.7 vs 9.4 mo",N:"929",hr:"0.53",fu:"11.9 vs 11.1 mo",
  c:"Lancet Oncol 2016;17:27",p:26671818,
@@ -217,7 +244,7 @@ const T = [
  i:"Kd became a backbone for CANDOR and IKEMA.",
  q:"Does the carfilzomib dose (56 mg/m² twice weekly) drive benefit or toxicity?",
  cm:[[26671819,"Scheid C, Lancet Oncol 2016","ENDEAVOR to change treatment for multiple myeloma?"]],
- reg:"FDA approval of Kd (2016; verify).",gl:GL,acc:"On-label."},
+ reg:"FDA approval of Kd (January 21, 2016).",gl:GL,acc:"On-label."},
 {y:2016,n:"TOURMALINE-MM1 (Moreau)",s:"bb",ph:"Phase 3",d:"Ixazomib + Rd vs placebo + Rd",ep:"PFS",
  r:"Median PFS 20.6 vs 14.7 mo; ORR 78% vs 72%",N:"722",hr:"0.74",fu:"14.7 mo",
  c:"N Engl J Med 2016;374:1621",p:27119237,
@@ -225,7 +252,7 @@ const T = [
  i:"Provided an oral option with modest benefit.",
  q:"Is the PFS gain clinically meaningful? Role of oral PI in maintenance?",
  cm:[[27217276,"Romero D, Nat Rev Clin Oncol 2016","TOURMALINE—new gem unearthed in the MM treatment landscape"]],
- reg:"FDA approval of ixazomib-Rd (2015; verify).",gl:"Listed option; used less now (verify).",acc:"On-label."},
+ reg:"FDA approval of ixazomib-Rd (November 20, 2015).",gl:"Listed option; used less now (NCCN not checked).",acc:"On-label."},
 {y:2019,n:"OPTIMISMM (Richardson)",s:"bb",ph:"Phase 3",d:"Pomalidomide + bortezomib-dexamethasone vs Vd, lenalidomide-exposed",ep:"PFS",
  r:"Median PFS 11.20 vs 7.10 mo",N:"559",hr:"0.61",fu:"15.9 mo",
  c:"Lancet Oncol 2019;20:781",p:31097405,
@@ -233,7 +260,7 @@ const T = [
  i:"PVd became a standard for lenalidomide-refractory first relapse; comparator in CARTITUDE-4 and DREAMM-8.",
  q:"Is an anti-CD38 triplet better? Where does CAR-T fit at first relapse?",
  cm:[[31097404,"Gay F, Lancet Oncol 2019","Redefining the treatment paradigm for multiple myeloma"]],
- reg:"EU approval of PVd (verify).",gl:GL,acc:"—"},
+ reg:"European Commission approval of PVd (May 2019).",gl:GL,acc:"—"},
 // ---------- Anti-CD38 combinations ----------
 {y:2016,n:"CASTOR (Palumbo)",s:"cd38",ph:"Phase 3",d:"Daratumumab + Vd vs Vd",ep:"PFS",
  r:"12-mo PFS 60.7% vs 26.9%; median PFS not reached vs 7.2 mo; ORR 82.9% vs 63.2%",N:"498",hr:"0.39",fu:"7.4 mo",
@@ -242,7 +269,7 @@ const T = [
  i:"Made anti-CD38 combinations standard at relapse; DVd later a comparator (DREAMM-7, MajesTEC-3).",
  q:"Should daratumumab move frontline? What happens after anti-CD38 refractoriness?",
  cm:[[27705251,"Rajkumar SV, N Engl J Med 2016","Progress in myeloma—a monoclonal breakthrough"],[27600254,"Romero D, Nat Rev Clin Oncol 2016","Improvements with daratumumab"]],
- reg:"FDA approval of DVd (2016; verify).",gl:GL,acc:"On-label."},
+ reg:"FDA approval of DVd (November 21, 2016).",gl:GL,acc:"On-label."},
 {y:2016,n:"POLLUX (Dimopoulos)",s:"cd38",ph:"Phase 3",d:"Daratumumab + Rd vs Rd",ep:"PFS",
  r:"12-mo PFS 83.2% vs 60.1%; ORR 92.9% vs 76.4%",N:"569",hr:"0.37",fu:"13.5 mo",
  c:"N Engl J Med 2016;375:1319",p:27705267,
@@ -250,15 +277,15 @@ const T = [
  i:"Led to D-Rd in relapse and later MAIA frontline.",
  q:"Can it be used in lenalidomide-refractory disease (no)? How to handle blood-bank interference?",
  cm:[[27705251,"Rajkumar SV, N Engl J Med 2016","Progress in myeloma—a monoclonal breakthrough"],[28002699,"Bueno JL, N Engl J Med 2016","Correspondence: Daratumumab and blood-compatibility testing"]],
- reg:"FDA approval of DRd (2016; verify).",gl:GL,acc:"On-label."},
+ reg:"FDA approval of DRd (November 21, 2016).",gl:GL,acc:"On-label."},
 {y:2019,n:"ICARIA-MM (Attal)",s:"cd38",ph:"Phase 3",d:"Isatuximab + Pd vs Pd after ≥2 lines",ep:"PFS",
  r:"Median PFS 11.5 vs 6.5 mo; infusion reactions 38%",N:"307",hr:"0.596",fu:"11.6 mo",
  c:"Lancet 2019;394:2096",p:31735560,
  b:"Second anti-CD38 antibody, with the Pd backbone.",
- i:"Isatuximab approved (2020; verify); Isa-Pd a standard option.",
+ i:"Isatuximab approved (FDA, March 2, 2020); Isa-Pd a standard option.",
  q:"Are isatuximab and daratumumab interchangeable?",
  cm:[[31735559,"Trudel S, Lancet 2019","Incorporating isatuximab in the treatment of multiple myeloma"]],
- reg:"FDA approval of Isa-Pd (2020; verify).",gl:GL,acc:"On-label."},
+ reg:"FDA approval of Isa-Pd (March 2, 2020).",gl:GL,acc:"On-label."},
 {y:2020,n:"CANDOR (Dimopoulos)",s:"cd38",ph:"Phase 3",d:"Carfilzomib-dexamethasone + daratumumab vs Kd",ep:"PFS",
  r:"Median PFS not reached vs 15.8 mo; grade ≥3 events 82% vs 74%",N:"466",hr:"0.63",fu:"~17 mo",
  c:"Lancet 2020;396:186",p:32682484,
@@ -266,14 +293,14 @@ const T = [
  i:"DKd became a standard for lenalidomide-refractory relapse.",
  q:"Higher toxicity in older patients? How does it compare with Isa-Kd?",
  cm:[[32682464,"Silvennoinen R, Lancet 2020","A candid view of CANDOR"]],
- reg:"FDA approval of DKd (2020; verify).",gl:GL,acc:"On-label."},
+ reg:"FDA approval of DKd (August 20, 2020).",gl:GL,acc:"On-label."},
 {y:2021,n:"APOLLO (Dimopoulos)",s:"cd38",ph:"Phase 3",d:"Daratumumab + Pd vs Pd after ≥1 line including lenalidomide and a PI",ep:"PFS",
  r:"Median PFS 12.4 vs 6.9 mo",N:"304",hr:"0.63",fu:"16.9 mo",
  c:"Lancet Oncol 2021;22:801",p:34087126,
  b:"Daratumumab counterpart to ICARIA with the Pd backbone.",
  i:"DPd a standard for lenalidomide-refractory relapse; comparator in CARTITUDE-4 and MajesTEC-3.",
  q:"What after anti-CD38 refractoriness?",
- cm:[],reg:"FDA approval of DPd (2021; verify).",gl:GL,acc:"On-label."},
+ cm:[],reg:"FDA approval of DPd (July 2021).",gl:GL,acc:"On-label."},
 {y:2021,n:"IKEMA (Moreau)",s:"cd38",ph:"Phase 3",d:"Isatuximab + Kd vs Kd after 1–3 lines",ep:"PFS",
  r:"Median PFS not reached vs 19.15 mo",N:"302",hr:"0.53",fu:"20.7 mo (full paper)",
  c:"Lancet 2021;397:2361",p:34097854,
@@ -281,62 +308,62 @@ const T = [
  i:"Isa-Kd a standard for lenalidomide-refractory relapse.",
  q:"How to choose between DKd and Isa-Kd?",
  cm:[[34097855,"Cavo M, Lancet 2021","Expanding CD38-targeting triplets for relapsed or refractory multiple myeloma"]],
- reg:"FDA approval of Isa-Kd (2021; verify).",gl:GL,acc:"On-label."},
+ reg:"FDA approval of Isa-Kd (March 31, 2021).",gl:GL,acc:"On-label."},
 // ---------- Other mechanisms ----------
 {y:2015,n:"ELOQUENT-2 (Lonial)",s:"oth",ph:"Phase 3",d:"Elotuzumab (anti-SLAMF7) + Rd vs Rd",ep:"PFS",
  r:"Median PFS 19.4 vs 14.9 mo; 2-yr PFS 41% vs 27%",N:"646",hr:"0.70",fu:"24.5 mo",
  c:"N Engl J Med 2015;373:621",p:26035255,
  b:"First monoclonal antibody in myeloma, with the Rd backbone.",
- i:"Approved (2015; verify) but largely displaced by anti-CD38 antibodies.",
+ i:"Approved (FDA, November 30, 2015) but largely displaced by anti-CD38 antibodies.",
  q:"Why does elotuzumab lack single-agent activity? Role with pomalidomide (ELOQUENT-3)?",
- cm:[],reg:"FDA approval of Elo-Rd (2015; verify).",gl:"Listed option; used less.",acc:"On-label."},
+ cm:[],reg:"FDA approval of Elo-Rd (November 30, 2015).",gl:"Listed option; used less.",acc:"On-label."},
 {y:2019,n:"STORM (Chari)",s:"oth",ph:"Phase 2b",d:"Selinexor (XPO1 inhibitor) + dexamethasone in triple-class refractory disease",ep:"ORR",
  r:"ORR 26%; median PFS 3.7 mo, OS 8.6 mo; median 7 prior regimens",N:"122",hr:"n/a (single arm)",fu:"not reported in paper; median treatment 9.0 wk (full paper)",
  c:"N Engl J Med 2019;381:727",p:31433920,
  b:"New mechanism for patients refractory to PI, IMiD and anti-CD38.",
- i:"Accelerated approval (2019; verify) for penta-refractory disease, with substantial toxicity.",
+ i:"Accelerated approval (July 3, 2019) for penta-refractory disease, with substantial toxicity.",
  q:"Is selinexor better used earlier and in combination (BOSTON)?",
  cm:[[31485030,"Romero D, Nat Rev Clin Oncol 2019","Responses to selinexor in multiple myeloma"]],
- reg:"FDA accelerated approval (2019; verify).",gl:"Later-line option (verify).",acc:"On-label."},
+ reg:"FDA accelerated approval (July 3, 2019).",gl:"Later-line option (NCCN not checked).",acc:"On-label."},
 {y:2020,n:"BOSTON (Grosicki)",s:"oth",ph:"Phase 3",d:"Once-weekly selinexor + Vd vs twice-weekly Vd after 1–3 lines",ep:"PFS",
  r:"Median PFS 13.93 vs 9.46 mo",N:"402",hr:"0.70",fu:"13.2 vs 16.5 mo",
  c:"Lancet 2020;396:1563",p:33189178,
  b:"Moved selinexor earlier, after STORM.",
- i:"Approved (2020; verify); used selectively because of toxicity.",
+ i:"Approved (FDA, December 18, 2020); used selectively because of toxicity.",
  q:"Were baseline characteristics and the twice-weekly Vd control appropriate, as correspondence questioned? Where does a toxic oral agent fit once immunotherapies are available?",
  cm:[[33933200,"Mohyuddin GR, Lancet 2021","Correspondence: baseline characteristics and control groups"]],
- reg:"FDA approval of SVd (2020; verify).",gl:GL,acc:"On-label."},
+ reg:"FDA approval of SVd (December 18, 2020).",gl:GL,acc:"On-label."},
 {y:2020,n:"BELLINI (Kumar)",s:"oth",ph:"Phase 3",d:"Venetoclax vs placebo + Vd after 1–3 lines",ep:"PFS",
  r:"Median PFS 22.4 vs 11.5 mo, but more deaths with venetoclax, mainly infections (8 fatal infections vs 0)",N:"291",hr:"0.63",fu:"18.7 mo",
  c:"Lancet Oncol 2020;21:1630",p:33129376,
  b:"Tested BCL2 inhibition in an unselected population.",
- i:"Mortality signal led to an FDA partial clinical hold and focus on t(11;14) (verify details).",
+ i:"Excess deaths in the venetoclax arm led the FDA to place a partial clinical hold on venetoclax myeloma trials (March 2019) and shifted focus to t(11;14).",
  q:"Is venetoclax safe and effective in t(11;14) disease (CANOVA)? How to select by biomarker?",
  cm:[[33129377,"Ghobrial I, Lancet Oncol 2020","BELLINI: a renaissance for an era of precision therapy in multiple myeloma"]],
- reg:"No approval; venetoclax not approved for myeloma.",gl:"Venetoclax used off-label for t(11;14) (verify NCCN).",acc:"Off-label."},
+ reg:"No approval; venetoclax not approved for myeloma.",gl:"Venetoclax used off-label for t(11;14) (NCCN not checked).",acc:"Off-label."},
 {y:2020,n:"DREAMM-2 (Lonial)",s:"oth",ph:"Phase 2",d:"Belantamab mafodotin (anti-BCMA ADC) at 2.5 or 3.4 mg/kg",ep:"ORR",
  r:"ORR 31% (2.5 mg/kg) and 34% (3.4 mg/kg); grade 3–4 keratopathy 27% and 21%",N:"196",hr:"n/a",fu:"6.3 and 6.9 mo by dose cohort (full paper)",
  c:"Lancet Oncol 2020;21:207",p:31859245,
  b:"First BCMA-directed therapy approved.",
- i:"Accelerated approval (2020), withdrawn in the US after DREAMM-3 (verify date).",
+ i:"Accelerated approval (August 5, 2020); withdrawn in the US after DREAMM-3 (announced November 22, 2022).",
  q:"Can ocular toxicity be managed with dose holds? Would combinations work better?",
- cm:[],reg:"FDA accelerated approval 2020; later withdrawn (verify).",gl:"—",acc:"—"},
+ cm:[],reg:"FDA accelerated approval (August 5, 2020); US withdrawal announced November 22, 2022.",gl:"—",acc:"—"},
 {y:2022,n:"OCEAN (Schjesvold)",s:"oth",ph:"Phase 3",d:"Melflufen + dexamethasone vs pomalidomide + dexamethasone",ep:"PFS",
  r:"Median PFS 6.8 vs 4.9 mo; fatal adverse events 12% vs 13%",N:"495",hr:"0.79",fu:"15.5 vs 16.3 mo",
  c:"Lancet Haematol 2022;9:e98",p:35032434,
  b:"Confirmatory trial for melflufen's 2021 accelerated approval.",
- i:"Despite a PFS gain, an OS signal (verify) led to US withdrawal; a cautionary case for accelerated approval.",
+ i:"Despite a PFS gain, an OS signal (HR 1.10) led to US withdrawal; a cautionary case for accelerated approval.",
  q:"How should OS harm signals be weighed against PFS gains?",
  cm:[[35032433,"Kapoor P, Lancet Haematol 2022","Melflufen for multiple myeloma: a promise unfulfilled?"],[35358437,"Hadidi SA, Lancet Haematol 2022","Correspondence: Melflufen in multiple myeloma: the conclusion matters"]],
- reg:"US accelerated approval 2021; withdrawn (verify dates).",gl:"Not recommended.",acc:"—"},
+ reg:"US accelerated approval (February 2021); withdrawal announced October 2021, and the FDA issued its final withdrawal decision in February 2024. Still authorized in the EU.",gl:"Not recommended.",acc:"—"},
 {y:2023,n:"DREAMM-3 (Dimopoulos)",s:"oth",ph:"Phase 3",d:"Belantamab mafodotin vs pomalidomide-dexamethasone",ep:"PFS",
  r:"Median PFS 11.2 vs 7.0 mo, not statistically different",N:"325",hr:"1.03",fu:"11.5 vs 10.8 mo",
  c:"Lancet Haematol 2023;10:e801",p:37793771,
  b:"Confirmatory trial for DREAMM-2.",
- i:"Missed its endpoint and led to US withdrawal of single-agent belantamab (verify).",
+ i:"Missed its endpoint and led to US withdrawal of single-agent belantamab (announced November 22, 2022).",
  q:"Would combinations (DREAMM-7, DREAMM-8) succeed where monotherapy did not?",
  cm:[[37793761,"Rodriguez-Otero P, Lancet Haematol 2023","Single-agent belantamab mafodotin in patients with relapsed or refractory multiple myeloma"]],
- reg:"Led to US withdrawal (verify).",gl:"—",acc:"—"},
+ reg:"Led to US withdrawal of single-agent belantamab (announced November 22, 2022).",gl:"—",acc:"—"},
 {y:2024,n:"DREAMM-7 (Hungria)",s:"oth",ph:"Phase 3",d:"Belantamab mafodotin + Vd vs daratumumab + Vd after ≥1 line",ep:"PFS",
  r:"Median PFS 36.6 vs 13.4 mo; 18-mo OS 84% vs 73%; ocular toxicity frequent",N:"494",hr:"0.41",fu:"28.2 mo",
  c:"N Engl J Med 2024;391:393",p:38828933,
@@ -344,95 +371,98 @@ const T = [
  i:"Led to FDA approval of BVd on October 23, 2025 (after ≥2 prior lines including a PI and an IMiD), with a boxed warning and REMS for ocular toxicity.",
  q:"Is the PFS gain worth near-universal ocular toxicity? Was DVd an appropriate comparator for daratumumab-exposed patients?",
  cm:[[39383465,"Lucijanic M, N Engl J Med 2024","Correspondence"],[39383466,"Hungria V, N Engl J Med 2024","Reply"]],
- reg:"FDA approval October 23, 2025: BVd after ≥2 prior lines including a PI and an IMiD; boxed warning and REMS.",gl:"Placement to verify in NCCN v5.2026.",acc:"On-label; REMS and eye exams required."},
+ reg:"FDA approval October 23, 2025: BVd after ≥2 prior lines including a PI and an IMiD; boxed warning and REMS.",gl:"Guideline placement not checked (NCCN requires login).",acc:"On-label; REMS and eye exams required."},
 {y:2024,n:"DREAMM-8 (Dimopoulos)",s:"oth",ph:"Phase 3",d:"Belantamab mafodotin + Pd vs bortezomib + Pd, lenalidomide-exposed",ep:"PFS",
  r:"12-mo PFS 71% vs 51%; ≥CR 40% vs 16%; OS immature",N:"302",hr:"0.52",fu:"21.8 mo",
  c:"N Engl J Med 2024;391:408",p:38828951,
  b:"Second belantamab combination, against the OPTIMISMM regimen.",
  i:"Supports BPd; the October 2025 US approval covered BVd only (BPd not confirmed in that approval).",
  q:"Why was BPd not included in the US label? How to sequence with CAR-T and bispecifics, all BCMA-directed?",
- cm:[],reg:"US approval covered BVd, not BPd, per October 2025 reports (verify current label and EU status).",gl:"Verify.",acc:"—"},
+ cm:[],reg:"US approval (October 23, 2025) covered BVd, not BPd. European Commission approval (July 2025) covers both BVd and BPd (BPd after at least one prior therapy including lenalidomide).",gl:"Guideline placement not checked (NCCN requires login).",acc:"—"},
 {y:2026,n:"CANOVA (Popat)",s:"oth",ph:"Phase 3",d:"Venetoclax-dexamethasone vs pomalidomide-dexamethasone in t(11;14)",ep:"PFS",
- r:"Median PFS 9.9 vs 5.8 mo (not significant); ORR 62% vs 35%; median OS 32.4 vs 26.9 mo",N:"263",hr:"0.823 (PFS); 0.856 (OS)",fu:"not reported in abstract",
+ r:"Median PFS 9.9 vs 5.8 mo (not significant); ORR 62% vs 35%; median OS 32.4 vs 26.9 mo",N:"263",hr:"0.823 (PFS); 0.856 (OS)",fu:"24.9 mo (full paper)",
  c:"J Clin Oncol 2026;44:164",p:41370738,
  b:"Biomarker-selected follow-up to BELLINI's t(11;14) signal.",
  i:"Missed its primary endpoint; venetoclax remains off-label in myeloma.",
  q:"Is venetoclax better used in combinations or in AL amyloidosis with t(11;14)?",
- cm:[],reg:"No approval.",gl:"Off-label t(11;14) use continues in some guidelines (verify).",acc:"Off-label."},
+ cm:[],reg:"No approval.",gl:"Off-label t(11;14) use continues in some guidelines (NCCN not checked).",acc:"Off-label."},
 // ---------- CAR-T & bispecifics ----------
 {y:2021,n:"KarMMa (Munshi)",s:"imm",ph:"Phase 2",d:"Idecabtagene vicleucel (BCMA CAR-T) after ≥3 lines",ep:"ORR",
  r:"ORR 73%, ≥CR 33%; median PFS 8.8 mo; CRS 84%",N:"140 enrolled; 128 infused",hr:"n/a",fu:"13.3 mo",
  c:"N Engl J Med 2021;384:705",p:33626253,
  b:"First BCMA CAR-T registration trial.",
- i:"First CAR-T approved in myeloma (2021; verify).",
+ i:"First CAR-T approved in myeloma (FDA, March 26, 2021).",
  q:"Can CAR-T give durable remissions earlier (KarMMa-3)?",
  cm:[[34133869,"Kidoguchi K, N Engl J Med 2021","Correspondence"]],
- reg:"FDA approval 2021 (verify).",gl:"Recommended in triple-class-exposed disease.",acc:"Certified centers, manufacturing time, prior authorization."},
+ reg:"FDA approval (March 26, 2021).",gl:"Recommended in triple-class-exposed disease.",acc:"Certified centers, manufacturing time, prior authorization."},
 {y:2021,n:"CARTITUDE-1 (Berdeja)",s:"imm",ph:"Phase 1b/2",d:"Ciltacabtagene autoleucel after ≥3 lines (median 6)",ep:"ORR",
  r:"ORR 97%, sCR 67%; median DOR and PFS not reached",N:"113 enrolled; 97 infused",hr:"n/a",fu:"12.4 mo",
  c:"Lancet 2021;398:314",p:34175021,
  b:"Second BCMA CAR-T with a dual-epitope binding domain.",
- i:"Highest single-agent response rates in late-line myeloma; approved 2022 (verify).",
+ i:"Highest single-agent response rates in late-line myeloma; approved February 28, 2022.",
  q:"Delayed neurotoxicity (parkinsonism)? Durability beyond 5 years?",
- cm:[],reg:"FDA approval 2022 (verify).",gl:"Recommended in triple-class-exposed disease.",acc:"As for ide-cel."},
+ cm:[],reg:"FDA approval (February 28, 2022).",gl:"Recommended in triple-class-exposed disease.",acc:"As for ide-cel."},
 {y:2022,n:"MajesTEC-1 (Moreau)",s:"imm",ph:"Phase 1/2",d:"Teclistamab (BCMA×CD3) after ≥3 lines",ep:"ORR",
  r:"ORR 63.0%, ≥CR 39.4%; median PFS 11.3 mo; CRS 72.1%",N:"165",hr:"n/a",fu:"14.1 mo",
  c:"N Engl J Med 2022;387:495",p:35661166,
  b:"First off-the-shelf BCMA bispecific.",
- i:"Accelerated approval (2022; verify); made T-cell engagers widely accessible.",
+ i:"Accelerated approval (October 25, 2022); made T-cell engagers widely accessible.",
  q:"Infection risk and hypogammaglobulinemia; fixed duration vs continuous; use earlier (MajesTEC-3)?",
  cm:[[35947712,"Mailankody S, N Engl J Med 2022","T-cell engagers—modern immune-based therapies for multiple myeloma"]],
- reg:"FDA accelerated approval 2022 (verify).",gl:"Recommended in triple-class-exposed disease.",acc:"On-label."},
+ reg:"FDA accelerated approval (October 25, 2022).",gl:"Recommended in triple-class-exposed disease.",acc:"On-label."},
 {y:2022,n:"MonumenTAL-1 (Chari)",s:"imm",ph:"Phase 1",d:"Talquetamab (GPRC5D×CD3), recommended phase 2 doses",ep:"Safety, ORR",
  r:"ORR 70% (405 µg/kg weekly) and 64% (800 µg/kg every 2 weeks); skin events and dysgeusia common",N:"232 treated",hr:"n/a",fu:"11.7 and 4.2 mo",
  c:"N Engl J Med 2022;387:2232",p:36507686,
  b:"First non-BCMA target, for patients after BCMA therapy.",
- i:"Accelerated approval (2023; verify); added a new target.",
+ i:"Accelerated approval (August 9, 2023); added a new target (GPRC5D).",
  q:"How to manage oral, nail and skin toxicity? Combinations with teclistamab?",
  cm:[[36507665,"Longo DL, N Engl J Med 2022","The expanding clinical role of bifunctional antibodies"]],
- reg:"FDA accelerated approval 2023 (verify).",gl:"Recommended after BCMA therapy (verify).",acc:"On-label."},
+ reg:"FDA accelerated approval (August 9, 2023).",gl:"Recommended after BCMA therapy (NCCN not checked).",acc:"On-label."},
 {y:2023,n:"KarMMa-3 (Rodriguez-Otero)",s:"imm",ph:"Phase 3",d:"Ide-cel vs standard regimens after 2–4 lines",ep:"PFS",
  r:"Median PFS 13.3 vs 4.4 mo; ≥CR 39% vs 5%; OS immature",N:"386",hr:"0.49",fu:"18.6 mo",
  c:"N Engl J Med 2023;388:1002",p:36762851,
  b:"Randomized test of CAR-T earlier than KarMMa.",
- i:"Moved ide-cel to earlier lines (approval 2024; verify).",
+ i:"Moved ide-cel to earlier lines (FDA approval April 2024).",
  q:"Early deaths in the CAR-T arm before infusion; OS benefit?",
  cm:[[36849555,"Killock D, Nat Rev Clin Oncol 2023","CAR T cells show superiority over standard therapies for RRMM"]],
- reg:"FDA label expanded 2024 (verify).",gl:"Recommended (verify NCCN line).",acc:"As for CAR-T."},
+ reg:"FDA label expanded to patients after at least two prior lines (April 2024).",gl:"Recommended (NCCN not checked).",acc:"As for CAR-T."},
 {y:2023,n:"CARTITUDE-4 (San-Miguel)",s:"imm",ph:"Phase 3",d:"Cilta-cel vs DPd or PVd after 1–3 lines, lenalidomide-refractory",ep:"PFS",
  r:"12-mo PFS 75.9% vs 48.6%; ≥CR 73.1% vs 21.8%. Update (33.6 mo): OS HR 0.55",N:"419",hr:"0.26 (PFS); 0.29 (PFS, update); 0.55 (OS)",fu:"15.9 mo; 33.6 mo (update)",
  c:"N Engl J Med 2023;389:335",p:37272512,extra:["OS update, Lancet Oncol 2026",41519141],
  b:"Moved cilta-cel to first relapse after CARTITUDE-1.",
- i:"First cellular therapy with an OS benefit in myeloma; approved from first relapse in lenalidomide-refractory disease (2024; verify).",
+ i:"First cellular therapy with an OS benefit in myeloma; approved from first relapse in lenalidomide-refractory disease (April 2024).",
  q:"Should CAR-T come before bispecifics? Access and bridging at first relapse?",
- cm:[],reg:"FDA approval for ≥1 prior line, lenalidomide-refractory (2024; verify).",gl:"Recommended at first lenalidomide-refractory relapse in eligible patients (verify).",acc:"As for CAR-T."},
+ cm:[],reg:"FDA approval after at least one prior line, lenalidomide-refractory (April 2024).",gl:"Recommended at first lenalidomide-refractory relapse in eligible patients (NCCN not checked).",acc:"As for CAR-T."},
 {y:2023,n:"MagnetisMM-3 (Lesokhin)",s:"imm",ph:"Phase 2",d:"Elranatamab (BCMA×CD3), cohort without prior BCMA therapy",ep:"ORR",
  r:"ORR 61.0%, ≥CR 35.0%; 15-mo PFS 50.9%; grade 3–4 infections 39.8%",N:"123",hr:"n/a",fu:"14.7 mo",
  c:"Nat Med 2023;29:2259",p:37582952,
  b:"Second BCMA bispecific, with step-down to every-2-week dosing.",
- i:"Accelerated approval (2023; verify).",
+ i:"Accelerated approval (August 14, 2023).",
  q:"Infection prophylaxis; dosing interval reduction.",
- cm:[],reg:"FDA accelerated approval 2023 (verify).",gl:"Recommended in triple-class-exposed disease.",acc:"On-label."},
+ cm:[],reg:"FDA accelerated approval (August 14, 2023).",gl:"Recommended in triple-class-exposed disease.",acc:"On-label."},
 {y:2024,n:"LINKER-MM1 (Bumma)",s:"imm",ph:"Phase 1/2",d:"Linvoseltamab (BCMA×CD3) at 50 or 200 mg",ep:"ORR",
  r:"200 mg: ORR 71%, ≥CR 50%, median DOR 29.4 mo; ICANS 7.7%",N:"117 (200 mg); 104 (50 mg)",hr:"n/a",fu:"14.3 mo (200 mg)",
  c:"J Clin Oncol 2024;42:2702",p:38879802,
  b:"Third BCMA bispecific.",
  i:"FDA accelerated approval July 2, 2025 after ≥4 prior lines including PI, IMiD and anti-CD38.",
  q:"How to choose among three BCMA bispecifics?",
- cm:[],reg:"FDA accelerated approval July 2, 2025 (≥4 prior lines).",gl:"Verify NCCN placement.",acc:"On-label."},
+ cm:[],reg:"FDA accelerated approval July 2, 2025 (≥4 prior lines).",gl:"Guideline placement not checked (NCCN requires login).",acc:"On-label."},
 {y:2026,n:"MajesTEC-3 (Costa)",s:"imm",ph:"Phase 3",d:"Teclistamab + daratumumab vs DPd or DVd after 1–3 lines",ep:"PFS",
  r:"36-mo PFS 83.4% vs 29.7%; ≥CR 81.8% vs 32.1%; MRD-negative 58.4% vs 17.1%; deaths from AEs 7.1% vs 5.9%",N:"587",hr:"0.17",fu:"34.5 mo",
  c:"N Engl J Med 2026;394:739",p:41363801,
  b:"Moved a bispecific to early relapse, combined with an anti-CD38 antibody.",
  i:"FDA approval March 5, 2026 after ≥1 prior line including a PI and an IMiD; largest PFS effect in early relapse to date.",
  q:"Infection mortality and immune reconstitution? Fixed duration? How to sequence with CAR-T, now both available at first relapse?",
- cm:[],reg:"FDA approval March 5, 2026 (≥1 prior line including a PI and an IMiD).",gl:"Too recent for confirmed NCCN placement (verify).",acc:"On-label."}
+ cm:[],reg:"FDA approval March 5, 2026 (≥1 prior line including a PI and an IMiD).",gl:"Too recent for confirmed NCCN placement (NCCN not checked).",acc:"On-label."}
 ];
 // Trial registry numbers (ClinicalTrials.gov, ISRCTN or EudraCT), taken from each paper's PubMed record or the registry, Oct 22, 2026.
 // Shown as links next to the source and used by the monthly update to find later follow-up publications.
 const REG = {"APEX (Richardson)": ["NCT00048230"],"MM-009 / MM-010 (Weber, Dimopoulos)": ["NCT00056160"],"MM-003 (San Miguel)": ["NCT01311687"],"PANORAMA-1 (San-Miguel)": ["NCT01023308"],"ASPIRE (Stewart)": ["NCT01080391"],"ENDEAVOR (Dimopoulos)": ["NCT01568866"],"TOURMALINE-MM1 (Moreau)": ["NCT01564537"],"OPTIMISMM (Richardson)": ["NCT01734928"],"CASTOR (Palumbo)": ["NCT02136134"],"POLLUX (Dimopoulos)": ["NCT02076009"],"ICARIA-MM (Attal)": ["NCT02990338"],"CANDOR (Dimopoulos)": ["NCT03158688"],"APOLLO (Dimopoulos)": ["NCT03180736"],"IKEMA (Moreau)": ["NCT03275285"],"ELOQUENT-2 (Lonial)": ["NCT01239797"],"STORM (Chari)": ["NCT02336815"],"BOSTON (Grosicki)": ["NCT03110562"],"BELLINI (Kumar)": ["NCT02755597"],"DREAMM-2 (Lonial)": ["NCT03525678"],"OCEAN (Schjesvold)": ["NCT03151811"],"DREAMM-3 (Dimopoulos)": ["NCT04162210"],"DREAMM-7 (Hungria)": ["NCT04246047"],"DREAMM-8 (Dimopoulos)": ["NCT04484623"],"CANOVA (Popat)": ["NCT03539744"],"KarMMa (Munshi)": ["NCT03361748"],"CARTITUDE-1 (Berdeja)": ["NCT03548207"],"MajesTEC-1 (Moreau)": ["NCT03145181","NCT04557098"],"MonumenTAL-1 (Chari)": ["NCT03399799"],"KarMMa-3 (Rodriguez-Otero)": ["NCT03651128"],"CARTITUDE-4 (San-Miguel)": ["NCT04181827"],"MagnetisMM-3 (Lesokhin)": ["NCT04649359"],"LINKER-MM1 (Bumma)": ["NCT03761108"],"MajesTEC-3 (Costa)": ["NCT05083169"]};
 // Full-text links: free full text in PubMed Central where available, otherwise the publisher's page via DOI (from PubMed, Oct 22, 2026).
-const FT = {"APEX (Richardson)": ["doi", "10.1056/NEJMoa043445"], "MM-009 / MM-010 (Weber, Dimopoulos)": ["doi", "10.1056/NEJMoa070596"], "MM-003 (San Miguel)": ["doi", "10.1016/S1470-2045(13)70380-2"], "PANORAMA-1 (San-Miguel)": ["doi", "10.1016/S1470-2045(14)70440-1"], "ASPIRE (Stewart)": ["doi", "10.1056/NEJMoa1411321"], "ENDEAVOR (Dimopoulos)": ["doi", "10.1016/S1470-2045(15)00464-7"], "TOURMALINE-MM1 (Moreau)": ["doi", "10.1056/NEJMoa1516282"], "OPTIMISMM (Richardson)": ["doi", "10.1016/S1470-2045(19)30152-4"], "CASTOR (Palumbo)": ["doi", "10.1056/NEJMoa1606038"], "POLLUX (Dimopoulos)": ["doi", "10.1056/NEJMoa1607751"], "ICARIA-MM (Attal)": ["doi", "10.1016/S0140-6736(19)32556-5"], "CANDOR (Dimopoulos)": ["doi", "10.1016/S0140-6736(20)30734-0"], "APOLLO (Dimopoulos)": ["doi", "10.1016/S1470-2045(21)00128-5"], "IKEMA (Moreau)": ["doi", "10.1016/S0140-6736(21)00592-4"], "ELOQUENT-2 (Lonial)": ["doi", "10.1056/NEJMoa1505654"], "STORM (Chari)": ["doi", "10.1056/NEJMoa1903455"], "BOSTON (Grosicki)": ["doi", "10.1016/S0140-6736(20)32292-3"], "BELLINI (Kumar)": ["doi", "10.1016/S1470-2045(20)30525-8"], "DREAMM-2 (Lonial)": ["doi", "10.1016/S1470-2045(19)30788-0"], "OCEAN (Schjesvold)": ["doi", "10.1016/S2352-3026(21)00381-1"], "DREAMM-3 (Dimopoulos)": ["doi", "10.1016/S2352-3026(23)00243-0"], "DREAMM-7 (Hungria)": ["doi", "10.1056/NEJMoa2405090"], "DREAMM-8 (Dimopoulos)": ["doi", "10.1056/NEJMoa2403407"], "CANOVA (Popat)": ["pmc", "PMC12794717"], "KarMMa (Munshi)": ["doi", "10.1056/NEJMoa2024850"], "CARTITUDE-1 (Berdeja)": ["doi", "10.1016/S0140-6736(21)00933-8"], "MajesTEC-1 (Moreau)": ["pmc", "PMC10587778"], "MonumenTAL-1 (Chari)": ["doi", "10.1056/NEJMoa2204591"], "KarMMa-3 (Rodriguez-Otero)": ["doi", "10.1056/NEJMoa2213614"], "CARTITUDE-4 (San-Miguel)": ["doi", "10.1056/NEJMoa2303379"], "MagnetisMM-3 (Lesokhin)": ["pmc", "PMC10504075"], "LINKER-MM1 (Bumma)": ["pmc", "PMC11272139"], "MajesTEC-3 (Costa)": ["pmc", "PMC13218738"]};
+const FT = {"APEX (Richardson)": ["doi", "10.1056/NEJMoa043445", "free"], "MM-009 / MM-010 (Weber, Dimopoulos)": ["doi", "10.1056/NEJMoa070596", "free"], "MM-003 (San Miguel)": ["doi", "10.1016/S1470-2045(13)70380-2", "repo", "http://hdl.handle.net/2318/150538"], "PANORAMA-1 (San-Miguel)": ["doi", "10.1016/S1470-2045(14)70440-1"], "ASPIRE (Stewart)": ["doi", "10.1056/NEJMoa1411321", "free"], "ENDEAVOR (Dimopoulos)": ["doi", "10.1016/S1470-2045(15)00464-7", "free"], "TOURMALINE-MM1 (Moreau)": ["doi", "10.1056/NEJMoa1516282", "free"], "OPTIMISMM (Richardson)": ["doi", "10.1016/S1470-2045(19)30152-4", "repo", "http://hdl.handle.net/11380/1199907"], "CASTOR (Palumbo)": ["doi", "10.1056/NEJMoa1606038", "free"], "POLLUX (Dimopoulos)": ["doi", "10.1056/NEJMoa1607751", "free"], "ICARIA-MM (Attal)": ["doi", "10.1016/S0140-6736(19)32556-5"], "CANDOR (Dimopoulos)": ["doi", "10.1016/S0140-6736(20)30734-0"], "APOLLO (Dimopoulos)": ["doi", "10.1016/S1470-2045(21)00128-5", "repo", "https://pure.eur.nl/en/publications/86fff0af-c81c-46a2-ac9a-e17087f3a2ae"], "IKEMA (Moreau)": ["doi", "10.1016/S0140-6736(21)00592-4"], "ELOQUENT-2 (Lonial)": ["doi", "10.1056/NEJMoa1505654", "free"], "STORM (Chari)": ["doi", "10.1056/NEJMoa1903455", "free"], "BOSTON (Grosicki)": ["doi", "10.1016/S0140-6736(20)32292-3", "repo", "http://hdl.handle.net/2436/623569"], "BELLINI (Kumar)": ["doi", "10.1016/S1470-2045(20)30525-8"], "DREAMM-2 (Lonial)": ["doi", "10.1016/S1470-2045(19)30788-0"], "OCEAN (Schjesvold)": ["doi", "10.1016/S2352-3026(21)00381-1", "repo", "https://pure.eur.nl/en/publications/996c6d5c-c995-4c81-afd3-6597eccbeba5"], "DREAMM-3 (Dimopoulos)": ["doi", "10.1016/S2352-3026(23)00243-0"], "DREAMM-7 (Hungria)": ["doi", "10.1056/NEJMoa2405090"], "DREAMM-8 (Dimopoulos)": ["doi", "10.1056/NEJMoa2403407"], "CANOVA (Popat)": ["pmc", "PMC12794717"], "KarMMa (Munshi)": ["doi", "10.1056/NEJMoa2024850", "free"], "CARTITUDE-1 (Berdeja)": ["doi", "10.1016/S0140-6736(21)00933-8"], "MajesTEC-1 (Moreau)": ["pmc", "PMC10587778"], "MonumenTAL-1 (Chari)": ["doi", "10.1056/NEJMoa2204591", "free"], "KarMMa-3 (Rodriguez-Otero)": ["doi", "10.1056/NEJMoa2213614"], "CARTITUDE-4 (San-Miguel)": ["doi", "10.1056/NEJMoa2303379", "repo", "https://research.rug.nl/en/publications/0d46dcc2-37a7-4ab4-9506-a6c2079d9334"], "MagnetisMM-3 (Lesokhin)": ["pmc", "PMC10504075"], "LINKER-MM1 (Bumma)": ["pmc", "PMC11272139"], "MajesTEC-3 (Costa)": ["pmc", "PMC13218738"]};
+const FTLABEL = x => x[0] === 'pmc' ? 'Free full text' : (x[2] === 'free' ? 'Free at publisher' : 'Publisher');
+const FTTITLE = x => x[0] === 'pmc' ? 'Free full text in PubMed Central' : (x[2] === 'free' ? 'Free to read on the publisher site (checked with Unpaywall)' : 'Publisher page; full text may need a subscription or institutional access');
+const REPORT = t => 'mailto:andresferber@hotmail.com?subject=' + encodeURIComponent('Landmark trials (' + PAGETITLE + '): ' + t.n);
 const FTURL = x => x[0] === 'pmc' ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + x[1] + '/' : 'https://doi.org/' + x[1];
 const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
 T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, reg:t.reg, gl:t.gl, acc:t.acc}; });
@@ -443,7 +473,9 @@ T.forEach(t => { t.trn = REG[t.n] || []; t.ft = FT[t.n] || null; });
 // WATCH: ongoing trials to watch, from ClinicalTrials.gov.
 const TOX = {"APEX (Richardson)": "Grade 3–4 AEs 75% vs 60% (dexamethasone)", "MM-009 / MM-010 (Weber, Dimopoulos)": "MM-009: grade 3–4 AEs 85.3% vs 73.1%; neutropenia 41.2% vs 4.6%; venous thromboembolism 14.7% vs 3.4%", "MM-003 (San Miguel)": "Grade 3–4 neutropenia 48% vs 16%, pneumonia 13% vs 8%; treatment-related deaths 4% vs 5%", "PANORAMA-1 (San-Miguel)": "Grade 3–4 thrombocytopenia 67% vs 31%, diarrhea 26% vs 8%, fatigue 24% vs 12%; serious AEs 60% vs 42%", "ASPIRE (Stewart)": "Grade ≥3 AEs 83.7% vs 80.7%; AE discontinuation 15.3% vs 17.7%", "ENDEAVOR (Dimopoulos)": "Grade ≥3 hypertension 9% vs 3%, anemia 14% vs 10%; serious AEs 48% vs 36%; AE deaths 4% vs 3%", "TOURMALINE-MM1 (Moreau)": "Grade ≥3 AEs 74% vs 69%; grade 3–4 thrombocytopenia 19% vs 9%; rash 36% vs 23%; neuropathy 27% vs 22%", "OPTIMISMM (Richardson)": "Grade 3–4 neutropenia 42% vs 9%, infections 31% vs 18%; serious AEs 57% vs 42%; treatment-related deaths 2% vs 1%", "CASTOR (Palumbo)": "Grade 3–4 thrombocytopenia 45.3% vs 32.9%, neutropenia 12.8% vs 4.2%; infusion reactions 45.3% (grade 3 8.6%)", "POLLUX (Dimopoulos)": "Grade 3–4 neutropenia 51.9% vs 37.0%; infusion reactions 47.7%, mostly grade 1–2", "ICARIA-MM (Attal)": "Infusion reactions 38%; upper respiratory infections 28% vs 17% (any grade); fatal AEs 8% vs 9%", "CANDOR (Dimopoulos)": "Grade ≥3 AEs 82% vs 74%; AE discontinuation similar between arms", "APOLLO (Dimopoulos)": "Grade 3–4 neutropenia 68% vs 51%; serious AEs 50% vs 39% (pneumonia 15% vs 8%); treatment-emergent deaths 7% in both", "IKEMA (Moreau)": "Grade ≥3 AEs 77% vs 67%; serious AEs 59% vs 57%; AE discontinuation 8% vs 14%; fatal AEs 3% in both", "ELOQUENT-2 (Lonial)": "Infusion reactions 10%, mostly grade 1–2; grade 3–4 lymphopenia, neutropenia, fatigue, pneumonia (rates not in abstract)", "STORM (Chari)": "Thrombocytopenia 73% (grade 3 25%, grade 4 33%); fatigue, nausea, anorexia mostly grade 1–2; grade ≥3 bleeding in 6 patients", "BOSTON (Grosicki)": "Grade 3–4 thrombocytopenia 39% vs 17%, fatigue 13% vs 1%; grade ≥2 neuropathy 21% vs 34%", "BELLINI (Kumar)": "Grade ≥3 neutropenia 18% vs 7%, pneumonia 16% vs 9%; fatal infections 4% vs 0; higher mortality with venetoclax", "DREAMM-2 (Lonial)": "Grade 3–4 keratopathy 27% (2.5 mg/kg) and 21% (3.4 mg/kg); thrombocytopenia 20% and 33%", "OCEAN (Schjesvold)": "Grade 3–4 thrombocytopenia 63% vs 11%, neutropenia 54% vs 41%, anemia 43% vs 18%; fatal AEs 12% vs 13%", "DREAMM-3 (Dimopoulos)": "Grade 3–4 thrombocytopenia 23%, anemia 16% with belantamab; no treatment-related deaths vs 1% with Pd", "DREAMM-7 (Hungria)": "Grade ≥3 AEs 95% vs 78%; ocular events 79% vs 29%, managed with dose modification", "DREAMM-8 (Dimopoulos)": "Grade ≥3 AEs 94% vs 76%; ocular events 89% (grade 3–4 43%) vs 30%; ocular discontinuation 9%", "CANOVA (Popat)": "Grade ≥3 AEs 67% vs 83%; treatment-emergent deaths 12% vs 6%; more infections with venetoclax", "KarMMa (Munshi)": "CRS 84% (grade ≥3 5%); neurotoxicity 18% (grade 3 3%); grade 3–4 cytopenias in nearly all", "CARTITUDE-1 (Berdeja)": "CRS 95% (grade 3–4 4%, one fatal); neurotoxicity 21% (grade 3–4 9%); 6 treatment-related deaths", "MajesTEC-1 (Moreau)": "CRS 72.1% (grade 3 0.6%); infections 76.4% (grade 3–4 44.8%); ICANS 3% (grade 1–2)", "MonumenTAL-1 (Chari)": "CRS 77–80% (nearly all grade 1–2); skin events 67–70%; dysgeusia 57–63%", "KarMMa-3 (Rodriguez-Otero)": "Grade 3–4 AEs 93% vs 75%; CRS 88% (grade ≥3 5%); neurotoxicity 15% (grade ≥3 3%)", "CARTITUDE-4 (San-Miguel)": "CRS 76.1% (grade 3–4 1.1%); ICANS 4.5% (grade 1–2); cranial nerve palsy 9.1%; movement and neurocognitive symptoms in 1 patient", "MagnetisMM-3 (Lesokhin)": "Infections 69.9% (grade 3–4 39.8%); CRS 57.7% (no grade ≥3); grade 3–4 neutropenia 48.8%", "LINKER-MM1 (Bumma)": "200 mg: CRS 46% (grade 3 0.9%); ICANS 7.7%; infections 74.4% (grade 3–4 36%)", "MajesTEC-3 (Costa)": "Serious AEs 70.7% vs 62.4%; deaths from AEs 7.1% vs 5.9%"};
 const CORE = ["ASPIRE (Stewart)", "CASTOR (Palumbo)", "POLLUX (Dimopoulos)", "CANDOR (Dimopoulos)", "DREAMM-7 (Hungria)", "KarMMa-3 (Rodriguez-Otero)", "CARTITUDE-4 (San-Miguel)", "MajesTEC-1 (Moreau)", "MajesTEC-3 (Costa)"];
-const WATCH = {"note": "", "items": []};
+const WATCH = {"note": "Ongoing phase 3 trials selected from ClinicalTrials.gov (checked October 23, 2026). Status and primary completion dates are as registered; some trials may already have presented results at meetings.", "items": [{"n": "SUCCESSOR-1", "d": "Mezigdomide-Vd vs PVd in R/R myeloma", "ph": "Phase 3", "st": "Recruiting", "pcd": "2027-01-10", "ep": "PFS", "nct": "NCT05519085"}, {"n": "SUCCESSOR-2", "d": "Mezigdomide-Kd vs Kd in R/R myeloma", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2026-09-28", "ep": "PFS", "nct": "NCT05552976"}, {"n": "EXCALIBER-RRMM", "d": "Iberdomide-Dd vs DVd in R/R myeloma", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2027-11-16", "ep": "PFS; MRD-negative CR", "nct": "NCT04975997"}, {"n": "MonumenTAL-3", "d": "Talquetamab-D or talquetamab-DP vs DPd in R/R myeloma", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2027-07-30", "ep": "PFS", "nct": "NCT05455320"}, {"n": "MonumenTAL-6", "d": "Talquetamab-P or talquetamab-teclistamab vs EPd or PVd after anti-CD38 and lenalidomide", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2026-04-01", "ep": "PFS", "nct": "NCT06208150"}, {"n": "MagnetisMM-5", "d": "Elranatamab ± daratumumab vs DPd in R/R myeloma", "ph": "Phase 3", "st": "Recruiting", "pcd": "2026-02-26", "ep": "PFS", "nct": "NCT05020236"}, {"n": "MajesTEC-9", "d": "Teclistamab vs PVd or Kd after 1–3 prior lines", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2025-10-13", "ep": "PFS", "nct": "NCT05572515"}, {"n": "LINKER-MM3", "d": "Linvoseltamab vs EPd in R/R myeloma", "ph": "Phase 3", "st": "Recruiting", "pcd": "2033-04-19", "ep": "PFS", "nct": "NCT05730036"}, {"n": "iMMagine-3", "d": "Anitocabtagene autoleucel (anito-cel) vs standard regimens in R/R myeloma", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2028-07", "ep": "PFS; MRD-negative CR at 9 months", "nct": "NCT06413498"}, {"n": "QUINTESSENTIAL-2", "d": "Arlocabtagene autoleucel (arlo-cel, GPRC5D CAR-T) vs standard regimens in lenalidomide-exposed R/R myeloma", "ph": "Phase 3", "st": "Recruiting", "pcd": "2027-12-30", "ep": "PFS; MRD-negative CR", "nct": "NCT06615479"}]};
+const PAGEKEY = "rrmm";
+const PAGETITLE = "Relapsed/refractory myeloma";
 const SLUG = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 T.forEach(t => { t.tx = TOX[t.n] || "Not reported in abstract"; t.core = CORE.includes(t.n); t.slug = SLUG(t.n);
   t.full = [t.r, t.N, t.hr, t.fu, t.tx].some(x => /full paper/.test(String(x || ""))); });
@@ -491,7 +523,7 @@ function render(){
     <li class="trial" data-trial="${t.slug}">
       <div class="yr">${t.y}</div>
       <div class="body">
-        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span>${t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : ''}</div>
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span>${t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : ''}<button type="button" class="share" data-slug="${t.slug}" title="Copy a link to this trial" aria-label="Copy a link to ${esc(t.n)}"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M8.5 11.5a3 3 0 0 0 4.2 0l2.6-2.6a3 3 0 0 0-4.2-4.2l-1 1M11.5 8.5a3 3 0 0 0-4.2 0l-2.6 2.6a3 3 0 0 0 4.2 4.2l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="lbl">Link copied</span></button></div>
         <p class="design">${esc(t.d)}</p>
         <div class="stats">
           <span><b>N</b>${esc(t.N)}</span>
@@ -506,7 +538,7 @@ function render(){
           <dt>Changed</dt><dd>${esc(t.i)}</dd>
           <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
           <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
-          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${t.ft[0] === 'pmc' ? 'Free full text in PubMed Central' : 'Publisher page; full text may need a subscription or institutional access'}">${t.ft[0] === 'pmc' ? 'Free full text' : 'Publisher'} ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${FTTITLE(t.ft)}">${FTLABEL(t.ft)} ↗</a>` : ''}${t.ft && t.ft[2] === 'repo' ? ` · <a class="ft" href="${esc(t.ft[3])}" target="_blank" rel="noopener" title="Free legal copy in a university repository, found through Unpaywall; it may be the authors' manuscript rather than the final journal version">Free copy (repository) ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')} · <a class="report" href="${esc(REPORT(t))}" title="Email a correction for this trial">Report an error</a></dd>
         </dl>
       </div>
     </li>`).join("");
@@ -524,6 +556,21 @@ render();
     [w.ph, w.st, w.pcd ? "primary completion " + w.pcd : "", w.ep ? "primary endpoint: " + w.ep : ""].filter(Boolean).map(esc).join(" · ") +
     (w.nct ? ' · <a href="https://clinicaltrials.gov/study/' + esc(w.nct) + '" target="_blank" rel="noopener">' + esc(w.nct) + ' ↗</a>' : "") +
     '</span>' + (w.note ? '<span class="wd">' + esc(w.note) + '</span>' : '') + '</li>').join("") + '</ul>';
+})();
+
+(function setupShare(){
+  const listEl = document.getElementById("rrmm-list");
+  listEl.addEventListener("click", e => {
+    const b = e.target.closest(".share");
+    if (!b) return;
+    const slug = b.getAttribute("data-slug");
+    const inSite = !!listEl.closest(".ltw");
+    const base = inSite ? location.href.split("#")[0] : "https://andresferber.github.io/landmark-trials/";
+    const url = base + "#t-" + PAGEKEY + "-" + slug;
+    const done = () => { b.classList.add("copied"); setTimeout(() => b.classList.remove("copied"), 1800); };
+    const fallback = () => { const t = document.createElement("textarea"); t.value = url; t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); done(); } catch (x) {} t.remove(); };
+    try { navigator.clipboard.writeText(url).then(done, fallback); } catch (x) { fallback(); }
+  });
 })();
 (function setupPrint(){
   const listEl = document.getElementById("rrmm-list");

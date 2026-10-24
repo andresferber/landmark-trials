@@ -71,6 +71,11 @@ GUARD = """
 .ltw input[type="search"], .ltw select { color: var(--fg) !important; background: var(--surface) !important; height: auto !important; box-shadow: none !important; }
 .ltw button.printbtn { color: var(--fg) !important; background: var(--surface) !important; text-transform: none !important; box-shadow: none !important; height: auto !important; }
 .ltw .watch ul, .ltw .watch li { list-style: none !important; margin-left: 0 !important; padding-left: 0 !important; background: none !important; }
+.ltw button.share { background: none !important; box-shadow: none !important; color: var(--muted) !important; height: auto !important; padding: 4px 6px !important; text-transform: none !important; min-width: 0 !important; }
+.ltw .gloss dt { color: var(--fg) !important; text-transform: none !important; }
+.ltw .gloss summary { color: var(--fg) !important; list-style: revert !important; }
+.ltw a.report { color: var(--muted) !important; font-size: 12px !important; }
+.ltw .reportall { margin: 12px 0 0; }
 .ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 """
 

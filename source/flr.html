@@ -124,6 +124,24 @@ footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch
   .watch { break-inside: avoid; }
   a { text-decoration: none; }
 }
+
+/* Added Oct 23, 2026: share link and abbreviations */
+.share { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font: 500 12px/1 var(--font-body); padding: 4px 6px; border-radius: 6px; }
+.share:hover { color: var(--accent); background: var(--rule); }
+.share:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.share .lbl { display: none; }
+.share.copied .lbl { display: inline; color: var(--s-young); }
+.gloss { margin-top: 24px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); padding: 0 18px; }
+.gloss summary { cursor: pointer; padding: 14px 0; font-weight: 600; }
+.gloss dl { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 4px 16px; margin: 0 0 16px; font-size: 14px; }
+.gloss dt { font: 500 13px var(--font-mono); color: var(--fg); text-transform: none; letter-spacing: normal; }
+.gloss dd { margin: 0; color: var(--muted); }
+@media print { .share { display: none !important; } .gloss { break-inside: avoid; } }
+
+/* Added Oct 23, 2026: report link */
+.report { color: var(--muted); font-size: 12px; }
+.report:hover { color: var(--accent); }
+@media print { .report { display: none !important; } }
 </style>
 
 <div class="wrap">
@@ -151,8 +169,11 @@ footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch
 
   <section class="watch" hidden aria-label="Trials to watch"></section>
 
+  <details class="gloss"><summary>Abbreviations (30)</summary><dl><dt>AE</dt><dd>Adverse event</dd><dt>AEs</dt><dd>Adverse events</dd><dt>BTK</dt><dd>Bruton tyrosine kinase</dd><dt>CAR-T</dt><dd>Chimeric antigen receptor T-cell therapy</dd><dt>CHOP</dt><dd>Cyclophosphamide, doxorubicin, vincristine, prednisone</dd><dt>CLL</dt><dd>Chronic lymphocytic leukemia</dd><dt>CR</dt><dd>Complete response</dd><dt>CRS</dt><dd>Cytokine release syndrome</dd><dt>DOR</dt><dd>Duration of response</dd><dt>EORTC</dt><dd>European Organisation for Research and Treatment of Cancer</dd><dt>EZH2</dt><dd>Enhancer of zeste homolog 2 (tazemetostat target)</dd><dt>FDA</dt><dd>US Food and Drug Administration</dd><dt>FL</dt><dd>Follicular lymphoma</dd><dt>ICANS</dt><dd>Immune effector cell-associated neurotoxicity syndrome</dd><dt>IMiD</dt><dd>Immunomodulatory drug</dd><dt>MDS</dt><dd>Myelodysplastic syndrome</dd><dt>MZL</dt><dd>Marginal zone lymphoma</dd><dt>NCCN</dt><dd>National Comprehensive Cancer Network</dd><dt>NHL</dt><dd>Non-Hodgkin lymphoma</dd><dt>NS</dt><dd>Not statistically significant</dd><dt>ORR</dt><dd>Overall response rate</dd><dt>OS</dt><dd>Overall survival</dd><dt>PFS</dt><dd>Progression-free survival</dd><dt>PI3K</dt><dd>Phosphoinositide 3-kinase</dd><dt>POD24</dt><dd>Progression of disease within 24 months of first-line chemoimmunotherapy</dd><dt>R-CHOP</dt><dd>Rituximab, cyclophosphamide, doxorubicin, vincristine, prednisone</dd><dt>R2</dt><dd>Lenalidomide (Revlimid), rituximab</dd><dt>SAKK</dt><dd>Swiss Group for Clinical Cancer Research</dd><dt>SD</dt><dd>Stable disease</dd><dt>TTP</dt><dd>Time to progression</dd></dl></details>
+
   <footer>
-    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). "Key toxicity" summarizes the main adverse events reported in the abstract (or the full paper where marked); it is not a complete safety profile. "★ Core" marks trials selected as essential for teaching. Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA approvals of tafasitamab-R2 (June 18, 2025) and epcoritamab-R2 (November 2025) were confirmed from published reports and the FDA approval summary; other regulatory dates and withdrawals marked "verify" are from general knowledge. Guideline placements marked "verify" need checking against the current NCCN B-cell lymphomas document. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). "Key toxicity" summarizes the main adverse events reported in the abstract (or the full paper where marked); it is not a complete safety profile. "★ Core" marks trials selected as essential for teaching. Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Free at publisher" links open a publisher page that is free to read; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed; "Free copy (repository)" links open a legal free copy in a university repository (sometimes the authors' manuscript). Free copies were found with Unpaywall (October 23, 2026). Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA approvals of tafasitamab-R2 (June 18, 2025) and epcoritamab-R2 (November 2025) were confirmed from published reports and the FDA approval summary; other regulatory dates and withdrawals were checked against FDA, EMA and sponsor announcements and published reports (October 23, 2026). Guideline placements marked "NCCN not checked" could not be confirmed, because the NCCN guidelines require a login. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    <p class="reportall">Spotted an error or a missing trial? Use "Report an error" on any trial, or email <a href="mailto:andresferber@hotmail.com?subject=Landmark%20trials">andresferber@hotmail.com</a>.</p>
   </footer>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -174,153 +195,156 @@ const T = [
  r:"ORR 80% vs 56%; CR 30% vs 16%; TTP 11.2 vs 10.1 mo (NS)",N:"143",hr:"not reported in paper",fu:"not reported in paper",
  c:"J Clin Oncol 2002;20:2453",p:12011122,
  b:"First radioimmunotherapy compared with rituximab, then the new standard.",
- i:"Led to the first FDA-approved radioimmunotherapy (2002; verify), later rarely used because of logistics and myelosuppression.",
+ i:"Led to the first FDA-approved radioimmunotherapy (February 2002), later rarely used because of logistics and myelosuppression.",
  q:"Higher responses without longer TTP: is RIT worth the marrow toxicity and secondary MDS risk?",
- cm:[],reg:"FDA approval of ibritumomab (2002; verify).",gl:"Rarely used now.",acc:"—"},
+ cm:[],reg:"FDA approval of ibritumomab (February 2002).",gl:"Rarely used now.",acc:"—"},
 {y:2006,n:"EORTC 20981 (van Oers)",s:"ab",ph:"Phase 3",d:"CHOP vs R-CHOP induction, then rituximab maintenance (every 3 mo for 2 yr) vs observation, relapsed FL",ep:"PFS",
  r:"Induction: PFS 33.1 vs 20.2 mo with R-CHOP. Maintenance: median PFS 51.5 vs 14.9 mo",N:"465",hr:"0.65 (induction); 0.40 (maintenance)",fu:"39.4 mo from first, 33.3 mo from second randomization (full paper)",
  c:"Blood 2006;108:3295",p:16873669,
  b:"Combined the SAKK extended-rituximab concept with chemoimmunotherapy at relapse.",
  i:"Established rituximab maintenance at relapse; foundation for PRIMA in first line.",
  q:"Does maintenance help after rituximab-containing first-line therapy and maintenance?",
- cm:[],reg:"Supported rituximab maintenance labeling (verify).",gl:"Maintenance after second-line therapy remains an option (verify).",acc:"—"},
+ cm:[],reg:"Supported EU approval of rituximab maintenance in relapsed or refractory FL; the US maintenance label (2011) rests on PRIMA.",gl:"Maintenance after second-line therapy remains an option (NCCN not checked).",acc:"—"},
 {y:2016,n:"GADOLIN (Sehn)",s:"ab",ph:"Phase 3",d:"Obinutuzumab + bendamustine then obinutuzumab maintenance vs bendamustine alone, rituximab-refractory indolent NHL",ep:"PFS",
  r:"Median PFS not reached vs 14.9 mo; grade 3–5 events 68% vs 62%",N:"396",hr:"0.55",fu:"21.9 vs 20.3 mo",
  c:"Lancet Oncol 2016;17:1081",p:27345636,
  b:"First trial focused on rituximab-refractory disease, with a glycoengineered anti-CD20.",
- i:"Led to obinutuzumab-bendamustine approval for rituximab-refractory FL (2016; verify).",
+ i:"Led to obinutuzumab-bendamustine approval for rituximab-refractory FL (FDA, February 26, 2016).",
  q:"Control arm lacked an antibody; role now that most patients get bendamustine first line?",
  cm:[[27345637,"Hamlin PA, Lancet Oncol 2016","Obinutuzumab plus bendamustine in rituximab-refractory indolent lymphoma"]],
- reg:"FDA approval (2016; verify).",gl:"Option for rituximab-refractory disease not previously given bendamustine.",acc:"On-label."},
+ reg:"FDA approval (February 26, 2016).",gl:"Option for rituximab-refractory disease not previously given bendamustine.",acc:"On-label."},
 {y:2019,n:"AUGMENT (Leonard)",s:"ab",ph:"Phase 3",d:"Lenalidomide + rituximab (R2) vs placebo + rituximab, relapsed FL or MZL",ep:"PFS",
- r:"Median PFS 39.4 vs 14.1 mo; grade 3–4 neutropenia 50% vs 13%",N:"358",hr:"0.46",fu:"not reported in abstract",
+ r:"Median PFS 39.4 vs 14.1 mo; grade 3–4 neutropenia 50% vs 13%",N:"358",hr:"0.46",fu:"28.3 mo (full paper)",
  c:"J Clin Oncol 2019;37:1188",p:30897038,
  b:"Randomized test of the chemo-free R2 combination in relapse.",
- i:"R2 became a standard second-line backbone (FDA 2019; verify) and the comparator for inMIND and EPCORE FL-1.",
+ i:"R2 became a standard second-line backbone (FDA, May 28, 2019) and the comparator for inMIND and EPCORE FL-1.",
  q:"What can be added to R2 (tafasitamab, bispecifics)?",
  cm:[[30901301,"Barr PM, J Clin Oncol 2019","Augmenting indolent lymphoma treatment options with lenalidomide and rituximab"]],
- reg:"FDA approval of R2 for previously treated FL and MZL (2019; verify).",gl:"R2 a standard second-line option.",acc:"On-label."},
+ reg:"FDA approval of R2 for previously treated FL and MZL (May 28, 2019).",gl:"R2 a standard second-line option.",acc:"On-label."},
 {y:2026,n:"inMIND (Sehn)",s:"ab",ph:"Phase 3",d:"Tafasitamab (anti-CD19) + R2 vs placebo + R2, relapsed or refractory FL",ep:"PFS",
  r:"Median PFS 22.4 vs 13.9 mo (investigator), confirmed by independent review; no treatment-related deaths with tafasitamab",N:"548",hr:"0.43",fu:"14.1 mo (full paper)",
  c:"Lancet 2026;407:133",p:41360064,
  b:"Added an anti-CD19 antibody to the AUGMENT R2 backbone.",
  i:"FDA approval June 18, 2025 for relapsed or refractory FL; described as an NCCN category 1 option after anti-CD20 therapy.",
  q:"How does tafasitamab-R2 compare with epcoritamab-R2? Effect in POD24 and double-refractory disease?",
- cm:[],reg:"FDA approval June 18, 2025 (tafasitamab with lenalidomide and rituximab, relapsed or refractory FL).",gl:"NCCN category 1 in relapsed or refractory FL after anti-CD20 therapy (per 2026 coverage; verify version).",acc:"On-label."},
+ cm:[],reg:"FDA approval June 18, 2025 (tafasitamab with lenalidomide and rituximab, relapsed or refractory FL).",gl:"NCCN category 1 in relapsed or refractory FL after anti-CD20 therapy (per 2026 coverage; NCCN version not checked).",acc:"On-label."},
 // ---------- Targeted agents ----------
 {y:2014,n:"Idelalisib (Gopal)",s:"tgt",ph:"Phase 2",d:"PI3Kδ inhibitor in double-refractory indolent NHL (72 FL)",ep:"ORR",
- r:"ORR 57%, CR 6%; median PFS 11 mo; grade ≥3 transaminitis 13%, diarrhea 13%",N:"125",hr:"n/a",fu:"not reported in abstract",
+ r:"ORR 57%, CR 6%; median PFS 11 mo; grade ≥3 transaminitis 13%, diarrhea 13%",N:"125",hr:"n/a",fu:"9.7 mo (full paper)",
  c:"N Engl J Med 2014;370:1008",p:24450858,
  b:"First PI3K inhibitor in refractory FL.",
- i:"Accelerated approval for FL (2014; verify); later withdrawn for FL as confirmatory requirements and toxicity concerns mounted (verify date).",
+ i:"Accelerated approval for FL (July 2014); FL indication withdrawn by the sponsor in 2022 as confirmatory requirements and toxicity concerns mounted.",
  q:"Immune-mediated toxicity and infections; can PI3K inhibitors be given safely?",
  cm:[[24620870,"Fruman DA, N Engl J Med 2014","Idelalisib—a PI3Kδ inhibitor for B-cell cancers"]],
- reg:"FDA accelerated approval 2014; FL indication later withdrawn (verify).",gl:"No longer recommended (verify).",acc:"—"},
+ reg:"FDA accelerated approval (July 2014); FL indication withdrawn (2022).",gl:"No longer recommended (NCCN not checked).",acc:"—"},
 {y:2017,n:"CHRONOS-1 (Dreyling)",s:"tgt",ph:"Phase 2",d:"Copanlisib (IV pan-class I PI3K) after ≥2 lines",ep:"ORR",
  r:"ORR 59%, CR 12%; median PFS 11.2 mo; grade 3–4 hyperglycemia 41%",N:"142",hr:"n/a",fu:"24 wk median safety follow-up; no efficacy follow-up reported (full paper)",
  c:"J Clin Oncol 2017;35:3898",p:28976790,
  b:"Intermittent IV PI3K inhibition aimed at reducing idelalisib-type toxicity.",
- i:"Accelerated approval (2017; verify); later withdrawn (verify).",
+ i:"Accelerated approval (September 2017); US indication withdrawn by Bayer (November 2023) after CHRONOS-4 failed.",
  q:"Can it be combined with rituximab (CHRONOS-3)?",
- cm:[],reg:"FDA accelerated approval 2017; later withdrawn (verify).",gl:"No longer recommended (verify).",acc:"—"},
+ cm:[],reg:"FDA accelerated approval (September 2017); withdrawn (November 2023).",gl:"No longer recommended (NCCN not checked).",acc:"—"},
 {y:2019,n:"DYNAMO (Flinn)",s:"tgt",ph:"Phase 2",d:"Duvelisib (PI3Kδ/γ) in double-refractory indolent NHL",ep:"ORR",
  r:"ORR 47.3% (FL 42.2%); median PFS 9.5 mo; grade ≥3 events 88.4%",N:"129",hr:"n/a",fu:"32.1 mo (full paper)",
  c:"J Clin Oncol 2019;37:912",p:30742566,
  b:"Dual PI3K isoform inhibitor after idelalisib.",
- i:"FL accelerated approval (2018; verify) later withdrawn by the sponsor (verify).",
+ i:"FL accelerated approval (September 24, 2018), withdrawn by the sponsor (announced December 3, 2021).",
  q:"Class-wide toxicity and overall survival concerns.",
  cm:[[30811291,"Fruman DA, J Clin Oncol 2019","Targeting PI3K-gamma in non-Hodgkin lymphoma"]],
- reg:"FL indication withdrawn (verify).",gl:"No longer recommended (verify).",acc:"—"},
+ reg:"FL indication withdrawn (announced December 3, 2021).",gl:"No longer recommended (NCCN not checked).",acc:"—"},
 {y:2020,n:"Tazemetostat (Morschhauser)",s:"tgt",ph:"Phase 2",d:"Oral EZH2 inhibitor, EZH2-mutant and wild-type cohorts",ep:"ORR",
  r:"ORR 69% (EZH2-mutant) vs 35% (wild-type); median DOR 10.9 and 13.0 mo",N:"99",hr:"n/a",fu:"22.0 and 35.9 mo",
  c:"Lancet Oncol 2020;21:1433",p:33035457,
  b:"Targeted therapy built on EZH2 mutation biology (m7-FLIPI genes).",
- i:"Accelerated approval (2020; verify); a well-tolerated oral option, including for wild-type patients without alternatives.",
+ i:"Accelerated approval (June 18, 2020); a well-tolerated oral option, including for wild-type patients without alternatives.",
  q:"Confirmatory combination trial (SYMPHONY-1 with R2) results?",
  cm:[[33035458,"Groisberg R, Lancet Oncol 2020","EZH2 inhibition for epithelioid sarcoma and follicular lymphoma"]],
- reg:"FDA accelerated approval 2020 (verify).",gl:"Listed third-line option (verify).",acc:"On-label."},
+ reg:"FDA accelerated approval (June 18, 2020).",gl:"Listed third-line option (NCCN not checked).",acc:"On-label."},
 {y:2021,n:"UNITY-NHL (Fowler)",s:"tgt",ph:"Phase 2b",d:"Umbralisib (PI3Kδ/CK1ε) in relapsed indolent NHL",ep:"ORR",
  r:"ORR 47.1%; FL median PFS 10.6 mo; discontinuation for AEs 15.4%",N:"208 across all cohorts (FL cohort size not in abstract)",hr:"n/a",fu:"27.7 mo",
  c:"J Clin Oncol 2021;39:1609",p:33683917,
  b:"Next-generation PI3K inhibitor designed for better tolerability.",
- i:"Accelerated approval (2021; verify) withdrawn in 2022 over an overall survival signal in a CLL trial (verify).",
+ i:"Accelerated approval (February 5, 2021), withdrawn in 2022 over an overall survival signal in the UNITY-CLL trial.",
  q:"Became the emblem of FDA scrutiny of single-arm PI3K approvals.",
  cm:[[33861621,"Smith SD, J Clin Oncol 2021","Umbralisib: walking the tightrope of PI3K inhibition in indolent NHL"]],
- reg:"Withdrawn (verify).",gl:"Not recommended.",acc:"—"},
+ reg:"Sponsor withdrew from sale (April 15, 2022); FDA withdrew approval (June 1, 2022).",gl:"Not recommended.",acc:"—"},
 {y:2021,n:"CHRONOS-3 (Matasar)",s:"tgt",ph:"Phase 3",d:"Copanlisib + rituximab vs placebo + rituximab, relapsed indolent NHL",ep:"PFS",
  r:"Median PFS 21.5 vs 13.8 mo",N:"458",hr:"0.52",fu:"19.2 mo",
  c:"Lancet Oncol 2021;22:678",p:33848462,
  b:"Randomized confirmation attempt for copanlisib.",
- i:"Positive PFS, yet the class later lost US FL indications (verify).",
+ i:"Positive PFS, yet every PI3K inhibitor later lost its US FL indication (2021–2023).",
  q:"Can PFS gains offset toxicity and OS uncertainty for PI3K inhibitors?",
  cm:[[33879868,"Killock D, Nat Rev Clin Oncol 2021","Copanlisib safe and active in combination"]],
- reg:"No new approval; copanlisib withdrawn (verify).",gl:"—",acc:"—"},
+ reg:"No new approval; copanlisib withdrawn in the US (November 2023).",gl:"—",acc:"—"},
 {y:2023,n:"ROSEWOOD (Zinzani)",s:"tgt",ph:"Phase 2 (randomized)",d:"Zanubrutinib + obinutuzumab vs obinutuzumab after ≥2 lines",ep:"ORR",
  r:"ORR 69% vs 46%; CR 39% vs 19%; median PFS 28.0 vs 10.4 mo",N:"217",hr:"0.50 (PFS)",fu:"20.2 mo",
  c:"J Clin Oncol 2023;41:5107",p:37506346,
  b:"BTK inhibition, modest alone in FL, combined with an anti-CD20 antibody.",
- i:"Accelerated approval (2024; verify); a non-cellular, non-bispecific option in later lines.",
+ i:"Accelerated approval (March 7, 2024); a non-cellular, non-bispecific option in later lines.",
  q:"Confirmatory phase 3 (MAHOGANY) results; place relative to bispecifics?",
- cm:[],reg:"FDA accelerated approval 2024 (verify).",gl:"Listed third-line option (verify).",acc:"On-label."},
+ cm:[],reg:"FDA accelerated approval (March 7, 2024).",gl:"Listed third-line option (NCCN not checked).",acc:"On-label."},
 // ---------- CAR-T ----------
 {y:2022,n:"ZUMA-5 (Jacobson)",s:"cart",ph:"Phase 2",d:"Axicabtagene ciloleucel in relapsed indolent NHL after ≥2 lines",ep:"ORR",
  r:"ORR 92%, CR 74% (primary analysis set of 104; 84 FL)",N:"153 enrolled; 148 infused",hr:"n/a",fu:"17.5 mo",
  c:"Lancet Oncol 2022;23:91",p:34895487,
  b:"Extended CD19 CAR-T from aggressive to indolent lymphoma.",
- i:"First CAR-T approved in FL (2021 accelerated; verify current status).",
+ i:"First CAR-T approved in FL (accelerated approval, March 2021).",
  q:"Is a one-time therapy worth the toxicity in an indolent disease? Long-term remission or cure?",
  cm:[[34895488,"Holtzman NG, Lancet Oncol 2022","CAR T-cell therapy for indolent lymphoma: a new treatment paradigm?"]],
- reg:"FDA accelerated approval 2021 (verify current status).",gl:"Third-line or later option (verify).",acc:"Certified centers, cost, prior authorization."},
+ reg:"FDA accelerated approval (March 2021).",gl:"Third-line or later option (NCCN not checked).",acc:"Certified centers, cost, prior authorization."},
 {y:2022,n:"ELARA (Fowler)",s:"cart",ph:"Phase 2",d:"Tisagenlecleucel after ≥2 lines or relapse after autologous transplant",ep:"CR rate",
  r:"CR 69.1%, ORR 86.2%; CRS 48.5% (no grade ≥3)",N:"98 enrolled; 97 infused",hr:"n/a",fu:"16.6 mo",
  c:"Nat Med 2022;28:325",p:34921238,
  b:"Second CD19 CAR-T in FL, with a 4-1BB costimulatory domain.",
- i:"Accelerated approval (2022; verify), with lower severe CRS and neurotoxicity.",
+ i:"Accelerated approval (May 27, 2022), with lower severe CRS and neurotoxicity.",
  q:"How durable are remissions? Outpatient administration?",
- cm:[],reg:"FDA accelerated approval 2022 (verify).",gl:"Third-line or later option (verify).",acc:"As for CAR-T."},
+ cm:[],reg:"FDA accelerated approval (May 27, 2022).",gl:"Third-line or later option (NCCN not checked).",acc:"As for CAR-T."},
 {y:2024,n:"TRANSCEND FL (Morschhauser)",s:"cart",ph:"Phase 2",d:"Lisocabtagene maraleucel, including high-risk second-line patients (POD24)",ep:"ORR",
  r:"Third line or later: ORR 97%, CR 94%. Second line (n=23): ORR 96%, all CR. CRS 58% (grade ≥3, 1%)",N:"130 infused",hr:"n/a",fu:"18.9 mo",
  c:"Nat Med 2024;30:2199",p:38830991,
  b:"First CAR-T trial to include second-line high-risk FL.",
- i:"Accelerated approval (2024; verify); supports earlier CAR-T for POD24 disease.",
+ i:"Accelerated approval (May 2024); supports earlier CAR-T for POD24 disease.",
  q:"Should CAR-T be used at second line for POD24 rather than after bispecifics?",
- cm:[],reg:"FDA accelerated approval 2024 (verify).",gl:"Verify NCCN placement.",acc:"As for CAR-T."},
+ cm:[],reg:"FDA accelerated approval (May 2024).",gl:"Guideline placement not checked (NCCN requires login).",acc:"As for CAR-T."},
 // ---------- Bispecific antibodies ----------
 {y:2022,n:"Mosunetuzumab (Budde)",s:"bs",ph:"Phase 2",d:"Fixed-duration CD20×CD3 bispecific after ≥2 lines",ep:"CR rate",
  r:"CR 60.0%; CRS 44% (mostly grade 1–2). 3-yr update: ORR 77.8%, median PFS 24.0 mo, 36-mo OS 82.4%",N:"90",hr:"n/a",fu:"18.3 mo; 37.4 mo (update)",
  c:"Lancet Oncol 2022;23:1055",p:35803286,extra:["3-yr follow-up, Blood 2025",39447094],
  b:"First bispecific in FL; fixed duration, off the shelf.",
- i:"Accelerated approval (2022; verify); an outpatient alternative to CAR-T.",
+ i:"Accelerated approval (December 22, 2022); an outpatient alternative to CAR-T.",
  q:"How does it compare with CAR-T? Combinations (mosunetuzumab-lenalidomide) and earlier use?",
  cm:[[35803285,"Buske C, Lancet Oncol 2022","Mosunetuzumab, a bispecific antibody, in R/R FL"],[39946154,"Karmali R, Blood 2025","Mosunetuzumab next up to bat… is it a home run?"]],
- reg:"FDA accelerated approval 2022 (verify).",gl:"Third-line or later option (verify).",acc:"On-label."},
+ reg:"FDA accelerated approval (December 22, 2022).",gl:"Third-line or later option (NCCN not checked).",acc:"On-label."},
 {y:2024,n:"EPCORE NHL-1 FL cohort (Linton)",s:"bs",ph:"Phase 1/2",d:"Subcutaneous epcoritamab monotherapy after ≥2 lines",ep:"ORR",
  r:"ORR 82.0%, CR 62.5%; grade 3 CRS 2%",N:"128",hr:"n/a",fu:"17.4 mo",
  c:"Lancet Haematol 2024;11:e593",p:38889737,
  b:"Subcutaneous, continuous CD20×CD3 bispecific.",
- i:"Accelerated approval (2024; verify).",
+ i:"Accelerated approval (June 2024).",
  q:"Continuous vs fixed duration? Combination with R2 (EPCORE FL-1)?",
- cm:[],reg:"FDA accelerated approval 2024 (verify).",gl:"Third-line or later option (verify).",acc:"On-label."},
+ cm:[],reg:"FDA accelerated approval (June 2024).",gl:"Third-line or later option (NCCN not checked).",acc:"On-label."},
 {y:2024,n:"ELM-2 FL cohort: odronextamab (Kim)",s:"bs",ph:"Phase 2",d:"Odronextamab (CD20×CD3) after ≥2 lines",ep:"ORR",
  r:"ORR 80.0%, CR 73.4%; median PFS 20.7 mo; discontinuation for AEs 16%",N:"128",hr:"n/a",fu:"20.1 mo",
  c:"Ann Oncol 2024;35:1039",p:39147364,
  b:"Third CD20×CD3 bispecific with step-up dosing.",
  i:"Approved in the EU (2024); US approval not confirmed for this page (BLA resubmission accepted February 2025).",
  q:"Will it be approved in the US? How to choose among bispecifics?",
- cm:[],reg:"EU approval 2024; US BLA resubmission accepted Feb 2025, approval not confirmed (verify).",gl:"Verify.",acc:"—"},
+ cm:[],reg:"EU approval (2024). In the US, a second complete response letter (July 2025) cited a third-party manufacturing site inspection; not FDA-approved as of the last check.",gl:"Guideline placement not checked (NCCN requires login).",acc:"—"},
 {y:2026,n:"EPCORE FL-1 (Falchi)",s:"bs",ph:"Phase 3",d:"Epcoritamab + R2 vs R2 in relapsed or refractory FL",ep:"ORR and PFS (dual)",
  r:"ORR 95% vs 79%; 16-mo PFS 85.5% vs 40.2%; grade ≥3 events 90% vs 68%",N:"488",hr:"0.21",fu:"14.8 mo",
  c:"Lancet 2026;407:161",p:41371238,extra:["FDA approval summary, Clin Cancer Res 2026",42820870],
  b:"First phase 3 bispecific trial in FL, built on the AUGMENT R2 backbone.",
  i:"FDA traditional approval November 2025 for epcoritamab with R2 in relapsed or refractory FL; moves bispecifics to second line.",
  q:"Is the added toxicity justified at second line? Comparison with tafasitamab-R2? Sequencing with CAR-T?",
- cm:[],reg:"FDA traditional approval November 2025 (epcoritamab + R2, relapsed or refractory FL).",gl:"Verify NCCN placement.",acc:"On-label."}
+ cm:[],reg:"FDA traditional approval November 2025 (epcoritamab + R2, relapsed or refractory FL).",gl:"Guideline placement not checked (NCCN requires login).",acc:"On-label."}
 ];
 // Trial registry numbers (ClinicalTrials.gov, ISRCTN or EudraCT), taken from each paper's PubMed record or the registry, Oct 22, 2026.
 // Shown as links next to the source and used by the monthly update to find later follow-up publications.
 const REG = {"GADOLIN (Sehn)": ["NCT01059630"],"AUGMENT (Leonard)": ["NCT01938001"],"inMIND (Sehn)": ["NCT04680052"],"Idelalisib (Gopal)": ["NCT01282424"],"CHRONOS-1 (Dreyling)": ["NCT01660451"],"DYNAMO (Flinn)": ["NCT01882803"],"Tazemetostat (Morschhauser)": ["NCT01897571"],"UNITY-NHL (Fowler)": ["NCT02793583"],"CHRONOS-3 (Matasar)": ["NCT02367040"],"ROSEWOOD (Zinzani)": ["NCT03332017"],"ZUMA-5 (Jacobson)": ["NCT03105336"],"ELARA (Fowler)": ["NCT03568461"],"TRANSCEND FL (Morschhauser)": ["NCT04245839"],"Mosunetuzumab (Budde)": ["NCT02500407"],"EPCORE NHL-1 FL cohort (Linton)": ["NCT03625037"],"ELM-2 FL cohort: odronextamab (Kim)": ["NCT03888105"],"EPCORE FL-1 (Falchi)": ["NCT05409066"]};
 // Full-text links: free full text in PubMed Central where available, otherwise the publisher's page via DOI (from PubMed, Oct 22, 2026).
-const FT = {"90Y-ibritumomab vs rituximab (Witzig)": ["doi", "10.1200/JCO.2002.11.076"], "EORTC 20981 (van Oers)": ["doi", "10.1182/blood-2006-05-021113"], "GADOLIN (Sehn)": ["doi", "10.1016/S1470-2045(16)30097-3"], "AUGMENT (Leonard)": ["pmc", "PMC7035866"], "inMIND (Sehn)": ["doi", "10.1016/S0140-6736(25)01778-7"], "Idelalisib (Gopal)": ["pmc", "PMC4039496"], "CHRONOS-1 (Dreyling)": ["doi", "10.1200/JCO.2017.75.4648"], "DYNAMO (Flinn)": ["doi", "10.1200/JCO.18.00915"], "Tazemetostat (Morschhauser)": ["pmc", "PMC8427481"], "UNITY-NHL (Fowler)": ["pmc", "PMC8148421"], "CHRONOS-3 (Matasar)": ["doi", "10.1016/S1470-2045(21)00145-5"], "ROSEWOOD (Zinzani)": ["doi", "10.1200/JCO.23.00775"], "ZUMA-5 (Jacobson)": ["doi", "10.1016/S1470-2045(21)00591-X"], "ELARA (Fowler)": ["doi", "10.1038/s41591-021-01622-0"], "TRANSCEND FL (Morschhauser)": ["pmc", "PMC11333271"], "Mosunetuzumab (Budde)": ["doi", "10.1016/S1470-2045(22)00335-7"], "EPCORE NHL-1 FL cohort (Linton)": ["doi", "10.1016/S2352-3026(24)00166-2"], "ELM-2 FL cohort: odronextamab (Kim)": ["doi", "10.1016/j.annonc.2024.08.2239"], "EPCORE FL-1 (Falchi)": ["doi", "10.1016/S0140-6736(25)02360-8"]};
+const FT = {"90Y-ibritumomab vs rituximab (Witzig)": ["doi", "10.1200/JCO.2002.11.076"], "EORTC 20981 (van Oers)": ["doi", "10.1182/blood-2006-05-021113", "free"], "GADOLIN (Sehn)": ["doi", "10.1016/S1470-2045(16)30097-3"], "AUGMENT (Leonard)": ["pmc", "PMC7035866"], "inMIND (Sehn)": ["doi", "10.1016/S0140-6736(25)01778-7"], "Idelalisib (Gopal)": ["pmc", "PMC4039496"], "CHRONOS-1 (Dreyling)": ["doi", "10.1200/JCO.2017.75.4648"], "DYNAMO (Flinn)": ["doi", "10.1200/JCO.18.00915", "free"], "Tazemetostat (Morschhauser)": ["pmc", "PMC8427481"], "UNITY-NHL (Fowler)": ["pmc", "PMC8148421"], "CHRONOS-3 (Matasar)": ["doi", "10.1016/S1470-2045(21)00145-5", "repo", "https://ruj.uj.edu.pl/xmlui/handle/item/289981"], "ROSEWOOD (Zinzani)": ["doi", "10.1200/JCO.23.00775", "free"], "ZUMA-5 (Jacobson)": ["doi", "10.1016/S1470-2045(21)00591-X"], "ELARA (Fowler)": ["doi", "10.1038/s41591-021-01622-0", "repo", "https://kclpure.kcl.ac.uk/portal/en/publications/68891c3c-cb7e-4feb-8231-1d2754b6a021"], "TRANSCEND FL (Morschhauser)": ["pmc", "PMC11333271"], "Mosunetuzumab (Budde)": ["doi", "10.1016/S1470-2045(22)00335-7", "repo", "https://research-repository.uwa.edu.au/en/publications/eabbbf24-06c4-481f-937b-8e90a9f2d429"], "EPCORE NHL-1 FL cohort (Linton)": ["doi", "10.1016/S2352-3026(24)00166-2", "repo", "https://pure.amsterdamumc.nl/en/publications/8c6127ad-b2a6-49fd-8276-8062df8cf777"], "ELM-2 FL cohort: odronextamab (Kim)": ["doi", "10.1016/j.annonc.2024.08.2239", "free"], "EPCORE FL-1 (Falchi)": ["doi", "10.1016/S0140-6736(25)02360-8", "free"]};
+const FTLABEL = x => x[0] === 'pmc' ? 'Free full text' : (x[2] === 'free' ? 'Free at publisher' : 'Publisher');
+const FTTITLE = x => x[0] === 'pmc' ? 'Free full text in PubMed Central' : (x[2] === 'free' ? 'Free to read on the publisher site (checked with Unpaywall)' : 'Publisher page; full text may need a subscription or institutional access');
+const REPORT = t => 'mailto:andresferber@hotmail.com?subject=' + encodeURIComponent('Landmark trials (' + PAGETITLE + '): ' + t.n);
 const FTURL = x => x[0] === 'pmc' ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + x[1] + '/' : 'https://doi.org/' + x[1];
 const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
 T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, reg:t.reg, gl:t.gl, acc:t.acc}; });
@@ -331,7 +355,9 @@ T.forEach(t => { t.trn = REG[t.n] || []; t.ft = FT[t.n] || null; });
 // WATCH: ongoing trials to watch, from ClinicalTrials.gov.
 const TOX = {"90Y-ibritumomab vs rituximab (Witzig)": "Mainly reversible myelosuppression with ibritumomab (rates not in abstract)", "EORTC 20981 (van Oers)": "Not reported in abstract", "GADOLIN (Sehn)": "Grade 3–5 AEs 68% vs 62%; grade ≥3 neutropenia 33% vs 26%, infusion reactions 11% vs 6%; AE deaths 6% in both", "AUGMENT (Leonard)": "Grade 3–4 neutropenia 50% vs 13%; skin reactions 32% vs 12% (any grade)", "inMIND (Sehn)": "Neutropenia 49% vs 45%, diarrhea 38% vs 28% (any grade); no treatment-related deaths with tafasitamab", "Idelalisib (Gopal)": "Grade ≥3 neutropenia 27%, transaminase rise 13%, diarrhea 13%, pneumonia 7%", "CHRONOS-1 (Dreyling)": "Grade 3–4 hyperglycemia 41%; grade 3 hypertension 24%; grade ≥3 neutropenia 24%, lung infection 15%", "DYNAMO (Flinn)": "Grade ≥3 AEs 88.4%: neutropenia 24.8%, diarrhea 14.7%, anemia 14.7%", "Tazemetostat (Morschhauser)": "Treatment-related grade ≥3 thrombocytopenia 3%, neutropenia 3%; no treatment-related deaths", "UNITY-NHL (Fowler)": "Grade ≥3 AEs 53.4%: neutropenia 11.5%, diarrhea 10.1%; 14.9% stopped for treatment-related AEs", "CHRONOS-3 (Matasar)": "Grade 3–4 hyperglycemia 56% vs 8%, hypertension 40% vs 9%; serious AEs 47% vs 18%; 1 fatal pneumonitis", "ROSEWOOD (Zinzani)": "Most common: thrombocytopenia, neutropenia, diarrhea, fatigue; atrial fibrillation 3%, major hemorrhage 1%", "ZUMA-5 (Jacobson)": "Grade ≥3 cytopenias 70%, infections 18%; grade ≥3 CRS 7%, neurologic events 19%; 1 treatment-related death", "ELARA (Fowler)": "CRS 48.5% (no grade ≥3); neurologic events 37.1% (grade ≥3 3%); ICANS 4.1%; no treatment-related deaths", "TRANSCEND FL (Morschhauser)": "CRS 58% (grade ≥3 1%); neurologic events 15% (grade ≥3 2%)", "Mosunetuzumab (Budde)": "CRS 44% (mostly grade 1–2, cycle 1); grade 3–4 neutropenia 27%; serious AEs 47%; no fatal treatment-related AEs", "EPCORE NHL-1 FL cohort (Linton)": "CRS 65% grade 1–2, 2% grade 3; ICANS 6% (grade 1–2); grade 3–4 neutropenia 25%", "ELM-2 FL cohort: odronextamab (Kim)": "CRS 56% (grade ≥3 1.7% with the optimized step-up); neutropenia 39%; AE discontinuation 16%", "EPCORE FL-1 (Falchi)": "Grade ≥3 AEs 90% vs 68%; CRS low grade only (grade 1–2), all resolved"};
 const CORE = ["GADOLIN (Sehn)", "AUGMENT (Leonard)", "inMIND (Sehn)", "Tazemetostat (Morschhauser)", "ZUMA-5 (Jacobson)", "Mosunetuzumab (Budde)", "EPCORE FL-1 (Falchi)"];
-const WATCH = {"note": "", "items": []};
+const WATCH = {"note": "Ongoing phase 3 trials selected from ClinicalTrials.gov (checked October 23, 2026). Status and primary completion dates are as registered; some trials may already have presented results at meetings.", "items": [{"n": "MAHOGANY", "d": "Zanubrutinib + anti-CD20 vs R2 in R/R FL or MZL", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2028-07", "ep": "PFS (blinded independent review)", "nct": "NCT05100862"}, {"n": "CELESTIMO", "d": "Mosunetuzumab-lenalidomide vs R2 in R/R FL", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2026-06-03", "ep": "PFS", "nct": "NCT04712097"}, {"n": "OLYMPIA-5", "d": "Odronextamab-lenalidomide vs R2 in R/R FL and MZL", "ph": "Phase 3", "st": "Recruiting", "pcd": "2031-04-30", "ep": "PFS (independent review)", "nct": "NCT06149286"}, {"n": "SYMPHONY-1", "d": "Tazemetostat + R2 vs placebo + R2 in R/R FL", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2027-02-13", "ep": "PFS (wild-type and mutant EZH2)", "nct": "NCT04224493"}, {"n": "GOLSEEK-4", "d": "Golcadomide-rituximab vs investigator choice after ≥1 prior line", "ph": "Phase 3", "st": "Recruiting", "pcd": "2028-04-24", "ep": "PFS", "nct": "NCT06911502"}, {"n": "ZUMA-22", "d": "Axi-cel vs standard therapy in R/R FL", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2030-10", "ep": "PFS (blinded central review)", "nct": "NCT05371093"}, {"n": "LEDA", "d": "Tisagenlecleucel vs standard therapy in R/R FL", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2028-07-25", "ep": "PFS (blinded independent review)", "nct": "NCT05888493"}]};
+const PAGEKEY = "flr";
+const PAGETITLE = "Relapsed follicular lymphoma";
 const SLUG = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 T.forEach(t => { t.tx = TOX[t.n] || "Not reported in abstract"; t.core = CORE.includes(t.n); t.slug = SLUG(t.n);
   t.full = [t.r, t.N, t.hr, t.fu, t.tx].some(x => /full paper/.test(String(x || ""))); });
@@ -379,7 +405,7 @@ function render(){
     <li class="trial" data-trial="${t.slug}">
       <div class="yr">${t.y}</div>
       <div class="body">
-        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span>${t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : ''}</div>
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span>${t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : ''}<button type="button" class="share" data-slug="${t.slug}" title="Copy a link to this trial" aria-label="Copy a link to ${esc(t.n)}"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M8.5 11.5a3 3 0 0 0 4.2 0l2.6-2.6a3 3 0 0 0-4.2-4.2l-1 1M11.5 8.5a3 3 0 0 0-4.2 0l-2.6 2.6a3 3 0 0 0 4.2 4.2l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="lbl">Link copied</span></button></div>
         <p class="design">${esc(t.d)}</p>
         <div class="stats">
           <span><b>N</b>${esc(t.N)}</span>
@@ -394,7 +420,7 @@ function render(){
           <dt>Changed</dt><dd>${esc(t.i)}</dd>
           <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
           <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
-          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${t.ft[0] === 'pmc' ? 'Free full text in PubMed Central' : 'Publisher page; full text may need a subscription or institutional access'}">${t.ft[0] === 'pmc' ? 'Free full text' : 'Publisher'} ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${FTTITLE(t.ft)}">${FTLABEL(t.ft)} ↗</a>` : ''}${t.ft && t.ft[2] === 'repo' ? ` · <a class="ft" href="${esc(t.ft[3])}" target="_blank" rel="noopener" title="Free legal copy in a university repository, found through Unpaywall; it may be the authors' manuscript rather than the final journal version">Free copy (repository) ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')} · <a class="report" href="${esc(REPORT(t))}" title="Email a correction for this trial">Report an error</a></dd>
         </dl>
       </div>
     </li>`).join("");
@@ -412,6 +438,21 @@ render();
     [w.ph, w.st, w.pcd ? "primary completion " + w.pcd : "", w.ep ? "primary endpoint: " + w.ep : ""].filter(Boolean).map(esc).join(" · ") +
     (w.nct ? ' · <a href="https://clinicaltrials.gov/study/' + esc(w.nct) + '" target="_blank" rel="noopener">' + esc(w.nct) + ' ↗</a>' : "") +
     '</span>' + (w.note ? '<span class="wd">' + esc(w.note) + '</span>' : '') + '</li>').join("") + '</ul>';
+})();
+
+(function setupShare(){
+  const listEl = document.getElementById("list");
+  listEl.addEventListener("click", e => {
+    const b = e.target.closest(".share");
+    if (!b) return;
+    const slug = b.getAttribute("data-slug");
+    const inSite = !!listEl.closest(".ltw");
+    const base = inSite ? location.href.split("#")[0] : "https://andresferber.github.io/landmark-trials/";
+    const url = base + "#t-" + PAGEKEY + "-" + slug;
+    const done = () => { b.classList.add("copied"); setTimeout(() => b.classList.remove("copied"), 1800); };
+    const fallback = () => { const t = document.createElement("textarea"); t.value = url; t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); done(); } catch (x) {} t.remove(); };
+    try { navigator.clipboard.writeText(url).then(done, fallback); } catch (x) { fallback(); }
+  });
 })();
 (function setupPrint(){
   const listEl = document.getElementById("list");

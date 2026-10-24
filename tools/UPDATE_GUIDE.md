@@ -19,7 +19,16 @@ All data is in the main `<script>`:
   [[pmid, byline, title]], `reg` regulatory, `gl` guidelines, `acc` access.
   (The MCL page keeps the same information in separate objects M, P, EXTRA, CITE, V, X, R.)
 - `REG`: name -> registry IDs (NCT, ISRCTN or EudraCT), from the PubMed DataBank list or abstract.
-- `FT`: name -> `["pmc", PMCID]` (free full text, not embargoed) or `["doi", DOI]` (publisher page).
+- `FT`: name -> `["pmc", PMCID]` (free full text, not embargoed), `["doi", DOI]` (publisher page),
+  `["doi", DOI, "free"]` (free to read at the publisher, per Unpaywall) or
+  `["doi", DOI, "repo", URL]` (legal free copy in a university repository, per Unpaywall; shown as an
+  extra "Free copy (repository)" link). For every new `["doi", ...]` entry query
+  `https://api.unpaywall.org/v2/<DOI>?email=andresferber@hotmail.com`: best_oa_location host_type
+  "publisher" -> "free"; "repository" -> "repo" with url_for_pdf or url (skip URLs on the publisher's
+  own domain or pubmed). If Unpaywall cannot be reached, keep `["doi", DOI]`.
+- `PAGEKEY`, `PAGETITLE`: topic key and title, used by the per-trial share link and the
+  "Report an error" mailto (andresferber@hotmail.com). Abbreviations live in `<details class="gloss">`
+  before the footer: add any new abbreviation a new entry introduces.
 - `TOX`: name -> one line of key toxicity from the abstract (or full paper, marked "(full paper)").
 - `CORE`: names of core teaching trials. Andres chooses these: never add or remove names yourself.
   If a new trial looks core-worthy, suggest it in the summary.
@@ -58,8 +67,9 @@ use it when available. If PubMed cannot be reached, use WebSearch and say so in 
 ## 3. Verification rules
 - Every new number checked against the PubMed abstract or PubMed Central full text.
 - Every new reference: PMID confirmed by journal, volume, pages and first author.
-- "not reported in abstract" instead of guessing. Unconfirmed regulatory/guideline items: "verify".
-  When you confirm one, replace "verify" with the fact.
+- "not reported in abstract" instead of guessing. Unconfirmed regulatory items: "verify".
+  When you confirm one, replace "verify" with the fact and its date. Guideline placements that cannot be
+  confirmed because NCCN needs a login are marked "(NCCN not checked)"; never enter a password.
 - New entries get `REG` (if any), `FT` and a `TOX` line.
 - Interpretive fields (b, i, q, guideline placement) are measured, never overstated.
 - Never invent insurance approval rates.
