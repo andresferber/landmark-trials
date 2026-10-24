@@ -68,10 +68,37 @@
 .ltw .empty { padding: 32px 0; color: var(--muted); }
 .ltw .lt-foot { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch; }
 .ltw .credit { margin: 10px 0 0; font-size: 11.5px; color: var(--muted); opacity: .8; }
+.ltw .tox { color: var(--fg); }
+.ltw .core { font: 600 11px/1 var(--font-mono); letter-spacing: .04em; color: #8a5a12; background: #fbf1dc; padding: 4px 7px; border-radius: 4px; }
+.ltw .ok.full { color: var(--accent); }
+.ltw .trial.flash { animation: lt-flash 2.4s ease-out; }
+.ltw 0% { background: rgba(240, 190, 60, .35); }
+.ltw 100% { background: transparent; }
+.ltw .printbtn { font: 500 13px/1 var(--font-body); padding: 9px 14px; border-radius: 8px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; margin-left: auto; }
+.ltw .printbtn:hover { border-color: var(--accent); }
+.ltw .printbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ltw .watch { margin-top: 28px; padding: 18px 18px 8px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+.ltw .watch[hidden] { display: none; }
+.ltw .watch h2 { font-family: var(--font-display); font-weight: 650; font-size: 1.25rem; margin: 0 0 4px; }
+.ltw .watch .wnote { margin: 0 0 12px; font-size: 13px; color: var(--muted); }
+.ltw .watch ul { list-style: none; margin: 0; padding: 0; }
+.ltw .watch li { padding: 10px 0; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 3px; }
+.ltw .watch .wn { font-weight: 600; }
+.ltw .watch .wm { font: 400 12.5px var(--font-mono); color: var(--muted); }
+.ltw .watch .wd { font-size: 14px; }
+.ltw .watch a { color: var(--accent); }
 @media (max-width: 480px) {
 .ltw .trial { grid-template-columns: 1fr; gap: 4px; }
 .ltw dl { grid-template-columns: 1fr; gap: 0 0; }
 .ltw dt { line-height: 1.6; margin-top: 4px; }
+}
+@media print {
+.ltw { --bg: #fff; --surface: #fff; --fg: #111; --muted: #444; --rule: #ccc; --accent: #1a3a7a; }
+.ltw { background: #fff; }
+.ltw .controls, .ltw .printbtn { display: none !important; }
+.ltw .trial { break-inside: avoid; page-break-inside: avoid; }
+.ltw .watch { break-inside: avoid; }
+.ltw a { text-decoration: none; }
 }
 
 .ltw { display: block; text-align: left; border-radius: 6px; }
@@ -90,6 +117,9 @@
 .ltw button.chip { color: var(--fg) !important; background: var(--surface) !important; text-transform: none !important; box-shadow: none !important; height: auto !important; }
 .ltw button.chip[aria-pressed="true"] { color: var(--bg) !important; background: var(--fg) !important; }
 .ltw input[type="search"], .ltw select { color: var(--fg) !important; background: var(--surface) !important; height: auto !important; box-shadow: none !important; }
+.ltw button.printbtn { color: var(--fg) !important; background: var(--surface) !important; text-transform: none !important; box-shadow: none !important; height: auto !important; }
+.ltw .watch ul, .ltw .watch li { list-style: none !important; margin-left: 0 !important; padding-left: 0 !important; background: none !important; }
+.ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 
 </style>
 <div class="ltw" id="lt-mcl">
@@ -110,13 +140,16 @@
         <option value="desc">Sort: newest first</option>
       </select>
       <span class="count" id="mcl-count"></span>
+      <button type="button" class="printbtn" title="Print or save as PDF (prints the trials currently shown)">Print / PDF</button>
     </div>
   </div>
 
   <ol class="list" id="mcl-list"></ol>
 
+  <section class="watch" hidden aria-label="Trials to watch"></section>
+
   <div class="lt-foot">
-    Results marked with a check were verified against each paper's PubMed abstract on October 18, 2026. "Not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). E4151 is the only entry still based on a conference presentation. The "Builds on", "Changed" and "Open questions" notes are interpretive summaries, not data from the papers. In the N / HR / follow-up line, "—" marks a value not confirmed for this page; hazard ratios refer to the primary endpoint unless labeled otherwise. "Free full text" links open the article in PubMed Central; "Full text" links open the publisher's page, where a subscription or institutional access may be needed. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record for each paper (PMIDs checked against journal, volume, pages and first author). E4151 has no full publication yet and links to a Google Scholar search. Check the primary paper before using any number clinically or in teaching material. Reception notes: commentaries are those PubMed links to each paper ("Comment in") plus a PubMed search for editorials. NCCN items marked as v4.2026 come from published coverage of that version (September 2026); items marked "verify" are from earlier guideline versions or general knowledge and should be checked against the current NCCN document. No public data report insurance approval rates by regimen; US coverage generally follows the FDA label and NCCN compendium listing, which Medicare is required to recognize for anticancer drugs.
+    Results marked with a check were verified against each paper's PubMed abstract on October 18, 2026. "Not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). E4151 is the only entry still based on a conference presentation. The "Builds on", "Changed" and "Open questions" notes are interpretive summaries, not data from the papers. In the N / HR / follow-up line, "—" marks a value not confirmed for this page; hazard ratios refer to the primary endpoint unless labeled otherwise. "Key toxicity" summarizes the main adverse events reported in the abstract (or the full paper where marked); it is not a complete safety profile. "★ Core" marks trials selected as essential for teaching. Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record for each paper (PMIDs checked against journal, volume, pages and first author). E4151 has no full publication yet and links to a Google Scholar search. Check the primary paper before using any number clinically or in teaching material. Reception notes: commentaries are those PubMed links to each paper ("Comment in") plus a PubMed search for editorials. NCCN items marked as v4.2026 come from published coverage of that version (September 2026); items marked "verify" are from earlier guideline versions or general knowledge and should be checked against the current NCCN document. No public data report insurance approval rates by regimen; US coverage generally follows the FDA label and NCCN compendium listing, which Medicare is required to recognize for anticancer drugs.
   </div>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -161,7 +194,7 @@ const T = [
   {y:2016,n:"SPRINT (Trněný)",s:"rr",ph:"Phase 2 (randomized)",d:"Lenalidomide vs investigator's choice",ep:"PFS",r:"Median PFS 8.7 vs 5.2 mo",i:"EU approval of lenalidomide",c:"Lancet Oncol 2016;17:319"},
   {y:2018,n:"ACE-LY-004 (Wang)",s:"rr",ph:"Phase 2",d:"Acalabrutinib monotherapy",ep:"ORR",r:"ORR 81%, CR 40%",i:"FDA approval 2017; more selective BTKi",c:"Lancet 2018;391:659"},
   {y:2018,n:"AIM (Tam)",s:"rr",ph:"Phase 2",d:"Ibrutinib + venetoclax",ep:"CR at week 16",r:"CR 42% by CT at wk 16; high MRD negativity",i:"First BTKi–BCL2 combination; deep responses",c:"N Engl J Med 2018;378:1211",f:1},
-  {y:2019,n:"BGB-3111-206 (Song)",s:"rr",ph:"Phase 2",d:"Zanubrutinib monotherapy",ep:"ORR",r:"ORR 84%, CR ~69%",i:"FDA accelerated approval 2019",c:"Clin Cancer Res 2020;26:4216",f:1},
+  {y:2020,n:"BGB-3111-206 (Song)",s:"rr",ph:"Phase 2",d:"Zanubrutinib monotherapy",ep:"ORR",r:"ORR 84%, CR ~69%",i:"FDA accelerated approval 2019",c:"Clin Cancer Res 2020;26:4216",f:1},
   {y:2020,n:"ZUMA-2 (Wang)",s:"rr",ph:"Phase 2",d:"Brexucabtagene autoleucel (CD19 CAR-T) after BTKi",ep:"ORR",r:"ORR 93%, CR 67%",i:"Accelerated approval 2020; traditional approval April 2, 2026 with cohort 3 (BTKi-naïve)",c:"N Engl J Med 2020;382:1331"},
   {y:2021,n:"BRUIN (Wang)",s:"rr",ph:"Phase 1/2",d:"Pirtobrutinib, noncovalent BTKi, after covalent BTKi",ep:"ORR",r:"ORR ~57% after covalent BTKi",i:"Accelerated approval 2023; option after covalent BTKi failure",c:"Lancet 2021;397:892; J Clin Oncol 2023"},
   {y:2024,n:"TRANSCEND NHL-001, MCL cohort",s:"rr",ph:"Phase 1",d:"Lisocabtagene maraleucel",ep:"ORR",r:"ORR 83%, CR 72%",i:"Second CAR-T approved in MCL (2024)",c:"J Clin Oncol 2024"},
@@ -276,6 +309,22 @@ const FTURL = x => x[0] === 'pmc' ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + x
 const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
 T.forEach(t => { t.url = L[t.n]; t.extra = EXTRA[t.n]; });
 T.forEach(t => { t.trn = REG[t.n] || []; t.ft = FT[t.n] || null; });
+
+// Added Oct 23, 2026. TOX: key toxicity per trial from the PubMed abstract (or full paper where marked).
+// CORE: trials every trainee should know (chosen by Andres; edit this list to change the star and the "Core trials" filter).
+// WATCH: ongoing trials to watch, from ClinicalTrials.gov.
+const TOX = {"European MCL Network (Dreyling)": "3 infection-related deaths in remission after transplant vs none with interferon (full paper)", "R-HyperCVAD/MA (Romaguera, MDACC)": "Mainly hematologic; 8% treatment-related deaths; 4 therapy-related MDS/AML; not recommended above age 65", "Nordic MCL2 (Geisler)": "Not reported in abstract", "MCL Younger (Hermine)": "High-dose cytarabine arm: more grade 3–4 thrombocytopenia (73% vs 9%) and febrile neutropenia (17% vs 8%), more grade 1–2 renal toxicity; transplant-related deaths 3.4% in both arms", "LyMa (Le Gouill)": "Not reported in abstract", "TRIANGLE (Dreyling)": "Grade 3–5 AEs similar during induction and transplant; after transplant + ibrutinib more grade 3–5 hematologic AEs (50% vs 28% ibrutinib only vs 21% transplant only) and infections (25% vs 19% vs 13%)", "ECOG-ACRIN E4151": "Not yet published (conference data only)", "MCL Elderly (Kluin-Nelemans)": "R-FC: more hematologic toxicity and more deaths in first remission (10% vs 4%); grade 3–4 infections similar (17% vs 14%)", "StiL NHL1 (Rummel)": "BR vs R-CHOP: less hematologic toxicity (30% vs 68%), infections (37% vs 50%), neuropathy (7% vs 29%) and no alopecia", "BRIGHT (Flinn)": "BR: more vomiting and drug hypersensitivity; R-CHOP/R-CVP: more neuropathy and alopecia", "LYM-3002 (Robak)": "VR-CAP: more neutropenia and thrombocytopenia (rates not in abstract)", "SHINE (Wang)": "Grade 3–4 AEs 81.5% vs 77.3%", "ENRICH (UK)": "Grade ≥3 AEs 67% (ibrutinib-rituximab) vs 70% (chemoimmunotherapy)", "ECHO (Wang)": "Grade ≥3 AEs 88.9% vs 88.2%", "R2 frontline (Ruan)": "Grade 3–4 neutropenia 50%, rash 29%, thrombocytopenia 13%, tumor flare 11%", "WINDOW-1 (Wang, MDACC)": "Ibrutinib-rituximab phase: grade 3–4 lymphopenia 14%, rash 12%; chemotherapy phase: lymphopenia 73%, thrombocytopenia 30%, neutropenia 20%; no treatment-related deaths", "OASIS": "Grade 3–4 AEs 75% (relapsed) and 53% (untreated); no dose-limiting toxicity", "MRD-driven acalabrutinib-lenalidomide-anti-CD20": "Rituximab cohort: grade 3–4 neutropenia 38%; rash 42% (nonhematologic toxicity)", "PINNACLE (Fisher)": "Grade ≥3 neuropathy 13%, fatigue 12%, thrombocytopenia 11%; treatment-related deaths 3%", "Temsirolimus (Hess)": "Most frequent grade 3–4: thrombocytopenia, anemia, neutropenia, asthenia (rates not in abstract)", "EMERGE (Goy)": "Grade 3–4 neutropenia 43%, thrombocytopenia 28%, anemia 11%, pneumonia 8%", "PCYC-1104 (Wang)": "Mostly grade 1–2 diarrhea, fatigue, nausea; grade ≥3 neutropenia 16%, thrombocytopenia 11%", "RAY (Dreyling)": "Grade ≥3 AEs 68% vs 87%; discontinuation for AEs 6% vs 26% (ibrutinib vs temsirolimus)", "SPRINT (Trněný)": "Grade 3–4 neutropenia 44% vs 34%, thrombocytopenia 18% vs 28%", "ACE-LY-004 (Wang)": "Mostly grade 1–2 headache (38%) and diarrhea (31%); grade ≥3 neutropenia 10%; no atrial fibrillation; AE discontinuation 6%", "AIM (Tam)": "Mostly low-grade diarrhea (83%), fatigue (75%), nausea or vomiting (71%)", "BGB-3111-206 (Song)": "Grade ≥3 neutropenia 19.8%, pneumonia 9.3%; no atrial fibrillation; AE discontinuation 9.3%", "ZUMA-2 (Wang)": "Grade ≥3 cytopenias 94%, infections 32%, CRS 15%, neurologic events 31%; 2 grade 5 infections", "BRUIN (Wang)": "Fatigue 29.9%, diarrhea 21.3% (any grade); grade ≥3 hemorrhage 3.7%, atrial fibrillation 1.2%; 3% stopped for treatment-related AEs", "TRANSCEND NHL-001, MCL cohort": "CRS 61% (grade 3–4 1%); neurologic events 31% (grade 3–4 9%); grade ≥3 infections 15%; prolonged cytopenia 40%", "Glofitamab (Phillips)": "CRS 70% (grade ≥2 22.7% with 2,000 mg obinutuzumab pretreatment); 4 withdrawals for infection", "SYMPATICO (Wang)": "Grade 3–4 neutropenia 31% vs 11%; serious AEs 60% in both arms; treatment-related deaths 2% in both", "Sonrotoclax (BCL2 inhibitor)": "Neutropenia 35.7% (grade ≥3 19.1%), thrombocytopenia 24.3% (grade ≥3 9.6%)"};
+const CORE = ["European MCL Network (Dreyling)", "MCL Younger (Hermine)", "LyMa (Le Gouill)", "TRIANGLE (Dreyling)", "StiL NHL1 (Rummel)", "ECHO (Wang)", "PCYC-1104 (Wang)", "ZUMA-2 (Wang)", "BRUIN (Wang)"];
+const WATCH = {"note": "", "items": []};
+const SLUG = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+T.forEach(t => { t.tx = TOX[t.n] || "Not reported in abstract"; t.core = CORE.includes(t.n); t.slug = SLUG(t.n);
+  t.full = [t.r, t.N, t.hr, t.fu, t.tx].some(x => /full paper/.test(String(x || ""))); });
+function eviHTML(t) {
+  return t.full
+    ? '<span class="ok full" title="Checked against the PubMed abstract; values marked “full paper” were checked against the full publication">✓ abstract + full paper</span>'
+    : '<span class="ok" title="Checked against the PubMed abstract">✓ abstract</span>';
+}
+
 
 T.forEach(t => { const m = M[t.n] || ["—","—","—"]; t.N = m[0]; t.hr = m[1]; t.fu = m[2]; });
 
@@ -501,7 +550,7 @@ let active = "all", sortMode = "setting";
 try { const s = localStorage.getItem("mcl-sort"); if (s) sortMode = s; } catch(e) {}
 
 const chipsEl = document.getElementById("mcl-chips");
-[["all","All"], ...order.map(k => [k, SETTINGS[k]])].forEach(([k,label]) => {
+[["all","All"], ["core","★ Core trials"], ...order.map(k => [k, SETTINGS[k]])].forEach(([k,label]) => {
   const b = document.createElement("button");
   b.className = "chip"; b.type = "button"; b.id = "mcl-chip-" + k; b.textContent = label;
   b.setAttribute("aria-pressed", k === active);
@@ -527,18 +576,18 @@ function recHTML(t){
 }
 function render(){
   const q = qEl.value.trim().toLowerCase();
-  let rows = T.filter(t => (active === "all" || t.s === active) &&
-    (!q || [t.n,t.d,t.r,t.i,t.b,t.q,t.c,t.ph,String(t.y), t.rc ? [t.rc.reg,t.rc.gl,t.rc.acc,t.rc.cm.map(c=>c[1]+" "+c[2]).join(" ")].join(" ") : ""].join(" ").toLowerCase().includes(q)));
+  let rows = T.filter(t => (active === "all" || (active === "core" ? t.core : t.s === active)) &&
+    (!q || [t.n,t.d,t.r,t.tx,t.i,t.b,t.q,t.c,t.ph,String(t.y), t.rc ? [t.rc.reg,t.rc.gl,t.rc.acc,t.rc.cm.map(c=>c[1]+" "+c[2]).join(" ")].join(" ") : ""].join(" ").toLowerCase().includes(q)));
   rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
     : (order.indexOf(a.s) - order.indexOf(b.s)) || (a.y - b.y));
   document.getElementById("mcl-count").textContent = rows.length + " of " + T.length + " trials";
   const list = document.getElementById("mcl-list");
   if (!rows.length) { list.innerHTML = '<li class="empty">No trials match that search. Clear the search or pick another setting.</li>'; return; }
   list.innerHTML = rows.map(t => `
-    <li class="trial">
+    <li class="trial" data-trial="${t.slug}">
       <div class="yr">${t.y}</div>
       <div class="body">
-        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${t.s}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span></div>
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${t.s}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span>${t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : ''}</div>
         <p class="design">${esc(t.d)}</p>
         <div class="stats">
           <span><b>N</b>${esc(t.N)}</span>
@@ -547,17 +596,53 @@ function render(){
         </div>
         <dl>
           <dt>Endpoint</dt><dd>${esc(t.ep)}</dd>
-          <dt>Result</dt><dd class="result">${esc(t.r)}${t.f ? ' <span class="flag" title="Conference data or approximate figure">⚑ verify</span>' : ''}${t.ok ? ' <span class="ok" title="Checked against the PubMed abstract">✓ checked</span>' : ''}</dd>
+          <dt>Result</dt><dd class="result">${esc(t.r)}${t.f ? ' <span class="flag" title="Conference data or approximate figure">⚑ verify</span>' : ''}${t.ok ? ' ' + eviHTML(t) : ''}</dd>
+          <dt>Key toxicity</dt><dd class="tox">${esc(t.tx)}</dd>
           <dt>Builds on</dt><dd>${esc(t.b||"")}</dd>
           <dt>Changed</dt><dd>${esc(t.i)}</dd>
           <dt>Open questions</dt><dd class="qs">${esc(t.q||"")}</dd>
           <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
-          <dt>Source</dt><dd class="cite">${t.url ? `<a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>` : esc(t.c)}${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${t.ft[0] === 'pmc' ? 'Free full text in PubMed Central' : 'Full text at the publisher (subscription may be required)'}">${t.ft[0] === 'pmc' ? 'Free full text' : 'Full text'} ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
+          <dt>Source</dt><dd class="cite">${t.url ? `<a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>` : esc(t.c)}${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${t.ft[0] === 'pmc' ? 'Free full text in PubMed Central' : 'Publisher page; full text may need a subscription or institutional access'}">${t.ft[0] === 'pmc' ? 'Free full text' : 'Publisher'} ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
         </dl>
       </div>
     </li>`).join("");
 }
 render();
+
+(function renderWatch(){
+  const listEl = document.getElementById("mcl-list");
+  const box = listEl.parentNode.querySelector(".watch");
+  if (!box) return;
+  if (!WATCH.items || !WATCH.items.length) { box.hidden = true; return; }
+  box.hidden = false;
+  box.innerHTML = '<h2>Trials to watch</h2><p class="wnote">' + esc(WATCH.note || "") + '</p><ul>' + WATCH.items.map(w =>
+    '<li><span class="wn">' + esc(w.n) + '</span><span class="wd">' + esc(w.d) + '</span><span class="wm">' +
+    [w.ph, w.st, w.pcd ? "primary completion " + w.pcd : "", w.ep ? "primary endpoint: " + w.ep : ""].filter(Boolean).map(esc).join(" · ") +
+    (w.nct ? ' · <a href="https://clinicaltrials.gov/study/' + esc(w.nct) + '" target="_blank" rel="noopener">' + esc(w.nct) + ' ↗</a>' : "") +
+    '</span>' + (w.note ? '<span class="wd">' + esc(w.note) + '</span>' : '') + '</li>').join("") + '</ul>';
+})();
+(function setupPrint(){
+  const listEl = document.getElementById("mcl-list");
+  const wrap = listEl.closest(".wrap");
+  const btn = wrap && wrap.querySelector(".printbtn");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const root = wrap.closest(".ltw");
+    if (!root) { window.print(); return; }
+    const css = Array.prototype.map.call(document.querySelectorAll("style"), s => s.textContent).filter(c => c.includes("--font-display")).join("\n");
+    const clone = root.cloneNode(true);
+    clone.querySelectorAll(".controls, .printbtn").forEach(n => n.remove());
+    const w = window.open("", "_blank");
+    if (!w) { window.print(); return; }
+    const title = (wrap.querySelector("h1") || {}).textContent || "Landmark trials";
+    w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>' + esc(title) + '</title>' +
+      '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">' +
+      '<style>' + css + ' body{margin:0;background:#fff} .ltw{background:#fff} @media print{.ltw .trial{break-inside:avoid}}</style></head><body>' +
+      clone.outerHTML + '<script>window.onload=function(){setTimeout(function(){window.print()},400)}<\/script></body></html>');
+    w.document.close();
+  });
+  try { if (/[?&]print=1/.test(location.search)) setTimeout(() => window.print(), 500); } catch (e) {}
+})();
 
 })();
 </script>

@@ -27,12 +27,17 @@ Each topic page is one HTML file with:
 - **Data**: a JavaScript array `T`, one entry per trial: `y` year, `n` name, `s` category, `ph` phase, `d` design, `ep` endpoint, `r` result, `N`, `hr`, `fu`, `c` citation, `p` PMID, optional `extra` [label, PMID], `b` builds on, `i` what it changed, `q` open questions, `cm` commentaries [[pmid, byline, title]], `reg` regulatory, `gl` guidelines, `acc` access. (The MCL page predates this layout and keeps the same information in separate objects.)
 - **Registry numbers**: object `REG` mapping each entry name to its registry IDs (ClinicalTrials.gov NCT, ISRCTN or EudraCT), taken from the paper's PubMed record. Shown as links next to the source and used by the monthly update to find later follow-up publications.
 - **Full-text links**: object `FT` mapping each entry name to `["pmc", PMCID]` (free full text in PubMed Central, not embargoed) or `["doi", DOI]` (publisher page), taken from the PubMed record.
+- **Key toxicity** (`TOX`), **core trials** (`CORE`, chosen by Andres) and **trials to watch** (`WATCH`): see tools/UPDATE_GUIDE.md.
 - **Verification rules**: every number checked against the PubMed abstract or PubMed Central full text; "not reported in abstract" rather than a guess; PMIDs confirmed by journal, volume, pages and first author; unconfirmed regulatory or guideline statements marked "verify"; no invented insurance approval rates.
 - **Credit line** in small type under the footer: "Created by Andres Ferber, MD, with the assistance of Claude (Anthropic)."
 
+## Search and news
+
+`index.json` (built by `node tools/build_index.js` from `source/`) powers the search across all topics on the website; `news.json` feeds the "What's new" box.
+
 ## Monthly updates
 
-A scheduled task per topic runs on the 1st of each month. It searches PubMed (including follow-up publications of every trial on the page, by registry number and name), FDA/EMA, NCCN and major meetings; updates the artifact; regenerates `topics/<key>.html`; copies the page to `source/<key>.html`; updates `topics.json`; and pushes here. Papers that need a PDF are listed in the monthly summary.
+A scheduled task per topic runs on the 1st of each month. It searches PubMed (including follow-up publications of every trial on the page, by registry number and name), FDA/EMA, NCCN and major meetings; updates the artifact; regenerates `topics/<key>.html`; copies the page to `source/<key>.html`; updates `topics.json`; and pushes here. Papers that need a PDF are listed in the monthly summary. The full procedure is in `tools/UPDATE_GUIDE.md`, which the scheduled tasks follow.
 
 ## Adding a topic
 

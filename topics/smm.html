@@ -68,10 +68,37 @@
 .ltw .empty { padding: 32px 0; color: var(--muted); }
 .ltw .lt-foot { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch; }
 .ltw .credit { margin: 10px 0 0; font-size: 11.5px; color: var(--muted); opacity: .8; }
+.ltw .tox { color: var(--fg); }
+.ltw .core { font: 600 11px/1 var(--font-mono); letter-spacing: .04em; color: #8a5a12; background: #fbf1dc; padding: 4px 7px; border-radius: 4px; }
+.ltw .ok.full { color: var(--accent); }
+.ltw .trial.flash { animation: lt-flash 2.4s ease-out; }
+.ltw 0% { background: rgba(240, 190, 60, .35); }
+.ltw 100% { background: transparent; }
+.ltw .printbtn { font: 500 13px/1 var(--font-body); padding: 9px 14px; border-radius: 8px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; margin-left: auto; }
+.ltw .printbtn:hover { border-color: var(--accent); }
+.ltw .printbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ltw .watch { margin-top: 28px; padding: 18px 18px 8px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+.ltw .watch[hidden] { display: none; }
+.ltw .watch h2 { font-family: var(--font-display); font-weight: 650; font-size: 1.25rem; margin: 0 0 4px; }
+.ltw .watch .wnote { margin: 0 0 12px; font-size: 13px; color: var(--muted); }
+.ltw .watch ul { list-style: none; margin: 0; padding: 0; }
+.ltw .watch li { padding: 10px 0; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 3px; }
+.ltw .watch .wn { font-weight: 600; }
+.ltw .watch .wm { font: 400 12.5px var(--font-mono); color: var(--muted); }
+.ltw .watch .wd { font-size: 14px; }
+.ltw .watch a { color: var(--accent); }
 @media (max-width: 480px) {
 .ltw .trial { grid-template-columns: 1fr; gap: 4px; }
 .ltw dl { grid-template-columns: 1fr; gap: 0 0; }
 .ltw dt { line-height: 1.6; margin-top: 4px; }
+}
+@media print {
+.ltw { --bg: #fff; --surface: #fff; --fg: #111; --muted: #444; --rule: #ccc; --accent: #1a3a7a; }
+.ltw { background: #fff; }
+.ltw .controls, .ltw .printbtn { display: none !important; }
+.ltw .trial { break-inside: avoid; page-break-inside: avoid; }
+.ltw .watch { break-inside: avoid; }
+.ltw a { text-decoration: none; }
 }
 
 .ltw { display: block; text-align: left; border-radius: 6px; }
@@ -90,6 +117,9 @@
 .ltw button.chip { color: var(--fg) !important; background: var(--surface) !important; text-transform: none !important; box-shadow: none !important; height: auto !important; }
 .ltw button.chip[aria-pressed="true"] { color: var(--bg) !important; background: var(--fg) !important; }
 .ltw input[type="search"], .ltw select { color: var(--fg) !important; background: var(--surface) !important; height: auto !important; box-shadow: none !important; }
+.ltw button.printbtn { color: var(--fg) !important; background: var(--surface) !important; text-transform: none !important; box-shadow: none !important; height: auto !important; }
+.ltw .watch ul, .ltw .watch li { list-style: none !important; margin-left: 0 !important; padding-left: 0 !important; background: none !important; }
+.ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 
 </style>
 <div class="ltw" id="lt-smm">
@@ -110,13 +140,16 @@
         <option value="desc">Sort: newest first</option>
       </select>
       <span class="count" id="smm-count"></span>
+      <button type="button" class="printbtn" title="Print or save as PDF (prints the trials currently shown)">Print / PDF</button>
     </div>
   </div>
 
   <ol class="list" id="smm-list"></ol>
 
+  <section class="watch" hidden aria-label="Trials to watch"></section>
+
   <div class="lt-foot">
-    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). "Free full text" links open the article in PubMed Central; "Full text" links open the publisher's page, where a subscription or institutional access may be needed. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Guideline positions: NCCN and ASCO-Ontario as summarized from January 2026 versions; items marked "verify" need checking against the current documents. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). "Key toxicity" summarizes the main adverse events reported in the abstract (or the full paper where marked); it is not a complete safety profile. "★ Core" marks trials selected as essential for teaching. Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed. Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Guideline positions: NCCN and ASCO-Ontario as summarized from January 2026 versions; items marked "verify" need checking against the current documents. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
   </div>
   <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
 </div>
@@ -309,10 +342,26 @@ const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id 
 T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, reg:t.reg, gl:t.gl, acc:t.acc}; });
 T.forEach(t => { t.trn = REG[t.n] || []; t.ft = FT[t.n] || null; });
 
+// Added Oct 23, 2026. TOX: key toxicity per trial from the PubMed abstract (or full paper where marked).
+// CORE: trials every trainee should know (chosen by Andres; edit this list to change the star and the "Core trials" filter).
+// WATCH: ongoing trials to watch, from ClinicalTrials.gov.
+const TOX = {"Mayo natural history (Kyle)": "Not applicable (observational cohort)", "PETHEMA flow-cytometry risk (Pérez-Persona)": "Not applicable (prognostic study)", "Free light chain ratio (Dispenzieri)": "Not applicable (prognostic study)", "Thalidomide + pamidronate (Barlogie)": "Thalidomide dose reduced in 86% and stopped in 50% within 2 years", "Thalidomide + zoledronic acid (Witzig)": "Not reported in abstract", "QuiRedex (Mateos)": "Mostly grade ≤2", "IMWG updated criteria (Rajkumar)": "Not applicable (consensus criteria)", "Mayo 20/2/20 model (Lakshman)": "Not applicable (risk model)", "Siltuximab (Brighton)": "Similar to placebo; mostly grade 2–3; deaths 3 vs 4", "ECOG E3A06 (Lonial)": "Grade 3–4 nonhematologic AEs 28% on lenalidomide", "CENTAURUS (Landgren)": "No new safety signals (rates not in abstract)", "IMWG 2/20/20 risk model (Mateos)": "Not applicable (risk model)", "EMN consensus statement (Musto)": "Not applicable (consensus statement)", "NCI KRd (Korde, Kazandjian)": "Grade 3 nonhematologic AEs 38.9% (thromboembolism, rash, lung infection); no grade 4 events; no deaths", "iStopMM screening (Thorsteinsdóttir)": "Not applicable (screening study)", "GEM-CESAR (Mateos)": "Neutropenia and infections most frequent; 1 treatment-related death; 3 second primary malignancies", "I-PRISM (Nadeem)": "Not reported in abstract", "AQUILA (Dimopoulos)": "Most common grade 3–4: hypertension 5.7% vs 4.6%; AE discontinuation 5.7%", "ASCO-Ontario Health living guideline (Hicks)": "Not applicable (guideline)", "Cochrane review: early intervention (Chen)": "More overall and serious AEs with daratumumab, very uncertain evidence", "PANGEA-SMM dynamic risk (Chabrun)": "Not applicable (risk model)", "ImmunoPRISM (Nadeem)": "Teclistamab: grade 1–2 CRS only, no neurotoxicity; grade 3 infections 20% vs 21% (Rd); no deaths"};
+const CORE = ["Mayo natural history (Kyle)", "IMWG updated criteria (Rajkumar)", "IMWG 2/20/20 risk model (Mateos)", "QuiRedex (Mateos)", "ECOG E3A06 (Lonial)", "AQUILA (Dimopoulos)"];
+const WATCH = {"note": "", "items": []};
+const SLUG = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+T.forEach(t => { t.tx = TOX[t.n] || "Not reported in abstract"; t.core = CORE.includes(t.n); t.slug = SLUG(t.n);
+  t.full = [t.r, t.N, t.hr, t.fu, t.tx].some(x => /full paper/.test(String(x || ""))); });
+function eviHTML(t) {
+  return t.full
+    ? '<span class="ok full" title="Checked against the PubMed abstract; values marked “full paper” were checked against the full publication">✓ abstract + full paper</span>'
+    : '<span class="ok" title="Checked against the PubMed abstract">✓ abstract</span>';
+}
+
+
 let active = "all", sortMode = "setting";
 try { const s = localStorage.getItem("smm-sort"); if (s) sortMode = s; } catch(e) {}
 const chipsEl = document.getElementById("smm-chips");
-[["all","All"], ...order.map(k => [k, SETTINGS[k]])].forEach(([k,label]) => {
+[["all","All"], ["core","★ Core trials"], ...order.map(k => [k, SETTINGS[k]])].forEach(([k,label]) => {
   const b = document.createElement("button");
   b.className = "chip"; b.type = "button"; b.id = "smm-chip-" + k; b.textContent = label;
   b.setAttribute("aria-pressed", k === active);
@@ -335,18 +384,18 @@ function recHTML(t){
 }
 function render(){
   const q = qEl.value.trim().toLowerCase();
-  let rows = T.filter(t => (active === "all" || t.s === active) &&
-    (!q || [t.n,t.d,t.r,t.i,t.b,t.q,t.c,t.ph,String(t.y),t.reg,t.gl,t.acc,t.cm.map(c=>c[1]+" "+c[2]).join(" ")].join(" ").toLowerCase().includes(q)));
+  let rows = T.filter(t => (active === "all" || (active === "core" ? t.core : t.s === active)) &&
+    (!q || [t.n,t.d,t.r,t.tx,t.i,t.b,t.q,t.c,t.ph,String(t.y),t.reg,t.gl,t.acc,t.cm.map(c=>c[1]+" "+c[2]).join(" ")].join(" ").toLowerCase().includes(q)));
   rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
     : (order.indexOf(a.s) - order.indexOf(b.s)) || (a.y - b.y));
   document.getElementById("smm-count").textContent = rows.length + " of " + T.length + " studies";
   const list = document.getElementById("smm-list");
   if (!rows.length) { list.innerHTML = '<li class="empty">No studies match that search. Clear the search or pick another category.</li>'; return; }
   list.innerHTML = rows.map(t => `
-    <li class="trial">
+    <li class="trial" data-trial="${t.slug}">
       <div class="yr">${t.y}</div>
       <div class="body">
-        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span></div>
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span>${t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : ''}</div>
         <p class="design">${esc(t.d)}</p>
         <div class="stats">
           <span><b>N</b>${esc(t.N)}</span>
@@ -355,17 +404,53 @@ function render(){
         </div>
         <dl>
           <dt>Endpoint</dt><dd>${esc(t.ep)}</dd>
-          <dt>Result</dt><dd class="result">${esc(t.r)} <span class="ok" title="Checked against the PubMed abstract">✓ checked</span></dd>
+          <dt>Result</dt><dd class="result">${esc(t.r)} ${eviHTML(t)}</dd>
+          <dt>Key toxicity</dt><dd class="tox">${esc(t.tx)}</dd>
           <dt>Builds on</dt><dd>${esc(t.b)}</dd>
           <dt>Changed</dt><dd>${esc(t.i)}</dd>
           <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
           <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
-          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${t.ft[0] === 'pmc' ? 'Free full text in PubMed Central' : 'Full text at the publisher (subscription may be required)'}">${t.ft[0] === 'pmc' ? 'Free full text' : 'Full text'} ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${t.ft[0] === 'pmc' ? 'Free full text in PubMed Central' : 'Publisher page; full text may need a subscription or institutional access'}">${t.ft[0] === 'pmc' ? 'Free full text' : 'Publisher'} ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')}</dd>
         </dl>
       </div>
     </li>`).join("");
 }
 render();
+
+(function renderWatch(){
+  const listEl = document.getElementById("smm-list");
+  const box = listEl.parentNode.querySelector(".watch");
+  if (!box) return;
+  if (!WATCH.items || !WATCH.items.length) { box.hidden = true; return; }
+  box.hidden = false;
+  box.innerHTML = '<h2>Trials to watch</h2><p class="wnote">' + esc(WATCH.note || "") + '</p><ul>' + WATCH.items.map(w =>
+    '<li><span class="wn">' + esc(w.n) + '</span><span class="wd">' + esc(w.d) + '</span><span class="wm">' +
+    [w.ph, w.st, w.pcd ? "primary completion " + w.pcd : "", w.ep ? "primary endpoint: " + w.ep : ""].filter(Boolean).map(esc).join(" · ") +
+    (w.nct ? ' · <a href="https://clinicaltrials.gov/study/' + esc(w.nct) + '" target="_blank" rel="noopener">' + esc(w.nct) + ' ↗</a>' : "") +
+    '</span>' + (w.note ? '<span class="wd">' + esc(w.note) + '</span>' : '') + '</li>').join("") + '</ul>';
+})();
+(function setupPrint(){
+  const listEl = document.getElementById("smm-list");
+  const wrap = listEl.closest(".wrap");
+  const btn = wrap && wrap.querySelector(".printbtn");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const root = wrap.closest(".ltw");
+    if (!root) { window.print(); return; }
+    const css = Array.prototype.map.call(document.querySelectorAll("style"), s => s.textContent).filter(c => c.includes("--font-display")).join("\n");
+    const clone = root.cloneNode(true);
+    clone.querySelectorAll(".controls, .printbtn").forEach(n => n.remove());
+    const w = window.open("", "_blank");
+    if (!w) { window.print(); return; }
+    const title = (wrap.querySelector("h1") || {}).textContent || "Landmark trials";
+    w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>' + esc(title) + '</title>' +
+      '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">' +
+      '<style>' + css + ' body{margin:0;background:#fff} .ltw{background:#fff} @media print{.ltw .trial{break-inside:avoid}}</style></head><body>' +
+      clone.outerHTML + '<script>window.onload=function(){setTimeout(function(){window.print()},400)}<\/script></body></html>');
+    w.document.close();
+  });
+  try { if (/[?&]print=1/.test(location.search)) setTimeout(() => window.print(), 500); } catch (e) {}
+})();
 
 })();
 </script>
