@@ -44,6 +44,7 @@ All data is in the main `<script>`:
   authors, trial names that come from the sponsor, company code names for drugs (e.g. when there is no
   generic name yet), links to sponsored protocols or registry records, and FDA prescribing information.
   When unsure, ask Andres.
+- Default sort is "category, newest first" with category subtitles in the list; keep it.
 - Every page footer carries the "For education only" disclaimer (class sitedisc). Keep it.
 - Independence: this is Andres's independent project, done on his own time and funds. No links or
   references to his employer (Jefferson Health) and no preference for its publications; cite them
@@ -53,7 +54,7 @@ All data is in the main `<script>`:
   labelled "Perspective", pilot on rrmm): must open with the disclaimer box (personal perspective, for
   education only, not a guideline or medical advice; care should follow the literature, guidelines,
   prescribing information and the individual patient). Built by
-  tools/review/<key>_review.py, where every number comes from a trial entry and [[Trial name]]
+  tools/review/build_persp.py <key> <page> from tools/review/persp_<key>.py (rrmm uses rrmm_review.py), where every number comes from a trial entry and [[Trial name]]
   becomes a numbered reference to that trial's card. When an entry changes, update only the
   affected sentences and the "Last updated" date. Small factual edits go live automatically and are
   listed in the summary; rewrites of a section (for example after a new practice-changing trial)

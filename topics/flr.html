@@ -105,6 +105,39 @@
 .ltw .moa a:hover { text-decoration-thickness: 2px; }
 .ltw .moafree { font: 500 11px var(--font-mono); color: var(--s-young); border: 1px solid var(--rule); border-radius: 4px; padding: 0 4px; }
 .ltw .sitedisc { margin: 12px 0 0; font-size: 12.5px; }
+.ltw ol.list li.grp { list-style: none; padding: 22px 0 6px; border-bottom: 2px solid var(--fg); }
+.ltw ol.list li.grp h3 { margin: 0; font-family: var(--font-display); font-weight: 650; font-size: 1.2rem; }
+.ltw ol.list li.grp .gn { font: 500 12px var(--font-mono); color: var(--muted); margin-left: 8px; }
+.ltw .review { margin-top: 18px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+.ltw .review > summary { list-style: none; cursor: pointer; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 14px 18px; }
+.ltw .review > summary::-webkit-details-marker { display: none; }
+.ltw .review .rv-kicker { font: 500 11px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.ltw .review .rv-title { font-family: var(--font-display); font-weight: 650; font-size: 1.05rem; flex: 1 1 260px; }
+.ltw .review .rv-open { font: 500 13px/1 var(--font-body); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.ltw .review[open] .rv-open { font-size: 0; }
+.ltw .review[open] .rv-open::before { content: "Close"; font-size: 13px; }
+.ltw .review .rv-body { padding: 0 18px 18px; max-width: 72ch; font-size: 15.5px; line-height: 1.65; }
+.ltw .review .rv-body h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.12rem; margin: 22px 0 6px; }
+.ltw .review .rv-body p { margin: 0 0 12px; }
+.ltw .review .rv-body ul { margin: 0 0 12px; padding-left: 20px; }
+.ltw .review .rv-body li { margin: 4px 0; }
+.ltw .review .rv-meta { font-size: 12.5px; color: var(--muted); }
+.ltw .review .rv-disc { font-size: 13px; line-height: 1.5; color: var(--fg); background: var(--s-old-bg); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; margin: 8px 0 14px; }
+.ltw .review .rv-take { border-left: 3px solid var(--accent); background: var(--bg); padding: 4px 14px 6px; margin: 12px 0 16px; border-radius: 0 8px 8px 0; }
+.ltw .review .rv-take h3 { margin-top: 10px; }
+.ltw .review sup a { font: 600 11px var(--font-mono); text-decoration: none; color: var(--accent); padding: 0 1px; }
+.ltw .review a { color: var(--accent); }
+.ltw .review .rv-refs { font-size: 13.5px; padding-left: 22px; }
+.ltw .rv-tl { margin: 8px 0 18px; }
+.ltw .rv-tl figcaption { font: 500 11px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.ltw .rv-tl ol { list-style: none; margin: 0; padding: 0 0 0 4px; border-left: 2px solid var(--rule); }
+.ltw .rv-tl li { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 10px; padding: 5px 0 5px 14px; font-size: 14px; line-height: 1.45; }
+.ltw .rv-tl li::before { content: ""; position: absolute; left: -7px; top: 10px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2px solid var(--muted); }
+.ltw .rv-tl li.tl-old::before { border-color: var(--s-old); background: var(--s-old-bg); }
+.ltw .rv-tl li.tl-young::before { border-color: var(--s-young); background: var(--s-young-bg); }
+.ltw .rv-tl li.tl-p2::before { border-color: var(--s-p2); background: var(--s-p2-bg); }
+.ltw .rv-tl li.tl-rr::before { border-color: var(--s-rr); background: var(--s-rr-bg); }
+.ltw .rv-tl .tl-y { font: 500 13px var(--font-mono); color: var(--muted); }
 @media (max-width: 480px) {
 .ltw .trial { grid-template-columns: 1fr; gap: 4px; }
 .ltw dl { grid-template-columns: 1fr; gap: 0 0; }
@@ -124,6 +157,9 @@
 }
 @media print {
 .ltw .report { display: none !important; }
+}
+@media print {
+.ltw .review .rv-open { display: none; }
 }
 
 .ltw { display: block; text-align: left; border-radius: 6px; }
@@ -159,6 +195,9 @@
 .ltw .review sup a { text-decoration: none !important; }
 .ltw .sitedisc { color: var(--muted) !important; }
 .ltw .review .rv-disc { color: var(--fg) !important; }
+.ltw ol.list li.grp h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; background: none !important; }
+.ltw ol.list li.grp { border-bottom: 2px solid var(--fg) !important; }
+.ltw .rv-tl li { list-style: none !important; }
 .ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 
 </style>
@@ -170,12 +209,60 @@
     <p>Antibody and lenalidomide combinations, targeted agents including the withdrawn PI3K inhibitors, CAR-T and bispecific antibodies: design, verified results, context, open questions and reception.</p>
   </div>
 
+  <details class="review" id="review">
+    <summary><span class="rv-kicker">Perspective</span><span class="rv-title">The evolution of management of relapsed follicular lymphoma, 2002–2026</span><span class="rv-open">Read the perspective</span></summary>
+    <div class="rv-body">
+      <p class="rv-meta">Andres Ferber, MD, with the assistance of Claude (Anthropic) · Last updated October 24, 2026 · About 700 words. Numbers are taken from the verified trial entries on this page; numbered references jump to each trial.</p>
+      <p class="rv-disc"><b>Personal perspective, for education only.</b> This text reflects the author's own reading and opinion of the published evidence. It is not a clinical practice guideline, medical advice or a substitute for clinical judgment. Patient care should follow the primary literature, current guidelines (such as NCCN, ESMO, IMWG and ASCO), approved prescribing information and the individual patient's circumstances.</p>
+      <div class="rv-take"><h3>Key points</h3><ul><li>Treatment at relapse depends on how soon the disease returned (POD24), what the patient received before, whether the disease is refractory to anti-CD20 antibodies, and whether transformation has been excluded by biopsy.</li><li>Lenalidomide-rituximab (AUGMENT) became the second-line backbone, and adding tafasitamab (inMIND) or epcoritamab (EPCORE FL-1, HR 0.21) improved it further.</li><li>All four PI3K inhibitors received accelerated approval for FL and all lost their US FL indications between 2021 and 2023, a lesson in the limits of single-arm response rates.</li><li>CD19 CAR-T and CD20×CD3 bispecific antibodies give complete responses in most patients after two or more lines, and are moving earlier.</li><li>Tazemetostat and zanubrutinib-obinutuzumab offer non-cellular, non-bispecific options in later lines.</li></ul></div>
+      <figure class="rv-tl"><figcaption>Timeline of key trials and US regulatory milestones</figcaption><ol><li class="tl-young"><span class="tl-y">2002</span><span class="tl-e">Ibritumomab, the first radioimmunotherapy, approved</span></li><li class="tl-young"><span class="tl-y">2006</span><span class="tl-e">Rituximab maintenance at relapse (EORTC 20981)</span></li><li class="tl-p2"><span class="tl-y">2014</span><span class="tl-e">Idelalisib accelerated approval</span></li><li class="tl-young"><span class="tl-y">2016</span><span class="tl-e">Obinutuzumab-bendamustine for rituximab-refractory disease (GADOLIN)</span></li><li class="tl-p2"><span class="tl-y">2017</span><span class="tl-e">Copanlisib accelerated approval</span></li><li class="tl-p2"><span class="tl-y">2018</span><span class="tl-e">Duvelisib accelerated approval</span></li><li class="tl-young"><span class="tl-y">2019</span><span class="tl-e">Lenalidomide-rituximab approved (AUGMENT)</span></li><li class="tl-p2"><span class="tl-y">2020</span><span class="tl-e">Tazemetostat accelerated approval</span></li><li class="tl-rr"><span class="tl-y">2021</span><span class="tl-e">Axicabtagene ciloleucel, the first CAR-T in FL; umbralisib approved; duvelisib FL indication withdrawn</span></li><li class="tl-old"><span class="tl-y">2022</span><span class="tl-e">Tisagenlecleucel and mosunetuzumab approved; idelalisib FL indication and umbralisib withdrawn</span></li><li class="tl-p2"><span class="tl-y">2023</span><span class="tl-e">Copanlisib withdrawn: no PI3K inhibitor left for FL in the US</span></li><li class="tl-rr"><span class="tl-y">2024</span><span class="tl-e">Zanubrutinib-obinutuzumab, lisocabtagene maraleucel and epcoritamab approved; odronextamab approved in the EU</span></li><li class="tl-old"><span class="tl-y">2025</span><span class="tl-e">Tafasitamab with lenalidomide-rituximab (inMIND); epcoritamab with lenalidomide-rituximab (EPCORE FL-1)</span></li></ol></figure>
+      <h3>Many options, chosen by context</h3>
+<p>Most patients with follicular lymphoma relapse at some point, often several times over many years, so relapse management is a sequence of choices rather than one decision. The main questions are how quickly the disease returned (progression within 2 years of first-line chemoimmunotherapy, POD24, predicts poor survival), what treatment came before, whether the disease is refractory to anti-CD20 antibodies, and whether a biopsy has excluded transformation to aggressive lymphoma.</p>
+
+<h3>Antibody-based therapy and the lenalidomide-rituximab backbone</h3>
+<p>Radioimmunotherapy was the first new modality: ibritumomab produced more responses than rituximab (80% vs 56%) without a difference in time to progression, and logistics limited its use<sup><a class="rref" href="#t-flr-90y-ibritumomab-vs-rituximab-witzig" data-slug="90y-ibritumomab-vs-rituximab-witzig" title="90Y-ibritumomab vs rituximab (Witzig)">1</a></sup>. EORTC 20981 showed that R-CHOP beat CHOP at relapse and that rituximab maintenance afterwards more than tripled median PFS (51.5 vs 14.9 months)<sup><a class="rref" href="#t-flr-eortc-20981-van-oers" data-slug="eortc-20981-van-oers" title="EORTC 20981 (van Oers)">2</a></sup>. For rituximab-refractory disease, obinutuzumab with bendamustine followed by obinutuzumab maintenance reduced the risk of progression by 45% compared with bendamustine alone<sup><a class="rref" href="#t-flr-gadolin-sehn" data-slug="gadolin-sehn" title="GADOLIN (Sehn)">3</a></sup>.</p>
+<p>AUGMENT then established lenalidomide-rituximab: median PFS 39.4 vs 14.1 months with rituximab alone (HR 0.46), at the cost of more neutropenia<sup><a class="rref" href="#t-flr-augment-leonard" data-slug="augment-leonard" title="AUGMENT (Leonard)">4</a></sup>. It became the backbone for the next generation of trials. Adding the anti-CD19 antibody tafasitamab improved median PFS from 13.9 to 22.4 months (HR 0.43)<sup><a class="rref" href="#t-flr-inmind-sehn" data-slug="inmind-sehn" title="inMIND (Sehn)">5</a></sup>, and adding the bispecific epcoritamab raised 16-month PFS from 40.2% to 85.5% (HR 0.21), with more grade 3 or higher adverse events (90% vs 68%)<sup><a class="rref" href="#t-flr-epcore-fl-1-falchi" data-slug="epcore-fl-1-falchi" title="EPCORE FL-1 (Falchi)">6</a></sup>. Both triplets were approved in 2025.</p>
+
+<h3>Targeted agents, and the PI3K lesson</h3>
+<p>Four PI3K inhibitors received accelerated approval on the basis of single-arm response rates of about 40–60% in heavily pretreated patients: idelalisib<sup><a class="rref" href="#t-flr-idelalisib-gopal" data-slug="idelalisib-gopal" title="Idelalisib (Gopal)">7</a></sup>, copanlisib<sup><a class="rref" href="#t-flr-chronos-1-dreyling" data-slug="chronos-1-dreyling" title="CHRONOS-1 (Dreyling)">8</a></sup>, duvelisib<sup><a class="rref" href="#t-flr-dynamo-flinn" data-slug="dynamo-flinn" title="DYNAMO (Flinn)">9</a></sup> and umbralisib<sup><a class="rref" href="#t-flr-unity-nhl-fowler" data-slug="unity-nhl-fowler" title="UNITY-NHL (Fowler)">10</a></sup>. Even a positive randomized trial, copanlisib with rituximab (median PFS 21.5 vs 13.8 months)<sup><a class="rref" href="#t-flr-chronos-3-matasar" data-slug="chronos-3-matasar" title="CHRONOS-3 (Matasar)">11</a></sup>, did not save the class: toxicity, unmet confirmatory requirements and an overall survival signal in a related trial led to the loss of every US FL indication between 2021 and 2023. The episode is a reminder that response rates in single-arm trials do not guarantee benefit.</p>
+<p>Two targeted options remain. The oral EZH2 inhibitor tazemetostat produced responses in 69% of EZH2-mutant and 35% of wild-type patients, with good tolerability<sup><a class="rref" href="#t-flr-tazemetostat-morschhauser" data-slug="tazemetostat-morschhauser" title="Tazemetostat (Morschhauser)">12</a></sup>, and zanubrutinib with obinutuzumab nearly tripled median PFS over obinutuzumab alone (28.0 vs 10.4 months) in a randomized phase 2 trial<sup><a class="rref" href="#t-flr-rosewood-zinzani" data-slug="rosewood-zinzani" title="ROSEWOOD (Zinzani)">13</a></sup>.</p>
+
+<h3>CAR-T and bispecific antibodies</h3>
+<p>CD19 CAR-T produced the highest response rates seen in relapsed FL: complete responses in 74% with axicabtagene ciloleucel<sup><a class="rref" href="#t-flr-zuma-5-jacobson" data-slug="zuma-5-jacobson" title="ZUMA-5 (Jacobson)">14</a></sup>, 69.1% with tisagenlecleucel, without grade 3 or higher cytokine release syndrome<sup><a class="rref" href="#t-flr-elara-fowler" data-slug="elara-fowler" title="ELARA (Fowler)">15</a></sup>, and 94% in third-line or later patients with lisocabtagene maraleucel, which also produced complete responses in all 23 second-line patients with high-risk features such as POD24<sup><a class="rref" href="#t-flr-transcend-fl-morschhauser" data-slug="transcend-fl-morschhauser" title="TRANSCEND FL (Morschhauser)">16</a></sup>.</p>
+<p>CD20×CD3 bispecific antibodies offer off-the-shelf, largely outpatient alternatives. Fixed-duration mosunetuzumab gave complete responses in 60% and a median PFS of 24.0 months at 3 years<sup><a class="rref" href="#t-flr-mosunetuzumab-budde" data-slug="mosunetuzumab-budde" title="Mosunetuzumab (Budde)">17</a></sup>; subcutaneous epcoritamab gave complete responses in 62.5% with little severe cytokine release syndrome<sup><a class="rref" href="#t-flr-epcore-nhl-1-fl-cohort-linton" data-slug="epcore-nhl-1-fl-cohort-linton" title="EPCORE NHL-1 FL cohort (Linton)">18</a></sup>; and odronextamab gave complete responses in 73.4% and is approved in the EU but not in the US<sup><a class="rref" href="#t-flr-elm-2-fl-cohort-odronextamab-kim" data-slug="elm-2-fl-cohort-odronextamab-kim" title="ELM-2 FL cohort: odronextamab (Kim)">19</a></sup>.</p>
+
+<h3>Where we are now</h3>
+<p>Summarized at a high level (NCCN placement not checked against the current document, except where noted):</p>
+<ul>
+<li><b>Late relapse, low tumor burden:</b> observation or rituximab-based retreatment remain options.</li>
+<li><b>Second line needing treatment:</b> lenalidomide-rituximab, now often with tafasitamab (described as NCCN category 1 after anti-CD20 therapy in 2026 coverage)<sup><a class="rref" href="#t-flr-inmind-sehn" data-slug="inmind-sehn" title="inMIND (Sehn)">5</a></sup> or epcoritamab<sup><a class="rref" href="#t-flr-epcore-fl-1-falchi" data-slug="epcore-fl-1-falchi" title="EPCORE FL-1 (Falchi)">6</a></sup>; obinutuzumab-bendamustine for rituximab-refractory patients who have not received bendamustine<sup><a class="rref" href="#t-flr-gadolin-sehn" data-slug="gadolin-sehn" title="GADOLIN (Sehn)">3</a></sup>.</li>
+<li><b>POD24 or early relapse:</b> biopsy to exclude transformation; consider earlier CAR-T, which is approved after two or more lines.</li>
+<li><b>Third line and beyond:</b> CD19 CAR-T, CD20×CD3 bispecific antibodies, tazemetostat or zanubrutinib-obinutuzumab.</li>
+</ul>
+
+<h3>Open questions</h3>
+<ul>
+<li><b>Sequencing:</b> CAR-T and bispecific antibodies have not been compared head to head, and the best order is unknown.</li>
+<li><b>Which second-line triplet:</b> tafasitamab and epcoritamab additions have not been compared.</li>
+<li><b>Fixed duration and cure:</b> whether deep responses to T-cell therapies are durable enough to change the course of the disease.</li>
+<li><b>Infections and cost:</b> both rise as more intensive immunotherapies move earlier.</li>
+<li><b>Accelerated approval:</b> how to weigh single-arm response rates after the PI3K withdrawals.</li>
+</ul>
+
+<h3>What is coming</h3>
+<p>Ongoing phase 3 trials (listed under Trials to watch at the end of this page) compare zanubrutinib with anti-CD20 therapy against lenalidomide-rituximab (MAHOGANY), mosunetuzumab-lenalidomide (CELESTIMO) and odronextamab-lenalidomide (OLYMPIA-5) against lenalidomide-rituximab, tazemetostat added to lenalidomide-rituximab (SYMPHONY-1), golcadomide-rituximab against investigator's choice (GOLSEEK-4), and axicabtagene ciloleucel (ZUMA-22) and tisagenlecleucel (LEDA) against standard care.</p>
+      <h3>References</h3>
+      <ol class="rv-refs"><li><a class="rref" href="#t-flr-90y-ibritumomab-vs-rituximab-witzig" data-slug="90y-ibritumomab-vs-rituximab-witzig">90Y-ibritumomab vs rituximab (Witzig)</a>. J Clin Oncol 2002;20:2453. <a href="https://pubmed.ncbi.nlm.nih.gov/12011122/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-eortc-20981-van-oers" data-slug="eortc-20981-van-oers">EORTC 20981 (van Oers)</a>. Blood 2006;108:3295. <a href="https://pubmed.ncbi.nlm.nih.gov/16873669/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-gadolin-sehn" data-slug="gadolin-sehn">GADOLIN (Sehn)</a>. Lancet Oncol 2016;17:1081. <a href="https://pubmed.ncbi.nlm.nih.gov/27345636/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-augment-leonard" data-slug="augment-leonard">AUGMENT (Leonard)</a>. J Clin Oncol 2019;37:1188. <a href="https://pubmed.ncbi.nlm.nih.gov/30897038/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-inmind-sehn" data-slug="inmind-sehn">inMIND (Sehn)</a>. Lancet 2026;407:133. <a href="https://pubmed.ncbi.nlm.nih.gov/41360064/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-epcore-fl-1-falchi" data-slug="epcore-fl-1-falchi">EPCORE FL-1 (Falchi)</a>. Lancet 2026;407:161. <a href="https://pubmed.ncbi.nlm.nih.gov/41371238/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-idelalisib-gopal" data-slug="idelalisib-gopal">Idelalisib (Gopal)</a>. N Engl J Med 2014;370:1008. <a href="https://pubmed.ncbi.nlm.nih.gov/24450858/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-chronos-1-dreyling" data-slug="chronos-1-dreyling">CHRONOS-1 (Dreyling)</a>. J Clin Oncol 2017;35:3898. <a href="https://pubmed.ncbi.nlm.nih.gov/28976790/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-dynamo-flinn" data-slug="dynamo-flinn">DYNAMO (Flinn)</a>. J Clin Oncol 2019;37:912. <a href="https://pubmed.ncbi.nlm.nih.gov/30742566/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-unity-nhl-fowler" data-slug="unity-nhl-fowler">UNITY-NHL (Fowler)</a>. J Clin Oncol 2021;39:1609. <a href="https://pubmed.ncbi.nlm.nih.gov/33683917/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-chronos-3-matasar" data-slug="chronos-3-matasar">CHRONOS-3 (Matasar)</a>. Lancet Oncol 2021;22:678. <a href="https://pubmed.ncbi.nlm.nih.gov/33848462/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-tazemetostat-morschhauser" data-slug="tazemetostat-morschhauser">Tazemetostat (Morschhauser)</a>. Lancet Oncol 2020;21:1433. <a href="https://pubmed.ncbi.nlm.nih.gov/33035457/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-rosewood-zinzani" data-slug="rosewood-zinzani">ROSEWOOD (Zinzani)</a>. J Clin Oncol 2023;41:5107. <a href="https://pubmed.ncbi.nlm.nih.gov/37506346/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-zuma-5-jacobson" data-slug="zuma-5-jacobson">ZUMA-5 (Jacobson)</a>. Lancet Oncol 2022;23:91. <a href="https://pubmed.ncbi.nlm.nih.gov/34895487/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-elara-fowler" data-slug="elara-fowler">ELARA (Fowler)</a>. Nat Med 2022;28:325. <a href="https://pubmed.ncbi.nlm.nih.gov/34921238/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-transcend-fl-morschhauser" data-slug="transcend-fl-morschhauser">TRANSCEND FL (Morschhauser)</a>. Nat Med 2024;30:2199. <a href="https://pubmed.ncbi.nlm.nih.gov/38830991/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-mosunetuzumab-budde" data-slug="mosunetuzumab-budde">Mosunetuzumab (Budde)</a>. Lancet Oncol 2022;23:1055. <a href="https://pubmed.ncbi.nlm.nih.gov/35803286/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-epcore-nhl-1-fl-cohort-linton" data-slug="epcore-nhl-1-fl-cohort-linton">EPCORE NHL-1 FL cohort (Linton)</a>. Lancet Haematol 2024;11:e593. <a href="https://pubmed.ncbi.nlm.nih.gov/38889737/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-elm-2-fl-cohort-odronextamab-kim" data-slug="elm-2-fl-cohort-odronextamab-kim">ELM-2 FL cohort: odronextamab (Kim)</a>. Ann Oncol 2024;35:1039. <a href="https://pubmed.ncbi.nlm.nih.gov/39147364/" target="_blank" rel="noopener">PubMed ↗</a></li></ol>
+    </div>
+  </details>
+
   <div class="controls">
     <div class="chips" role="group" aria-label="Filter by category" id="flr-chips"></div>
     <div class="row2">
       <input type="search" id="flr-q" placeholder="Search trial, drug, regimen…" aria-label="Search trials">
       <select id="flr-sort" aria-label="Sort order">
-        <option value="setting">Sort: category, then year</option>
+        <option value="setting">Sort: category, newest first</option>
+        <option value="setting-asc">Sort: category, oldest first</option>
         <option value="asc">Sort: oldest first</option>
         <option value="desc">Sort: newest first</option>
       </select>
@@ -348,7 +435,7 @@ const T = [
  r:"ORR 80.0%, CR 73.4%; median PFS 20.7 mo; discontinuation for AEs 16%",N:"128",hr:"n/a",fu:"20.1 mo",
  c:"Ann Oncol 2024;35:1039",p:39147364,
  b:"Third CD20×CD3 bispecific with step-up dosing.",
- i:"Approved in the EU (2024); US approval not confirmed for this page (BLA resubmission accepted February 2025).",
+ i:"Approved in the EU (2024); not FDA-approved (a second complete response letter in July 2025 cited a manufacturing site inspection).",
  q:"Will it be approved in the US? How to choose among bispecifics?",
  cm:[],reg:"EU approval (2024). In the US, a second complete response letter (July 2025) cited a third-party manufacturing site inspection; not FDA-approved as of the last check.",gl:"Guideline placement not checked (NCCN requires login).",acc:"—"},
 {y:2026,n:"EPCORE FL-1 (Falchi)",s:"bs",ph:"Phase 3",d:"Epcoritamab + R2 vs R2 in relapsed or refractory FL",ep:"ORR and PFS (dual)",
@@ -419,16 +506,18 @@ function recHTML(t){
     <div class="rk">Guidelines</div><p>${esc(r.gl)}</p>
     <div class="rk">Access</div><p>${esc(r.acc)}</p>`;
 }
+const GRPHDR = (t, i, rows) => (sortMode === "setting" || sortMode === "setting-asc") && (i === 0 || rows[i - 1].s !== t.s)
+  ? '<li class="grp"><h3>' + esc(SETTINGS[t.s]) + '<span class="gn">' + rows.filter(r => r.s === t.s).length + '</span></h3></li>' : '';
 function render(){
   const q = qEl.value.trim().toLowerCase();
   let rows = T.filter(t => (active === "all" || (active === "core" ? t.core : t.s === active)) &&
     (!q || [t.n,t.d,t.r,t.tx,t.i,t.b,t.q,t.c,t.ph,String(t.y),t.reg,t.gl,t.acc,t.cm.map(c=>c[1]+" "+c[2]).join(" ")].join(" ").toLowerCase().includes(q)));
   rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
-    : (order.indexOf(a.s) - order.indexOf(b.s)) || (a.y - b.y));
+    : (order.indexOf(a.s) - order.indexOf(b.s)) || (sortMode === "setting-asc" ? a.y - b.y : b.y - a.y));
   document.getElementById("flr-count").textContent = rows.length + " of " + T.length + " studies";
   const list = document.getElementById("flr-list");
   if (!rows.length) { list.innerHTML = '<li class="empty">No studies match that search. Clear the search or pick another category.</li>'; return; }
-  list.innerHTML = rows.map(t => `
+  list.innerHTML = rows.map((t, i) => GRPHDR(t, i, rows) + `
     <li class="trial" data-trial="${t.slug}">
       <div class="yr">${t.y}</div>
       <div class="body">
@@ -468,6 +557,24 @@ render();
     '</span>' + (w.note ? '<span class="wd">' + esc(w.note) + '</span>' : '') + '</li>').join("") + '</ul>';
 })();
 
+
+(function setupReviewRefs(){
+  const listEl = document.getElementById("flr-list");
+  const box = listEl.parentNode.querySelector(".review");
+  if (!box) return;
+  box.addEventListener("click", e => {
+    const a = e.target.closest("a.rref");
+    if (!a) return;
+    e.preventDefault();
+    const first = chipsEl.querySelector(".chip");
+    if (first && first.getAttribute("aria-pressed") !== "true") first.click();
+    if (qEl.value) { qEl.value = ""; render(); }
+    const li = listEl.querySelector('li[data-trial="' + a.getAttribute("data-slug") + '"]');
+    if (!li) return;
+    li.scrollIntoView({ behavior: "smooth", block: "start" });
+    li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+  });
+})();
 (function setupShare(){
   const listEl = document.getElementById("flr-list");
   listEl.addEventListener("click", e => {

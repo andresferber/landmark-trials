@@ -152,6 +152,44 @@ footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch
 
 /* Added Oct 24, 2026: site disclaimer */
 .sitedisc { margin: 12px 0 0; font-size: 12.5px; }
+
+/* Added Oct 24, 2026: category subtitles in the trial list */
+ol.list li.grp { list-style: none; padding: 22px 0 6px; border-bottom: 2px solid var(--fg); }
+ol.list li.grp h3 { margin: 0; font-family: var(--font-display); font-weight: 650; font-size: 1.2rem; }
+ol.list li.grp .gn { font: 500 12px var(--font-mono); color: var(--muted); margin-left: 8px; }
+
+/* Added Oct 24, 2026: Perspective (collapsible reader view) */
+.review { margin-top: 18px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+.review > summary { list-style: none; cursor: pointer; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 14px 18px; }
+.review > summary::-webkit-details-marker { display: none; }
+.review .rv-kicker { font: 500 11px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.review .rv-title { font-family: var(--font-display); font-weight: 650; font-size: 1.05rem; flex: 1 1 260px; }
+.review .rv-open { font: 500 13px/1 var(--font-body); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.review[open] .rv-open { font-size: 0; }
+.review[open] .rv-open::before { content: "Close"; font-size: 13px; }
+.review .rv-body { padding: 0 18px 18px; max-width: 72ch; font-size: 15.5px; line-height: 1.65; }
+.review .rv-body h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.12rem; margin: 22px 0 6px; }
+.review .rv-body p { margin: 0 0 12px; }
+.review .rv-body ul { margin: 0 0 12px; padding-left: 20px; }
+.review .rv-body li { margin: 4px 0; }
+.review .rv-meta { font-size: 12.5px; color: var(--muted); }
+.review .rv-disc { font-size: 13px; line-height: 1.5; color: var(--fg); background: var(--s-old-bg); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; margin: 8px 0 14px; }
+.review .rv-take { border-left: 3px solid var(--accent); background: var(--bg); padding: 4px 14px 6px; margin: 12px 0 16px; border-radius: 0 8px 8px 0; }
+.review .rv-take h3 { margin-top: 10px; }
+.review sup a { font: 600 11px var(--font-mono); text-decoration: none; color: var(--accent); padding: 0 1px; }
+.review a { color: var(--accent); }
+.review .rv-refs { font-size: 13.5px; padding-left: 22px; }
+.rv-tl { margin: 8px 0 18px; }
+.rv-tl figcaption { font: 500 11px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.rv-tl ol { list-style: none; margin: 0; padding: 0 0 0 4px; border-left: 2px solid var(--rule); }
+.rv-tl li { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 10px; padding: 5px 0 5px 14px; font-size: 14px; line-height: 1.45; }
+.rv-tl li::before { content: ""; position: absolute; left: -7px; top: 10px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2px solid var(--muted); }
+.rv-tl li.tl-old::before { border-color: var(--s-old); background: var(--s-old-bg); }
+.rv-tl li.tl-young::before { border-color: var(--s-young); background: var(--s-young-bg); }
+.rv-tl li.tl-p2::before { border-color: var(--s-p2); background: var(--s-p2-bg); }
+.rv-tl li.tl-rr::before { border-color: var(--s-rr); background: var(--s-rr-bg); }
+.rv-tl .tl-y { font: 500 13px var(--font-mono); color: var(--muted); }
+@media print { .review .rv-open { display: none; } }
 </style>
 
 <div class="wrap">
@@ -161,12 +199,63 @@ footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch
     <p>Transplant-eligible and transplant-ineligible induction, maintenance, and risk and response tools: design, verified results, what each built on, how it changed practice, the questions it left open, and how it was received.</p>
   </header>
 
+  <details class="review" id="review">
+    <summary><span class="rv-kicker">Perspective</span><span class="rv-title">The evolution of management of newly diagnosed multiple myeloma, 2003–2026</span><span class="rv-open">Read the perspective</span></summary>
+    <div class="rv-body">
+      <p class="rv-meta">Andres Ferber, MD, with the assistance of Claude (Anthropic) · Last updated October 24, 2026 · About 800 words. Numbers are taken from the verified trial entries on this page; numbered references jump to each trial.</p>
+      <p class="rv-disc"><b>Personal perspective, for education only.</b> This text reflects the author's own reading and opinion of the published evidence. It is not a clinical practice guideline, medical advice or a substitute for clinical judgment. Patient care should follow the primary literature, current guidelines (such as NCCN, ESMO, IMWG and ASCO), approved prescribing information and the individual patient's circumstances.</p>
+      <div class="rv-take"><h3>Key points</h3><ul><li>Induction has moved from doublets to triplets to anti-CD38 quadruplets, now standard for transplant-eligible patients (PERSEUS) and for fit transplant-ineligible patients (IMROZ, CEPHEUS).</li><li>Autologous transplant still improves progression-free survival after modern induction, but not overall survival (IFM 2009, DETERMINATION); deferral is reasonable for selected patients.</li><li>For older or frail patients, daratumumab-lenalidomide-dexamethasone (MAIA) was the first frontline regimen to show an overall survival benefit over a lenalidomide doublet.</li><li>Lenalidomide maintenance is standard after transplant; how long to give it, and when to add a second agent, is still being defined.</li><li>MRD negativity is now an accepted endpoint for accelerated approval, and a 2025 consensus gives a common genomic definition of high-risk disease.</li></ul></div>
+      <figure class="rv-tl"><figcaption>Timeline of key trials and regulatory milestones</figcaption><ol><li class="tl-young"><span class="tl-y">2003</span><span class="tl-e">High-dose melphalan with transplant beats conventional chemotherapy (MRC VII); tandem transplant (IFM 94)</span></li><li class="tl-rr"><span class="tl-y">2005</span><span class="tl-e">International Staging System</span></li><li class="tl-old"><span class="tl-y">2007</span><span class="tl-e">Melphalan-prednisone-thalidomide for older patients (IFM 99-06)</span></li><li class="tl-old"><span class="tl-y">2008</span><span class="tl-e">VISTA: bortezomib-melphalan-prednisone; frontline bortezomib approval</span></li><li class="tl-young"><span class="tl-y">2010</span><span class="tl-e">Bortezomib-based induction before transplant (IFM 2005-01, VTD)</span></li><li class="tl-p2"><span class="tl-y">2012</span><span class="tl-e">Lenalidomide maintenance after transplant (CALGB 100104, IFM 2005-02)</span></li><li class="tl-old"><span class="tl-y">2015</span><span class="tl-e">Continuous lenalidomide-dexamethasone approved (FIRST); Revised ISS</span></li><li class="tl-old"><span class="tl-y">2017</span><span class="tl-e">VRd becomes the US standard (S0777); transplant still improves PFS (IFM 2009); lenalidomide maintenance approved</span></li><li class="tl-old"><span class="tl-y">2018</span><span class="tl-e">First frontline anti-CD38 approval (ALCYONE)</span></li><li class="tl-young"><span class="tl-y">2019</span><span class="tl-e">Daratumumab-Rd (MAIA) and daratumumab-VTd (CASSIOPEIA) approved</span></li><li class="tl-young"><span class="tl-y">2022</span><span class="tl-e">DETERMINATION confirms PFS but not survival benefit of transplant; R2-ISS</span></li><li class="tl-young"><span class="tl-y">2024</span><span class="tl-e">Quadruplets approved: daratumumab-VRd for transplant-eligible (PERSEUS), isatuximab-VRd for transplant-ineligible (IMROZ); FDA advisers back MRD as an endpoint</span></li><li class="tl-rr"><span class="tl-y">2025</span><span class="tl-e">IMS/IMWG genomic high-risk definition; EU approvals of isatuximab-VRd (transplant-eligible) and daratumumab-VRd (transplant-ineligible)</span></li><li class="tl-old"><span class="tl-y">2026</span><span class="tl-e">US approval of daratumumab-VRd for transplant-ineligible patients (CEPHEUS); 2 years of lenalidomide may suffice for standard risk (Kumar)</span></li></ol></figure>
+      <h3>Two decisions that frame frontline care</h3>
+<p>For two decades, frontline myeloma therapy has turned on two decisions: whether the patient is a candidate for autologous transplant, and how intensive and how long the treatment around it should be. The answers have shifted as each new drug class moved from relapse into first line.</p>
+
+<h3>Transplant-eligible patients</h3>
+<p>High-dose melphalan with autologous transplant became standard when MRC Myeloma VII improved complete responses (44% vs 8%) and median survival (54.1 vs 42.3 months) over conventional chemotherapy<sup><a class="rref" href="#t-ndmm-mrc-myeloma-vii-child" data-slug="mrc-myeloma-vii-child" title="MRC Myeloma VII (Child)">1</a></sup>; a second (tandem) transplant helped mainly patients without a very good partial response after the first<sup><a class="rref" href="#t-ndmm-ifm-94-single-vs-tandem-transplant-attal" data-slug="ifm-94-single-vs-tandem-transplant-attal" title="IFM 94: single vs tandem transplant (Attal)">2</a></sup>. Induction then improved: bortezomib-dexamethasone replaced VAD<sup><a class="rref" href="#t-ndmm-ifm-2005-01-bortezomib-dex-induction-harousseau" data-slug="ifm-2005-01-bortezomib-dex-induction-harousseau" title="IFM 2005-01: bortezomib-dex induction (Harousseau)">3</a></sup> and the VTD triplet nearly tripled complete or near-complete responses compared with thalidomide-dexamethasone<sup><a class="rref" href="#t-ndmm-gimema-vtd-vs-td-cavo" data-slug="gimema-vtd-vs-td-cavo" title="GIMEMA VTD vs TD (Cavo)">4</a></sup>.</p>
+<p>With better induction, the value of transplant was retested. In IFM 2009, transplant after VRd extended median PFS from 36 to 50 months without changing 4-year survival<sup><a class="rref" href="#t-ndmm-ifm-2009-attal" data-slug="ifm-2009-attal" title="IFM 2009 (Attal)">5</a></sup>; EMN02 found a similar PFS advantage over bortezomib-based intensification<sup><a class="rref" href="#t-ndmm-emn02-ho95-cavo" data-slug="emn02-ho95-cavo" title="EMN02/HO95 (Cavo)">6</a></sup>; and the US DETERMINATION trial, with lenalidomide until progression, showed median PFS of 67.5 vs 46.2 months and nearly identical 5-year survival (80.7% vs 79.2%)<sup><a class="rref" href="#t-ndmm-determination-richardson" data-slug="determination-richardson" title="DETERMINATION (Richardson)">7</a></sup>. Transplant therefore remains standard, while deferral is a reasonable choice for some patients if stem cells are collected.</p>
+<p>The anti-CD38 quadruplet era began with CASSIOPEIA, where daratumumab added to VTd raised MRD negativity from 44% to 64%<sup><a class="rref" href="#t-ndmm-cassiopeia-moreau" data-slug="cassiopeia-moreau" title="CASSIOPEIA (Moreau)">8</a></sup>. GRIFFIN brought daratumumab-VRd into US practice<sup><a class="rref" href="#t-ndmm-griffin-voorhees" data-slug="griffin-voorhees" title="GRIFFIN (Voorhees)">9</a></sup>, and PERSEUS confirmed it: 4-year PFS 84.3% vs 67.7% (HR 0.42)<sup><a class="rref" href="#t-ndmm-perseus-sonneveld" data-slug="perseus-sonneveld" title="PERSEUS (Sonneveld)">10</a></sup>. Isatuximab-VRd raised MRD negativity after induction in GMMG-HD7<sup><a class="rref" href="#t-ndmm-gmmg-hd7-goldschmidt" data-slug="gmmg-hd7-goldschmidt" title="GMMG-HD7 (Goldschmidt)">11</a></sup>. Carfilzomib-based regimens deepened responses further: KRd induction and carfilzomib-lenalidomide maintenance prolonged PFS<sup><a class="rref" href="#t-ndmm-forte-gay" data-slug="forte-gay" title="FORTE (Gay)">12</a></sup>, isatuximab-KRd increased MRD negativity at 10⁻⁶ (68% vs 48%)<sup><a class="rref" href="#t-ndmm-emn24-iskia-gay" data-slug="emn24-iskia-gay" title="EMN24 IsKia (Gay)">13</a></sup>, and MASTER tested MRD-guided stopping, which worked in standard-risk but not ultra-high-risk disease<sup><a class="rref" href="#t-ndmm-master-costa" data-slug="master-costa" title="MASTER (Costa)">14</a></sup>.</p>
+
+<h3>Transplant-ineligible patients</h3>
+<p>For older patients, adding thalidomide to melphalan-prednisone extended median survival from 33.2 to 51.6 months<sup><a class="rref" href="#t-ndmm-ifm-99-06-mpt-facon" data-slug="ifm-99-06-mpt-facon" title="IFM 99-06: MPT (Facon)">15</a></sup>, and bortezomib-melphalan-prednisone improved time to progression<sup><a class="rref" href="#t-ndmm-vista-san-miguel" data-slug="vista-san-miguel" title="VISTA (San Miguel)">16</a></sup>. Continuous lenalidomide-dexamethasone then provided an alkylator-free backbone<sup><a class="rref" href="#t-ndmm-first-benboubker" data-slug="first-benboubker" title="FIRST (Benboubker)">17</a></sup>, and adding bortezomib (VRd) improved both PFS and overall survival (median 75 vs 64 months)<sup><a class="rref" href="#t-ndmm-swog-s0777-durie" data-slug="swog-s0777-durie" title="SWOG S0777 (Durie)">18</a></sup>. Substituting carfilzomib for bortezomib did not help in standard-risk patients<sup><a class="rref" href="#t-ndmm-ecog-e1a11-endurance-kumar" data-slug="ecog-e1a11-endurance-kumar" title="ECOG E1A11 ENDURANCE (Kumar)">19</a></sup>.</p>
+<p>Anti-CD38 antibodies changed outcomes again. Daratumumab improved PFS with VMP<sup><a class="rref" href="#t-ndmm-alcyone-mateos" data-slug="alcyone-mateos" title="ALCYONE (Mateos)">20</a></sup> and, with lenalidomide-dexamethasone in MAIA, improved overall survival (HR 0.68), a regimen that remains a standard for older or frail patients<sup><a class="rref" href="#t-ndmm-maia-facon" data-slug="maia-facon" title="MAIA (Facon)">21</a></sup>. For fit patients not proceeding to transplant, quadruplets followed: isatuximab-VRd in patients up to 80 years achieved 5-year PFS of 63.2% vs 45.2%<sup><a class="rref" href="#t-ndmm-imroz-facon" data-slug="imroz-facon" title="IMROZ (Facon)">22</a></sup>, and daratumumab-VRd raised MRD negativity from 39.4% to 60.9%<sup><a class="rref" href="#t-ndmm-cepheus-usmani" data-slug="cepheus-usmani" title="CEPHEUS (Usmani)">23</a></sup>.</p>
+
+<h3>Maintenance</h3>
+<p>Lenalidomide maintenance after transplant nearly doubled time to progression in CALGB 100104<sup><a class="rref" href="#t-ndmm-calgb-100104-mccarthy" data-slug="calgb-100104-mccarthy" title="CALGB 100104 (McCarthy)">24</a></sup> and PFS in IFM 2005-02, at the cost of more second primary cancers<sup><a class="rref" href="#t-ndmm-ifm-2005-02-attal" data-slug="ifm-2005-02-attal" title="IFM 2005-02 (Attal)">25</a></sup>; Myeloma XI showed benefit with and without transplant<sup><a class="rref" href="#t-ndmm-myeloma-xi-maintenance-jackson" data-slug="myeloma-xi-maintenance-jackson" title="Myeloma XI maintenance (Jackson)">26</a></sup>. A 2026 trial in standard-risk patients without upfront transplant found no survival difference between indefinite and 2-year lenalidomide (7-year overall survival 68.6% vs 69.0%)<sup><a class="rref" href="#t-ndmm-continuous-vs-fixed-duration-lenalidomide-kumar" data-slug="continuous-vs-fixed-duration-lenalidomide-kumar" title="Continuous vs fixed-duration lenalidomide (Kumar)">27</a></sup>.</p>
+
+<h3>Risk and response</h3>
+<p>Staging moved from the International Staging System<sup><a class="rref" href="#t-ndmm-international-staging-system-greipp" data-slug="international-staging-system-greipp" title="International Staging System (Greipp)">28</a></sup> to the Revised ISS, which added cytogenetics and LDH<sup><a class="rref" href="#t-ndmm-revised-iss-palumbo" data-slug="revised-iss-palumbo" title="Revised ISS (Palumbo)">29</a></sup>, and then to R2-ISS<sup><a class="rref" href="#t-ndmm-r2-iss-d-agostino" data-slug="r2-iss-d-agostino" title="R2-ISS (D&#x27;Agostino)">30</a></sup>. In 2025, an IMS/IMWG consensus proposed a shared genomic definition of high risk<sup><a class="rref" href="#t-ndmm-ims-imwg-high-risk-consensus-avet-loiseau" data-slug="ims-imwg-high-risk-consensus-avet-loiseau" title="IMS/IMWG high-risk consensus (Avet-Loiseau)">31</a></sup>. Response assessment now centers on MRD: in a meta-analysis, MRD negativity was associated with better PFS (HR 0.41) and survival (HR 0.57), and in April 2024 the FDA's advisory committee voted unanimously to support MRD as an accelerated-approval endpoint<sup><a class="rref" href="#t-ndmm-mrd-meta-analysis-munshi" data-slug="mrd-meta-analysis-munshi" title="MRD meta-analysis (Munshi)">32</a></sup>.</p>
+
+<h3>Where we are now</h3>
+<p>NCCN (version 5.2026) and the 2026 ASCO-Ontario living guideline, summarized here at a high level (regimen-specific NCCN placement not checked), recommend:</p>
+<ul>
+<li><b>Transplant-eligible patients:</b> anti-CD38 quadruplet induction (daratumumab-VRd, or isatuximab-VRd where approved), autologous transplant, and lenalidomide maintenance, with daratumumab continued as in PERSEUS; carfilzomib-containing maintenance may be considered in selected high-risk patients.</li>
+<li><b>Fit transplant-ineligible or deferred patients:</b> anti-CD38 quadruplets (isatuximab-VRd or daratumumab-VRd).</li>
+<li><b>Older or frail patients:</b> daratumumab-lenalidomide-dexamethasone.</li>
+<li><b>Everyone:</b> staging with R-ISS or R2-ISS, high-risk assessment by genomics, and MRD monitoring at defined time points.</li>
+</ul>
+
+<h3>Open questions</h3>
+<ul>
+<li><b>Transplant in deep responders:</b> can patients who are MRD-negative after a quadruplet safely skip or defer transplant?</li>
+<li><b>Duration:</b> can MRD guide when to stop maintenance?</li>
+<li><b>High-risk disease:</b> outcomes remain inferior despite quadruplets and intensified maintenance.</li>
+<li><b>Choice of antibody and backbone:</b> daratumumab versus isatuximab, and bortezomib versus carfilzomib.</li>
+<li><b>Immunotherapy in first line:</b> whether CAR-T or bispecific antibodies should replace transplant or maintenance.</li>
+</ul>
+
+<h3>What is coming</h3>
+<p>Ongoing phase 3 trials (listed under Trials to watch at the end of this page) test CAR-T in first line (CARTITUDE-5 and CARTITUDE-6), bispecific antibodies in induction and maintenance (MajesTEC-7, MagnetisMM-6, MajesTEC-4, MagnetisMM-7), belantamab with lenalidomide (DREAMM-10), iberdomide maintenance, fixed-duration versus continuous anti-CD38 therapy, and response-adapted quadruplets.</p>
+      <h3>References</h3>
+      <ol class="rv-refs"><li><a class="rref" href="#t-ndmm-mrc-myeloma-vii-child" data-slug="mrc-myeloma-vii-child">MRC Myeloma VII (Child)</a>. N Engl J Med 2003;348:1875. <a href="https://pubmed.ncbi.nlm.nih.gov/12736280/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-ifm-94-single-vs-tandem-transplant-attal" data-slug="ifm-94-single-vs-tandem-transplant-attal">IFM 94: single vs tandem transplant (Attal)</a>. N Engl J Med 2003;349:2495. <a href="https://pubmed.ncbi.nlm.nih.gov/14695409/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-ifm-2005-01-bortezomib-dex-induction-harousseau" data-slug="ifm-2005-01-bortezomib-dex-induction-harousseau">IFM 2005-01: bortezomib-dex induction (Harousseau)</a>. J Clin Oncol 2010;28:4621. <a href="https://pubmed.ncbi.nlm.nih.gov/20823406/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-gimema-vtd-vs-td-cavo" data-slug="gimema-vtd-vs-td-cavo">GIMEMA VTD vs TD (Cavo)</a>. Lancet 2010;376:2075. <a href="https://pubmed.ncbi.nlm.nih.gov/21146205/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-ifm-2009-attal" data-slug="ifm-2009-attal">IFM 2009 (Attal)</a>. N Engl J Med 2017;376:1311. <a href="https://pubmed.ncbi.nlm.nih.gov/28379796/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-emn02-ho95-cavo" data-slug="emn02-ho95-cavo">EMN02/HO95 (Cavo)</a>. Lancet Haematol 2020;7:e456. <a href="https://pubmed.ncbi.nlm.nih.gov/32359506/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-determination-richardson" data-slug="determination-richardson">DETERMINATION (Richardson)</a>. N Engl J Med 2022;387:132. <a href="https://pubmed.ncbi.nlm.nih.gov/35660812/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-cassiopeia-moreau" data-slug="cassiopeia-moreau">CASSIOPEIA (Moreau)</a>. Lancet 2019;394:29. <a href="https://pubmed.ncbi.nlm.nih.gov/31171419/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-griffin-voorhees" data-slug="griffin-voorhees">GRIFFIN (Voorhees)</a>. Blood 2020;136:936. <a href="https://pubmed.ncbi.nlm.nih.gov/32325490/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-perseus-sonneveld" data-slug="perseus-sonneveld">PERSEUS (Sonneveld)</a>. N Engl J Med 2024;390:301. <a href="https://pubmed.ncbi.nlm.nih.gov/38084760/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-gmmg-hd7-goldschmidt" data-slug="gmmg-hd7-goldschmidt">GMMG-HD7 (Goldschmidt)</a>. Lancet Haematol 2022;9:e810. <a href="https://pubmed.ncbi.nlm.nih.gov/36328040/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-forte-gay" data-slug="forte-gay">FORTE (Gay)</a>. Lancet Oncol 2021;22:1705. <a href="https://pubmed.ncbi.nlm.nih.gov/34774221/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-emn24-iskia-gay" data-slug="emn24-iskia-gay">EMN24 IsKia (Gay)</a>. Nat Med 2026;32:1773. <a href="https://pubmed.ncbi.nlm.nih.gov/41942646/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-master-costa" data-slug="master-costa">MASTER (Costa)</a>. J Clin Oncol 2022;40:2901. <a href="https://pubmed.ncbi.nlm.nih.gov/34898239/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-ifm-99-06-mpt-facon" data-slug="ifm-99-06-mpt-facon">IFM 99-06: MPT (Facon)</a>. Lancet 2007;370:1209. <a href="https://pubmed.ncbi.nlm.nih.gov/17920916/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-vista-san-miguel" data-slug="vista-san-miguel">VISTA (San Miguel)</a>. N Engl J Med 2008;359:906. <a href="https://pubmed.ncbi.nlm.nih.gov/18753647/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-first-benboubker" data-slug="first-benboubker">FIRST (Benboubker)</a>. N Engl J Med 2014;371:906. <a href="https://pubmed.ncbi.nlm.nih.gov/25184863/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-swog-s0777-durie" data-slug="swog-s0777-durie">SWOG S0777 (Durie)</a>. Lancet 2017;389:519. <a href="https://pubmed.ncbi.nlm.nih.gov/28017406/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-ecog-e1a11-endurance-kumar" data-slug="ecog-e1a11-endurance-kumar">ECOG E1A11 ENDURANCE (Kumar)</a>. Lancet Oncol 2020;21:1317. <a href="https://pubmed.ncbi.nlm.nih.gov/32866432/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-alcyone-mateos" data-slug="alcyone-mateos">ALCYONE (Mateos)</a>. N Engl J Med 2018;378:518. <a href="https://pubmed.ncbi.nlm.nih.gov/29231133/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-maia-facon" data-slug="maia-facon">MAIA (Facon)</a>. N Engl J Med 2019;380:2104. <a href="https://pubmed.ncbi.nlm.nih.gov/31141632/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-imroz-facon" data-slug="imroz-facon">IMROZ (Facon)</a>. N Engl J Med 2024;391:1597. <a href="https://pubmed.ncbi.nlm.nih.gov/38832972/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-cepheus-usmani" data-slug="cepheus-usmani">CEPHEUS (Usmani)</a>. Nat Med 2025;31:1195. <a href="https://pubmed.ncbi.nlm.nih.gov/39910273/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-calgb-100104-mccarthy" data-slug="calgb-100104-mccarthy">CALGB 100104 (McCarthy)</a>. N Engl J Med 2012;366:1770. <a href="https://pubmed.ncbi.nlm.nih.gov/22571201/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-ifm-2005-02-attal" data-slug="ifm-2005-02-attal">IFM 2005-02 (Attal)</a>. N Engl J Med 2012;366:1782. <a href="https://pubmed.ncbi.nlm.nih.gov/22571202/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-myeloma-xi-maintenance-jackson" data-slug="myeloma-xi-maintenance-jackson">Myeloma XI maintenance (Jackson)</a>. Lancet Oncol 2019;20:57. <a href="https://pubmed.ncbi.nlm.nih.gov/30559051/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-continuous-vs-fixed-duration-lenalidomide-kumar" data-slug="continuous-vs-fixed-duration-lenalidomide-kumar">Continuous vs fixed-duration lenalidomide (Kumar)</a>. N Engl J Med 2026;395:221. <a href="https://pubmed.ncbi.nlm.nih.gov/42456135/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-international-staging-system-greipp" data-slug="international-staging-system-greipp">International Staging System (Greipp)</a>. J Clin Oncol 2005;23:3412. <a href="https://pubmed.ncbi.nlm.nih.gov/15809451/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-revised-iss-palumbo" data-slug="revised-iss-palumbo">Revised ISS (Palumbo)</a>. J Clin Oncol 2015;33:2863. <a href="https://pubmed.ncbi.nlm.nih.gov/26240224/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-r2-iss-d-agostino" data-slug="r2-iss-d-agostino">R2-ISS (D&#x27;Agostino)</a>. J Clin Oncol 2022;40:3406. <a href="https://pubmed.ncbi.nlm.nih.gov/35605179/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-ims-imwg-high-risk-consensus-avet-loiseau" data-slug="ims-imwg-high-risk-consensus-avet-loiseau">IMS/IMWG high-risk consensus (Avet-Loiseau)</a>. J Clin Oncol 2025;43:2739. <a href="https://pubmed.ncbi.nlm.nih.gov/40489728/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-ndmm-mrd-meta-analysis-munshi" data-slug="mrd-meta-analysis-munshi">MRD meta-analysis (Munshi)</a>. JAMA Oncol 2017;3:28. <a href="https://pubmed.ncbi.nlm.nih.gov/27632282/" target="_blank" rel="noopener">PubMed ↗</a></li></ol>
+    </div>
+  </details>
+
   <div class="controls">
     <div class="chips" role="group" aria-label="Filter by category" id="chips"></div>
     <div class="row2">
       <input type="search" id="q" placeholder="Search trial, drug, regimen…" aria-label="Search trials">
       <select id="sort" aria-label="Sort order">
-        <option value="setting">Sort: category, then year</option>
+        <option value="setting">Sort: category, newest first</option>
+        <option value="setting-asc">Sort: category, oldest first</option>
         <option value="asc">Sort: oldest first</option>
         <option value="desc">Sort: newest first</option>
       </select>
@@ -513,16 +602,18 @@ function recHTML(t){
     <div class="rk">Guidelines</div><p>${esc(r.gl)}</p>
     <div class="rk">Access</div><p>${esc(r.acc)}</p>`;
 }
+const GRPHDR = (t, i, rows) => (sortMode === "setting" || sortMode === "setting-asc") && (i === 0 || rows[i - 1].s !== t.s)
+  ? '<li class="grp"><h3>' + esc(SETTINGS[t.s]) + '<span class="gn">' + rows.filter(r => r.s === t.s).length + '</span></h3></li>' : '';
 function render(){
   const q = qEl.value.trim().toLowerCase();
   let rows = T.filter(t => (active === "all" || (active === "core" ? t.core : t.s === active)) &&
     (!q || [t.n,t.d,t.r,t.tx,t.i,t.b,t.q,t.c,t.ph,String(t.y),t.reg,t.gl,t.acc,t.cm.map(c=>c[1]+" "+c[2]).join(" ")].join(" ").toLowerCase().includes(q)));
   rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
-    : (order.indexOf(a.s) - order.indexOf(b.s)) || (a.y - b.y));
+    : (order.indexOf(a.s) - order.indexOf(b.s)) || (sortMode === "setting-asc" ? a.y - b.y : b.y - a.y));
   document.getElementById("count").textContent = rows.length + " of " + T.length + " trials";
   const list = document.getElementById("list");
   if (!rows.length) { list.innerHTML = '<li class="empty">No trials match that search. Clear the search or pick another category.</li>'; return; }
-  list.innerHTML = rows.map(t => `
+  list.innerHTML = rows.map((t, i) => GRPHDR(t, i, rows) + `
     <li class="trial" data-trial="${t.slug}">
       <div class="yr">${t.y}</div>
       <div class="body">
@@ -562,6 +653,24 @@ render();
     '</span>' + (w.note ? '<span class="wd">' + esc(w.note) + '</span>' : '') + '</li>').join("") + '</ul>';
 })();
 
+
+(function setupReviewRefs(){
+  const listEl = document.getElementById("list");
+  const box = listEl.parentNode.querySelector(".review");
+  if (!box) return;
+  box.addEventListener("click", e => {
+    const a = e.target.closest("a.rref");
+    if (!a) return;
+    e.preventDefault();
+    const first = chipsEl.querySelector(".chip");
+    if (first && first.getAttribute("aria-pressed") !== "true") first.click();
+    if (qEl.value) { qEl.value = ""; render(); }
+    const li = listEl.querySelector('li[data-trial="' + a.getAttribute("data-slug") + '"]');
+    if (!li) return;
+    li.scrollIntoView({ behavior: "smooth", block: "start" });
+    li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+  });
+})();
 (function setupShare(){
   const listEl = document.getElementById("list");
   listEl.addEventListener("click", e => {

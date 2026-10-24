@@ -152,6 +152,44 @@ footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch
 
 /* Added Oct 24, 2026: site disclaimer */
 .sitedisc { margin: 12px 0 0; font-size: 12.5px; }
+
+/* Added Oct 24, 2026: Perspective (collapsible reader view) */
+.review { margin-top: 18px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+.review > summary { list-style: none; cursor: pointer; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 14px 18px; }
+.review > summary::-webkit-details-marker { display: none; }
+.review .rv-kicker { font: 500 11px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.review .rv-title { font-family: var(--font-display); font-weight: 650; font-size: 1.05rem; flex: 1 1 260px; }
+.review .rv-open { font: 500 13px/1 var(--font-body); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.review[open] .rv-open { font-size: 0; }
+.review[open] .rv-open::before { content: "Close"; font-size: 13px; }
+.review .rv-body { padding: 0 18px 18px; max-width: 72ch; font-size: 15.5px; line-height: 1.65; }
+.review .rv-body h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.12rem; margin: 22px 0 6px; }
+.review .rv-body p { margin: 0 0 12px; }
+.review .rv-body ul { margin: 0 0 12px; padding-left: 20px; }
+.review .rv-body li { margin: 4px 0; }
+.review .rv-meta { font-size: 12.5px; color: var(--muted); }
+.review .rv-disc { font-size: 13px; line-height: 1.5; color: var(--fg); background: var(--s-old-bg); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; margin: 8px 0 14px; }
+.review .rv-take { border-left: 3px solid var(--accent); background: var(--bg); padding: 4px 14px 6px; margin: 12px 0 16px; border-radius: 0 8px 8px 0; }
+.review .rv-take h3 { margin-top: 10px; }
+.review sup a { font: 600 11px var(--font-mono); text-decoration: none; color: var(--accent); padding: 0 1px; }
+.review a { color: var(--accent); }
+.review .rv-refs { font-size: 13.5px; padding-left: 22px; }
+.rv-tl { margin: 8px 0 18px; }
+.rv-tl figcaption { font: 500 11px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.rv-tl ol { list-style: none; margin: 0; padding: 0 0 0 4px; border-left: 2px solid var(--rule); }
+.rv-tl li { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 10px; padding: 5px 0 5px 14px; font-size: 14px; line-height: 1.45; }
+.rv-tl li::before { content: ""; position: absolute; left: -7px; top: 10px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2px solid var(--muted); }
+.rv-tl li.tl-old::before { border-color: var(--s-old); background: var(--s-old-bg); }
+.rv-tl li.tl-young::before { border-color: var(--s-young); background: var(--s-young-bg); }
+.rv-tl li.tl-p2::before { border-color: var(--s-p2); background: var(--s-p2-bg); }
+.rv-tl li.tl-rr::before { border-color: var(--s-rr); background: var(--s-rr-bg); }
+.rv-tl .tl-y { font: 500 13px var(--font-mono); color: var(--muted); }
+@media print { .review .rv-open { display: none; } }
+
+/* Added Oct 24, 2026: category subtitles in the trial list */
+ol.list li.grp { list-style: none; padding: 22px 0 6px; border-bottom: 2px solid var(--fg); }
+ol.list li.grp h3 { margin: 0; font-family: var(--font-display); font-weight: 650; font-size: 1.2rem; }
+ol.list li.grp .gn { font: 500 12px var(--font-mono); color: var(--muted); margin-left: 8px; }
 </style>
 
 <div class="wrap">
@@ -161,12 +199,53 @@ footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch
     <p>Definitions, risk models, early-intervention trials and guidelines: design, verified results, what each built on, how it changed practice, the questions it left open, and how it was received.</p>
   </header>
 
+  <details class="review" id="review">
+    <summary><span class="rv-kicker">Perspective</span><span class="rv-title">The evolution of management of smoldering multiple myeloma, 2007–2026</span><span class="rv-open">Read the perspective</span></summary>
+    <div class="rv-body">
+      <p class="rv-meta">Andres Ferber, MD, with the assistance of Claude (Anthropic) · Last updated October 24, 2026 · About 800 words. Numbers are taken from the verified trial entries on this page; numbered references jump to each trial.</p>
+      <p class="rv-disc"><b>Personal perspective, for education only.</b> This text reflects the author's own reading and opinion of the published evidence. It is not a clinical practice guideline, medical advice or a substitute for clinical judgment. Patient care should follow the primary literature, current guidelines (such as NCCN, ESMO, IMWG and ASCO), approved prescribing information and the individual patient's circumstances.</p>
+      <div class="rv-take"><h3>Key points</h3><ul><li>Smoldering myeloma is a heterogeneous precursor state whose risk is front-loaded: about 10% per year progress in the first 5 years, much less afterwards.</li><li>The 2014 IMWG criteria moved the highest-risk patients (SLiM features) into active myeloma, so studies before and after 2014 describe different populations.</li><li>Simple risk models (Mayo 20/2/20, IMWG 2/20/20) now define high risk; dynamic models that track changes over time are emerging.</li><li>Early treatment of high-risk disease moved from trials into practice when subcutaneous daratumumab was approved in 2025 on the basis of AQUILA.</li><li>Guidelines still differ: NCCN lists lenalidomide as an option, whereas the 2026 ASCO-Ontario guideline does not routinely recommend it, and a Cochrane review rates the evidence for early intervention as low certainty.</li><li>Curative-intent and bispecific antibody approaches produce very deep responses but remain investigational.</li></ul></div>
+      <figure class="rv-tl"><figcaption>Timeline of key studies, definitions and regulatory milestones</figcaption><ol><li class="tl-p2"><span class="tl-y">2007</span><span class="tl-e">Mayo natural history defines front-loaded risk; PETHEMA flow-cytometry risk model</span></li><li class="tl-p2"><span class="tl-y">2008</span><span class="tl-e">Free light chain ratio joins the risk models; thalidomide-pamidronate poorly tolerated</span></li><li class="tl-young"><span class="tl-y">2013</span><span class="tl-e">QuiRedex: first survival benefit from early treatment of high-risk disease</span></li><li class="tl-p2"><span class="tl-y">2014</span><span class="tl-e">IMWG redefines myeloma with SLiM biomarkers</span></li><li class="tl-p2"><span class="tl-y">2018</span><span class="tl-e">Mayo 20/2/20 risk model</span></li><li class="tl-young"><span class="tl-y">2019</span><span class="tl-e">Siltuximab (anti-IL-6) trial negative</span></li><li class="tl-young"><span class="tl-y">2020</span><span class="tl-e">E3A06: early lenalidomide delays progression; IMWG 2/20/20 model; CENTAURUS selects daratumumab dosing</span></li><li class="tl-old"><span class="tl-y">2021</span><span class="tl-e">Curative-intent KRd (NCI); EMN consensus favors observation outside trials</span></li><li class="tl-p2"><span class="tl-y">2023</span><span class="tl-e">iStopMM: smoldering myeloma is far more common than assumed</span></li><li class="tl-old"><span class="tl-y">2024</span><span class="tl-e">GEM-CESAR: transplant-based curative intent</span></li><li class="tl-young"><span class="tl-y">2025</span><span class="tl-e">AQUILA: daratumumab approved for high-risk disease (EU July, FDA November 6)</span></li><li class="tl-rr"><span class="tl-y">2026</span><span class="tl-e">ASCO-Ontario guideline and Cochrane review; PANGEA dynamic risk model; teclistamab trial (ImmunoPRISM)</span></li></ol></figure>
+      <h3>A precursor state with uneven risk</h3>
+<p>The modern view of smoldering myeloma starts with the Mayo cohort of 276 patients: progression to myeloma or amyloidosis occurred at about 10% per year for the first 5 years, about 3% per year for the next 5 and about 1% per year thereafter, reaching 73% at 15 years<sup><a class="rref" href="#t-smm-mayo-natural-history-kyle" data-slug="mayo-natural-history-kyle" title="Mayo natural history (Kyle)">1</a></sup>. Two biomarkers soon refined that picture: flow cytometry, where a high proportion of aberrant plasma cells with immunoparesis separated 5-year progression risks of 4%, 46% and 72%<sup><a class="rref" href="#t-smm-pethema-flow-cytometry-risk-p-rez-persona" data-slug="pethema-flow-cytometry-risk-p-rez-persona" title="PETHEMA flow-cytometry risk (Pérez-Persona)">2</a></sup>, and the serum free light chain ratio<sup><a class="rref" href="#t-smm-free-light-chain-ratio-dispenzieri" data-slug="free-light-chain-ratio-dispenzieri" title="Free light chain ratio (Dispenzieri)">3</a></sup>.</p>
+<p>In 2014, the IMWG moved patients with any of three biomarkers of near-certain progression (60% or more clonal plasma cells, a light chain ratio of 100 or more, or more than one focal MRI lesion) into active myeloma<sup><a class="rref" href="#t-smm-imwg-updated-criteria-rajkumar" data-slug="imwg-updated-criteria-rajkumar" title="IMWG updated criteria (Rajkumar)">4</a></sup>. That decision matters for interpreting every trial: patients called "smoldering" before 2014 included some who would now be treated as having myeloma. Population screening in Iceland later showed that smoldering myeloma is present in about 0.5% of people aged 40 or older, mostly with low-risk features<sup><a class="rref" href="#t-smm-istopmm-screening-thorsteinsd-ttir" data-slug="istopmm-screening-thorsteinsd-ttir" title="iStopMM screening (Thorsteinsdóttir)">5</a></sup>, a reminder that over-treatment is a real risk.</p>
+
+<h3>Defining high risk</h3>
+<p>Two simple models now dominate. The Mayo 20/2/20 model (marrow plasma cells over 20%, M-protein over 2 g/dL, light chain ratio over 20) separated median times to progression of 110, 68 and 29 months<sup><a class="rref" href="#t-smm-mayo-20-2-20-model-lakshman" data-slug="mayo-20-2-20-model-lakshman" title="Mayo 20/2/20 model (Lakshman)">6</a></sup>, and the IMWG validated the same factors in nearly 2,000 patients, with 2-year progression of 6%, 18% and 44% for low, intermediate and high risk<sup><a class="rref" href="#t-smm-imwg-2-20-20-risk-model-mateos" data-slug="imwg-2-20-20-risk-model-mateos" title="IMWG 2/20/20 risk model (Mateos)">7</a></sup>. Because these models use a single time point, dynamic approaches that follow changes in M-protein, light chains, creatinine and hemoglobin are being developed; the PANGEA model outperformed the static models (C-statistic 0.79)<sup><a class="rref" href="#t-smm-pangea-smm-dynamic-risk-chabrun" data-slug="pangea-smm-dynamic-risk-chabrun" title="PANGEA-SMM dynamic risk (Chabrun)">8</a></sup>.</p>
+
+<h3>Early treatment: from feasibility to approval</h3>
+<p>Early attempts with thalidomide showed that treatment was feasible but poorly tolerated<sup><a class="rref" href="#t-smm-thalidomide-pamidronate-barlogie" data-slug="thalidomide-pamidronate-barlogie" title="Thalidomide + pamidronate (Barlogie)">9</a></sup><sup><a class="rref" href="#t-smm-thalidomide-zoledronic-acid-witzig" data-slug="thalidomide-zoledronic-acid-witzig" title="Thalidomide + zoledronic acid (Witzig)">10</a></sup>. The field changed with QuiRedex, a small Spanish trial of 119 high-risk patients: lenalidomide-dexamethasone delayed progression and improved 3-year survival (94% vs 80%), with the survival benefit maintained at long-term follow-up<sup><a class="rref" href="#t-smm-quiredex-mateos" data-slug="quiredex-mateos" title="QuiRedex (Mateos)">11</a></sup>. Its definitions predated 2014, so some patients would now be considered to have myeloma. ECOG E3A06 confirmed that lenalidomide alone delays progression (3-year PFS 91% vs 66%), mainly in high-risk patients, without a survival difference<sup><a class="rref" href="#t-smm-ecog-e3a06-lonial" data-slug="ecog-e3a06-lonial" title="ECOG E3A06 (Lonial)">12</a></sup>. Not every agent worked: IL-6 blockade with siltuximab did not meet its endpoint<sup><a class="rref" href="#t-smm-siltuximab-brighton" data-slug="siltuximab-brighton" title="Siltuximab (Brighton)">13</a></sup>.</p>
+<p>Daratumumab provided the decisive trial. After CENTAURUS selected a prolonged dosing schedule<sup><a class="rref" href="#t-smm-centaurus-landgren" data-slug="centaurus-landgren" title="CENTAURUS (Landgren)">14</a></sup>, AQUILA randomized 390 high-risk patients to subcutaneous daratumumab for up to 3 years or active monitoring: 5-year PFS was 63.1% vs 40.8% (HR 0.49) and 5-year overall survival 93.0% vs 86.9% (HR 0.52), with few discontinuations for toxicity<sup><a class="rref" href="#t-smm-aquila-dimopoulos" data-slug="aquila-dimopoulos" title="AQUILA (Dimopoulos)">15</a></sup>. Approval followed in the EU in July 2025 and in the US on November 6, 2025, the first treatment approved for smoldering myeloma.</p>
+
+<h3>Curative intent and immunotherapy</h3>
+<p>A parallel line of studies asks whether high-risk smoldering myeloma can be cured rather than delayed. Carfilzomib-lenalidomide-dexamethasone produced MRD-negative complete responses in 70%<sup><a class="rref" href="#t-smm-nci-krd-korde-kazandjian" data-slug="nci-krd-korde-kazandjian" title="NCI KRd (Korde, Kazandjian)">16</a></sup>; the transplant-based GEM-CESAR approach reached undetectable MRD in 62% after transplant, with 70-month overall survival of 92%<sup><a class="rref" href="#t-smm-gem-cesar-mateos" data-slug="gem-cesar-mateos" title="GEM-CESAR (Mateos)">17</a></sup>; and ixazomib-lenalidomide-dexamethasone linked MRD negativity to durable control<sup><a class="rref" href="#t-smm-i-prism-nadeem" data-slug="i-prism-nadeem" title="I-PRISM (Nadeem)">18</a></sup>. Most recently, fixed-duration teclistamab produced complete responses in 77.8% and a 2-year PFS of 92% vs 49% with lenalidomide-dexamethasone in a small randomized phase 2 trial<sup><a class="rref" href="#t-smm-immunoprism-nadeem" data-slug="immunoprism-nadeem" title="ImmunoPRISM (Nadeem)">19</a></sup>. These remain trial approaches.</p>
+
+<h3>Where we are now</h3>
+<p>The first steps are to confirm that the patient truly has smoldering myeloma (no SLiM-CRAB features, with appropriate imaging) and to estimate risk. For low- and intermediate-risk disease, observation remains standard. For high-risk disease, guidance differs. NCCN (January 2026 version, as summarized on this page; not checked against the full document) recommends treatment with careful selection and shared decision-making, including daratumumab, and lists lenalidomide as an option. The 2026 ASCO-Ontario living guideline says daratumumab may be offered, does not routinely recommend lenalidomide and advises no therapy for non-high-risk disease<sup><a class="rref" href="#t-smm-asco-ontario-health-living-guideline-hicks" data-slug="asco-ontario-health-living-guideline-hicks" title="ASCO-Ontario Health living guideline (Hicks)">20</a></sup>. A 2026 Cochrane review grades the evidence for early intervention as low certainty<sup><a class="rref" href="#t-smm-cochrane-review-early-intervention-chen" data-slug="cochrane-review-early-intervention-chen" title="Cochrane review: early intervention (Chen)">21</a></sup>, and the 2021 European consensus, written before AQUILA, favored observation outside trials<sup><a class="rref" href="#t-smm-emn-consensus-statement-musto" data-slug="emn-consensus-statement-musto" title="EMN consensus statement (Musto)">22</a></sup>. In practice, the decision is individualized.</p>
+
+<h3>Open questions</h3>
+<ul>
+<li><b>Delay or cure:</b> is the goal to postpone myeloma with low-toxicity therapy or to attempt eradication in the highest-risk patients?</li>
+<li><b>Who is high risk:</b> static versus dynamic models, and the role of cytogenetics and imaging.</li>
+<li><b>Over-treatment:</b> screening finds many low-risk patients who may never need therapy.</li>
+<li><b>Later consequences:</b> how early anti-CD38 or T-cell-directed therapy affects responses at progression, and infection risk in asymptomatic people.</li>
+<li><b>Survival:</b> only QuiRedex and AQUILA report survival gains, and both have limitations.</li>
+</ul>
+
+<h3>What is coming</h3>
+<p>Ongoing phase 3 trials (listed under Trials to watch at the end of this page) compare daratumumab-lenalidomide-dexamethasone with lenalidomide-dexamethasone with overall survival as the endpoint (DETER-SMM), isatuximab-lenalidomide-dexamethasone with lenalidomide-dexamethasone, and linvoseltamab with daratumumab (LINKER-SMM2).</p>
+      <h3>References</h3>
+      <ol class="rv-refs"><li><a class="rref" href="#t-smm-mayo-natural-history-kyle" data-slug="mayo-natural-history-kyle">Mayo natural history (Kyle)</a>. N Engl J Med 2007;356:2582. <a href="https://pubmed.ncbi.nlm.nih.gov/17582068/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-pethema-flow-cytometry-risk-p-rez-persona" data-slug="pethema-flow-cytometry-risk-p-rez-persona">PETHEMA flow-cytometry risk (Pérez-Persona)</a>. Blood 2007;110:2586. <a href="https://pubmed.ncbi.nlm.nih.gov/17576818/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-free-light-chain-ratio-dispenzieri" data-slug="free-light-chain-ratio-dispenzieri">Free light chain ratio (Dispenzieri)</a>. Blood 2008;111:785. <a href="https://pubmed.ncbi.nlm.nih.gov/17942755/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-imwg-updated-criteria-rajkumar" data-slug="imwg-updated-criteria-rajkumar">IMWG updated criteria (Rajkumar)</a>. Lancet Oncol 2014;15:e538. <a href="https://pubmed.ncbi.nlm.nih.gov/25439696/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-istopmm-screening-thorsteinsd-ttir" data-slug="istopmm-screening-thorsteinsd-ttir">iStopMM screening (Thorsteinsdóttir)</a>. Nat Med 2023;29:467. <a href="https://pubmed.ncbi.nlm.nih.gov/36747117/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-mayo-20-2-20-model-lakshman" data-slug="mayo-20-2-20-model-lakshman">Mayo 20/2/20 model (Lakshman)</a>. Blood Cancer J 2018;8:59. <a href="https://pubmed.ncbi.nlm.nih.gov/29895887/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-imwg-2-20-20-risk-model-mateos" data-slug="imwg-2-20-20-risk-model-mateos">IMWG 2/20/20 risk model (Mateos)</a>. Blood Cancer J 2020;10:102. <a href="https://pubmed.ncbi.nlm.nih.gov/33067414/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-pangea-smm-dynamic-risk-chabrun" data-slug="pangea-smm-dynamic-risk-chabrun">PANGEA-SMM dynamic risk (Chabrun)</a>. Nat Med 2026;32:1745. <a href="https://pubmed.ncbi.nlm.nih.gov/41876650/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-thalidomide-pamidronate-barlogie" data-slug="thalidomide-pamidronate-barlogie">Thalidomide + pamidronate (Barlogie)</a>. Blood 2008;112:3122. <a href="https://pubmed.ncbi.nlm.nih.gov/18669874/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-thalidomide-zoledronic-acid-witzig" data-slug="thalidomide-zoledronic-acid-witzig">Thalidomide + zoledronic acid (Witzig)</a>. Leukemia 2013;27:220. <a href="https://pubmed.ncbi.nlm.nih.gov/22902362/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-quiredex-mateos" data-slug="quiredex-mateos">QuiRedex (Mateos)</a>. N Engl J Med 2013;369:438. <a href="https://pubmed.ncbi.nlm.nih.gov/23902483/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-ecog-e3a06-lonial" data-slug="ecog-e3a06-lonial">ECOG E3A06 (Lonial)</a>. J Clin Oncol 2020;38:1126. <a href="https://pubmed.ncbi.nlm.nih.gov/31652094/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-siltuximab-brighton" data-slug="siltuximab-brighton">Siltuximab (Brighton)</a>. Clin Cancer Res 2019;25:3772. <a href="https://pubmed.ncbi.nlm.nih.gov/30890552/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-centaurus-landgren" data-slug="centaurus-landgren">CENTAURUS (Landgren)</a>. Leukemia 2020;34:1840. <a href="https://pubmed.ncbi.nlm.nih.gov/32024950/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-aquila-dimopoulos" data-slug="aquila-dimopoulos">AQUILA (Dimopoulos)</a>. N Engl J Med 2025;392:1777. <a href="https://pubmed.ncbi.nlm.nih.gov/39652675/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-nci-krd-korde-kazandjian" data-slug="nci-krd-korde-kazandjian">NCI KRd (Korde, Kazandjian)</a>. JAMA Oncol 2021;7:1678. <a href="https://pubmed.ncbi.nlm.nih.gov/34529025/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-gem-cesar-mateos" data-slug="gem-cesar-mateos">GEM-CESAR (Mateos)</a>. J Clin Oncol 2024;42:3247. <a href="https://pubmed.ncbi.nlm.nih.gov/39038268/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-i-prism-nadeem" data-slug="i-prism-nadeem">I-PRISM (Nadeem)</a>. Nat Commun 2025;16:358. <a href="https://pubmed.ncbi.nlm.nih.gov/39753553/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-immunoprism-nadeem" data-slug="immunoprism-nadeem">ImmunoPRISM (Nadeem)</a>. Nat Med 2026;32:3812. <a href="https://pubmed.ncbi.nlm.nih.gov/42728379/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-asco-ontario-health-living-guideline-hicks" data-slug="asco-ontario-health-living-guideline-hicks">ASCO-Ontario Health living guideline (Hicks)</a>. J Clin Oncol 2026;44:914. <a href="https://pubmed.ncbi.nlm.nih.gov/41494138/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-cochrane-review-early-intervention-chen" data-slug="cochrane-review-early-intervention-chen">Cochrane review: early intervention (Chen)</a>. Cochrane Database Syst Rev 2026;3:CD015494. <a href="https://pubmed.ncbi.nlm.nih.gov/41848424/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-emn-consensus-statement-musto" data-slug="emn-consensus-statement-musto">EMN consensus statement (Musto)</a>. Haematologica 2021;106:2799. <a href="https://pubmed.ncbi.nlm.nih.gov/34261295/" target="_blank" rel="noopener">PubMed ↗</a></li></ol>
+    </div>
+  </details>
+
   <div class="controls">
     <div class="chips" role="group" aria-label="Filter by category" id="chips"></div>
     <div class="row2">
       <input type="search" id="q" placeholder="Search study, drug, risk factor…" aria-label="Search trials">
       <select id="sort" aria-label="Sort order">
-        <option value="setting">Sort: category, then year</option>
+        <option value="setting">Sort: category, newest first</option>
+        <option value="setting-asc">Sort: category, oldest first</option>
         <option value="asc">Sort: oldest first</option>
         <option value="desc">Sort: newest first</option>
       </select>
@@ -388,7 +467,7 @@ const MOAURL = m => m.pmc ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + m.pmc + '
 const MOAHTML = t => (MOAMAP[t.n] || []).map(k => MOA[k]).filter(Boolean).map(m => '<span class="moa"><b>' + esc(m.l) + ':</b> <a href="' + esc(MOAURL(m)) + '" target="_blank" rel="noopener" title="' + esc(m.t) + '">' + esc(m.a) + ', ' + esc(m.j) + ' ' + esc(m.y) + ' ↗</a>' + (m.pmc ? ' <span class="moafree">free</span>' : '') + '</span>').join('');
 const TOX = {"Mayo natural history (Kyle)": "Not applicable (observational cohort)", "PETHEMA flow-cytometry risk (Pérez-Persona)": "Not applicable (prognostic study)", "Free light chain ratio (Dispenzieri)": "Not applicable (prognostic study)", "Thalidomide + pamidronate (Barlogie)": "Thalidomide dose reduced in 86% and stopped in 50% within 2 years", "Thalidomide + zoledronic acid (Witzig)": "Neuropathy 80% vs 18% (grade 2 in 34%, no grade 3–4); grade ≥3 AEs in 17 vs 13 patients (full paper)", "QuiRedex (Mateos)": "Mostly grade ≤2", "IMWG updated criteria (Rajkumar)": "Not applicable (consensus criteria)", "Mayo 20/2/20 model (Lakshman)": "Not applicable (risk model)", "Siltuximab (Brighton)": "Similar to placebo; mostly grade 2–3; deaths 3 vs 4", "ECOG E3A06 (Lonial)": "Grade 3–4 nonhematologic AEs 28% on lenalidomide", "CENTAURUS (Landgren)": "No new safety signals (rates not in abstract)", "IMWG 2/20/20 risk model (Mateos)": "Not applicable (risk model)", "EMN consensus statement (Musto)": "Not applicable (consensus statement)", "NCI KRd (Korde, Kazandjian)": "Grade 3 nonhematologic AEs 38.9% (thromboembolism, rash, lung infection); no grade 4 events; no deaths", "iStopMM screening (Thorsteinsdóttir)": "Not applicable (screening study)", "GEM-CESAR (Mateos)": "Neutropenia and infections most frequent; 1 treatment-related death; 3 second primary malignancies", "I-PRISM (Nadeem)": "Grade 3 AEs 62%, grade 4 9%; grade 3–4 neutropenia 29%, leukopenia 18%, lymphopenia 15%, hypophosphatemia 13%; sensory neuropathy 56%, all grade ≤2 (full paper)", "AQUILA (Dimopoulos)": "Most common grade 3–4: hypertension 5.7% vs 4.6%; AE discontinuation 5.7%", "ASCO-Ontario Health living guideline (Hicks)": "Not applicable (guideline)", "Cochrane review: early intervention (Chen)": "More overall and serious AEs with daratumumab, very uncertain evidence", "PANGEA-SMM dynamic risk (Chabrun)": "Not applicable (risk model)", "ImmunoPRISM (Nadeem)": "Teclistamab: grade 1–2 CRS only, no neurotoxicity; grade 3 infections 20% vs 21% (Rd); no deaths"};
 const CORE = ["Mayo natural history (Kyle)", "IMWG updated criteria (Rajkumar)", "IMWG 2/20/20 risk model (Mateos)", "QuiRedex (Mateos)", "ECOG E3A06 (Lonial)", "AQUILA (Dimopoulos)"];
-const WATCH = {"note": "Ongoing phase 3 trials selected from ClinicalTrials.gov (checked October 23, 2026). Status and primary completion dates are as registered; some trials may already have presented results at meetings.", "items": [{"n": "ECOG-ACRIN EAA173 (DETER-SMM)", "d": "Daratumumab-Rd vs Rd in high-risk SMM", "ph": "Phase 3", "st": "Recruiting", "pcd": "2029-12-31", "ep": "Overall survival", "nct": "NCT03937635"}, {"n": "ITHACA", "d": "Isatuximab-Rd vs Rd in high-risk SMM", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2030-10-14", "ep": "PFS", "nct": "NCT04270409"}, {"n": "LINKER-SMM2", "d": "Linvoseltamab vs daratumumab in high-risk SMM", "ph": "Phase 3", "st": "Recruiting", "pcd": "2033-07-27", "ep": "Clinical and biochemical PFS", "nct": "NCT07393282"}]};
+const WATCH = {"note": "Ongoing phase 3 trials selected from ClinicalTrials.gov (checked October 23, 2026). Status and primary completion dates are as registered; some trials may already have presented results at meetings.", "items": [{"n": "ECOG-ACRIN EAA173 (DETER-SMM)", "d": "Daratumumab-Rd vs Rd in high-risk SMM", "ph": "Phase 3", "st": "Recruiting", "pcd": "2029-12-31", "ep": "Overall survival", "nct": "NCT03937635"}, {"n": "Isatuximab-Rd vs Rd (EFC15992)", "d": "Isatuximab-Rd vs Rd in high-risk SMM", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2030-10-14", "ep": "PFS", "nct": "NCT04270409"}, {"n": "LINKER-SMM2", "d": "Linvoseltamab vs daratumumab in high-risk SMM", "ph": "Phase 3", "st": "Recruiting", "pcd": "2033-07-27", "ep": "Clinical and biochemical PFS", "nct": "NCT07393282"}]};
 const PAGEKEY = "smm";
 const PAGETITLE = "Smoldering myeloma";
 const SLUG = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -425,16 +504,18 @@ function recHTML(t){
     <div class="rk">Guidelines</div><p>${esc(r.gl)}</p>
     <div class="rk">Access</div><p>${esc(r.acc)}</p>`;
 }
+const GRPHDR = (t, i, rows) => (sortMode === "setting" || sortMode === "setting-asc") && (i === 0 || rows[i - 1].s !== t.s)
+  ? '<li class="grp"><h3>' + esc(SETTINGS[t.s]) + '<span class="gn">' + rows.filter(r => r.s === t.s).length + '</span></h3></li>' : '';
 function render(){
   const q = qEl.value.trim().toLowerCase();
   let rows = T.filter(t => (active === "all" || (active === "core" ? t.core : t.s === active)) &&
     (!q || [t.n,t.d,t.r,t.tx,t.i,t.b,t.q,t.c,t.ph,String(t.y),t.reg,t.gl,t.acc,t.cm.map(c=>c[1]+" "+c[2]).join(" ")].join(" ").toLowerCase().includes(q)));
   rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
-    : (order.indexOf(a.s) - order.indexOf(b.s)) || (a.y - b.y));
+    : (order.indexOf(a.s) - order.indexOf(b.s)) || (sortMode === "setting-asc" ? a.y - b.y : b.y - a.y));
   document.getElementById("count").textContent = rows.length + " of " + T.length + " studies";
   const list = document.getElementById("list");
   if (!rows.length) { list.innerHTML = '<li class="empty">No studies match that search. Clear the search or pick another category.</li>'; return; }
-  list.innerHTML = rows.map(t => `
+  list.innerHTML = rows.map((t, i) => GRPHDR(t, i, rows) + `
     <li class="trial" data-trial="${t.slug}">
       <div class="yr">${t.y}</div>
       <div class="body">
@@ -474,6 +555,24 @@ render();
     '</span>' + (w.note ? '<span class="wd">' + esc(w.note) + '</span>' : '') + '</li>').join("") + '</ul>';
 })();
 
+
+(function setupReviewRefs(){
+  const listEl = document.getElementById("list");
+  const box = listEl.parentNode.querySelector(".review");
+  if (!box) return;
+  box.addEventListener("click", e => {
+    const a = e.target.closest("a.rref");
+    if (!a) return;
+    e.preventDefault();
+    const first = chipsEl.querySelector(".chip");
+    if (first && first.getAttribute("aria-pressed") !== "true") first.click();
+    if (qEl.value) { qEl.value = ""; render(); }
+    const li = listEl.querySelector('li[data-trial="' + a.getAttribute("data-slug") + '"]');
+    if (!li) return;
+    li.scrollIntoView({ behavior: "smooth", block: "start" });
+    li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+  });
+})();
 (function setupShare(){
   const listEl = document.getElementById("list");
   listEl.addEventListener("click", e => {

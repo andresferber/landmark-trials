@@ -209,6 +209,11 @@ footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch
 
 /* Added Oct 24, 2026: site disclaimer */
 .sitedisc { margin: 12px 0 0; font-size: 12.5px; }
+
+/* Added Oct 24, 2026: category subtitles in the trial list */
+ol.list li.grp { list-style: none; padding: 22px 0 6px; border-bottom: 2px solid var(--fg); }
+ol.list li.grp h3 { margin: 0; font-family: var(--font-display); font-weight: 650; font-size: 1.2rem; }
+ol.list li.grp .gn { font: 500 12px var(--font-mono); color: var(--muted); margin-left: 8px; }
 </style>
 
 <div class="wrap">
@@ -283,7 +288,8 @@ footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch
     <div class="row2">
       <input type="search" id="q" placeholder="Search trial, drug, regimen…" aria-label="Search trials">
       <select id="sort" aria-label="Sort order">
-        <option value="setting">Sort: category, then year</option>
+        <option value="setting">Sort: category, newest first</option>
+        <option value="setting-asc">Sort: category, oldest first</option>
         <option value="asc">Sort: oldest first</option>
         <option value="desc">Sort: newest first</option>
       </select>
@@ -655,16 +661,18 @@ function recHTML(t){
     <div class="rk">Guidelines</div><p>${esc(r.gl)}</p>
     <div class="rk">Access</div><p>${esc(r.acc)}</p>`;
 }
+const GRPHDR = (t, i, rows) => (sortMode === "setting" || sortMode === "setting-asc") && (i === 0 || rows[i - 1].s !== t.s)
+  ? '<li class="grp"><h3>' + esc(SETTINGS[t.s]) + '<span class="gn">' + rows.filter(r => r.s === t.s).length + '</span></h3></li>' : '';
 function render(){
   const q = qEl.value.trim().toLowerCase();
   let rows = T.filter(t => (active === "all" || (active === "core" ? t.core : t.s === active)) &&
     (!q || [t.n,t.d,t.r,t.tx,t.i,t.b,t.q,t.c,t.ph,String(t.y),t.reg,t.gl,t.acc,t.cm.map(c=>c[1]+" "+c[2]).join(" ")].join(" ").toLowerCase().includes(q)));
   rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
-    : (order.indexOf(a.s) - order.indexOf(b.s)) || (a.y - b.y));
+    : (order.indexOf(a.s) - order.indexOf(b.s)) || (sortMode === "setting-asc" ? a.y - b.y : b.y - a.y));
   document.getElementById("count").textContent = rows.length + " of " + T.length + " trials";
   const list = document.getElementById("list");
   if (!rows.length) { list.innerHTML = '<li class="empty">No trials match that search. Clear the search or pick another category.</li>'; return; }
-  list.innerHTML = rows.map(t => `
+  list.innerHTML = rows.map((t, i) => GRPHDR(t, i, rows) + `
     <li class="trial" data-trial="${t.slug}">
       <div class="yr">${t.y}</div>
       <div class="body">
