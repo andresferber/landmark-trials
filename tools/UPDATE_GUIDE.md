@@ -38,7 +38,7 @@ All data is in the main `<script>`:
   one is clearly better: mechanism-focused, strong journal, academic authors, free full text preferred
   when quality is comparable. The master list is `tools/moa_master.json`; keep it in sync.
 - Naming: generic drug names only (no brand names anywhere, including the glossary and regulatory
-  notes), and no links to drug-company websites or press releases. Reviews written mainly by company
+  notes), and no links to drug-company websites or press releases unless absolutely needed, and then only after Andres approves. Reviews written mainly by company
   employees are not used for "Drug mechanism".
 - `TOX`: name -> one line of key toxicity from the abstract (or full paper, marked "(full paper)").
 - `CORE`: names of core teaching trials. Andres chooses these: never add or remove names yourself.
