@@ -76,6 +76,8 @@ GUARD = """
 .ltw .gloss summary { color: var(--fg) !important; list-style: revert !important; }
 .ltw a.report { color: var(--muted) !important; font-size: 12px !important; }
 .ltw .reportall { margin: 12px 0 0; }
+.ltw .moafree { color: var(--s-young) !important; }
+.ltw .moa b { color: var(--fg) !important; }
 .ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 """
 

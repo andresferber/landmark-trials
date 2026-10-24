@@ -29,6 +29,17 @@ All data is in the main `<script>`:
 - `PAGEKEY`, `PAGETITLE`: topic key and title, used by the per-trial share link and the
   "Report an error" mailto (andresferber@hotmail.com). Abbreviations live in `<details class="gloss">`
   before the footer: add any new abbreviation a new entry introduces.
+- `MOA`: key -> one review on how a drug or drug class works and how resistance develops
+  `{l label, a first author, j journal, y year, t title, p PMID, pmc PMCID or ""}`; `MOAMAP`: trial name ->
+  MOA keys (the new agent the trial tested; a combination can have two). Shown as the "Drug mechanism"
+  row. Trials of strategy, transplant, radiotherapy, observation or conventional chemotherapy have none.
+  For a new entry, reuse an existing key when the class matches. Once a year (the first update run in
+  October), search PubMed for each key (review[pt], last 3 years) and replace a review only when a newer
+  one is clearly better: mechanism-focused, strong journal, academic authors, free full text preferred
+  when quality is comparable. The master list is `tools/moa_master.json`; keep it in sync.
+- Naming: generic drug names only (no brand names anywhere, including the glossary and regulatory
+  notes), and no links to drug-company websites or press releases. Reviews written mainly by company
+  employees are not used for "Drug mechanism".
 - `TOX`: name -> one line of key toxicity from the abstract (or full paper, marked "(full paper)").
 - `CORE`: names of core teaching trials. Andres chooses these: never add or remove names yourself.
   If a new trial looks core-worthy, suggest it in the summary.
