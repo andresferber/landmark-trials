@@ -55,6 +55,17 @@ All data is in the main `<script>`:
   listed in the summary; rewrites of a section (for example after a new practice-changing trial)
   wait for Andres's approval. While the block says "Pilot draft, pending review", to_weebly.py
   keeps it off the website.
+- New drugs to watch (`NEWD`, own tab; pilot on rrmm, built by tools/newdrugs/<key>_newdrugs.py): agents
+  with a new mechanism, target or modality not yet approved for the disease (examples Andres gave:
+  RNA vaccines, new targets such as menin inhibitors, XPO1 inhibition, BTK degraders), including
+  phase 1 when the approach is new and repurposed drugs with credible clinical data. No biosimilars,
+  no preclinical-only agents. Each entry: target, modality, evidence label (peer-reviewed phase N, or
+  meeting data not yet peer-reviewed), why it matters, key data, safety, next step (phase 3 NCT),
+  sources. Lifecycle: when phase 3 results are published, move it to "Moved on to phase 3 results"
+  and propose the trial for the landmark list; when development stops or a pivotal trial fails, move
+  it to "Discontinued" with reason and date, and remove it after 2 years; review entries with no new
+  data for 24 months. Refresh at each scheduled update and in an extra pass after ASH, ASCO, EHA,
+  AACR, ESMO and IMS. While wrapped in <!--pilot-start--> markers, to_weebly.py keeps it off the website.
 - `TOX`: name -> one line of key toxicity from the abstract (or full paper, marked "(full paper)").
 - `CORE`: names of core teaching trials. Andres chooses these: never add or remove names yourself.
   If a new trial looks core-worthy, suggest it in the summary.

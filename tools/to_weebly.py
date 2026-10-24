@@ -96,6 +96,8 @@ def main(src, key, dst):
     js = next(x for x in scripts if "const T" in x and "function render" in x)
     start = s.index('<div class="wrap">')
     html = s[start:s.index("<script>", start)].replace("</style>", "")
+    # Blocks marked as pilots stay off the website until Andres approves them.
+    html = re.sub(r"<!--pilot-start-->.*?<!--pilot-end-->\n?", "", html, flags=re.S)
     # A review still marked as a pilot draft stays off the website until Andres approves it.
     if "Pilot draft, pending review" in html:
         html = re.sub(r'  <details class="review".*?</details>\n', "", html, flags=re.S)
