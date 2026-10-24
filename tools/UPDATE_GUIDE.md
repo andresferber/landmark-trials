@@ -35,11 +35,15 @@ All data is in the main `<script>`:
   row. Trials of strategy, transplant, radiotherapy, observation or conventional chemotherapy have none.
   For a new entry, reuse an existing key when the class matches. Once a year (the first update run in
   October), search PubMed for each key (review[pt], last 3 years) and replace a review only when a newer
-  one is clearly better: mechanism-focused, strong journal, academic authors, free full text preferred
+  one is clearly better: mechanism-focused, strong journal, not promotional, free full text preferred
   when quality is comparable. The master list is `tools/moa_master.json`; keep it in sync.
-- Naming: generic drug names only (no brand names anywhere, including the glossary and regulatory
-  notes), and no links to drug-company websites or press releases unless absolutely needed, and then only after Andres approves. Reviews written mainly by company
-  employees are not used for "Drug mechanism".
+- Pharma-bias rule (Andres): keep the content free of promotional influence. Never use or link
+  company-produced educational material for physicians, drug advertising (media, social media or
+  journal ads), or company press releases as sources; use generic drug names rather than trade names
+  wherever possible (including the glossary and regulatory notes). Allowed: papers with industry
+  authors, trial names that come from the sponsor, company code names for drugs (e.g. when there is no
+  generic name yet), links to sponsored protocols or registry records, and FDA prescribing information.
+  When unsure, ask Andres.
 - `TOX`: name -> one line of key toxicity from the abstract (or full paper, marked "(full paper)").
 - `CORE`: names of core teaching trials. Andres chooses these: never add or remove names yourself.
   If a new trial looks core-worthy, suggest it in the summary.
