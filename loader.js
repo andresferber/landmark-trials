@@ -227,7 +227,7 @@
     var box = document.createElement("div");
     box.className = "lta-news";
     var html = "<h3>What's new</h3><ul>";
-    items.slice(0, 5).forEach(function (it, i) {
+    items.slice(0, 2).forEach(function (it, i) {
       var t = topicsByKey[it.key];
       html += '<li><span class="nd">' + esc(fmtDate(it.date)) + "</span>" + esc(it.text) +
         (t ? ' <button type="button" data-i="' + i + '">' + esc(t.title) + "</button>" : "") + "</li>";

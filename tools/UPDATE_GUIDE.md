@@ -129,10 +129,12 @@ use it when available. If PubMed cannot be reached, use WebSearch and say so in 
 - Copy the page to `~/landmark-trials/source/<key>.html`.
 - In `topics.json`, for this key only: set `updated` (YYYY-MM-DD) and `count` (keep its word).
 - `cd ~/landmark-trials && node tools/build_index.js` (rebuilds the site-wide search).
-- In `news.json`, add one item at the top for each notable change:
+- In `news.json`, add one item at the top only for a content change a reader would care about
+  (a new trial, a major result update, a new drug on the watch lists); not for layout or tooling changes.
+  The "What's new" box shows only the newest 2 items. Format:
   `{"date": "YYYY-MM-DD", "key": "<key>", "slug": "<trial slug, optional>", "text": "<one short sentence>"}`.
   The slug is the trial name lowercased with runs of non-alphanumerics replaced by "-".
-  Keep at most 12 items.
+  Keep at most 6 items in the file.
 - Commit as `Claude <noreply@anthropic.com>` ("Update <key>: <what changed>"), then
   `git fetch origin main && git rebase origin/main && git push origin HEAD:main`. Other topics push
   to the same repository around the same time: if the push is rejected, fetch, rebase and push again

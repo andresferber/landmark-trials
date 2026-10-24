@@ -1,10 +1,3 @@
 {"items": [
- {"date": "2026-10-24", "text": "New on every topic: tabs for Landmark trials, Trials to watch and New drugs to watch (early-phase agents with new mechanisms, shared across the three myeloma pages), plus a Send a comment link."},
- {"date": "2026-10-24", "text": "New on every topic: a Perspective on how management evolved (past, present and future), section subtitles in the trial list, and newest trials first within each section. Relapsed myeloma adds two 2026 phase 3 trials (SUCCESSOR-2, EXCALIBER-RRMM). Every page now carries an education-only disclaimer."},
- {"date": "2026-10-23", "text": "New on every topic: a \"Drug mechanism\" link in each trial card to a recent review of how the drug works and how resistance develops."},
- {"date": "2026-10-23", "text": "Remaining gaps filled from the full papers: toxicity for 9 trials and follow-up or effect sizes for 4 (Nordic MCL2, LyMa, I-PRISM, thalidomide-pamidronate, GRIFFIN, MRC VII, IFM 99-06, BNLI, TROG 99.03, POD24, EORTC 20981)."},
- {"date": "2026-10-23", "text": "New on every topic: copy a link to any trial, an abbreviations list, \"Report an error\" links, free legal full-text copies where they exist, \"Trials to watch\" (ongoing phase 3 trials), and regulatory dates checked against FDA and EMA announcements."},
- {"date": "2026-10-23", "text": "New on every topic: key toxicity for each trial, a ★ Core trials filter, evidence tags, search across all topics, and Print / PDF."},
- {"date": "2026-10-22", "text": "33 entries completed from the full papers (follow-up, hazard ratios, sample sizes)."},
- {"date": "2026-10-22", "text": "Free full-text, publisher and trial-registry links added to every trial."}
+ {"date": "2026-10-24", "key": "rrmm", "text": "Relapsed myeloma adds two 2026 phase 3 trials: SUCCESSOR-2 (mezigdomide) and EXCALIBER-RRMM (iberdomide)."}
 ]}
