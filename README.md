@@ -35,9 +35,9 @@ Each topic page is one HTML file with:
 
 `index.json` (built by `node tools/build_index.js` from `source/`) powers the search across all topics on the website; `news.json` feeds the "What's new" box.
 
-## Monthly updates
+## Scheduled updates
 
-A scheduled task per topic runs on the 1st of each month. It searches PubMed (including follow-up publications of every trial on the page, by registry number and name), FDA/EMA, NCCN and major meetings; updates the artifact; regenerates `topics/<key>.html`; copies the page to `source/<key>.html`; updates `topics.json`; and pushes here. Papers that need a PDF are listed in the monthly summary. The full procedure is in `tools/UPDATE_GUIDE.md`, which the scheduled tasks follow.
+A scheduled task per topic runs on the 1st of the month on its own schedule: monthly for newly diagnosed and relapsed myeloma; every 2 months (Jan, Mar, May, Jul, Sep, Nov) for MCL and relapsed FL; quarterly (Jan, Apr, Jul, Oct) for smoldering myeloma and untreated FL. A health check runs on the 2nd of each month. It searches PubMed (including follow-up publications of every trial on the page, by registry number and name), FDA/EMA, NCCN and major meetings; updates the artifact; regenerates `topics/<key>.html`; copies the page to `source/<key>.html`; updates `topics.json`; and pushes here. Papers that need a PDF are listed in the monthly summary. The full procedure is in `tools/UPDATE_GUIDE.md`, which the scheduled tasks follow.
 
 ## Adding a topic
 
