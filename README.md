@@ -1,6 +1,6 @@
 # Landmark trials
 
-Educational reference of practice-changing trials in hematologic malignancies, created by Andres Ferber, MD, with the assistance of Claude (Anthropic). Content is updated monthly.
+Educational reference of practice-changing trials in hematologic malignancies, created by Andres Ferber, MD, with the assistance of Claude (Anthropic). Content is updated on a per-topic schedule (monthly to quarterly).
 
 ## How it works
 
