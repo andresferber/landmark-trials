@@ -83,6 +83,13 @@ for n in names:
     if n not in cites:
         m = re.search(r'n:"' + re.escape(n) + r'".*?c:"([^"]+)"', h, re.S)
         if m: cites[n] = m.group(1)
+# Some pages layer a CITE (and V) object over the raw T array; the card shows the override,
+# so the reference list must use it too.
+mc = re.search(r'const CITE = \{(.*?)\n\};', h, re.S)
+if mc:
+    for a, b in re.findall(r'"((?:[^"\\]|\\.)*)":\s*"((?:[^"\\]|\\.)*)"', mc.group(1)):
+        if a in cites:
+            cites[a] = b
 pmids = {}
 for n in names:
     i = h.find('n:"' + n + '"'); seg = h[i:]; k = re.search(r'\n\s*\{y:|\n\];', seg); seg = seg[:k.start()] if k else seg[:3000]
