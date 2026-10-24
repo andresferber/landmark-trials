@@ -128,6 +128,10 @@
 .ltw .review sup a { font: 600 11px var(--font-mono); text-decoration: none; color: var(--accent); padding: 0 1px; }
 .ltw .review a { color: var(--accent); }
 .ltw .review .rv-refs { font-size: 13.5px; padding-left: 22px; }
+.ltw .review .rv-endbar { display: flex; justify-content: center; margin: 18px 0 2px; }
+.ltw .review .rv-close { all: unset; cursor: pointer; font: 500 13px/1 var(--font-body); padding: 9px 16px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.ltw .review .rv-close:hover { border-color: var(--accent); color: var(--accent); }
+.ltw .review .rv-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .ltw .rv-tl { margin: 8px 0 18px; }
 .ltw .rv-tl figcaption { font: 500 11px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
 .ltw .rv-tl ol { list-style: none; margin: 0; padding: 0 0 0 4px; border-left: 2px solid var(--rule); }
@@ -185,6 +189,9 @@
 .ltw .report { display: none !important; }
 }
 @media print {
+.ltw .review .rv-endbar { display: none; }
+}
+@media print {
 .ltw .review .rv-open { display: none; }
 }
 @media print {
@@ -218,6 +225,8 @@
 .ltw .moa b { color: var(--fg) !important; }
 .ltw .review .rv-title, .ltw .review h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; }
 .ltw .review > summary { list-style: none !important; }
+.ltw .review { scroll-margin-top: 170px; }
+.ltw .review .rv-close { background: var(--bg) !important; color: var(--fg) !important; box-shadow: none !important; text-transform: none !important; letter-spacing: normal !important; height: auto !important; min-width: 0 !important; border: 1px solid var(--rule) !important; border-radius: 999px !important; padding: 9px 16px !important; font: 500 13px/1 var(--font-body) !important; }
 .ltw .review .rv-body ul { list-style: disc !important; padding-left: 20px !important; }
 .ltw .review .rv-refs { list-style: decimal !important; padding-left: 22px !important; }
 .ltw .rv-tl ol, .ltw .rv-tl li { list-style: none !important; background: none !important; }
@@ -289,6 +298,7 @@
 <p>Ongoing phase 3 trials (listed under Trials to watch at the end of this page) compare zanubrutinib with anti-CD20 therapy against lenalidomide-rituximab (MAHOGANY), mosunetuzumab-lenalidomide (CELESTIMO) and odronextamab-lenalidomide (OLYMPIA-5) against lenalidomide-rituximab, tazemetostat added to lenalidomide-rituximab (SYMPHONY-1), golcadomide-rituximab against investigator's choice (GOLSEEK-4), and axicabtagene ciloleucel (ZUMA-22) and tisagenlecleucel (LEDA) against standard care.</p>
       <h3>References</h3>
       <ol class="rv-refs"><li><a class="rref" href="#t-flr-90y-ibritumomab-vs-rituximab-witzig" data-slug="90y-ibritumomab-vs-rituximab-witzig">90Y-ibritumomab vs rituximab (Witzig)</a>. J Clin Oncol 2002;20:2453. <a href="https://pubmed.ncbi.nlm.nih.gov/12011122/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-eortc-20981-van-oers" data-slug="eortc-20981-van-oers">EORTC 20981 (van Oers)</a>. Blood 2006;108:3295. <a href="https://pubmed.ncbi.nlm.nih.gov/16873669/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-gadolin-sehn" data-slug="gadolin-sehn">GADOLIN (Sehn)</a>. Lancet Oncol 2016;17:1081. <a href="https://pubmed.ncbi.nlm.nih.gov/27345636/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-augment-leonard" data-slug="augment-leonard">AUGMENT (Leonard)</a>. J Clin Oncol 2019;37:1188. <a href="https://pubmed.ncbi.nlm.nih.gov/30897038/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-inmind-sehn" data-slug="inmind-sehn">inMIND (Sehn)</a>. Lancet 2026;407:133. <a href="https://pubmed.ncbi.nlm.nih.gov/41360064/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-epcore-fl-1-falchi" data-slug="epcore-fl-1-falchi">EPCORE FL-1 (Falchi)</a>. Lancet 2026;407:161. <a href="https://pubmed.ncbi.nlm.nih.gov/41371238/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-idelalisib-gopal" data-slug="idelalisib-gopal">Idelalisib (Gopal)</a>. N Engl J Med 2014;370:1008. <a href="https://pubmed.ncbi.nlm.nih.gov/24450858/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-chronos-1-dreyling" data-slug="chronos-1-dreyling">CHRONOS-1 (Dreyling)</a>. J Clin Oncol 2017;35:3898. <a href="https://pubmed.ncbi.nlm.nih.gov/28976790/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-dynamo-flinn" data-slug="dynamo-flinn">DYNAMO (Flinn)</a>. J Clin Oncol 2019;37:912. <a href="https://pubmed.ncbi.nlm.nih.gov/30742566/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-unity-nhl-fowler" data-slug="unity-nhl-fowler">UNITY-NHL (Fowler)</a>. J Clin Oncol 2021;39:1609. <a href="https://pubmed.ncbi.nlm.nih.gov/33683917/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-chronos-3-matasar" data-slug="chronos-3-matasar">CHRONOS-3 (Matasar)</a>. Lancet Oncol 2021;22:678. <a href="https://pubmed.ncbi.nlm.nih.gov/33848462/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-tazemetostat-morschhauser" data-slug="tazemetostat-morschhauser">Tazemetostat (Morschhauser)</a>. Lancet Oncol 2020;21:1433. <a href="https://pubmed.ncbi.nlm.nih.gov/33035457/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-rosewood-zinzani" data-slug="rosewood-zinzani">ROSEWOOD (Zinzani)</a>. J Clin Oncol 2023;41:5107. <a href="https://pubmed.ncbi.nlm.nih.gov/37506346/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-zuma-5-jacobson" data-slug="zuma-5-jacobson">ZUMA-5 (Jacobson)</a>. Lancet Oncol 2022;23:91. <a href="https://pubmed.ncbi.nlm.nih.gov/34895487/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-elara-fowler" data-slug="elara-fowler">ELARA (Fowler)</a>. Nat Med 2022;28:325. <a href="https://pubmed.ncbi.nlm.nih.gov/34921238/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-transcend-fl-morschhauser" data-slug="transcend-fl-morschhauser">TRANSCEND FL (Morschhauser)</a>. Nat Med 2024;30:2199. <a href="https://pubmed.ncbi.nlm.nih.gov/38830991/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-mosunetuzumab-budde" data-slug="mosunetuzumab-budde">Mosunetuzumab (Budde)</a>. Lancet Oncol 2022;23:1055. <a href="https://pubmed.ncbi.nlm.nih.gov/35803286/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-epcore-nhl-1-fl-cohort-linton" data-slug="epcore-nhl-1-fl-cohort-linton">EPCORE NHL-1 FL cohort (Linton)</a>. Lancet Haematol 2024;11:e593. <a href="https://pubmed.ncbi.nlm.nih.gov/38889737/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-flr-elm-2-fl-cohort-odronextamab-kim" data-slug="elm-2-fl-cohort-odronextamab-kim">ELM-2 FL cohort: odronextamab (Kim)</a>. Ann Oncol 2024;35:1039. <a href="https://pubmed.ncbi.nlm.nih.gov/39147364/" target="_blank" rel="noopener">PubMed ↗</a></li></ol>
+      <div class="rv-endbar"><button type="button" class="rv-close">Close the perspective ▴</button></div>
     </div>
   </details>
 
@@ -609,6 +619,11 @@ render();
   const box = listEl.parentNode.querySelector(".review");
   if (!box) return;
   box.addEventListener("click", e => {
+    if (e.target.closest(".rv-close")) {
+      box.open = false;
+      box.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
     const a = e.target.closest("a.rref");
     if (!a) return;
     e.preventDefault();

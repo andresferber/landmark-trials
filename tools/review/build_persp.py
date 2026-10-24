@@ -33,6 +33,11 @@ CSS = '''
 .review sup a { font: 600 11px var(--font-mono); text-decoration: none; color: var(--accent); padding: 0 1px; }
 .review a { color: var(--accent); }
 .review .rv-refs { font-size: 13.5px; padding-left: 22px; }
+.review .rv-endbar { display: flex; justify-content: center; margin: 18px 0 2px; }
+.review .rv-close { all: unset; cursor: pointer; font: 500 13px/1 var(--font-body); padding: 9px 16px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.review .rv-close:hover { border-color: var(--accent); color: var(--accent); }
+.review .rv-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media print { .review .rv-endbar { display: none; } }
 .rv-tl { margin: 8px 0 18px; }
 .rv-tl figcaption { font: 500 11px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
 .rv-tl ol { list-style: none; margin: 0; padding: 0 0 0 4px; border-left: 2px solid var(--rule); }
@@ -52,6 +57,11 @@ JUMP = '''
   const box = listEl.parentNode.querySelector(".review");
   if (!box) return;
   box.addEventListener("click", e => {
+    if (e.target.closest(".rv-close")) {
+      box.open = false;
+      box.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
     const a = e.target.closest("a.rref");
     if (!a) return;
     e.preventDefault();
@@ -107,6 +117,7 @@ block = f'''  <details class="review" id="review">
       {body}
       <h3>References</h3>
       <ol class="rv-refs">{refs}</ol>
+      <div class="rv-endbar"><button type="button" class="rv-close">Close the perspective ▴</button></div>
     </div>
   </details>
 '''

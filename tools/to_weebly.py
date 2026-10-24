@@ -80,6 +80,8 @@ GUARD = """
 .ltw .moa b { color: var(--fg) !important; }
 .ltw .review .rv-title, .ltw .review h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; }
 .ltw .review > summary { list-style: none !important; }
+.ltw .review { scroll-margin-top: 170px; }
+.ltw .review .rv-close { background: var(--bg) !important; color: var(--fg) !important; box-shadow: none !important; text-transform: none !important; letter-spacing: normal !important; height: auto !important; min-width: 0 !important; border: 1px solid var(--rule) !important; border-radius: 999px !important; padding: 9px 16px !important; font: 500 13px/1 var(--font-body) !important; }
 .ltw .review .rv-body ul { list-style: disc !important; padding-left: 20px !important; }
 .ltw .review .rv-refs { list-style: decimal !important; padding-left: 22px !important; }
 .ltw .rv-tl ol, .ltw .rv-tl li { list-style: none !important; background: none !important; }

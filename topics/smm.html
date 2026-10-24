@@ -125,6 +125,10 @@
 .ltw .review sup a { font: 600 11px var(--font-mono); text-decoration: none; color: var(--accent); padding: 0 1px; }
 .ltw .review a { color: var(--accent); }
 .ltw .review .rv-refs { font-size: 13.5px; padding-left: 22px; }
+.ltw .review .rv-endbar { display: flex; justify-content: center; margin: 18px 0 2px; }
+.ltw .review .rv-close { all: unset; cursor: pointer; font: 500 13px/1 var(--font-body); padding: 9px 16px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.ltw .review .rv-close:hover { border-color: var(--accent); color: var(--accent); }
+.ltw .review .rv-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .ltw .rv-tl { margin: 8px 0 18px; }
 .ltw .rv-tl figcaption { font: 500 11px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
 .ltw .rv-tl ol { list-style: none; margin: 0; padding: 0 0 0 4px; border-left: 2px solid var(--rule); }
@@ -185,6 +189,9 @@
 .ltw .report { display: none !important; }
 }
 @media print {
+.ltw .review .rv-endbar { display: none; }
+}
+@media print {
 .ltw .review .rv-open { display: none; }
 }
 @media print {
@@ -218,6 +225,8 @@
 .ltw .moa b { color: var(--fg) !important; }
 .ltw .review .rv-title, .ltw .review h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; }
 .ltw .review > summary { list-style: none !important; }
+.ltw .review { scroll-margin-top: 170px; }
+.ltw .review .rv-close { background: var(--bg) !important; color: var(--fg) !important; box-shadow: none !important; text-transform: none !important; letter-spacing: normal !important; height: auto !important; min-width: 0 !important; border: 1px solid var(--rule) !important; border-radius: 999px !important; padding: 9px 16px !important; font: 500 13px/1 var(--font-body) !important; }
 .ltw .review .rv-body ul { list-style: disc !important; padding-left: 20px !important; }
 .ltw .review .rv-refs { list-style: decimal !important; padding-left: 22px !important; }
 .ltw .rv-tl ol, .ltw .rv-tl li { list-style: none !important; background: none !important; }
@@ -282,6 +291,7 @@
 <p>Ongoing phase 3 trials (listed under Trials to watch at the end of this page) compare daratumumab-lenalidomide-dexamethasone with lenalidomide-dexamethasone with overall survival as the endpoint (DETER-SMM), isatuximab-lenalidomide-dexamethasone with lenalidomide-dexamethasone, and linvoseltamab with daratumumab (LINKER-SMM2).</p>
       <h3>References</h3>
       <ol class="rv-refs"><li><a class="rref" href="#t-smm-mayo-natural-history-kyle" data-slug="mayo-natural-history-kyle">Mayo natural history (Kyle)</a>. N Engl J Med 2007;356:2582. <a href="https://pubmed.ncbi.nlm.nih.gov/17582068/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-pethema-flow-cytometry-risk-p-rez-persona" data-slug="pethema-flow-cytometry-risk-p-rez-persona">PETHEMA flow-cytometry risk (Pérez-Persona)</a>. Blood 2007;110:2586. <a href="https://pubmed.ncbi.nlm.nih.gov/17576818/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-free-light-chain-ratio-dispenzieri" data-slug="free-light-chain-ratio-dispenzieri">Free light chain ratio (Dispenzieri)</a>. Blood 2008;111:785. <a href="https://pubmed.ncbi.nlm.nih.gov/17942755/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-imwg-updated-criteria-rajkumar" data-slug="imwg-updated-criteria-rajkumar">IMWG updated criteria (Rajkumar)</a>. Lancet Oncol 2014;15:e538. <a href="https://pubmed.ncbi.nlm.nih.gov/25439696/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-istopmm-screening-thorsteinsd-ttir" data-slug="istopmm-screening-thorsteinsd-ttir">iStopMM screening (Thorsteinsdóttir)</a>. Nat Med 2023;29:467. <a href="https://pubmed.ncbi.nlm.nih.gov/36747117/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-mayo-20-2-20-model-lakshman" data-slug="mayo-20-2-20-model-lakshman">Mayo 20/2/20 model (Lakshman)</a>. Blood Cancer J 2018;8:59. <a href="https://pubmed.ncbi.nlm.nih.gov/29895887/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-imwg-2-20-20-risk-model-mateos" data-slug="imwg-2-20-20-risk-model-mateos">IMWG 2/20/20 risk model (Mateos)</a>. Blood Cancer J 2020;10:102. <a href="https://pubmed.ncbi.nlm.nih.gov/33067414/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-pangea-smm-dynamic-risk-chabrun" data-slug="pangea-smm-dynamic-risk-chabrun">PANGEA-SMM dynamic risk (Chabrun)</a>. Nat Med 2026;32:1745. <a href="https://pubmed.ncbi.nlm.nih.gov/41876650/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-thalidomide-pamidronate-barlogie" data-slug="thalidomide-pamidronate-barlogie">Thalidomide + pamidronate (Barlogie)</a>. Blood 2008;112:3122. <a href="https://pubmed.ncbi.nlm.nih.gov/18669874/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-thalidomide-zoledronic-acid-witzig" data-slug="thalidomide-zoledronic-acid-witzig">Thalidomide + zoledronic acid (Witzig)</a>. Leukemia 2013;27:220. <a href="https://pubmed.ncbi.nlm.nih.gov/22902362/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-quiredex-mateos" data-slug="quiredex-mateos">QuiRedex (Mateos)</a>. N Engl J Med 2013;369:438. <a href="https://pubmed.ncbi.nlm.nih.gov/23902483/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-ecog-e3a06-lonial" data-slug="ecog-e3a06-lonial">ECOG E3A06 (Lonial)</a>. J Clin Oncol 2020;38:1126. <a href="https://pubmed.ncbi.nlm.nih.gov/31652094/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-siltuximab-brighton" data-slug="siltuximab-brighton">Siltuximab (Brighton)</a>. Clin Cancer Res 2019;25:3772. <a href="https://pubmed.ncbi.nlm.nih.gov/30890552/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-centaurus-landgren" data-slug="centaurus-landgren">CENTAURUS (Landgren)</a>. Leukemia 2020;34:1840. <a href="https://pubmed.ncbi.nlm.nih.gov/32024950/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-aquila-dimopoulos" data-slug="aquila-dimopoulos">AQUILA (Dimopoulos)</a>. N Engl J Med 2025;392:1777. <a href="https://pubmed.ncbi.nlm.nih.gov/39652675/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-nci-krd-korde-kazandjian" data-slug="nci-krd-korde-kazandjian">NCI KRd (Korde, Kazandjian)</a>. JAMA Oncol 2021;7:1678. <a href="https://pubmed.ncbi.nlm.nih.gov/34529025/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-gem-cesar-mateos" data-slug="gem-cesar-mateos">GEM-CESAR (Mateos)</a>. J Clin Oncol 2024;42:3247. <a href="https://pubmed.ncbi.nlm.nih.gov/39038268/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-i-prism-nadeem" data-slug="i-prism-nadeem">I-PRISM (Nadeem)</a>. Nat Commun 2025;16:358. <a href="https://pubmed.ncbi.nlm.nih.gov/39753553/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-immunoprism-nadeem" data-slug="immunoprism-nadeem">ImmunoPRISM (Nadeem)</a>. Nat Med 2026;32:3812. <a href="https://pubmed.ncbi.nlm.nih.gov/42728379/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-asco-ontario-health-living-guideline-hicks" data-slug="asco-ontario-health-living-guideline-hicks">ASCO-Ontario Health living guideline (Hicks)</a>. J Clin Oncol 2026;44:914. <a href="https://pubmed.ncbi.nlm.nih.gov/41494138/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-cochrane-review-early-intervention-chen" data-slug="cochrane-review-early-intervention-chen">Cochrane review: early intervention (Chen)</a>. Cochrane Database Syst Rev 2026;3:CD015494. <a href="https://pubmed.ncbi.nlm.nih.gov/41848424/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-smm-emn-consensus-statement-musto" data-slug="emn-consensus-statement-musto">EMN consensus statement (Musto)</a>. Haematologica 2021;106:2799. <a href="https://pubmed.ncbi.nlm.nih.gov/34261295/" target="_blank" rel="noopener">PubMed ↗</a></li></ol>
+      <div class="rv-endbar"><button type="button" class="rv-close">Close the perspective ▴</button></div>
     </div>
   </details>
 
@@ -619,6 +629,11 @@ render();
   const box = listEl.parentNode.querySelector(".review");
   if (!box) return;
   box.addEventListener("click", e => {
+    if (e.target.closest(".rv-close")) {
+      box.open = false;
+      box.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
     const a = e.target.closest("a.rref");
     if (!a) return;
     e.preventDefault();
