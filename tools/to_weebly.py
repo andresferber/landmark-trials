@@ -89,8 +89,10 @@ GUARD = """
 .ltw ol.list li.grp h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; background: none !important; }
 .ltw ol.list li.grp { border-bottom: 2px solid var(--fg) !important; }
 .ltw .rv-tl li { list-style: none !important; }
-.ltw .tabs button { background: none !important; box-shadow: none !important; color: var(--muted) !important; text-transform: none !important; height: auto !important; min-width: 0 !important; border-radius: 0 !important; }
-.ltw .tabs button[aria-selected="true"] { color: var(--fg) !important; border-bottom: 3px solid var(--accent) !important; }
+.ltw .tabs { background: #e6ecf6 !important; background: color-mix(in srgb, var(--accent) 11%, var(--surface)) !important; }
+.ltw .tabs button { background: none !important; box-shadow: none !important; color: var(--muted) !important; text-transform: none !important; height: auto !important; min-width: 0 !important; border-radius: 8px 8px 0 0 !important; }
+.ltw .tabs button:hover { background: var(--surface) !important; }
+.ltw .tabs button[aria-selected="true"] { color: var(--fg) !important; background: var(--surface) !important; border-bottom: 3px solid var(--accent) !important; }
 .ltw .tabs .tabmail { color: var(--accent) !important; }
 .ltw .newdrugs .nd-name, .ltw .newdrugs h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; }
 .ltw .newdrugs .nd-log { list-style: disc !important; padding-left: 20px !important; }
