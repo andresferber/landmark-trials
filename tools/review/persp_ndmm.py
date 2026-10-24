@@ -5,7 +5,7 @@ TL_CAPTION = 'Timeline of key trials and regulatory milestones'
 TAKE = [
     'Induction has moved from doublets to triplets to anti-CD38 quadruplets, now standard for transplant-eligible patients (PERSEUS) and for fit transplant-ineligible patients (IMROZ, CEPHEUS).',
     'Autologous transplant still improves progression-free survival after modern induction, but not overall survival (IFM 2009, DETERMINATION); deferral is reasonable for selected patients.',
-    'For older or frail patients, daratumumab-lenalidomide-dexamethasone (MAIA) was the first frontline regimen to show an overall survival benefit over a lenalidomide doublet.',
+    'For older or frail patients, daratumumab-lenalidomide-dexamethasone (MAIA) improved overall survival over lenalidomide-dexamethasone and remains a standard regimen.',
     'Lenalidomide maintenance is standard after transplant; how long to give it, and when to add a second agent, is still being defined.',
     'MRD negativity is now an accepted endpoint for accelerated approval, and a 2025 consensus gives a common genomic definition of high-risk disease.',
 ]

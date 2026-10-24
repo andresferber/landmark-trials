@@ -12,7 +12,7 @@ TAKE = [
     'Because lenalidomide and anti-CD38 antibodies now move to frontline and maintenance, the key questions at first relapse are lenalidomide refractoriness and prior anti-CD38 exposure, not the line number alone.',
     'Ciltacabtagene autoleucel (CARTITUDE-4) was the first cellular therapy to improve overall survival in myeloma, and it is approved from first relapse in lenalidomide-refractory disease.',
     'Teclistamab with daratumumab (MajesTEC-3) produced the largest progression-free survival effect yet seen in early relapse, but infection-related deaths remain a central concern with T-cell redirection.',
-    'Accelerated approvals based on response rates have been withdrawn when confirmatory trials failed or showed a survival signal (panobinostat, melflufen, single-agent belantamab), a recurring lesson for trainees.',
+    'Accelerated approvals have been withdrawn when confirmatory trials failed or showed a survival signal (melflufen, single-agent belantamab) or were never completed (panobinostat), a recurring lesson for trainees.',
     'The open problems are sequencing of BCMA-directed therapies, antigen escape, infection prevention and immune recovery, fixed-duration treatment, and access.',
 ]
 
@@ -20,17 +20,17 @@ TIMELINE = [
     ('2003', 'Bortezomib accelerated approval', 'bb'),
     ('2005', 'APEX: bortezomib full approval', 'bb'),
     ('2006', 'Lenalidomide-dexamethasone approved (MM-009/010)', 'bb'),
-    ('2013', 'Pomalidomide approved (MM-003)', 'bb'),
+    ('2013', 'Pomalidomide accelerated approval (phase 2 MM-002); MM-003 confirms the benefit', 'bb'),
     ('2015', 'Carfilzomib (ASPIRE), ixazomib and elotuzumab triplets; panobinostat accelerated approval', 'bb'),
     ('2016', 'Daratumumab triplets approved (CASTOR, POLLUX); carfilzomib-dexamethasone (ENDEAVOR)', 'cd38'),
     ('2019', 'Selinexor accelerated approval (STORM); venetoclax myeloma trials on partial clinical hold (BELLINI)', 'oth'),
     ('2020', 'Isatuximab (ICARIA-MM), DKd (CANDOR), SVd (BOSTON); belantamab accelerated approval', 'cd38'),
     ('2021', 'First CAR-T in myeloma (idecabtagene vicleucel); DPd and Isa-Kd; melflufen approved, then withdrawal announced; panobinostat withdrawn', 'imm'),
     ('2022', 'Ciltacabtagene autoleucel; teclistamab, the first BCMA bispecific; single-agent belantamab withdrawn (DREAMM-3)', 'imm'),
-    ('2023', 'Talquetamab (first GPRC5D agent) and elranatamab', 'imm'),
+    ('2023', 'Talquetamab (first GPRC5D agent) and elranatamab; CANOVA (venetoclax in t(11;14)) misses its PFS endpoint', 'imm'),
     ('2024', 'CAR-T moves to earlier relapse (KarMMa-3, CARTITUDE-4)', 'imm'),
     ('2025', 'Linvoseltamab; belantamab returns in combination (BVd, DREAMM-7)', 'oth'),
-    ('2026', 'Teclistamab-daratumumab at early relapse (MajesTEC-3); first phase 3 results for cereblon E3 ligase modulators (SUCCESSOR-2, EXCALIBER-RRMM); CANOVA misses its endpoint', 'imm'),
+    ('2026', 'Teclistamab-daratumumab at early relapse (MajesTEC-3); first phase 3 results for cereblon E3 ligase modulators (SUCCESSOR-2, EXCALIBER-RRMM)', 'imm'),
 ]
 
 BODY = """

@@ -4,7 +4,7 @@ TL_CAPTION = 'Timeline of key trials, risk tools and regulatory milestones'
 
 TAKE = [
     'For asymptomatic, low tumor burden disease, watch and wait remains standard: immediate chemotherapy did not improve survival, and rituximab alone delays the need for treatment without a proven survival gain.',
-    'For stage I–II disease, 24 Gy radiotherapy remains standard; adding rituximab-based therapy improved progression-free survival in TROG 99.03.',
+    'For stage I–II disease, 24 Gy radiotherapy remains standard; adding systemic therapy (CVP, or R-CVP once rituximab became available) improved progression-free survival in TROG 99.03.',
     'For advanced disease needing treatment, rituximab transformed induction; bendamustine-rituximab became the most widely used regimen, with obinutuzumab and lenalidomide-rituximab as alternatives.',
     'Rituximab maintenance roughly doubles progression-free survival without improving overall survival (PRIMA), so its use is individualized.',
     'Early progression within 2 years (POD24) and a positive end-of-induction PET identify the minority with poor outcomes.',
