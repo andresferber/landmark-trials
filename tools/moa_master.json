@@ -100,21 +100,21 @@
  },
  "gprc5d": {
   "l": "GPRC5D targeting",
-  "a": "Zhou D",
-  "j": "J Hematol Oncol",
-  "y": "2024",
-  "t": "Targeting GPRC5D for multiple myeloma therapy",
-  "p": "39342286",
-  "pmc": "PMC11439263"
+  "a": "Wang X",
+  "j": "Br J Haematol",
+  "y": "2025",
+  "t": "Emerging role of GPRC5D-directed immunotherapy in multiple myeloma: advances, resistance and combination strategies",
+  "p": "40879107",
+  "pmc": "PMC12624193"
  },
  "cd20": {
   "l": "Anti-CD20 antibodies",
-  "a": "Pavlasova G",
-  "j": "Haematologica",
-  "y": "2020",
-  "t": "The regulation and function of CD20: an \"enigma\" of B-cell biology and targeted therapy",
-  "p": "32482755",
-  "pmc": "PMC7271567"
+  "a": "Hasani R",
+  "j": "Exp Hematol",
+  "y": "2026",
+  "t": "CD20-targeted immunotherapies in B-cell malignancies: mechanistic and clinical advances",
+  "p": "42140572",
+  "pmc": ""
  },
  "btk": {
   "l": "BTK inhibitors (covalent and noncovalent)",

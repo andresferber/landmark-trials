@@ -35,7 +35,7 @@ All data is in the main `<script>`:
   row. Trials of strategy, transplant, radiotherapy, observation or conventional chemotherapy have none.
   For a new entry, reuse an existing key when the class matches. Once a year (the first update run in
   October), search PubMed for each key (review[pt], last 3 years) and replace a review only when a newer
-  one is clearly better: mechanism-focused, strong journal, not promotional, free full text preferred
+  one is clearly better. Andres prefers the most up-to-date, comprehensive, high-quality peer-reviewed review; who the authors are does not matter. Mechanism-focused, strong journal, not promotional; free full text preferred
   when quality is comparable. The master list is `tools/moa_master.json`; keep it in sync.
 - Pharma-bias rule (Andres): keep the content free of promotional influence. Never use or link
   company-produced educational material for physicians, drug advertising (media, social media or
