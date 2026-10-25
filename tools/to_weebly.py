@@ -73,6 +73,9 @@ GUARD = """
 .ltw .watch ul, .ltw .watch li { list-style: none !important; margin-left: 0 !important; padding-left: 0 !important; background: none !important; }
 .ltw button.share { background: none !important; box-shadow: none !important; color: var(--muted) !important; height: auto !important; padding: 4px 6px !important; text-transform: none !important; min-width: 0 !important; }
 .ltw .gloss dt { color: var(--fg) !important; text-transform: none !important; }
+.ltw dt.f-ep, .ltw dd.f-ep { background: var(--f-ep-bg) !important; }
+.ltw dt.f-res, .ltw dd.f-res { background: var(--f-res-bg) !important; }
+.ltw dt.f-tox, .ltw dd.f-tox { background: var(--f-tox-bg) !important; }
 .ltw .gloss summary { color: var(--fg) !important; list-style: revert !important; }
 .ltw a.report { color: var(--muted) !important; font-size: 12px !important; }
 .ltw .reportall { margin: 12px 0 0; }

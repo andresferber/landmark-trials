@@ -169,6 +169,14 @@
 .ltw .newdrugs .nd-log { padding-left: 20px; }
 .ltw .newdrugs .nd-log li { margin: 6px 0; font-size: 14px; }
 .ltw .newdrugs .nd-rules { font-size: 12.5px; color: var(--muted); margin-top: 16px; max-width: 72ch; }
+.ltw { --f-ep-bg: #eef1f5; --f-res-bg: #e7effb; --f-tox-bg: #fcf8e6; }
+.ltw ol.list dl, .ltw .newdrugs dl { column-gap: 0; }
+.ltw ol.list dt, .ltw .newdrugs dt { padding-right: 12px; }
+.ltw dt.f-ep, .ltw dd.f-ep { background: var(--f-ep-bg); }
+.ltw dt.f-res, .ltw dd.f-res { background: var(--f-res-bg); }
+.ltw dt.f-tox, .ltw dd.f-tox { background: var(--f-tox-bg); }
+.ltw dt.f-ep, .ltw dt.f-res, .ltw dt.f-tox { padding: 2px 12px 2px 8px; border-radius: 6px 0 0 6px; }
+.ltw dd.f-ep, .ltw dd.f-res, .ltw dd.f-tox { padding: 2px 8px 2px 0; border-radius: 0 6px 6px 0; }
 @media (max-width: 480px) {
 .ltw .trial { grid-template-columns: 1fr; gap: 4px; }
 .ltw dl { grid-template-columns: 1fr; gap: 0 0; }
@@ -199,6 +207,10 @@
 @media print {
 .ltw .tabs { display: none; }
 }
+@media (max-width: 480px) {
+.ltw dt.f-ep, .ltw dt.f-res, .ltw dt.f-tox { border-radius: 6px 6px 0 0; padding-bottom: 0; }
+.ltw dd.f-ep, .ltw dd.f-res, .ltw dd.f-tox { border-radius: 0 0 6px 6px; padding: 0 8px 4px 8px; }
+}
 
 .ltw { display: block; text-align: left; border-radius: 6px; }
 .ltw, .ltw * { box-sizing: border-box; }
@@ -220,6 +232,9 @@
 .ltw .watch ul, .ltw .watch li { list-style: none !important; margin-left: 0 !important; padding-left: 0 !important; background: none !important; }
 .ltw button.share { background: none !important; box-shadow: none !important; color: var(--muted) !important; height: auto !important; padding: 4px 6px !important; text-transform: none !important; min-width: 0 !important; }
 .ltw .gloss dt { color: var(--fg) !important; text-transform: none !important; }
+.ltw dt.f-ep, .ltw dd.f-ep { background: var(--f-ep-bg) !important; }
+.ltw dt.f-res, .ltw dd.f-res { background: var(--f-res-bg) !important; }
+.ltw dt.f-tox, .ltw dd.f-tox { background: var(--f-tox-bg) !important; }
 .ltw .gloss summary { color: var(--fg) !important; list-style: revert !important; }
 .ltw a.report { color: var(--muted) !important; font-size: 12px !important; }
 .ltw .reportall { margin: 12px 0 0; }
@@ -721,9 +736,9 @@ function render(){
           <span><b>Median F/U</b>${esc(t.fu)}</span>
         </div>
         <dl>
-          <dt>Endpoint</dt><dd>${esc(t.ep)}</dd>
-          <dt>Result</dt><dd class="result">${esc(t.r)} ${eviHTML(t)}</dd>
-          <dt>Key toxicity</dt><dd class="tox">${esc(t.tx)}</dd>
+          <dt class="f-ep">Endpoint</dt><dd class="f-ep">${esc(t.ep)}</dd>
+          <dt class="f-res">Result</dt><dd class="result f-res">${esc(t.r)} ${eviHTML(t)}</dd>
+          <dt class="f-tox">Key toxicity</dt><dd class="tox f-tox">${esc(t.tx)}</dd>
           ${MOAMAP[t.n] ? `<dt>Drug mechanism</dt><dd class="moas">${MOAHTML(t)}</dd>` : ""}
           <dt>Builds on</dt><dd>${esc(t.b)}</dd>
           <dt>Changed</dt><dd>${esc(t.i)}</dd>
@@ -793,7 +808,7 @@ render();
     panel.innerHTML = '<p class="nd-note">' + esc(NEWD.note) + (NEWD.scope ? ' ' + esc(NEWD.scope) : '') + ' Status checked ' + esc(NEWD.checked) + '.</p>' +
       (mods.length > 1 ? '<div class="nd-mods">' + [["all","All"]].concat(mods.map(m => [m, m])).map(([k, l]) => '<button type="button" class="chip" data-mod="' + esc(k) + '" aria-pressed="' + (k === mod) + '">' + esc(l) + '</button>').join("") + '</div>' : '') +
       items.map(d => '<div class="nd-item"><div class="nd-top"><h2 class="nd-name">' + esc(d.n) + '</h2><span class="nd-mod">' + esc(d.mod) + '</span><span class="nd-ev' + (/^Peer-reviewed/.test(d.ev) ? ' pr' : '') + '">' + esc(d.ev) + ' · ' + esc(d.pub) + '</span></div>' +
-        '<dl><dt>Target</dt><dd>' + esc(d.tgt) + '</dd><dt>Why it matters</dt><dd>' + esc(d.why) + '</dd><dt>Key data</dt><dd>' + esc(d.data) + '</dd><dt>Safety</dt><dd>' + esc(d.safety) + '</dd><dt>Next step</dt><dd>' + esc(d.next) + '</dd><dt>Sources</dt><dd class="nd-src">' + d.src.map(L).join(" · ") + '</dd></dl></div>').join("") +
+        '<dl><dt>Target</dt><dd>' + esc(d.tgt) + '</dd><dt>Why it matters</dt><dd>' + esc(d.why) + '</dd><dt class="f-res">Key data</dt><dd class="f-res">' + esc(d.data) + '</dd><dt class="f-tox">Safety</dt><dd class="f-tox">' + esc(d.safety) + '</dd><dt>Next step</dt><dd>' + esc(d.next) + '</dd><dt>Sources</dt><dd class="nd-src">' + d.src.map(L).join(" · ") + '</dd></dl></div>').join("") +
       '<h3>Moved on to phase 3 results</h3>' + log(NEWD.grad, "None so far.") +
       '<h3>Discontinued</h3>' + log(NEWD.disc, "None so far.") +
       '<p class="nd-rules">How this list is kept: agents with a new mechanism, target or modality (including phase 1 when the approach is new, and repurposed drugs with credible clinical data; no biosimilars and no preclinical-only agents). An agent moves to "Moved on" when phase 3 results are published, and to "Discontinued", with the reason and date, when development stops or a pivotal trial fails; discontinued entries are removed after 2 years. Checked at each scheduled update and after major meetings (ASH, ASCO, EHA, AACR, ESMO, IMS).</p>';

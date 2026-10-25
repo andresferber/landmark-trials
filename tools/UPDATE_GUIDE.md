@@ -20,6 +20,9 @@ All data is in the main `<script>`:
   (The MCL page keeps the same information in separate objects M, P, EXTRA, CITE, V, X, R.
   V and CITE are applied on top of T, and the card displays them: to change what a reader sees
   on the MCL page, edit V or CITE, not T. If a trial has both, keep them consistent.)
+- Card rows: Endpoint, Result and Key toxicity (and Key data / Safety in New drugs to watch) carry the
+  classes f-ep, f-res and f-tox, which give them the same subtle tint on every page. Keep those classes
+  when editing the card template; tools/newdrugs/install_fieldtint.py adds them to a new page.
 - `REG`: name -> registry IDs (NCT, ISRCTN or EudraCT), from the PubMed DataBank list or abstract.
 - `FT`: name -> `["pmc", PMCID]` (free full text, not embargoed), `["doi", DOI]` (publisher page),
   `["doi", DOI, "free"]` (free to read at the publisher, per Unpaywall) or
