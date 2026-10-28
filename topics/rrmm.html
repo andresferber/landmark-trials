@@ -177,6 +177,12 @@
 .ltw dt.f-tox, .ltw dd.f-tox { background: var(--f-tox-bg); }
 .ltw dt.f-ep, .ltw dt.f-res, .ltw dt.f-tox { padding: 2px 12px 2px 8px; border-radius: 6px 0 0 6px; }
 .ltw dd.f-ep, .ltw dd.f-res, .ltw dd.f-tox { padding: 2px 8px 2px 0; border-radius: 0 6px 6px 0; }
+.ltw { --rv-bg: #fbf8f1; --rv-stripe: #ae915a; --rv-ink: #7a5a22; }
+.ltw .review { border-left: 4px solid var(--rv-stripe); }
+.ltw .review > summary { background: var(--rv-bg); border-radius: 8px 11px 11px 8px; }
+.ltw .review[open] > summary { border-radius: 8px 11px 0 0; border-bottom: 1px solid var(--rule); margin-bottom: 14px; }
+.ltw .review .rv-kicker { color: var(--rv-ink); }
+.ltw .review .rv-open { background: var(--surface); border-color: var(--rv-stripe); color: var(--rv-ink); }
 @media (max-width: 480px) {
 .ltw .trial { grid-template-columns: 1fr; gap: 4px; }
 .ltw dl { grid-template-columns: 1fr; gap: 0 0; }
@@ -211,6 +217,9 @@
 .ltw dt.f-ep, .ltw dt.f-res, .ltw dt.f-tox { border-radius: 6px 6px 0 0; padding-bottom: 0; }
 .ltw dd.f-ep, .ltw dd.f-res, .ltw dd.f-tox { border-radius: 0 0 6px 6px; padding: 0 8px 4px 8px; }
 }
+@media print {
+.ltw .review > summary { background: none; }
+}
 
 .ltw { display: block; text-align: left; border-radius: 6px; }
 .ltw, .ltw * { box-sizing: border-box; }
@@ -242,6 +251,10 @@
 .ltw .moa b { color: var(--fg) !important; }
 .ltw .review .rv-title, .ltw .review h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; }
 .ltw .review > summary { list-style: none !important; }
+.ltw .review > summary { background: var(--rv-bg) !important; }
+.ltw .review { border-left: 4px solid var(--rv-stripe) !important; }
+.ltw .review .rv-kicker { color: var(--rv-ink) !important; }
+.ltw .review .rv-open { background: var(--surface) !important; border-color: var(--rv-stripe) !important; color: var(--rv-ink) !important; }
 .ltw .review { scroll-margin-top: 170px; }
 .ltw .review .rv-close { background: var(--bg) !important; color: var(--fg) !important; box-shadow: none !important; text-transform: none !important; letter-spacing: normal !important; height: auto !important; min-width: 0 !important; border: 1px solid var(--rule) !important; border-radius: 999px !important; padding: 9px 16px !important; font: 500 13px/1 var(--font-body) !important; }
 .ltw .review .rv-body ul { list-style: disc !important; padding-left: 20px !important; }

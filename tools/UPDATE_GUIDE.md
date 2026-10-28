@@ -23,6 +23,9 @@ All data is in the main `<script>`:
 - Card rows: Endpoint, Result and Key toxicity (and Key data / Safety in New drugs to watch) carry the
   classes f-ep, f-res and f-tox, which give them the same subtle tint on every page. Keep those classes
   when editing the card template; tools/newdrugs/install_fieldtint.py adds them to a new page.
+- Perspective bar: a light parchment tint with a gold left stripe (--rv-bg, --rv-stripe, --rv-ink) sets it
+  apart from the tab bar; the open reading area stays white. tools/review/install_persptint.py adds it to
+  a new page after build_persp.py.
 - `REG`: name -> registry IDs (NCT, ISRCTN or EudraCT), from the PubMed DataBank list or abstract.
 - `FT`: name -> `["pmc", PMCID]` (free full text, not embargoed), `["doi", DOI]` (publisher page),
   `["doi", DOI, "free"]` (free to read at the publisher, per Unpaywall) or

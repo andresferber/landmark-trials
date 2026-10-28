@@ -240,6 +240,17 @@ dd.f-ep, dd.f-res, dd.f-tox { padding: 2px 8px 2px 0; border-radius: 0 6px 6px 0
   dt.f-ep, dt.f-res, dt.f-tox { border-radius: 6px 6px 0 0; padding-bottom: 0; }
   dd.f-ep, dd.f-res, dd.f-tox { border-radius: 0 0 6px 6px; padding: 0 8px 4px 8px; }
 }
+
+/* Added Oct 28, 2026: warm parchment tint on the Perspective bar */
+:root { --rv-bg: #fbf8f1; --rv-stripe: #ae915a; --rv-ink: #7a5a22; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --rv-bg: #221e18; --rv-stripe: #c9a56a; --rv-ink: #dcbd85; } }
+:root[data-theme="dark"] { --rv-bg: #221e18; --rv-stripe: #c9a56a; --rv-ink: #dcbd85; }
+.review { border-left: 4px solid var(--rv-stripe); }
+.review > summary { background: var(--rv-bg); border-radius: 8px 11px 11px 8px; }
+.review[open] > summary { border-radius: 8px 11px 0 0; border-bottom: 1px solid var(--rule); margin-bottom: 14px; }
+.review .rv-kicker { color: var(--rv-ink); }
+.review .rv-open { background: var(--surface); border-color: var(--rv-stripe); color: var(--rv-ink); }
+@media print { .review > summary { background: none; } }
 </style>
 
 <div class="wrap">
