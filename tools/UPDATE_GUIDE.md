@@ -23,6 +23,13 @@ All data is in the main `<script>`:
 - Card rows: Endpoint, Result and Key toxicity (and Key data / Safety in New drugs to watch) carry the
   classes f-ep, f-res and f-tox, which give them the same subtle tint on every page. Keep those classes
   when editing the card template; tools/newdrugs/install_fieldtint.py adds them to a new page.
+- Drug mechanisms tab: one entry per drug class tested on the page (MOA keys used in MOAMAP), with a
+  plain description from tools/mechs/mech_master.json (shared by all pages), the mechanism review and
+  the trials that used it. When a new trial brings a new MOA key, write its description in
+  mech_master.json (two or three factual sentences, generic names, no promotional sources) and run
+  `python3 tools/mechs/install_mechtab.py tools/mechs/mech_master.json source/<key>.html`, which also
+  refreshes pages that already have the tab. A page whose MOAMAP uses a key with no description fails
+  the script on purpose.
 - Perspective bar: a light parchment tint with a gold left stripe (--rv-bg, --rv-stripe, --rv-ink) sets it
   apart from the tab bar; the open reading area stays white. tools/review/install_persptint.py adds it to
   a new page after build_persp.py.

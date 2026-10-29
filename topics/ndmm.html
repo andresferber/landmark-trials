@@ -182,6 +182,18 @@
 .ltw .review[open] > summary { border-radius: 8px 11px 0 0; border-bottom: 1px solid var(--rule); margin-bottom: 14px; }
 .ltw .review .rv-kicker { color: var(--rv-ink); }
 .ltw .review .rv-open { background: var(--surface); border-color: var(--rv-stripe); color: var(--rv-ink); }
+.ltw .mechs { margin-top: 14px; }
+.ltw .mechs a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.ltw .mechs .mx-note { font-size: 14px; color: var(--muted); margin: 0 0 6px; max-width: 72ch; }
+.ltw .mechs .mx-item { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+.ltw .mechs .mx-name { font-family: var(--font-display); font-weight: 650; font-size: 1.08rem; margin: 0 0 6px; }
+.ltw .mechs .mx-desc { margin: 0 0 8px; max-width: 78ch; font-size: 14.5px; line-height: 1.55; }
+.ltw .mechs .mx-rev, .ltw .mechs .mx-trials { margin: 4px 0 0; font-size: 14px; }
+.ltw .mechs .mx-k { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 8px; }
+.ltw .mechs .mx-trials { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.ltw .mechs a.mt { display: inline-block; text-decoration: none; color: var(--fg); border: 1px solid var(--rule); background: var(--surface); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
+.ltw .mechs a.mt:hover { border-color: var(--accent); color: var(--accent); }
+.ltw .mechs .mt-y { font: 500 11px var(--font-mono); color: var(--muted); margin-left: 4px; }
 @media (max-width: 480px) {
 .ltw .trial { grid-template-columns: 1fr; gap: 4px; }
 .ltw dl { grid-template-columns: 1fr; gap: 0 0; }
@@ -217,6 +229,9 @@
 }
 @media print {
 .ltw .review > summary { background: none; }
+}
+@media print {
+.ltw .mechs { display: none; }
 }
 
 .ltw { display: block; text-align: left; border-radius: 6px; }
@@ -271,6 +286,10 @@
 .ltw .tabs .tabmail { color: var(--accent) !important; }
 .ltw .newdrugs .nd-name, .ltw .newdrugs h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; }
 .ltw .newdrugs .nd-log { list-style: disc !important; padding-left: 20px !important; }
+.ltw .mechs .mx-name { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; font-size: 1.08rem !important; }
+.ltw .mechs a { color: var(--accent) !important; }
+.ltw .mechs a.mt { color: var(--fg) !important; text-decoration: none !important; background: var(--surface) !important; border: 1px solid var(--rule) !important; border-radius: 999px !important; padding: 3px 10px !important; }
+.ltw .mechs .mx-k, .ltw .mechs .mt-y { color: var(--muted) !important; }
 .ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 
 </style>
@@ -337,9 +356,11 @@
     <button type="button" role="tab" aria-selected="true" data-tab="trials">Landmark trials</button>
     <button type="button" role="tab" aria-selected="false" data-tab="watch">Trials to watch<span class="tcount"></span></button>
     <button type="button" role="tab" aria-selected="false" data-tab="newdrugs">New drugs to watch<span class="tcount"></span></button>
+    <button type="button" role="tab" aria-selected="false" data-tab="mech">Drug mechanisms<span class="tcount"></span></button>
     <a class="tabmail" href="mailto:andresferber@hotmail.com?subject=Landmark%20trials%20%28Newly%20diagnosed%20myeloma%29%3A%20comment">✉ Send a comment</a>
   </div>
   <section class="newdrugs" hidden aria-label="New drugs to watch"></section>
+  <section class="mechs" hidden aria-label="Drug mechanisms"></section>
 
   <div class="controls">
     <div class="chips" role="group" aria-label="Filter by category" id="ndmm-chips"></div>
@@ -655,6 +676,7 @@ T.forEach(t => { t.trn = REG[t.n] || []; t.ft = FT[t.n] || null; });
 // Added Oct 23, 2026. MOA: one recent review per drug or drug class on mechanism of action and resistance; MOAMAP: trial -> MOA keys.
 const MOA = {"cd38": {"l": "Anti-CD38 antibodies", "a": "Horenstein AL", "j": "Front Immunol", "y": "2025", "t": "Monoclonal anti-CD38 therapy in human myeloma: retrospects and prospects", "p": "40013150", "pmc": "PMC11860881"}, "imid": {"l": "IMiDs and CELMoDs (cereblon modulators)", "a": "Bazarbachi AH", "j": "J Clin Oncol", "y": "2026", "t": "Immunomodulatory drugs and cereblon E3 ligase modulators in multiple myeloma: 30 years in the making", "p": "42721415", "pmc": ""}, "pi": {"l": "Proteasome inhibitors", "a": "Patiño-Escobar B", "j": "Trends Pharmacol Sci", "y": "2023", "t": "Overcoming proteasome inhibitor resistance in the immunotherapy era", "p": "37344251", "pmc": ""}};
 const MOAMAP = {"IFM 2005-01: bortezomib-dex induction (Harousseau)": ["pi"], "GIMEMA VTD vs TD (Cavo)": ["pi"], "CASSIOPEIA (Moreau)": ["cd38"], "GRIFFIN (Voorhees)": ["cd38"], "FORTE (Gay)": ["pi"], "MASTER (Costa)": ["cd38"], "GMMG-HD7 (Goldschmidt)": ["cd38"], "PERSEUS (Sonneveld)": ["cd38"], "EMN24 IsKia (Gay)": ["cd38"], "IFM 99-06: MPT (Facon)": ["imid"], "VISTA (San Miguel)": ["pi"], "FIRST (Benboubker)": ["imid"], "SWOG S0777 (Durie)": ["pi"], "ALCYONE (Mateos)": ["cd38"], "MAIA (Facon)": ["cd38"], "ECOG E1A11 ENDURANCE (Kumar)": ["pi"], "IMROZ (Facon)": ["cd38"], "CEPHEUS (Usmani)": ["cd38"], "CALGB 100104 (McCarthy)": ["imid"], "IFM 2005-02 (Attal)": ["imid"], "Myeloma XI maintenance (Jackson)": ["imid"], "Continuous vs fixed-duration lenalidomide (Kumar)": ["imid"]};
+const MECH = {"cd38": "Monoclonal antibodies against CD38, which is highly expressed on myeloma cells. They kill through complement, antibody-dependent cellular cytotoxicity and phagocytosis, and also deplete CD38-positive immunosuppressive cells. Daratumumab and isatuximab.", "imid": "Bind cereblon and redirect its ubiquitin ligase to destroy the transcription factors Ikaros and Aiolos, which kills myeloma cells and activates T and NK cells. Lenalidomide and pomalidomide are IMiDs; the newer CELMoDs (iberdomide, mezigdomide) bind cereblon more tightly and degrade the targets faster and more completely, so they keep activity in IMiD-refractory disease.", "pi": "Block the proteasome, the cell's machinery for clearing unwanted proteins, so misfolded proteins build up and trigger cell death. Myeloma cells, which make large amounts of immunoglobulin, are especially sensitive; in mantle cell lymphoma, bortezomib also suppresses NF-κB survival signalling. Bortezomib binds reversibly, carfilzomib irreversibly; ixazomib is taken by mouth."};
 const MOAURL = m => m.pmc ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + m.pmc + '/' : 'https://pubmed.ncbi.nlm.nih.gov/' + m.p + '/';
 const MOAHTML = t => (MOAMAP[t.n] || []).map(k => MOA[k]).filter(Boolean).map(m => '<span class="moa"><b>' + esc(m.l) + ':</b> <a href="' + esc(MOAURL(m)) + '" target="_blank" rel="noopener" title="' + esc(m.t) + '">' + esc(m.a) + ', ' + esc(m.j) + ' ' + esc(m.y) + ' ↗</a>' + (m.pmc ? ' <span class="moafree">free</span>' : '') + '</span>').join('');
 // NEWD: new drugs to watch (shared per disease).
@@ -805,6 +827,33 @@ render();
     listEl.style.display = which === "trials" ? "" : "none";
     if (watch) watch.style.display = (which === "newdrugs" || !nW) ? "none" : "";
     if (panel) panel.hidden = which !== "newdrugs";
+    if (mpanel) mpanel.hidden = which !== "mech";
+    if (watch && which === "mech") watch.style.display = "none";
+  }
+  // Drug mechanisms tab: classes tested on this page, how they work, the review, and the trials that used them.
+  const mpanel = root.querySelector(".mechs");
+  const mKeys = (typeof MOA !== "undefined" && typeof MOAMAP !== "undefined" && typeof MECH !== "undefined")
+    ? Object.keys(MOA).filter(k => MECH[k] && T.some(t => (MOAMAP[t.n] || []).includes(k))) : [];
+  const cm = tabs.querySelector('[data-tab="mech"] .tcount'); if (cm) cm.textContent = mKeys.length;
+  if (mpanel && mKeys.length) {
+    mpanel.innerHTML = '<p class="mx-note">Each drug class tested in the trials on this page: how it works, a recent peer-reviewed review on mechanism and resistance, and the trials that used it. Select a trial to jump to its card.</p>' +
+      mKeys.map(k => { const m = MOA[k];
+        const trials = T.filter(t => (MOAMAP[t.n] || []).includes(k)).sort((a, b) => a.y - b.y);
+        return '<div class="mx-item"><h2 class="mx-name">' + esc(m.l) + '</h2><p class="mx-desc">' + esc(MECH[k]) + '</p>' +
+          '<p class="mx-rev"><span class="mx-k">Review</span> <a href="' + esc(MOAURL(m)) + '" target="_blank" rel="noopener">' + esc(m.a + ', ' + m.j + ' ' + m.y) + ' ↗</a>' + (m.pmc ? ' <span class="moafree">free</span>' : '') + '</p>' +
+          '<p class="mx-trials"><span class="mx-k">Trials on this page</span> ' + trials.map(t => '<a class="mt" href="#t-' + PAGEKEY + '-' + t.slug + '" data-slug="' + t.slug + '">' + esc(t.n) + ' <span class="mt-y">' + t.y + '</span></a>').join("") + '</p></div>'; }).join("");
+    mpanel.addEventListener("click", e => {
+      const a = e.target.closest("a.mt"); if (!a) return;
+      e.preventDefault();
+      show("trials");
+      const first = chipsEl.querySelector(".chip");
+      if (first && first.getAttribute("aria-pressed") !== "true") first.click();
+      if (qEl.value) { qEl.value = ""; render(); }
+      const li = listEl.querySelector('li[data-trial="' + a.getAttribute("data-slug") + '"]');
+      if (!li) return;
+      li.scrollIntoView({ behavior: "smooth", block: "start" });
+      li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+    });
   }
   tabs.addEventListener("click", e => {
     const b = e.target.closest("button[data-tab]"); if (!b) return;

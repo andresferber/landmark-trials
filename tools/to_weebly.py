@@ -105,6 +105,10 @@ GUARD = """
 .ltw .tabs .tabmail { color: var(--accent) !important; }
 .ltw .newdrugs .nd-name, .ltw .newdrugs h3 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; }
 .ltw .newdrugs .nd-log { list-style: disc !important; padding-left: 20px !important; }
+.ltw .mechs .mx-name { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; font-size: 1.08rem !important; }
+.ltw .mechs a { color: var(--accent) !important; }
+.ltw .mechs a.mt { color: var(--fg) !important; text-decoration: none !important; background: var(--surface) !important; border: 1px solid var(--rule) !important; border-radius: 999px !important; padding: 3px 10px !important; }
+.ltw .mechs .mx-k, .ltw .mechs .mt-y { color: var(--muted) !important; }
 .ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 """
 
