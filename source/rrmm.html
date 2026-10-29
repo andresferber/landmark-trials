@@ -272,6 +272,12 @@ dd.f-ep, dd.f-res, dd.f-tox { padding: 2px 8px 2px 0; border-radius: 0 6px 6px 0
 /* Added Oct 28, 2026: an open tab closes on a second click; the x is the cue */
 .tabs button[data-tab]:not([data-tab="trials"])[aria-selected="true"]::after { content: "\00d7"; margin-left: 8px; font-weight: 500; color: var(--muted); }
 .tabs button[data-tab]:not([data-tab="trials"])[aria-selected="true"]:hover::after { color: var(--fg); }
+
+/* Added Oct 28, 2026: tab bar pinned while a tab other than Landmark trials is open */
+.tabs-ph { margin-top: 18px; }
+.tabs.tabs-pinned { position: fixed; z-index: 9000; margin-top: 0; border-radius: 0 0 10px 10px; box-shadow: 0 6px 14px -8px rgba(16,24,40,.35); }
+@media print { .tabs.tabs-pinned { position: static; } }
+@media (max-width: 560px) { .tabs.tabs-pinned { padding-top: 2px; } .tabs.tabs-pinned button { padding: 8px 10px; } .tabs.tabs-pinned .tabmail { display: none; } }
 </style>
 
 <div class="wrap">
@@ -851,6 +857,7 @@ render();
       const a = e.target.closest("a.mt"); if (!a) return;
       e.preventDefault();
       show("trials");
+      tabs.dispatchEvent(new Event("tabschange"));
       const first = chipsEl.querySelector(".chip");
       if (first && first.getAttribute("aria-pressed") !== "true") first.click();
       if (qEl.value) { qEl.value = ""; render(); }
@@ -866,12 +873,75 @@ render();
     // Clicking the tab that is already open closes it and returns to the trial list.
     if (w !== "trials" && b.getAttribute("aria-selected") === "true") {
       show("trials");
-      tabs.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      tabs.dispatchEvent(new Event("tabschange"));
+      if (tabs._scrollHome) tabs._scrollHome(); else tabs.scrollIntoView({ behavior: "smooth", block: "nearest" });
       return;
     }
     show(w);
+    tabs.dispatchEvent(new Event("tabschange"));
   });
   show("trials");
+})();
+(function pinTabs(){
+  // Pin the tab bar while a tab other than Landmark trials is open.
+  const listEl = document.getElementById("list");
+  const root = listEl.parentNode;
+  const tabs = root.querySelector(".tabs");
+  if (!tabs) return;
+  const ph = document.createElement("div");
+  ph.className = "tabs-ph"; ph.hidden = true;
+  tabs.parentNode.insertBefore(ph, tabs);
+  let pinned = false;
+  function topOffset() {
+    // Below the website's pinned topic title bar, or any fixed site header; 0 on the standalone page.
+    const h = document.querySelector(".lta-head.lta-pinned");
+    if (h) return Math.max(0, h.getBoundingClientRect().bottom);
+    let off = 0;
+    try {
+      (document.elementsFromPoint(window.innerWidth / 2, 2) || []).forEach(el => {
+        if (root.contains(el)) return;
+        for (let n = el; n && n !== document.body; n = n.parentElement) {
+          const p = getComputedStyle(n).position;
+          if (p === "fixed" || p === "sticky") {
+            const r = n.getBoundingClientRect();
+            if (r.top <= 2 && r.bottom > off && r.bottom < window.innerHeight * 0.4) off = r.bottom;
+            break;
+          }
+        }
+      });
+    } catch (e) {}
+    return off;
+  }
+  function unpin() {
+    if (!pinned) return;
+    tabs.classList.remove("tabs-pinned");
+    tabs.style.top = tabs.style.left = tabs.style.width = "";
+    ph.hidden = true; pinned = false;
+  }
+  function update() {
+    const sel = tabs.querySelector('button[aria-selected="true"]');
+    const active = !!sel && sel.getAttribute("data-tab") !== "trials";
+    const off = topOffset();
+    const r = (pinned ? ph : tabs).getBoundingClientRect();
+    const rr = root.getBoundingClientRect();
+    const h = tabs.offsetHeight;
+    if (active && r.top < off && rr.bottom > off + h + 40) {
+      if (!pinned) { ph.style.height = h + "px"; ph.hidden = false; tabs.classList.add("tabs-pinned"); pinned = true; }
+      const pr = ph.getBoundingClientRect();
+      tabs.style.top = off + "px"; tabs.style.left = pr.left + "px"; tabs.style.width = pr.width + "px";
+    } else unpin();
+  }
+  let ticking = false;
+  const req = () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; update(); }); } };
+  window.addEventListener("scroll", req, { passive: true });
+  document.addEventListener("scroll", req, { passive: true, capture: true });
+  window.addEventListener("resize", req);
+  tabs.addEventListener("tabschange", () => { unpin(); req(); });
+  // Closing a tab returns to the top of the trial list, just below any pinned header.
+  tabs._scrollHome = () => {
+    const y = tabs.getBoundingClientRect().top + window.pageYOffset - topOffset() - 8;
+    if (tabs.getBoundingClientRect().top < topOffset()) window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+  };
 })();
 (function setupShare(){
   const listEl = document.getElementById("list");

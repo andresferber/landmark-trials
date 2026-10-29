@@ -35,6 +35,7 @@ JS_NEW_SHOW = '''    if (panel) panel.hidden = which !== "newdrugs";
       const a = e.target.closest("a.mt"); if (!a) return;
       e.preventDefault();
       show("trials");
+      tabs.dispatchEvent(new Event("tabschange"));
       const first = chipsEl.querySelector(".chip");
       if (first && first.getAttribute("aria-pressed") !== "true") first.click();
       if (qEl.value) { qEl.value = ""; render(); }

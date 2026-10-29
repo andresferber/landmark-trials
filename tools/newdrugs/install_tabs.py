@@ -143,10 +143,12 @@ JS = '''
     // Clicking the tab that is already open closes it and returns to the trial list.
     if (w !== "trials" && b.getAttribute("aria-selected") === "true") {
       show("trials");
-      tabs.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      tabs.dispatchEvent(new Event("tabschange"));
+      if (tabs._scrollHome) tabs._scrollHome(); else tabs.scrollIntoView({ behavior: "smooth", block: "nearest" });
       return;
     }
     show(w);
+    tabs.dispatchEvent(new Event("tabschange"));
   });
   show("trials");
 })();

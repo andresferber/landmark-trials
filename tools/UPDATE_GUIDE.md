@@ -23,6 +23,10 @@ All data is in the main `<script>`:
 - Card rows: Endpoint, Result and Key toxicity (and Key data / Safety in New drugs to watch) carry the
   classes f-ep, f-res and f-tox, which give them the same subtle tint on every page. Keep those classes
   when editing the card template; tools/newdrugs/install_fieldtint.py adds them to a new page.
+- Tabs: clicking an open tab (Trials to watch, New drugs to watch, Drug mechanisms) closes it and returns to
+  the trial list; while one is open the tab bar stays pinned at the top (on the website, just below the
+  pinned topic title). Build order for a new page: tools/newdrugs/install_tabs.py, install_fieldtint.py,
+  tools/mechs/install_mechtab.py, then tools/newdrugs/install_tabpin.py (it fails if the tab handler is missing).
 - Drug mechanisms tab: one entry per drug class tested on the page (MOA keys used in MOAMAP), with a
   plain description from tools/mechs/mech_master.json (shared by all pages), the mechanism review and
   the trials that used it. When a new trial brings a new MOA key, write its description in
