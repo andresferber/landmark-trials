@@ -139,7 +139,14 @@ JS = '''
   }
   tabs.addEventListener("click", e => {
     const b = e.target.closest("button[data-tab]"); if (!b) return;
-    show(b.getAttribute("data-tab"));
+    const w = b.getAttribute("data-tab");
+    // Clicking the tab that is already open closes it and returns to the trial list.
+    if (w !== "trials" && b.getAttribute("aria-selected") === "true") {
+      show("trials");
+      tabs.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      return;
+    }
+    show(w);
   });
   show("trials");
 })();

@@ -194,6 +194,8 @@
 .ltw .mechs a.mt { display: inline-block; text-decoration: none; color: var(--fg); border: 1px solid var(--rule); background: var(--surface); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
 .ltw .mechs a.mt:hover { border-color: var(--accent); color: var(--accent); }
 .ltw .mechs .mt-y { font: 500 11px var(--font-mono); color: var(--muted); margin-left: 4px; }
+.ltw .tabs button[data-tab]:not([data-tab="trials"])[aria-selected="true"]::after { content: "\00d7"; margin-left: 8px; font-weight: 500; color: var(--muted); }
+.ltw .tabs button[data-tab]:not([data-tab="trials"])[aria-selected="true"]:hover::after { color: var(--fg); }
 @media (max-width: 480px) {
 .ltw .trial { grid-template-columns: 1fr; gap: 4px; }
 .ltw dl { grid-template-columns: 1fr; gap: 0 0; }
@@ -344,9 +346,9 @@
 
   <div class="tabs" role="tablist" aria-label="Page sections">
     <button type="button" role="tab" aria-selected="true" data-tab="trials">Landmark trials</button>
-    <button type="button" role="tab" aria-selected="false" data-tab="watch">Trials to watch<span class="tcount"></span></button>
-    <button type="button" role="tab" aria-selected="false" data-tab="newdrugs">New drugs to watch<span class="tcount"></span></button>
-    <button type="button" role="tab" aria-selected="false" data-tab="mech">Drug mechanisms<span class="tcount"></span></button>
+    <button type="button" role="tab" aria-selected="false" data-tab="watch" title="Click again to return to the trial list">Trials to watch<span class="tcount"></span></button>
+    <button type="button" role="tab" aria-selected="false" data-tab="newdrugs" title="Click again to return to the trial list">New drugs to watch<span class="tcount"></span></button>
+    <button type="button" role="tab" aria-selected="false" data-tab="mech" title="Click again to return to the trial list">Drug mechanisms<span class="tcount"></span></button>
     <a class="tabmail" href="mailto:andresferber@hotmail.com?subject=Landmark%20trials%20%28Smoldering%20myeloma%29%3A%20comment">✉ Send a comment</a>
   </div>
   <section class="newdrugs" hidden aria-label="New drugs to watch"></section>
@@ -759,7 +761,14 @@ render();
   }
   tabs.addEventListener("click", e => {
     const b = e.target.closest("button[data-tab]"); if (!b) return;
-    show(b.getAttribute("data-tab"));
+    const w = b.getAttribute("data-tab");
+    // Clicking the tab that is already open closes it and returns to the trial list.
+    if (w !== "trials" && b.getAttribute("aria-selected") === "true") {
+      show("trials");
+      tabs.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      return;
+    }
+    show(w);
   });
   show("trials");
 })();
