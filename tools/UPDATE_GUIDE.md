@@ -185,15 +185,25 @@ use it when available. If PubMed cannot be reached, use WebSearch and say so in 
 SendUserMessage with a short summary: what was added or changed (trial, source), or
 "No new <topic> trials, commentaries, regulatory changes or trial-status changes since <date>."
 If the website was updated, add: "The Landmark Trials page on andresferber.org now shows this update."
-Mention suggested core trials if any. List sources as markdown links. If "PDFs needed" is not empty,
+Mention suggested core trials if any.
+Add a "Worth a look (not added)" section whenever you found papers or trials that do not meet the rules
+(the phase 2 bar, the WATCH criteria, the NEWD criteria) but may interest Andres: for example a notable
+phase 2 trial in another journal, a large secondary analysis, an influential single-center series or a
+strong meeting abstract. For each give the citation with its PubMed (or registry) link, one line on why
+it is interesting, and which rule it misses, and say he can reply "include <name>" to add it. Do not add
+these yourself. If none, leave the section out. List sources as markdown links. If "PDFs needed" is not empty,
 end with that section (short citation, PubMed link, what is missing) and say he can attach the PDFs in
 a reply to this message.
 
-## 6. If Andres replies with PDFs
+## 6. If Andres replies "include <name>"
+Add the trial as a normal entry (verified as in section 3), republish and push as in section 4, and
+reply with one line saying it is live.
+
+## 7. If Andres replies with PDFs
 Read them, fill in the missing details (mark each value "(full paper)"), then publish as in step 4
 and confirm what changed.
 
-## 7. Applying a proofread report
+## 8. Applying a proofread report
 A quarterly scheduled proofread (15th of Jan, Apr, Jul, Oct) runs in a fresh session, reports only,
 and sends Andres a findings list. When he brings that list to a session to fix:
 - Verify each finding against its source before changing anything; the proofreader can be wrong.
