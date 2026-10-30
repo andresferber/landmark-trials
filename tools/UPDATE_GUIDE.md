@@ -124,7 +124,11 @@ All data is in the main `<script>`:
   (new numbers with their follow-up time; the new paper as `extra`) instead of a new entry.
 - New editorials, comments or correspondence on entries (efetch XML CommentsCorrections
   RefType="CommentIn", or editorial/comment publication types). Add to `cm`.
-- FDA/EMA actions; NCCN version changes; major meetings (ASH, ASCO, EHA, IMS, ICML) via WebSearch.
+- FDA/EMA actions; NCCN version changes; major meetings (ASH, ASCO, EHA, ESMO, IMS, ICML, AACR) held in
+  the window, via WebSearch of the meeting's abstracts and reports. Meeting-only results are not new `T`
+  entries: they can update the watch lists (WATCH status, NEWD key data, labeled "meeting data, not yet
+  peer-reviewed"), or go under "Worth a look (not added)" in the summary; the card is added when the full
+  paper appears.
 - Trials to watch: for each `WATCH` item, query ClinicalTrials.gov
   (`https://clinicaltrials.gov/api/v2/studies/<NCT>?fields=NCTId,BriefTitle,Acronym,OverallStatus,PrimaryCompletionDate,Phases`)
   and update `st` (status) and `pcd` (primary completion, with "(estimated)" when the registry says
