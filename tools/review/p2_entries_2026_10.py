@@ -234,4 +234,20 @@ FLR = [
   reg_ids=["NCT02030834"], ft=["pmc", "PMC5788566"], moa=["cd19car"]),
 ]
 
+RRMM_ADDED_OCT30 = [
+ dict(y=2013, n="PANORAMA-2 (Richardson)", s="bb", ph="Phase 2",
+  d="Panobinostat + bortezomib-dexamethasone in bortezomib-refractory disease after ≥2 prior lines including an immunomodulatory drug",
+  ep="ORR", r="ORR 34.5% (1 near-CR, 18 PR); clinical benefit rate 52.7%; median PFS 5.4 mo; median DOR 6.0 mo",
+  N="55", hr="n/a (single arm)", fu="—", c="Blood 2013;122:2331", p=23950178,
+  b="Tested whether an HDAC inhibitor could restore bortezomib sensitivity, on the preclinical rationale of dual aggresome and proteasome blockade.",
+  i="Showed that panobinostat can recapture responses in bortezomib-refractory disease, which the phase 3 PANORAMA-1 trial excluded.",
+  q="Is the benefit worth the thrombocytopenia, fatigue and diarrhea? Would an all-oral or lower-intensity schedule be better tolerated?",
+  cm=[[24092922, "Moreau P, Blood 2013", "Panobinostat to revert bortezomib resistance"]],
+  reg="No approval from this trial; the FDA accelerated approval of panobinostat (February 23, 2015) rested on a PANORAMA-1 subgroup, and the US approval was withdrawn (November 2021).",
+  gl="Rarely used now.", acc="—",
+  tox="Grade 3–4 thrombocytopenia 63.6%, fatigue 20.0%, diarrhea 20.0%; 1 grade 3 peripheral neuropathy",
+  reg_ids=["NCT01083602"], ft=["doi", "10.1182/blood-2013-01-481325"], moa=["hdac"]),
+]
+RRMM += RRMM_ADDED_OCT30
+
 PAGES = {"mcl": MCL, "smm": SMM, "ndmm": NDMM, "rrmm": RRMM, "flu": FLU, "flr": FLR}
