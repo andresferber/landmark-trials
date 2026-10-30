@@ -104,8 +104,20 @@ All data is in the main `<script>`:
   under the footer: "Created by Andres Ferber, MD, with the assistance of Claude (Anthropic)."
 
 ## 2. What to look for (window: since the topic's last update date in topics.json)
-- New PubMed papers: phase 3 and practice-changing phase 2 trials for the topic, and the named
+- New PubMed papers: phase 3 trials, phase 2 trials that meet the phase 2 bar below, and the named
   trials in the task prompt.
+- Phase 2 bar (Andres, Oct 30, 2026). Add the primary report of a phase 2 or phase 1/2 trial on the
+  topic when (a) it is published in N Engl J Med or Nat Med; or (b) it is published in Blood or
+  J Clin Oncol and led to an FDA or EMA approval, changed a guideline, or defined a regimen still in use;
+  or (c) in any journal, it was the basis of an approval or is otherwise practice-changing. Phase 1
+  dose-escalation reports, secondary or correlative analyses and long-term follow-up do not qualify as
+  new entries (follow-up updates the existing card). Search: the topic terms AND
+  ("N Engl J Med"[ta] OR "Nat Med"[ta] OR "Blood"[ta] OR "J Clin Oncol"[ta] OR "Lancet"[ta] OR
+  "Lancet Oncol"[ta] OR "Lancet Haematol"[ta] OR "JAMA Oncol"[ta]) AND ("Clinical Trial, Phase II"[pt]
+  OR "phase 2"[ti] OR "phase II"[ti] OR "phase 1/2"[ti] OR "phase I/II"[ti]), in the window. In the
+  summary, list each phase 2 paper considered and why it was added or skipped. On the MCL page, a new
+  entry also needs a `V` entry {r, N, fu} (that is what shows "✓ abstract"); tools/review/add_entries.py
+  does this and the other objects for a list of entries.
 - Follow-up of every trial already on the page: search PubMed for papers in the window by each
   registry ID in `REG` (the ID itself as the search term) and by trial name or acronym with first
   author. Long-term follow-up, final OS and important secondary analyses update the existing entry
@@ -118,8 +130,13 @@ All data is in the main `<script>`:
   and update `st` (status) and `pcd` (primary completion, with "(estimated)" when the registry says
   so). When a watched trial publishes its primary results, remove it from `WATCH` and, if it is
   landmark-level, add it to `T`. Add newly started phase 3 trials that could change practice for the
-  topic (search `https://clinicaltrials.gov/api/v2/studies?query.cond=<condition>&filter.overallStatus=RECRUITING,ACTIVE_NOT_RECRUITING&query.term=AREA[Phase]PHASE3`);
-  keep the list to about 6-10 items. Update `WATCH.note` with the check date.
+  topic (search `https://clinicaltrials.gov/api/v2/studies?query.cond=<condition>&filter.overallStatus=RECRUITING,ACTIVE_NOT_RECRUITING&query.term=AREA[Phase]PHASE3`).
+  Also list up to 3 ongoing phase 2 trials designed to support an approval (registrational: single-arm
+  or randomized, efficacy primary endpoint such as ORR by independent review, usually industry-sponsored
+  with about 80 or more patients, not phase 1/2 dose finding), with `ph` "Phase 2 (registrational)"
+  (search the same way with `AREA[Phase]PHASE2 AND AREA[LeadSponsorClass]INDUSTRY`, then judge each).
+  When such a trial publishes its primary results, it leaves `WATCH` and is added to `T` if it meets the
+  phase 2 bar. Keep the list to about 6-12 items. Update `WATCH.note` with the check date.
   If ClinicalTrials.gov cannot be reached, leave `WATCH` unchanged and say so.
 
 How to search PubMed: curl to `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/`
