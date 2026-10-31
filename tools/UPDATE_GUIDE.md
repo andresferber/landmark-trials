@@ -97,6 +97,37 @@ All data is in the main `<script>`:
 - `CORE`: names of core teaching trials. Andres chooses these: never add or remove names yourself.
   If a new trial looks core-worthy, suggest it in the summary.
 - `WATCH`: `{note, items:[{n, nct, ph, d, ep, st, pcd, note}]}`: ongoing trials to watch.
+- Prognosis tab (Andres, Oct 31, 2026; pilot on ndmm only). Two sections:
+  - Established: every `T` entry with a `PROG` record (category "risk"). `PROG`: name ->
+    `{pt: "model"|"bio"|"resp", pk: kind, val: validation, sh: short chip label}`. Kind is one of
+    Prognostic, Predictive, Prognostic and predictive, Surrogate endpoint, Prognostic; surrogate
+    candidate, Consensus definition: state it measuredly, never upgrade it. Inclusion: externally
+    validated, or adopted in an IMWG or IMS consensus, a guideline or a regulatory decision. Shown
+    oldest first within each group, with group headings. Single-center series and unvalidated
+    signatures go under "Worth a look (not added)".
+  - `PROGMAP`: trial name -> `[[prognostic entry name, how it was used]]`, only for design-level use
+    (endpoint, eligibility, stratification, treatment assignment) confirmed from the abstract or the
+    card's verified endpoint; never for "outcomes were also reported by". Shown as chips both ways.
+  - Markers to watch (`NEWM`, shared per disease; myeloma: tools/prognosis/myeloma_markers.json).
+    Peer-reviewed only (meeting data may update an entry, labelled as such), tested in more than one
+    cohort or a clearly new approach. Each entry: n, kind, type, ev (one of "Validated, not yet
+    practical", "Independent validation", "Discovery only"), pub, last (YYYY-MM of newest evidence),
+    why, cohort, data, adj (adjusted for R-ISS/R2-ISS/cytogenetics?), missing, status, next, src,
+    optional hist, and cites {pmid, total, recent}. Ordered by ev, then newest evidence.
+  - Each update: for each marker, count citing papers (elink pubmed_pubmed_citedin; total and last
+    24 months) and screen the new ones for validation studies (independent cohort, adjusted for
+    established factors); update the entry and `last`. Lifecycle: graduates to Established when
+    validated and recognized in a consensus or guideline, or measurable with standard tests (propose
+    it in the summary; Andres decides); moves to `failed` (with reason and date; removed after 2
+    years) when an independent study fails to confirm it; when no new validation study has appeared
+    for 24 months, propose removal in the summary. Removed markers go to `retired`
+    `[{n, pmid, removed}]` (not shown); in the first update run each October, re-run the
+    citing-paper check on `retired` and list any revival under "Worth a look (not added)".
+  - Build: after tools/mechs/install_mechtab.py, run tools/prognosis/<key>_entries.py (topic data)
+    and `python3 tools/prognosis/install_progtab.py tools/prognosis/myeloma_markers.json
+    source/<key>.html` (rerunnable; also refreshes `NEWM`). When editing markers, edit the JSON and
+    rerun the installer on every page that has the tab. Do not extend the tab to other topics
+    without Andres's approval.
 - Values marked "full paper" were checked against the full publication: keep them unless a newer
   paper supersedes them. The evidence tag ("✓ abstract" / "✓ abstract + full paper") is computed
   automatically from those markers.
