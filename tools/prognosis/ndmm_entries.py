@@ -73,7 +73,7 @@ NEW = [
       i="Concluded that MRD is reasonably likely to predict PFS benefit, supporting MRD as an accelerated-approval endpoint.",
       q="Does 12-month MRD predict OS? Does the relationship hold for new drug classes such as T-cell engagers?",
       cm=[[39052265, "Costa LJ, Blood 2024", "MRD accelerating myeloma drug development"]],
-      reg="Evidence for MRD as an accelerated-approval endpoint; ODAC voted in favor on April 12, 2024 (role of this analysis in the vote: verify).",
+      reg="Presented by its lead author at the FDA advisory committee (ODAC) meeting of April 12, 2024, alongside analyses by the FDA and i2TEAMM; ODAC voted 12–0 that the data support MRD as an accelerated-approval endpoint in myeloma (confirmed October 31, 2026).",
       gl="Guideline placement not checked (NCCN not checked).", acc="—"),
  dict(y=2022, n="Sustained MRD in MAIA and ALCYONE (San-Miguel)", s="risk", ph="Secondary analysis",
       d="MRD by NGS (10⁻⁵) in patients reaching ≥CR in two phase 3 transplant-ineligible trials",
