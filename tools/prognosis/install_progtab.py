@@ -49,6 +49,13 @@ dd.pchips { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; 
 .prog .pg-rules { font-size: 12.5px; color: var(--muted); margin-top: 16px; max-width: 72ch; }
 @media (max-width: 480px) { .prog .pg-row { grid-template-columns: 1fr; gap: 2px; } }
 @media print { .prog { display: none; } }
+.pback { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 60; display: flex; align-items: center; gap: 4px; background: var(--fg); color: var(--bg); border-radius: 999px; box-shadow: 0 4px 16px rgba(0,0,0,.28); padding: 4px 4px 4px 4px; max-width: calc(100vw - 32px); }
+.pback[hidden] { display: none; }
+.pback button { font: 500 14px/1.2 var(--font-body); color: var(--bg); background: none; border: 0; cursor: pointer; padding: 9px 12px; border-radius: 999px; }
+.pback button.pback-go { padding-left: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pback button:hover { background: rgba(255,255,255,.16); }
+.pback button.pback-x { color: var(--bg); opacity: .7; padding: 9px 11px; }
+@media print { .pback { display: none; } }
 /* /PROGTAB-CSS */
 """
 
@@ -126,9 +133,11 @@ JS_TAB = r"""  // PROGTAB-TAB (Oct 31, 2026): Prognosis tab: Established entries
   if (ppanel) ppanel.addEventListener("click", e => {
     const a = e.target.closest("a.pjump, a.pchip"); if (!a) return;
     e.preventDefault();
+    const y = window.scrollY;
     show("trials");
     tabs.dispatchEvent(new Event("tabschange"));
     jumpTo(a.getAttribute("data-slug"));
+    pSetBack({ tab: "prog", y: y, label: "Prognosis tab" });
   });
   // /PROGTAB-TAB
 """
@@ -145,9 +154,36 @@ function jumpTo(slug){
   li.scrollIntoView({ behavior: "smooth", block: "start" });
   li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
 }
+// Floating "Back to ..." button, shown after a chip jump so the reader can return to where they came from.
+let pBack = null, pBackEl = null;
+function pHost(){ return document.getElementById("list").closest(".ltw") || document; }
+function pHideBack(){ pBack = null; if (pBackEl) pBackEl.hidden = true; }
+function pSetBack(o){
+  pBack = o;
+  if (!pBackEl) {
+    pBackEl = document.createElement("div"); pBackEl.className = "pback"; pBackEl.hidden = true;
+    pBackEl.innerHTML = '<button type="button" class="pback-go"></button><button type="button" class="pback-x" aria-label="Dismiss" title="Dismiss">\u00d7</button>';
+    (document.getElementById("list").closest(".ltw") || document.body).appendChild(pBackEl);
+    pBackEl.querySelector(".pback-x").addEventListener("click", pHideBack);
+    pBackEl.querySelector(".pback-go").addEventListener("click", () => {
+      const b = pBack; pHideBack(); if (!b) return;
+      if (b.tab === "prog") {
+        const btn = pHost().querySelector('.tabs button[data-tab="prog"]');
+        if (btn && btn.getAttribute("aria-selected") !== "true") btn.click();
+        setTimeout(() => window.scrollTo({ top: b.y, behavior: "smooth" }), 60);
+      } else jumpTo(b.slug);
+    });
+    const tb = pHost().querySelector(".tabs"); if (tb) tb.addEventListener("click", pHideBack);
+  }
+  pBackEl.querySelector(".pback-go").textContent = "\u2190 Back to " + o.label;
+  pBackEl.hidden = false;
+}
 document.getElementById("list").addEventListener("click", e => {
   const a = e.target.closest("a.pchip"); if (!a) return;
-  e.preventDefault(); jumpTo(a.getAttribute("data-slug"));
+  e.preventDefault();
+  const li = a.closest("li[data-trial]"), h = li && li.querySelector(".name");
+  if (li) pSetBack({ tab: "trials", slug: li.getAttribute("data-trial"), label: h ? h.textContent.trim() : "the trial" });
+  jumpTo(a.getAttribute("data-slug"));
 });
 // /PROGTAB-LIST
 """

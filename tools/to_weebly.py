@@ -109,6 +109,8 @@ GUARD = """
 .ltw .mechs a { color: var(--accent) !important; }
 .ltw .mechs a.mt { color: var(--fg) !important; text-decoration: none !important; background: var(--surface) !important; border: 1px solid var(--rule) !important; border-radius: 999px !important; padding: 3px 10px !important; }
 .ltw .mechs .mx-k, .ltw .mechs .mt-y { color: var(--muted) !important; }
+.ltw .pback { background: var(--fg) !important; }
+.ltw .pback button { background: none !important; color: var(--bg) !important; box-shadow: none !important; text-transform: none !important; letter-spacing: normal !important; height: auto !important; min-width: 0 !important; border: 0 !important; border-radius: 999px !important; }
 .ltw .watch h2 { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; }
 .ltw .prog h2.pg-h, .ltw .prog .pg-name { color: var(--fg) !important; font-family: var(--font-display) !important; text-transform: none !important; letter-spacing: normal !important; }
 .ltw .prog .pg-name { font-size: 1.08rem !important; }
