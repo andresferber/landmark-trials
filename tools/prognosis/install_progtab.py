@@ -14,6 +14,8 @@ CSS = """/* PROGTAB-CSS (Oct 31, 2026): Prognosis tab */
 .prog .pg-note { font-size: 14px; color: var(--muted); margin: 0 0 10px; max-width: 72ch; }
 .prog h2.pg-h { font-family: var(--font-display); font-weight: 650; font-size: 1.3rem; margin: 22px 0 4px; }
 .prog .pg-chips { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+.prog h3.pg-grp { font: 600 12px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--fg); margin: 20px 0 0; padding-bottom: 8px; border-bottom: 2px solid var(--fg); }
+.prog h3.pg-grp .gn { font-weight: 500; color: var(--muted); margin-left: 8px; }
 .prog .pg-row { display: grid; grid-template-columns: 56px minmax(0,1fr); gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
 .prog .pg-y { font: 500 14px var(--font-mono); color: var(--muted); padding-top: 2px; }
 .prog .pg-b { min-width: 0; display: flex; flex-direction: column; gap: 5px; }
@@ -88,18 +90,20 @@ JS_TAB = r"""  // PROGTAB-TAB (Oct 31, 2026): Prognosis tab: Established entries
   function drawProg(){
     if (!ppanel) return;
     const est = pEst.filter(t => ptype === "all" || PROG[t.n].pt === ptype)
-      .sort((a, b) => (["model", "bio", "resp"].indexOf(PROG[a.n].pt) - ["model", "bio", "resp"].indexOf(PROG[b.n].pt)) || b.y - a.y);
+      .sort((a, b) => (["model", "bio", "resp"].indexOf(PROG[a.n].pt) - ["model", "bio", "resp"].indexOf(PROG[b.n].pt)) || a.y - b.y || a.n.localeCompare(b.n));
     const mk = pMk.slice().sort((a, b) => (EVL.indexOf(a.ev) - EVL.indexOf(b.ev)) || String(b.last).localeCompare(String(a.last)));
     const L = s => '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + ' ↗</a>';
     const row = (k, v, cls) => v ? '<dt' + (cls ? ' class="' + cls + '"' : '') + '>' + k + '</dt><dd' + (cls ? ' class="' + cls + '"' : '') + '>' + esc(v) + '</dd>' : '';
     ppanel.innerHTML =
-      '<p class="pg-note">Risk models, biomarkers and response measures. Each entry states whether it is prognostic (outcome regardless of treatment), predictive (who benefits from a given treatment), a surrogate endpoint or a consensus definition. Select an entry to open its full card.</p>' +
+      '<p class="pg-note">Risk models, biomarkers and response measures. Each entry states whether it is prognostic (outcome regardless of treatment), predictive (who benefits from a given treatment), a surrogate endpoint or a consensus definition. Within each group, oldest first, so each tool appears after the one it built on. Select an entry to open its full card.</p>' +
       '<h2 class="pg-h">Established</h2><p class="pg-note">Externally validated, or adopted in an IMWG or IMS consensus, a guideline or a regulatory decision.</p>' +
       '<div class="pg-chips">' + [["all", "All"], ["model", PTYPE.model], ["bio", PTYPE.bio], ["resp", PTYPE.resp]].map(([k, l]) =>
         '<button type="button" class="chip" data-pt="' + k + '" aria-pressed="' + (k === ptype) + '">' + esc(l) + ' <span class="gn">' + (k === "all" ? pEst.length : pEst.filter(t => PROG[t.n].pt === k).length) + '</span></button>').join("") + '</div>' +
-      est.map(t => { const P = PROG[t.n];
+      est.map((t, i) => { const P = PROG[t.n];
+        const grp = (ptype === "all" && (i === 0 || PROG[est[i - 1].n].pt !== P.pt))
+          ? '<h3 class="pg-grp">' + esc(PTYPE[P.pt]) + '<span class="gn">' + est.filter(x => PROG[x.n].pt === P.pt).length + '</span></h3>' : '';
         const used = PUSEDIN(t.n).map(n => T.find(x => x.n === n)).filter(Boolean).sort((a, b) => a.y - b.y);
-        return '<div class="pg-row"><div class="pg-y">' + t.y + '</div><div class="pg-b"><div class="pg-top"><h3 class="pg-name"><a href="#t-' + PAGEKEY + '-' + t.slug + '" class="pjump" data-slug="' + t.slug + '">' + esc(t.n) + '</a></h3>' +
+        return grp + '<div class="pg-row"><div class="pg-y">' + t.y + '</div><div class="pg-b"><div class="pg-top"><h3 class="pg-name"><a href="#t-' + PAGEKEY + '-' + t.slug + '" class="pjump" data-slug="' + t.slug + '">' + esc(t.n) + '</a></h3>' +
           '<span class="pkind ' + PKIND(P.pk) + '">' + esc(P.pk) + '</span><span class="ptype">' + esc(PTYPE[P.pt]) + '</span>' + (t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : '') + '</div>' +
           '<p class="pg-res">' + esc(t.r) + '</p><p class="pg-val"><span class="pg-k">Validation</span>' + esc(P.val) + '</p>' +
           '<div class="pg-links"><a href="#t-' + PAGEKEY + '-' + t.slug + '" class="pjump" data-slug="' + t.slug + '">Full card ↗</a>' +
