@@ -5,7 +5,7 @@ import re, html, sys
 
 PAGE = 'rrmm-trials.html'
 TITLE = 'The evolution of management of relapsed and refractory multiple myeloma, 2003–2026'
-UPDATED = 'October 24, 2026'
+UPDATED = 'November 1, 2026'
 
 TAKE = [
     'Relapse therapy has moved through four eras: proteasome inhibitor and immunomodulatory backbones, anti-CD38 triplets, new mechanisms with mixed fortunes, and T-cell redirection.',
@@ -72,8 +72,9 @@ BODY = """
 </ul>
 
 <h3>What is coming</h3>
-<p>The next class is already reporting. Cereblon E3 ligase modulators (CELMoDs) degrade the same targets as lenalidomide and pomalidomide more potently and retain activity in refractory disease. Mezigdomide with carfilzomib-dexamethasone more than doubled median PFS (18.0 vs 8.3 months; HR 0.48) in a population that was largely refractory to both lenalidomide and an anti-CD38 antibody, at the cost of more neutropenia and infection [[SUCCESSOR-2 (Dimopoulos)]], and its US application is under review. Iberdomide with daratumumab-dexamethasone doubled the MRD-negative complete response rate compared with daratumumab-bortezomib-dexamethasone, with PFS still to come [[EXCALIBER-RRMM (Lonial)]]. CELMoDs could offer an oral, off-the-shelf alternative or partner to T-cell redirection.</p>
-<p>Ongoing phase 3 trials (listed under Trials to watch at the end of this page) test talquetamab combinations, elranatamab and linvoseltamab against standard regimens, and new CAR-T products, including anitocabtagene autoleucel and the GPRC5D-directed arlocabtagene autoleucel. Their results will decide whether immunotherapy becomes the default at first relapse.</p>
+<p>The next class is already reporting. Cereblon E3 ligase modulators (CELMoDs) degrade the same targets as lenalidomide and pomalidomide more potently and retain activity in refractory disease. Mezigdomide with carfilzomib-dexamethasone more than doubled median PFS (18.0 vs 8.3 months; HR 0.48) in a population that was largely refractory to both lenalidomide and an anti-CD38 antibody, at the cost of more neutropenia and infection [[SUCCESSOR-2 (Dimopoulos)]], and its US application is under review. Iberdomide with daratumumab-dexamethasone doubled the MRD-negative complete response rate compared with daratumumab-bortezomib-dexamethasone, and received US accelerated approval on that basis in August 2026, with PFS still to be published [[EXCALIBER-RRMM (Lonial)]]. CELMoDs could offer an oral, off-the-shelf alternative or partner to T-cell redirection.</p>
+<p>Two further phase 3 trials published in 2026 moved bispecific antibodies to early relapse: teclistamab monotherapy improved PFS and overall survival over PVd or Kd (HR 0.29 and 0.60) [[MajesTEC-9 (Touzeau)]], and talquetamab-daratumumab, with or without pomalidomide, improved PFS over DPd (HR 0.28 and 0.33) [[MonumenTAL-3 (Mina)]].</p>
+<p>Ongoing phase 3 trials (listed under Trials to watch at the end of this page) test elranatamab and linvoseltamab against standard regimens, and new CAR-T products, including anitocabtagene autoleucel and the GPRC5D-directed arlocabtagene autoleucel. Their results will decide whether immunotherapy becomes the default at first relapse.</p>
 """
 
 
