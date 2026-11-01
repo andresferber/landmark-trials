@@ -1,5 +1,5 @@
 TITLE = 'The evolution of management of mantle cell lymphoma, 2005–2026'
-UPDATED = 'October 24, 2026'
+UPDATED = 'November 1, 2026'
 TL_CAPTION = 'Timeline of key trials and regulatory milestones'
 
 TAKE = [
@@ -67,5 +67,5 @@ BODY = """
 </ul>
 
 <h3>What is coming</h3>
-<p>Ongoing phase 3 trials (listed under Trials to watch at the end of this page) test zanubrutinib-rituximab against bendamustine-rituximab, continuous versus intermittent zanubrutinib, orelabrutinib with bendamustine-rituximab, pirtobrutinib against covalent BTK inhibitors, sonrotoclax with zanubrutinib, glofitamab against investigator's choice (GLOBRYTE) and rocbrutinib against BTK inhibitors.</p>
+<p>Ongoing phase 3 trials (listed under Trials to watch at the end of this page) test zanubrutinib-rituximab against bendamustine-rituximab, continuous versus intermittent zanubrutinib, orelabrutinib with bendamustine-rituximab, pirtobrutinib against covalent BTK inhibitors, sonrotoclax with zanubrutinib, glofitamab against investigator's choice (GLOBRYTE), rocbrutinib against BTK inhibitors and the BCL2 inhibitor mesutoclax with orelabrutinib against pirtobrutinib (not yet recruiting).</p>
 """
