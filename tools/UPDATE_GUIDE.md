@@ -17,6 +17,9 @@ All data is in the main `<script>`:
   `ep` endpoint, `r` result, `N`, `hr`, `fu`, `c` citation, `p` PMID, optional `extra`
   [label, PMID], `b` builds on, `i` changed, `q` open questions, `cm` commentaries
   [[pmid, byline, title]], `reg` regulatory, `gl` guidelines, `acc` access.
+  Optional `rel` related papers [[pmid, byline, one-line summary]] (Andres, Nov 1, 2026; flr pilot): non-trial
+  studies (real-world series, indirect comparisons, regional subgroups) that Andres asked to include, linked on
+  the card of the trial they inform and shown as "Related papers" in Reception; figures checked against the paper.
   (The MCL page keeps the same information in separate objects M, P, EXTRA, CITE, V, X, R.
   V and CITE are applied on top of T, and the card displays them: to change what a reader sees
   on the MCL page, edit V or CITE, not T. If a trial has both, keep them consistent.)
