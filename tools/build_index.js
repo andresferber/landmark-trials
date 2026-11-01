@@ -16,7 +16,7 @@ for (const t of topics) {
   const h = fs.readFileSync(file, "utf8");
   const s = [...h.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]).find(x => x.includes("const T") && x.includes("function render"));
   const els = {};
-  const ctx = { document: { getElementById: id => els[id] || (els[id] = el()), createElement: () => el(), querySelectorAll: () => [], addEventListener() {} },
+  const ctx = { document: { getElementById: id => els[id] || (els[id] = el()), createElement: () => el(), querySelectorAll: () => [], querySelector: () => null, addEventListener() {} },
     localStorage: { getItem() { return null; }, setItem() {} }, window: { addEventListener() {}, print() {} }, location: { hash: "", search: "" }, console, setTimeout() {} };
   vm.createContext(ctx);
   vm.runInContext(s + "\n;globalThis.__x = { T, SETTINGS };", ctx);
