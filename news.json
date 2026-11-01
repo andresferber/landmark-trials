@@ -1,4 +1,5 @@
 {"items": [
+ {"date": "2026-11-01", "key": "flr", "text": "Relapsed follicular lymphoma: 2026 EHA guideline placements added to the trial cards (R2 with tafasitamab or epcoritamab from first relapse; bispecifics, CAR-T and zanubrutinib-obinutuzumab after second relapse)."},
  {"date": "2026-11-01", "key": "rrmm", "slug": "majestec-9-touzeau", "text": "Relapsed myeloma: two new phase 3 trials, teclistamab alone (MajesTEC-9) and talquetamab-daratumumab with or without pomalidomide (MonumenTAL-3), both improving PFS at early relapse."},
  {"date": "2026-10-31", "key": "ndmm", "text": "New on newly diagnosed myeloma: a Prognosis tab with risk models, biomarkers and MRD measures (9 new entries, linked to the trials that used them) and Markers to watch."},
  {"date": "2026-10-30", "text": "Phase 2 trials from leading journals, or that led to approvals, added across all topics (20 new cards); Trials to watch now also lists phase 2 trials designed to support an approval."},
