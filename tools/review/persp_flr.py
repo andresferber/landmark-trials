@@ -53,7 +53,7 @@ BODY = """
 
 <h3>Open questions</h3>
 <ul>
-<li><b>Sequencing:</b> CAR-T and bispecific antibodies have not been compared head to head, and the best order is unknown.</li>
+<li><b>Sequencing:</b> CAR-T and bispecific antibodies have not been compared head to head, and the best order is unknown; the EHA guideline states that there are no definitive sequencing rules and that each can be used after the other.</li>
 <li><b>Which second-line triplet:</b> tafasitamab and epcoritamab additions have not been compared.</li>
 <li><b>Fixed duration and cure:</b> whether deep responses to T-cell therapies are durable enough to change the course of the disease.</li>
 <li><b>Infections and cost:</b> both rise as more intensive immunotherapies move earlier.</li>
