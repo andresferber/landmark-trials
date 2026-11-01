@@ -1,5 +1,5 @@
 TITLE = 'The evolution of management of relapsed follicular lymphoma, 2002–2026'
-UPDATED = 'October 24, 2026'
+UPDATED = 'November 1, 2026'
 TL_CAPTION = 'Timeline of key trials and US regulatory milestones'
 
 TAKE = [
@@ -43,12 +43,12 @@ BODY = """
 <p>CD20×CD3 bispecific antibodies offer off-the-shelf, largely outpatient alternatives. Fixed-duration mosunetuzumab gave complete responses in 60%, and its 3-year update reported a median PFS of 24.0 months [[Mosunetuzumab (Budde)]]; subcutaneous epcoritamab gave complete responses in 62.5% with little severe cytokine release syndrome [[EPCORE NHL-1 FL cohort (Linton)]]; and odronextamab gave complete responses in 73.4% and is approved in the EU but not in the US [[ELM-2 FL cohort: odronextamab (Kim)]].</p>
 
 <h3>Where we are now</h3>
-<p>Summarized at a high level (NCCN placement not checked against the current document, except where noted):</p>
+<p>Summarized at a high level. The 2026 <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13680546/" target="_blank" rel="noopener">EHA Clinical Practice Guidelines (Ladetto, HemaSphere 2026)</a> recommend that chemotherapy-free options be prioritized over immunochemotherapy at relapse; NCCN placement was not checked against the current document, except where noted.</p>
 <ul>
 <li><b>Late relapse, low tumor burden:</b> observation or rituximab-based retreatment remain options.</li>
-<li><b>Second line needing treatment:</b> lenalidomide-rituximab, now often with tafasitamab (described as NCCN category 1 after anti-CD20 therapy in 2026 coverage) [[inMIND (Sehn)]] or epcoritamab [[EPCORE FL-1 (Falchi)]]; obinutuzumab-bendamustine for rituximab-refractory patients who have not received bendamustine [[GADOLIN (Sehn)]].</li>
+<li><b>Second line needing treatment:</b> lenalidomide-rituximab, now often with tafasitamab (described as NCCN category 1 after anti-CD20 therapy in 2026 coverage) [[inMIND (Sehn)]] or epcoritamab [[EPCORE FL-1 (Falchi)]]; obinutuzumab-bendamustine for rituximab-refractory patients who have not received bendamustine [[GADOLIN (Sehn)]]. The EHA guideline prioritizes lenalidomide-rituximab, with or without tafasitamab or epcoritamab, from the first relapse.</li>
 <li><b>POD24 or early relapse:</b> biopsy to exclude transformation; consider earlier CAR-T, which is approved after two or more lines.</li>
-<li><b>Third line and beyond:</b> CD19 CAR-T, CD20×CD3 bispecific antibodies, tazemetostat or zanubrutinib-obinutuzumab.</li>
+<li><b>Third line and beyond:</b> CD19 CAR-T, CD20×CD3 bispecific antibodies, tazemetostat or zanubrutinib-obinutuzumab. The EHA guideline prioritizes single-agent bispecific antibodies, CAR-T and zanubrutinib-obinutuzumab after the second relapse.</li>
 </ul>
 
 <h3>Open questions</h3>
