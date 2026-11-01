@@ -1,5 +1,5 @@
 {
- "checked": "October 31, 2026",
+ "checked": "November 1, 2026",
  "note": "Prognostic and predictive markers, including biomarkers, imaging and clinical factors, not yet validated for clinical decisions. Selected from peer-reviewed papers that test the marker in more than one cohort or bring a clearly new approach; single-cohort correlations are not listed.",
  "scope": "This list is shared by the three myeloma topics.",
  "items": [
@@ -71,6 +71,23 @@
    "next": "Not reported.",
    "src": [["Maura F, J Clin Oncol 2024", "https://pubmed.ncbi.nlm.nih.gov/38194610/"]],
    "cites": {"pmid": "38194610", "total": 92, "recent": 80}
+  },
+  {
+   "n": "8-gene proliferation score (GPS)",
+   "kind": "Prognostic",
+   "type": "Gene expression",
+   "ev": "Discovery only",
+   "pub": "Blood Neoplasia 2026",
+   "last": "2026-11",
+   "why": "Turns tumor proliferation, an old adverse factor once measured by the plasma cell labeling index, into an RNA-based score that can be computed from sequencing data.",
+   "cohort": "Proliferation genes selected in 136 Mayo Clinic patients with paired labeling index; score built in 656 patients from the CoMMpass cohort; survival checked in a small Mayo Clinic RNA-seq cohort (24 patients) and S-phase prediction in the KYDAR data set (full paper).",
+   "data": "Eight genes (CHEK1, EXO1, MCM4, TK1, KIF14, SEPTIN11, PHF19, HMGB3). CoMMpass, split at the median: median OS 63.6 vs 106.1 months (P < .001). Mayo RNA-seq cohort: 39.2 vs 157.1 months (P = .03; 12 patients in the high group). Above-median score adjusted HR for OS 1.86 (95% CI 1.39–2.49) (full paper).",
+   "adj": "Yes, within CoMMpass: IMS/IMWG 2025 high-risk status, circulating plasma cells ≥1.2% and treatment; the continuous score also held against other expression signatures (EMC92, UAMS70) (full paper). Not compared with R-ISS or R2-ISS.",
+   "missing": "Not independently validated: the score was built and tested for survival in CoMMpass, and the only other survival cohort was a 24-patient single-center series. Needs an external cohort, ideally treated with anti-CD38 quadruplets, and a clinically available assay.",
+   "status": "Research use",
+   "next": "Not reported.",
+   "src": [["Bohra A, Blood Neoplasia 2026", "https://pubmed.ncbi.nlm.nih.gov/42959892/"]],
+   "cites": {"pmid": "42959892", "total": 0, "recent": 0}
   },
   {
    "n": "Early-relapse (ER18) risk score",
