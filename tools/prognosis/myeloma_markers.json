@@ -1,5 +1,5 @@
 {
- "checked": "November 1, 2026",
+ "checked": "November 10, 2026",
  "note": "Prognostic and predictive markers, including biomarkers, imaging and clinical factors, not yet validated for clinical decisions. Selected from peer-reviewed papers that test the marker in more than one cohort or bring a clearly new approach; single-cohort correlations are not listed.",
  "scope": "This list is shared by the three myeloma topics.",
  "items": [
@@ -18,8 +18,21 @@
    "status": "Research use",
    "next": "Not reported.",
    "hist": "Earlier gene-expression risk scores, such as the 70-gene GEP70 (Shaughnessy, Blood 2007: high risk in 13%, HR 5.16 in training and 4.75 in the test cohort), were also prognostic but did not enter routine care.",
-   "src": [["Hofste op Bruinink D, J Clin Oncol 2022", "https://pubmed.ncbi.nlm.nih.gov/35357885/"], ["Shaughnessy JD Jr, Blood 2007 (GEP70)", "https://pubmed.ncbi.nlm.nih.gov/17105813/"]],
-   "cites": {"pmid": "35357885", "total": 23, "recent": 12}
+   "src": [
+    [
+     "Hofste op Bruinink D, J Clin Oncol 2022",
+     "https://pubmed.ncbi.nlm.nih.gov/35357885/"
+    ],
+    [
+     "Shaughnessy JD Jr, Blood 2007 (GEP70)",
+     "https://pubmed.ncbi.nlm.nih.gov/17105813/"
+    ]
+   ],
+   "cites": {
+    "pmid": "35357885",
+    "total": 23,
+    "recent": 12
+   }
   },
   {
    "n": "Bone marrow immune signatures",
@@ -35,8 +48,17 @@
    "missing": "Single-cell profiling is not practical in routine care; effect sizes and an external cohort are needed.",
    "status": "Research use",
    "next": "Not reported.",
-   "src": [["Pilcher WC, Nat Cancer 2026", "https://pubmed.ncbi.nlm.nih.gov/41514053/"]],
-   "cites": {"pmid": "41514053", "total": 18, "recent": 18}
+   "src": [
+    [
+     "Pilcher WC, Nat Cancer 2026",
+     "https://pubmed.ncbi.nlm.nih.gov/41514053/"
+    ]
+   ],
+   "cites": {
+    "pmid": "41514053",
+    "total": 18,
+    "recent": 18
+   }
   },
   {
    "n": "Mass-spectrometry MRD in blood",
@@ -52,8 +74,21 @@
    "missing": "Standard assay and thresholds; best timing (agreement with marrow was lowest early after transplant); prospective use to guide treatment.",
    "status": "Not standard of care",
    "next": "Not reported.",
-   "src": [["Puig N, Blood 2024", "https://pubmed.ncbi.nlm.nih.gov/39293025/"], ["Kubicki T, Blood 2024", "https://pubmed.ncbi.nlm.nih.gov/38713888/"]],
-   "cites": {"pmid": "39293025", "total": 12, "recent": 12}
+   "src": [
+    [
+     "Puig N, Blood 2024",
+     "https://pubmed.ncbi.nlm.nih.gov/39293025/"
+    ],
+    [
+     "Kubicki T, Blood 2024",
+     "https://pubmed.ncbi.nlm.nih.gov/38713888/"
+    ]
+   ],
+   "cites": {
+    "pmid": "39293025",
+    "total": 12,
+    "recent": 12
+   }
   },
   {
    "n": "IRMMa individualized genomic risk model",
@@ -69,8 +104,43 @@
    "missing": "Requires whole-genome sequencing; one external validation; the transplant-benefit estimates come from retrospective data.",
    "status": "Research use",
    "next": "Not reported.",
-   "src": [["Maura F, J Clin Oncol 2024", "https://pubmed.ncbi.nlm.nih.gov/38194610/"]],
-   "cites": {"pmid": "38194610", "total": 92, "recent": 80}
+   "src": [
+    [
+     "Maura F, J Clin Oncol 2024",
+     "https://pubmed.ncbi.nlm.nih.gov/38194610/"
+    ]
+   ],
+   "cites": {
+    "pmid": "38194610",
+    "total": 92,
+    "recent": 80
+   }
+  },
+  {
+   "n": "Genomic predictors of progression in smoldering myeloma",
+   "kind": "Prognostic",
+   "type": "Genomic (smoldering myeloma)",
+   "ev": "Independent validation",
+   "pub": "J Clin Oncol 2020",
+   "last": "2020-07",
+   "why": "Current smoldering myeloma models use only clinical measures; tumor genomics may identify patients whose disease is already biologically myeloma.",
+   "cohort": "214 patients with smoldering myeloma sequenced (whole exome in 166, targeted sequencing in 48); findings tested in an external smoldering myeloma cohort.",
+   "data": "MAPK pathway mutations (KRAS, NRAS), DNA repair alterations (del(17p), TP53 or ATM mutations) and MYC translocations or copy-number changes were each independent risk factors for progression; in the external cohort, patients with any of the three had a higher risk of progression (effect sizes not reported in abstract). APOBEC-associated mutations were enriched in patients who progressed.",
+   "adj": "Yes: clinical risk staging.",
+   "missing": "Sequencing is not routine in smoldering myeloma; the features are not part of the 20/2/20 or IMWG models (the IMWG model adds FISH abnormalities only); no trial assigns treatment by them.",
+   "status": "Research use",
+   "next": "Not reported.",
+   "src": [
+    [
+     "Bustoros M, J Clin Oncol 2020",
+     "https://pubmed.ncbi.nlm.nih.gov/32442065/"
+    ]
+   ],
+   "cites": {
+    "pmid": "32442065",
+    "total": 131,
+    "recent": 40
+   }
   },
   {
    "n": "8-gene proliferation score (GPS)",
@@ -86,8 +156,17 @@
    "missing": "Not independently validated: the score was built and tested for survival in CoMMpass, and the only other survival cohort was a 24-patient single-center series. Needs an external cohort, ideally treated with anti-CD38 quadruplets, and a clinically available assay.",
    "status": "Research use",
    "next": "Not reported.",
-   "src": [["Bohra A, Blood Neoplasia 2026", "https://pubmed.ncbi.nlm.nih.gov/42959892/"]],
-   "cites": {"pmid": "42959892", "total": 0, "recent": 0}
+   "src": [
+    [
+     "Bohra A, Blood Neoplasia 2026",
+     "https://pubmed.ncbi.nlm.nih.gov/42959892/"
+    ]
+   ],
+   "cites": {
+    "pmid": "42959892",
+    "total": 0,
+    "recent": 0
+   }
   },
   {
    "n": "Early-relapse (ER18) risk score",
@@ -103,8 +182,69 @@
    "missing": "External validation; validation with quadruplet induction.",
    "status": "Research use",
    "next": "Not reported.",
-   "src": [["Manubens A, HemaSphere 2025", "https://pubmed.ncbi.nlm.nih.gov/40276216/"]],
-   "cites": {"pmid": "40276216", "total": 2, "recent": 2}
+   "src": [
+    [
+     "Manubens A, HemaSphere 2025",
+     "https://pubmed.ncbi.nlm.nih.gov/40276216/"
+    ]
+   ],
+   "cites": {
+    "pmid": "40276216",
+    "total": 2,
+    "recent": 2
+   }
+  },
+  {
+   "n": "Soluble BCMA before BCMA-directed bispecific antibodies",
+   "kind": "Predictive",
+   "type": "Serum marker (relapsed myeloma)",
+   "ev": "Discovery only",
+   "pub": "Blood 2024",
+   "last": "2024-12",
+   "why": "BCMA shed into the blood can bind the drug before it reaches the tumor; a baseline blood level might identify patients unlikely to respond to a BCMA-directed bispecific antibody.",
+   "cohort": "Whole-genome sequencing and laboratory models, with a correlative analysis of 163 patients treated with teclistamab.",
+   "data": "Baseline soluble BCMA above 400 ng/mL was associated with primary refractoriness to teclistamab; tumor burden and surface BCMA density also influenced activity. In laboratory models, a higher bispecific dose, a different target (GPRC5D) or a gamma-secretase inhibitor overcame high soluble BCMA.",
+   "adj": "Not reported in abstract.",
+   "missing": "One clinical cohort; a standardized assay and threshold; prospective evidence that testing changes treatment choice.",
+   "status": "Research use",
+   "next": "Not reported.",
+   "src": [
+    [
+     "Lee H, Blood 2024",
+     "https://pubmed.ncbi.nlm.nih.gov/39321344/"
+    ]
+   ],
+   "cites": {
+    "pmid": "39321344",
+    "total": 45,
+    "recent": 45
+   }
+  },
+  {
+   "n": "Antigen-loss mutations after T-cell redirecting therapy",
+   "kind": "Predictive",
+   "type": "Genomic (relapsed myeloma)",
+   "ev": "Discovery only",
+   "pub": "Nat Med 2023",
+   "last": "2023-09",
+   "why": "Explains some relapses after BCMA- or GPRC5D-directed CAR-T cells and bispecific antibodies, and may indicate which target can still be used.",
+   "cohort": "Bulk and single-cell whole-genome sequencing in 30 patients treated with anti-BCMA or anti-GPRC5D CAR-T cells or bispecific antibodies.",
+   "data": "Relapse with biallelic deletion of TNFRSF17 (the BCMA gene) in 2 patients; mutations in the extracellular domain of BCMA that abolished the activity of anti-BCMA bispecific antibodies, despite detectable surface BCMA, in 5; biallelic GPRC5D mutations after anti-GPRC5D bispecific therapy in 4.",
+   "adj": "Not applicable (mechanistic case series).",
+   "missing": "Frequency in unselected patients; a clinical assay; prospective evidence that testing should guide the next therapy.",
+   "status": "Research use",
+   "next": "Not reported.",
+   "src": [
+    [
+     "Lee H, Nat Med 2023",
+     "https://pubmed.ncbi.nlm.nih.gov/37653344/"
+    ]
+   ],
+   "cites": {
+    "pmid": "37653344",
+    "total": 243,
+    "recent": 177
+   }
   }
  ],
  "failed": [],

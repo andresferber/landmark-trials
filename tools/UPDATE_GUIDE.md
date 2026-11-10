@@ -100,7 +100,9 @@ All data is in the main `<script>`:
 - `CORE`: names of core teaching trials. Andres chooses these: never add or remove names yourself.
   If a new trial looks core-worthy, suggest it in the summary.
 - `WATCH`: `{note, items:[{n, nct, ph, d, ep, st, pcd, note}]}`: ongoing trials to watch.
-- Prognosis tab (Andres, Oct 31, 2026; pilot on ndmm only). Two sections:
+- Prognosis tab (Andres, Oct 31, 2026 on ndmm; extended to smm and rrmm on Nov 10, 2026, with his approval). On smm
+  the Established section is the existing Definition & risk entries (no extra category); on rrmm it is the
+  "Risk & response" category, which tools/prognosis/rrmm_entries.py also sets up. Two sections:
   - Established: every `T` entry with a `PROG` record (category "risk"). `PROG`: name ->
     `{pt: "model"|"bio"|"resp", pk: kind, val: validation, sh: short chip label}`. Kind is one of
     Prognostic, Predictive, Prognostic and predictive, Surrogate endpoint, Prognostic; surrogate
@@ -129,8 +131,9 @@ All data is in the main `<script>`:
   - Build: after tools/mechs/install_mechtab.py, run tools/prognosis/<key>_entries.py (topic data)
     and `python3 tools/prognosis/install_progtab.py tools/prognosis/myeloma_markers.json
     source/<key>.html` (rerunnable; also refreshes `NEWM`). When editing markers, edit the JSON and
-    rerun the installer on every page that has the tab. Do not extend the tab to other topics
-    without Andres's approval.
+    rerun the installer on every page that has the tab (smm, ndmm, rrmm). The installer's FOOTDATES
+    holds each page's footer dates. Do not extend the tab to other topics (lymphoma) without
+    Andres's approval.
 - Values marked "full paper" were checked against the full publication: keep them unless a newer
   paper supersedes them. The evidence tag ("✓ abstract" / "✓ abstract + full paper") is computed
   automatically from those markers.

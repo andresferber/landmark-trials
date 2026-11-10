@@ -276,6 +276,55 @@ dd.f-ep, dd.f-res, dd.f-tox { padding: 2px 8px 2px 0; border-radius: 0 6px 6px 0
 .tabs.tabs-pinned { position: fixed; z-index: 9000; margin-top: 0; border-radius: 0 0 10px 10px; box-shadow: 0 6px 14px -8px rgba(16,24,40,.35); }
 @media print { .tabs.tabs-pinned { position: static; } }
 @media (max-width: 560px) { .tabs.tabs-pinned { padding-top: 2px; } .tabs.tabs-pinned button { padding: 8px 10px; } .tabs.tabs-pinned .tabmail { display: none; } }
+/* PROGTAB-CSS (Oct 31, 2026): Prognosis tab */
+.prog { margin-top: 14px; }
+.prog a { color: var(--accent); }
+.prog .pg-note { font-size: 14px; color: var(--muted); margin: 0 0 10px; max-width: 72ch; }
+.prog h2.pg-h { font-family: var(--font-display); font-weight: 650; font-size: 1.3rem; margin: 22px 0 4px; }
+.prog .pg-chips { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+.prog h3.pg-grp { font: 600 12px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--fg); margin: 20px 0 0; padding-bottom: 8px; border-bottom: 2px solid var(--fg); }
+.prog h3.pg-grp .gn { font-weight: 500; color: var(--muted); margin-left: 8px; }
+.prog .pg-row { display: grid; grid-template-columns: 56px minmax(0,1fr); gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.prog .pg-y { font: 500 14px var(--font-mono); color: var(--muted); padding-top: 2px; }
+.prog .pg-b { min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.prog .pg-top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.prog .pg-name { font-family: var(--font-display); font-weight: 650; font-size: 1.08rem; margin: 0; }
+.prog .pg-res, .prog .pg-val { margin: 0; font-size: 14px; }
+.prog .pg-val { color: var(--muted); }
+.prog .pg-k { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 8px; }
+.prog .pg-links { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 13px; }
+.pkind { font: 500 11px/1 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; color: var(--s-young); background: var(--s-young-bg); }
+.pkind.cons { color: var(--s-p2); background: var(--s-p2-bg); }
+.pkind.sur { color: var(--s-old); background: var(--s-old-bg); }
+.pkind.pred { color: var(--s-rr); background: var(--s-rr-bg); }
+.ptype { font: 400 12px var(--font-mono); color: var(--muted); }
+a.pchip { display: inline-block; text-decoration: none; color: var(--fg); border: 1px solid var(--rule); background: var(--surface); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
+a.pchip:hover { border-color: var(--accent); color: var(--accent); }
+.pchip-y { font: 500 11px var(--font-mono); color: var(--muted); margin-left: 4px; }
+.puse { font-size: 13px; color: var(--muted); }
+dd.pchips { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.prog .mw-item { border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); padding: 14px 16px; margin: 12px 0; display: flex; flex-direction: column; gap: 6px; }
+.prog .mw-ev { align-self: flex-start; font: 500 12px var(--font-mono); padding: 4px 8px; border-radius: 4px; color: var(--muted); background: var(--bg); }
+.prog .mw-ev.lv0 { color: var(--s-young); background: var(--s-young-bg); }
+.prog .mw-ev.lv1 { color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--surface)); }
+.prog .mw-ev.lv2 { color: var(--s-old); background: var(--s-old-bg); }
+.prog .mw-item dl { margin: 0; }
+.prog .mw-hist { font-size: 13.5px; color: var(--muted); margin: 0; }
+.prog .mw-foot { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 8px; }
+.prog .mw-cite { font: 400 12px var(--font-mono); color: var(--muted); }
+.prog details.mw-log { border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); padding: 0 16px; margin-top: 10px; }
+.prog details.mw-log summary { cursor: pointer; padding: 12px 0; font-weight: 600; font-size: 14px; }
+.prog .pg-rules { font-size: 12.5px; color: var(--muted); margin-top: 16px; max-width: 72ch; }
+@media (max-width: 480px) { .prog .pg-row { grid-template-columns: 1fr; gap: 2px; } }
+@media print { .prog { display: none; } }
+li.trial { scroll-margin-top: 150px; }
+.pback { display: flex; align-items: center; gap: 2px; align-self: flex-start; background: var(--fg); color: var(--bg); border-radius: 999px; padding: 3px; margin: 0 0 10px; max-width: 100%; }
+.pback button { font: 500 13px/1.2 var(--font-body); color: var(--bg); background: none; border: 0; cursor: pointer; padding: 7px 12px; border-radius: 999px; }
+.pback button.pback-go { text-align: left; }
+.pback button:hover { background: rgba(255,255,255,.18); }
+.pback button.pback-x { opacity: .7; padding: 7px 10px; }
+@media print { .pback { display: none; } }
+/* /PROGTAB-CSS */
 </style>
 
 <div class="wrap">
@@ -331,10 +380,12 @@ dd.f-ep, dd.f-res, dd.f-tox { padding: 2px 8px 2px 0; border-radius: 0 6px 6px 0
     <button type="button" role="tab" aria-selected="false" data-tab="watch" title="Click again to return to the trial list">Trials to watch<span class="tcount"></span></button>
     <button type="button" role="tab" aria-selected="false" data-tab="newdrugs" title="Click again to return to the trial list">New drugs to watch<span class="tcount"></span></button>
     <button type="button" role="tab" aria-selected="false" data-tab="mech" title="Click again to return to the trial list">Drug mechanisms<span class="tcount"></span></button>
+    <button type="button" role="tab" aria-selected="false" data-tab="prog" title="Click again to return to the trial list">Prognosis<span class="tcount"></span></button>
     <a class="tabmail" href="mailto:andresferber@hotmail.com?subject=Landmark%20trials%20%28Smoldering%20myeloma%29%3A%20comment">✉ Send a comment</a>
   </div>
   <section class="newdrugs" hidden aria-label="New drugs to watch"></section>
   <section class="mechs" hidden aria-label="Drug mechanisms"></section>
+  <section class="prog" hidden aria-label="Prognosis"></section>
 
   <div class="controls">
     <div class="chips" role="group" aria-label="Filter by category" id="chips"></div>
@@ -355,10 +406,11 @@ dd.f-ep, dd.f-res, dd.f-tox { padding: 2px 8px 2px 0; border-radius: 0 6px 6px 0
 
   <section class="watch" hidden aria-label="Trials to watch"></section>
 
-  <details class="gloss"><summary>Abbreviations (35)</summary><dl><dt>AE</dt><dd>Adverse event</dd><dt>AEs</dt><dd>Adverse events</dd><dt>ASCO</dt><dd>American Society of Clinical Oncology</dd><dt>ASCT</dt><dd>Autologous stem-cell transplantation</dd><dt>BCMA</dt><dd>B-cell maturation antigen</dd><dt>BMPC</dt><dd>Bone marrow plasma cells</dd><dt>CI</dt><dd>Confidence interval</dd><dt>CR</dt><dd>Complete response</dd><dt>CRS</dt><dd>Cytokine release syndrome</dd><dt>ECOG</dt><dd>Eastern Cooperative Oncology Group (also the performance-status scale)</dd><dt>EFS</dt><dd>Event-free survival</dd><dt>EMN</dt><dd>European Myeloma Network</dd><dt>FDA</dt><dd>US Food and Drug Administration</dd><dt>FLC</dt><dd>Free light chain</dd><dt>HR</dt><dd>Hazard ratio</dd><dt>ICANS</dt><dd>Immune effector cell-associated neurotoxicity syndrome</dd><dt>IMWG</dt><dd>International Myeloma Working Group</dd><dt>IRC</dt><dd>Independent review committee</dd><dt>KRd</dt><dd>Carfilzomib, lenalidomide, dexamethasone</dd><dt>MGUS</dt><dd>Monoclonal gammopathy of undetermined significance</dd><dt>MRD</dt><dd>Minimal (measurable) residual disease</dd><dt>MRI</dt><dd>Magnetic resonance imaging</dd><dt>NCCN</dt><dd>National Comprehensive Cancer Network</dd><dt>NCI</dt><dd>US National Cancer Institute</dd><dt>ORR</dt><dd>Overall response rate</dd><dt>OS</dt><dd>Overall survival</dd><dt>PD</dt><dd>Progressive disease</dd><dt>PETHEMA</dt><dd>Programa Español de Tratamientos en Hematología</dd><dt>PFS</dt><dd>Progression-free survival</dd><dt>PR</dt><dd>Partial response</dd><dt>QoL</dt><dd>Quality of life</dd><dt>Rd</dt><dd>Lenalidomide, dexamethasone</dd><dt>SMM</dt><dd>Smoldering multiple myeloma</dd><dt>TTP</dt><dd>Time to progression</dd><dt>uMRD</dt><dd>Undetectable minimal residual disease</dd></dl></details>
+  <details class="gloss"><summary>Abbreviations (47)</summary><dl><dt>AE</dt><dd>Adverse event</dd><dt>AEs</dt><dd>Adverse events</dd><dt>APOBEC</dt><dd>A family of DNA-editing enzymes whose activity leaves a characteristic mutation pattern</dd><dt>ASCO</dt><dd>American Society of Clinical Oncology</dd><dt>ASCT</dt><dd>Autologous stem-cell transplantation</dd><dt>BCMA</dt><dd>B-cell maturation antigen</dd><dt>BMPC</dt><dd>Bone marrow plasma cells</dd><dt>C-index</dt><dd>Concordance index (how well a model ranks patients by risk; 0.5 = chance, 1 = perfect)</dd><dt>C-statistic</dt><dd>Concordance statistic (same meaning as C-index)</dd><dt>CI</dt><dd>Confidence interval</dd><dt>CR</dt><dd>Complete response</dd><dt>CRS</dt><dd>Cytokine release syndrome</dd><dt>ECOG</dt><dd>Eastern Cooperative Oncology Group (also the performance-status scale)</dd><dt>EFS</dt><dd>Event-free survival</dd><dt>EMN</dt><dd>European Myeloma Network</dd><dt>FDA</dt><dd>US Food and Drug Administration</dd><dt>FLC</dt><dd>Free light chain</dd><dt>GEP</dt><dd>Gene expression profiling</dd><dt>HR</dt><dd>Hazard ratio</dd><dt>ICANS</dt><dd>Immune effector cell-associated neurotoxicity syndrome</dd><dt>IMWG</dt><dd>International Myeloma Working Group</dd><dt>IRC</dt><dd>Independent review committee</dd><dt>IRMMa</dt><dd>Individualized risk model for myeloma</dd><dt>KRd</dt><dd>Carfilzomib, lenalidomide, dexamethasone</dd><dt>MAPK</dt><dd>Mitogen-activated protein kinase</dd><dt>MGUS</dt><dd>Monoclonal gammopathy of undetermined significance</dd><dt>MRD</dt><dd>Minimal (measurable) residual disease</dd><dt>MRI</dt><dd>Magnetic resonance imaging</dd><dt>NCCN</dt><dd>National Comprehensive Cancer Network</dd><dt>NCI</dt><dd>US National Cancer Institute</dd><dt>ODAC</dt><dd>Oncologic Drugs Advisory Committee (FDA)</dd><dt>ORR</dt><dd>Overall response rate</dd><dt>OS</dt><dd>Overall survival</dd><dt>PCL</dt><dd>Plasma cell leukemia</dd><dt>PD</dt><dd>Progressive disease</dd><dt>PET-CT</dt><dd>Positron emission tomography-computed tomography</dd><dt>PETHEMA</dt><dd>Programa Español de Tratamientos en Hematología</dd><dt>PFS</dt><dd>Progression-free survival</dd><dt>PR</dt><dd>Partial response</dd><dt>QoL</dt><dd>Quality of life</dd><dt>Rd</dt><dd>Lenalidomide, dexamethasone</dd><dt>sBCMA</dt><dd>Soluble B-cell maturation antigen</dd><dt>SMM</dt><dd>Smoldering multiple myeloma</dd><dt>TNFRSF17</dt><dd>The gene that encodes BCMA</dd><dt>TTP</dt><dd>Time to progression</dd><dt>uMRD</dt><dd>Undetectable minimal residual disease</dd><dt>WHO</dt><dd>World Health Organization</dd></dl></details>
 
   <footer>
-    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). "Key toxicity" summarizes the main adverse events reported in the abstract (or the full paper where marked); it is not a complete safety profile. "Drug mechanism" links one recent review per drug or drug class on how it works and how resistance develops, chosen from peer-reviewed journals as the most recent, comprehensive and high-quality review available (no promotional material), with free full text preferred when quality was comparable (October 23, 2026). "★ Core" marks trials selected as essential for teaching. Trials included: phase 3 trials, and phase 2 trials published in the New England Journal of Medicine or Nature Medicine, or in Blood or the Journal of Clinical Oncology when they led to an approval, changed a guideline or defined a regimen still in use, or otherwise practice-changing (criteria from October 30, 2026). Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Free at publisher" links open a publisher page that is free to read; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed; "Free copy (repository)" links open a legal free copy in a university repository (sometimes the authors' manuscript). Free copies were found with Unpaywall (October 23, 2026). Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Guideline positions: NCCN and ASCO-Ontario as summarized from January 2026 versions; items marked "NCCN not checked" could not be confirmed, because the NCCN guidelines require a login. Regulatory dates were checked against FDA and EMA announcements (October 23, 2026). No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: October 18, 2026.
+    Every result was checked against the paper's PubMed abstract on October 18, 2026; "not reported in abstract" means the figure needs the full text. Values marked "full paper" were checked against the full publication (October 22, 2026). "Key toxicity" summarizes the main adverse events reported in the abstract (or the full paper where marked); it is not a complete safety profile. "Drug mechanism" links one recent review per drug or drug class on how it works and how resistance develops, chosen from peer-reviewed journals as the most recent, comprehensive and high-quality review available (no promotional material), with free full text preferred when quality was comparable (October 23, 2026). "★ Core" marks trials selected as essential for teaching. Trials included: phase 3 trials, and phase 2 trials published in the New England Journal of Medicine or Nature Medicine, or in Blood or the Journal of Clinical Oncology when they led to an approval, changed a guideline or defined a regimen still in use, or otherwise practice-changing (criteria from October 30, 2026). Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Free at publisher" links open a publisher page that is free to read; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed; "Free copy (repository)" links open a legal free copy in a university repository (sometimes the authors' manuscript). Free copies were found with Unpaywall (October 23, 2026). Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). Guideline positions: NCCN and ASCO-Ontario as summarized from January 2026 versions; items marked "NCCN not checked" could not be confirmed, because the NCCN guidelines require a login. Regulatory dates were checked against FDA and EMA announcements (October 23, 2026). No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: November 10, 2026.
+    <p class="pgfoot">Prognosis tab (added November 10, 2026): models, biomarkers and response measures are included when externally validated or adopted in an IMWG or IMS consensus, a guideline or a regulatory decision; links between trial cards and prognostic entries are shown only when the trial used the measure in its design (endpoint, eligibility, stratification or treatment assignment). Numbers checked against the PubMed abstract on November 9, 2026.</p>
     <p class="sitedisc"><b>For education only.</b> This site summarizes published research and the author's views. It is not medical advice, a clinical practice guideline or a substitute for professional judgment; treatment decisions should rely on the primary literature, current guidelines, approved prescribing information and the individual patient. This is an independent project, not affiliated with any institution or company.</p>
     <p class="reportall">Comments and suggestions are welcome: <a href="mailto:andresferber@hotmail.com?subject=Landmark%20trials%20%28Smoldering%20myeloma%29%3A%20comment">send a comment</a>. Spotted an error or a missing trial? Use "Report an error" on any trial. Both go to andresferber@hotmail.com.</p>
   </footer>
@@ -576,6 +628,10 @@ const NEWD = {"checked": "October 24, 2026", "note": "Agents with a new mechanis
 const TOX = {"Mayo natural history (Kyle)": "Not applicable (observational cohort)", "PETHEMA flow-cytometry risk (Pérez-Persona)": "Not applicable (prognostic study)", "Free light chain ratio (Dispenzieri)": "Not applicable (prognostic study)", "Thalidomide + pamidronate (Barlogie)": "Thalidomide dose reduced in 86% and stopped in 50% within 2 years", "Thalidomide + zoledronic acid (Witzig)": "Neuropathy 80% vs 18% (grade 2 in 34%, no grade 3–4); grade ≥3 AEs in 17 vs 13 patients (full paper)", "QuiRedex (Mateos)": "Mostly grade ≤2", "IMWG updated criteria (Rajkumar)": "Not applicable (consensus criteria)", "Mayo 20/2/20 model (Lakshman)": "Not applicable (risk model)", "Siltuximab (Brighton)": "Similar to placebo; mostly grade 2–3; deaths 3 vs 4", "ECOG E3A06 (Lonial)": "Grade 3–4 nonhematologic AEs 28% on lenalidomide", "CENTAURUS (Landgren)": "No new safety signals (rates not in abstract)", "IMWG 2/20/20 risk model (Mateos)": "Not applicable (risk model)", "EMN consensus statement (Musto)": "Not applicable (consensus statement)", "NCI KRd (Korde, Kazandjian)": "Grade 3 nonhematologic AEs 38.9% (thromboembolism, rash, lung infection); no grade 4 events; no deaths", "iStopMM screening (Thorsteinsdóttir)": "Not applicable (screening study)", "GEM-CESAR (Mateos)": "Neutropenia and infections most frequent; 1 treatment-related death; 3 second primary malignancies", "I-PRISM (Nadeem)": "Grade 3 AEs 62%, grade 4 9%; grade 3–4 neutropenia 29%, leukopenia 18%, lymphopenia 15%, hypophosphatemia 13%; sensory neuropathy 56%, all grade ≤2 (full paper)", "AQUILA (Dimopoulos)": "Most common grade 3–4: hypertension 5.7% vs 4.6%; AE discontinuation 5.7%", "ASCO-Ontario Health living guideline (Hicks)": "Not applicable (guideline)", "Cochrane review: early intervention (Chen)": "More overall and serious AEs with daratumumab, very uncertain evidence", "PANGEA-SMM dynamic risk (Chabrun)": "Not applicable (risk model)", "ImmunoPRISM (Nadeem)": "Teclistamab: grade 1–2 CRS only, no neurotoxicity; grade 3 infections 20% vs 21% (Rd); no deaths", "CAR-PRISM (Nadeem)": "Grade 3–4 cytopenias 90%; cytokine release syndrome in all, grade 1–2; non-ICANS neurotoxicity in 7 (4 cranial nerve palsies, all resolved; 3 with persistent grade 1 symptoms)"};
 const CORE = ["Mayo natural history (Kyle)", "IMWG updated criteria (Rajkumar)", "IMWG 2/20/20 risk model (Mateos)", "QuiRedex (Mateos)", "ECOG E3A06 (Lonial)", "AQUILA (Dimopoulos)"];
 const WATCH = {"note": "Ongoing phase 3 trials selected from ClinicalTrials.gov (checked October 23, 2026); no ongoing phase 2 trial designed to support an approval was found (checked October 30, 2026). Status and primary completion dates are as registered; some trials may already have presented results at meetings.", "items": [{"n": "ECOG-ACRIN EAA173 (DETER-SMM)", "d": "Daratumumab-Rd vs Rd in high-risk SMM", "ph": "Phase 3", "st": "Recruiting", "pcd": "2029-12-31", "ep": "Overall survival", "nct": "NCT03937635"}, {"n": "Isatuximab-Rd vs Rd (EFC15992)", "d": "Isatuximab-Rd vs Rd in high-risk SMM", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2030-10-14", "ep": "PFS", "nct": "NCT04270409"}, {"n": "LINKER-SMM2", "d": "Linvoseltamab vs daratumumab in high-risk SMM", "ph": "Phase 3", "st": "Recruiting", "pcd": "2033-07-27", "ep": "Clinical and biochemical PFS", "nct": "NCT07393282"}]};
+// Prognosis tab data. PROG: kind, type, validation and chip label for each prognostic entry; PROGMAP: trial -> prognostic entries used in its design.
+const NEWM = {"checked": "November 10, 2026", "note": "Prognostic and predictive markers, including biomarkers, imaging and clinical factors, not yet validated for clinical decisions. Selected from peer-reviewed papers that test the marker in more than one cohort or bring a clearly new approach; single-cohort correlations are not listed.", "scope": "This list is shared by the three myeloma topics.", "items": [{"n": "PCL-like transcriptomic classifier", "kind": "Prognostic", "type": "Gene expression", "ev": "Validated, not yet practical", "pub": "J Clin Oncol 2022", "last": "2022-09", "why": "Identifies myeloma that behaves like primary plasma cell leukemia at the gene-expression level, in patients without leukemic disease.", "cohort": "Built from 154 patients with newly diagnosed myeloma (CASSIOPEIA, HO143) and 29 with primary plasma cell leukemia (EMN12/HO129); tested in an independent cohort of 2,139 patients from seven studies.", "data": "54-gene classifier; 93% sensitivity for primary plasma cell leukemia; classed 10% of newly diagnosed myeloma as PCL-like. Adjusted HR 1.64 for PFS (95% CI 1.30–2.07) and 1.89 for OS (1.42–2.50).", "adj": "Yes: R-ISS stage, age and treatment.", "missing": "Requires RNA profiling of purified plasma cells, which is not routine; no trial assigns treatment by it.", "status": "Research use", "next": "Not reported.", "hist": "Earlier gene-expression risk scores, such as the 70-gene GEP70 (Shaughnessy, Blood 2007: high risk in 13%, HR 5.16 in training and 4.75 in the test cohort), were also prognostic but did not enter routine care.", "src": [["Hofste op Bruinink D, J Clin Oncol 2022", "https://pubmed.ncbi.nlm.nih.gov/35357885/"], ["Shaughnessy JD Jr, Blood 2007 (GEP70)", "https://pubmed.ncbi.nlm.nih.gov/17105813/"]], "cites": {"pmid": "35357885", "total": 23, "recent": 12}}, {"n": "Bone marrow immune signatures", "kind": "Prognostic", "type": "Immune microenvironment", "ev": "Independent validation", "pub": "Nat Cancer 2026", "last": "2026-01", "why": "Looks beyond the tumor: the state of bone marrow T cells and other immune cells may explain why patients with the same cytogenetics do differently.", "cohort": "Single-cell profiles of about 1.4 million bone marrow cells from 337 patients with newly diagnosed myeloma, with separate discovery and validation cohorts.", "data": "A proinflammatory, senescence-associated immune phenotype was seen in rapidly progressing patients. Adding immune-cell signatures to cytogenetics and patient characteristics improved survival prediction in the validation cohort (effect sizes not reported in abstract).", "adj": "Combined with cytogenetics and patient characteristics; independence from R-ISS or R2-ISS not reported in abstract.", "missing": "Single-cell profiling is not practical in routine care; effect sizes and an external cohort are needed.", "status": "Research use", "next": "Not reported.", "src": [["Pilcher WC, Nat Cancer 2026", "https://pubmed.ncbi.nlm.nih.gov/41514053/"]], "cites": {"pmid": "41514053", "total": 18, "recent": 18}}, {"n": "Mass-spectrometry MRD in blood", "kind": "Prognostic", "type": "MRD technique", "ev": "Independent validation", "pub": "Blood 2024 (two studies)", "last": "2024-12", "why": "Detects the monoclonal protein in serum far below the limit of immunofixation, offering a blood test for residual disease instead of repeated marrow biopsies.", "cohort": "GEM2012MENOS65 and GEM2014MAIN trials, paired with bone marrow next-generation flow (Puig); 138 patients in the ATLAS maintenance trial, paired with marrow NGS and flow (Kubicki).", "data": "Puig: serum mass spectrometry and marrow flow MRD had similar prognostic value at single time points and over time; reappearance of the protein by mass spectrometry signalled imminent progression. Kubicki: agreement with marrow MRD at 10⁻⁵ was 70% (NGS) and 67% (flow); the PFS difference reached significance after 18 cycles post-transplant, and negativity in both blood and marrow was better than in one alone.", "adj": "Not reported in abstract.", "missing": "Standard assay and thresholds; best timing (agreement with marrow was lowest early after transplant); prospective use to guide treatment.", "status": "Not standard of care", "next": "Not reported.", "src": [["Puig N, Blood 2024", "https://pubmed.ncbi.nlm.nih.gov/39293025/"], ["Kubicki T, Blood 2024", "https://pubmed.ncbi.nlm.nih.gov/38713888/"]], "cites": {"pmid": "39293025", "total": 12, "recent": 12}}, {"n": "IRMMa individualized genomic risk model", "kind": "Prognostic and predictive", "type": "Genomic model", "ev": "Independent validation", "pub": "J Clin Oncol 2024", "last": "2024-04", "why": "Moves from risk groups to an individual estimate that combines genomics, clinical data and treatment, and suggests which genomic groups gain most from transplant.", "cohort": "1,933 patients with newly diagnosed myeloma with genomic and treatment data; validated in 256 patients from the GMMG-HD6 trial.", "data": "12 genomic groups. C-index for OS 0.726, compared with 0.61 for ISS, 0.572 for R-ISS and 0.625 for R2-ISS; the advantage held in the validation cohort. 20 genomic features drove accuracy, including 1q gain or amplification, del(1p), TP53 loss, NSD2 translocations and APOBEC and copy-number signatures.", "adj": "Compared directly with ISS, R-ISS and R2-ISS.", "missing": "Requires whole-genome sequencing; one external validation; the transplant-benefit estimates come from retrospective data.", "status": "Research use", "next": "Not reported.", "src": [["Maura F, J Clin Oncol 2024", "https://pubmed.ncbi.nlm.nih.gov/38194610/"]], "cites": {"pmid": "38194610", "total": 92, "recent": 80}}, {"n": "Genomic predictors of progression in smoldering myeloma", "kind": "Prognostic", "type": "Genomic (smoldering myeloma)", "ev": "Independent validation", "pub": "J Clin Oncol 2020", "last": "2020-07", "why": "Current smoldering myeloma models use only clinical measures; tumor genomics may identify patients whose disease is already biologically myeloma.", "cohort": "214 patients with smoldering myeloma sequenced (whole exome in 166, targeted sequencing in 48); findings tested in an external smoldering myeloma cohort.", "data": "MAPK pathway mutations (KRAS, NRAS), DNA repair alterations (del(17p), TP53 or ATM mutations) and MYC translocations or copy-number changes were each independent risk factors for progression; in the external cohort, patients with any of the three had a higher risk of progression (effect sizes not reported in abstract). APOBEC-associated mutations were enriched in patients who progressed.", "adj": "Yes: clinical risk staging.", "missing": "Sequencing is not routine in smoldering myeloma; the features are not part of the 20/2/20 or IMWG models (the IMWG model adds FISH abnormalities only); no trial assigns treatment by them.", "status": "Research use", "next": "Not reported.", "src": [["Bustoros M, J Clin Oncol 2020", "https://pubmed.ncbi.nlm.nih.gov/32442065/"]], "cites": {"pmid": "32442065", "total": 131, "recent": 40}}, {"n": "8-gene proliferation score (GPS)", "kind": "Prognostic", "type": "Gene expression", "ev": "Discovery only", "pub": "Blood Neoplasia 2026", "last": "2026-11", "why": "Turns tumor proliferation, an old adverse factor once measured by the plasma cell labeling index, into an RNA-based score that can be computed from sequencing data.", "cohort": "Proliferation genes selected in 136 Mayo Clinic patients with paired labeling index; score built in 656 patients from the CoMMpass cohort; survival checked in a small Mayo Clinic RNA-seq cohort (24 patients) and S-phase prediction in the KYDAR data set (full paper).", "data": "Eight genes (CHEK1, EXO1, MCM4, TK1, KIF14, SEPTIN11, PHF19, HMGB3). CoMMpass, split at the median: median OS 63.6 vs 106.1 months (P < .001). Mayo RNA-seq cohort: 39.2 vs 157.1 months (P = .03; 12 patients in the high group). Above-median score adjusted HR for OS 1.86 (95% CI 1.39–2.49) (full paper).", "adj": "Yes, within CoMMpass: IMS/IMWG 2025 high-risk status, circulating plasma cells ≥1.2% and treatment; the continuous score also held against other expression signatures (EMC92, UAMS70) (full paper). Not compared with R-ISS or R2-ISS.", "missing": "Not independently validated: the score was built and tested for survival in CoMMpass, and the only other survival cohort was a 24-patient single-center series. Needs an external cohort, ideally treated with anti-CD38 quadruplets, and a clinically available assay.", "status": "Research use", "next": "Not reported.", "src": [["Bohra A, Blood Neoplasia 2026", "https://pubmed.ncbi.nlm.nih.gov/42959892/"]], "cites": {"pmid": "42959892", "total": 0, "recent": 0}}, {"n": "Early-relapse (ER18) risk score", "kind": "Prognostic", "type": "Clinical and genomic score", "ev": "Discovery only", "pub": "HemaSphere 2025", "last": "2025-04", "why": "Aims to identify, before treatment, the patients who will relapse within 18 months, the group with the worst survival.", "cohort": "1,215 patients with newly diagnosed myeloma in four PETHEMA/GEM trials, transplant-eligible and transplant-ineligible.", "data": "Relapse within 18 months in 22%, with median OS 19 vs 114 months. A modified IMS high-risk definition, ECOG 2, ISS III and calcium ≥11 mg/dL were independent predictors; the score gave early-relapse rates of 2%, 24.5% and 59% in low-, intermediate- and high-risk patients. VGPR or better at 6–9 months modified the risk.", "adj": "Built on the IMS high-risk definition and ISS.", "missing": "External validation; validation with quadruplet induction.", "status": "Research use", "next": "Not reported.", "src": [["Manubens A, HemaSphere 2025", "https://pubmed.ncbi.nlm.nih.gov/40276216/"]], "cites": {"pmid": "40276216", "total": 2, "recent": 2}}, {"n": "Soluble BCMA before BCMA-directed bispecific antibodies", "kind": "Predictive", "type": "Serum marker (relapsed myeloma)", "ev": "Discovery only", "pub": "Blood 2024", "last": "2024-12", "why": "BCMA shed into the blood can bind the drug before it reaches the tumor; a baseline blood level might identify patients unlikely to respond to a BCMA-directed bispecific antibody.", "cohort": "Whole-genome sequencing and laboratory models, with a correlative analysis of 163 patients treated with teclistamab.", "data": "Baseline soluble BCMA above 400 ng/mL was associated with primary refractoriness to teclistamab; tumor burden and surface BCMA density also influenced activity. In laboratory models, a higher bispecific dose, a different target (GPRC5D) or a gamma-secretase inhibitor overcame high soluble BCMA.", "adj": "Not reported in abstract.", "missing": "One clinical cohort; a standardized assay and threshold; prospective evidence that testing changes treatment choice.", "status": "Research use", "next": "Not reported.", "src": [["Lee H, Blood 2024", "https://pubmed.ncbi.nlm.nih.gov/39321344/"]], "cites": {"pmid": "39321344", "total": 45, "recent": 45}}, {"n": "Antigen-loss mutations after T-cell redirecting therapy", "kind": "Predictive", "type": "Genomic (relapsed myeloma)", "ev": "Discovery only", "pub": "Nat Med 2023", "last": "2023-09", "why": "Explains some relapses after BCMA- or GPRC5D-directed CAR-T cells and bispecific antibodies, and may indicate which target can still be used.", "cohort": "Bulk and single-cell whole-genome sequencing in 30 patients treated with anti-BCMA or anti-GPRC5D CAR-T cells or bispecific antibodies.", "data": "Relapse with biallelic deletion of TNFRSF17 (the BCMA gene) in 2 patients; mutations in the extracellular domain of BCMA that abolished the activity of anti-BCMA bispecific antibodies, despite detectable surface BCMA, in 5; biallelic GPRC5D mutations after anti-GPRC5D bispecific therapy in 4.", "adj": "Not applicable (mechanistic case series).", "missing": "Frequency in unselected patients; a clinical assay; prospective evidence that testing should guide the next therapy.", "status": "Research use", "next": "Not reported.", "src": [["Lee H, Nat Med 2023", "https://pubmed.ncbi.nlm.nih.gov/37653344/"]], "cites": {"pmid": "37653344", "total": 243, "recent": 177}}], "failed": [], "retired": []};
+const PROG = {"Mayo natural history (Kyle)": {"pt": "model", "pk": "Prognostic", "sh": "Mayo 2007", "val": "Single-center cohort (276 patients). Its groups by marrow plasma cells and M-protein were the Mayo criteria used, with the PETHEMA criteria, to define high risk in QuiRedex."}, "PETHEMA flow-cytometry risk (Pérez-Persona)": {"pt": "model", "pk": "Prognostic", "sh": "PETHEMA", "val": "One prospective cohort (93 patients with smoldering myeloma, 407 with MGUS); used, with the Mayo criteria, to define high risk in QuiRedex."}, "Free light chain ratio (Dispenzieri)": {"pt": "bio", "pk": "Prognostic", "sh": "FLC ratio", "val": "One cohort (273 Mayo patients). The involved to uninvolved FLC ratio later entered the Mayo 20/2/20 and IMWG 2/20/20 models at a cutoff of 20, and a ratio of 100 or more became a myeloma-defining event (IMWG 2014)."}, "IMWG updated criteria (Rajkumar)": {"pt": "bio", "pk": "Consensus definition", "sh": "SLiM-CRAB", "val": "IMWG consensus. The three biomarkers were chosen because they were associated with near-inevitable development of CRAB features (per abstract)."}, "Mayo 20/2/20 model (Lakshman)": {"pt": "model", "pk": "Prognostic", "sh": "20/2/20", "val": "Single-center cohort (421 patients); the same three factors were confirmed in the IMWG international cohort of 1,996 patients (Mateos 2020)."}, "IMWG 2/20/20 risk model (Mateos)": {"pt": "model", "pk": "Prognostic", "sh": "IMWG 2/20/20", "val": "International multicenter cohort (1,996 patients). Adding cytogenetic abnormalities gave four groups with 6% to 63% progression at 2 years."}, "PANGEA-SMM dynamic risk (Chabrun)": {"pt": "model", "pk": "Prognostic", "sh": "PANGEA-SMM", "val": "Trained and validated in 2,344 patients from seven international centers; C-statistic 0.79, higher than the 20/2/20 and IMWG models (per abstract). Published in 2026; not yet in a consensus or guideline."}};
+const PROGMAP = {"QuiRedex (Mateos)": [["Mayo natural history (Kyle)", "Eligibility (high risk by Mayo and/or PETHEMA criteria)"], ["PETHEMA flow-cytometry risk (Pérez-Persona)", "Eligibility (high risk by Mayo and/or PETHEMA criteria)"]]};
 const PAGEKEY = "smm";
 const PAGETITLE = "Smoldering myeloma";
 const SLUG = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -614,6 +670,27 @@ function recHTML(t){
 }
 const GRPHDR = (t, i, rows) => (sortMode === "setting" || sortMode === "setting-asc") && (i === 0 || rows[i - 1].s !== t.s)
   ? '<li class="grp"><h3>' + esc(SETTINGS[t.s]) + '<span class="gn">' + rows.filter(r => r.s === t.s).length + '</span></h3></li>' : '';
+// PROGTAB-HELPERS (Oct 31, 2026): rows on cards for prognostic entries and for trials that used them.
+const PKIND = k => /consensus/i.test(k) ? "cons" : /surrogate/i.test(k) && !/candidate/i.test(k) ? "sur" : /predictive/i.test(k) ? "pred" : "";
+const PTYPE = { model: "Models and staging", bio: "Biomarkers", resp: "Response and MRD" };
+const PUSEDIN = n => (typeof PROGMAP === "undefined") ? [] : Object.keys(PROGMAP).filter(k => PROGMAP[k].some(x => x[0] === n));
+function PCHIP(name, label, year) {
+  return '<a class="pchip" href="#t-' + PAGEKEY + '-' + SLUG(name) + '" data-slug="' + SLUG(name) + '">' + esc(label) + (year ? '<span class="pchip-y">' + year + '</span>' : '') + '</a>';
+}
+function PROGROWS(t) {
+  if (typeof PROG === "undefined") return "";
+  const P = PROG[t.n];
+  if (P) {
+    const used = PUSEDIN(t.n).map(n => T.find(x => x.n === n)).filter(Boolean).sort((a, b) => a.y - b.y);
+    return '<dt>Kind</dt><dd><span class="pkind ' + PKIND(P.pk) + '">' + esc(P.pk) + '</span> <span class="ptype">' + esc(PTYPE[P.pt] || "") + '</span></dd>' +
+      '<dt>Validation</dt><dd>' + esc(P.val) + '</dd>' +
+      (used.length ? '<dt>Used in</dt><dd class="pchips">' + used.map(x => PCHIP(x.n, x.n, x.y)).join("") + '</dd>' : '');
+  }
+  const M = (typeof PROGMAP !== "undefined") && PROGMAP[t.n];
+  if (!M) return "";
+  return '<dt>Markers used</dt><dd class="pchips">' + M.map(x => PCHIP(x[0], (PROG[x[0]] && PROG[x[0]].sh) || x[0]) + ' <span class="puse">' + esc(x[1]) + '</span>').join("") + '</dd>';
+}
+// /PROGTAB-HELPERS
 function render(){
   const q = qEl.value.trim().toLowerCase();
   let rows = T.filter(t => (active === "all" || (active === "core" ? t.core : t.s === active)) &&
@@ -639,6 +716,7 @@ function render(){
           <dt class="f-res">Result</dt><dd class="result f-res">${esc(t.r)} ${eviHTML(t)}</dd>
           <dt class="f-tox">Key toxicity</dt><dd class="tox f-tox">${esc(t.tx)}</dd>
           ${MOAMAP[t.n] ? `<dt>Drug mechanism</dt><dd class="moas">${MOAHTML(t)}</dd>` : ""}
+          ${PROGROWS(t)}
           <dt>Builds on</dt><dd>${esc(t.b)}</dd>
           <dt>Changed</dt><dd>${esc(t.i)}</dd>
           <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
@@ -649,6 +727,46 @@ function render(){
     </li>`).join("");
 }
 render();
+// PROGTAB-LIST (Oct 31, 2026): chips on cards jump to the linked card.
+function jumpTo(slug){
+  const listEl = document.getElementById("list");
+  const first = chipsEl.querySelector(".chip");
+  if (first && first.getAttribute("aria-pressed") !== "true") first.click();
+  if (qEl.value) { qEl.value = ""; render(); }
+  const li = listEl.querySelector('li[data-trial="' + slug + '"]');
+  if (!li) return;
+  li.scrollIntoView({ behavior: "smooth", block: "start" });
+  li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+}
+// "Back to ..." bar at the top of the card reached by a chip jump, so the reader can return to where they came from.
+let pBack = null;
+function pHost(){ return document.getElementById("list").closest(".ltw") || document; }
+function pHideBack(){ pBack = null; document.querySelectorAll(".pback").forEach(x => x.remove()); }
+function pSetBack(o, slug){
+  pHideBack(); pBack = o;
+  const li = document.getElementById("list").querySelector('li[data-trial="' + slug + '"]'); if (!li) return;
+  const bar = document.createElement("div"); bar.className = "pback";
+  bar.innerHTML = '<button type="button" class="pback-go">\u2190 Back to ' + o.label.replace(/&/g, "&amp;").replace(/</g, "&lt;") + '</button><button type="button" class="pback-x" aria-label="Dismiss" title="Dismiss">\u00d7</button>';
+  const body = li.querySelector(".body") || li; body.insertBefore(bar, body.firstChild);
+  bar.querySelector(".pback-x").addEventListener("click", pHideBack);
+  bar.querySelector(".pback-go").addEventListener("click", () => {
+    const b = pBack; pHideBack(); if (!b) return;
+    if (b.tab === "prog") {
+      const btn = pHost().querySelector('.tabs button[data-tab="prog"]');
+      if (btn && btn.getAttribute("aria-selected") !== "true") btn.click();
+      setTimeout(() => window.scrollTo({ top: b.y, behavior: "smooth" }), 60);
+    } else jumpTo(b.slug);
+  });
+}
+{ const tb = pHost().querySelector(".tabs"); if (tb) tb.addEventListener("click", pHideBack); }
+document.getElementById("list").addEventListener("click", e => {
+  const a = e.target.closest("a.pchip"); if (!a) return;
+  e.preventDefault();
+  const li = a.closest("li[data-trial]"), h = li && li.querySelector(".name");
+  jumpTo(a.getAttribute("data-slug"));
+  if (li) pSetBack({ tab: "trials", slug: li.getAttribute("data-trial"), label: h ? h.textContent.trim() : "the trial" }, a.getAttribute("data-slug"));
+});
+// /PROGTAB-LIST
 
 (function renderWatch(){
   const listEl = document.getElementById("list");
@@ -721,6 +839,8 @@ render();
     if (panel) panel.hidden = which !== "newdrugs";
     if (mpanel) mpanel.hidden = which !== "mech";
     if (watch && which === "mech") watch.style.display = "none";
+    if (ppanel) ppanel.hidden = which !== "prog";
+    if (watch && which === "prog") watch.style.display = "none";
   }
   // Drug mechanisms tab: classes tested on this page, how they work, the review, and the trials that used them.
   const mpanel = root.querySelector(".mechs");
@@ -748,6 +868,59 @@ render();
       li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
     });
   }
+  // PROGTAB-TAB (Oct 31, 2026): Prognosis tab: Established entries and Markers to watch.
+  const ppanel = root.querySelector(".prog");
+  const pEst = (typeof PROG !== "undefined") ? T.filter(t => PROG[t.n]) : [];
+  const pMk = (typeof NEWM !== "undefined" && NEWM.items) ? NEWM.items : [];
+  const cpg = tabs.querySelector('[data-tab="prog"] .tcount'); if (cpg) cpg.textContent = pEst.length + pMk.length;
+  let ptype = "all";
+  const EVL = ["Validated, not yet practical", "Independent validation", "Discovery only"];
+  function drawProg(){
+    if (!ppanel) return;
+    const est = pEst.filter(t => ptype === "all" || PROG[t.n].pt === ptype)
+      .sort((a, b) => (["model", "bio", "resp"].indexOf(PROG[a.n].pt) - ["model", "bio", "resp"].indexOf(PROG[b.n].pt)) || a.y - b.y || a.n.localeCompare(b.n));
+    const mk = pMk.slice().sort((a, b) => (EVL.indexOf(a.ev) - EVL.indexOf(b.ev)) || String(b.last).localeCompare(String(a.last)));
+    const L = s => '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + ' ↗</a>';
+    const row = (k, v, cls) => v ? '<dt' + (cls ? ' class="' + cls + '"' : '') + '>' + k + '</dt><dd' + (cls ? ' class="' + cls + '"' : '') + '>' + esc(v) + '</dd>' : '';
+    ppanel.innerHTML =
+      '<p class="pg-note">Risk models, biomarkers and response measures. Each entry states whether it is prognostic (outcome regardless of treatment), predictive (who benefits from a given treatment), a surrogate endpoint or a consensus definition. Within each group, oldest first, so each tool appears after the one it built on. Select an entry to open its full card.</p>' +
+      '<h2 class="pg-h">Established</h2><p class="pg-note">Externally validated, or adopted in an IMWG or IMS consensus, a guideline or a regulatory decision.</p>' +
+      '<div class="pg-chips">' + [["all", "All"], ["model", PTYPE.model], ["bio", PTYPE.bio], ["resp", PTYPE.resp]].map(([k, l]) =>
+        '<button type="button" class="chip" data-pt="' + k + '" aria-pressed="' + (k === ptype) + '">' + esc(l) + ' <span class="gn">' + (k === "all" ? pEst.length : pEst.filter(t => PROG[t.n].pt === k).length) + '</span></button>').join("") + '</div>' +
+      est.map((t, i) => { const P = PROG[t.n];
+        const grp = (ptype === "all" && (i === 0 || PROG[est[i - 1].n].pt !== P.pt))
+          ? '<h3 class="pg-grp">' + esc(PTYPE[P.pt]) + '<span class="gn">' + est.filter(x => PROG[x.n].pt === P.pt).length + '</span></h3>' : '';
+        const used = PUSEDIN(t.n).map(n => T.find(x => x.n === n)).filter(Boolean).sort((a, b) => a.y - b.y);
+        return grp + '<div class="pg-row"><div class="pg-y">' + t.y + '</div><div class="pg-b"><div class="pg-top"><h3 class="pg-name"><a href="#t-' + PAGEKEY + '-' + t.slug + '" class="pjump" data-slug="' + t.slug + '">' + esc(t.n) + '</a></h3>' +
+          '<span class="pkind ' + PKIND(P.pk) + '">' + esc(P.pk) + '</span><span class="ptype">' + esc(PTYPE[P.pt]) + '</span>' + (t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : '') + '</div>' +
+          '<p class="pg-res">' + esc(t.r) + '</p><p class="pg-val"><span class="pg-k">Validation</span>' + esc(P.val) + '</p>' +
+          '<div class="pg-links"><a href="#t-' + PAGEKEY + '-' + t.slug + '" class="pjump" data-slug="' + t.slug + '">Full card ↗</a>' +
+          (used.length ? '<span class="pg-k" style="margin-left:8px">Used in</span>' + used.map(x => PCHIP(x.n, x.n, x.y)).join("") : '') + '</div></div></div>'; }).join("") +
+      '<h2 class="pg-h">Markers to watch</h2><p class="pg-note">' + esc(NEWM.note) + (NEWM.scope ? ' ' + esc(NEWM.scope) : '') + ' Checked ' + esc(NEWM.checked) + '.</p>' +
+      (mk.length ? mk.map(d => '<div class="mw-item"><div class="pg-top"><h3 class="pg-name">' + esc(d.n) + '</h3><span class="pkind ' + PKIND(d.kind) + '">' + esc(d.kind) + '</span><span class="ptype">' + esc(d.type) + '</span></div>' +
+        '<span class="mw-ev lv' + Math.max(0, EVL.indexOf(d.ev)) + '">Evidence: ' + esc(d.ev) + ' · ' + esc(d.pub) + '</span>' +
+        '<dl>' + row("Why it matters", d.why) + row("Cohort", d.cohort) + row("Key data", d.data, "f-res") + row("Adjusted for", d.adj) + row("Still missing", d.missing) + row("Status", d.status) + row("Next step", d.next) +
+        '<dt>Sources</dt><dd>' + d.src.map(L).join(" · ") + '</dd></dl>' +
+        (d.hist ? '<p class="mw-hist"><b>History.</b> ' + esc(d.hist) + '</p>' : '') +
+        (d.cites ? '<p class="mw-cite">Cited by ' + d.cites.total + ' papers in PubMed Central, ' + d.cites.recent + ' in the last 24 months (checked ' + esc(NEWM.checked) + ').</p>' : '') +
+        '<p class="mw-foot">Not validated for clinical decisions.</p></div>').join("") : '<p class="pg-note">None at present.</p>') +
+      '<details class="mw-log"><summary>Did not validate (' + (NEWM.failed || []).length + ')</summary>' +
+        ((NEWM.failed || []).length ? '<ul>' + NEWM.failed.map(g => '<li><b>' + esc(g.n) + ':</b> ' + esc(g.txt) + ' ' + (g.src || []).map(L).join(" · ") + '</li>').join("") + '</ul>'
+          : '<p class="pg-note">None so far. Markers that fail independent validation are listed here with the reason and date, and removed after 2 years.</p>') + '</details>' +
+      '<p class="pg-rules">How Markers to watch is kept: peer-reviewed papers only (meeting data can update an entry, labelled as such). Ordered by evidence (validated but not yet practical, then independent validation, then discovery only), newest evidence first. A marker moves to Established when it is validated and recognized in a consensus or guideline, or can be measured with standard tests; to "Did not validate" when an independent study fails to confirm it; and is proposed for removal when no new validation study has appeared for 24 months. Checked at each scheduled update and after major meetings.</p>';
+    ppanel.querySelectorAll(".pg-chips .chip").forEach(b => b.addEventListener("click", () => { ptype = b.getAttribute("data-pt"); drawProg(); }));
+  }
+  drawProg();
+  if (ppanel) ppanel.addEventListener("click", e => {
+    const a = e.target.closest("a.pjump, a.pchip"); if (!a) return;
+    e.preventDefault();
+    const y = window.scrollY;
+    show("trials");
+    tabs.dispatchEvent(new Event("tabschange"));
+    jumpTo(a.getAttribute("data-slug"));
+    pSetBack({ tab: "prog", y: y, label: "Prognosis tab" }, a.getAttribute("data-slug"));
+  });
+  // /PROGTAB-TAB
   tabs.addEventListener("click", e => {
     const b = e.target.closest("button[data-tab]"); if (!b) return;
     const w = b.getAttribute("data-tab");

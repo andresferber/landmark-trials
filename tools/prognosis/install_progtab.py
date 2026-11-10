@@ -191,7 +191,9 @@ ROW_ANCHOR = '          ${MOAMAP[t.n] ? `<dt>Drug mechanism</dt><dd class="moas"
 ROW_NEW = ROW_ANCHOR + '          ${PROGROWS(t)}\n'
 TAB_ANCHOR = '  tabs.addEventListener("click", e => {\n    const b = e.target.closest("button[data-tab]"); if (!b) return;'
 FOOT_ANCHOR = '    <p class="sitedisc">'
-FOOT = '    <p class="pgfoot">Prognosis tab (added October 31, 2026): models, biomarkers and response measures are included when externally validated or adopted in an IMWG or IMS consensus, a guideline or a regulatory decision; links between trial cards and prognostic entries are shown only when the trial used the measure in its design (endpoint, eligibility, stratification or treatment assignment). Numbers checked against the PubMed abstract on October 31, 2026.</p>\n'
+# Per-page dates for the footer note: (tab added, numbers checked). Add a line when the tab goes live on a new topic.
+FOOTDATES = {"ndmm": ("October 31, 2026", "October 31, 2026"), "smm": ("November 10, 2026", "November 9, 2026"), "rrmm": ("November 10, 2026", "November 9, 2026")}
+FOOT = '    <p class="pgfoot">Prognosis tab (added %(added)s): models, biomarkers and response measures are included when externally validated or adopted in an IMWG or IMS consensus, a guideline or a regulatory decision; links between trial cards and prognostic entries are shown only when the trial used the measure in its design (endpoint, eligibility, stratification or treatment assignment). Numbers checked against the PubMed abstract on %(checked)s.</p>\n'
 
 def strip(h, a, b):
     return re.sub(re.escape(a) + r'.*?' + re.escape(b) + r'\n?', '', h, flags=re.S)
@@ -227,6 +229,9 @@ for page in sys.argv[2:]:
     assert TAB_ANCHOR in h, page + ": tab click anchor not found"
     h = h.replace(TAB_ANCHOR, JS_TAB + TAB_ANCHOR, 1)
     if 'class="pgfoot"' not in h:
-        h = h.replace(FOOT_ANCHOR, FOOT + FOOT_ANCHOR, 1)
+        key = re.search(r'const PAGEKEY\s*=\s*"([a-z]+)"', h).group(1)
+        assert key in FOOTDATES, page + ": add this topic to FOOTDATES"
+        foot = FOOT.replace("%(added)s", FOOTDATES[key][0]).replace("%(checked)s", FOOTDATES[key][1])
+        h = h.replace(FOOT_ANCHOR, foot + FOOT_ANCHOR, 1)
     open(page, "w", encoding="utf-8").write(h)
     print("ok", page)

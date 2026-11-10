@@ -1,4 +1,4 @@
-"""Prognosis tab for smoldering myeloma (preview, Nov 9, 2026; not live until Andres approves).
+"""Prognosis tab for smoldering myeloma (approved by Andres and live Nov 10, 2026).
 No new T entries: PROG records are attached to the existing Definition & risk entries; PROGMAP links QuiRedex to the
 models that defined its eligibility. Every statement comes from the verified cards.
 Usage: python3 smm_entries.py smm.html   (rerunnable)"""

@@ -1,4 +1,4 @@
-"""Prognosis tab for relapsed myeloma (preview, Nov 9, 2026; not live until Andres approves).
+"""Prognosis tab for relapsed myeloma (approved by Andres and live Nov 10, 2026).
 Adds a Risk & response category with 5 entries (3 shared with the newly diagnosed page, 2 new: t(11;14) and
 venetoclax; early relapse), PROG records and PROGMAP. Every number was checked against the PubMed abstract.
 Usage: python3 rrmm_entries.py rrmm.html   (rerunnable)"""
@@ -233,6 +233,16 @@ def jsobj(t):
     return "{" + ",".join(k + ":" + J(t[k]) for k in keys if k in t) + "}"
 
 changed = []
+# 0. Page setup: the Risk & response category (label, tag class, order, tag style).
+if 'risk: "Risk & response"' not in h:
+    h = h.replace('  imm: "CAR-T & bispecifics"\n};', '  imm: "CAR-T & bispecifics",\n  risk: "Risk & response"\n};', 1)
+    h = h.replace('imm: "rr" };', 'imm: "rr", risk: "risk" };', 1)
+    h = h.replace('const order = ["bb","cd38","oth","imm"];', 'const order = ["bb","cd38","oth","imm","risk"];', 1)
+    changed.append("setup")
+if ".tag.risk" not in h:
+    k = h.index(".tag.rr {"); k = h.index("\n", k)
+    h = h[:k] + "\n.tag.risk { color: var(--muted); background: var(--bg); box-shadow: inset 0 0 0 1px var(--rule); }" + h[k:]
+assert 'risk: "Risk & response"' in h and 'risk: "risk"' in h and '"imm","risk"]' in h and ".tag.risk" in h
 # 1. New T entries, appended at the end of T.
 a = h.index("const T = [")
 end = h.index("\n];", a)
