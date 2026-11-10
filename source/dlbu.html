@@ -1,0 +1,948 @@
+<title>Untreated diffuse large B-cell lymphoma</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column; sticky control strip; each trial is a ruled entry with a year gutter */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --fg: #1b2230;
+  --muted: #5d6677;
+  --rule: #dde1e8;
+  --accent: #2c4a8a;
+  --s-young: #1f6f5c; --s-young-bg: #e3f2ed;
+  --s-old: #8a5a12;   --s-old-bg: #f7eedd;
+  --s-p2: #5b4a9a;    --s-p2-bg: #ece8f7;
+  --s-rr: #9a2f3d;    --s-rr-bg: #f7e4e6;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+    --s-young: #7fd3bb; --s-young-bg: #163029;
+    --s-old: #e6b86a;   --s-old-bg: #33270f;
+    --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+    --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+  --s-young: #7fd3bb; --s-young-bg: #163029;
+  --s-old: #e6b86a;   --s-old-bg: #33270f;
+  --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+  --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
+header h1 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.7rem, 4.5vw, 2.3rem); line-height: 1.15; margin: 0 0 6px; text-wrap: balance; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--muted); max-width: 62ch; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+.controls { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 14px 12px; margin-top: 20px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 10px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 13px/1 var(--font-body); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.row2 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+input[type="search"] { flex: 1 1 220px; min-width: 0; font: 400 14px var(--font-body); padding: 9px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+select { font: 400 14px var(--font-body); padding: 9px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+.count { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+ol.list { list-style: none; margin: 0; padding: 0; }
+.trial { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 14px; padding-block: 18px; border-bottom: 1px solid var(--rule); }
+.yr { font-family: var(--font-mono); font-weight: 500; font-size: 15px; color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.name { font-family: var(--font-display); font-weight: 650; font-size: 1.15rem; margin: 0; }
+.tag { font: 500 11px/1 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; }
+.tag.young { color: var(--s-young); background: var(--s-young-bg); }
+.tag.old { color: var(--s-old); background: var(--s-old-bg); }
+.tag.p2 { color: var(--s-p2); background: var(--s-p2-bg); }
+.tag.rr { color: var(--s-rr); background: var(--s-rr-bg); }
+.phase { font: 400 12px var(--font-mono); color: var(--muted); }
+.design { margin: 0; color: var(--fg); }
+dl { margin: 2px 0 0; display: grid; grid-template-columns: max-content minmax(0,1fr); gap: 4px 12px; font-size: 14px; }
+dt { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+dd { margin: 0; min-width: 0; }
+.result { font-variant-numeric: tabular-nums; }
+.stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; padding-block: 4px; }
+.stats b { font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.rec { display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; }
+.rec .rk { font: 500 10.5px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.rec .rk:first-child { margin-top: 0; }
+.rec ul { margin: 0; padding-left: 16px; }
+.rec li { margin: 1px 0; }
+.rec li.none { list-style: none; margin-left: -16px; color: var(--muted); }
+.rec p { margin: 0; }
+.rec a { color: var(--accent); text-underline-offset: 2px; }
+.qs { color: var(--accent); }
+.cite { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.cite a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.cite a:hover { text-decoration-thickness: 2px; }
+.cite a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.ok { color: var(--s-young); font-size: 12.5px; white-space: nowrap; }
+.flag { color: var(--s-old); font-size: 12.5px; }
+.empty { padding: 32px 0; color: var(--muted); }
+footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch; }
+@media (max-width: 480px) {
+  .trial { grid-template-columns: 1fr; gap: 4px; }
+  dl { grid-template-columns: 1fr; gap: 0 0; }
+  dt { line-height: 1.6; margin-top: 4px; }
+}
+.credit { margin: 10px 0 0; font-size: 11.5px; color: var(--muted); opacity: .8; }
+
+/* Added Oct 23, 2026: toxicity, core trials, evidence, trials to watch, print */
+.tox { color: var(--fg); }
+.core { font: 600 11px/1 var(--font-mono); letter-spacing: .04em; color: #8a5a12; background: #fbf1dc; padding: 4px 7px; border-radius: 4px; }
+.ok.full { color: var(--accent); }
+.trial.flash { animation: lt-flash 2.4s ease-out; }
+@keyframes lt-flash { 0% { background: rgba(240, 190, 60, .35); } 100% { background: transparent; } }
+.printbtn { font: 500 13px/1 var(--font-body); padding: 9px 14px; border-radius: 8px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; margin-left: auto; }
+.printbtn:hover { border-color: var(--accent); }
+.printbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.watch { margin-top: 28px; padding: 18px 18px 8px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+.watch[hidden] { display: none; }
+.watch h2 { font-family: var(--font-display); font-weight: 650; font-size: 1.25rem; margin: 0 0 4px; }
+.watch .wnote { margin: 0 0 12px; font-size: 13px; color: var(--muted); }
+.watch ul { list-style: none; margin: 0; padding: 0; }
+.watch li { padding: 10px 0; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 3px; }
+.watch .wn { font-weight: 600; }
+.watch .wm { font: 400 12.5px var(--font-mono); color: var(--muted); }
+.watch .wd { font-size: 14px; }
+.watch a { color: var(--accent); }
+@media print {
+  :root { --bg: #fff; --surface: #fff; --fg: #111; --muted: #444; --rule: #ccc; --accent: #1a3a7a; }
+  body { background: #fff; }
+  .controls, .printbtn { display: none !important; }
+  .trial { break-inside: avoid; page-break-inside: avoid; }
+  .watch { break-inside: avoid; }
+  a { text-decoration: none; }
+}
+
+/* Added Oct 23, 2026: share link and abbreviations */
+.share { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font: 500 12px/1 var(--font-body); padding: 4px 6px; border-radius: 6px; }
+.share:hover { color: var(--accent); background: var(--rule); }
+.share:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.share .lbl { display: none; }
+.share.copied .lbl { display: inline; color: var(--s-young); }
+.gloss { margin-top: 24px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); padding: 0 18px; }
+.gloss summary { cursor: pointer; padding: 14px 0; font-weight: 600; }
+.gloss dl { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 4px 16px; margin: 0 0 16px; font-size: 14px; }
+.gloss dt { font: 500 13px var(--font-mono); color: var(--fg); text-transform: none; letter-spacing: normal; }
+.gloss dd { margin: 0; color: var(--muted); }
+@media print { .share { display: none !important; } .gloss { break-inside: avoid; } }
+
+/* Added Oct 23, 2026: report link */
+.report { color: var(--muted); font-size: 12px; }
+.report:hover { color: var(--accent); }
+@media print { .report { display: none !important; } }
+
+/* Added Oct 23, 2026: drug mechanism reviews */
+.moas { display: flex; flex-direction: column; gap: 2px; }
+.moa b { font-weight: 600; }
+.moa a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.moa a:hover { text-decoration-thickness: 2px; }
+.moafree { font: 500 11px var(--font-mono); color: var(--s-young); border: 1px solid var(--rule); border-radius: 4px; padding: 0 4px; }
+
+/* Added Oct 24, 2026: site disclaimer */
+.sitedisc { margin: 12px 0 0; font-size: 12.5px; }
+
+/* Added Oct 24, 2026: category subtitles in the trial list */
+ol.list li.grp { list-style: none; padding: 22px 0 6px; border-bottom: 2px solid var(--fg); }
+ol.list li.grp h3 { margin: 0; font-family: var(--font-display); font-weight: 650; font-size: 1.2rem; }
+ol.list li.grp .gn { font: 500 12px var(--font-mono); color: var(--muted); margin-left: 8px; }
+
+/* Added Oct 24, 2026: Perspective (collapsible reader view) */
+.review { margin-top: 18px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+.review > summary { list-style: none; cursor: pointer; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 14px 18px; }
+.review > summary::-webkit-details-marker { display: none; }
+.review .rv-kicker { font: 500 11px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.review .rv-title { font-family: var(--font-display); font-weight: 650; font-size: 1.05rem; flex: 1 1 260px; }
+.review .rv-open { font: 500 13px/1 var(--font-body); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.review[open] .rv-open { font-size: 0; }
+.review[open] .rv-open::before { content: "Close"; font-size: 13px; }
+.review .rv-body { padding: 0 18px 18px; max-width: 72ch; font-size: 15.5px; line-height: 1.65; }
+.review .rv-body h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.12rem; margin: 22px 0 6px; }
+.review .rv-body p { margin: 0 0 12px; }
+.review .rv-body ul { margin: 0 0 12px; padding-left: 20px; }
+.review .rv-body li { margin: 4px 0; }
+.review .rv-meta { font-size: 12.5px; color: var(--muted); }
+.review .rv-disc { font-size: 13px; line-height: 1.5; color: var(--fg); background: var(--s-old-bg); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; margin: 8px 0 14px; }
+.review .rv-take { border-left: 3px solid var(--accent); background: var(--bg); padding: 4px 14px 6px; margin: 12px 0 16px; border-radius: 0 8px 8px 0; }
+.review .rv-take h3 { margin-top: 10px; }
+.review sup a { font: 600 11px var(--font-mono); text-decoration: none; color: var(--accent); padding: 0 1px; }
+.review a { color: var(--accent); }
+.review .rv-refs { font-size: 13.5px; padding-left: 22px; }
+.review .rv-endbar { display: flex; justify-content: center; margin: 18px 0 2px; }
+.review .rv-close { all: unset; cursor: pointer; font: 500 13px/1 var(--font-body); padding: 9px 16px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.review .rv-close:hover { border-color: var(--accent); color: var(--accent); }
+.review .rv-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media print { .review .rv-endbar { display: none; } }
+.rv-tl { margin: 8px 0 18px; }
+.rv-tl figcaption { font: 500 11px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.rv-tl ol { list-style: none; margin: 0; padding: 0 0 0 4px; border-left: 2px solid var(--rule); }
+.rv-tl li { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 10px; padding: 5px 0 5px 14px; font-size: 14px; line-height: 1.45; }
+.rv-tl li::before { content: ""; position: absolute; left: -7px; top: 10px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2px solid var(--muted); }
+.rv-tl li.tl-old::before { border-color: var(--s-old); background: var(--s-old-bg); }
+.rv-tl li.tl-young::before { border-color: var(--s-young); background: var(--s-young-bg); }
+.rv-tl li.tl-p2::before { border-color: var(--s-p2); background: var(--s-p2-bg); }
+.rv-tl li.tl-rr::before { border-color: var(--s-rr); background: var(--s-rr-bg); }
+.rv-tl .tl-y { font: 500 13px var(--font-mono); color: var(--muted); }
+@media print { .review .rv-open { display: none; } }
+
+/* Added Oct 24, 2026: section tabs, Trials to watch tab, New drugs to watch, comment link */
+.tabs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-top: 18px; padding: 6px 8px 0; background: #dbe3f1; background: color-mix(in srgb, var(--accent) 16%, var(--surface)); border: 1px solid var(--rule); border-radius: 10px 10px 0 0; }
+.tabs button { all: unset; cursor: pointer; font: 600 14px/1 var(--font-body); padding: 12px 14px; color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -1px; }
+.tabs button:hover { color: var(--fg); }
+.tabs button { border-radius: 8px 8px 0 0; }
+.tabs button:hover { background: var(--surface); }
+.tabs button[aria-selected="true"] { color: var(--fg); background: var(--surface); border-bottom-color: var(--accent); }
+.tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.tabs .tcount { font: 500 11px var(--font-mono); color: var(--muted); margin-left: 6px; }
+.tabs .tabmail { margin-left: auto; font: 500 13px/1 var(--font-body); color: var(--accent); text-decoration: none; padding: 8px 4px; }
+.tabs .tabmail:hover { text-decoration: underline; }
+.newdrugs[hidden] { display: none; }
+.newdrugs { padding-top: 12px; }
+.newdrugs .nd-note { font-size: 13.5px; color: var(--muted); margin: 4px 0 14px; max-width: 72ch; }
+.newdrugs .nd-mods { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.newdrugs .nd-item { border-top: 1px solid var(--rule); padding: 16px 0; display: flex; flex-direction: column; gap: 6px; }
+.newdrugs .nd-top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.newdrugs .nd-name { font-family: var(--font-display); font-weight: 650; font-size: 1.12rem; margin: 0; }
+.newdrugs .nd-mod { font: 500 11px/1 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; color: var(--s-p2); background: var(--s-p2-bg); }
+.newdrugs .nd-ev { font: 500 11.5px var(--font-mono); color: var(--muted); }
+.newdrugs .nd-ev.pr { color: var(--s-young); }
+.newdrugs dl { margin: 2px 0 0; }
+.newdrugs a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.newdrugs h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.1rem; margin: 22px 0 6px; }
+.newdrugs .nd-log { padding-left: 20px; }
+.newdrugs .nd-log li { margin: 6px 0; font-size: 14px; }
+.newdrugs .nd-rules { font-size: 12.5px; color: var(--muted); margin-top: 16px; max-width: 72ch; }
+@media print { .tabs { display: none; } }
+
+/* Added Oct 25, 2026: the same subtle tint for Endpoint, Result and Key toxicity on every card and page */
+:root { --f-ep-bg: #eef1f5; --f-res-bg: #e7effb; --f-tox-bg: #fcf8e6; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --f-ep-bg: #1e242e; --f-res-bg: #18253d; --f-tox-bg: #2d2915; } }
+:root[data-theme="dark"] { --f-ep-bg: #1e242e; --f-res-bg: #18253d; --f-tox-bg: #2d2915; }
+ol.list dl, .newdrugs dl { column-gap: 0; }
+ol.list dt, .newdrugs dt { padding-right: 12px; }
+dt.f-ep, dd.f-ep { background: var(--f-ep-bg); }
+dt.f-res, dd.f-res { background: var(--f-res-bg); }
+dt.f-tox, dd.f-tox { background: var(--f-tox-bg); }
+dt.f-ep, dt.f-res, dt.f-tox { padding: 2px 12px 2px 8px; border-radius: 6px 0 0 6px; }
+dd.f-ep, dd.f-res, dd.f-tox { padding: 2px 8px 2px 0; border-radius: 0 6px 6px 0; }
+@media (max-width: 480px) {
+  dt.f-ep, dt.f-res, dt.f-tox { border-radius: 6px 6px 0 0; padding-bottom: 0; }
+  dd.f-ep, dd.f-res, dd.f-tox { border-radius: 0 0 6px 6px; padding: 0 8px 4px 8px; }
+}
+
+/* Added Oct 28, 2026: warm parchment tint on the Perspective bar */
+:root { --rv-bg: #fbf8f1; --rv-stripe: #ae915a; --rv-ink: #7a5a22; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --rv-bg: #221e18; --rv-stripe: #c9a56a; --rv-ink: #dcbd85; } }
+:root[data-theme="dark"] { --rv-bg: #221e18; --rv-stripe: #c9a56a; --rv-ink: #dcbd85; }
+.review { border-left: 4px solid var(--rv-stripe); }
+.review > summary { background: var(--rv-bg); border-radius: 8px 11px 11px 8px; }
+.review[open] > summary { border-radius: 8px 11px 0 0; border-bottom: 1px solid var(--rule); margin-bottom: 14px; }
+.review .rv-kicker { color: var(--rv-ink); }
+.review .rv-open { background: var(--surface); border-color: var(--rv-stripe); color: var(--rv-ink); }
+@media print { .review > summary { background: none; } }
+
+/* Added Oct 28, 2026: Drug mechanisms tab */
+.mechs { margin-top: 14px; }
+.mechs a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.mechs .mx-note { font-size: 14px; color: var(--muted); margin: 0 0 6px; max-width: 72ch; }
+.mechs .mx-item { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+.mechs .mx-name { font-family: var(--font-display); font-weight: 650; font-size: 1.08rem; margin: 0 0 6px; }
+.mechs .mx-desc { margin: 0 0 8px; max-width: 78ch; font-size: 14.5px; line-height: 1.55; }
+.mechs .mx-rev, .mechs .mx-trials { margin: 4px 0 0; font-size: 14px; }
+.mechs .mx-k { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 8px; }
+.mechs .mx-trials { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.mechs a.mt { display: inline-block; text-decoration: none; color: var(--fg); border: 1px solid var(--rule); background: var(--surface); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
+.mechs a.mt:hover { border-color: var(--accent); color: var(--accent); }
+.mechs .mt-y { font: 500 11px var(--font-mono); color: var(--muted); margin-left: 4px; }
+@media print { .mechs { display: none; } }
+
+/* Added Oct 28, 2026: an open tab closes on a second click; the x is the cue */
+.tabs button[data-tab]:not([data-tab="trials"])[aria-selected="true"]::after { content: "\00d7"; margin-left: 8px; font-weight: 500; color: var(--muted); }
+.tabs button[data-tab]:not([data-tab="trials"])[aria-selected="true"]:hover::after { color: var(--fg); }
+
+/* Added Oct 28, 2026: tab bar pinned while a tab other than Landmark trials is open */
+.tabs-ph { margin-top: 18px; }
+.tabs.tabs-pinned { position: fixed; z-index: 9000; margin-top: 0; border-radius: 0 0 10px 10px; box-shadow: 0 6px 14px -8px rgba(16,24,40,.35); }
+@media print { .tabs.tabs-pinned { position: static; } }
+@media (max-width: 560px) { .tabs.tabs-pinned { padding-top: 2px; } .tabs.tabs-pinned button { padding: 8px 10px; } .tabs.tabs-pinned .tabmail { display: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Untreated diffuse large B-cell lymphoma · 2000–2026</div>
+    <h1>Landmark trials in untreated diffuse large B-cell lymphoma</h1>
+    <p>How R-CHOP became the standard and what was tried to improve on it: treatment intensity and transplant, limited-stage and PET-adapted therapy, older patients, novel agents added to first line, and the risk models and molecular classifications used to design the trials: design, verified results, context, open questions and reception.</p>
+  </header>
+
+  <details class="review" id="review">
+    <summary><span class="rv-kicker">Perspective</span><span class="rv-title">The evolution of first-line treatment of diffuse large B-cell lymphoma, 2000–2026</span><span class="rv-open">Read the perspective</span></summary>
+    <div class="rv-body">
+      <p class="rv-meta">Andres Ferber, MD, with the assistance of Claude (Anthropic) · Last updated November 10, 2026 · Pilot draft, pending review · About 1,000 words. Numbers are taken from the verified trial entries on this page; numbered references jump to each trial.</p>
+      <p class="rv-disc"><b>Personal perspective, for education only.</b> This text reflects the author's own reading and opinion of the published evidence. It is not a clinical practice guideline, medical advice or a substitute for clinical judgment. Patient care should follow the primary literature, current guidelines (such as NCCN, ESMO, IMWG and ASCO), approved prescribing information and the individual patient's circumstances.</p>
+      <div class="rv-take"><h3>Key points</h3><ul><li>Adding rituximab to CHOP improved survival at every age and risk level, and R-CHOP every 21 days for 6 cycles became the reference regimen.</li><li>For 15 years nothing improved on it: dose density, a different anti-CD20 antibody, infusional chemotherapy, upfront transplant and maintenance all failed to improve survival.</li><li>Less treatment is enough for favourable limited-stage disease: 4 cycles of R-CHOP, guided by risk factors or by interim PET.</li><li>Adding a targeted drug chosen by cell of origin (bortezomib, ibrutinib, lenalidomide) failed in phase 3 trials.</li><li>Polatuzumab vedotin in place of vincristine (POLARIX) and tafasitamab-lenalidomide added to R-CHOP (frontMIND) each improved PFS, so far without an overall survival benefit.</li></ul></div>
+      <figure class="rv-tl"><figcaption>Timeline of key trials and US regulatory milestones</figcaption><ol><li class="tl-rr"><span class="tl-y">2000</span><span class="tl-e">Gene-expression profiling separates germinal centre and activated B-cell-like DLBCL</span></li><li class="tl-young"><span class="tl-y">2002</span><span class="tl-e">R-CHOP improves survival in older patients (GELA LNH-98.5)</span></li><li class="tl-young"><span class="tl-y">2006</span><span class="tl-e">R-CHOP confirmed in young good-prognosis patients (MInT) and in the US intergroup trial; no benefit from rituximab maintenance</span></li><li class="tl-young"><span class="tl-y">2008</span><span class="tl-e">Six cycles, not eight (RICOVER-60)</span></li><li class="tl-old"><span class="tl-y">2011</span><span class="tl-e">R-miniCHOP for patients over 80</span></li><li class="tl-young"><span class="tl-y">2013</span><span class="tl-e">R-CHOP-14 no better than R-CHOP-21; upfront transplant improves PFS but not survival (S9704)</span></li><li class="tl-young"><span class="tl-y">2017</span><span class="tl-e">Obinutuzumab no better than rituximab (GOYA)</span></li><li class="tl-old"><span class="tl-y">2019</span><span class="tl-e">Four cycles for favourable limited stage (FLYER); DA-EPOCH-R no better than R-CHOP; ibrutinib and bortezomib add-on trials negative</span></li><li class="tl-p2"><span class="tl-y">2021</span><span class="tl-e">Lenalidomide add-on negative (ROBUST)</span></li><li class="tl-p2"><span class="tl-y">2022</span><span class="tl-e">Pola-R-CHP improves PFS (POLARIX); first-line CAR-T tested in high-risk disease (ZUMA-12)</span></li><li class="tl-p2"><span class="tl-y">2023</span><span class="tl-e">FDA approves polatuzumab vedotin with R-CHP for untreated DLBCL</span></li><li class="tl-p2"><span class="tl-y">2026</span><span class="tl-e">Tafasitamab-lenalidomide with R-CHOP improves PFS (frontMIND); PET-adapted 4 cycles in low-risk disease (LNH2009-1B)</span></li></ol></figure>
+      <h3>A curable disease with one regimen for twenty years</h3>
+<p>Diffuse large B-cell lymphoma is curable with first-line treatment in most patients, and those who are not cured do poorly. The history of first-line therapy since 2000 has three parts: the arrival of rituximab, a long series of failed attempts to improve on R-CHOP, and, since 2022, the first positive add-on trials.</p>
+
+<h3>Rituximab changes the standard</h3>
+<p>In patients aged 60 to 80, adding rituximab to 8 cycles of CHOP raised the complete response rate from 63% to 76% and improved survival, and at 10 years overall survival was 43.5% vs 27.6%<sup><a class="rref" href="#t-dlbu-gela-lnh-98-5-coiffier" data-slug="gela-lnh-98-5-coiffier" title="GELA LNH-98.5 (Coiffier)">1</a></sup>. The US intergroup trial confirmed the benefit in older patients and showed that rituximab maintenance adds nothing after R-CHOP<sup><a class="rref" href="#t-dlbu-ecog-4494-calgb-9793-habermann" data-slug="ecog-4494-calgb-9793-habermann" title="ECOG 4494 / CALGB 9793 (Habermann)">2</a></sup>. MInT extended the result to young patients with good-prognosis disease, with a 3-year event-free survival of 79% vs 59%<sup><a class="rref" href="#t-dlbu-mint-pfreundschuh" data-slug="mint-pfreundschuh" title="MInT (Pfreundschuh)">3</a></sup>, and RICOVER-60 showed that six cycles were as good as eight<sup><a class="rref" href="#t-dlbu-ricover-60-pfreundschuh" data-slug="ricover-60-pfreundschuh" title="RICOVER-60 (Pfreundschuh)">4</a></sup>.</p>
+
+<h3>More intensity did not help</h3>
+<p>Giving R-CHOP every 14 days was no better than every 21 days, in adults of all ages<sup><a class="rref" href="#t-dlbu-uk-r-chop-14-vs-21-cunningham" data-slug="uk-r-chop-14-vs-21-cunningham" title="UK R-CHOP 14 vs 21 (Cunningham)">5</a></sup> and in older patients<sup><a class="rref" href="#t-dlbu-lnh03-6b-delarue" data-slug="lnh03-6b-delarue" title="LNH03-6B (Delarue)">6</a></sup>. Extra rituximab early in treatment did not improve outcome<sup><a class="rref" href="#t-dlbu-hovon-84-lugtenburg" data-slug="hovon-84-lugtenburg" title="HOVON-84 (Lugtenburg)">7</a></sup>, and the glycoengineered antibody obinutuzumab was not better than rituximab<sup><a class="rref" href="#t-dlbu-goya-vitolo" data-slug="goya-vitolo" title="GOYA (Vitolo)">8</a></sup>. Infusional dose-adjusted EPOCH-R was more toxic than R-CHOP and no more effective<sup><a class="rref" href="#t-dlbu-alliance-calgb-50303-bartlett" data-slug="alliance-calgb-50303-bartlett" title="Alliance/CALGB 50303 (Bartlett)">9</a></sup>. High-dose therapy with autologous transplant in first remission was not superior to conventional therapy in young high-risk patients<sup><a class="rref" href="#t-dlbu-dshnhl-2002-1-schmitz" data-slug="dshnhl-2002-1-schmitz" title="DSHNHL 2002-1 (Schmitz)">10</a></sup>, and in SWOG S9704 it improved 2-year PFS (69% vs 55%) but not overall survival<sup><a class="rref" href="#t-dlbu-swog-s9704-stiff" data-slug="swog-s9704-stiff" title="SWOG S9704 (Stiff)">11</a></sup>. The one exception was R-ACVBP, which improved 3-year overall survival (92% vs 84%) in patients under 60 with an age-adjusted IPI of 1, at the cost of more toxicity<sup><a class="rref" href="#t-dlbu-lnh03-2b-r-acvbp-r-cher" data-slug="lnh03-2b-r-acvbp-r-cher" title="LNH03-2B: R-ACVBP (Récher)">12</a></sup>.</p>
+
+<h3>Less treatment for favourable disease, and adapted treatment for the very old</h3>
+<p>In non-bulky limited-stage disease, radiotherapy after R-CHOP did not improve event-free survival<sup><a class="rref" href="#t-dlbu-lysa-goelams-02-03-lamy" data-slug="lysa-goelams-02-03-lamy" title="LYSA/GOELAMS 02-03 (Lamy)">13</a></sup>. In young patients with no risk factors, 4 cycles of R-CHOP were non-inferior to 6, with a 3-year PFS of 96%<sup><a class="rref" href="#t-dlbu-flyer-poeschel" data-slug="flyer-poeschel" title="FLYER (Poeschel)">14</a></sup>. PET-directed therapy gave similar results without an age limit in a US trial<sup><a class="rref" href="#t-dlbu-swog-s1001-persky" data-slug="swog-s1001-persky" title="SWOG S1001 (Persky)">15</a></sup>, and a randomized trial in low-risk patients up to age 80 showed that stopping at 4 cycles after a negative PET was non-inferior to 6 cycles<sup><a class="rref" href="#t-dlbu-lnh2009-1b-michot" data-slug="lnh2009-1b-michot" title="LNH2009-1B (Michot)">16</a></sup>. Interim PET predicts outcome, but intensifying chemotherapy for PET-positive patients did not help<sup><a class="rref" href="#t-dlbu-petal-d-hrsen" data-slug="petal-d-hrsen" title="PETAL (Dührsen)">17</a></sup>.</p>
+<p>For patients over 80, reduced-dose R-miniCHOP gave a 2-year overall survival of 59% and became the standard<sup><a class="rref" href="#t-dlbu-r-minichop-peyrade" data-slug="r-minichop-peyrade" title="R-miniCHOP (Peyrade)">18</a></sup>; adding lenalidomide to it added toxicity without benefit<sup><a class="rref" href="#t-dlbu-senior-oberic" data-slug="senior-oberic" title="SENIOR (Oberic)">19</a></sup>. Lenalidomide maintenance after R-CHOP prolonged PFS in patients aged 60 to 80 but not survival, and was not adopted<sup><a class="rref" href="#t-dlbu-remarc-thieblemont" data-slug="remarc-thieblemont" title="REMARC (Thieblemont)">20</a></sup>.</p>
+
+<h3>Biology: from cell of origin to genetic subtypes</h3>
+<p>Gene-expression profiling divided DLBCL into germinal centre and activated B-cell-like disease, with different survival<sup><a class="rref" href="#t-dlbu-cell-of-origin-by-gene-expression-alizadeh" data-slug="cell-of-origin-by-gene-expression-alizadeh" title="Cell of origin by gene expression (Alizadeh)">21</a></sup>, and an immunohistochemical algorithm brought the distinction into routine pathology<sup><a class="rref" href="#t-dlbu-hans-algorithm-hans" data-slug="hans-algorithm-hans" title="Hans algorithm (Hans)">22</a></sup>. Clinical risk is still estimated with the IPI and its revisions<sup><a class="rref" href="#t-dlbu-r-ipi-sehn" data-slug="r-ipi-sehn" title="R-IPI (Sehn)">23</a></sup><sup><a class="rref" href="#t-dlbu-nccn-ipi-zhou" data-slug="nccn-ipi-zhou" title="NCCN-IPI (Zhou)">24</a></sup>, and CNS risk with the CNS-IPI<sup><a class="rref" href="#t-dlbu-cns-ipi-schmitz" data-slug="cns-ipi-schmitz" title="CNS-IPI (Schmitz)">25</a></sup>. MYC rearrangement carries a poor prognosis mainly when combined with BCL2 or BCL6 rearrangement and an immunoglobulin partner<sup><a class="rref" href="#t-dlbu-myc-rearrangement-and-partner-gene-rosenwald" data-slug="myc-rearrangement-and-partner-gene-rosenwald" title="MYC rearrangement and partner gene (Rosenwald)">26</a></sup>. Genomic studies have since defined genetic subtypes that cut across cell of origin<sup><a class="rref" href="#t-dlbu-genetic-subtypes-of-dlbcl-schmitz" data-slug="genetic-subtypes-of-dlbcl-schmitz" title="Genetic subtypes of DLBCL (Schmitz)">27</a></sup>.</p>
+<p>Acting on cell of origin was disappointing. Bortezomib added to R-CHOP did not improve PFS, although a later analysis suggested a benefit in activated B-cell and molecular high-grade disease<sup><a class="rref" href="#t-dlbu-remodl-b-davies" data-slug="remodl-b-davies" title="REMoDL-B (Davies)">28</a></sup>. Ibrutinib did not improve event-free survival in non-GCB disease, helping patients under 60 and harming older ones<sup><a class="rref" href="#t-dlbu-phoenix-younes" data-slug="phoenix-younes" title="PHOENIX (Younes)">29</a></sup>, and lenalidomide did not improve PFS in activated B-cell disease<sup><a class="rref" href="#t-dlbu-robust-nowakowski" data-slug="robust-nowakowski" title="ROBUST (Nowakowski)">30</a></sup>.</p>
+
+<h3>The first positive add-on trials</h3>
+<p>POLARIX replaced vincristine with polatuzumab vedotin in patients with an IPI of 2 to 5: 2-year PFS was 76.7% vs 70.2% (HR 0.73), and at 5 years 64.9% vs 59.1%, without a significant difference in overall survival<sup><a class="rref" href="#t-dlbu-polarix-tilly" data-slug="polarix-tilly" title="POLARIX (Tilly)">31</a></sup>. frontMIND added tafasitamab and lenalidomide to R-CHOP in high-intermediate and high-risk disease: 2-year PFS was 71.1% vs 62.9% (HR 0.75), with more grade 3 or higher adverse events (87% vs 76%) and immature survival data<sup><a class="rref" href="#t-dlbu-frontmind-lenz" data-slug="frontmind-lenz" title="frontMIND (Lenz)">32</a></sup>. In double-expressor lymphoma, a trial in China reported better event-free survival with the histone deacetylase inhibitor tucidinostat added to R-CHOP (HR 0.72)<sup><a class="rref" href="#t-dlbu-deb-xu" data-slug="deb-xu" title="DEB (Xu)">33</a></sup>. First-line CAR-T has been tested only in a single-arm trial in high-risk disease, with complete responses in 78%<sup><a class="rref" href="#t-dlbu-zuma-12-neelapu" data-slug="zuma-12-neelapu" title="ZUMA-12 (Neelapu)">34</a></sup>.</p>
+
+<h3>Where we are now</h3>
+<p>Summarized at a high level; NCCN placement was not checked against the current document.</p>
+<ul>
+<li><b>Favourable limited stage:</b> 4 cycles of R-CHOP, by risk factors<sup><a class="rref" href="#t-dlbu-flyer-poeschel" data-slug="flyer-poeschel" title="FLYER (Poeschel)">14</a></sup> or interim PET<sup><a class="rref" href="#t-dlbu-swog-s1001-persky" data-slug="swog-s1001-persky" title="SWOG S1001 (Persky)">15</a></sup><sup><a class="rref" href="#t-dlbu-lnh2009-1b-michot" data-slug="lnh2009-1b-michot" title="LNH2009-1B (Michot)">16</a></sup>, usually without radiotherapy.</li>
+<li><b>Advanced stage or IPI 2 or higher:</b> 6 cycles of R-CHOP or pola-R-CHP<sup><a class="rref" href="#t-dlbu-polarix-tilly" data-slug="polarix-tilly" title="POLARIX (Tilly)">31</a></sup>.</li>
+<li><b>Over 80 or frail:</b> R-miniCHOP<sup><a class="rref" href="#t-dlbu-r-minichop-peyrade" data-slug="r-minichop-peyrade" title="R-miniCHOP (Peyrade)">18</a></sup>.</li>
+<li><b>At diagnosis:</b> IPI, cell of origin, FISH for MYC rearrangement, and an estimate of CNS risk<sup><a class="rref" href="#t-dlbu-cns-ipi-schmitz" data-slug="cns-ipi-schmitz" title="CNS-IPI (Schmitz)">25</a></sup>.</li>
+</ul>
+
+<h3>Open questions</h3>
+<ul>
+<li><b>Who benefits from pola-R-CHP:</b> no overall survival benefit so far, and exploratory analyses point to activated B-cell disease and higher IPI.</li>
+<li><b>Which add-on:</b> polatuzumab and tafasitamab-lenalidomide have not been compared, and combinations with bispecific antibodies are in phase 3.</li>
+<li><b>Selection by biology:</b> whether genetic subtypes will succeed where cell of origin failed.</li>
+<li><b>CNS prophylaxis:</b> the CNS-IPI identifies risk, but no intervention is proven to lower it.</li>
+<li><b>High-grade and double-hit lymphoma:</b> treated with intensive regimens on non-randomized data.</li>
+</ul>
+
+<h3>What is coming</h3>
+<p>Ongoing phase 3 trials (listed under Trials to watch) add CD20×CD3 bispecific antibodies to first-line chemoimmunotherapy: glofitamab with pola-R-CHP (GO44145), epcoritamab with R-CHOP (EPCORE DLBCL-2) and odronextamab with CHOP (OLYMPIA-3). Others test golcadomide (GOLSEEK-1), acalabrutinib in non-GCB disease (ESCALADE) and zilovertamab vedotin (waveLINE-010) with R-CHOP or R-CHP, first-line axicabtagene ciloleucel in high-risk disease (ZUMA-23), and polatuzumab or acalabrutinib with reduced-dose chemotherapy in older patients (POLAR BEAR, ARCHED).</p>
+      <h3>References</h3>
+      <ol class="rv-refs"><li><a class="rref" href="#t-dlbu-gela-lnh-98-5-coiffier" data-slug="gela-lnh-98-5-coiffier">GELA LNH-98.5 (Coiffier)</a>. N Engl J Med 2002;346:235. <a href="https://pubmed.ncbi.nlm.nih.gov/11807147/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-ecog-4494-calgb-9793-habermann" data-slug="ecog-4494-calgb-9793-habermann">ECOG 4494 / CALGB 9793 (Habermann)</a>. J Clin Oncol 2006;24:3121. <a href="https://pubmed.ncbi.nlm.nih.gov/16754935/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-mint-pfreundschuh" data-slug="mint-pfreundschuh">MInT (Pfreundschuh)</a>. Lancet Oncol 2006;7:379. <a href="https://pubmed.ncbi.nlm.nih.gov/16648042/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-ricover-60-pfreundschuh" data-slug="ricover-60-pfreundschuh">RICOVER-60 (Pfreundschuh)</a>. Lancet Oncol 2008;9:105. <a href="https://pubmed.ncbi.nlm.nih.gov/18226581/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-uk-r-chop-14-vs-21-cunningham" data-slug="uk-r-chop-14-vs-21-cunningham">UK R-CHOP 14 vs 21 (Cunningham)</a>. Lancet 2013;381:1817. <a href="https://pubmed.ncbi.nlm.nih.gov/23615461/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-lnh03-6b-delarue" data-slug="lnh03-6b-delarue">LNH03-6B (Delarue)</a>. Lancet Oncol 2013;14:525. <a href="https://pubmed.ncbi.nlm.nih.gov/23578722/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-hovon-84-lugtenburg" data-slug="hovon-84-lugtenburg">HOVON-84 (Lugtenburg)</a>. J Clin Oncol 2020;38:3377. <a href="https://pubmed.ncbi.nlm.nih.gov/32730183/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-goya-vitolo" data-slug="goya-vitolo">GOYA (Vitolo)</a>. J Clin Oncol 2017;35:3529. <a href="https://pubmed.ncbi.nlm.nih.gov/28796588/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-alliance-calgb-50303-bartlett" data-slug="alliance-calgb-50303-bartlett">Alliance/CALGB 50303 (Bartlett)</a>. J Clin Oncol 2019;37:1790. <a href="https://pubmed.ncbi.nlm.nih.gov/30939090/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-dshnhl-2002-1-schmitz" data-slug="dshnhl-2002-1-schmitz">DSHNHL 2002-1 (Schmitz)</a>. Lancet Oncol 2012;13:1250. <a href="https://pubmed.ncbi.nlm.nih.gov/23168367/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-swog-s9704-stiff" data-slug="swog-s9704-stiff">SWOG S9704 (Stiff)</a>. N Engl J Med 2013;369:1681. <a href="https://pubmed.ncbi.nlm.nih.gov/24171516/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-lnh03-2b-r-acvbp-r-cher" data-slug="lnh03-2b-r-acvbp-r-cher">LNH03-2B: R-ACVBP (Récher)</a>. Lancet 2011;378:1858. <a href="https://pubmed.ncbi.nlm.nih.gov/22118442/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-lysa-goelams-02-03-lamy" data-slug="lysa-goelams-02-03-lamy">LYSA/GOELAMS 02-03 (Lamy)</a>. Blood 2018;131:174. <a href="https://pubmed.ncbi.nlm.nih.gov/29061568/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-flyer-poeschel" data-slug="flyer-poeschel">FLYER (Poeschel)</a>. Lancet 2019;394:2271. <a href="https://pubmed.ncbi.nlm.nih.gov/31868632/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-swog-s1001-persky" data-slug="swog-s1001-persky">SWOG S1001 (Persky)</a>. J Clin Oncol 2020;38:3003. <a href="https://pubmed.ncbi.nlm.nih.gov/32658627/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-lnh2009-1b-michot" data-slug="lnh2009-1b-michot">LNH2009-1B (Michot)</a>. Ann Oncol 2026;37:403. <a href="https://pubmed.ncbi.nlm.nih.gov/41260259/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-petal-d-hrsen" data-slug="petal-d-hrsen">PETAL (Dührsen)</a>. J Clin Oncol 2018;36:2024. <a href="https://pubmed.ncbi.nlm.nih.gov/29750632/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-r-minichop-peyrade" data-slug="r-minichop-peyrade">R-miniCHOP (Peyrade)</a>. Lancet Oncol 2011;12:460. <a href="https://pubmed.ncbi.nlm.nih.gov/21482186/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-senior-oberic" data-slug="senior-oberic">SENIOR (Oberic)</a>. J Clin Oncol 2021;39:1203. <a href="https://pubmed.ncbi.nlm.nih.gov/33444079/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-remarc-thieblemont" data-slug="remarc-thieblemont">REMARC (Thieblemont)</a>. J Clin Oncol 2017;35:2473. <a href="https://pubmed.ncbi.nlm.nih.gov/28426350/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-cell-of-origin-by-gene-expression-alizadeh" data-slug="cell-of-origin-by-gene-expression-alizadeh">Cell of origin by gene expression (Alizadeh)</a>. Nature 2000;403:503. <a href="https://pubmed.ncbi.nlm.nih.gov/10676951/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-hans-algorithm-hans" data-slug="hans-algorithm-hans">Hans algorithm (Hans)</a>. Blood 2004;103:275. <a href="https://pubmed.ncbi.nlm.nih.gov/14504078/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-r-ipi-sehn" data-slug="r-ipi-sehn">R-IPI (Sehn)</a>. Blood 2007;109:1857. <a href="https://pubmed.ncbi.nlm.nih.gov/17105812/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-nccn-ipi-zhou" data-slug="nccn-ipi-zhou">NCCN-IPI (Zhou)</a>. Blood 2014;123:837. <a href="https://pubmed.ncbi.nlm.nih.gov/24264230/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-cns-ipi-schmitz" data-slug="cns-ipi-schmitz">CNS-IPI (Schmitz)</a>. J Clin Oncol 2016;34:3150. <a href="https://pubmed.ncbi.nlm.nih.gov/27382100/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-myc-rearrangement-and-partner-gene-rosenwald" data-slug="myc-rearrangement-and-partner-gene-rosenwald">MYC rearrangement and partner gene (Rosenwald)</a>. J Clin Oncol 2019;37:3359. <a href="https://pubmed.ncbi.nlm.nih.gov/31498031/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-genetic-subtypes-of-dlbcl-schmitz" data-slug="genetic-subtypes-of-dlbcl-schmitz">Genetic subtypes of DLBCL (Schmitz)</a>. N Engl J Med 2018;378:1396. <a href="https://pubmed.ncbi.nlm.nih.gov/29641966/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-remodl-b-davies" data-slug="remodl-b-davies">REMoDL-B (Davies)</a>. Lancet Oncol 2019;20:649. <a href="https://pubmed.ncbi.nlm.nih.gov/30948276/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-phoenix-younes" data-slug="phoenix-younes">PHOENIX (Younes)</a>. J Clin Oncol 2019;37:1285. <a href="https://pubmed.ncbi.nlm.nih.gov/30901302/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-robust-nowakowski" data-slug="robust-nowakowski">ROBUST (Nowakowski)</a>. J Clin Oncol 2021;39:1317. <a href="https://pubmed.ncbi.nlm.nih.gov/33621109/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-polarix-tilly" data-slug="polarix-tilly">POLARIX (Tilly)</a>. N Engl J Med 2022;386:351. <a href="https://pubmed.ncbi.nlm.nih.gov/34904799/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-frontmind-lenz" data-slug="frontmind-lenz">frontMIND (Lenz)</a>. Lancet 2026;407:2528. <a href="https://pubmed.ncbi.nlm.nih.gov/42217458/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-deb-xu" data-slug="deb-xu">DEB (Xu)</a>. JAMA 2026;335:1684. <a href="https://pubmed.ncbi.nlm.nih.gov/42018318/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-dlbu-zuma-12-neelapu" data-slug="zuma-12-neelapu">ZUMA-12 (Neelapu)</a>. Nat Med 2022;28:735. <a href="https://pubmed.ncbi.nlm.nih.gov/35314842/" target="_blank" rel="noopener">PubMed ↗</a></li></ol>
+      <div class="rv-endbar"><button type="button" class="rv-close">Close the perspective ▴</button></div>
+    </div>
+  </details>
+
+  <div class="tabs" role="tablist" aria-label="Page sections">
+    <button type="button" role="tab" aria-selected="true" data-tab="trials">Landmark trials</button>
+    <button type="button" role="tab" aria-selected="false" data-tab="watch" title="Click again to return to the trial list">Trials to watch<span class="tcount"></span></button>
+    <button type="button" role="tab" aria-selected="false" data-tab="newdrugs" title="Click again to return to the trial list">New drugs to watch<span class="tcount"></span></button>
+    <button type="button" role="tab" aria-selected="false" data-tab="mech" title="Click again to return to the trial list">Drug mechanisms<span class="tcount"></span></button>
+    <a class="tabmail" href="mailto:andresferber@hotmail.com?subject=Landmark%20trials%20%28Untreated%20diffuse%20large%20B-cell%20lymphoma%29%3A%20comment">✉ Send a comment</a>
+  </div>
+  <section class="newdrugs" hidden aria-label="New drugs to watch"></section>
+  <section class="mechs" hidden aria-label="Drug mechanisms"></section>
+
+  <div class="controls">
+    <div class="chips" role="group" aria-label="Filter by category" id="chips"></div>
+    <div class="row2">
+      <input type="search" id="q" placeholder="Search trial, drug, regimen…" aria-label="Search trials">
+      <select id="sort" aria-label="Sort order">
+        <option value="setting">Sort: category, newest first</option>
+        <option value="setting-asc">Sort: category, oldest first</option>
+        <option value="asc">Sort: oldest first</option>
+        <option value="desc">Sort: newest first</option>
+      </select>
+      <span class="count" id="count"></span>
+      <button type="button" class="printbtn" title="Print or save as PDF (prints the trials currently shown)">Print / PDF</button>
+    </div>
+  </div>
+
+  <ol class="list" id="list"></ol>
+
+  <section class="watch" hidden aria-label="Trials to watch"></section>
+
+  <details class="gloss"><summary>Abbreviations (41)</summary><dl><dt>ABC</dt><dd>Activated B-cell-like (cell-of-origin subtype)</dd><dt>AE</dt><dd>Adverse event</dd><dt>ASCT</dt><dd>Autologous stem-cell transplantation</dd><dt>BCL2 / BCL6</dt><dd>B-cell lymphoma 2 and 6 genes</dd><dt>CAR-T</dt><dd>Chimeric antigen receptor T-cell therapy</dd><dt>CHOEP</dt><dd>CHOP plus etoposide</dd><dt>CHOP</dt><dd>Cyclophosphamide, doxorubicin, vincristine, prednisone</dd><dt>CHOP-14 / CHOP-21</dt><dd>CHOP given every 14 or every 21 days</dd><dt>CI</dt><dd>Confidence interval</dd><dt>CNS</dt><dd>Central nervous system</dd><dt>CR</dt><dd>Complete response (complete remission)</dd><dt>DA-EPOCH-R</dt><dd>Dose-adjusted etoposide, prednisone, vincristine, cyclophosphamide, doxorubicin, rituximab</dd><dt>DLBCL</dt><dd>Diffuse large B-cell lymphoma</dd><dt>ECOG</dt><dd>Eastern Cooperative Oncology Group</dd><dt>EFS</dt><dd>Event-free survival</dd><dt>EMA</dt><dd>European Medicines Agency</dd><dt>FDA</dt><dd>US Food and Drug Administration</dd><dt>FFS</dt><dd>Failure-free survival</dd><dt>FISH</dt><dd>Fluorescence in situ hybridization</dd><dt>G-CSF</dt><dd>Granulocyte colony-stimulating factor</dd><dt>GCB</dt><dd>Germinal centre B-cell-like (cell-of-origin subtype)</dd><dt>GELA</dt><dd>Groupe d'Etude des Lymphomes de l'Adulte (now LYSA)</dd><dt>HGBL</dt><dd>High-grade B-cell lymphoma</dd><dt>HR</dt><dd>Hazard ratio</dd><dt>IG</dt><dd>Immunoglobulin gene</dd><dt>IPI</dt><dd>International Prognostic Index</dd><dt>LDH</dt><dd>Lactate dehydrogenase</dd><dt>LYSA</dt><dd>Lymphoma Study Association</dd><dt>MHG</dt><dd>Molecular high-grade (gene-expression group)</dd><dt>NCCN</dt><dd>National Comprehensive Cancer Network</dd><dt>NF-κB</dt><dd>Nuclear factor kappa B</dd><dt>ORR</dt><dd>Overall response rate</dd><dt>OS</dt><dd>Overall survival</dd><dt>PET</dt><dd>Positron emission tomography</dd><dt>PFS</dt><dd>Progression-free survival</dd><dt>pola-R-CHP</dt><dd>Polatuzumab vedotin, rituximab, cyclophosphamide, doxorubicin, prednisone</dd><dt>R-ACVBP</dt><dd>Rituximab, doxorubicin, cyclophosphamide, vindesine, bleomycin, prednisone</dd><dt>R-CHOP</dt><dd>Rituximab plus CHOP</dd><dt>R-miniCHOP</dt><dd>Rituximab with reduced-dose CHOP</dd><dt>R2</dt><dd>Lenalidomide plus rituximab</dd><dt>SWOG</dt><dd>SWOG Cancer Research Network</dd></dl></details>
+
+  <footer>
+    Every result was checked against the paper's PubMed abstract on November 10, 2026; "not reported in abstract" means the figure needs the full text. "Key toxicity" summarizes the main adverse events reported in the abstract; it is not a complete safety profile. "Drug mechanism" links one recent review per drug or drug class on how it works and how resistance develops, chosen from peer-reviewed journals as the most recent, comprehensive and high-quality review available (no promotional material), with free full text preferred when quality was comparable (November 10, 2026). "★ Core" marks trials selected as essential for teaching. Trials included: phase 3 trials, key risk models and classifications, and phase 2 trials published in the New England Journal of Medicine or Nature Medicine, or in Blood or the Journal of Clinical Oncology when they led to an approval, changed a guideline or defined a regimen still in use, or otherwise practice-changing (criteria from October 30, 2026). Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Free at publisher" links open a publisher page that is free to read; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed; "Free copy (repository)" links open a legal free copy in a university repository (sometimes the authors' manuscript). Free copies were found with Unpaywall (November 10, 2026). Registry links (NCT, ISRCTN or EudraCT numbers) open the trial's registry record and were taken from each paper's PubMed record. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"). FDA approval of polatuzumab vedotin with R-CHP (April 19, 2023) was confirmed from published reports of the FDA announcement; regulatory statements marked "verify" could not be confirmed against an official source (November 10, 2026). Guideline placements marked "NCCN not checked" could not be confirmed, because the NCCN guidelines require a login. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: November 10, 2026.
+    <p class="sitedisc"><b>For education only.</b> This site summarizes published research and the author's views. It is not medical advice, a clinical practice guideline or a substitute for professional judgment; treatment decisions should rely on the primary literature, current guidelines, approved prescribing information and the individual patient. This is an independent project, not affiliated with any institution or company.</p>
+    <p class="reportall">Comments and suggestions are welcome: <a href="mailto:andresferber@hotmail.com?subject=Landmark%20trials%20%28Untreated%20diffuse%20large%20B-cell%20lymphoma%29%3A%20comment">send a comment</a>. Spotted an error or a missing trial? Use "Report an error" on any trial. Both go to andresferber@hotmail.com.</p>
+  </footer>
+  <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
+</div>
+
+<script>
+const SETTINGS = {
+  std: "R-CHOP & treatment intensity",
+  lim: "Limited stage, PET-adapted & older patients",
+  nov: "Novel agents in first line",
+  risk: "Risk & classification"
+};
+const CLS = { std: "young", lim: "old", nov: "p2", risk: "rr" };
+const order = ["std","lim","nov","risk"];
+const PM = id => "https://pubmed.ncbi.nlm.nih.gov/" + id + "/";
+
+const T = [
+// ---------- R-CHOP & treatment intensity ----------
+{y:2002,n:"GELA LNH-98.5 (Coiffier)",s:"std",ph:"Phase 3",d:"8 cycles of CHOP vs R-CHOP every 3 weeks in untreated DLBCL, age 60–80",ep:"Event-free survival (primary endpoint not named in abstract)",
+ r:"CR 76% vs 63% (P=0.005); event-free and overall survival both longer with R-CHOP at 2 years. 10-year update: PFS 36.5% vs 20%; OS 43.5% vs 27.6%",N:"399",hr:"0.58 (treatment failure); 0.64 (death)",fu:"2 yr; 10 yr (update)",
+ c:"N Engl J Med 2002;346:235",p:11807147,extra:["10-year follow-up, Blood 2010",20548096],
+ b:"CHOP had been the standard since the 1993 intergroup trial showed that more intensive regimens were no better.",
+ i:"The first randomized evidence that rituximab added to CHOP improves survival; R-CHOP became the standard of care.",
+ q:"Whether the benefit extended to younger and lower-risk patients, answered by MInT.",
+ cm:[[11807154, "Cheson BD, N Engl J Med 2002", "CHOP plus rituximab--balancing facts and opinion"], [12050349, "Akhtar S, N Engl J Med 2002", "Rituximab plus CHOP for diffuse large-B-cell lymphoma"]],reg:"Supported the 2006 FDA approval of rituximab with CHOP for untreated DLBCL, with ECOG 4494 and MInT (date: verify).",gl:"R-CHOP is the reference first-line regimen (NCCN not checked).",acc:"—"},
+{y:2006,n:"ECOG 4494 / CALGB 9793 (Habermann)",s:"std",ph:"Phase 3",d:"CHOP vs R-CHOP in untreated DLBCL, age 60 or older; responders randomized again to rituximab maintenance or observation",ep:"Failure-free survival",
+ r:"3-year FFS 53% vs 46% with R-CHOP vs CHOP (P=.04). Maintenance: 2-year FFS 76% vs 61% (P=.009), a benefit seen after CHOP but not after R-CHOP (P=.81). No significant survival difference by induction or maintenance",N:"632 (415 in second randomization)",hr:"not reported in abstract",fu:"3.5 yr",
+ c:"J Clin Oncol 2006;24:3121",p:16754935,
+ b:"US intergroup counterpart of the GELA trial, with a second question on maintenance.",
+ i:"Confirmed R-CHOP in older patients and showed that rituximab maintenance adds nothing after R-CHOP.",
+ q:"Could a different maintenance drug succeed where rituximab did not? Tested later with lenalidomide (REMARC).",
+ cm:[],reg:"One of the trials supporting rituximab's first-line DLBCL label (verify).",gl:"No maintenance rituximab after R-CHOP (NCCN not checked).",acc:"—"},
+{y:2006,n:"MInT (Pfreundschuh)",s:"std",ph:"Phase 3",d:"6 cycles of CHOP-like chemotherapy with or without rituximab, age 18–60, age-adjusted IPI 0–1, stage II–IV or stage I with bulk; radiotherapy to bulky and extranodal sites",ep:"Event-free survival",
+ r:"3-year EFS 79% vs 59%; 3-year OS 93% vs 84%. 6-year update: EFS 74.3% vs 55.8%. After rituximab, a favourable subgroup (IPI 0, no bulk) separated from a less favourable one (IPI 1 or bulk)",N:"824",hr:"not reported in abstract",fu:"34 mo; 72 mo (update)",
+ c:"Lancet Oncol 2006;7:379",p:16648042,extra:["6-year follow-up, Lancet Oncol 2011",21940214],
+ b:"Extended the GELA result from older patients to young patients with good-prognosis disease.",
+ i:"Made R-CHOP the standard across ages, and defined the very favourable group later treated with 4 cycles in FLYER.",
+ q:"How much treatment the most favourable patients need; role of radiotherapy to bulk.",
+ cm:[[16648037, "Friedberg JW, Lancet Oncol 2006", "Rituximab for early-stage diffuse large-B-cell lymphoma"]],reg:"One of the trials supporting rituximab's first-line DLBCL label (verify).",gl:"6 cycles of R-CHOP for young good-prognosis patients (NCCN not checked).",acc:"—"},
+{y:2008,n:"RICOVER-60 (Pfreundschuh)",s:"std",ph:"Phase 3",d:"6 vs 8 cycles of CHOP-14, each with or without 8 doses of rituximab, age 61–80 (2×2 design); radiotherapy to bulky sites",ep:"Event-free survival",
+ r:"3-year EFS 47.2% (6×CHOP-14), 53.0% (8×CHOP-14), 66.5% (6×R-CHOP-14), 63.1% (8×R-CHOP-14). 3-year OS 67.7%, 66.0%, 78.1% and 72.5%. Overall survival improved only with 6×R-CHOP-14",N:"1,222",hr:"0.51 (EFS, 6×R-CHOP-14 vs 6×CHOP-14); 0.63 (OS)",fu:"not reported in abstract (3-year estimates)",
+ c:"Lancet Oncol 2008;9:105",p:18226581,
+ b:"Combined the two advances of the time in older patients: the 2-week interval and rituximab.",
+ i:"Six cycles became the standard number; eight were no better and more toxic.",
+ q:"Is the 14-day interval itself needed once rituximab is given? Answered by the two R-CHOP-14 vs R-CHOP-21 trials.",
+ cm:[[18237844, "Coiffier B, Lancet Oncol 2008", "Dose dance in lymphomas"]],reg:"No regulatory action.",gl:"6 cycles of R-CHOP (NCCN not checked).",acc:"—"},
+{y:2011,n:"LNH03-2B: R-ACVBP (Récher)",s:"std",ph:"Phase 3",d:"Dose-intensive R-ACVBP with sequential consolidation vs 8 cycles of R-CHOP, age 18–59, age-adjusted IPI 1",ep:"Event-free survival",
+ r:"3-year EFS 81% vs 67%; 3-year PFS 87% vs 73% (HR 0.48); 3-year OS 92% vs 84% (HR 0.44)",N:"380 (379 analyzed)",hr:"0.56 (EFS)",fu:"44 mo",
+ c:"Lancet 2011;378:1858",p:22118442,
+ b:"The French ACVBP regimen had outperformed CHOP before rituximab.",
+ i:"The only intensified regimen to improve overall survival over R-CHOP in a randomized trial, in a narrow young low-intermediate-risk group; used mainly in France.",
+ q:"Toxicity and complexity limited adoption; is the benefit reproducible outside the cooperative group?",
+ cm:[[22118432, "Vose JM, Lancet 2011", "Intensified chemotherapy for diffuse large B-cell lymphomas"], [22521065, "Tanimoto T, Lancet 2012", "CNS prophylaxis in diffuse large B-cell lymphoma"], [22521067, "Mori J, Lancet 2012", "CNS prophylaxis in diffuse large B-cell lymphoma"]],reg:"No regulatory action.",gl:"An option for selected young patients in some European practice; not a US standard (NCCN not checked).",acc:"—"},
+{y:2012,n:"DSHNHL 2002-1 (Schmitz)",s:"std",ph:"Phase 3",d:"8 cycles of R-CHOEP-14 vs dose-escalated R-MegaCHOEP with repeated autologous transplantation, age 18–60, age-adjusted IPI 2–3",ep:"Event-free survival",
+ r:"3-year EFS 69.5% vs 61.4% (R-CHOEP-14 vs R-MegaCHOEP; P=0.14); high-dose therapy was not superior and was more toxic",N:"275 (262 analyzed)",hr:"1.3 (EFS, R-MegaCHOEP vs R-CHOEP-14)",fu:"42 mo",
+ c:"Lancet Oncol 2012;13:1250",p:23168367,
+ b:"First-line high-dose therapy had been widely used for young high-risk patients before rituximab.",
+ i:"With S9704, ended routine first-line high-dose therapy in the rituximab era; R-CHOEP-14 remained an option for young high-risk patients.",
+ q:"Whether adding etoposide improves on R-CHOP was never tested in a randomized trial with rituximab.",
+ cm:[[23168361, "Coiffier B, Lancet Oncol 2012", "Which treatment for high-risk patients with DLBCL?"]],reg:"No regulatory action.",gl:"No upfront transplant (NCCN not checked).",acc:"—"},
+{y:2013,n:"UK R-CHOP 14 vs 21 (Cunningham)",s:"std",ph:"Phase 3",d:"6 cycles of R-CHOP-14 plus 2 of rituximab vs 8 cycles of R-CHOP-21, adults of any age with bulky stage IA to stage IV DLBCL",ep:"Overall survival",
+ r:"2-year OS 82.7% vs 80.8% (R-CHOP-14 vs R-CHOP-21; P=0.38); 2-year PFS 75.4% vs 74.8% (HR 0.94). No clinical or molecular subgroup benefited",N:"1,080",hr:"0.90 (OS)",fu:"46 mo",
+ c:"Lancet 2013;381:1817",p:23615461,
+ b:"Dose density had improved CHOP in older patients before rituximab.",
+ i:"R-CHOP every 21 days stayed the standard.",
+ q:"None of substance for scheduling; attention moved to adding new drugs.",
+ cm:[[23615460, "Cheson BD, Lancet 2013", "Therapy for diffuse large B-cell lymphoma: getting personal"], [24236792, "Westin J, J Comp Eff Res 2013", "R-CHOP every 21 days for diffuse large B-cell lymphoma: still the standard of care?"]],reg:"No regulatory action.",gl:"R-CHOP-21 (NCCN not checked).",acc:"—"},
+{y:2013,n:"LNH03-6B (Delarue)",s:"std",ph:"Phase 3",d:"8 cycles of R-CHOP-14 vs R-CHOP-21, age 60–80, age-adjusted IPI 1 or higher",ep:"Event-free survival",
+ r:"3-year EFS 56% vs 60% (R-CHOP-14 vs R-CHOP-21; P=0.76)",N:"602",hr:"1.04 (EFS)",fu:"56 mo",
+ c:"Lancet Oncol 2013;14:525",p:23578722,
+ b:"Asked the same question as the UK trial, in older patients.",
+ i:"Confirmed that dose density adds nothing to R-CHOP in older patients, at the cost of more transfusions.",
+ q:"None of substance for scheduling.",
+ cm:[[23578721, "Pfreundschuh M, Lancet Oncol 2013", "CHOP intensification: not yet state of the art"]],reg:"No regulatory action.",gl:"R-CHOP-21 (NCCN not checked).",acc:"—"},
+{y:2013,n:"SWOG S9704 (Stiff)",s:"std",ph:"Phase 3",d:"After 5 cycles of CHOP or R-CHOP, responders with high-intermediate or high-risk disease randomized to 3 more cycles vs 1 more cycle and autologous transplantation",ep:"2-year PFS and overall survival",
+ r:"2-year PFS 69% vs 55% with transplant vs control; 2-year OS 74% vs 71% (P=0.30). Exploratory: in high-risk patients, 2-year OS 82% vs 64%",N:"397 enrolled; 253 randomized",hr:"1.72 (PFS, control vs transplant); 1.26 (OS)",fu:"not reported in abstract",
+ c:"N Engl J Med 2013;369:1681",p:24171516,
+ b:"A 1990s question, tested across the arrival of rituximab.",
+ i:"Consolidative transplant in first remission improved PFS but not survival, since salvage transplant rescued controls; upfront transplant is not routine.",
+ q:"Does the exploratory survival benefit in high-IPI patients hold? Now largely replaced by the question of first-line CAR-T (ZUMA-12).",
+ cm:[[24171521, "Milpied N, N Engl J Med 2013", "Myeloablation for lymphoma--question answered?"], [24499218, "Stiff PJ, N Engl J Med 2014", "The role of myeloablation for lymphoma"], [24499219, "Schmitz N, N Engl J Med 2014", "The role of myeloablation for lymphoma"]],reg:"No regulatory action.",gl:"Upfront transplant not routine; considered in selected high-risk patients (NCCN not checked).",acc:"—"},
+{y:2017,n:"GOYA (Vitolo)",s:"std",ph:"Phase 3",d:"Obinutuzumab-CHOP vs R-CHOP (8 doses of antibody with 6 or 8 cycles of CHOP), untreated advanced-stage DLBCL",ep:"PFS (investigator)",
+ r:"3-year PFS 70% vs 67% (P=.39); PFS events in 28.5% vs 30.2%. More grade 3–5 adverse events with obinutuzumab",N:"1,418",hr:"0.92 (PFS)",fu:"29 mo",
+ c:"J Clin Oncol 2017;35:3529",p:28796588,
+ b:"Obinutuzumab had beaten rituximab in CLL and in follicular lymphoma.",
+ i:"A better anti-CD20 antibody did not improve on R-CHOP in DLBCL; rituximab remained the antibody.",
+ q:"Why the benefit seen in indolent lymphoma did not carry over.",
+ cm:[[28926287, "Goy A, J Clin Oncol 2017", "Succeeding in Breaking the R-CHOP Ceiling in DLBCL: Learning From Negative Trials"]],reg:"No DLBCL indication for obinutuzumab.",gl:"Not recommended (NCCN not checked).",acc:"—"},
+{y:2019,n:"Alliance/CALGB 50303 (Bartlett)",s:"std",ph:"Phase 3",d:"6 cycles of dose-adjusted EPOCH-R vs R-CHOP, untreated DLBCL (74% stage III–IV)",ep:"PFS",
+ r:"2-year PFS 78.9% vs 75.5% (P=.65); 2-year OS 86.5% vs 85.7% (HR 1.09). More grade 3–4 toxicity with DA-EPOCH-R",N:"524 registered; 491 analyzed",hr:"0.93 (PFS)",fu:"5 yr",
+ c:"J Clin Oncol 2019;37:1790",p:30939090,
+ b:"Single-arm studies of infusional DA-EPOCH-R had suggested better results than R-CHOP.",
+ i:"DA-EPOCH-R is not better than R-CHOP for DLBCL in general; it remains in use for primary mediastinal and double-hit lymphoma on the basis of non-randomized data.",
+ q:"The R-CHOP arm did better than expected, suggesting selection of lower-risk patients; high-risk subgroups were under-represented.",
+ cm:[[31532721, "Bartlett NL, J Clin Oncol 2019", "Reply to T.M. Weis et al"], [31532723, "Weis TM, J Clin Oncol 2019", "Dosing Vincristine in Dose-Adjusted EPOCH-R: To Cap or Not to Cap?"]],reg:"No regulatory action.",gl:"R-CHOP for DLBCL in general; DA-EPOCH-R for selected high-grade subtypes (NCCN not checked).",acc:"—"},
+{y:2020,n:"HOVON-84 (Lugtenburg)",s:"std",ph:"Phase 3",d:"R-CHOP-14 with or without extra rituximab during the first 4 cycles, age 18–80",ep:"Complete remission on induction",
+ r:"CR 89% vs 86% (standard vs intensified; P=.44); 3-year PFS 74% vs 71% (HR 1.20); 3-year OS 81% vs 76% (HR 1.27, P=.09)",N:"574",hr:"1.26 (failure-free survival, intensified vs standard)",fu:"92 mo",
+ c:"J Clin Oncol 2020;38:3377",p:32730183,
+ b:"Pharmacokinetic data suggested that early rituximab levels were too low in some patients.",
+ i:"More rituximab early in treatment gave no benefit, and more toxicity in patients aged 66–80.",
+ q:"None of substance; closed the question of rituximab dose intensity.",
+ cm:[],reg:"No regulatory action.",gl:"Standard rituximab dosing (NCCN not checked).",acc:"—"},
+// ---------- Limited stage, PET-adapted & older patients ----------
+{y:2011,n:"R-miniCHOP (Peyrade)",s:"lim",ph:"Phase 2",d:"6 cycles of rituximab with reduced-dose CHOP (cyclophosphamide 400 mg/m², doxorubicin 25 mg/m², vincristine 1 mg) in patients over 80",ep:"Overall survival",
+ r:"Median OS 29 months; 2-year OS 59%; median PFS 21 months; 2-year PFS 47%. Albumin of 35 g/L or less was the only factor affecting survival",N:"150 (149 analyzed)",hr:"single arm",fu:"20 mo",
+ c:"Lancet Oncol 2011;12:460",p:21482186,
+ b:"No prospective study had been done in patients over 80.",
+ i:"Defined the standard regimen for patients over 80, and the backbone for later trials in this age group.",
+ q:"12 deaths were attributed to treatment toxicity: how to select patients and whether a prephase helps.",
+ cm:[[21482185, "Ribera JM, Lancet Oncol 2011", "Hope for very elderly patients with diffuse large B-cell lymphoma"], [21807340, "Miura K, Lancet Oncol 2011", "Attenuated immunochemotherapy for diffuse large B-cell lymphoma"]],reg:"No regulatory action.",gl:"R-miniCHOP for patients over 80 (NCCN not checked).",acc:"—"},
+{y:2017,n:"REMARC (Thieblemont)",s:"lim",ph:"Phase 3",d:"Lenalidomide 25 mg vs placebo for 24 months in patients aged 60–80 in complete or partial response after 6 or 8 cycles of R-CHOP",ep:"PFS",
+ r:"Median PFS not reached vs 58.9 months; overall survival similar at 52 months (HR 1.218, P=.26)",N:"650",hr:"0.708 (PFS)",fu:"39 mo (PFS); 52 mo (OS)",
+ c:"J Clin Oncol 2017;35:2473",p:28426350,
+ b:"Rituximab maintenance had failed after R-CHOP (ECOG 4494).",
+ i:"The first maintenance to prolong PFS after R-CHOP, without a survival benefit; not adopted.",
+ q:"Is a PFS gain without survival benefit worth 2 years of treatment with grade 3–4 neutropenia in 56%?",
+ cm:[[28514184, "Witzig TE, J Clin Oncol 2017", "Maintenance Lenalidomide for Large-Cell Lymphoma: Who Really Benefits?"]],reg:"No regulatory action.",gl:"Maintenance not recommended (NCCN not checked).",acc:"—"},
+{y:2018,n:"LYSA/GOELAMS 02-03 (Lamy)",s:"lim",ph:"Phase 3",d:"4 or 6 cycles of R-CHOP-14, then 40 Gy radiotherapy vs no radiotherapy, non-bulky limited-stage DLBCL",ep:"Event-free survival",
+ r:"5-year EFS 89% vs 92% (R-CHOP alone vs R-CHOP plus radiotherapy; P=.18); 5-year OS 92% vs 96% (not significant)",N:"334",hr:"0.61 (EFS, 95% CI 0.3–1.2)",fu:"64 mo",
+ c:"Blood 2018;131:174",p:29061568,
+ b:"Before rituximab, 3 cycles of CHOP with radiotherapy was a standard for limited-stage disease (SWOG 8736).",
+ i:"Radiotherapy can be omitted in non-bulky limited-stage disease in complete metabolic response after R-CHOP.",
+ q:"Role of radiotherapy for bulky disease and for PET-positive residual disease.",
+ cm:[[29326347, "Persky DO, Blood 2018", "Limited-stage DLBCL: it's patient selection"], [35777387, "Campbell BA, Int J Radiat Oncol Biol Phys 2022", "Balancing the Therapeutic Ratio in DLBCL Requires Appropriate, Individualized Patient Selection Rather Than Broad Elimination of Radiation Therapy"], [35942538, "Florindez JA, Hematol Oncol 2023", "Diffuse large B-cell lymphoma of the Waldeyer's ring: A U.S. population-based survival analysis"]],reg:"No regulatory action.",gl:"R-CHOP without radiotherapy is an option for non-bulky limited stage (NCCN not checked).",acc:"—"},
+{y:2018,n:"PETAL (Dührsen)",s:"lim",ph:"Phase 3",d:"Interim PET after 2 cycles of R-CHOP: PET-positive patients randomized to 6 more cycles of R-CHOP or an intensive Burkitt protocol; PET-negative to 4 more cycles with or without 2 extra doses of rituximab",ep:"Event-free survival",
+ r:"Interim PET positive in 12.5%, with worse EFS and OS. PET-positive: 2-year EFS 42.0% (R-CHOP) vs 31.6% (Burkitt protocol; P=.12), with more toxicity. PET-negative: EFS 76.4% vs 73.5% with extra rituximab (P=.83)",N:"862",hr:"1.501 (PET-positive, Burkitt protocol vs R-CHOP)",fu:"not reported in abstract",
+ c:"J Clin Oncol 2018;36:2024",p:29750632,
+ b:"Interim PET predicted outcome in single-arm series; the question was whether to act on it.",
+ i:"Interim PET is prognostic, but escalating chemotherapy for PET-positive patients does not help.",
+ q:"Whether newer agents (CAR-T, bispecific antibodies) can rescue interim-PET-positive patients.",
+ cm:[[29787359, "Merryman RW, J Clin Oncol 2018", "Response-Adapted Therapy in Aggressive Lymphoma: Not Yet Ready for Clinical Care"]],reg:"No regulatory action.",gl:"No change of therapy on interim PET alone outside trials (NCCN not checked).",acc:"—"},
+{y:2019,n:"FLYER (Poeschel)",s:"lim",ph:"Phase 3 (non-inferiority)",d:"4 cycles of R-CHOP plus 2 of rituximab vs 6 cycles of R-CHOP, age 18–60, stage I–II, normal LDH, ECOG 0–1, no bulk (under 7.5 cm); no radiotherapy",ep:"3-year PFS",
+ r:"3-year PFS 96% with 4 cycles, 3% better than with 6 cycles (lower limit of the one-sided 95% CI for the difference 0%; non-inferiority margin −5.5%)",N:"592 (588 analyzed)",hr:"not reported in abstract",fu:"66 mo",
+ c:"Lancet 2019;394:2271",p:31868632,
+ b:"Tested de-escalation in the very favourable subgroup defined by MInT.",
+ i:"Four cycles of R-CHOP became the standard for young patients with favourable limited-stage disease, with about a third fewer haematological adverse events.",
+ q:"Does the result apply over age 60?",
+ cm:[[31868615, "Vose JM, Lancet 2019", "Chemoimmunotherapy for localised low-risk diffuse large B-cell lymphoma"], [31925412, "Sidaway P, Nat Rev Clin Oncol 2020", "R-CHOP can be safely de-escalated in NHL"]],reg:"No regulatory action.",gl:"4 cycles of R-CHOP plus 2 of rituximab for this group (NCCN not checked).",acc:"—"},
+{y:2020,n:"SWOG S1001 (Persky)",s:"lim",ph:"Phase 2",d:"Non-bulky (under 10 cm) stage I–II DLBCL: 3 cycles of R-CHOP, then interim PET; if negative, 1 more cycle; if positive, involved-field radiotherapy and ibritumomab tiuxetan",ep:"PFS and overall survival (primary endpoint not named in abstract)",
+ r:"Interim PET positive in 11%; 5-year PFS 87% and OS 89%, similar in PET-positive and PET-negative patients. Only 6 patients progressed and 3 died of lymphoma; 11 died of other causes",N:"158 enrolled; 132 eligible",hr:"single arm",fu:"4.92 yr",
+ c:"J Clin Oncol 2020;38:3003",p:32658627,
+ b:"Applied PET-directed therapy to limited-stage disease in a US national network, without age limit.",
+ i:"Four cycles of R-CHOP alone for the 89% with a negative interim PET; extends the FLYER approach to older patients.",
+ q:"Late relapses and non-lymphoma deaths dominate; what is the best therapy for the PET-positive minority?",
+ cm:[[33104437, "Persky DO, J Clin Oncol 2020", "Reply to E. Hawkes et al"], [33104442, "Hawkes EA, J Clin Oncol 2020", "Caution in Expanding the Use of Abbreviated R-CHOP to Poor-Risk Limited-Stage DLBCL"], [34397004, "Pathak N, Natl Med J India 2021", "Interim positron emission tomography in limited-stage diffuse large B cell lymphoma: A modern will-o'-the-wisp?"]],reg:"No regulatory action.",gl:"PET-adapted R-CHOP×4 for non-bulky limited stage (NCCN not checked).",acc:"—"},
+{y:2021,n:"SENIOR (Oberic)",s:"lim",ph:"Phase 3",d:"R-miniCHOP with or without lenalidomide 10 mg on days 1–14, age 80 or older; subcutaneous rituximab from cycle 2",ep:"Overall survival",
+ r:"2-year OS 66% vs 65.7% (R-miniCHOP vs R2-miniCHOP; P=.98), with no benefit in the non-GCB group",N:"249",hr:"not reported in abstract",fu:"25.1 mo",
+ c:"J Clin Oncol 2021;39:1203",p:33444079,
+ b:"Built on R-miniCHOP and on phase 2 data for lenalidomide with R-CHOP in non-GCB disease.",
+ i:"R-miniCHOP remains the standard over 80; lenalidomide added toxicity (grade 3–4 events 81% vs 53%) and no benefit.",
+ q:"Which new agents can safely be added in the very old (polatuzumab, bispecific antibodies)?",
+ cm:[[33689448, "Smith SM, J Clin Oncol 2021", "Improving Survival and Predicting Toxicity in Older Patients With DLBCL: A Delicate Balance"]],reg:"No regulatory action.",gl:"R-miniCHOP (NCCN not checked).",acc:"—"},
+{y:2026,n:"LNH2009-1B (Michot)",s:"lim",ph:"Phase 3 (non-inferiority)",d:"Age-adjusted IPI 0, age 18–80: PET after 2 cycles of R-CHOP; PET-adapted arm gave 4 cycles in total if negative and 6 if positive; standard arm gave 6 cycles; no radiotherapy",ep:"3-year PFS",
+ r:"3-year PFS 92.0% vs 89.2% (PET-adapted vs standard); non-inferiority shown. 77.7% of the PET-adapted arm were PET-negative and received 4 cycles",N:"650",hr:"0.72 (95% CI 0.47–1.12)",fu:"not reported in abstract",
+ c:"Ann Oncol 2026;37:403",p:41260259,
+ b:"Followed FLYER and S1001 with a randomized PET-adapted design up to age 80.",
+ i:"Randomized support for stopping at 4 cycles of R-CHOP when the PET is negative after 2 cycles in low-risk disease.",
+ q:"How this fits with pola-R-CHP and with 4-cycle strategies that do not use interim PET.",
+ cm:[],reg:"No regulatory action.",gl:"Guideline placement not yet checked (NCCN not checked).",acc:"—"},
+// ---------- Novel agents in first line ----------
+{y:2019,n:"REMoDL-B (Davies)",s:"nov",ph:"Phase 3",d:"After 1 cycle of R-CHOP and real-time gene-expression profiling, R-CHOP with or without bortezomib for cycles 2–6, stratified by cell of origin",ep:"30-month PFS in the GCB and ABC population",
+ r:"30-month PFS 70.1% vs 74.3% (R-CHOP vs RB-CHOP; P=0.28). 5-year update in 801 patients classified by gene expression: no overall benefit (PFS HR 0.81, P=.085), but in ABC lymphoma 5-year OS 67% vs 80% (HR 0.58), and in molecular high-grade lymphoma 5-year PFS 29% vs 55% (HR 0.46)",N:"918 randomized",hr:"0.86 (PFS)",fu:"29.7 mo; 64 mo (update)",
+ c:"Lancet Oncol 2019;20:649",p:30948276,extra:["5-year update, J Clin Oncol 2023",36972491],
+ b:"Bortezomib blocks NF-κB signalling, on which ABC lymphomas depend.",
+ i:"Showed that molecular profiling in real time is feasible in a large trial; negative at the primary analysis, with a late signal in ABC and molecular high-grade disease.",
+ q:"Is the late subgroup benefit real? It came from a retrospective classifier and has not been confirmed.",
+ cm:[[30948275, "Jardin F, Lancet Oncol 2019", "Improving R-CHOP in diffuse large B-cell lymphoma is still a challenge"]],reg:"No regulatory action.",gl:"Not recommended (NCCN not checked).",acc:"—"},
+{y:2019,n:"PHOENIX (Younes)",s:"nov",ph:"Phase 3",d:"Ibrutinib 560 mg daily or placebo with R-CHOP, untreated non-GCB DLBCL; double-blind",ep:"Event-free survival in the intention-to-treat and ABC populations",
+ r:"No EFS benefit (HR 0.934 overall; 0.949 in ABC). Under age 60: EFS HR 0.579, PFS HR 0.556, OS HR 0.330. Age 60 or older: worse outcomes, more serious adverse events (63.4% vs 38.2%) and fewer patients completing 6 cycles of R-CHOP (73.7% vs 88.8%)",N:"838",hr:"0.934 (EFS)",fu:"not reported in abstract",
+ c:"J Clin Oncol 2019;37:1285",p:30901302,
+ b:"Ibrutinib was active in relapsed ABC DLBCL.",
+ i:"Negative overall. The age interaction suggested that ibrutinib helps younger patients and harms older ones by compromising R-CHOP delivery.",
+ q:"Can better-tolerated BTK inhibitors, or genetic subtype selection (MCD, N1), rescue the strategy? ESCALADE tests acalabrutinib.",
+ cm:[[30945958, "Leonard JP, J Clin Oncol 2019", "De-Cell-eration in Therapy for Diffuse Large B-Cell Lymphoma"], [31390273, "Wilson WH, J Clin Oncol 2019", "Reply to M. Skelin et al"], [31390275, "Skelin M, J Clin Oncol 2019", "Above What Age Should Ibrutinib Not Be Given With R-CHOP to Patients With Non-GBC DLBCL?"]],reg:"No DLBCL indication for ibrutinib.",gl:"Not recommended (NCCN not checked).",acc:"—"},
+{y:2021,n:"ROBUST (Nowakowski)",s:"nov",ph:"Phase 3",d:"Lenalidomide 15 mg on days 1–14 or placebo with 6 cycles of R-CHOP-21, ABC DLBCL confirmed centrally by gene expression before randomization",ep:"PFS (independent review)",
+ r:"PFS not improved (P=.29); median PFS not reached in either arm. Trend favouring R2-CHOP in higher-risk disease",N:"570",hr:"0.85 (95% CI 0.63–1.14)",fu:"not reported in abstract",
+ c:"J Clin Oncol 2021;39:1317",p:33621109,
+ b:"Phase 2 studies suggested that lenalidomide overcame the poor prognosis of ABC disease with R-CHOP.",
+ i:"Negative. With PHOENIX and REMoDL-B, it showed the limits of selecting by cell of origin alone.",
+ q:"Did the time needed for central testing select patients with less aggressive disease? Dose and schedule differed from the positive randomized phase 2 trial E1412.",
+ cm:[[33621123, "Davies AJ, J Clin Oncol 2021", "Precision Medicine in DLBCL: Are We There Yet?"]],reg:"No DLBCL first-line indication for lenalidomide.",gl:"Not recommended (NCCN not checked).",acc:"—"},
+{y:2022,n:"POLARIX (Tilly)",s:"nov",ph:"Phase 3",d:"Polatuzumab vedotin replacing vincristine (pola-R-CHP) vs R-CHOP for 6 cycles, plus 2 cycles of rituximab, age 18–80, IPI 2–5; double-blind",ep:"PFS (investigator)",
+ r:"2-year PFS 76.7% vs 70.2%; 2-year OS 88.7% vs 88.6% (HR 0.94). 5-year update: PFS 64.9% vs 59.1% (HR 0.77); OS HR 0.85 (95% CI 0.63–1.15); fewer lymphoma-related deaths (46 vs 62)",N:"879",hr:"0.73 (PFS, 95% CI 0.57–0.95)",fu:"28.2 mo; 64.1 mo (update)",
+ c:"N Engl J Med 2022;386:351",p:34904799,extra:["5-year outcomes, J Clin Oncol 2025",40991874],
+ b:"Polatuzumab vedotin was active with bendamustine-rituximab in relapsed disease.",
+ i:"Improved PFS over R-CHOP after a series of negative add-on trials; pola-R-CHP became a first-line standard for IPI 2–5.",
+ q:"No overall survival benefit so far. Exploratory analyses favour ABC disease and IPI 3–5: should use be selective?",
+ cm:[[35167823, "Xu PP, Cancer Cell 2022", "All roads lead to targeted diffuse large B-cell lymphoma approaches"], [37611128, "Palmer AC, N Engl J Med 2023", "Cell-of-Origin Subtypes and Therapeutic Benefit from Polatuzumab Vedotin"]],reg:"FDA approval of polatuzumab vedotin with R-CHP for previously untreated DLBCL (April 19, 2023). Approved in the EU in 2022 (date: verify).",gl:"A first-line option for IPI 2 or higher (NCCN not checked).",acc:"On-label."},
+{y:2022,n:"ZUMA-12 (Neelapu)",s:"nov",ph:"Phase 2",d:"Axicabtagene ciloleucel as part of first-line therapy in high-risk large B-cell lymphoma; single arm",ep:"Complete response rate",
+ r:"CR 78% and ORR 89% in 37 evaluable patients. 3-year update: CR 86%, ORR 92%; 36-month PFS 75.1% and OS 81.1%",N:"40 treated",hr:"single arm",fu:"15.9 mo; 47.0 mo (update)",
+ c:"Nat Med 2022;28:735",p:35314842,extra:["3-year follow-up, Blood 2025",39938019],
+ b:"CAR-T had moved from third line to second line (ZUMA-7).",
+ i:"Proof of concept that CAR-T can be given in first line to patients with high-risk disease; led to the randomized ZUMA-23 trial.",
+ q:"Is it better than chemoimmunotherapy, and for whom? No randomized data yet.",
+ cm:[[35361894, "Killock D, Nat Rev Clin Oncol 2022", "CAR T cells show promise in the frontline for high-risk LBCL"]],reg:"Not approved in first line.",gl:"Investigational in first line (NCCN not checked).",acc:"—"},
+{y:2026,n:"frontMIND (Lenz)",s:"nov",ph:"Phase 3",d:"Tafasitamab plus lenalidomide 25 mg on days 1–10, or placebos, with 6 cycles of R-CHOP, age 18–80, high-intermediate or high-risk DLBCL or high-grade B-cell lymphoma; double-blind",ep:"PFS (investigator)",
+ r:"2-year PFS 71.1% vs 62.9%; interim OS HR 0.85 (95% CI 0.63–1.14). More grade 3 or higher adverse events (87% vs 76%) and more fatal adverse events (6% vs 4%), although overall deaths were fewer (19% vs 22%)",N:"899",hr:"0.75 (PFS, 95% CI 0.59–0.96)",fu:"35.2 mo",
+ c:"Lancet 2026;407:2528",p:42217458,
+ b:"Tafasitamab-lenalidomide was active in relapsed disease (L-MIND); lenalidomide alone had failed with R-CHOP (ROBUST).",
+ i:"A positive phase 3 trial against R-CHOP in higher-risk disease, after POLARIX.",
+ q:"Overall survival is immature and toxicity was higher; no comparison with pola-R-CHP.",
+ cm:[],reg:"No first-line approval identified as of November 10, 2026 (verify).",gl:"Guideline placement not yet checked (NCCN not checked).",acc:"—"},
+{y:2026,n:"DEB (Xu)",s:"nov",ph:"Phase 3",d:"Tucidinostat (chidamide) 20 mg on days 1, 4, 8 and 11 or placebo with 6 cycles of R-CHOP, then maintenance for up to 24 weeks in complete responders; MYC/BCL2 double-expressor DLBCL; double-blind, 40 centers in China",ep:"Event-free survival",
+ r:"2-year EFS 60.3% vs 50.5%; CR 73.0% vs 61.8%",N:"423",hr:"0.72 (EFS, 95% CI 0.54–0.96)",fu:"41.3 mo",
+ c:"JAMA 2026;335:1684",p:42018318,
+ b:"Double-expressor lymphoma does poorly with R-CHOP; histone deacetylase inhibition lowers MYC and BCL2 expression in models.",
+ i:"Reported by its authors as the first trial to show a benefit from an epigenetic drug in DLBCL.",
+ q:"Conducted only in China; overall survival and applicability elsewhere are unknown, and tucidinostat is not available in the US or EU.",
+ cm:[[42018332, "Ansell SM, JAMA 2026", "Histone Deactylase Inhibition in R-CHOP-Treated Double-Expressor Diffuse Large B-Cell Lymphoma"]],reg:"Not approved by the FDA or EMA. Regulatory status in China not checked (verify).",gl:"Not in US or European guidelines (NCCN not checked).",acc:"—"},
+// ---------- Risk & classification ----------
+{y:2000,n:"Cell of origin by gene expression (Alizadeh)",s:"risk",ph:"Gene-expression study",d:"DNA microarray profiling of DLBCL tumours and normal and malignant B cells",ep:"Molecular subgroups and overall survival",
+ r:"Two molecularly distinct forms: germinal centre B-like and activated B-like DLBCL; patients with germinal centre B-like disease had significantly better overall survival",N:"not reported in abstract",hr:"not reported in abstract",fu:"not reported in abstract",
+ c:"Nature 2000;403:503",p:10676951,
+ b:"DLBCL was treated as one disease despite very different outcomes.",
+ i:"Introduced the cell-of-origin classification (GCB vs ABC) that shaped the next 20 years of trial design.",
+ q:"Selecting therapy by cell of origin failed in phase 3 trials (PHOENIX, ROBUST, REMoDL-B): is it too coarse?",
+ cm:[[10676943, "Berns A, Nature 2000", "Gene expression in diagnosis"], [10801098, "Masters JR, Nature 2000", "How diagnosis with microarrays can help cancer patients"]],reg:"Not applicable.",gl:"Cell of origin is reported in routine pathology, usually by immunohistochemistry (NCCN not checked).",acc:"—"},
+{y:2004,n:"Hans algorithm (Hans)",s:"risk",ph:"Tissue microarray study",d:"Immunohistochemistry for CD10, BCL6 and MUM1 on tissue microarrays, compared with cDNA microarray classification",ep:"Agreement with gene-expression subgroups; overall survival",
+ r:"42% classified as GCB and 58% as non-GCB; 5-year OS 76% vs 34% (P<.001), similar to the separation by cDNA microarray",N:"152",hr:"not reported in abstract",fu:"not reported in abstract",
+ c:"Blood 2004;103:275",p:14504078,
+ b:"Gene-expression profiling was not available in routine practice.",
+ i:"Made cell-of-origin assignment possible in any pathology laboratory; used for eligibility in PHOENIX.",
+ q:"Developed before rituximab; agreement with gene expression is imperfect.",
+ cm:[],reg:"Not applicable.",gl:"The most used immunohistochemical algorithm (NCCN not checked).",acc:"—"},
+{y:2007,n:"R-IPI (Sehn)",s:"risk",ph:"Retrospective cohort",d:"Patients with DLBCL treated with R-CHOP in British Columbia; IPI factors regrouped",ep:"PFS and overall survival by risk group",
+ r:"Three groups by number of IPI factors: very good (4-year PFS 94%, OS 94%), good (PFS 80%, OS 79%) and poor (PFS 53%, OS 55%). No group had less than a 50% chance of survival",N:"not reported in abstract",hr:"not reported in abstract",fu:"not reported in abstract (4-year estimates)",
+ c:"Blood 2007;109:1857",p:17105812,
+ b:"The 1993 IPI was built before rituximab.",
+ i:"Showed that the IPI still works with R-CHOP but separates fewer groups, and no longer identifies a truly poor-risk group.",
+ q:"How to identify the patients who fail R-CHOP.",
+ cm:[],reg:"Not applicable.",gl:"IPI-based scores remain the basis of risk assessment (NCCN not checked).",acc:"—"},
+{y:2014,n:"NCCN-IPI (Zhou)",s:"risk",ph:"Retrospective cohort with external validation",d:"Adults with de novo DLBCL from 7 NCCN centers, diagnosed 2000–2010; age and LDH categorized more finely; validated in British Columbia",ep:"Overall survival by risk group",
+ r:"Five predictors (age, LDH, extranodal sites, stage, performance status), maximum 8 points, four groups. 5-year OS 96% (low) vs 33% (high), compared with 90% vs 54% with the IPI",N:"1,650 (validation 1,138)",hr:"not reported in abstract",fu:"not reported in abstract (5-year estimates)",
+ c:"Blood 2014;123:837",p:24264230,
+ b:"Refined the IPI with rituximab-era data.",
+ i:"Better separation of low- and high-risk groups than the IPI; widely used alongside it.",
+ q:"Clinical scores do not capture biology; trials still enroll by IPI.",
+ cm:[[24505063, "Kanakry JA, Blood 2014", "Old variables, new value: a refined IPI for DLBCL"]],reg:"Not applicable.",gl:"Used for prognosis (NCCN not checked).",acc:"—"},
+{y:2016,n:"CNS-IPI (Schmitz)",s:"risk",ph:"Risk model with external validation",d:"Patients aged 18–80 from German High-Grade Lymphoma Study Group trials and MInT, treated with rituximab and CHOP-like therapy; validated in British Columbia",ep:"CNS relapse or progression at 2 years",
+ r:"IPI factors plus kidney or adrenal involvement. 2-year CNS disease 0.6% (low risk, 46% of patients), 3.4% (intermediate, 41%) and 10.2% (high, 12%); validation cohort 0.8%, 3.9% and 12.0%",N:"2,164 (validation 1,597)",hr:"not reported in abstract",fu:"2-year rates",
+ c:"J Clin Oncol 2016;34:3150",p:27382100,
+ b:"CNS relapse is uncommon but usually fatal, and prophylaxis was given inconsistently.",
+ i:"The standard tool to select patients for CNS evaluation and to discuss prophylaxis.",
+ q:"Whether any prophylaxis, including high-dose methotrexate, lowers CNS relapse is unproven; retrospective series are largely negative.",
+ cm:[],reg:"Not applicable.",gl:"Used to assess CNS risk (NCCN not checked).",acc:"—"},
+{y:2018,n:"Genetic subtypes of DLBCL (Schmitz)",s:"risk",ph:"Genomic study",d:"Exome and transcriptome sequencing, copy-number analysis and targeted resequencing of 372 genes in DLBCL biopsies",ep:"Genetic subtypes and response to immunochemotherapy",
+ r:"Four subtypes: MCD (MYD88 L265P and CD79B mutations), BN2 (BCL6 fusions and NOTCH2 mutations), N1 (NOTCH1 mutations) and EZB (EZH2 mutations and BCL2 translocations). Survival favourable in BN2 and EZB and inferior in MCD and N1",N:"574 biopsy samples",hr:"not reported in abstract",fu:"not reported in abstract",
+ c:"N Engl J Med 2018;378:1396",p:29641966,extra:["Parallel classification, Chapuy, Nat Med 2018",29713087],
+ b:"Cell of origin did not explain the range of outcomes or of responses to targeted drugs.",
+ i:"A genetic classification that cuts across cell of origin and suggests targets, for example B-cell receptor signalling in MCD and BN2.",
+ q:"Not yet used in routine practice; subtype-directed trials are ongoing.",
+ cm:[[29789700, "Dubois S, Nat Rev Clin Oncol 2018", "Novel molecular classifications of DLBCL"], [30070099, "Cummin TE, N Engl J Med 2018", "Genetics of Diffuse Large B-Cell Lymphoma"], [30070100, "Naresh KN, N Engl J Med 2018", "Genetics of Diffuse Large B-Cell Lymphoma"]],reg:"Not applicable.",gl:"Not required for routine care (NCCN not checked).",acc:"—"},
+{y:2019,n:"MYC rearrangement and partner gene (Rosenwald)",s:"risk",ph:"Pooled cohort (Lunenburg Lymphoma Biomarker Consortium)",d:"Patients with DLBCL morphology from prospective trials and registries, treated with R-CHOP-like therapy; FISH for MYC, BCL2, BCL6 and immunoglobulin loci",ep:"PFS and overall survival by MYC status",
+ r:"MYC rearrangement in 11%, with shorter PFS and OS, mainly in the first 24 months. The adverse effect was limited to double-hit or triple-hit disease with an immunoglobulin partner (HR 2.4, 95% CI 1.6–3.6)",N:"5,117 identified; 2,383 tested",hr:"2.4 (MYC double/triple hit with IG partner)",fu:"not reported in abstract",
+ c:"J Clin Oncol 2019;37:3359",p:31498031,
+ b:"MYC rearrangement was linked to poor outcome in smaller series.",
+ i:"Defined the high-risk group as MYC with BCL2 and/or BCL6 rearrangement and an immunoglobulin partner, supporting FISH testing at diagnosis.",
+ q:"The best treatment for double-hit lymphoma is undefined; intensive regimens are used on non-randomized data.",
+ cm:[],reg:"Not applicable.",gl:"FISH for MYC, and for BCL2 and BCL6 if rearranged, at diagnosis (NCCN not checked).",acc:"—"}
+];
+// Trial registry numbers (ClinicalTrials.gov, ISRCTN or EudraCT), taken from each paper's PubMed record or the registry, Oct 22, 2026.
+// Shown as links next to the source and used by the monthly update to find later follow-up publications.
+const REG = {"MInT (Pfreundschuh)": ["NCT00064116"], "RICOVER-60 (Pfreundschuh)": ["NCT00052936"], "LNH03-2B: R-ACVBP (Récher)": ["NCT00140595"], "DSHNHL 2002-1 (Schmitz)": ["NCT00129090"], "UK R-CHOP 14 vs 21 (Cunningham)": ["ISRCTN16017947"], "LNH03-6B (Delarue)": ["NCT00144755"], "SWOG S9704 (Stiff)": ["NCT00004031"], "Alliance/CALGB 50303 (Bartlett)": ["NCT00118209"], "HOVON-84 (Lugtenburg)": ["2006-005174-42"], "LYSA/GOELAMS 02-03 (Lamy)": ["NCT00841945"], "PETAL (Dührsen)": ["NCT00554164", "2006-001641-33"], "FLYER (Poeschel)": ["NCT00278421"], "LNH2009-1B (Michot)": ["NCT01285765"], "R-miniCHOP (Peyrade)": ["NCT01087424"], "REMoDL-B (Davies)": ["NCT01324596"], "PHOENIX (Younes)": ["NCT01855750", "2013-000959-40"], "ROBUST (Nowakowski)": ["NCT02285062", "2013-004054-21"], "POLARIX (Tilly)": ["NCT03274492"], "ZUMA-12 (Neelapu)": ["NCT03761056"], "frontMIND (Lenz)": ["NCT04824092"], "DEB (Xu)": ["NCT04231448"]};
+// Full-text links: free full text in PubMed Central where available, otherwise the publisher's page via DOI (from PubMed, Oct 22, 2026).
+const FT = {"GELA LNH-98.5 (Coiffier)": ["doi", "10.1056/NEJMoa011795", "free"], "ECOG 4494 / CALGB 9793 (Habermann)": ["doi", "10.1200/JCO.2005.05.1003"], "MInT (Pfreundschuh)": ["doi", "10.1016/S1470-2045(06)70664-7"], "RICOVER-60 (Pfreundschuh)": ["doi", "10.1016/S1470-2045(08)70002-0"], "LNH03-2B: R-ACVBP (Récher)": ["doi", "10.1016/S0140-6736(11)61040-4", "repo", "https://orbi.uliege.be/bitstream/2268/144379/1/Lancet-Intensified%20chemotherapy%20with...%202011.pdf"], "DSHNHL 2002-1 (Schmitz)": ["doi", "10.1016/S1470-2045(12)70481-3"], "UK R-CHOP 14 vs 21 (Cunningham)": ["doi", "10.1016/S0140-6736(13)60313-X", "repo", "https://figshare.com/articles/journal_contribution/Rituximab_plus_cyclophosphamide_doxorubicin_vincristine_and_prednisolone_in_patients_with_newly_diagnosed_diffuse_large_B-cell_non-Hodgkin_lymphoma_a_phase_3_comparison_of_dose_intensification_with_14-day_versus_21-day_cycles/10207130"], "LNH03-6B (Delarue)": ["doi", "10.1016/S1470-2045(13)70122-0"], "SWOG S9704 (Stiff)": ["pmc", "PMC3985418"], "GOYA (Vitolo)": ["doi", "10.1200/JCO.2017.73.3402"], "Alliance/CALGB 50303 (Bartlett)": ["pmc", "PMC6774813"], "HOVON-84 (Lugtenburg)": ["doi", "10.1200/JCO.19.03418", "repo", "https://pure.amsterdamumc.nl/en/publications/28986779-5bc8-44f1-9ae5-0a5f7dd3525d"], "LYSA/GOELAMS 02-03 (Lamy)": ["pmc", "PMC5757680"], "PETAL (Dührsen)": ["doi", "10.1200/JCO.2017.76.8093", "repo", "https://pure.amsterdamumc.nl/ws/files/177697761/Positron-emission-tomography-guided-therapy-of-aggressive-non-hodgkin-lymphomas-petal-a-multicenter-randomized-phase.pdf"], "FLYER (Poeschel)": ["doi", "10.1016/S0140-6736(19)33008-9", "free"], "SWOG S1001 (Persky)": ["pmc", "PMC7479758"], "LNH2009-1B (Michot)": ["doi", "10.1016/j.annonc.2025.11.006"], "R-miniCHOP (Peyrade)": ["doi", "10.1016/S1470-2045(11)70069-9"], "REMARC (Thieblemont)": ["doi", "10.1200/JCO.2017.72.6984"], "SENIOR (Oberic)": ["doi", "10.1200/JCO.20.02666", "repo", "https://orbi.uliege.be/handle/2268/256117"], "REMoDL-B (Davies)": ["pmc", "PMC6494978"], "PHOENIX (Younes)": ["pmc", "PMC6553835"], "ROBUST (Nowakowski)": ["pmc", "PMC8078325"], "POLARIX (Tilly)": ["pmc", "PMC11702892"], "ZUMA-12 (Neelapu)": ["pmc", "PMC9018426"], "frontMIND (Lenz)": ["doi", "10.1016/S0140-6736(26)00866-4", "free"], "DEB (Xu)": ["pmc", "PMC13103881"], "Cell of origin by gene expression (Alizadeh)": ["doi", "10.1038/35000501"], "Hans algorithm (Hans)": ["doi", "10.1182/blood-2003-05-1545", "free"], "R-IPI (Sehn)": ["doi", "10.1182/blood-2006-08-038257"], "NCCN-IPI (Zhou)": ["pmc", "PMC5527396"], "CNS-IPI (Schmitz)": ["doi", "10.1200/JCO.2015.65.6520"], "Genetic subtypes of DLBCL (Schmitz)": ["pmc", "PMC6010183"], "MYC rearrangement and partner gene (Rosenwald)": ["doi", "10.1200/JCO.19.00743", "free"]};
+const FTLABEL = x => x[0] === 'pmc' ? 'Free full text' : (x[2] === 'free' ? 'Free at publisher' : 'Publisher');
+const FTTITLE = x => x[0] === 'pmc' ? 'Free full text in PubMed Central' : (x[2] === 'free' ? 'Free to read on the publisher site (checked with Unpaywall)' : 'Publisher page; full text may need a subscription or institutional access');
+const REPORT = t => 'mailto:andresferber@hotmail.com?subject=' + encodeURIComponent('Landmark trials (' + PAGETITLE + '): ' + t.n);
+const FTURL = x => x[0] === 'pmc' ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + x[1] + '/' : 'https://doi.org/' + x[1];
+const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
+T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, rel:t.rel || [], reg:t.reg, gl:t.gl, acc:t.acc}; });
+T.forEach(t => { t.trn = REG[t.n] || []; t.ft = FT[t.n] || null; });
+
+// Added Oct 23, 2026. TOX: key toxicity per trial from the PubMed abstract (or full paper where marked).
+// CORE: trials every trainee should know (chosen by Andres; edit this list to change the star and the "Core trials" filter).
+// WATCH: ongoing trials to watch, from ClinicalTrials.gov.
+// Added Oct 23, 2026. MOA: one recent review per drug or drug class on mechanism of action and resistance; MOAMAP: trial -> MOA keys.
+const MOA = {"cd20": {"l": "Anti-CD20 antibodies", "a": "Hasani R", "j": "Exp Hematol", "y": "2026", "t": "CD20-targeted immunotherapies in B-cell malignancies: mechanistic and clinical advances", "p": "42140572", "pmc": ""}, "imidL": {"l": "Lenalidomide and CELMoDs in lymphoma", "a": "Saha A", "j": "Leuk Lymphoma", "y": "2026", "t": "From immunomodulators (IMiDs) to cereblon E3 ligase modulators (CELMoDs): the evolution of cereblon modulators in lymphoma therapy", "p": "42154229", "pmc": ""}, "pi": {"l": "Proteasome inhibitors", "a": "Patiño-Escobar B", "j": "Trends Pharmacol Sci", "y": "2023", "t": "Overcoming proteasome inhibitor resistance in the immunotherapy era", "p": "37344251", "pmc": ""}, "btk": {"l": "BTK inhibitors (covalent and noncovalent)", "a": "Stanchina MD", "j": "Nat Rev Clin Oncol", "y": "2024", "t": "Navigating the changing landscape of BTK-targeted therapies for B cell lymphomas and chronic lymphocytic leukaemia", "p": "39487228", "pmc": ""}, "adc": {"l": "Antibody-drug conjugates in DLBCL (polatuzumab vedotin, loncastuximab tesirine, brentuximab vedotin)", "a": "Xu X", "j": "Blood Rev", "y": "2026", "t": "Beyond R-CHOP: The rise of antibody-drug conjugates in DLBCL", "p": "41633880", "pmc": ""}, "cd19car": {"l": "CD19 CAR-T in lymphoma", "a": "Hijazi A", "j": "Clin Cancer Res", "y": "2025", "t": "Facts and hopes: CAR T-cell therapy and immune contexture in non-Hodgkin lymphoma", "p": "40622821", "pmc": "PMC12434396"}, "cd19ab": {"l": "Tafasitamab (anti-CD19 antibody)", "a": "Lazic T", "j": "Leuk Lymphoma", "y": "2025", "t": "The emerging role of tafasitamab in follicular lymphoma", "p": "41090546", "pmc": ""}};
+const MOAMAP = {"GELA LNH-98.5 (Coiffier)": ["cd20"], "ECOG 4494 / CALGB 9793 (Habermann)": ["cd20"], "MInT (Pfreundschuh)": ["cd20"], "RICOVER-60 (Pfreundschuh)": ["cd20"], "GOYA (Vitolo)": ["cd20"], "HOVON-84 (Lugtenburg)": ["cd20"], "REMARC (Thieblemont)": ["imidL"], "SENIOR (Oberic)": ["imidL"], "REMoDL-B (Davies)": ["pi"], "PHOENIX (Younes)": ["btk"], "ROBUST (Nowakowski)": ["imidL"], "POLARIX (Tilly)": ["adc"], "ZUMA-12 (Neelapu)": ["cd19car"], "frontMIND (Lenz)": ["cd19ab", "imidL"]};
+const MECH = {"adc": "Antibody-drug conjugates use an antibody to carry a chemotherapy payload into the lymphoma cell, where it is released after the conjugate is taken up. Polatuzumab vedotin targets CD79b and brentuximab vedotin targets CD30, both delivering the microtubule poison monomethyl auristatin E; loncastuximab tesirine targets CD19 and delivers a pyrrolobenzodiazepine that cross-links DNA. Resistance can arise from loss of the target antigen, reduced uptake or processing of the conjugate, or drug efflux; neuropathy (auristatin payloads) and cytopenias, edema and liver enzyme changes (pyrrolobenzodiazepine payload) are the main class toxicities.", "btk": "BTK carries the B-cell receptor's survival signal, on which mantle cell lymphoma and other B-cell lymphomas depend. Covalent inhibitors (ibrutinib, acalabrutinib, zanubrutinib) bind cysteine 481 permanently, and mutations there cause resistance; noncovalent pirtobrutinib binds reversibly and works despite them. The newer agents are more selective, with less atrial fibrillation and bleeding than ibrutinib.", "cd19ab": "Tafasitamab is an Fc-engineered antibody against CD19, built to enhance antibody-dependent killing by NK cells and macrophages. Lenalidomide boosts NK-cell activity, which is the rationale for pairing them.", "cd19car": "The patient's own T cells are engineered to recognize CD19, present on almost all B-cell lymphomas, and given as a single infusion after lymphodepleting chemotherapy. Brexucabtagene autoleucel, axicabtagene ciloleucel, tisagenlecleucel and lisocabtagene maraleucel differ in their costimulatory domain (CD28 or 4-1BB) and manufacturing, which affects how fast they act and their rates of cytokine release syndrome and neurotoxicity.", "cd20": "Monoclonal antibodies against CD20, present on nearly all B cells and B-cell lymphomas. Rituximab kills mainly through complement and antibody-dependent cellular cytotoxicity; obinutuzumab, a glycoengineered type II antibody, relies more on direct cell death and cellular cytotoxicity and causes deeper B-cell depletion.", "imidL": "In lymphoma, lenalidomide works through cereblon, degrading the transcription factors Ikaros and Aiolos, and strongly enhances T-cell and NK-cell activity, which is why it pairs well with antibodies (lenalidomide-rituximab) and bispecific antibodies. CELMoDs such as golcadomide are more potent cereblon modulators now in lymphoma trials.", "pi": "Block the proteasome, the cell's machinery for clearing unwanted proteins, so misfolded proteins build up and trigger cell death. Myeloma cells, which make large amounts of immunoglobulin, are especially sensitive; in mantle cell lymphoma, bortezomib also suppresses NF-κB survival signalling. Bortezomib binds reversibly, carfilzomib irreversibly; ixazomib is taken by mouth."};
+const MOAURL = m => m.pmc ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + m.pmc + '/' : 'https://pubmed.ncbi.nlm.nih.gov/' + m.p + '/';
+const MOAHTML = t => (MOAMAP[t.n] || []).map(k => MOA[k]).filter(Boolean).map(m => '<span class="moa"><b>' + esc(m.l) + ':</b> <a href="' + esc(MOAURL(m)) + '" target="_blank" rel="noopener" title="' + esc(m.t) + '">' + esc(m.a) + ', ' + esc(m.j) + ' ' + esc(m.y) + ' ↗</a>' + (m.pmc ? ' <span class="moafree">free</span>' : '') + '</span>').join('');
+// NEWD: new drugs to watch (shared per disease).
+const NEWD = {"checked": "November 10, 2026", "note": "Agents with a new mechanism, target or modality that are not yet approved for this disease, selected from peer-reviewed early-phase trials and major meetings. Early response rates often fall with more patients and longer follow-up; meeting data are not peer-reviewed.", "scope": "This list is shared by the two diffuse large B-cell lymphoma topics.", "items": [{"n": "Zamtocabtagene autoleucel", "mod": "Autologous CAR-T (tandem, fresh product)", "tgt": "CD20 and CD19", "ev": "Peer-reviewed randomized phase 2", "pub": "Lancet Oncol 2026", "why": "One CAR that recognizes two antigens, to limit CD19-negative escape, made as a fresh (non-cryopreserved) product with a short vein-to-vein time, and tested against chemoimmunotherapy in older, transplant-ineligible patients.", "data": "DALY 2-EU: 160 transplant-ineligible patients in second line (median age 74), randomized to zamtocabtagene autoleucel or R-GemOx. Median event-free survival 6.21 vs 2.53 months (HR 0.39, 95% CI 0.27–0.58); median vein-to-vein time 15 days; median follow-up 17.0 months.", "safety": "Grade 3 or higher adverse events 83% vs 86%; serious cytokine release syndrome 8% and serious ICANS 5%; 2 treatment-related deaths (3%) with the CAR-T, from cytokine release syndrome and haemophagocytic lymphohistiocytosis.", "next": "Regulatory plans and any phase 3 trial were not checked.", "src": [["Borchmann P, Lancet Oncol 2026", "https://pubmed.ncbi.nlm.nih.gov/42933440/"], ["NCT04844866", "https://clinicaltrials.gov/study/NCT04844866"]]}, {"n": "Golcadomide", "mod": "Oral small molecule (cereblon modulator)", "tgt": "Cereblon E3 ligase modulator (Ikaros/Aiolos degrader)", "ev": "Phase 1b, meeting data (not yet peer-reviewed)", "pub": "SOHO 2024", "why": "A next-generation cereblon modulator designed for lymphoma, with deeper degradation of Ikaros and Aiolos than lenalidomide in preclinical models; given for 7 days of each R-CHOP cycle in first line.", "data": "With R-CHOP in previously untreated aggressive B-cell lymphoma (33 patients per dose level): ORR 82% with complete metabolic response 64% at 0.2 mg, and ORR 88% at 0.4 mg. Median follow-up 12.6 months.", "safety": "Adverse-event rates were not available in the report checked.", "next": "Phase 3 GOLSEEK-1: golcadomide or placebo with R-CHOP in previously untreated high-risk large B-cell lymphoma (active, not recruiting).", "src": [["SOHO 2024 report (Targeted Oncology)", "https://www.targetedonc.com/view/frontline-golcadomide-r-chop-shows-potent-antitumor-activity-in-aggressive-b-cell-lymphoma"], ["Mo Z, Blood Cancer Discov 2026 (preclinical)", "https://pubmed.ncbi.nlm.nih.gov/41182271/"], ["NCT06356129", "https://clinicaltrials.gov/study/NCT06356129"]]}, {"n": "Cemacabtagene ansegedleucel", "mod": "Allogeneic CAR-T (off the shelf)", "tgt": "CD19", "ev": "Peer-reviewed phase 1", "pub": "J Clin Oncol 2025", "why": "CAR-T cells made from healthy donors and stored, so that treatment does not wait for manufacturing from the patient's own cells.", "data": "33 CAR-T-naive patients with relapsed or refractory large B-cell lymphoma (median 3 prior therapies): ORR 58%, complete response 42%; median duration of response in complete responders 23.1 months.", "safety": "Mainly haematological toxicity; no graft-versus-host disease, no ICANS and no grade 3 or higher cytokine release syndrome.", "next": "Further evaluation in large B-cell lymphoma, as stated by the authors; trial details not checked.", "src": [["Locke FL, J Clin Oncol 2025", "https://pubmed.ncbi.nlm.nih.gov/39946666/"], ["NCT04416984", "https://clinicaltrials.gov/study/NCT04416984"]]}, {"n": "Zilovertamab vedotin", "mod": "Antibody-drug conjugate", "tgt": "ROR1 (new target)", "ev": "Peer-reviewed phase 1", "pub": "NEJM Evid 2022", "why": "ROR1 is an oncofetal protein present on many lymphomas and largely absent from normal adult tissue, a target not shared with CD19- or CD20-directed therapy.", "data": "First-in-human study in 32 patients with lymphoid cancers: responses in 3 of 5 with DLBCL (2 complete, 1 partial) and in 7 of 15 with mantle cell lymphoma.", "safety": "Neutropenia and cumulative neuropathy, as expected with a monomethyl auristatin E payload; no toxicity suggesting an effect on normal tissues through ROR1.", "next": "Phase 3 waveLINE-010 (with R-CHP vs R-CHOP in untreated DLBCL, recruiting) and phase 2/3 waveLINE-003 (relapsed or refractory DLBCL, recruiting).", "src": [["Wang ML, NEJM Evid 2022", "https://pubmed.ncbi.nlm.nih.gov/38319241/"], ["NCT06717347", "https://clinicaltrials.gov/study/NCT06717347"], ["NCT05139017", "https://clinicaltrials.gov/study/NCT05139017"]]}], "grad": [], "disc": []};
+const TOX = {"GELA LNH-98.5 (Coiffier)": "Clinically relevant toxicity not significantly greater with R-CHOP (rates not in abstract)", "ECOG 4494 / CALGB 9793 (Habermann)": "Not reported in abstract", "MInT (Pfreundschuh)": "Frequency of adverse events did not differ between groups; second malignancies 3.9% with rituximab vs 4.4% without at 6 years (update)", "RICOVER-60 (Pfreundschuh)": "Not reported in abstract", "LNH03-2B: R-ACVBP (Récher)": "Serious adverse events 42% vs 15%; febrile neutropenia 38% vs 9% (R-ACVBP vs R-CHOP)", "DSHNHL 2002-1 (Schmitz)": "Grade 3–4 infection 75.0% vs 31.3%; grade 4 leucopenia in all evaluable R-MegaCHOEP patients", "UK R-CHOP 14 vs 21 (Cunningham)": "Grade 3–4 neutropenia 31% with R-CHOP-14 vs 60% with R-CHOP-21 (no mandated G-CSF); grade 3–4 thrombocytopenia 9% vs 5%", "LNH03-6B (Delarue)": "Grade 3–4 neutropenia 74% vs 64%; red-cell transfusion 47% vs 31% (R-CHOP-14 vs R-CHOP-21)", "SWOG S9704 (Stiff)": "Not reported in abstract", "GOYA (Vitolo)": "Grade 3–5 AEs 73.7% vs 64.7%; serious AEs 42.6% vs 37.6%; fatal AEs 5.8% vs 4.3% (obinutuzumab vs rituximab)", "Alliance/CALGB 50303 (Bartlett)": "Grade 3–4 febrile neutropenia 35.0% vs 17.7%, neuropathy 18.6% vs 3.3%, infection 16.9% vs 10.7% (DA-EPOCH-R vs R-CHOP); treatment-related deaths 2.1% in each arm", "HOVON-84 (Lugtenburg)": "More toxicity with intensified rituximab at age 66–80 during the first 4 cycles, mainly neutropenia and infections", "LYSA/GOELAMS 02-03 (Lamy)": "Not reported in abstract", "PETAL (Dührsen)": "Significantly more toxicity with the Burkitt protocol (rates not in abstract)", "FLYER (Poeschel)": "Haematological adverse events 294 vs 426 and non-haematological 1,036 vs 1,280 (4 vs 6 cycles); 2 deaths during therapy, both in the 6-cycle group", "SWOG S1001 (Persky)": "Not reported in abstract", "LNH2009-1B (Michot)": "Grade ≥3 AEs 54.7% vs 62.7%; serious AEs 9.5% vs 14.2% (PET-adapted vs standard)", "R-miniCHOP (Peyrade)": "12 deaths attributed to treatment toxicity; grade ≥3 neutropenia in 59 patients, febrile neutropenia in 11", "REMARC (Thieblemont)": "Grade 3–4 neutropenia 56% vs 22%; cutaneous reactions 5% vs 1% (lenalidomide vs placebo)", "SENIOR (Oberic)": "Grade 3–4 AEs 81% with R2-miniCHOP vs 53% with R-miniCHOP", "REMoDL-B (Davies)": "Grade ≥3 haematological toxicity 42.1% vs 39.8%; grade ≥3 neuropathy 3.8% vs 1.8% (RB-CHOP vs R-CHOP)", "PHOENIX (Younes)": "Serious AEs with ibrutinib vs placebo: 35.7% vs 28.6% under age 60; 63.4% vs 38.2% at age 60 or older", "ROBUST (Nowakowski)": "Grade 3–4 neutropenia 60% vs 48%, anaemia 22% vs 14%, thrombocytopenia 17% vs 11% (R2-CHOP vs placebo/R-CHOP)", "POLARIX (Tilly)": "Safety profile similar in the two groups (rates not in abstract)", "ZUMA-12 (Neelapu)": "Grade ≥3 cytokine release syndrome 8%; grade ≥3 neurologic events 23%; no treatment-related deaths", "frontMIND (Lenz)": "Grade ≥3 AEs 87% vs 76%; fatal AEs 6% vs 4% (tafasitamab-lenalidomide-R-CHOP vs R-CHOP)", "DEB (Xu)": "More treatment-associated toxicity with tucidinostat, generally manageable with supportive care (rates not in abstract)", "Cell of origin by gene expression (Alizadeh)": "Not applicable (molecular classification)", "Hans algorithm (Hans)": "Not applicable (pathology algorithm)", "R-IPI (Sehn)": "Not applicable (prognostic model)", "NCCN-IPI (Zhou)": "Not applicable (prognostic model)", "CNS-IPI (Schmitz)": "Not applicable (risk model)", "Genetic subtypes of DLBCL (Schmitz)": "Not applicable (molecular classification)", "MYC rearrangement and partner gene (Rosenwald)": "Not applicable (prognostic biomarker study)"};
+const CORE = [];
+const WATCH = {"note": "Ongoing phase 3 trials selected from ClinicalTrials.gov (checked November 10, 2026). Status and primary completion dates are as registered; some trials may already have presented results at meetings.", "items": [{"n": "GO44145", "d": "Glofitamab with pola-R-CHP vs pola-R-CHP in previously untreated large B-cell lymphoma", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2027-10-01 (estimated)", "ep": "PFS (independent review)", "nct": "NCT06047080"}, {"n": "EPCORE DLBCL-2", "d": "Subcutaneous epcoritamab with R-CHOP vs R-CHOP in newly diagnosed DLBCL", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2027-06 (estimated)", "ep": "PFS in patients with IPI 3–5", "nct": "NCT05578976"}, {"n": "OLYMPIA-3", "d": "Odronextamab with CHOP vs R-CHOP in previously untreated DLBCL", "ph": "Phase 3", "st": "Recruiting", "pcd": "2028-03-30 (estimated)", "ep": "PFS (independent central review), after a safety part", "nct": "NCT06091865"}, {"n": "GOLSEEK-1", "d": "Golcadomide or placebo with R-CHOP in previously untreated high-risk large B-cell lymphoma", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2027-08-09 (estimated)", "ep": "PFS (investigator)", "nct": "NCT06356129"}, {"n": "ESCALADE", "d": "Acalabrutinib or placebo with R-CHOP in previously untreated non-GCB DLBCL, age 75 or younger", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2027-02-22 (estimated)", "ep": "PFS", "nct": "NCT04529772"}, {"n": "waveLINE-010", "d": "Zilovertamab vedotin with R-CHP vs R-CHOP in previously untreated DLBCL", "ph": "Phase 3", "st": "Recruiting", "pcd": "2029-07-02 (estimated)", "ep": "PFS", "nct": "NCT06717347"}, {"n": "ZUMA-23", "d": "Axicabtagene ciloleucel vs standard therapy as first-line treatment of high-risk large B-cell lymphoma", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2031-03 (estimated)", "ep": "Event-free survival (blinded central assessment)", "nct": "NCT05605899"}, {"n": "POLAR BEAR", "d": "R-mini-CHOP vs R-mini-CHP with polatuzumab vedotin, age 80 or older, or frail and 75 or older", "ph": "Phase 3", "st": "Recruiting", "pcd": "2025-12-28 (estimated)", "ep": "PFS", "nct": "NCT04332822"}, {"n": "ARCHED", "d": "Acalabrutinib with R-miniCHOP vs R-miniCHOP in older adults with untreated DLBCL", "ph": "Phase 3", "st": "Recruiting", "pcd": "2029-02 (estimated)", "ep": "PFS (investigator)", "nct": "NCT05820841"}, {"n": "NCI-2020-01256 (R-miniCHOP ± oral azacitidine)", "d": "R-miniCHOP with or without oral azacitidine (CC-486), age 75 or older, newly diagnosed DLBCL and related lymphomas", "ph": "Phase 2/3", "st": "Active, not recruiting", "pcd": "2027-03-01 (estimated)", "ep": "Safety run-in, then PFS", "nct": "NCT04799275"}]};
+const PAGEKEY = "dlbu";
+const PAGETITLE = "Untreated diffuse large B-cell lymphoma";
+const SLUG = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+T.forEach(t => { t.tx = TOX[t.n] || "Not reported in abstract"; t.core = CORE.includes(t.n); t.slug = SLUG(t.n);
+  t.full = [t.r, t.N, t.hr, t.fu, t.tx].some(x => /full paper/.test(String(x || ""))); });
+function eviHTML(t) {
+  return t.full
+    ? '<span class="ok full" title="Checked against the PubMed abstract; values marked “full paper” were checked against the full publication">✓ abstract + full paper</span>'
+    : '<span class="ok" title="Checked against the PubMed abstract">✓ abstract</span>';
+}
+
+
+let active = "all", sortMode = "setting";
+try { const s = localStorage.getItem("fl2-sort"); if (s) sortMode = s; } catch(e) {}
+const chipsEl = document.getElementById("chips");
+[["all","All"], ["core","★ Core trials"], ...order.map(k => [k, SETTINGS[k]])].forEach(([k,label]) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.id = "chip-" + k; b.textContent = label;
+  b.setAttribute("aria-pressed", k === active);
+  b.addEventListener("click", () => { active = k; chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b)); render(); });
+  chipsEl.appendChild(b);
+});
+const sortEl = document.getElementById("sort"); sortEl.value = sortMode;
+sortEl.addEventListener("change", () => { sortMode = sortEl.value; try { localStorage.setItem("fl2-sort", sortMode); } catch(e) {} render(); });
+const qEl = document.getElementById("q"); qEl.addEventListener("input", render);
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function recHTML(t){
+  const r = t.rc; if (!r) return "";
+  const cm = r.cm.length
+    ? r.cm.map(c => `<li><a href="https://pubmed.ncbi.nlm.nih.gov/${c[0]}/" target="_blank" rel="noopener">${esc(c[1])}</a>: ${esc(c[2])}</li>`).join("")
+    : '<li class="none">No commentary linked to this paper in PubMed</li>';
+  const rel = r.rel && r.rel.length
+    ? `<div class="rk">Related papers</div><ul>${r.rel.map(c => `<li><a href="https://pubmed.ncbi.nlm.nih.gov/${c[0]}/" target="_blank" rel="noopener">${esc(c[1])}</a>: ${esc(c[2])}</li>`).join("")}</ul>` : "";
+  return `<div class="rk">Commentary</div><ul>${cm}</ul>${rel}
+    <div class="rk">Regulatory</div><p>${esc(r.reg)}</p>
+    <div class="rk">Guidelines</div><p>${esc(r.gl)}</p>
+    <div class="rk">Access</div><p>${esc(r.acc)}</p>`;
+}
+const GRPHDR = (t, i, rows) => (sortMode === "setting" || sortMode === "setting-asc") && (i === 0 || rows[i - 1].s !== t.s)
+  ? '<li class="grp"><h3>' + esc(SETTINGS[t.s]) + '<span class="gn">' + rows.filter(r => r.s === t.s).length + '</span></h3></li>' : '';
+function render(){
+  const q = qEl.value.trim().toLowerCase();
+  let rows = T.filter(t => (active === "all" || (active === "core" ? t.core : t.s === active)) &&
+    (!q || [t.n,t.d,t.r,t.tx,t.i,t.b,t.q,t.c,t.ph,String(t.y),t.reg,t.gl,t.acc,t.cm.map(c=>c[1]+" "+c[2]).join(" "),(t.rel||[]).map(c=>c[1]+" "+c[2]).join(" ")].join(" ").toLowerCase().includes(q)));
+  rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
+    : (order.indexOf(a.s) - order.indexOf(b.s)) || (sortMode === "setting-asc" ? a.y - b.y : b.y - a.y));
+  document.getElementById("count").textContent = rows.length + " of " + T.length + " studies";
+  const list = document.getElementById("list");
+  if (!rows.length) { list.innerHTML = '<li class="empty">No studies match that search. Clear the search or pick another category.</li>'; return; }
+  list.innerHTML = rows.map((t, i) => GRPHDR(t, i, rows) + `
+    <li class="trial" data-trial="${t.slug}">
+      <div class="yr">${t.y}</div>
+      <div class="body">
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span>${t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : ''}<button type="button" class="share" data-slug="${t.slug}" title="Copy a link to this trial" aria-label="Copy a link to ${esc(t.n)}"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M8.5 11.5a3 3 0 0 0 4.2 0l2.6-2.6a3 3 0 0 0-4.2-4.2l-1 1M11.5 8.5a3 3 0 0 0-4.2 0l-2.6 2.6a3 3 0 0 0 4.2 4.2l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="lbl">Link copied</span></button></div>
+        <p class="design">${esc(t.d)}</p>
+        <div class="stats">
+          <span><b>N</b>${esc(t.N)}</span>
+          <span><b>HR</b>${esc(t.hr)}</span>
+          <span><b>Median F/U</b>${esc(t.fu)}</span>
+        </div>
+        <dl>
+          <dt class="f-ep">Endpoint</dt><dd class="f-ep">${esc(t.ep)}</dd>
+          <dt class="f-res">Result</dt><dd class="result f-res">${esc(t.r)} ${eviHTML(t)}</dd>
+          <dt class="f-tox">Key toxicity</dt><dd class="tox f-tox">${esc(t.tx)}</dd>
+          ${MOAMAP[t.n] ? `<dt>Drug mechanism</dt><dd class="moas">${MOAHTML(t)}</dd>` : ""}
+          <dt>Builds on</dt><dd>${esc(t.b)}</dd>
+          <dt>Changed</dt><dd>${esc(t.i)}</dd>
+          <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
+          <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${FTTITLE(t.ft)}">${FTLABEL(t.ft)} ↗</a>` : ''}${t.ft && t.ft[2] === 'repo' ? ` · <a class="ft" href="${esc(t.ft[3])}" target="_blank" rel="noopener" title="Free legal copy in a university repository, found through Unpaywall; it may be the authors' manuscript rather than the final journal version">Free copy (repository) ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')} · <a class="report" href="${esc(REPORT(t))}" title="Email a correction for this trial">Report an error</a></dd>
+        </dl>
+      </div>
+    </li>`).join("");
+}
+render();
+
+(function renderWatch(){
+  const listEl = document.getElementById("list");
+  const box = listEl.parentNode.querySelector(".watch");
+  if (!box) return;
+  if (!WATCH.items || !WATCH.items.length) { box.hidden = true; return; }
+  box.hidden = false;
+  box.innerHTML = '<h2>Trials to watch</h2><p class="wnote">' + esc(WATCH.note || "") + '</p><ul>' + WATCH.items.map(w =>
+    '<li><span class="wn">' + esc(w.n) + '</span><span class="wd">' + esc(w.d) + '</span><span class="wm">' +
+    [w.ph, w.st, w.pcd ? "primary completion " + w.pcd : "", w.ep ? "primary endpoint: " + w.ep : ""].filter(Boolean).map(esc).join(" · ") +
+    (w.nct ? ' · <a href="https://clinicaltrials.gov/study/' + esc(w.nct) + '" target="_blank" rel="noopener">' + esc(w.nct) + ' ↗</a>' : "") +
+    '</span>' + (w.note ? '<span class="wd">' + esc(w.note) + '</span>' : '') + '</li>').join("") + '</ul>';
+})();
+
+
+(function setupReviewRefs(){
+  const listEl = document.getElementById("list");
+  const box = listEl.parentNode.querySelector(".review");
+  if (!box) return;
+  box.addEventListener("click", e => {
+    if (e.target.closest(".rv-close")) {
+      box.open = false;
+      box.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    const a = e.target.closest("a.rref");
+    if (!a) return;
+    e.preventDefault();
+    const first = chipsEl.querySelector(".chip");
+    if (first && first.getAttribute("aria-pressed") !== "true") first.click();
+    if (qEl.value) { qEl.value = ""; render(); }
+    const li = listEl.querySelector('li[data-trial="' + a.getAttribute("data-slug") + '"]');
+    if (!li) return;
+    li.scrollIntoView({ behavior: "smooth", block: "start" });
+    li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+  });
+})();
+
+(function setupTabs(){
+  const listEl = document.getElementById("list");
+  const root = listEl.parentNode;
+  const tabs = root.querySelector(".tabs"), panel = root.querySelector(".newdrugs"), watch = root.querySelector(".watch"), controls = root.querySelector(".controls");
+  if (!tabs) return;
+  const L = (s) => '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + ' ↗</a>';
+  const nW = (typeof WATCH !== "undefined" && WATCH.items) ? WATCH.items.length : 0;
+  const nD = (typeof NEWD !== "undefined") ? NEWD.items.length : 0;
+  const cw = tabs.querySelector('[data-tab="watch"] .tcount'), cd = tabs.querySelector('[data-tab="newdrugs"] .tcount');
+  if (cw) cw.textContent = nW; if (cd) cd.textContent = nD;
+  let mod = "all";
+  function draw(){
+    if (!panel || !nD) return;
+    const mods = [...new Set(NEWD.items.map(d => d.mod))];
+    const items = NEWD.items.filter(d => mod === "all" || d.mod === mod);
+    const log = (arr, none) => '<ul class="nd-log">' + (arr.length ? arr.map(g => '<li><b>' + esc(g.n) + ':</b> ' + esc(g.txt) + ' ' + g.src.map(L).join(" · ") + '</li>').join("") : '<li>' + none + '</li>') + '</ul>';
+    panel.innerHTML = '<p class="nd-note">' + esc(NEWD.note) + (NEWD.scope ? ' ' + esc(NEWD.scope) : '') + ' Status checked ' + esc(NEWD.checked) + '.</p>' +
+      (mods.length > 1 ? '<div class="nd-mods">' + [["all","All"]].concat(mods.map(m => [m, m])).map(([k, l]) => '<button type="button" class="chip" data-mod="' + esc(k) + '" aria-pressed="' + (k === mod) + '">' + esc(l) + '</button>').join("") + '</div>' : '') +
+      items.map(d => '<div class="nd-item"><div class="nd-top"><h2 class="nd-name">' + esc(d.n) + '</h2><span class="nd-mod">' + esc(d.mod) + '</span><span class="nd-ev' + (/^Peer-reviewed/.test(d.ev) ? ' pr' : '') + '">' + esc(d.ev) + ' · ' + esc(d.pub) + '</span></div>' +
+        '<dl><dt>Target</dt><dd>' + esc(d.tgt) + '</dd><dt>Why it matters</dt><dd>' + esc(d.why) + '</dd><dt class="f-res">Key data</dt><dd class="f-res">' + esc(d.data) + '</dd><dt class="f-tox">Safety</dt><dd class="f-tox">' + esc(d.safety) + '</dd><dt>Next step</dt><dd>' + esc(d.next) + '</dd><dt>Sources</dt><dd class="nd-src">' + d.src.map(L).join(" · ") + '</dd></dl></div>').join("") +
+      '<h3>Moved on to phase 3 results</h3>' + log(NEWD.grad, "None so far.") +
+      '<h3>Discontinued</h3>' + log(NEWD.disc, "None so far.") +
+      '<p class="nd-rules">How this list is kept: agents with a new mechanism, target or modality (including phase 1 when the approach is new, and repurposed drugs with credible clinical data; no biosimilars and no preclinical-only agents). An agent moves to "Moved on" when phase 3 results are published, and to "Discontinued", with the reason and date, when development stops or a pivotal trial fails; discontinued entries are removed after 2 years. Checked at each scheduled update and after major meetings (ASH, ASCO, EHA, AACR, ESMO, IMS).</p>';
+    panel.querySelectorAll(".nd-mods .chip").forEach(b => b.addEventListener("click", () => { mod = b.getAttribute("data-mod"); draw(); }));
+  }
+  draw();
+  function show(which){
+    tabs.querySelectorAll("button[data-tab]").forEach(x => x.setAttribute("aria-selected", x.getAttribute("data-tab") === which));
+    if (controls) controls.style.display = which === "trials" ? "" : "none";
+    listEl.style.display = which === "trials" ? "" : "none";
+    if (watch) watch.style.display = (which === "newdrugs" || !nW) ? "none" : "";
+    if (panel) panel.hidden = which !== "newdrugs";
+    if (mpanel) mpanel.hidden = which !== "mech";
+    if (watch && which === "mech") watch.style.display = "none";
+  }
+  // Drug mechanisms tab: classes tested on this page, how they work, the review, and the trials that used them.
+  const mpanel = root.querySelector(".mechs");
+  const mKeys = (typeof MOA !== "undefined" && typeof MOAMAP !== "undefined" && typeof MECH !== "undefined")
+    ? Object.keys(MOA).filter(k => MECH[k] && T.some(t => (MOAMAP[t.n] || []).includes(k))) : [];
+  const cm = tabs.querySelector('[data-tab="mech"] .tcount'); if (cm) cm.textContent = mKeys.length;
+  if (mpanel && mKeys.length) {
+    mpanel.innerHTML = '<p class="mx-note">Each drug class tested in the trials on this page: how it works, a recent peer-reviewed review on mechanism and resistance, and the trials that used it. Select a trial to jump to its card.</p>' +
+      mKeys.map(k => { const m = MOA[k];
+        const trials = T.filter(t => (MOAMAP[t.n] || []).includes(k)).sort((a, b) => a.y - b.y);
+        return '<div class="mx-item"><h2 class="mx-name">' + esc(m.l) + '</h2><p class="mx-desc">' + esc(MECH[k]) + '</p>' +
+          '<p class="mx-rev"><span class="mx-k">Review</span> <a href="' + esc(MOAURL(m)) + '" target="_blank" rel="noopener">' + esc(m.a + ', ' + m.j + ' ' + m.y) + ' ↗</a>' + (m.pmc ? ' <span class="moafree">free</span>' : '') + '</p>' +
+          '<p class="mx-trials"><span class="mx-k">Trials on this page</span> ' + trials.map(t => '<a class="mt" href="#t-' + PAGEKEY + '-' + t.slug + '" data-slug="' + t.slug + '">' + esc(t.n) + ' <span class="mt-y">' + t.y + '</span></a>').join("") + '</p></div>'; }).join("");
+    mpanel.addEventListener("click", e => {
+      const a = e.target.closest("a.mt"); if (!a) return;
+      e.preventDefault();
+      show("trials");
+      tabs.dispatchEvent(new Event("tabschange"));
+      const first = chipsEl.querySelector(".chip");
+      if (first && first.getAttribute("aria-pressed") !== "true") first.click();
+      if (qEl.value) { qEl.value = ""; render(); }
+      const li = listEl.querySelector('li[data-trial="' + a.getAttribute("data-slug") + '"]');
+      if (!li) return;
+      li.scrollIntoView({ behavior: "smooth", block: "start" });
+      li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+    });
+  }
+  tabs.addEventListener("click", e => {
+    const b = e.target.closest("button[data-tab]"); if (!b) return;
+    const w = b.getAttribute("data-tab");
+    // Clicking the tab that is already open closes it and returns to the trial list.
+    if (w !== "trials" && b.getAttribute("aria-selected") === "true") {
+      show("trials");
+      tabs.dispatchEvent(new Event("tabschange"));
+      if (tabs._scrollHome) tabs._scrollHome(); else tabs.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      return;
+    }
+    show(w);
+    tabs.dispatchEvent(new Event("tabschange"));
+  });
+  show("trials");
+})();
+(function pinTabs(){
+  // Pin the tab bar while a tab other than Landmark trials is open.
+  const listEl = document.getElementById("list");
+  const root = listEl.parentNode;
+  const tabs = root.querySelector(".tabs");
+  if (!tabs) return;
+  const ph = document.createElement("div");
+  ph.className = "tabs-ph"; ph.hidden = true;
+  tabs.parentNode.insertBefore(ph, tabs);
+  let pinned = false;
+  function topOffset() {
+    // Below the website's pinned topic title bar, or any fixed site header; 0 on the standalone page.
+    const h = document.querySelector(".lta-head.lta-pinned");
+    if (h) return Math.max(0, h.getBoundingClientRect().bottom);
+    let off = 0;
+    try {
+      (document.elementsFromPoint(window.innerWidth / 2, 2) || []).forEach(el => {
+        if (root.contains(el)) return;
+        for (let n = el; n && n !== document.body; n = n.parentElement) {
+          const p = getComputedStyle(n).position;
+          if (p === "fixed" || p === "sticky") {
+            const r = n.getBoundingClientRect();
+            if (r.top <= 2 && r.bottom > off && r.bottom < window.innerHeight * 0.4) off = r.bottom;
+            break;
+          }
+        }
+      });
+    } catch (e) {}
+    return off;
+  }
+  function unpin() {
+    if (!pinned) return;
+    tabs.classList.remove("tabs-pinned");
+    tabs.style.top = tabs.style.left = tabs.style.width = "";
+    ph.hidden = true; pinned = false;
+  }
+  function update() {
+    const sel = tabs.querySelector('button[aria-selected="true"]');
+    const active = !!sel && sel.getAttribute("data-tab") !== "trials";
+    const off = topOffset();
+    const r = (pinned ? ph : tabs).getBoundingClientRect();
+    const rr = root.getBoundingClientRect();
+    const h = tabs.offsetHeight;
+    if (active && r.top < off && rr.bottom > off + h + 40) {
+      if (!pinned) { ph.style.height = h + "px"; ph.hidden = false; tabs.classList.add("tabs-pinned"); pinned = true; }
+      const pr = ph.getBoundingClientRect();
+      tabs.style.top = off + "px"; tabs.style.left = pr.left + "px"; tabs.style.width = pr.width + "px";
+    } else unpin();
+  }
+  let ticking = false;
+  const req = () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; update(); }); } };
+  window.addEventListener("scroll", req, { passive: true });
+  document.addEventListener("scroll", req, { passive: true, capture: true });
+  window.addEventListener("resize", req);
+  tabs.addEventListener("tabschange", () => { unpin(); req(); });
+  // Closing a tab returns to the top of the trial list, just below any pinned header.
+  tabs._scrollHome = () => {
+    const y = tabs.getBoundingClientRect().top + window.pageYOffset - topOffset() - 8;
+    if (tabs.getBoundingClientRect().top < topOffset()) window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+  };
+})();
+(function setupShare(){
+  const listEl = document.getElementById("list");
+  listEl.addEventListener("click", e => {
+    const b = e.target.closest(".share");
+    if (!b) return;
+    const slug = b.getAttribute("data-slug");
+    const inSite = !!listEl.closest(".ltw");
+    const base = inSite ? location.href.split("#")[0] : "https://andresferber.github.io/landmark-trials/";
+    const url = base + "#t-" + PAGEKEY + "-" + slug;
+    const done = () => { b.classList.add("copied"); setTimeout(() => b.classList.remove("copied"), 1800); };
+    const fallback = () => { const t = document.createElement("textarea"); t.value = url; t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); done(); } catch (x) {} t.remove(); };
+    try { navigator.clipboard.writeText(url).then(done, fallback); } catch (x) { fallback(); }
+  });
+})();
+(function setupPrint(){
+  const listEl = document.getElementById("list");
+  const wrap = listEl.closest(".wrap");
+  const btn = wrap && wrap.querySelector(".printbtn");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const root = wrap.closest(".ltw");
+    if (!root) { window.print(); return; }
+    const css = Array.prototype.map.call(document.querySelectorAll("style"), s => s.textContent).filter(c => c.includes("--font-display")).join("\n");
+    const clone = root.cloneNode(true);
+    clone.querySelectorAll(".controls, .printbtn").forEach(n => n.remove());
+    const w = window.open("", "_blank");
+    if (!w) { window.print(); return; }
+    const title = (wrap.querySelector("h1") || {}).textContent || "Landmark trials";
+    w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>' + esc(title) + '</title>' +
+      '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">' +
+      '<style>' + css + ' body{margin:0;background:#fff} .ltw{background:#fff} @media print{.ltw .trial{break-inside:avoid}}</style></head><body>' +
+      clone.outerHTML + '<script>window.onload=function(){setTimeout(function(){window.print()},400)}<\/script></body></html>');
+    w.document.close();
+  });
+  try { if (/[?&]print=1/.test(location.search)) setTimeout(() => window.print(), 500); } catch (e) {}
+})();
+</script>

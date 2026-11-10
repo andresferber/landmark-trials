@@ -26,6 +26,22 @@
       "group": "Lymphoma"
     },
     {
+      "key": "dlbu",
+      "title": "Diffuse large B-cell lymphoma, untreated",
+      "count": "34 studies",
+      "file": "topics/dlbu.html",
+      "updated": "2026-11-10",
+      "group": "Lymphoma"
+    },
+    {
+      "key": "dlbr",
+      "title": "Diffuse large B-cell lymphoma, relapsed/refractory",
+      "count": "28 studies",
+      "file": "topics/dlbr.html",
+      "updated": "2026-11-10",
+      "group": "Lymphoma"
+    },
+    {
       "key": "smm",
       "title": "Smoldering multiple myeloma",
       "count": "23 studies",
