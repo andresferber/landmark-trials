@@ -1,5 +1,5 @@
 TITLE = 'The evolution of management of relapsed and refractory diffuse large B-cell lymphoma, 2004–2026'
-UPDATED = 'November 10, 2026 · Pilot draft, pending review'
+UPDATED = 'November 10, 2026'
 TL_CAPTION = 'Timeline of key trials and regulatory milestones'
 
 TAKE = [

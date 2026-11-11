@@ -28,9 +28,9 @@
     {
       "key": "dlbu",
       "title": "Diffuse large B-cell lymphoma, untreated",
-      "count": "35 studies",
+      "count": "38 studies",
       "file": "topics/dlbu.html",
-      "updated": "2026-11-10",
+      "updated": "2026-11-11",
       "group": "Lymphoma"
     },
     {
@@ -38,7 +38,7 @@
       "title": "Diffuse large B-cell lymphoma, relapsed/refractory",
       "count": "28 studies",
       "file": "topics/dlbr.html",
-      "updated": "2026-11-10",
+      "updated": "2026-11-11",
       "group": "Lymphoma"
     },
     {

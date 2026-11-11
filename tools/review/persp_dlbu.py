@@ -1,5 +1,5 @@
 TITLE = 'The evolution of first-line treatment of diffuse large B-cell lymphoma, 2000–2026'
-UPDATED = 'November 10, 2026 · Pilot draft, pending review'
+UPDATED = 'November 10, 2026'
 TL_CAPTION = 'Timeline of key trials and US regulatory milestones'
 
 TAKE = [
