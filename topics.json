@@ -66,6 +66,14 @@
       "group": "CLL"
     },
     {
+      "key": "richter",
+      "title": "Richter transformation",
+      "count": "43 studies",
+      "file": "topics/richter.html",
+      "updated": "2026-11-12",
+      "group": "CLL"
+    },
+    {
       "key": "smm",
       "title": "Smoldering multiple myeloma",
       "count": "23 studies",

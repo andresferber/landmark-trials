@@ -241,5 +241,23 @@
   "t": "Alemtuzumab for haematological malignancies",
   "p": "40214729",
   "pmc": "PMC12141386"
+ },
+ "pd1": {
+  "l": "PD-1 and PD-L1 checkpoint inhibitors",
+  "a": "Huang L",
+  "j": "J Hematol Oncol",
+  "y": "2025",
+  "t": "Immune checkpoint inhibitors for the treatment of solid tumors and lymphoma in the past 26 years (2000-2025)",
+  "p": "41310835",
+  "pmc": "PMC12661887"
+ },
+ "cd19tce": {
+  "l": "CD19×CD3 T-cell engager (blinatumomab)",
+  "a": "Mirfakhraie R",
+  "j": "Hematol Transfus Cell Ther",
+  "y": "2024",
+  "t": "All about blinatumomab: the bispecific T cell engager immunotherapy for B cell acute lymphoblastic leukemia",
+  "p": "37604766",
+  "pmc": "PMC11150604"
  }
 }

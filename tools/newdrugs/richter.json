@@ -1,0 +1,47 @@
+{
+ "checked": "November 12, 2026",
+ "note": "Agents or regimens with a new mechanism, target or modality that are not approved for Richter transformation, selected from major meetings; none of these has a peer-reviewed report in Richter transformation yet. Early response rates often fall with more patients and longer follow-up; meeting data are not peer-reviewed.",
+ "scope": "No drug is approved specifically for Richter transformation, so most treatments on this page are themselves investigational. This short list holds only agents that have not yet reached a peer-reviewed report; bispecific antibodies, CAR T cells and checkpoint inhibitor combinations with published trials are on the landmark list.",
+ "items": [
+  {
+   "n": "BTK degrader BGB-16673",
+   "mod": "Oral protein degrader",
+   "tgt": "BTK (degraded rather than inhibited)",
+   "ev": "Phase 1, meeting data (not yet peer-reviewed)",
+   "pub": "ASH 2024; ASH 2025",
+   "why": "Most patients now develop Richter transformation during or after a BTK inhibitor. Degrading BTK can work against the mutations that cause resistance to covalent and noncovalent inhibitors.",
+   "data": "CaDAnCe-101, Richter transformation cohort: 7 of 12 evaluable patients responded (58.3%), including 1 complete response (ASH 2024). With 24 patients treated at four dose levels, about half responded, and some responses lasted more than 6 months (ASH 2025).",
+   "safety": "Not reported separately for Richter transformation in the sources used.",
+   "next": "The phase 1/2 trial continues (CaDAnCe-101, NCT05006716). No phase 3 trial in Richter transformation.",
+   "src": [
+    [
+     "ASH 2024 report (Cancer Network)",
+     "https://www.cancernetwork.com/view/btk-degrader-bgb-16673-shows-promise-in-r-r-wm-and-cll-sll"
+    ],
+    [
+     "ASH 2025 summary (CLL Society)",
+     "https://cllsociety.org/?p=36449"
+    ]
+   ]
+  },
+  {
+   "n": "Epcoritamab combinations (with lenalidomide or R-CHOP)",
+   "mod": "Subcutaneous bispecific antibody, in combination",
+   "tgt": "CD20 on B cells and CD3 on T cells",
+   "ev": "Phase 1b/2, meeting data (not yet peer-reviewed)",
+   "pub": "ASH 2025",
+   "why": "Epcoritamab alone gave responses in 47.6% of patients (EPCORE CLL-1, on the landmark list). Combining it with chemotherapy or lenalidomide aims at more complete responses in first-line and relapsed disease.",
+   "data": "EPCORE CLL-1 combination arms: 11 patients received epcoritamab with lenalidomide and 30 received epcoritamab with R-CHOP; complete responses in more than half of the patients.",
+   "safety": "With lenalidomide: cytokine release syndrome in all patients, neutropenia 82%, thrombocytopenia 73%.",
+   "next": "EPCORE CLL-1 continues (NCT04623541). A randomized trial compares pirtobrutinib plus epcoritamab with R-CHOP (CLLRT2, NCT07917780; see Trials to watch).",
+   "src": [
+    [
+     "ASH 2025 summary (CLL Society)",
+     "https://cllsociety.org/2026/02/epcoritamab-combination-therapies-for-richter-transformation/"
+    ]
+   ]
+  }
+ ],
+ "grad": [],
+ "disc": []
+}

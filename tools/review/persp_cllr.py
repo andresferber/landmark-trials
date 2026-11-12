@@ -47,7 +47,7 @@ BODY = """
 
 <h3>After a BTK inhibitor, and after both classes</h3>
 <p>Pirtobrutinib binds BTK reversibly, at a site not affected by the usual resistance mutation. In patients already treated with a BTK inhibitor, 73.3% responded and median PFS was 19.6 months [[BRUIN (Mato)]]. The randomized trial that followed, in patients all previously treated with a covalent BTK inhibitor, showed a median PFS of 14 months against 8.7 with idelalisib-rituximab or bendamustine-rituximab, with no difference in survival [[BRUIN CLL-321 (Sharman)]]. The second number matters as much as the first: older regimens do little after a BTK inhibitor.</p>
-<p>For patients whose disease has progressed on a BTK inhibitor and after venetoclax, lisocabtagene maraleucel produced complete remissions in 18%, and in a later cohort given with ibrutinib in 45% [[TRANSCEND CLL 004 (Siddiqi)]]. Allogeneic transplant remains an option for selected fit patients at this stage and for Richter transformation, which is not covered here and will be a separate section. Maintenance after chemoimmunotherapy, with lenalidomide or an anti-CD20 antibody, prolonged PFS in randomized trials but lost its place when continuous and fixed-duration targeted therapy arrived.</p>
+<p>For patients whose disease has progressed on a BTK inhibitor and after venetoclax, lisocabtagene maraleucel produced complete remissions in 18%, and in a later cohort given with ibrutinib in 45% [[TRANSCEND CLL 004 (Siddiqi)]]. Allogeneic transplant remains an option for selected fit patients at this stage and for Richter transformation, which has its own topic on this site. Maintenance after chemoimmunotherapy, with lenalidomide or an anti-CD20 antibody, prolonged PFS in randomized trials but lost its place when continuous and fixed-duration targeted therapy arrived.</p>
 
 <h3>Where we are now</h3>
 <p>This is a personal summary, not a guideline; NCCN placements were not checked against the current document.</p>
@@ -68,7 +68,7 @@ BODY = """
 <li><b>Retreatment:</b> how often, and after how long a remission, can a fixed-duration regimen be repeated?</li>
 <li><b>Disease refractory to both classes:</b> remissions are short with every current option; this is where BTK degraders and other new agents are being tested.</li>
 <li><b>Survival:</b> most recent trials show PFS gains without survival differences, with crossover; the PI3K story is the reason to keep asking for survival data.</li>
-<li><b>Richter transformation:</b> not covered here; it will be a separate section built later.</li>
+<li><b>Richter transformation:</b> not covered here; it has its own topic, Richter transformation.</li>
 </ul>
 
 <h3>What is coming</h3>

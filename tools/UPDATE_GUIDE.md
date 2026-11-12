@@ -89,7 +89,7 @@ All data is in the main `<script>`:
 - Tabs: every page has Landmark trials | Trials to watch | New drugs to watch, plus a "Send a comment"
   mailto link (tools/newdrugs/install_tabs.py installs them).
 - New drugs to watch (`NEWD`): one list per disease, shared by its topics (myeloma: smm, ndmm, rrmm;
-  follicular lymphoma: flu, flr; diffuse large B-cell lymphoma: dlbu, dlbr, master copy tools/newdrugs/dlbcl.json; chronic lymphocytic leukemia: cllu, cllr, master copy tools/newdrugs/cll.json; mcl). Keep the copies identical when editing. Agents
+  follicular lymphoma: flu, flr; diffuse large B-cell lymphoma: dlbu, dlbr, master copy tools/newdrugs/dlbcl.json; chronic lymphocytic leukemia: cllu, cllr, master copy tools/newdrugs/cll.json; Richter transformation: richter only, master copy tools/newdrugs/richter.json; mcl). Keep the copies identical when editing. Agents
   with a new mechanism, target or modality not yet approved for the disease (examples Andres gave:
   RNA vaccines, new targets such as menin inhibitors, XPO1 inhibition, BTK degraders), including
   phase 1 when the approach is new and repurposed drugs with credible clinical data. No biosimilars,
@@ -292,3 +292,28 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
 - Core studies: Andres decided on Nov 11, 2026 that this topic has none. `CORE` stays `[]`, the "★ Core" filter
   chip is removed by build_pbl.py, and updates should not suggest core studies.
 - topics.json count word is "studies". The loader gives the group "Lymphoma: rare presentations" its own colour.
+
+## 10. Richter transformation (key richter): what is different
+- Scope (Andres, Nov 12, 2026): initial management and relapse are one topic, because results at relapse are poor with every
+  approach and no standard exists at either point. Do not split it.
+- Inclusion rule. There are no randomized trials, so the phase 2 bar of section 2 does not apply here. Add: prospective trials
+  with a Richter transformation cohort of about 9 or more patients, whatever the journal; retrospective, registry or genomic
+  studies that are large for this disease (about 50 or more patients, or smaller only when nothing larger exists on that question)
+  or that change prognosis or practice; consensus statements and guidelines. Meeting-only results are not cards. The first
+  randomized trial to report (PIRAMID, CLLRT2, STELLAR) is added whatever the journal.
+- Categories: bio (risk, biology & diagnosis), chemo (chemoimmunotherapy & transplantation), target (BTK, BCL2 & checkpoint
+  inhibitors), cell (bispecific antibodies & CAR T cells), hod (Hodgkin variant). Results that mix CLL and Richter patients must
+  say which numbers are for Richter transformation.
+- Regulatory: no drug has an approval specific to Richter transformation. Cards say "not approved for Richter transformation";
+  if an agency approves one, replace that note with the fact, date and supporting trial, and add a news item.
+- Guidelines: statements come from the EHA 2026 guidelines (Hemasphere 2026, full text in PubMed Central; a new edition is planned
+  every year: update the "EHA guidelines" card and the gl rows when it appears) and the ERIC 2025 consensus. NCCN is "not checked".
+- Trials to watch: only one phase 3 trial exists, so the list also holds randomized and single-arm phase 2 trials of regimens that
+  could change practice (about 6-10 items); the note on the tab says so.
+- New drugs to watch: its own list, tools/newdrugs/richter.json, not shared with cllu/cllr. Only agents or regimens without a
+  peer-reviewed report in Richter transformation; when one is published, it becomes a card and moves to "grad".
+- Perspective (tools/review/persp_richter.py): pilot draft, kept off the website until Andres approves it. Keep its numbers in
+  step with the cards (small factual edits, listed in the summary) and do not remove the pilot label.
+- CORE is empty until Andres chooses. topics.json count word is "studies".
+- Drug mechanisms: the PD-1/PD-L1 (pd1) and blinatumomab (cd19tce) descriptions in tools/mechs/mech_master.json were written on
+  Nov 12, 2026 and await Andres's review.
