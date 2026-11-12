@@ -89,7 +89,7 @@ All data is in the main `<script>`:
 - Tabs: every page has Landmark trials | Trials to watch | New drugs to watch, plus a "Send a comment"
   mailto link (tools/newdrugs/install_tabs.py installs them).
 - New drugs to watch (`NEWD`): one list per disease, shared by its topics (myeloma: smm, ndmm, rrmm;
-  follicular lymphoma: flu, flr; diffuse large B-cell lymphoma: dlbu, dlbr, master copy tools/newdrugs/dlbcl.json; chronic lymphocytic leukemia: cllu, master copy tools/newdrugs/cll.json; mcl). Keep the copies identical when editing. Agents
+  follicular lymphoma: flu, flr; diffuse large B-cell lymphoma: dlbu, dlbr, master copy tools/newdrugs/dlbcl.json; chronic lymphocytic leukemia: cllu, cllr, master copy tools/newdrugs/cll.json; mcl). Keep the copies identical when editing. Agents
   with a new mechanism, target or modality not yet approved for the disease (examples Andres gave:
   RNA vaccines, new targets such as menin inhibitors, XPO1 inhibition, BTK degraders), including
   phase 1 when the approach is new and repurposed drugs with credible clinical data. No biosimilars,

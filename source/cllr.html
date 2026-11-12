@@ -1,0 +1,905 @@
+<title>Relapsed chronic lymphocytic leukemia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column; sticky control strip; each trial is a ruled entry with a year gutter */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --fg: #1b2230;
+  --muted: #5d6677;
+  --rule: #dde1e8;
+  --accent: #2c4a8a;
+  --s-young: #1f6f5c; --s-young-bg: #e3f2ed;
+  --s-old: #8a5a12;   --s-old-bg: #f7eedd;
+  --s-p2: #5b4a9a;    --s-p2-bg: #ece8f7;
+  --s-rr: #9a2f3d;    --s-rr-bg: #f7e4e6;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+    --s-young: #7fd3bb; --s-young-bg: #163029;
+    --s-old: #e6b86a;   --s-old-bg: #33270f;
+    --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+    --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+  --s-young: #7fd3bb; --s-young-bg: #163029;
+  --s-old: #e6b86a;   --s-old-bg: #33270f;
+  --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+  --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
+header h1 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.7rem, 4.5vw, 2.3rem); line-height: 1.15; margin: 0 0 6px; text-wrap: balance; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--muted); max-width: 62ch; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+.controls { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 14px 12px; margin-top: 20px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 10px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 13px/1 var(--font-body); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.row2 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+input[type="search"] { flex: 1 1 220px; min-width: 0; font: 400 14px var(--font-body); padding: 9px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+select { font: 400 14px var(--font-body); padding: 9px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+.count { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+ol.list { list-style: none; margin: 0; padding: 0; }
+.trial { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 14px; padding-block: 18px; border-bottom: 1px solid var(--rule); }
+.yr { font-family: var(--font-mono); font-weight: 500; font-size: 15px; color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.name { font-family: var(--font-display); font-weight: 650; font-size: 1.15rem; margin: 0; }
+.tag { font: 500 11px/1 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; }
+.tag.young { color: var(--s-young); background: var(--s-young-bg); }
+.tag.old { color: var(--s-old); background: var(--s-old-bg); }
+.tag.p2 { color: var(--s-p2); background: var(--s-p2-bg); }
+.tag.rr { color: var(--s-rr); background: var(--s-rr-bg); }
+.tag.risk { color: var(--muted); background: var(--bg); box-shadow: inset 0 0 0 1px var(--rule); }
+.phase { font: 400 12px var(--font-mono); color: var(--muted); }
+.design { margin: 0; color: var(--fg); }
+dl { margin: 2px 0 0; display: grid; grid-template-columns: max-content minmax(0,1fr); gap: 4px 12px; font-size: 14px; }
+dt { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+dd { margin: 0; min-width: 0; }
+.result { font-variant-numeric: tabular-nums; }
+.stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; padding-block: 4px; }
+.stats b { font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.rec { display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; }
+.rec .rk { font: 500 10.5px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.rec .rk:first-child { margin-top: 0; }
+.rec ul { margin: 0; padding-left: 16px; }
+.rec li { margin: 1px 0; }
+.rec li.none { list-style: none; margin-left: -16px; color: var(--muted); }
+.rec p { margin: 0; }
+.rec a { color: var(--accent); text-underline-offset: 2px; }
+.qs { color: var(--accent); }
+.cite { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.cite a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.cite a:hover { text-decoration-thickness: 2px; }
+.cite a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.ok { color: var(--s-young); font-size: 12.5px; white-space: nowrap; }
+.flag { color: var(--s-old); font-size: 12.5px; }
+.empty { padding: 32px 0; color: var(--muted); }
+footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch; }
+@media (max-width: 480px) {
+  .trial { grid-template-columns: 1fr; gap: 4px; }
+  dl { grid-template-columns: 1fr; gap: 0 0; }
+  dt { line-height: 1.6; margin-top: 4px; }
+}
+.credit { margin: 10px 0 0; font-size: 11.5px; color: var(--muted); opacity: .8; }
+
+/* Added Oct 23, 2026: toxicity, core trials, evidence, trials to watch, print */
+.tox { color: var(--fg); }
+.core { font: 600 11px/1 var(--font-mono); letter-spacing: .04em; color: #8a5a12; background: #fbf1dc; padding: 4px 7px; border-radius: 4px; }
+.ok.full { color: var(--accent); }
+.trial.flash { animation: lt-flash 2.4s ease-out; }
+@keyframes lt-flash { 0% { background: rgba(240, 190, 60, .35); } 100% { background: transparent; } }
+.printbtn { font: 500 13px/1 var(--font-body); padding: 9px 14px; border-radius: 8px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; margin-left: auto; }
+.printbtn:hover { border-color: var(--accent); }
+.printbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.watch { margin-top: 28px; padding: 18px 18px 8px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+.watch[hidden] { display: none; }
+.watch h2 { font-family: var(--font-display); font-weight: 650; font-size: 1.25rem; margin: 0 0 4px; }
+.watch .wnote { margin: 0 0 12px; font-size: 13px; color: var(--muted); }
+.watch ul { list-style: none; margin: 0; padding: 0; }
+.watch li { padding: 10px 0; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 3px; }
+.watch .wn { font-weight: 600; }
+.watch .wm { font: 400 12.5px var(--font-mono); color: var(--muted); }
+.watch .wd { font-size: 14px; }
+.watch a { color: var(--accent); }
+@media print {
+  :root { --bg: #fff; --surface: #fff; --fg: #111; --muted: #444; --rule: #ccc; --accent: #1a3a7a; }
+  body { background: #fff; }
+  .controls, .printbtn { display: none !important; }
+  .trial { break-inside: avoid; page-break-inside: avoid; }
+  .watch { break-inside: avoid; }
+  a { text-decoration: none; }
+}
+
+/* Added Oct 23, 2026: share link and abbreviations */
+.share { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font: 500 12px/1 var(--font-body); padding: 4px 6px; border-radius: 6px; }
+.share:hover { color: var(--accent); background: var(--rule); }
+.share:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.share .lbl { display: none; }
+.share.copied .lbl { display: inline; color: var(--s-young); }
+.gloss { margin-top: 24px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); padding: 0 18px; }
+.gloss summary { cursor: pointer; padding: 14px 0; font-weight: 600; }
+.gloss dl { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 4px 16px; margin: 0 0 16px; font-size: 14px; }
+.gloss dt { font: 500 13px var(--font-mono); color: var(--fg); text-transform: none; letter-spacing: normal; }
+.gloss dd { margin: 0; color: var(--muted); }
+@media print { .share { display: none !important; } .gloss { break-inside: avoid; } }
+
+/* Added Oct 23, 2026: report link */
+.report { color: var(--muted); font-size: 12px; }
+.report:hover { color: var(--accent); }
+@media print { .report { display: none !important; } }
+
+/* Added Oct 23, 2026: drug mechanism reviews */
+.moas { display: flex; flex-direction: column; gap: 2px; }
+.moa b { font-weight: 600; }
+.moa a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.moa a:hover { text-decoration-thickness: 2px; }
+.moafree { font: 500 11px var(--font-mono); color: var(--s-young); border: 1px solid var(--rule); border-radius: 4px; padding: 0 4px; }
+
+/* Added Oct 24, 2026: site disclaimer */
+.sitedisc { margin: 12px 0 0; font-size: 12.5px; }
+
+/* Added Oct 24, 2026: category subtitles in the trial list */
+ol.list li.grp { list-style: none; padding: 22px 0 6px; border-bottom: 2px solid var(--fg); }
+ol.list li.grp h3 { margin: 0; font-family: var(--font-display); font-weight: 650; font-size: 1.2rem; }
+ol.list li.grp .gn { font: 500 12px var(--font-mono); color: var(--muted); margin-left: 8px; }
+
+/* Added Oct 24, 2026: Perspective (collapsible reader view) */
+.review { margin-top: 18px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+.review > summary { list-style: none; cursor: pointer; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 14px 18px; }
+.review > summary::-webkit-details-marker { display: none; }
+.review .rv-kicker { font: 500 11px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.review .rv-title { font-family: var(--font-display); font-weight: 650; font-size: 1.05rem; flex: 1 1 260px; }
+.review .rv-open { font: 500 13px/1 var(--font-body); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.review[open] .rv-open { font-size: 0; }
+.review[open] .rv-open::before { content: "Close"; font-size: 13px; }
+.review .rv-body { padding: 0 18px 18px; max-width: 72ch; font-size: 15.5px; line-height: 1.65; }
+.review .rv-body h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.12rem; margin: 22px 0 6px; }
+.review .rv-body p { margin: 0 0 12px; }
+.review .rv-body ul { margin: 0 0 12px; padding-left: 20px; }
+.review .rv-body li { margin: 4px 0; }
+.review .rv-meta { font-size: 12.5px; color: var(--muted); }
+.review .rv-disc { font-size: 13px; line-height: 1.5; color: var(--fg); background: var(--s-old-bg); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; margin: 8px 0 14px; }
+.review .rv-take { border-left: 3px solid var(--accent); background: var(--bg); padding: 4px 14px 6px; margin: 12px 0 16px; border-radius: 0 8px 8px 0; }
+.review .rv-take h3 { margin-top: 10px; }
+.review sup a { font: 600 11px var(--font-mono); text-decoration: none; color: var(--accent); padding: 0 1px; }
+.review a { color: var(--accent); }
+.review .rv-refs { font-size: 13.5px; padding-left: 22px; }
+.review .rv-endbar { display: flex; justify-content: center; margin: 18px 0 2px; }
+.review .rv-close { all: unset; cursor: pointer; font: 500 13px/1 var(--font-body); padding: 9px 16px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.review .rv-close:hover { border-color: var(--accent); color: var(--accent); }
+.review .rv-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media print { .review .rv-endbar { display: none; } }
+.rv-tl { margin: 8px 0 18px; }
+.rv-tl figcaption { font: 500 11px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.rv-tl ol { list-style: none; margin: 0; padding: 0 0 0 4px; border-left: 2px solid var(--rule); }
+.rv-tl li { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 10px; padding: 5px 0 5px 14px; font-size: 14px; line-height: 1.45; }
+.rv-tl li::before { content: ""; position: absolute; left: -7px; top: 10px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2px solid var(--muted); }
+.rv-tl li.tl-old::before { border-color: var(--s-old); background: var(--s-old-bg); }
+.rv-tl li.tl-young::before { border-color: var(--s-young); background: var(--s-young-bg); }
+.rv-tl li.tl-p2::before { border-color: var(--s-p2); background: var(--s-p2-bg); }
+.rv-tl li.tl-rr::before { border-color: var(--s-rr); background: var(--s-rr-bg); }
+.rv-tl .tl-y { font: 500 13px var(--font-mono); color: var(--muted); }
+@media print { .review .rv-open { display: none; } }
+
+/* Added Oct 24, 2026: section tabs, Trials to watch tab, New drugs to watch, comment link */
+.tabs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-top: 18px; padding: 6px 8px 0; background: #dbe3f1; background: color-mix(in srgb, var(--accent) 16%, var(--surface)); border: 1px solid var(--rule); border-radius: 10px 10px 0 0; }
+.tabs button { all: unset; cursor: pointer; font: 600 14px/1 var(--font-body); padding: 12px 14px; color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -1px; }
+.tabs button:hover { color: var(--fg); }
+.tabs button { border-radius: 8px 8px 0 0; }
+.tabs button:hover { background: var(--surface); }
+.tabs button[aria-selected="true"] { color: var(--fg); background: var(--surface); border-bottom-color: var(--accent); }
+.tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.tabs .tcount { font: 500 11px var(--font-mono); color: var(--muted); margin-left: 6px; }
+.tabs .tabmail { margin-left: auto; font: 500 13px/1 var(--font-body); color: var(--accent); text-decoration: none; padding: 8px 4px; }
+.tabs .tabmail:hover { text-decoration: underline; }
+.newdrugs[hidden] { display: none; }
+.newdrugs { padding-top: 12px; }
+.newdrugs .nd-note { font-size: 13.5px; color: var(--muted); margin: 4px 0 14px; max-width: 72ch; }
+.newdrugs .nd-mods { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.newdrugs .nd-item { border-top: 1px solid var(--rule); padding: 16px 0; display: flex; flex-direction: column; gap: 6px; }
+.newdrugs .nd-top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.newdrugs .nd-name { font-family: var(--font-display); font-weight: 650; font-size: 1.12rem; margin: 0; }
+.newdrugs .nd-mod { font: 500 11px/1 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; color: var(--s-p2); background: var(--s-p2-bg); }
+.newdrugs .nd-ev { font: 500 11.5px var(--font-mono); color: var(--muted); }
+.newdrugs .nd-ev.pr { color: var(--s-young); }
+.newdrugs dl { margin: 2px 0 0; }
+.newdrugs a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.newdrugs h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.1rem; margin: 22px 0 6px; }
+.newdrugs .nd-log { padding-left: 20px; }
+.newdrugs .nd-log li { margin: 6px 0; font-size: 14px; }
+.newdrugs .nd-rules { font-size: 12.5px; color: var(--muted); margin-top: 16px; max-width: 72ch; }
+@media print { .tabs { display: none; } }
+
+/* Added Oct 25, 2026: the same subtle tint for Endpoint, Result and Key toxicity on every card and page */
+:root { --f-ep-bg: #eef1f5; --f-res-bg: #e7effb; --f-tox-bg: #fcf8e6; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --f-ep-bg: #1e242e; --f-res-bg: #18253d; --f-tox-bg: #2d2915; } }
+:root[data-theme="dark"] { --f-ep-bg: #1e242e; --f-res-bg: #18253d; --f-tox-bg: #2d2915; }
+ol.list dl, .newdrugs dl { column-gap: 0; }
+ol.list dt, .newdrugs dt { padding-right: 12px; }
+dt.f-ep, dd.f-ep { background: var(--f-ep-bg); }
+dt.f-res, dd.f-res { background: var(--f-res-bg); }
+dt.f-tox, dd.f-tox { background: var(--f-tox-bg); }
+dt.f-ep, dt.f-res, dt.f-tox { padding: 2px 12px 2px 8px; border-radius: 6px 0 0 6px; }
+dd.f-ep, dd.f-res, dd.f-tox { padding: 2px 8px 2px 0; border-radius: 0 6px 6px 0; }
+@media (max-width: 480px) {
+  dt.f-ep, dt.f-res, dt.f-tox { border-radius: 6px 6px 0 0; padding-bottom: 0; }
+  dd.f-ep, dd.f-res, dd.f-tox { border-radius: 0 0 6px 6px; padding: 0 8px 4px 8px; }
+}
+
+/* Added Oct 28, 2026: warm parchment tint on the Perspective bar */
+:root { --rv-bg: #fbf8f1; --rv-stripe: #ae915a; --rv-ink: #7a5a22; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --rv-bg: #221e18; --rv-stripe: #c9a56a; --rv-ink: #dcbd85; } }
+:root[data-theme="dark"] { --rv-bg: #221e18; --rv-stripe: #c9a56a; --rv-ink: #dcbd85; }
+.review { border-left: 4px solid var(--rv-stripe); }
+.review > summary { background: var(--rv-bg); border-radius: 8px 11px 11px 8px; }
+.review[open] > summary { border-radius: 8px 11px 0 0; border-bottom: 1px solid var(--rule); margin-bottom: 14px; }
+.review .rv-kicker { color: var(--rv-ink); }
+.review .rv-open { background: var(--surface); border-color: var(--rv-stripe); color: var(--rv-ink); }
+@media print { .review > summary { background: none; } }
+
+/* Added Oct 28, 2026: Drug mechanisms tab */
+.mechs { margin-top: 14px; }
+.mechs a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.mechs .mx-note { font-size: 14px; color: var(--muted); margin: 0 0 6px; max-width: 72ch; }
+.mechs .mx-item { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+.mechs .mx-name { font-family: var(--font-display); font-weight: 650; font-size: 1.08rem; margin: 0 0 6px; }
+.mechs .mx-desc { margin: 0 0 8px; max-width: 78ch; font-size: 14.5px; line-height: 1.55; }
+.mechs .mx-rev, .mechs .mx-trials { margin: 4px 0 0; font-size: 14px; }
+.mechs .mx-k { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 8px; }
+.mechs .mx-trials { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.mechs a.mt { display: inline-block; text-decoration: none; color: var(--fg); border: 1px solid var(--rule); background: var(--surface); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
+.mechs a.mt:hover { border-color: var(--accent); color: var(--accent); }
+.mechs .mt-y { font: 500 11px var(--font-mono); color: var(--muted); margin-left: 4px; }
+@media print { .mechs { display: none; } }
+
+/* Added Oct 28, 2026: an open tab closes on a second click; the x is the cue */
+.tabs button[data-tab]:not([data-tab="trials"])[aria-selected="true"]::after { content: "\00d7"; margin-left: 8px; font-weight: 500; color: var(--muted); }
+.tabs button[data-tab]:not([data-tab="trials"])[aria-selected="true"]:hover::after { color: var(--fg); }
+
+/* Added Oct 28, 2026: tab bar pinned while a tab other than Landmark trials is open */
+.tabs-ph { margin-top: 18px; }
+.tabs.tabs-pinned { position: fixed; z-index: 9000; margin-top: 0; border-radius: 0 0 10px 10px; box-shadow: 0 6px 14px -8px rgba(16,24,40,.35); }
+@media print { .tabs.tabs-pinned { position: static; } }
+@media (max-width: 560px) { .tabs.tabs-pinned { padding-top: 2px; } .tabs.tabs-pinned button { padding: 8px 10px; } .tabs.tabs-pinned .tabmail { display: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Relapsed/refractory chronic lymphocytic leukemia · 2002–2026</div>
+    <h1>Landmark trials in relapsed and refractory chronic lymphocytic leukemia</h1>
+    <p>From chemoimmunotherapy and antibodies to BTK inhibitors and their head-to-head trials, venetoclax-based fixed-duration therapy, the rise and fall of PI3K inhibitors, and treatment after both a BTK and a BCL2 inhibitor: design, verified results, context, open questions and reception.</p>
+  </header>
+
+  <details class="review" id="review">
+    <summary><span class="rv-kicker">Perspective</span><span class="rv-title">The evolution of treatment for relapsed chronic lymphocytic leukemia, 2002–2026</span><span class="rv-open">Read the perspective</span></summary>
+    <div class="rv-body">
+      <p class="rv-meta">Andres Ferber, MD, with the assistance of Claude (Anthropic) · Last updated November 12, 2026 · Pilot draft, pending review · About 1,300 words. Numbers are taken from the verified trial entries on this page; numbered references jump to each trial.</p>
+      <p class="rv-disc"><b>Personal perspective, for education only.</b> This text reflects the author's own reading and opinion of the published evidence. It is not a clinical practice guideline, medical advice or a substitute for clinical judgment. Patient care should follow the primary literature, current guidelines (such as NCCN, ESMO, IMWG and ASCO), approved prescribing information and the individual patient's circumstances.</p>
+      <div class="rv-take"><h3>Key points</h3><ul><li>Before targeted therapy, relapsed CLL was treated with chemoimmunotherapy or antibodies, with short remissions, especially in fludarabine-refractory and del(17p) disease.</li><li>Ibrutinib improved survival over ofatumumab (RESONATE). The more selective covalent BTK inhibitors are as effective or more, with fewer cardiac events (ELEVATE-RR, ALPINE).</li><li>Two years of venetoclax-rituximab established fixed-duration treatment at relapse and improved survival over bendamustine-rituximab (MURANO).</li><li>PI3K inhibitors prolonged PFS, but infections, immune-mediated toxicity and a possible survival detriment with duvelisib left them a late-line role at most.</li><li>After a covalent BTK inhibitor, the options are venetoclax-based therapy or pirtobrutinib; after both classes, pirtobrutinib if not yet used, or CAR T cells. Remissions there are still short.</li><li>Most patients now receive a BTK inhibitor or venetoclax as first treatment, so the choice at relapse depends mainly on what was given before and why it was stopped.</li></ul></div>
+      <figure class="rv-tl"><figcaption>Timeline of key trials and US regulatory milestones</figcaption><ol><li class="tl-old"><span class="tl-y">2002</span><span class="tl-e">Alemtuzumab is active after fludarabine has failed</span></li><li class="tl-old"><span class="tl-y">2010</span><span class="tl-e">FCR better than FC at relapse (REACH); ofatumumab for refractory disease</span></li><li class="tl-young"><span class="tl-y">2013</span><span class="tl-e">Ibrutinib gives durable responses whatever the genetic risk (PCYC-1102)</span></li><li class="tl-young"><span class="tl-y">2014</span><span class="tl-e">Ibrutinib improves survival over ofatumumab (RESONATE); FDA approves ibrutinib and idelalisib-rituximab (Study 116)</span></li><li class="tl-p2"><span class="tl-y">2016</span><span class="tl-e">FDA approves venetoclax for CLL with del(17p) (M13-982); acalabrutinib enters trials (ACE-CL-001)</span></li><li class="tl-p2"><span class="tl-y">2018</span><span class="tl-e">Fixed-duration venetoclax-rituximab (MURANO); venetoclax works after ibrutinib (M14-032); FDA approves duvelisib (DUO)</span></li><li class="tl-young"><span class="tl-y">2020</span><span class="tl-e">Acalabrutinib better than idelalisib-rituximab or bendamustine-rituximab (ASCEND)</span></li><li class="tl-young"><span class="tl-y">2021</span><span class="tl-e">Acalabrutinib not inferior to ibrutinib, with fewer cardiac events (ELEVATE-RR)</span></li><li class="tl-rr"><span class="tl-y">2022</span><span class="tl-e">FDA warns of a possible increased risk of death with duvelisib</span></li><li class="tl-rr"><span class="tl-y">2023</span><span class="tl-e">Zanubrutinib superior to ibrutinib (ALPINE); pirtobrutinib after a covalent BTK inhibitor (BRUIN); CAR T cells (TRANSCEND CLL 004)</span></li><li class="tl-rr"><span class="tl-y">2025</span><span class="tl-e">Pirtobrutinib better than older regimens after a covalent BTK inhibitor (BRUIN CLL-321); FDA traditional approval</span></li><li class="tl-p2"><span class="tl-y">2026</span><span class="tl-e">Pirtobrutinib compared with ibrutinib (BRUIN CLL-314); fixed-duration pirtobrutinib-venetoclax-rituximab (BRUIN CLL-322)</span></li></ol></figure>
+      <h3>Before targeted therapy</h3>
+<p>Until 2013, treatment of relapsed CLL repeated what had been used first line. In fit patients, adding rituximab to fludarabine and cyclophosphamide lengthened median PFS from 20.6 to 30.6 months<sup><a class="rref" href="#t-cllr-reach-robak" data-slug="reach-robak" title="REACH (Robak)">1</a></sup>. Once fludarabine had failed, the options were antibodies. Alemtuzumab gave responses in 33% of patients, with a median time to progression of 4.7 months<sup><a class="rref" href="#t-cllr-alemtuzumab-after-fludarabine-keating" data-slug="alemtuzumab-after-fludarabine-keating" title="Alemtuzumab after fludarabine (Keating)">2</a></sup>, and ofatumumab gave a median PFS under 6 months in disease refractory to fludarabine<sup><a class="rref" href="#t-cllr-hx-cd20-406-wierda" data-slug="hx-cd20-406-wierda" title="Hx-CD20-406 (Wierda)">3</a></sup>. These numbers are the background against which the targeted drugs were judged, and ofatumumab became their comparator.</p>
+
+<h3>BTK inhibitors</h3>
+<p>Ibrutinib changed the outlook within two years. In its phase 1b/2 trial, 71% of heavily pretreated patients responded, with or without del(17p), and 75% were progression-free at 26 months<sup><a class="rref" href="#t-cllr-pcyc-1102-byrd" data-slug="pcyc-1102-byrd" title="PCYC-1102 (Byrd)">4</a></sup>. RESONATE then showed better PFS and overall survival than ofatumumab; in the final analysis median PFS was 44.1 months against 8.1<sup><a class="rref" href="#t-cllr-resonate-byrd" data-slug="resonate-byrd" title="RESONATE (Byrd)">5</a></sup>. Adding ibrutinib to bendamustine-rituximab also improved PFS and survival, but HELIOS had no ibrutinib-alone arm, and the combination did not replace ibrutinib alone<sup><a class="rref" href="#t-cllr-helios-chanan-khan" data-slug="helios-chanan-khan" title="HELIOS (Chanan-Khan)">6</a></sup>.</p>
+<p>Continuous ibrutinib had two limits. One was toxicity: in the final RESONATE analysis, 21% of patients had hypertension and 12% atrial fibrillation<sup><a class="rref" href="#t-cllr-resonate-byrd" data-slug="resonate-byrd" title="RESONATE (Byrd)">5</a></sup>. The other was resistance, usually through mutations in BTK at the site where the drug binds, or in PLCG2 downstream.</p>
+
+<h3>Which BTK inhibitor?</h3>
+<p>Acalabrutinib was designed to be more selective. After a phase 1/2 trial with a response rate of 95%<sup><a class="rref" href="#t-cllr-ace-cl-001-byrd" data-slug="ace-cl-001-byrd" title="ACE-CL-001 (Byrd)">7</a></sup>, ASCEND showed longer PFS than idelalisib-rituximab or bendamustine-rituximab, with a 42-month PFS of 62% against 19%<sup><a class="rref" href="#t-cllr-ascend-ghia" data-slug="ascend-ghia" title="ASCEND (Ghia)">8</a></sup>. Three trials then compared BTK inhibitors directly. In ELEVATE-RR, in patients with del(17p) or del(11q), acalabrutinib was not inferior to ibrutinib, with a median PFS of 38.4 months in both arms and less atrial fibrillation, 9.4% against 16.0%<sup><a class="rref" href="#t-cllr-elevate-rr-byrd" data-slug="elevate-rr-byrd" title="ELEVATE-RR (Byrd)">9</a></sup>. In ALPINE, zanubrutinib gave longer PFS than ibrutinib, with a hazard ratio of 0.68 at 42.5 months, and fewer cardiac events<sup><a class="rref" href="#t-cllr-alpine-brown" data-slug="alpine-brown" title="ALPINE (Brown)">10</a></sup>. In BRUIN CLL-314, which enrolled both relapsed and untreated patients, the response rate with the noncovalent inhibitor pirtobrutinib was not inferior to that with ibrutinib, again with less atrial fibrillation and hypertension; its PFS data are not mature<sup><a class="rref" href="#t-cllr-bruin-cll-314-woyach" data-slug="bruin-cll-314-woyach" title="BRUIN CLL-314 (Woyach)">11</a></sup>.</p>
+<p>These trials are the reason acalabrutinib and zanubrutinib are generally preferred to ibrutinib, in relapsed and in untreated disease. Acalabrutinib and zanubrutinib have not been compared with each other.</p>
+
+<h3>Venetoclax and fixed-duration treatment</h3>
+<p>Venetoclax kills CLL cells by inhibiting BCL2, without needing p53. Given continuously to patients with del(17p), it produced responses in 79.4%, and with six years of follow-up median PFS was 28.2 months<sup><a class="rref" href="#t-cllr-m13-982-stilgenbauer" data-slug="m13-982-stilgenbauer" title="M13-982 (Stilgenbauer)">12</a></sup>. MURANO turned it into a fixed-duration treatment: two years of venetoclax with rituximab for the first six months gave a 2-year PFS of 84.9% against 36.3% with bendamustine-rituximab. In the final analysis, median PFS was 54.7 months against 17.0, and 7-year survival 69.6% against 51.0%<sup><a class="rref" href="#t-cllr-murano-seymour" data-slug="murano-seymour" title="MURANO (Seymour)">13</a></sup>. Patients with undetectable MRD at the end of treatment had the longest remissions, and retreatment with the same regimen produced responses in 72% of 25 patients<sup><a class="rref" href="#t-cllr-murano-seymour" data-slug="murano-seymour" title="MURANO (Seymour)">13</a></sup>.</p>
+<p>MURANO enrolled almost no patients previously treated with a BTK inhibitor. The evidence that venetoclax works after ibrutinib came from a phase 2 trial, with a response rate of 65%<sup><a class="rref" href="#t-cllr-m14-032-jones" data-slug="m14-032-jones" title="M14-032 (Jones)">14</a></sup>, and from VENICE-1, where complete remission was reached by 35% of patients not previously treated with a B-cell receptor pathway inhibitor and 27% of those who were<sup><a class="rref" href="#t-cllr-venice-1-kater" data-slug="venice-1-kater" title="VENICE-1 (Kater)">15</a></sup>. BRUIN CLL-322 has now tested venetoclax-rituximab in a randomized trial in which 80% of patients had received a covalent BTK inhibitor: adding pirtobrutinib for a fixed period raised 24-month PFS from 72% to 87%<sup><a class="rref" href="#t-cllr-bruin-cll-322-davids" data-slug="bruin-cll-322-davids" title="BRUIN CLL-322 (Davids)">16</a></sup>.</p>
+
+<h3>PI3K inhibitors: a cautionary story</h3>
+<p>Idelalisib with rituximab was highly effective in frail patients with relapsed CLL, with a hazard ratio for progression of 0.15 and better survival at 12 months than rituximab alone<sup><a class="rref" href="#t-cllr-study-116-furman" data-slug="study-116-furman" title="Study 116 (Furman)">17</a></sup>. But combining it with bendamustine-rituximab or with ofatumumab brought more serious infections and more deaths from adverse events<sup><a class="rref" href="#t-cllr-study-115-zelenetz" data-slug="study-115-zelenetz" title="Study 115 (Zelenetz)">18</a></sup><sup><a class="rref" href="#t-cllr-study-119-jones" data-slug="study-119-jones" title="Study 119 (Jones)">19</a></sup>, and in ASCEND two thirds of patients stopped idelalisib-rituximab because of adverse events<sup><a class="rref" href="#t-cllr-ascend-ghia" data-slug="ascend-ghia" title="ASCEND (Ghia)">8</a></sup>. Duvelisib improved PFS over ofatumumab, 13.3 against 9.9 months<sup><a class="rref" href="#t-cllr-duo-flinn" data-slug="duo-flinn" title="DUO (Flinn)">20</a></sup>; in 2022 the FDA warned that the final survival analysis pointed the other way, and its advisory committee judged the balance of benefit and risk unfavorable. A third drug of the class, umbralisib, was tested with ublituximab in UNITY-CLL, which has not been published in full; umbralisib was withdrawn in 2022. The lesson went beyond CLL: PFS can improve while survival does not, and drugs for a disease with long survival need randomized data on overall survival.</p>
+
+<h3>After a BTK inhibitor, and after both classes</h3>
+<p>Pirtobrutinib binds BTK reversibly, at a site not affected by the usual resistance mutation. In patients already treated with a BTK inhibitor, 73.3% responded and median PFS was 19.6 months<sup><a class="rref" href="#t-cllr-bruin-mato" data-slug="bruin-mato" title="BRUIN (Mato)">21</a></sup>. The randomized trial that followed, in patients all previously treated with a covalent BTK inhibitor, showed a median PFS of 14 months against 8.7 with idelalisib-rituximab or bendamustine-rituximab, with no difference in survival<sup><a class="rref" href="#t-cllr-bruin-cll-321-sharman" data-slug="bruin-cll-321-sharman" title="BRUIN CLL-321 (Sharman)">22</a></sup>. The second number matters as much as the first: older regimens do little after a BTK inhibitor.</p>
+<p>For patients whose disease has progressed on a BTK inhibitor and after venetoclax, lisocabtagene maraleucel produced complete remissions in 18%, and in a later cohort given with ibrutinib in 45%<sup><a class="rref" href="#t-cllr-transcend-cll-004-siddiqi" data-slug="transcend-cll-004-siddiqi" title="TRANSCEND CLL 004 (Siddiqi)">23</a></sup>. Allogeneic transplant remains an option for selected fit patients at this stage and for Richter transformation, which is not covered here and will be a separate section. Maintenance after chemoimmunotherapy, with lenalidomide or an anti-CD20 antibody, prolonged PFS in randomized trials but lost its place when continuous and fixed-duration targeted therapy arrived.</p>
+
+<h3>Where we are now</h3>
+<p>This is a personal summary, not a guideline; NCCN placements were not checked against the current document.</p>
+<ul>
+<li><b>Before treatment:</b> repeat FISH for del(17p) and TP53 sequencing, since both can be acquired; relapse alone is not an indication to treat.</li>
+<li><b>After chemoimmunotherapy only:</b> a continuous BTK inhibitor (acalabrutinib or zanubrutinib) or fixed-duration venetoclax-rituximab, chosen as in first-line treatment.</li>
+<li><b>After a fixed-duration venetoclax regimen with a long remission:</b> a BTK inhibitor, or venetoclax-based retreatment<sup><a class="rref" href="#t-cllr-murano-seymour" data-slug="murano-seymour" title="MURANO (Seymour)">13</a></sup>.</li>
+<li><b>After a covalent BTK inhibitor stopped for intolerance:</b> another BTK inhibitor or venetoclax-based therapy.</li>
+<li><b>After progression on a covalent BTK inhibitor:</b> venetoclax-based therapy or pirtobrutinib<sup><a class="rref" href="#t-cllr-m14-032-jones" data-slug="m14-032-jones" title="M14-032 (Jones)">14</a></sup><sup><a class="rref" href="#t-cllr-bruin-cll-321-sharman" data-slug="bruin-cll-321-sharman" title="BRUIN CLL-321 (Sharman)">22</a></sup>.</li>
+<li><b>After both a covalent BTK inhibitor and venetoclax:</b> pirtobrutinib if not yet used, lisocabtagene maraleucel, a clinical trial, and transplant evaluation in fit patients<sup><a class="rref" href="#t-cllr-bruin-mato" data-slug="bruin-mato" title="BRUIN (Mato)">21</a></sup><sup><a class="rref" href="#t-cllr-transcend-cll-004-siddiqi" data-slug="transcend-cll-004-siddiqi" title="TRANSCEND CLL 004 (Siddiqi)">23</a></sup>.</li>
+<li><b>PI3K inhibitors and chemoimmunotherapy:</b> late-line options at most.</li>
+</ul>
+
+<h3>Open questions</h3>
+<ul>
+<li><b>Sequence:</b> venetoclax-based therapy or pirtobrutinib first after a covalent BTK inhibitor? No trial has compared them.</li>
+<li><b>Pirtobrutinib earlier:</b> if a noncovalent inhibitor is used first, or in a fixed-duration triplet, what works at the next relapse<sup><a class="rref" href="#t-cllr-bruin-cll-314-woyach" data-slug="bruin-cll-314-woyach" title="BRUIN CLL-314 (Woyach)">11</a></sup><sup><a class="rref" href="#t-cllr-bruin-cll-322-davids" data-slug="bruin-cll-322-davids" title="BRUIN CLL-322 (Davids)">16</a></sup>?</li>
+<li><b>Retreatment:</b> how often, and after how long a remission, can a fixed-duration regimen be repeated?</li>
+<li><b>Disease refractory to both classes:</b> remissions are short with every current option; this is where BTK degraders and other new agents are being tested.</li>
+<li><b>Survival:</b> most recent trials show PFS gains without survival differences, with crossover; the PI3K story is the reason to keep asking for survival data.</li>
+<li><b>Richter transformation:</b> not covered here; it will be a separate section built later.</li>
+</ul>
+
+<h3>What is coming</h3>
+<p>Ongoing phase 3 trials (listed under Trials to watch) test BTK degraders against pirtobrutinib (BGB-16673-304, NX-5948-306) and against older regimens after both drug classes (CaDAnCe-302), the BCL2 inhibitor sonrotoclax with an anti-CD20 antibody against venetoclax-rituximab (BGB-11417-303), and the noncovalent BTK inhibitor nemtabrutinib with venetoclax against venetoclax-rituximab (BELLWAVE-010). Early data on these agents are under New drugs to watch.</p>
+      <h3>References</h3>
+      <ol class="rv-refs"><li><a class="rref" href="#t-cllr-reach-robak" data-slug="reach-robak">REACH (Robak)</a>. J Clin Oncol 2010;28:1756. <a href="https://pubmed.ncbi.nlm.nih.gov/20194844/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-alemtuzumab-after-fludarabine-keating" data-slug="alemtuzumab-after-fludarabine-keating">Alemtuzumab after fludarabine (Keating)</a>. Blood 2002;99:3554. <a href="https://pubmed.ncbi.nlm.nih.gov/11986207/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-hx-cd20-406-wierda" data-slug="hx-cd20-406-wierda">Hx-CD20-406 (Wierda)</a>. J Clin Oncol 2010;28:1749. <a href="https://pubmed.ncbi.nlm.nih.gov/20194866/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-pcyc-1102-byrd" data-slug="pcyc-1102-byrd">PCYC-1102 (Byrd)</a>. N Engl J Med 2013;369:32. <a href="https://pubmed.ncbi.nlm.nih.gov/23782158/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-resonate-byrd" data-slug="resonate-byrd">RESONATE (Byrd)</a>. N Engl J Med 2014;371:213. <a href="https://pubmed.ncbi.nlm.nih.gov/24881631/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-helios-chanan-khan" data-slug="helios-chanan-khan">HELIOS (Chanan-Khan)</a>. Lancet Oncol 2016;17:200. <a href="https://pubmed.ncbi.nlm.nih.gov/26655421/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-ace-cl-001-byrd" data-slug="ace-cl-001-byrd">ACE-CL-001 (Byrd)</a>. N Engl J Med 2016;374:323. <a href="https://pubmed.ncbi.nlm.nih.gov/26641137/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-ascend-ghia" data-slug="ascend-ghia">ASCEND (Ghia)</a>. J Clin Oncol 2020;38:2849. <a href="https://pubmed.ncbi.nlm.nih.gov/32459600/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-elevate-rr-byrd" data-slug="elevate-rr-byrd">ELEVATE-RR (Byrd)</a>. J Clin Oncol 2021;39:3441. <a href="https://pubmed.ncbi.nlm.nih.gov/34310172/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-alpine-brown" data-slug="alpine-brown">ALPINE (Brown)</a>. N Engl J Med 2023;388:319. <a href="https://pubmed.ncbi.nlm.nih.gov/36511784/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-bruin-cll-314-woyach" data-slug="bruin-cll-314-woyach">BRUIN CLL-314 (Woyach)</a>. J Clin Oncol 2026;44:476. <a href="https://pubmed.ncbi.nlm.nih.gov/41353787/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-m13-982-stilgenbauer" data-slug="m13-982-stilgenbauer">M13-982 (Stilgenbauer)</a>. Lancet Oncol 2016;17:768. <a href="https://pubmed.ncbi.nlm.nih.gov/27178240/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-murano-seymour" data-slug="murano-seymour">MURANO (Seymour)</a>. N Engl J Med 2018;378:1107. <a href="https://pubmed.ncbi.nlm.nih.gov/29562156/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-m14-032-jones" data-slug="m14-032-jones">M14-032 (Jones)</a>. Lancet Oncol 2018;19:65. <a href="https://pubmed.ncbi.nlm.nih.gov/29246803/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-venice-1-kater" data-slug="venice-1-kater">VENICE-1 (Kater)</a>. Lancet Oncol 2024;25:463. <a href="https://pubmed.ncbi.nlm.nih.gov/38467131/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-bruin-cll-322-davids" data-slug="bruin-cll-322-davids">BRUIN CLL-322 (Davids)</a>. Lancet 2026;408:453. <a href="https://pubmed.ncbi.nlm.nih.gov/42425121/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-study-116-furman" data-slug="study-116-furman">Study 116 (Furman)</a>. N Engl J Med 2014;370:997. <a href="https://pubmed.ncbi.nlm.nih.gov/24450857/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-study-115-zelenetz" data-slug="study-115-zelenetz">Study 115 (Zelenetz)</a>. Lancet Oncol 2017;18:297. <a href="https://pubmed.ncbi.nlm.nih.gov/28139405/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-study-119-jones" data-slug="study-119-jones">Study 119 (Jones)</a>. Lancet Haematol 2017;4:e114. <a href="https://pubmed.ncbi.nlm.nih.gov/28257752/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-duo-flinn" data-slug="duo-flinn">DUO (Flinn)</a>. Blood 2018;132:2446. <a href="https://pubmed.ncbi.nlm.nih.gov/30287523/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-bruin-mato" data-slug="bruin-mato">BRUIN (Mato)</a>. N Engl J Med 2023;389:33. <a href="https://pubmed.ncbi.nlm.nih.gov/37407001/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-bruin-cll-321-sharman" data-slug="bruin-cll-321-sharman">BRUIN CLL-321 (Sharman)</a>. J Clin Oncol 2025;43:2538. <a href="https://pubmed.ncbi.nlm.nih.gov/40479620/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-cllr-transcend-cll-004-siddiqi" data-slug="transcend-cll-004-siddiqi">TRANSCEND CLL 004 (Siddiqi)</a>. Lancet 2023;402:641. <a href="https://pubmed.ncbi.nlm.nih.gov/37295445/" target="_blank" rel="noopener">PubMed ↗</a></li></ol>
+      <div class="rv-endbar"><button type="button" class="rv-close">Close the perspective ▴</button></div>
+    </div>
+  </details>
+
+  <div class="tabs" role="tablist" aria-label="Page sections">
+    <button type="button" role="tab" aria-selected="true" data-tab="trials">Landmark trials</button>
+    <button type="button" role="tab" aria-selected="false" data-tab="watch" title="Click again to return to the trial list">Trials to watch<span class="tcount"></span></button>
+    <button type="button" role="tab" aria-selected="false" data-tab="newdrugs" title="Click again to return to the trial list">New drugs to watch<span class="tcount"></span></button>
+    <button type="button" role="tab" aria-selected="false" data-tab="mech" title="Click again to return to the trial list">Drug mechanisms<span class="tcount"></span></button>
+    <a class="tabmail" href="mailto:andresferber@hotmail.com?subject=Landmark%20trials%20%28Relapsed%20chronic%20lymphocytic%20leukemia%29%3A%20comment">✉ Send a comment</a>
+  </div>
+  <section class="newdrugs" hidden aria-label="New drugs to watch"></section>
+  <section class="mechs" hidden aria-label="Drug mechanisms"></section>
+
+  <div class="controls">
+    <div class="chips" role="group" aria-label="Filter by category" id="chips"></div>
+    <div class="row2">
+      <input type="search" id="q" placeholder="Search trial, drug, regimen…" aria-label="Search trials">
+      <select id="sort" aria-label="Sort order">
+        <option value="setting">Sort: category, newest first</option>
+        <option value="setting-asc">Sort: category, oldest first</option>
+        <option value="asc">Sort: oldest first</option>
+        <option value="desc">Sort: newest first</option>
+      </select>
+      <span class="count" id="count"></span>
+      <button type="button" class="printbtn" title="Print or save as PDF (prints the trials currently shown)">Print / PDF</button>
+    </div>
+  </div>
+
+  <ol class="list" id="list"></ol>
+
+  <section class="watch" hidden aria-label="Trials to watch"></section>
+
+  <details class="gloss"><summary>Abbreviations (29)</summary><dl><dt>AE</dt><dd>Adverse event</dd><dt>BCL2</dt><dd>B-cell lymphoma 2 protein (target of venetoclax)</dd><dt>BR</dt><dd>Bendamustine, rituximab</dd><dt>BTK</dt><dd>Bruton tyrosine kinase</dd><dt>CAR</dt><dd>Chimeric antigen receptor</dd><dt>CI</dt><dd>Confidence interval</dd><dt>CLL</dt><dd>Chronic lymphocytic leukemia</dd><dt>CR</dt><dd>Complete response</dd><dt>CRi</dt><dd>Complete response with incomplete marrow recovery</dd><dt>del(11q)</dt><dd>Deletion of the long arm of chromosome 11</dd><dt>del(17p)</dt><dd>Deletion of the short arm of chromosome 17, the site of TP53</dd><dt>EU</dt><dd>European Union</dd><dt>FC</dt><dd>Fludarabine, cyclophosphamide</dd><dt>FCR</dt><dd>Fludarabine, cyclophosphamide, rituximab</dd><dt>FDA</dt><dd>US Food and Drug Administration</dd><dt>HR</dt><dd>Hazard ratio</dd><dt>ICANS</dt><dd>Immune effector cell-associated neurotoxicity syndrome</dd><dt>IGHV</dt><dd>Immunoglobulin heavy-chain variable region gene (mutated or unmutated)</dd><dt>iwCLL</dt><dd>International Workshop on Chronic Lymphocytic Leukemia</dd><dt>MRD</dt><dd>Measurable (minimal) residual disease</dd><dt>NCCN</dt><dd>National Comprehensive Cancer Network</dd><dt>ORR</dt><dd>Overall response rate</dd><dt>OS</dt><dd>Overall survival</dd><dt>PFS</dt><dd>Progression-free survival</dd><dt>PI3K</dt><dd>Phosphatidylinositol 3-kinase</dd><dt>PLCG2</dt><dd>Phospholipase C gamma 2 gene, downstream of BTK</dd><dt>PR</dt><dd>Partial response</dd><dt>SLL</dt><dd>Small lymphocytic lymphoma</dd><dt>TP53</dt><dd>Tumor protein p53 gene; aberration means del(17p) or TP53 mutation</dd></dl></details>
+
+  <footer>
+    Every result was checked against the paper's PubMed abstract on November 12, 2026; values marked "full paper" were checked against the full text in PubMed Central, and "not reported in abstract" means the figure needs the full text. "Key toxicity" summarizes the main adverse events reported in the abstract; it is not a complete safety profile. "Drug mechanism" links one recent review per drug or drug class on how it works and how resistance develops, chosen from peer-reviewed journals as the most recent, comprehensive and high-quality review available (no promotional material), with free full text preferred when quality was comparable. "★ Core" marks trials selected as essential for teaching. Trials included: phase 3 trials, and phase 2 trials published in the New England Journal of Medicine or Nature Medicine, or in Blood or the Journal of Clinical Oncology when they led to an approval, changed a guideline or defined a regimen still in use, or otherwise practice-changing. Trials that compared BTK inhibitors with each other are listed here, including BRUIN CLL-314, which also enrolled untreated patients. UNITY-CLL (umbralisib-ublituximab) is not listed because no full report was found in PubMed. Maintenance and transplant trials and Richter transformation are not covered. Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Free at publisher" links open a publisher page that is free to read; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed; "Free copy (repository)" links open a legal free copy in a university repository (sometimes the authors' manuscript). Free copies were found with Unpaywall (November 12, 2026). Registry links (NCT numbers) open the trial's registry record and were taken from each paper's PubMed record or abstract. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"); letters and author replies are not listed. FDA approval dates given in full were confirmed against FDA announcements or published reports (November 12, 2026); items marked "verify" could not be confirmed and will be checked at the next update. Guideline placements marked "NCCN not checked" could not be confirmed, because the NCCN guidelines require a login. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: November 12, 2026.
+    <p class="sitedisc"><b>For education only.</b> This site summarizes published research and the author's views. It is not medical advice, a clinical practice guideline or a substitute for professional judgment; treatment decisions should rely on the primary literature, current guidelines, approved prescribing information and the individual patient. This is an independent project, not affiliated with any institution or company.</p>
+    <p class="reportall">Comments and suggestions are welcome: <a href="mailto:andresferber@hotmail.com?subject=Landmark%20trials%20%28Relapsed%20chronic%20lymphocytic%20leukemia%29%3A%20comment">send a comment</a>. Spotted an error or a missing trial? Use "Report an error" on any trial. Both go to andresferber@hotmail.com.</p>
+  </footer>
+  <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
+</div>
+
+<script>
+const SETTINGS = {
+  btk: "BTK inhibitors, including head-to-head trials",
+  ven: "Venetoclax-based therapy",
+  pi3k: "PI3K inhibitors",
+  post: "After BTK and BCL2 inhibitors",
+  chemo: "Chemoimmunotherapy & antibodies"
+};
+const CLS = { btk: "young", ven: "p2", pi3k: "risk", post: "rr", chemo: "old" };
+const order = ["btk","ven","pi3k","post","chemo"];
+const PM = id => "https://pubmed.ncbi.nlm.nih.gov/" + id + "/";
+
+const T = [
+// ---------- BTK inhibitors, including head-to-head trials ----------
+{y:2013,n:"PCYC-1102 (Byrd)",s:"btk",ph:"Phase 1b/2",d:"Ibrutinib 420 mg or 840 mg once daily until progression in relapsed or refractory CLL/SLL, most patients with high-risk disease",ep:"Safety; response, pharmacokinetics and pharmacodynamics",
+ r:"ORR 71% in both dose groups, plus partial response with lymphocytosis in 20% (420 mg) and 15% (840 mg); responses independent of the number of prior therapies and of del(17p). At 26 mo, estimated PFS 75% and OS 83%",N:"85 (51 at 420 mg, 34 at 840 mg)",hr:"not applicable (single arm)",fu:"not reported in abstract (26-mo estimates)",
+ c:"N Engl J Med 2013;369:32",p:23782158,
+ b:"Relapsed CLL was treated with chemoimmunotherapy, alemtuzumab or ofatumumab, with few durable remissions and poor results with del(17p).",
+ i:"Showed that blocking BTK gives durable remissions whatever the genetic risk, and introduced treatment-related lymphocytosis as a drug effect, not progression.",
+ q:"Continuous treatment with few complete responses: how long do remissions last, and what happens at resistance?",
+ cm:[[23782159,"Foà R, N Engl J Med 2013","A mechanism-driven treatment for chronic lymphocytic leukemia?"]],
+ reg:"Basis of the FDA accelerated approval of ibrutinib for CLL after at least one prior therapy (February 12, 2014).",gl:"Historical; the randomized trials that followed define current use.",acc:"—"},
+{y:2014,n:"RESONATE (Byrd)",s:"btk",ph:"Phase 3",d:"Ibrutinib until progression vs ofatumumab in previously treated CLL/SLL at risk of a poor outcome; open-label, crossover allowed after progression",ep:"PFS",
+ r:"Median PFS not reached vs 8.1 mo; OS HR 0.43, 12-mo OS 90% vs 81%; ORR 42.6% vs 4.1%, plus 20% partial response with lymphocytosis on ibrutinib. Benefit similar with del(17p) and purine-analogue resistance. Final analysis (65.3 mo): median PFS 44.1 vs 8.1 mo (HR 0.148); ORR 91% with ibrutinib (CR/CRi 11%); OS censored for crossover HR 0.639 (95% CI 0.418–0.975)",N:"391",hr:"0.22 (PFS); final: 0.148 (PFS)",fu:"9.4 mo; 65.3 mo (final analysis)",
+ c:"N Engl J Med 2014;371:213",p:24881631,extra:["Final analysis, Am J Hematol 2019",31512258],
+ b:"PCYC-1102 had shown durable responses to ibrutinib in a single-arm trial.",
+ i:"Established a BTK inhibitor as the standard for relapsed CLL, including del(17p), with a survival advantage over an anti-CD20 antibody.",
+ q:"Median PFS of 44 months in a heavily pretreated population: resistance (BTK C481S, PLCG2) and cardiovascular toxicity became the limits of continuous ibrutinib.",
+ cm:[[25014693,"Foà R, N Engl J Med 2014","Changes in the treatment landscape for chronic lymphoid leukemia"],[24935013,"Villanueva MT, Nat Rev Clin Oncol 2014","Targeted therapies: ibrutinib resonates with us"]],
+ reg:"FDA regular approval of ibrutinib for previously treated CLL and for CLL with 17p deletion (July 28, 2014), confirming the accelerated approval of February 12, 2014.",gl:"A BTK inhibitor is a standard option for relapsed CLL; the more selective inhibitors are generally preferred to ibrutinib (NCCN not checked).",acc:"On-label."},
+{y:2016,n:"HELIOS (Chanan-Khan)",s:"btk",ph:"Phase 3",d:"Ibrutinib vs placebo, each with up to 6 cycles of bendamustine-rituximab and then continued alone, in previously treated CLL/SLL without del(17p); double-blind, crossover allowed",ep:"PFS (independent review)",
+ r:"Median PFS not reached vs 13.3 mo; 18-mo PFS 79% vs 24%. Final 5-year analysis (63.7 mo): investigator-assessed median PFS 65.1 vs 14.3 mo (HR 0.229); OS HR 0.611 (95% CI 0.455–0.822) although 63.3% of the placebo arm crossed over to ibrutinib",N:"578",hr:"0.203 (PFS); final: 0.229 (PFS), 0.611 (OS)",fu:"17 mo; 63.7 mo (final analysis)",
+ c:"Lancet Oncol 2016;17:200",p:26655421,extra:["Final 5-year analysis, Leuk Lymphoma 2020",32762271],
+ b:"Bendamustine-rituximab was a common regimen for relapsed CLL; ibrutinib alone had beaten ofatumumab in RESONATE.",
+ i:"Showed that adding ibrutinib to chemoimmunotherapy greatly prolongs PFS and improves survival.",
+ q:"There was no ibrutinib-alone arm, so the trial cannot tell whether bendamustine-rituximab adds anything to ibrutinib.",
+ cm:[[26655423,"Robak T, Lancet Oncol 2016","Ibrutinib in chronic lymphocytic leukaemia: alone or in combination?"]],
+ reg:"Added to the US ibrutinib label in 2016 (date: verify).",gl:"Rarely used; a BTK inhibitor alone is the usual choice (NCCN not checked).",acc:"On-label."},
+{y:2016,n:"ACE-CL-001 (Byrd)",s:"btk",ph:"Phase 1/2",d:"Acalabrutinib 100–400 mg once daily (dose escalation) and 100 mg twice daily (expansion) in relapsed CLL; median of three prior therapies, 31% with del(17p)",ep:"Safety; response, pharmacokinetics and pharmacodynamics",
+ r:"ORR 95% (partial response 85%, partial response with lymphocytosis 10%); 100% with del(17p); one progression and no Richter transformation. Updated phase 2 report (134 patients treated for a median of 41 mo): ORR 94%; estimated 45-mo PFS 62%",N:"61 (134 in updated report)",hr:"not applicable (single arm)",fu:"14.3 mo; 41 mo of treatment (updated report)",
+ c:"N Engl J Med 2016;374:323",p:26641137,extra:["Updated phase 2 results, Blood 2020",31876911],
+ b:"Ibrutinib also inhibits other kinases, which was thought to explain part of its toxicity; acalabrutinib was designed to be more selective.",
+ i:"Introduced the second-generation covalent BTK inhibitors and led to ASCEND and ELEVATE-RR.",
+ q:"Does greater selectivity mean better tolerability or efficacy? Only a direct comparison could answer (ELEVATE-RR).",
+ cm:[[26816016,"Wilson WH, N Engl J Med 2016","Progress in chronic lymphocytic leukemia with targeted therapy"]],
+ reg:"None directly; the CLL approval of acalabrutinib (November 21, 2019) rested on ELEVATE-TN and ASCEND.",gl:"Historical; see ASCEND and ELEVATE-RR.",acc:"—"},
+{y:2020,n:"ASCEND (Ghia)",s:"btk",ph:"Phase 3",d:"Acalabrutinib until progression vs investigator's choice of idelalisib-rituximab or bendamustine-rituximab in relapsed or refractory CLL; open-label",ep:"PFS (independent review)",
+ r:"Median PFS not reached vs 16.5 mo; 12-mo PFS 88% vs 68%. Final results (about 4 yr): investigator-assessed median PFS not reached vs 16.8 mo; 42-mo PFS 62% vs 19%; 42-mo OS 78% vs 65%",N:"310 (155 acalabrutinib; 119 idelalisib-rituximab, 36 bendamustine-rituximab)",hr:"0.31 (PFS)",fu:"16.1 mo; 46.5 mo (final results)",
+ c:"J Clin Oncol 2020;38:2849",p:32459600,extra:["Final results, Hemasphere 2022",36398134],
+ b:"ACE-CL-001 showed high response rates with acalabrutinib; idelalisib-rituximab and bendamustine-rituximab were approved standards for relapse.",
+ i:"Made acalabrutinib a standard for relapsed CLL and showed how poorly idelalisib-rituximab is tolerated (two thirds stopped it for adverse events).",
+ q:"The comparison was with older regimens, not with ibrutinib or venetoclax-rituximab.",
+ cm:[],
+ reg:"FDA approval of acalabrutinib for CLL/SLL (November 21, 2019), on ELEVATE-TN and ASCEND.",gl:"Acalabrutinib is a standard option for relapsed CLL (NCCN not checked).",acc:"On-label."},
+{y:2021,n:"ELEVATE-RR (Byrd)",s:"btk",ph:"Phase 3",d:"Acalabrutinib vs ibrutinib, each until progression, in previously treated CLL with del(17p) or del(11q); open-label, noninferiority design",ep:"Noninferiority of PFS (independent review)",
+ r:"Median PFS 38.4 mo in both arms: noninferiority met. Atrial fibrillation or flutter 9.4% vs 16.0% (P=.02). Median OS not reached in either arm (HR 0.82, 95% CI 0.59–1.15); deaths 23.5% vs 27.5%. Richter transformation 3.8% vs 4.9%",N:"533",hr:"1.00 (PFS; 95% CI 0.79–1.27)",fu:"40.9 mo",
+ c:"J Clin Oncol 2021;39:3441",p:34310172,extra:["Detailed safety analysis, Blood 2023",37390310],
+ b:"Acalabrutinib and ibrutinib had each beaten older regimens, but had never been compared with each other.",
+ i:"The first direct comparison of two BTK inhibitors: equal efficacy in high-risk disease, with fewer cardiovascular events and fewer discontinuations for adverse events with acalabrutinib.",
+ q:"Is noninferior efficacy with less toxicity enough to replace ibrutinib, and how does acalabrutinib compare with zanubrutinib? No trial has compared them.",
+ cm:[[34310198,"Stephens DM, J Clin Oncol 2021","Second-generation Bruton's tyrosine kinase inhibitors: simply the best treatments for chronic lymphocytic leukemia?"]],
+ reg:"No new indication; acalabrutinib was already approved for CLL/SLL.",gl:"One of the two trials behind the general preference for a second-generation BTK inhibitor over ibrutinib (NCCN not checked).",acc:"On-label."},
+{y:2023,n:"ALPINE (Brown)",s:"btk",ph:"Phase 3",d:"Zanubrutinib vs ibrutinib, each until progression, in relapsed or refractory CLL/SLL after at least one prior therapy; open-label",ep:"ORR (investigator); PFS was a key secondary endpoint, tested for noninferiority and then superiority",
+ r:"Final PFS analysis (29.6 mo): zanubrutinib superior, 24-mo PFS 78.4% vs 65.9% (HR 0.65, 95% CI 0.49–0.86); with del(17p) or TP53 mutation HR 0.53. Final comparative analysis (42.5 mo): PFS HR 0.68 (95% CI 0.54–0.84); ORR 85.6% vs 75.4%; CR/CRi 11.6% vs 7.7%; OS HR 0.77 (95% CI 0.55–1.06)",N:"652",hr:"0.65 (PFS); 0.68 at 42.5 mo",fu:"29.6 mo; 42.5 mo (final comparative analysis)",
+ c:"N Engl J Med 2023;388:319",p:36511784,extra:["Final comparative analysis, Blood 2024",39316666],
+ b:"ELEVATE-RR had shown that a more selective BTK inhibitor was as effective as ibrutinib and better tolerated.",
+ i:"The only head-to-head trial in which a covalent BTK inhibitor gave longer PFS than ibrutinib, again with fewer cardiac events.",
+ q:"PFS on ibrutinib was shorter than in other trials, and more patients stopped it early; how much of the difference is efficacy and how much tolerability? No survival difference so far.",
+ cm:[[36543933,"Killock D, Nat Rev Clin Oncol 2023","Zanubrutinib succeeds in head-to-head with ibrutinib in R/R CLL"]],
+ reg:"FDA approval of zanubrutinib for CLL/SLL (January 19, 2023), on SEQUOIA and ALPINE.",gl:"Zanubrutinib is a standard option for relapsed CLL (NCCN not checked).",acc:"On-label."},
+{y:2026,n:"BRUIN CLL-314 (Woyach)",s:"btk",ph:"Phase 3",d:"Pirtobrutinib vs ibrutinib in CLL/SLL not previously treated with a BTK inhibitor: 437 relapsed or refractory and 225 treatment-naive patients; open-label, noninferiority design",ep:"ORR by independent review, in all randomized patients and in those with relapsed or refractory disease",
+ r:"ORR 87.0% vs 78.5% in all patients (ratio 1.11) and 84.0% vs 74.8% in relapsed or refractory disease (ratio 1.12): noninferiority met in both. Treatment-naive: 92.9% vs 85.8%. Investigator-assessed PFS HR 0.57 (95% CI 0.39–0.83) overall, 0.73 (0.47–1.13) in relapsed or refractory and 0.24 (0.10–0.59) in treatment-naive patients",N:"662",hr:"0.57 (PFS, all patients; investigator-assessed, not the primary endpoint)",fu:"21.8 mo overall; 18.2 mo relapsed or refractory; 22.5 mo treatment-naive (full paper)",
+ c:"J Clin Oncol 2026;44:476",p:41353787,
+ b:"Pirtobrutinib, a noncovalent BTK inhibitor, worked after covalent inhibitors had failed (BRUIN, BRUIN CLL-321); this trial tested it before any BTK inhibitor.",
+ i:"The first randomized comparison of a noncovalent with a covalent BTK inhibitor: response not inferior, with less atrial fibrillation and hypertension.",
+ q:"Follow-up is short and PFS is not mature. If pirtobrutinib is used first, what works after it? The comparator was ibrutinib, not acalabrutinib or zanubrutinib.",
+ cm:[],
+ reg:"No indication based on this trial identified as of November 12, 2026 (verify).",gl:"NCCN not checked.",acc:"—"},
+
+// ---------- Venetoclax-based therapy ----------
+{y:2016,n:"M13-982 (Stilgenbauer)",s:"ven",ph:"Phase 2",d:"Single-arm venetoclax, weekly ramp-up from 20 mg to 400 mg daily and then continuous, in relapsed or refractory CLL with del(17p)",ep:"ORR (independent review)",
+ r:"ORR 79.4%. Six-year analysis of all 158 patients (5 previously untreated; 70 mo): ORR 77% (CR 21%); median duration of response 39.3 mo; median PFS 28.2 mo; median OS 62.5 mo; 16% still on treatment",N:"107 (158 with the safety expansion cohort)",hr:"not applicable (single arm)",fu:"12.1 mo; 70 mo (six-year analysis)",
+ c:"Lancet Oncol 2016;17:768",p:27178240,extra:["Six-year follow-up, Blood Adv 2024",38290108],
+ b:"The phase 1 trial (Roberts, N Engl J Med 2016) showed responses in 79% of patients, and fatal tumor lysis syndrome that led to the stepwise dose ramp-up.",
+ i:"Showed that BCL2 inhibition works in del(17p) CLL, independent of p53, and brought venetoclax into practice.",
+ q:"Continuous single-agent treatment; fixed-duration combinations (MURANO) replaced it for most patients.",
+ cm:[[27178241,"Rossi D, Lancet Oncol 2016","Venetoclax: a new weapon to treat high-risk CLL"]],
+ reg:"Basis of the FDA accelerated approval of venetoclax for CLL with 17p deletion after at least one prior therapy (April 2016).",gl:"Venetoclax-based therapy is a standard option for relapsed CLL with del(17p) (NCCN not checked).",acc:"On-label."},
+{y:2018,n:"M14-032 (Jones)",s:"ven",ph:"Phase 2",d:"Venetoclax, ramp-up to 400 mg daily, in CLL relapsed after or refractory to ibrutinib (91 patients whose last B-cell receptor pathway inhibitor was ibrutinib); interim analysis",ep:"ORR (investigator)",
+ r:"ORR 65% (59 of 91): 70% in the main cohort and 60% in the expansion cohort. Idelalisib cohort (36 patients): ORR 67%; estimated 12-mo PFS 79%",N:"91 after ibrutinib (127 enrolled)",hr:"not applicable (single arm)",fu:"14 mo",
+ c:"Lancet Oncol 2018;19:65",p:29246803,extra:["Idelalisib cohort, Blood 2018",29305552],
+ b:"Outcomes after ibrutinib failure were poor, and the venetoclax trials had enrolled few patients treated with kinase inhibitors.",
+ i:"The prospective evidence that venetoclax works after a BTK inhibitor, which made the sequence BTK inhibitor then venetoclax (or the reverse) the backbone of management.",
+ q:"Interim analysis with short follow-up; durability after BTK inhibitor resistance is less than in BTK inhibitor-naive patients (see VENICE-1).",
+ cm:[[29246804,"Mauro FR, Lancet Oncol 2018","Venetoclax: a chance for patients with chronic lymphocytic leukaemia previously treated with ibrutinib"]],
+ reg:"No separate indication.",gl:"Venetoclax-based therapy is a standard option after a BTK inhibitor (NCCN not checked).",acc:"On-label."},
+{y:2018,n:"MURANO (Seymour)",s:"ven",ph:"Phase 3",d:"Venetoclax for 2 years with rituximab for the first 6 months vs 6 cycles of bendamustine-rituximab in relapsed or refractory CLL; open-label, no planned crossover",ep:"PFS (investigator)",
+ r:"2-yr PFS 84.9% vs 36.3%; with del(17p) 81.5% vs 27.8%. Final analysis (7 yr): median PFS 54.7 vs 17.0 mo; 7-yr PFS 23.0% with venetoclax-rituximab; 7-yr OS 69.6% vs 51.0%. With undetectable MRD at the end of treatment, median PFS from that point was 52.5 mo vs 18.0 mo with detectable MRD. Retreatment with venetoclax-rituximab (25 patients): ORR 72%, median PFS 23 mo",N:"389",hr:"0.17 (PFS)",fu:"23.8 mo; 7 yr (final analysis)",
+ c:"N Engl J Med 2018;378:1107",p:29562156,extra:["Final analysis and retreatment substudy, Blood 2025",40009494],
+ b:"Continuous venetoclax was active in relapsed CLL; adding rituximab deepened responses, which suggested that treatment could be stopped.",
+ i:"Established fixed-duration treatment in relapsed CLL, with a survival advantage over chemoimmunotherapy, and made MRD at the end of treatment a guide to prognosis.",
+ q:"Almost no patient had received a BTK inhibitor before, so the results do not describe today's relapsed patient. Retreatment works but for a shorter time.",
+ cm:[[29651129,"Killock D, Nat Rev Clin Oncol 2018","Venetoclax-rituximab holds substantial promise in CLL"],[40471626,"Al-Sawaf O, Blood 2025","MURANO's final conclusions: what we've learned, what's next?"]],
+ reg:"FDA regular approval of venetoclax for CLL/SLL, with or without 17p deletion, after at least one prior therapy (June 8, 2018), with rituximab on the basis of MURANO.",gl:"Venetoclax-rituximab is the standard fixed-duration option for relapsed CLL (NCCN not checked).",acc:"On-label."},
+{y:2024,n:"VENICE-1 (Kater)",s:"ven",ph:"Phase 3b",d:"Single-arm venetoclax for up to 108 weeks in relapsed or refractory CLL, stratified by previous treatment with a B-cell receptor pathway inhibitor (191 naive, 67 pretreated)",ep:"Complete remission rate (CR or CRi) in patients not previously treated with a B-cell receptor pathway inhibitor",
+ r:"CR/CRi 35% (66 of 191) without and 27% (18 of 67) with previous B-cell receptor pathway inhibitor treatment",N:"258",hr:"not applicable (single arm)",fu:"49.5 mo",
+ c:"Lancet Oncol 2024;25:463",p:38467131,
+ b:"M13-982 and M14-032 were small phase 2 trials; a larger prospective series of venetoclax alone was missing.",
+ i:"The largest prospective experience of venetoclax alone for a fixed period, including patients previously treated with kinase inhibitors.",
+ q:"Single arm; most patients would now receive venetoclax with an anti-CD20 antibody or a BTK inhibitor.",
+ cm:[[38547887,"Yang L, Lancet Oncol 2024","Venetoclax in patients with relapsed or refractory chronic lymphocytic leukaemia"]],
+ reg:"None.",gl:"Supports venetoclax after a kinase inhibitor (NCCN not checked).",acc:"On-label."},
+{y:2026,n:"BRUIN CLL-322 (Davids)",s:"ven",ph:"Phase 3",d:"Fixed-duration pirtobrutinib (28 cycles, the first 3 as a lead-in with rituximab) plus venetoclax (25 cycles) and rituximab (6 cycles) vs venetoclax-rituximab in previously treated CLL/SLL; no prior venetoclax or noncovalent BTK inhibitor; 80% had received a covalent BTK inhibitor; open-label, prespecified interim analysis",ep:"PFS (independent review)",
+ r:"24-mo PFS 87% vs 72%; median PFS not reached vs 39.7 mo; benefit consistent in patients previously treated with a covalent BTK inhibitor. Undetectable MRD (below 10⁻⁴) at the end of treatment, all randomized patients: 32% vs 22% (full paper). Overall survival immature (full paper)",N:"639",hr:"0.547 (PFS; 95% CI 0.400–0.748)",fu:"27.3 mo",
+ c:"Lancet 2026;408:453",p:42425121,
+ b:"MURANO was run before BTK inhibitors were widely used; venetoclax-rituximab had not been tested in a randomized trial after a covalent BTK inhibitor.",
+ i:"The first phase 3 trial to improve on venetoclax-rituximab in relapsed CLL, with a fixed-duration triplet, and the first randomized data on venetoclax-rituximab after a covalent BTK inhibitor.",
+ q:"Interim analysis with immature survival. If pirtobrutinib is used here, is it still available at the next relapse? Is a third drug needed for every patient?",
+ cm:[],
+ reg:"None as of November 12, 2026.",gl:"NCCN not checked.",acc:"—"},
+
+// ---------- PI3K inhibitors ----------
+{y:2014,n:"Study 116 (Furman)",s:"pi3k",ph:"Phase 3",d:"Idelalisib vs placebo, each with rituximab, in relapsed CLL in patients less able to receive chemotherapy (reduced renal function, myelosuppression from previous therapy or major coexisting illness); double-blind, stopped early for efficacy",ep:"PFS",
+ r:"Median PFS not reached vs 5.5 mo; ORR 81% vs 13%; 12-mo OS 92% vs 80% (HR for death 0.28). Final results with the extension study: median PFS 20.3 mo in patients assigned to idelalisib-rituximab; median OS 40.6 vs 34.6 mo",N:"220",hr:"0.15 (PFS)",fu:"not reported in abstract; 18 mo (final results)",
+ c:"N Engl J Med 2014;370:997",p:24450857,extra:["Final results with extension study, J Clin Oncol 2019",30995176],
+ b:"B-cell receptor signaling runs through both BTK and PI3K-delta; idelalisib blocks the second.",
+ i:"The first approved PI3K inhibitor in CLL, an oral option for frail patients at a time when ibrutinib was only just available.",
+ q:"Immune-mediated toxicity (colitis, hepatitis, pneumonitis) and infections with long exposure; BTK inhibitors proved better tolerated (see ASCEND).",
+ cm:[[24620870,"Fruman DA, N Engl J Med 2014","Idelalisib: a PI3Kδ inhibitor for B-cell cancers"],[31036467,"Stirrups R, Lancet Oncol 2019","Idelalisib and rituximab for chronic lymphocytic leukaemia"]],
+ reg:"FDA approval of idelalisib with rituximab for relapsed CLL when rituximab alone would be considered appropriate because of comorbidities (July 23, 2014). The company withdrew the accelerated-approval indications for follicular lymphoma and SLL in 2022; the CLL indication was kept.",gl:"A later-line option after BTK and BCL2 inhibitors (NCCN not checked).",acc:"On-label."},
+{y:2017,n:"Study 115 (Zelenetz)",s:"pi3k",ph:"Phase 3",d:"Idelalisib vs placebo, each with up to 6 cycles of bendamustine-rituximab and then continued alone, in relapsed or refractory CLL progressing within 36 months of the last therapy; double-blind, interim results",ep:"PFS (independent review)",
+ r:"Median PFS 20.8 vs 11.1 mo",N:"416",hr:"0.33 (PFS)",fu:"14 mo",
+ c:"Lancet Oncol 2017;18:297",p:28139405,
+ b:"Study 116 combined idelalisib with rituximab in frail patients; this trial added it to chemoimmunotherapy in fitter ones.",
+ i:"Longer PFS at the cost of more serious infections and more deaths from adverse events: one of the trials that defined the safety limits of PI3K inhibitors.",
+ q:"Is the PFS gain worth the infections? The combination did not enter practice.",
+ cm:[[28139406,"Mauro FR, Lancet Oncol 2017","Another treatment option for relapsed or refractory chronic lymphocytic leukaemia"],[28195233,"Romero D, Nat Rev Clin Oncol 2017","Haematological cancer: idelalisib for CLL, risky benefit"]],
+ reg:"No US indication for this combination identified (verify).",gl:"Not a standard regimen.",acc:"—"},
+{y:2017,n:"Study 119 (Jones)",s:"pi3k",ph:"Phase 3",d:"Idelalisib plus ofatumumab vs ofatumumab alone (2:1) in relapsed CLL progressing less than 24 months after the last therapy; open-label",ep:"PFS (independent review)",
+ r:"Median PFS 16.3 vs 8.0 mo, including in high-risk disease",N:"261",hr:"0.27 (PFS, adjusted)",fu:"not reported in abstract",
+ c:"Lancet Haematol 2017;4:e114",p:28257752,
+ b:"Idelalisib-rituximab was approved; this trial paired idelalisib with a second anti-CD20 antibody.",
+ i:"Confirmed the activity of idelalisib with an antibody and, again, the cost in infections, including Pneumocystis pneumonia.",
+ q:"22 treatment-related deaths with the combination and 6 with ofatumumab, with 2:1 randomization: the pattern that led to prophylaxis and monitoring recommendations.",
+ cm:[],
+ reg:"None.",gl:"Not a standard regimen.",acc:"—"},
+{y:2018,n:"DUO (Flinn)",s:"pi3k",ph:"Phase 3",d:"Duvelisib 25 mg twice daily vs ofatumumab in relapsed or refractory CLL/SLL; open-label",ep:"PFS (independent review)",
+ r:"Median PFS 13.3 vs 9.9 mo; with del(17p) and/or TP53 mutation HR 0.40; ORR 74% vs 45%",N:"319",hr:"0.52 (PFS)",fu:"not reported in abstract",
+ c:"Blood 2018;132:2446",p:30287523,
+ b:"Duvelisib inhibits both the delta and gamma forms of PI3K; idelalisib had shown the value and the toxicity of the class.",
+ i:"Led to the approval of a second PI3K inhibitor, and later to the clearest warning about the class: the final survival analysis did not favor duvelisib.",
+ q:"A PFS gain with a possible survival detriment. How should a drug approved on PFS be handled when overall survival later points the other way?",
+ cm:[[30523122,"Brown JR, Blood 2018","DUO delivers for duvelisib"]],
+ reg:"FDA approval of duvelisib for relapsed or refractory CLL/SLL after at least two prior therapies (September 2018). On June 30, 2022 the FDA warned of a possible increased risk of death (final 5-year overall survival HR 1.09, 95% CI 0.79–1.51), and on September 23, 2022 its advisory committee voted 8 to 4 that the benefit-risk profile was unfavorable. Current label status: verify.",gl:"A later-line option at most (NCCN not checked).",acc:"—"},
+
+// ---------- After BTK and BCL2 inhibitors ----------
+{y:2023,n:"BRUIN (Mato)",s:"post",ph:"Phase 1/2",d:"Pirtobrutinib in relapsed or refractory CLL/SLL previously treated with a BTK inhibitor: median of 3 prior lines, 40.5% also treated with a BCL2 inhibitor",ep:"ORR (independent review)",
+ r:"ORR 73.3%, and 82.2% including partial response with lymphocytosis; median PFS 19.6 mo",N:"247 previously treated with a BTK inhibitor (317 with CLL/SLL for safety)",hr:"not applicable (single arm)",fu:"not reported in abstract (median treatment duration 16.5 mo)",
+ c:"N Engl J Med 2023;389:33",p:37407001,extra:["First report, Lancet 2021",33676628],
+ b:"Covalent BTK inhibitors fail through resistance, often a mutation at cysteine 481 where they bind, or through intolerance; pirtobrutinib binds BTK reversibly at another site.",
+ i:"Showed that BTK can be inhibited again after a covalent inhibitor has failed, and led to the first approval for CLL after both a BTK and a BCL2 inhibitor.",
+ q:"Median PFS under 2 years; new BTK mutations appear on pirtobrutinib. What comes after it?",
+ cm:[[33676615,"Michot JM, Lancet 2021","Pirtobrutinib shows evidence to inaugurate a third generation of BTK inhibitors"],[33758377,"Romero D, Nat Rev Clin Oncol 2021","Initial pirtobrutinib data show promise"]],
+ reg:"FDA accelerated approval of pirtobrutinib for CLL/SLL after at least two prior lines of therapy including a BTK inhibitor and a BCL2 inhibitor (December 1, 2023).",gl:"A standard option after a covalent BTK inhibitor (NCCN not checked).",acc:"On-label."},
+{y:2023,n:"TRANSCEND CLL 004 (Siddiqi)",s:"post",ph:"Phase 1/2",d:"Single infusion of lisocabtagene maraleucel, a CD19-directed CAR T-cell therapy, in relapsed or refractory CLL/SLL after at least 2 lines including a BTK inhibitor; primary efficacy set: progression on a BTK inhibitor and venetoclax failure, at the higher dose level",ep:"CR or CRi rate by independent review (null hypothesis 5% or less)",
+ r:"CR/CRi 18% (9 of 49) in the primary efficacy set. Cohort treated with liso-cel plus ibrutinib (56 patients, 24.8 mo): CR/CRi 45% and ORR 86% at the higher dose level; median PFS 31.4 mo",N:"117 treated (49 in the primary efficacy set)",hr:"not applicable (single arm)",fu:"not reported in abstract",
+ c:"Lancet 2023;402:641",p:37295445,extra:["Liso-cel plus ibrutinib cohort, Blood 2026",42520199],
+ b:"After both a BTK inhibitor and venetoclax had failed, no treatment gave durable complete remissions; CAR T cells had been less effective in CLL than in lymphoma.",
+ i:"The first approved CAR T-cell therapy for CLL, with complete remissions in a group that had none.",
+ q:"Fewer than one in five reached complete remission with liso-cel alone. Does adding ibrutinib, or earlier use, improve on that?",
+ cm:[[37597880,"Kamdar M, Lancet 2023","Embracing chimeric antigen receptors for relapsed chronic lymphocytic leukaemia"]],
+ reg:"FDA accelerated approval of lisocabtagene maraleucel for CLL/SLL after at least two prior lines of therapy including a BTK inhibitor and a BCL2 inhibitor (March 14, 2024).",gl:"An option after BTK and BCL2 inhibitors (NCCN not checked).",acc:"On-label; given at certified centers."},
+{y:2025,n:"BRUIN CLL-321 (Sharman)",s:"post",ph:"Phase 3",d:"Pirtobrutinib vs investigator's choice of idelalisib-rituximab or bendamustine-rituximab in CLL/SLL previously treated with a covalent BTK inhibitor; stratified by previous venetoclax and del(17p); open-label, crossover allowed",ep:"PFS (independent review)",
+ r:"Median PFS 14 vs 8.7 mo; median time to next treatment or death 24 vs 10.9 mo (HR 0.37); OS HR 1.09 (95% CI 0.68–1.75), 18-mo OS 73.4% vs 70.8%",N:"238",hr:"0.54 (PFS; 95% CI 0.39–0.75)",fu:"17.2 mo",
+ c:"J Clin Oncol 2025;43:2538",p:40479620,
+ b:"BRUIN was a single-arm trial; no randomized trial had enrolled only patients already treated with a covalent BTK inhibitor.",
+ i:"A randomized trial restricted to this population, and the confirmatory trial for pirtobrutinib. It also showed how short remissions are with older regimens after a BTK inhibitor (median PFS 8.7 mo).",
+ q:"No survival difference, with crossover allowed. The comparators were not venetoclax-based, so the place of pirtobrutinib relative to venetoclax is still unsettled.",
+ cm:[],
+ reg:"FDA traditional approval of pirtobrutinib for relapsed or refractory CLL/SLL previously treated with a covalent BTK inhibitor (December 3, 2025).",gl:"A standard option after a covalent BTK inhibitor (NCCN not checked).",acc:"On-label."},
+
+// ---------- Chemoimmunotherapy & antibodies ----------
+{y:2002,n:"Alemtuzumab after fludarabine (Keating)",s:"chemo",ph:"Phase 2",d:"Single-arm alemtuzumab, target dose 30 mg three times weekly for up to 12 weeks, in CLL previously treated with alkylating agents and after failure of fludarabine",ep:"ORR (aim of at least 20%)",
+ r:"ORR 33% (CR 2%, PR 31%); median time to progression 4.7 mo overall and 9.5 mo in responders; median OS 16 mo overall and 32 mo in responders",N:"93",hr:"not applicable (single arm)",fu:"34 mo",
+ c:"Blood 2002;99:3554",p:11986207,
+ b:"After fludarabine failed, no treatment gave reliable responses.",
+ i:"An early antibody therapy for CLL, and for a decade the main option for fludarabine-refractory and del(17p) disease.",
+ q:"Little effect on bulky nodes and a high rate of infections; replaced by targeted therapy.",
+ cm:[],
+ reg:"FDA accelerated approval of alemtuzumab for CLL after alkylating agents and failure of fludarabine in 2001 (date: verify), converted to full approval as a single agent for B-cell CLL on September 19, 2007.",gl:"Historical; rarely used.",acc:"—"},
+{y:2010,n:"Hx-CD20-406 (Wierda)",s:"chemo",ph:"Phase 2",d:"Single-arm ofatumumab (8 weekly then 4 monthly infusions) in CLL refractory to fludarabine and alemtuzumab, or refractory to fludarabine with bulky nodes over 5 cm; planned interim analysis",ep:"ORR (independent review)",
+ r:"ORR 58% (refractory to fludarabine and alemtuzumab) and 47% (bulky, fludarabine-refractory); median PFS 5.7 and 5.9 mo; median OS 13.7 and 15.4 mo. In the final analysis, ORR was 43% after previous rituximab, 44% with rituximab-refractory disease and 53% without previous rituximab",N:"138 (59 and 79)",hr:"not applicable (single arm)",fu:"not reported in abstract",
+ c:"J Clin Oncol 2010;28:1749",p:20194866,extra:["Final analysis by previous rituximab, Blood 2011",21856867],
+ b:"Patients refractory to both fludarabine and alemtuzumab, or with bulky disease unsuited to alemtuzumab, had very poor outcomes.",
+ i:"Led to the approval of ofatumumab, which became the comparator arm in RESONATE and DUO.",
+ q:"Short remissions (median PFS under 6 months), which targeted therapy improved severalfold.",
+ cm:[],
+ reg:"FDA accelerated approval of ofatumumab for CLL refractory to fludarabine and alemtuzumab (October 26, 2009).",gl:"Historical; rarely used.",acc:"—"},
+{y:2010,n:"REACH (Robak)",s:"chemo",ph:"Phase 3",d:"Rituximab plus fludarabine and cyclophosphamide (FCR) vs fludarabine and cyclophosphamide (FC), 6 cycles, in previously treated CLL",ep:"PFS",
+ r:"Median PFS 30.6 vs 20.6 mo; event-free survival, response rate, CR rate, duration of response and time to new treatment also better with FCR",N:"552",hr:"0.65 (PFS)",fu:"25 mo",
+ c:"J Clin Oncol 2010;28:1756",p:20194844,
+ b:"FCR had given high response rates in phase 2 trials in relapsed CLL, and CLL8 tested it first line.",
+ i:"Made chemoimmunotherapy the standard for relapsed CLL in fit patients until the targeted agents arrived.",
+ q:"Patients were rituximab-naive, and most relapsed patients would now have received an antibody before. No longer a standard at relapse.",
+ cm:[],
+ reg:"FDA approval of rituximab with fludarabine and cyclophosphamide for previously untreated and previously treated CLL (February 18, 2010), on CLL8 and REACH.",gl:"Historical for relapsed disease; chemoimmunotherapy is rarely used after targeted therapy (NCCN not checked).",acc:"On-label."}
+];
+const REG = {"PCYC-1102 (Byrd)": ["NCT01105247"], "RESONATE (Byrd)": ["NCT01578707"], "HELIOS (Chanan-Khan)": ["NCT01611090"], "ACE-CL-001 (Byrd)": ["NCT02029443"], "ASCEND (Ghia)": ["NCT02970318"], "ELEVATE-RR (Byrd)": ["NCT02477696"], "ALPINE (Brown)": ["NCT03734016"], "BRUIN CLL-314 (Woyach)": ["NCT05254743"], "M13-982 (Stilgenbauer)": ["NCT01889186"], "M14-032 (Jones)": ["NCT02141282"], "MURANO (Seymour)": ["NCT02005471"], "VENICE-1 (Kater)": ["NCT02756611"], "BRUIN CLL-322 (Davids)": ["NCT04965493"], "Study 116 (Furman)": ["NCT01539512"], "Study 115 (Zelenetz)": ["NCT01569295"], "Study 119 (Jones)": ["NCT01659021"], "DUO (Flinn)": ["NCT02004522"], "BRUIN (Mato)": ["NCT03740529"], "TRANSCEND CLL 004 (Siddiqi)": ["NCT03331198"], "BRUIN CLL-321 (Sharman)": ["NCT04666038"], "Hx-CD20-406 (Wierda)": ["NCT00349349"]};
+// Full-text links: free full text in PubMed Central where available, otherwise the publisher's page via DOI (from PubMed, Oct 22, 2026).
+const FT = {"PCYC-1102 (Byrd)": ["pmc", "PMC3772525"], "RESONATE (Byrd)": ["pmc", "PMC4134521"], "HELIOS (Chanan-Khan)": ["doi", "10.1016/S1470-2045(15)00465-9"], "ACE-CL-001 (Byrd)": ["pmc", "PMC4862586"], "ASCEND (Ghia)": ["doi", "10.1200/JCO.19.03355"], "ELEVATE-RR (Byrd)": ["pmc", "PMC8547923"], "ALPINE (Brown)": ["doi", "10.1056/NEJMoa2211582", "repo", "https://ruj.uj.edu.pl/xmlui/handle/item/306726"], "BRUIN CLL-314 (Woyach)": ["pmc", "PMC12904240"], "M13-982 (Stilgenbauer)": ["doi", "10.1016/S1470-2045(16)30019-5", "repo", "https://ruj.uj.edu.pl/xmlui/handle/item/102232"], "M14-032 (Jones)": ["pmc", "PMC6027999"], "MURANO (Seymour)": ["doi", "10.1056/NEJMoa1713976", "free"], "VENICE-1 (Kater)": ["doi", "10.1016/S1470-2045(24)00070-6", "free"], "BRUIN CLL-322 (Davids)": ["pmc", "PMC13634592"], "Study 116 (Furman)": ["pmc", "PMC4161365"], "Study 115 (Zelenetz)": ["pmc", "PMC5589180"], "Study 119 (Jones)": ["doi", "10.1016/S2352-3026(17)30019-4"], "DUO (Flinn)": ["pmc", "PMC6284216"], "BRUIN (Mato)": ["doi", "10.1056/NEJMoa2300696", "repo", "https://ruj.uj.edu.pl/xmlui/handle/item/317128"], "TRANSCEND CLL 004 (Siddiqi)": ["pmc", "PMC11753452"], "BRUIN CLL-321 (Sharman)": ["pmc", "PMC12288890"], "Alemtuzumab after fludarabine (Keating)": ["doi", "10.1182/blood.v99.10.3554"], "Hx-CD20-406 (Wierda)": ["pmc", "PMC4979101"], "REACH (Robak)": ["doi", "10.1200/JCO.2009.26.4556"]};
+const FTLABEL = x => x[0] === 'pmc' ? 'Free full text' : (x[2] === 'free' ? 'Free at publisher' : 'Publisher');
+const FTTITLE = x => x[0] === 'pmc' ? 'Free full text in PubMed Central' : (x[2] === 'free' ? 'Free to read on the publisher site (checked with Unpaywall)' : 'Publisher page; full text may need a subscription or institutional access');
+const REPORT = t => 'mailto:andresferber@hotmail.com?subject=' + encodeURIComponent('Landmark trials (' + PAGETITLE + '): ' + t.n);
+const FTURL = x => x[0] === 'pmc' ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + x[1] + '/' : 'https://doi.org/' + x[1];
+const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
+T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, rel:t.rel || [], reg:t.reg, gl:t.gl, acc:t.acc}; });
+T.forEach(t => { t.trn = REG[t.n] || []; t.ft = FT[t.n] || null; });
+
+// Added Oct 23, 2026. TOX: key toxicity per trial from the PubMed abstract (or full paper where marked).
+// CORE: trials every trainee should know (chosen by Andres; edit this list to change the star and the "Core trials" filter).
+// WATCH: ongoing trials to watch, from ClinicalTrials.gov.
+// Added Oct 23, 2026. MOA: one recent review per drug or drug class on mechanism of action and resistance; MOAMAP: trial -> MOA keys.
+const MOA = {"btk": {"l": "BTK inhibitors (covalent and noncovalent)", "a": "Stanchina MD", "j": "Nat Rev Clin Oncol", "y": "2024", "t": "Navigating the changing landscape of BTK-targeted therapies for B cell lymphomas and chronic lymphocytic leukaemia", "p": "39487228", "pmc": ""}, "bcl2L": {"l": "BCL2 inhibitors", "a": "Vogler M", "j": "Signal Transduct Target Ther", "y": "2025", "t": "The BCL2 family: from apoptosis mechanisms to new advances in targeted therapy", "p": "40113751", "pmc": "PMC11926181"}, "pi3k": {"l": "PI3K inhibitors", "a": "Skånland SS", "j": "Clin Cancer Res", "y": "2024", "t": "PI3K inhibitors in hematology: when one door closes…", "p": "38967552", "pmc": "PMC11371526"}, "cd19car": {"l": "CD19 CAR-T in lymphoma", "a": "Hijazi A", "j": "Clin Cancer Res", "y": "2025", "t": "Facts and hopes: CAR T-cell therapy and immune contexture in non-Hodgkin lymphoma", "p": "40622821", "pmc": "PMC12434396"}, "cd20": {"l": "Anti-CD20 antibodies", "a": "Hasani R", "j": "Exp Hematol", "y": "2026", "t": "CD20-targeted immunotherapies in B-cell malignancies: mechanistic and clinical advances", "p": "42140572", "pmc": ""}, "cd52": {"l": "Alemtuzumab (anti-CD52 antibody)", "a": "An N", "j": "Ann Hematol", "y": "2025", "t": "Alemtuzumab for haematological malignancies", "p": "40214729", "pmc": "PMC12141386"}};
+const MOAMAP = {"PCYC-1102 (Byrd)": ["btk"], "RESONATE (Byrd)": ["btk"], "HELIOS (Chanan-Khan)": ["btk"], "ACE-CL-001 (Byrd)": ["btk"], "ASCEND (Ghia)": ["btk"], "ELEVATE-RR (Byrd)": ["btk"], "ALPINE (Brown)": ["btk"], "BRUIN CLL-314 (Woyach)": ["btk"], "M13-982 (Stilgenbauer)": ["bcl2L"], "M14-032 (Jones)": ["bcl2L"], "MURANO (Seymour)": ["bcl2L"], "VENICE-1 (Kater)": ["bcl2L"], "BRUIN CLL-322 (Davids)": ["btk", "bcl2L"], "Study 116 (Furman)": ["pi3k"], "Study 115 (Zelenetz)": ["pi3k"], "Study 119 (Jones)": ["pi3k"], "DUO (Flinn)": ["pi3k"], "BRUIN (Mato)": ["btk"], "TRANSCEND CLL 004 (Siddiqi)": ["cd19car"], "BRUIN CLL-321 (Sharman)": ["btk"], "Alemtuzumab after fludarabine (Keating)": ["cd52"], "Hx-CD20-406 (Wierda)": ["cd20"], "REACH (Robak)": ["cd20"]};
+const MECH = {"bcl2L": "BCL2 is a protein that keeps cells from dying, and mantle cell lymphoma and many other B-cell lymphomas depend on it. Venetoclax and the newer, more selective sonrotoclax block it, releasing the cell's own death program. BCL2 inhibition complements BTK inhibition, which is the rationale for combining them.", "btk": "BTK carries the B-cell receptor's survival signal, on which mantle cell lymphoma and other B-cell lymphomas depend. Covalent inhibitors (ibrutinib, acalabrutinib, zanubrutinib) bind cysteine 481 permanently, and mutations there cause resistance; noncovalent pirtobrutinib binds reversibly and works despite them. The newer agents are more selective, with less atrial fibrillation and bleeding than ibrutinib.", "cd19car": "The patient's own T cells are engineered to recognize CD19, present on almost all B-cell lymphomas, and given as a single infusion after lymphodepleting chemotherapy. Brexucabtagene autoleucel, axicabtagene ciloleucel, tisagenlecleucel and lisocabtagene maraleucel differ in their costimulatory domain (CD28 or 4-1BB) and manufacturing, which affects how fast they act and their rates of cytokine release syndrome and neurotoxicity.", "cd20": "Monoclonal antibodies against CD20, present on nearly all B cells and B-cell lymphomas. Rituximab kills mainly through complement and antibody-dependent cellular cytotoxicity; obinutuzumab, a glycoengineered type II antibody, relies more on direct cell death and cellular cytotoxicity and causes deeper B-cell depletion.", "cd52": "CD52 is a small protein on the surface of normal and malignant B and T lymphocytes. Alemtuzumab, a humanized antibody, binds it and destroys the cells through complement and antibody-dependent cellular cytotoxicity. Because it also depletes normal T cells for months, opportunistic infections, especially cytomegalovirus reactivation, are its main risk.", "pi3k": "PI3K, especially its delta form in B cells, carries survival signals from the B-cell receptor. Idelalisib, copanlisib, duvelisib and umbralisib block it, but immune-mediated toxicity (colitis, hepatitis, pneumonitis), infections and a survival concern in related trials led to the loss of every US follicular lymphoma indication."};
+const MOAURL = m => m.pmc ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + m.pmc + '/' : 'https://pubmed.ncbi.nlm.nih.gov/' + m.p + '/';
+const MOAHTML = t => (MOAMAP[t.n] || []).map(k => MOA[k]).filter(Boolean).map(m => '<span class="moa"><b>' + esc(m.l) + ':</b> <a href="' + esc(MOAURL(m)) + '" target="_blank" rel="noopener" title="' + esc(m.t) + '">' + esc(m.a) + ', ' + esc(m.j) + ' ' + esc(m.y) + ' ↗</a>' + (m.pmc ? ' <span class="moafree">free</span>' : '') + '</span>').join('');
+// NEWD: new drugs to watch (shared per disease).
+const NEWD = {"checked": "November 12, 2026", "note": "Agents with a new mechanism, target or modality that are not yet approved for this disease in the US or EU, selected from peer-reviewed early-phase trials and major meetings. Early response rates often fall with more patients and longer follow-up; meeting data are not peer-reviewed.", "scope": "Most new CLL drugs are tested first in relapsed disease, so this list covers both untreated and relapsed CLL.", "items": [{"n": "BTK degraders (BGB-16673, bexobrutideg)", "mod": "Oral protein degrader", "tgt": "BTK (degraded rather than inhibited)", "ev": "Phase 1, meeting data (not yet peer-reviewed)", "pub": "ASH 2025; EHA 2025", "why": "Degrading BTK, rather than blocking it, can work against the mutations that cause resistance to covalent and noncovalent BTK inhibitors, the main unmet need after a BTK inhibitor and venetoclax.", "data": "BGB-16673 (CaDAnCe-101; 68 patients with relapsed CLL/SLL): ORR 85.3% overall and 75.0% after both a BTK and a BCL2 inhibitor; 18-month PFS 65.9% at a median follow-up of 19.8 months. Bexobrutideg (NX-5948; phase 1a, 47 evaluable patients, EHA 2025): ORR 80.9% at a median follow-up of 9.0 months.", "safety": "BGB-16673: most common adverse events were fatigue (36.8%) and contusion (30.9%).", "next": "Phase 3 trials in relapsed CLL against pirtobrutinib: BGB-16673 (NCT06973187) and bexobrutideg (NCT07516093); BGB-16673 against investigator's choice (CaDAnCe-302, NCT06846671).", "src": [["ASH 2025 report (OncLive)", "https://www.onclive.com/view/bgb-16673-is-safe-highly-active-regardless-of-baseline-mutations-or-high-risk-features-in-r-r-cll-sll"], ["EHA 2025 report (Cancer Network)", "https://www.cancernetwork.com/view/bexobrutideg-achieves-high-objective-response-rate-in-heavily-pretreated-r-r-cll"], ["Sharma P, J Hematol Oncol 2026 (ASH 2025 summary)", "https://pubmed.ncbi.nlm.nih.gov/42252468/"]]}, {"n": "Sonrotoclax", "mod": "Oral small molecule", "tgt": "BCL2", "ev": "Phase 1/1b, meeting data (not yet peer-reviewed)", "pub": "ASH 2024", "why": "A next-generation BCL2 inhibitor, more selective and potent than venetoclax in laboratory studies, with a short half-life and no accumulation. It is developed mainly with zanubrutinib as a fixed-duration first-line regimen. Conditionally approved in China (January 6, 2026) for CLL/SLL after a BTK inhibitor; not approved for CLL in the US or EU.", "data": "BGB-11417-101: 112 patients with untreated CLL/SLL received zanubrutinib with sonrotoclax 160 mg (51) or 320 mg (61); ORR 100% among patients assessed at week 48, with high rates of undetectable MRD.", "safety": "One patient stopped the combination for an adverse event; no deaths (data cutoff May 2024).", "next": "Phase 3 in untreated CLL, with zanubrutinib: vs venetoclax-obinutuzumab (BGB-11417-301, NCT06073821), vs venetoclax-acalabrutinib (BGB-11417-304, NCT07277231) and vs continuous zanubrutinib in older patients (A042302, NCT07321652).", "src": [["ASH 2024 abstract 1012", "https://ash.confex.com/ash/2024/webprogram/Paper199175.html"], ["ASH 2024 report (OncLive)", "https://www.onclive.com/view/sonrotoclax-plus-zanubrutinib-generates-responses-in-treatment-naive-cll-sll"], ["Blair HA, Drugs 2026 (first approval)", "https://pubmed.ncbi.nlm.nih.gov/42047966/"]]}, {"n": "Lisaftoclax", "mod": "Oral small molecule", "tgt": "BCL2", "ev": "Peer-reviewed phase 1b/2", "pub": "Med 2025", "why": "A BCL2 inhibitor with a daily dose ramp-up over 5 to 7 days, shorter than the weekly ramp-up of venetoclax. Approved in China (July 10, 2025) for CLL/SLL after a BTK inhibitor; not approved in the US or EU.", "data": "176 patients (154 relapsed or refractory, 22 untreated): ORR 67.4% with lisaftoclax alone (43 patients), 84.6% with rituximab (39) and 97.7% with acalabrutinib (87); among 14 patients previously given venetoclax, ORR 92.9% with lisaftoclax-acalabrutinib.", "safety": "Tumor lysis syndrome in 5 patients (2.8%; 2 clinical); grade 3 or higher neutropenia 30.1%; no treatment-related discontinuations or deaths.", "next": "Phase 3 with acalabrutinib vs chemoimmunotherapy in untreated CLL (NCT06319456) and a global phase 3 in previously treated CLL (NCT06104566).", "src": [["Davids MS, Med 2025", "https://pubmed.ncbi.nlm.nih.gov/41109219/"], ["Syed YY, Drugs 2025 (first approval)", "https://pubmed.ncbi.nlm.nih.gov/41060518/"]]}, {"n": "Nemtabrutinib", "mod": "Oral small molecule (noncovalent, reversible)", "tgt": "BTK, including C481S-mutant BTK", "ev": "Peer-reviewed phase 1", "pub": "Cancer Discov 2024", "why": "A second noncovalent BTK inhibitor after pirtobrutinib, now in phase 3 against covalent BTK inhibitors in untreated CLL.", "data": "47 treated patients with relapsed B-cell malignancies after at least 2 therapies (29 with CLL): ORR 75% in CLL at the recommended dose of 65 mg daily.", "safety": "Most common grade 3 or higher events: neutropenia (23.4%), febrile neutropenia (14.9%) and pneumonia (14.9%).", "next": "Phase 3: vs ibrutinib or acalabrutinib in untreated CLL (BELLWAVE-011, NCT06136559); vs chemoimmunotherapy in untreated CLL (NCT05624554); with venetoclax vs venetoclax-rituximab in relapsed CLL (NCT05947851).", "src": [["Woyach JA, Cancer Discov 2024", "https://pubmed.ncbi.nlm.nih.gov/37930156/"]]}, {"n": "Epcoritamab", "mod": "Subcutaneous bispecific antibody", "tgt": "CD20 × CD3", "ev": "Phase 1b/2, meeting data (not yet peer-reviewed)", "pub": "ASH 2024", "why": "T-cell-engaging antibodies are established in lymphoma. In CLL, T-cell dysfunction and cytokine release have been the obstacles, and this is a test of the approach after BTK and BCL2 inhibitors.", "data": "EPCORE CLL-1 expansion cohort: 23 heavily pretreated patients, median follow-up 22.8 months; ORR 61% and complete response 39% (67% and 43% of the 21 response-evaluable patients).", "safety": "Cytokine release syndrome in 96% (grade 3 in 17%); ICANS in 13%, all grade 1 or 2.", "next": "Phase 1b/2 continuing with optimized step-up dosing and combinations; no phase 3 in CLL identified. Another bispecific antibody, surovatamig (CD19 × CD3), is in a phase 3 consolidation trial after first-line therapy (SOUNDTRACK-C1, NCT07509151).", "src": [["ASH 2024 abstract 883", "https://ash.confex.com/ash/2024/webprogram/Paper199708.html"], ["ASH 2024 report (Healio)", "https://www.healio.com/news/hematology-oncology/20250221/epcoritamab-exhibits-very-encouraging-efficacy-in-heavily-pretreated-cll"]]}], "grad": [], "disc": []};
+const TOX = {"PCYC-1102 (Byrd)": "Mostly grade 1–2: transient diarrhea, fatigue and upper respiratory tract infection; minimal hematologic toxicity.", "RESONATE (Byrd)": "Most frequent with ibrutinib: diarrhea, fatigue, pyrexia and nausea. Final analysis: hypertension 21% (grade ≥3, 9%) and atrial fibrillation 12% (grade ≥3, 6%); 16% stopped ibrutinib for adverse events.", "HELIOS (Chanan-Khan)": "Grade 3–4 events 77% vs 74%; neutropenia 54% vs 51%; thrombocytopenia 15% in each group.", "ACE-CL-001 (Byrd)": "Headache 43%, diarrhea 39%, weight gain 26%, mostly grade 1–2. Updated report: grade ≥3 neutropenia 14%, pneumonia 11%, hypertension 7%; atrial fibrillation 7% and major bleeding 5% (all grades).", "ASCEND (Ghia)": "Serious adverse events 29% (acalabrutinib), 56% (idelalisib-rituximab) and 26% (bendamustine-rituximab). Final results: discontinuation for adverse events 23%, 67% and 17%; atrial fibrillation or flutter 8% vs 3%; grade ≥3 infections 29% in both groups.", "ELEVATE-RR (Byrd)": "Atrial fibrillation or flutter 9.4% vs 16.0%; hypertension 9.4% vs 23.2% (full paper); grade ≥3 infections 30.8% vs 30.0%; discontinuation for adverse events 14.7% vs 21.3%.", "ALPINE (Brown)": "Fewer cardiac events and fewer discontinuations for adverse events with zanubrutinib. At 42.5 mo: atrial fibrillation or flutter 7.1% vs 17.0%; hypertension 27.2% vs 25.3%; cardiac deaths 0 vs 6.", "BRUIN CLL-314 (Woyach)": "Atrial fibrillation or flutter 2.4% vs 13.5% and hypertension 10.6% vs 15.1% (full paper); discontinuation for adverse events 9.7% vs 10.6% (full paper).", "M13-982 (Stilgenbauer)": "Grade 3–4 neutropenia 40%, infection 20%, anemia 18%, thrombocytopenia 15%; serious adverse events 55%.", "M14-032 (Jones)": "Grade 3–4 neutropenia 51%, thrombocytopenia 29%, anemia 29%; no treatment-related deaths.", "MURANO (Seymour)": "Grade 3–4 neutropenia more frequent with venetoclax-rituximab; grade 3–4 febrile neutropenia and infections less frequent than with bendamustine-rituximab; grade 3–4 tumor lysis syndrome 3.1%.", "VENICE-1 (Kater)": "Grade ≥3 adverse events 79%; neutropenia 37%; serious adverse events 53%, most often pneumonia (8%); deaths from adverse events 5%, one possibly related to venetoclax.", "BRUIN CLL-322 (Davids)": "Grade ≥3 adverse events 79% vs 73%; grade ≥3 infections 34% vs 23% (full paper); grade ≥3 tumor lysis syndrome 1% vs 4%; atrial fibrillation or flutter 3% in each group; treatment-related deaths 1 vs 4.", "Study 116 (Furman)": "Serious adverse events 40% vs 35%; grade ≥3 aminotransferase elevations 5% with idelalisib (full paper). Long-term exposure: grade ≥3 diarrhea 16.4%, colitis 8.2%, pneumonitis 6.4%.", "Study 115 (Zelenetz)": "Grade ≥3 neutropenia 60% vs 47%; febrile neutropenia 23% with idelalisib; grade ≥3 infections 39% vs 25%; serious adverse events 68% vs 44%; deaths from adverse events 11% vs 7%.", "Study 119 (Jones)": "Grade ≥3 neutropenia 34% vs 16%, diarrhea 20% vs 1%, pneumonia 14% vs 8%; Pneumocystis pneumonia 5% vs 1%; treatment-related deaths 22 vs 6 (2:1 randomization).", "DUO (Flinn)": "Most common with duvelisib: diarrhea, neutropenia, pyrexia, nausea, anemia and cough; rates not reported in abstract. See the regulatory note on overall survival.", "BRUIN (Mato)": "Infections 71.0%, bleeding 42.6%, neutropenia 32.5%; hypertension 14.2%, atrial fibrillation or flutter 3.8%, major hemorrhage 2.2%; 2.8% stopped for a treatment-related adverse event.", "TRANSCEND CLL 004 (Siddiqi)": "Grade 3 cytokine release syndrome 9% (no grade 4–5); grade 3 neurological events 18% and grade 4 in 1%; one death related to treatment (macrophage activation syndrome).", "BRUIN CLL-321 (Sharman)": "Grade ≥3 adverse events 57.7% vs 73.4%; discontinuation for adverse events 17.2% vs 34.9%.", "Alemtuzumab after fludarabine (Keating)": "Infusion-related events, mostly grade 1–2 and in the first week; grade 3–4 infections 26.9%.", "Hx-CD20-406 (Wierda)": "Infusion reactions and infections, mainly grade 1–2; anemia and neutropenia.", "REACH (Robak)": "Grade 3–4 and serious adverse events slightly more frequent with FCR; rates not reported in abstract."};
+const CORE = [];
+const WATCH = {"note": "Ongoing phase 3 trials selected from ClinicalTrials.gov (checked November 12, 2026). Status and primary completion dates are as registered; some trials may already have presented results at meetings.", "items": [{"n": "CaDAnCe-302", "d": "BGB-16673 (BTK degrader) vs investigator's choice of idelalisib-rituximab, bendamustine-rituximab or venetoclax-rituximab retreatment, CLL/SLL previously treated with both a BTK and a BCL2 inhibitor", "ph": "Phase 3", "st": "Recruiting", "pcd": "2028-05-15 (estimated)", "ep": "PFS (independent review)", "nct": "NCT06846671"}, {"n": "BGB-16673-304", "d": "BGB-16673 (BTK degrader) vs pirtobrutinib, relapsed or refractory CLL/SLL", "ph": "Phase 3", "st": "Recruiting", "pcd": "2028-04-17 (estimated)", "ep": "PFS (independent review)", "nct": "NCT06973187"}, {"n": "NX-5948-306", "d": "NX-5948 (bexobrutideg, BTK degrader) vs pirtobrutinib, relapsed or refractory CLL/SLL", "ph": "Phase 3", "st": "Recruiting", "pcd": "2029-10 (estimated)", "ep": "PFS and ORR (independent review)", "nct": "NCT07516093"}, {"n": "BGB-11417-303", "d": "Sonrotoclax with obinutuzumab or rituximab vs venetoclax-rituximab, relapsed or refractory CLL/SLL", "ph": "Phase 3", "st": "Recruiting", "pcd": "2029-09-30 (estimated)", "ep": "PFS (blinded independent review)", "nct": "NCT06943872"}, {"n": "BELLWAVE-010", "d": "Nemtabrutinib-venetoclax vs venetoclax-rituximab, relapsed or refractory CLL/SLL after at least one prior therapy", "ph": "Phase 3", "st": "Recruiting", "pcd": "2032-06-01 (estimated)", "ep": "PFS (blinded independent review), after a dose-confirmation part", "nct": "NCT05947851"}, {"n": "LP-168-US-CLL301", "d": "Rocbrutinib (LP-168) vs pirtobrutinib, relapsed or refractory CLL/SLL previously treated with a covalent BTK inhibitor", "ph": "Phase 3", "st": "Recruiting", "pcd": "2029-10-30 (estimated)", "ep": "PFS (independent review)", "nct": "NCT07342478"}, {"n": "CaDAnCe-303", "d": "BGB-16673 (BTK degrader) vs investigator's choice, relapsed or refractory CLL/SLL previously treated with a covalent BTK inhibitor (sites in China and Taiwan)", "ph": "Phase 3", "st": "Active, not recruiting", "pcd": "2029-11-30 (estimated)", "ep": "PFS (independent review)", "nct": "NCT06970743"}, {"n": "DZ2024B0002", "d": "DZD8586 vs investigator's choice, relapsed or refractory CLL/SLL (sites in China)", "ph": "Phase 3", "st": "Recruiting", "pcd": "2029-01 (estimated)", "ep": "PFS (independent review)", "nct": "NCT07139873"}]};
+const PAGEKEY = "cllr";
+const PAGETITLE = "Relapsed chronic lymphocytic leukemia";
+const SLUG = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+T.forEach(t => { t.tx = TOX[t.n] || "Not reported in abstract"; t.core = CORE.includes(t.n); t.slug = SLUG(t.n);
+  t.full = [t.r, t.N, t.hr, t.fu, t.tx].some(x => /full paper/.test(String(x || ""))); });
+function eviHTML(t) {
+  return t.full
+    ? '<span class="ok full" title="Checked against the PubMed abstract; values marked “full paper” were checked against the full publication">✓ abstract + full paper</span>'
+    : '<span class="ok" title="Checked against the PubMed abstract">✓ abstract</span>';
+}
+
+
+let active = "all", sortMode = "setting";
+try { const s = localStorage.getItem("cllr-sort"); if (s) sortMode = s; } catch(e) {}
+const chipsEl = document.getElementById("chips");
+[["all","All"], ["core","★ Core trials"], ...order.map(k => [k, SETTINGS[k]])].forEach(([k,label]) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.id = "chip-" + k; b.textContent = label;
+  b.setAttribute("aria-pressed", k === active);
+  b.addEventListener("click", () => { active = k; chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b)); render(); });
+  chipsEl.appendChild(b);
+});
+const sortEl = document.getElementById("sort"); sortEl.value = sortMode;
+sortEl.addEventListener("change", () => { sortMode = sortEl.value; try { localStorage.setItem("cllr-sort", sortMode); } catch(e) {} render(); });
+const qEl = document.getElementById("q"); qEl.addEventListener("input", render);
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function recHTML(t){
+  const r = t.rc; if (!r) return "";
+  const cm = r.cm.length
+    ? r.cm.map(c => `<li><a href="https://pubmed.ncbi.nlm.nih.gov/${c[0]}/" target="_blank" rel="noopener">${esc(c[1])}</a>: ${esc(c[2])}</li>`).join("")
+    : '<li class="none">No commentary linked to this paper in PubMed</li>';
+  const rel = r.rel && r.rel.length
+    ? `<div class="rk">Related papers</div><ul>${r.rel.map(c => `<li><a href="https://pubmed.ncbi.nlm.nih.gov/${c[0]}/" target="_blank" rel="noopener">${esc(c[1])}</a>: ${esc(c[2])}</li>`).join("")}</ul>` : "";
+  return `<div class="rk">Commentary</div><ul>${cm}</ul>${rel}
+    <div class="rk">Regulatory</div><p>${esc(r.reg)}</p>
+    <div class="rk">Guidelines</div><p>${esc(r.gl)}</p>
+    <div class="rk">Access</div><p>${esc(r.acc)}</p>`;
+}
+const GRPHDR = (t, i, rows) => (sortMode === "setting" || sortMode === "setting-asc") && (i === 0 || rows[i - 1].s !== t.s)
+  ? '<li class="grp"><h3>' + esc(SETTINGS[t.s]) + '<span class="gn">' + rows.filter(r => r.s === t.s).length + '</span></h3></li>' : '';
+function render(){
+  const q = qEl.value.trim().toLowerCase();
+  let rows = T.filter(t => (active === "all" || (active === "core" ? t.core : t.s === active)) &&
+    (!q || [t.n,t.d,t.r,t.tx,t.i,t.b,t.q,t.c,t.ph,String(t.y),t.reg,t.gl,t.acc,t.cm.map(c=>c[1]+" "+c[2]).join(" "),(t.rel||[]).map(c=>c[1]+" "+c[2]).join(" ")].join(" ").toLowerCase().includes(q)));
+  rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
+    : (order.indexOf(a.s) - order.indexOf(b.s)) || (sortMode === "setting-asc" ? a.y - b.y : b.y - a.y));
+  document.getElementById("count").textContent = rows.length + " of " + T.length + " studies";
+  const list = document.getElementById("list");
+  if (!rows.length) { list.innerHTML = '<li class="empty">No studies match that search. Clear the search or pick another category.</li>'; return; }
+  list.innerHTML = rows.map((t, i) => GRPHDR(t, i, rows) + `
+    <li class="trial" data-trial="${t.slug}">
+      <div class="yr">${t.y}</div>
+      <div class="body">
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span>${t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : ''}<button type="button" class="share" data-slug="${t.slug}" title="Copy a link to this trial" aria-label="Copy a link to ${esc(t.n)}"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M8.5 11.5a3 3 0 0 0 4.2 0l2.6-2.6a3 3 0 0 0-4.2-4.2l-1 1M11.5 8.5a3 3 0 0 0-4.2 0l-2.6 2.6a3 3 0 0 0 4.2 4.2l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="lbl">Link copied</span></button></div>
+        <p class="design">${esc(t.d)}</p>
+        <div class="stats">
+          <span><b>N</b>${esc(t.N)}</span>
+          <span><b>HR</b>${esc(t.hr)}</span>
+          <span><b>Median F/U</b>${esc(t.fu)}</span>
+        </div>
+        <dl>
+          <dt class="f-ep">Endpoint</dt><dd class="f-ep">${esc(t.ep)}</dd>
+          <dt class="f-res">Result</dt><dd class="result f-res">${esc(t.r)} ${eviHTML(t)}</dd>
+          <dt class="f-tox">Key toxicity</dt><dd class="tox f-tox">${esc(t.tx)}</dd>
+          ${MOAMAP[t.n] ? `<dt>Drug mechanism</dt><dd class="moas">${MOAHTML(t)}</dd>` : ""}
+          <dt>Builds on</dt><dd>${esc(t.b)}</dd>
+          <dt>Changed</dt><dd>${esc(t.i)}</dd>
+          <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
+          <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${FTTITLE(t.ft)}">${FTLABEL(t.ft)} ↗</a>` : ''}${t.ft && t.ft[2] === 'repo' ? ` · <a class="ft" href="${esc(t.ft[3])}" target="_blank" rel="noopener" title="Free legal copy in a university repository, found through Unpaywall; it may be the authors' manuscript rather than the final journal version">Free copy (repository) ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')} · <a class="report" href="${esc(REPORT(t))}" title="Email a correction for this trial">Report an error</a></dd>
+        </dl>
+      </div>
+    </li>`).join("");
+}
+render();
+
+(function renderWatch(){
+  const listEl = document.getElementById("list");
+  const box = listEl.parentNode.querySelector(".watch");
+  if (!box) return;
+  if (!WATCH.items || !WATCH.items.length) { box.hidden = true; return; }
+  box.hidden = false;
+  box.innerHTML = '<h2>Trials to watch</h2><p class="wnote">' + esc(WATCH.note || "") + '</p><ul>' + WATCH.items.map(w =>
+    '<li><span class="wn">' + esc(w.n) + '</span><span class="wd">' + esc(w.d) + '</span><span class="wm">' +
+    [w.ph, w.st, w.pcd ? "primary completion " + w.pcd : "", w.ep ? "primary endpoint: " + w.ep : ""].filter(Boolean).map(esc).join(" · ") +
+    (w.nct ? ' · <a href="https://clinicaltrials.gov/study/' + esc(w.nct) + '" target="_blank" rel="noopener">' + esc(w.nct) + ' ↗</a>' : "") +
+    '</span>' + (w.note ? '<span class="wd">' + esc(w.note) + '</span>' : '') + '</li>').join("") + '</ul>';
+})();
+
+
+(function setupReviewRefs(){
+  const listEl = document.getElementById("list");
+  const box = listEl.parentNode.querySelector(".review");
+  if (!box) return;
+  box.addEventListener("click", e => {
+    if (e.target.closest(".rv-close")) {
+      box.open = false;
+      box.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    const a = e.target.closest("a.rref");
+    if (!a) return;
+    e.preventDefault();
+    const first = chipsEl.querySelector(".chip");
+    if (first && first.getAttribute("aria-pressed") !== "true") first.click();
+    if (qEl.value) { qEl.value = ""; render(); }
+    const li = listEl.querySelector('li[data-trial="' + a.getAttribute("data-slug") + '"]');
+    if (!li) return;
+    li.scrollIntoView({ behavior: "smooth", block: "start" });
+    li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+  });
+})();
+
+(function setupTabs(){
+  const listEl = document.getElementById("list");
+  const root = listEl.parentNode;
+  const tabs = root.querySelector(".tabs"), panel = root.querySelector(".newdrugs"), watch = root.querySelector(".watch"), controls = root.querySelector(".controls");
+  if (!tabs) return;
+  const L = (s) => '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + ' ↗</a>';
+  const nW = (typeof WATCH !== "undefined" && WATCH.items) ? WATCH.items.length : 0;
+  const nD = (typeof NEWD !== "undefined") ? NEWD.items.length : 0;
+  const cw = tabs.querySelector('[data-tab="watch"] .tcount'), cd = tabs.querySelector('[data-tab="newdrugs"] .tcount');
+  if (cw) cw.textContent = nW; if (cd) cd.textContent = nD;
+  let mod = "all";
+  function draw(){
+    if (!panel || !nD) return;
+    const mods = [...new Set(NEWD.items.map(d => d.mod))];
+    const items = NEWD.items.filter(d => mod === "all" || d.mod === mod);
+    const log = (arr, none) => '<ul class="nd-log">' + (arr.length ? arr.map(g => '<li><b>' + esc(g.n) + ':</b> ' + esc(g.txt) + ' ' + g.src.map(L).join(" · ") + '</li>').join("") : '<li>' + none + '</li>') + '</ul>';
+    panel.innerHTML = '<p class="nd-note">' + esc(NEWD.note) + (NEWD.scope ? ' ' + esc(NEWD.scope) : '') + ' Status checked ' + esc(NEWD.checked) + '.</p>' +
+      (mods.length > 1 ? '<div class="nd-mods">' + [["all","All"]].concat(mods.map(m => [m, m])).map(([k, l]) => '<button type="button" class="chip" data-mod="' + esc(k) + '" aria-pressed="' + (k === mod) + '">' + esc(l) + '</button>').join("") + '</div>' : '') +
+      items.map(d => '<div class="nd-item"><div class="nd-top"><h2 class="nd-name">' + esc(d.n) + '</h2><span class="nd-mod">' + esc(d.mod) + '</span><span class="nd-ev' + (/^Peer-reviewed/.test(d.ev) ? ' pr' : '') + '">' + esc(d.ev) + ' · ' + esc(d.pub) + '</span></div>' +
+        '<dl><dt>Target</dt><dd>' + esc(d.tgt) + '</dd><dt>Why it matters</dt><dd>' + esc(d.why) + '</dd><dt class="f-res">Key data</dt><dd class="f-res">' + esc(d.data) + '</dd><dt class="f-tox">Safety</dt><dd class="f-tox">' + esc(d.safety) + '</dd><dt>Next step</dt><dd>' + esc(d.next) + '</dd><dt>Sources</dt><dd class="nd-src">' + d.src.map(L).join(" · ") + '</dd></dl></div>').join("") +
+      '<h3>Moved on to phase 3 results</h3>' + log(NEWD.grad, "None so far.") +
+      '<h3>Discontinued</h3>' + log(NEWD.disc, "None so far.") +
+      '<p class="nd-rules">How this list is kept: agents with a new mechanism, target or modality (including phase 1 when the approach is new, and repurposed drugs with credible clinical data; no biosimilars and no preclinical-only agents). An agent moves to "Moved on" when phase 3 results are published, and to "Discontinued", with the reason and date, when development stops or a pivotal trial fails; discontinued entries are removed after 2 years. Checked at each scheduled update and after major meetings (ASH, ASCO, EHA, AACR, ESMO, IMS).</p>';
+    panel.querySelectorAll(".nd-mods .chip").forEach(b => b.addEventListener("click", () => { mod = b.getAttribute("data-mod"); draw(); }));
+  }
+  draw();
+  function show(which){
+    tabs.querySelectorAll("button[data-tab]").forEach(x => x.setAttribute("aria-selected", x.getAttribute("data-tab") === which));
+    if (controls) controls.style.display = which === "trials" ? "" : "none";
+    listEl.style.display = which === "trials" ? "" : "none";
+    if (watch) watch.style.display = (which === "newdrugs" || !nW) ? "none" : "";
+    if (panel) panel.hidden = which !== "newdrugs";
+    if (mpanel) mpanel.hidden = which !== "mech";
+    if (watch && which === "mech") watch.style.display = "none";
+  }
+  // Drug mechanisms tab: classes tested on this page, how they work, the review, and the trials that used them.
+  const mpanel = root.querySelector(".mechs");
+  const mKeys = (typeof MOA !== "undefined" && typeof MOAMAP !== "undefined" && typeof MECH !== "undefined")
+    ? Object.keys(MOA).filter(k => MECH[k] && T.some(t => (MOAMAP[t.n] || []).includes(k))) : [];
+  const cm = tabs.querySelector('[data-tab="mech"] .tcount'); if (cm) cm.textContent = mKeys.length;
+  if (mpanel && mKeys.length) {
+    mpanel.innerHTML = '<p class="mx-note">Each drug class tested in the trials on this page: how it works, a recent peer-reviewed review on mechanism and resistance, and the trials that used it. Select a trial to jump to its card.</p>' +
+      mKeys.map(k => { const m = MOA[k];
+        const trials = T.filter(t => (MOAMAP[t.n] || []).includes(k)).sort((a, b) => a.y - b.y);
+        return '<div class="mx-item"><h2 class="mx-name">' + esc(m.l) + '</h2><p class="mx-desc">' + esc(MECH[k]) + '</p>' +
+          '<p class="mx-rev"><span class="mx-k">Review</span> <a href="' + esc(MOAURL(m)) + '" target="_blank" rel="noopener">' + esc(m.a + ', ' + m.j + ' ' + m.y) + ' ↗</a>' + (m.pmc ? ' <span class="moafree">free</span>' : '') + '</p>' +
+          '<p class="mx-trials"><span class="mx-k">Trials on this page</span> ' + trials.map(t => '<a class="mt" href="#t-' + PAGEKEY + '-' + t.slug + '" data-slug="' + t.slug + '">' + esc(t.n) + ' <span class="mt-y">' + t.y + '</span></a>').join("") + '</p></div>'; }).join("");
+    mpanel.addEventListener("click", e => {
+      const a = e.target.closest("a.mt"); if (!a) return;
+      e.preventDefault();
+      show("trials");
+      tabs.dispatchEvent(new Event("tabschange"));
+      const first = chipsEl.querySelector(".chip");
+      if (first && first.getAttribute("aria-pressed") !== "true") first.click();
+      if (qEl.value) { qEl.value = ""; render(); }
+      const li = listEl.querySelector('li[data-trial="' + a.getAttribute("data-slug") + '"]');
+      if (!li) return;
+      li.scrollIntoView({ behavior: "smooth", block: "start" });
+      li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+    });
+  }
+  tabs.addEventListener("click", e => {
+    const b = e.target.closest("button[data-tab]"); if (!b) return;
+    const w = b.getAttribute("data-tab");
+    // Clicking the tab that is already open closes it and returns to the trial list.
+    if (w !== "trials" && b.getAttribute("aria-selected") === "true") {
+      show("trials");
+      tabs.dispatchEvent(new Event("tabschange"));
+      if (tabs._scrollHome) tabs._scrollHome(); else tabs.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      return;
+    }
+    show(w);
+    tabs.dispatchEvent(new Event("tabschange"));
+  });
+  show("trials");
+})();
+(function pinTabs(){
+  // Pin the tab bar while a tab other than Landmark trials is open.
+  const listEl = document.getElementById("list");
+  const root = listEl.parentNode;
+  const tabs = root.querySelector(".tabs");
+  if (!tabs) return;
+  const ph = document.createElement("div");
+  ph.className = "tabs-ph"; ph.hidden = true;
+  tabs.parentNode.insertBefore(ph, tabs);
+  let pinned = false;
+  function topOffset() {
+    // Below the website's pinned topic title bar, or any fixed site header; 0 on the standalone page.
+    const h = document.querySelector(".lta-head.lta-pinned");
+    if (h) return Math.max(0, h.getBoundingClientRect().bottom);
+    let off = 0;
+    try {
+      (document.elementsFromPoint(window.innerWidth / 2, 2) || []).forEach(el => {
+        if (root.contains(el)) return;
+        for (let n = el; n && n !== document.body; n = n.parentElement) {
+          const p = getComputedStyle(n).position;
+          if (p === "fixed" || p === "sticky") {
+            const r = n.getBoundingClientRect();
+            if (r.top <= 2 && r.bottom > off && r.bottom < window.innerHeight * 0.4) off = r.bottom;
+            break;
+          }
+        }
+      });
+    } catch (e) {}
+    return off;
+  }
+  function unpin() {
+    if (!pinned) return;
+    tabs.classList.remove("tabs-pinned");
+    tabs.style.top = tabs.style.left = tabs.style.width = "";
+    ph.hidden = true; pinned = false;
+  }
+  function update() {
+    const sel = tabs.querySelector('button[aria-selected="true"]');
+    const active = !!sel && sel.getAttribute("data-tab") !== "trials";
+    const off = topOffset();
+    const r = (pinned ? ph : tabs).getBoundingClientRect();
+    const rr = root.getBoundingClientRect();
+    const h = tabs.offsetHeight;
+    if (active && r.top < off && rr.bottom > off + h + 40) {
+      if (!pinned) { ph.style.height = h + "px"; ph.hidden = false; tabs.classList.add("tabs-pinned"); pinned = true; }
+      const pr = ph.getBoundingClientRect();
+      tabs.style.top = off + "px"; tabs.style.left = pr.left + "px"; tabs.style.width = pr.width + "px";
+    } else unpin();
+  }
+  let ticking = false;
+  const req = () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; update(); }); } };
+  window.addEventListener("scroll", req, { passive: true });
+  document.addEventListener("scroll", req, { passive: true, capture: true });
+  window.addEventListener("resize", req);
+  tabs.addEventListener("tabschange", () => { unpin(); req(); });
+  // Closing a tab returns to the top of the trial list, just below any pinned header.
+  tabs._scrollHome = () => {
+    const y = tabs.getBoundingClientRect().top + window.pageYOffset - topOffset() - 8;
+    if (tabs.getBoundingClientRect().top < topOffset()) window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+  };
+})();
+(function setupShare(){
+  const listEl = document.getElementById("list");
+  listEl.addEventListener("click", e => {
+    const b = e.target.closest(".share");
+    if (!b) return;
+    const slug = b.getAttribute("data-slug");
+    const inSite = !!listEl.closest(".ltw");
+    const base = inSite ? location.href.split("#")[0] : "https://andresferber.github.io/landmark-trials/";
+    const url = base + "#t-" + PAGEKEY + "-" + slug;
+    const done = () => { b.classList.add("copied"); setTimeout(() => b.classList.remove("copied"), 1800); };
+    const fallback = () => { const t = document.createElement("textarea"); t.value = url; t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); done(); } catch (x) {} t.remove(); };
+    try { navigator.clipboard.writeText(url).then(done, fallback); } catch (x) { fallback(); }
+  });
+})();
+(function setupPrint(){
+  const listEl = document.getElementById("list");
+  const wrap = listEl.closest(".wrap");
+  const btn = wrap && wrap.querySelector(".printbtn");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const root = wrap.closest(".ltw");
+    if (!root) { window.print(); return; }
+    const css = Array.prototype.map.call(document.querySelectorAll("style"), s => s.textContent).filter(c => c.includes("--font-display")).join("\n");
+    const clone = root.cloneNode(true);
+    clone.querySelectorAll(".controls, .printbtn").forEach(n => n.remove());
+    const w = window.open("", "_blank");
+    if (!w) { window.print(); return; }
+    const title = (wrap.querySelector("h1") || {}).textContent || "Landmark trials";
+    w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>' + esc(title) + '</title>' +
+      '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">' +
+      '<style>' + css + ' body{margin:0;background:#fff} .ltw{background:#fff} @media print{.ltw .trial{break-inside:avoid}}</style></head><body>' +
+      clone.outerHTML + '<script>window.onload=function(){setTimeout(function(){window.print()},400)}<\/script></body></html>');
+    w.document.close();
+  });
+  try { if (/[?&]print=1/.test(location.search)) setTimeout(() => window.print(), 500); } catch (e) {}
+})();
+</script>
