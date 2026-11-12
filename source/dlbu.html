@@ -353,10 +353,10 @@ dd.f-ep, dd.f-res, dd.f-tox { padding: 2px 8px 2px 0; border-radius: 0 6px 6px 0
     <div class="row2">
       <input type="search" id="q" placeholder="Search trial, drug, regimen…" aria-label="Search trials">
       <select id="sort" aria-label="Sort order">
+        <option value="desc">Sort: newest first</option>
+        <option value="asc">Sort: oldest first</option>
         <option value="setting">Sort: category, newest first</option>
         <option value="setting-asc">Sort: category, oldest first</option>
-        <option value="asc">Sort: oldest first</option>
-        <option value="desc">Sort: newest first</option>
       </select>
       <span class="count" id="count"></span>
       <button type="button" class="printbtn" title="Print or save as PDF (prints the trials currently shown)">Print / PDF</button>
@@ -702,8 +702,8 @@ function eviHTML(t) {
 }
 
 
-let active = "all", sortMode = "setting";
-try { const s = localStorage.getItem("fl2-sort"); if (s) sortMode = s; } catch(e) {}
+let active = "all", sortMode = "desc";  // Andres, Nov 11, 2026: newest to oldest across categories
+try { const s = localStorage.getItem("lt-sort-v2"); if (s) sortMode = s; } catch(e) {}
 const chipsEl = document.getElementById("chips");
 [["all","All"], ["core","★ Core trials"], ...order.map(k => [k, SETTINGS[k]])].forEach(([k,label]) => {
   const b = document.createElement("button");
@@ -713,7 +713,7 @@ const chipsEl = document.getElementById("chips");
   chipsEl.appendChild(b);
 });
 const sortEl = document.getElementById("sort"); sortEl.value = sortMode;
-sortEl.addEventListener("change", () => { sortMode = sortEl.value; try { localStorage.setItem("fl2-sort", sortMode); } catch(e) {} render(); });
+sortEl.addEventListener("change", () => { sortMode = sortEl.value; try { localStorage.setItem("lt-sort-v2", sortMode); } catch(e) {} render(); });
 const qEl = document.getElementById("q"); qEl.addEventListener("input", render);
 function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 function recHTML(t){

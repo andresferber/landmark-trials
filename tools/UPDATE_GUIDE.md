@@ -66,7 +66,11 @@ All data is in the main `<script>`:
   authors, trial names that come from the sponsor, company code names for drugs (e.g. when there is no
   generic name yet), links to sponsored protocols or registry records, and FDA prescribing information.
   When unsure, ask Andres.
-- Default sort is "category, newest first" with category subtitles in the list; keep it.
+- Default sort is "category, newest first" with category subtitles in the list; keep it. Exception
+  (Andres, Nov 11, 2026): on dlbu and dlbr the default is "newest first" across all categories
+  (sortMode "desc", first option in the sort menu, storage key "lt-sort-v2"), so those pages show one
+  chronological list with no category subtitles; the category chips and the tag on each card still work.
+  Keep that default on those two pages.
 - Every page footer carries the "For education only" disclaimer (class sitedisc). Keep it.
 - Independence: this is Andres's independent project, done on his own time and funds. No links or
   references to his employer (Jefferson Health) and no preference for its publications; cite them
