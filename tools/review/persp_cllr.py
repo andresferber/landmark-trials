@@ -1,5 +1,5 @@
 TITLE = 'The evolution of treatment for relapsed chronic lymphocytic leukemia, 2002–2026'
-UPDATED = 'November 12, 2026 · Pilot draft, pending review'
+UPDATED = 'November 12, 2026'
 TL_CAPTION = 'Timeline of key trials and US regulatory milestones'
 
 TAKE = [
