@@ -1,5 +1,5 @@
 TITLE = 'Primary bone lymphoma: what the evidence supports, and what it does not'
-UPDATED = 'November 11, 2026 · Pilot draft, pending review'
+UPDATED = 'November 11, 2026'
 TL_CAPTION = ''
 TIMELINE = []   # no era timeline for this topic: the evidence is a set of retrospective series, not a sequence of trials
 

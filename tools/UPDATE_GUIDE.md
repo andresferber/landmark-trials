@@ -287,5 +287,8 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   "osteolymphoma"; add a dedicated ongoing trial to `WATCH` in build_pbl.py if one appears, and tell Andres.
 - Perspective: tools/review/persp_pbl.py (no timeline). Andres's position: consolidative radiotherapy after
   chemoimmunotherapy is the standard approach, with Rezazadeh 2024 and its editorial as the challenge to it.
-  Keep that framing unless he changes it.
+  Keep that framing unless he changes it. He approved the Perspective on Nov 11, 2026 and it is live on the website:
+  the usual Perspective rules apply (small factual edits go live; rewriting a section needs his approval).
+- Core studies: Andres decided on Nov 11, 2026 that this topic has none. `CORE` stays `[]`, the "★ Core" filter
+  chip is removed by build_pbl.py, and updates should not suggest core studies.
 - topics.json count word is "studies". The loader gives the group "Lymphoma: rare presentations" its own colour.
