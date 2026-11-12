@@ -1,8 +1,8 @@
 {"items": [
+ {"date": "2026-11-11", "key": "pbl", "text": "New topic: primary bone lymphoma, an evidence map of 38 studies in adults (treatment series, registries, prognosis, single versus multiple lesions, biology, circulating tumor DNA, non-DLBCL histologies, imaging), with a grid showing what has and has not been published."},
  {"date": "2026-11-11", "key": "dlbu", "text": "Diffuse large B-cell lymphoma: a Perspective on how treatment evolved is now open on both topics, and three phase 2 trials of targeted drugs with R-CHOP were added to untreated disease (ECOG-ACRIN E1412, Smart Start, GUIDANCE-01)."},
  {"date": "2026-11-10", "key": "dlbu", "text": "New disease: diffuse large B-cell lymphoma, in two topics: untreated (38 studies) and relapsed/refractory (28 studies)."},
  {"date": "2026-11-10", "text": "The Prognosis tab now covers smoldering and relapsed myeloma as well: risk models, biomarkers and response measures linked to the trials that used them, two new relapsed-myeloma entries (t(11;14) and venetoclax; early relapse) and three new markers to watch."},
  {"date": "2026-11-09", "text": "Long-term follow-up and final overall survival results added to 36 trial cards across the lymphoma and myeloma topics, for example TRIANGLE at 4.5 years, CARTITUDE-1 at 5 years, and final survival in POLLUX, CASTOR and ALCYONE."},
- {"date": "2026-11-01", "key": "flr", "text": "Relapsed follicular lymphoma: long-term CAR-T results added (ZUMA-5 at 5 years, median PFS 62.2 months; ELARA; TRANSCEND FL at 3 years) and 2026 EHA guideline placements on the trial cards."},
- {"date": "2026-11-01", "key": "rrmm", "slug": "majestec-9-touzeau", "text": "Relapsed myeloma: two new phase 3 trials, teclistamab alone (MajesTEC-9) and talquetamab-daratumumab with or without pomalidomide (MonumenTAL-3), both improving PFS at early relapse."}
+ {"date": "2026-11-01", "key": "flr", "text": "Relapsed follicular lymphoma: long-term CAR-T results added (ZUMA-5 at 5 years, median PFS 62.2 months; ELARA; TRANSCEND FL at 3 years) and 2026 EHA guideline placements on the trial cards."}
 ]}

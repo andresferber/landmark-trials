@@ -40,13 +40,15 @@ Each topic page is one HTML file with:
 - **Verification rules**: every number checked against the PubMed abstract or PubMed Central full text; "not reported in abstract" rather than a guess; PMIDs confirmed by journal, volume, pages and first author; unconfirmed regulatory statements marked "verify"; guideline placements that need NCCN (login) marked "(NCCN not checked)"; no invented insurance approval rates.
 - **Credit line** in small type under the footer: "Created by Andres Ferber, MD, with the assistance of Claude (Anthropic)."
 
+- **Primary bone lymphoma** (`pbl`, own group "Lymphoma: rare presentations", since Nov 11, 2026): an evidence map of a rare entity, not a list of trials. Almost all entries are retrospective series, so its cards differ: study-design badge (`ph`), histology group (`hist`), period (`per`), definition of primary bone lymphoma used (`df`), prognostic factors (`pf`), optional complications (`tox`), what it adds (`i`), limitations (`q`) and cohort overlap (`ov`); no hazard ratio, regulatory, guideline or drug-mechanism rows. An evidence grid (histology x design) filters the list and shows the gaps, and a "What is not known" box sits beside it. Own slate-teal accent. Adults only, true primary bone lymphoma only (two context studies of any skeletal involvement are labelled as such). Built by `tools/pbl/build_pbl.py` from `tools/pbl/pbl_data.py`; see tools/UPDATE_GUIDE.md section 9.
+
 ## Search and news
 
 `index.json` (built by `node tools/build_index.js` from `source/`) powers the search across all topics on the website; `news.json` feeds the "What's new" box.
 
 ## Scheduled updates
 
-A scheduled task per topic runs on the 1st of the month on its own schedule: monthly for newly diagnosed and relapsed myeloma and relapsed DLBCL; every 2 months (Jan, Mar, May, Jul, Sep, Nov) for MCL, relapsed FL and untreated DLBCL; quarterly (Jan, Apr, Jul, Oct) for smoldering myeloma and untreated FL. A health check runs on the 2nd of each month. It searches PubMed (including follow-up publications of every trial on the page, by registry number and name), FDA/EMA, NCCN and major meetings; updates the artifact; regenerates `topics/<key>.html`; copies the page to `source/<key>.html`; updates `topics.json`; and pushes here. Papers that need a PDF are listed in the monthly summary. The full procedure is in `tools/UPDATE_GUIDE.md`, which the scheduled tasks follow.
+A scheduled task per topic runs on the 1st of the month on its own schedule: monthly for newly diagnosed and relapsed myeloma and relapsed DLBCL; every 2 months (Jan, Mar, May, Jul, Sep, Nov) for MCL, relapsed FL and untreated DLBCL; quarterly (Jan, Apr, Jul, Oct) for smoldering myeloma and untreated FL; every 6 months (Jan, Jul) for primary bone lymphoma, plus one extra pass after ASH 2026. A health check runs on the 2nd of each month. It searches PubMed (including follow-up publications of every trial on the page, by registry number and name), FDA/EMA, NCCN and major meetings; updates the artifact; regenerates `topics/<key>.html`; copies the page to `source/<key>.html`; updates `topics.json`; and pushes here. Papers that need a PDF are listed in the monthly summary. The full procedure is in `tools/UPDATE_GUIDE.md`, which the scheduled tasks follow.
 
 ## Adding a topic
 

@@ -10,6 +10,7 @@
 (function () {
   var GROUP_COLORS = {
     Lymphoma: { main: "#0f6b6b", dark: "#0a5050", tint: "#eef7f6" },
+    "Lymphoma: rare presentations": { main: "#4a6572", dark: "#37505b", tint: "#eef3f5" },
     Myeloma:  { main: "#5b3e96", dark: "#46307a", tint: "#f3effa" },
     _default: { main: "#2c4a8a", dark: "#22396b", tint: "#eef2fa" }
   };

@@ -112,7 +112,8 @@ refs = ''.join(
     f'<li><a class="rref" href="#t-{key}-{slug(n)}" data-slug="{slug(n)}">{html.escape(n)}</a>. {html.escape(cites.get(n, ""))}.'
     + (f' <a href="https://pubmed.ncbi.nlm.nih.gov/{pmids[n]}/" target="_blank" rel="noopener">PubMed ↗</a>' if n in pmids else '') + '</li>' for n in order)
 take = ''.join(f'<li>{html.escape(t)}</li>' for t in c.TAKE)
-tl = ''.join(f'<li class="tl-{col}"><span class="tl-y">{y}</span><span class="tl-e">{html.escape(e)}</span></li>' for y, e, col in c.TIMELINE)
+TIMELINE = getattr(c, 'TIMELINE', None) or []  # optional: topics without a trial timeline (pbl) leave it out
+tl = ''.join(f'<li class="tl-{col}"><span class="tl-y">{y}</span><span class="tl-e">{html.escape(e)}</span></li>' for y, e, col in TIMELINE)
 words = len(re.sub(r'<[^>]+>', ' ', body).split())
 block = f'''  <details class="review" id="review">
     <summary><span class="rv-kicker">Perspective</span><span class="rv-title">{html.escape(c.TITLE)}</span><span class="rv-open">Read the perspective</span></summary>
@@ -120,7 +121,7 @@ block = f'''  <details class="review" id="review">
       <p class="rv-meta">Andres Ferber, MD, with the assistance of Claude (Anthropic) · Last updated {c.UPDATED} · About {round(words, -2):,} words. Numbers are taken from the verified trial entries on this page; numbered references jump to each trial.</p>
       {DISC}
       <div class="rv-take"><h3>Key points</h3><ul>{take}</ul></div>
-      <figure class="rv-tl"><figcaption>{html.escape(c.TL_CAPTION)}</figcaption><ol>{tl}</ol></figure>
+      {f'<figure class="rv-tl"><figcaption>{html.escape(c.TL_CAPTION)}</figcaption><ol>{tl}</ol></figure>' if TIMELINE else ''}
       {body}
       <h3>References</h3>
       <ol class="rv-refs">{refs}</ol>

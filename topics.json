@@ -42,6 +42,14 @@
       "group": "Lymphoma"
     },
     {
+      "key": "pbl",
+      "title": "Primary bone lymphoma",
+      "count": "38 studies",
+      "file": "topics/pbl.html",
+      "updated": "2026-11-11",
+      "group": "Lymphoma: rare presentations"
+    },
+    {
       "key": "smm",
       "title": "Smoldering multiple myeloma",
       "count": "23 studies",

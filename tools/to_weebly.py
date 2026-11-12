@@ -119,6 +119,14 @@ GUARD = """
 .ltw a.pchip { color: var(--fg) !important; text-decoration: none !important; background: var(--surface) !important; border: 1px solid var(--rule) !important; border-radius: 999px !important; padding: 3px 10px !important; }
 .ltw .pchip-y, .ltw .prog .pg-k, .ltw .ptype { color: var(--muted) !important; }
 .ltw .prog details.mw-log ul { list-style: disc !important; padding-left: 20px !important; }
+.ltw .evmap .ev-h { color: var(--accent) !important; font: 500 11px/1.4 var(--font-mono) !important; letter-spacing: .08em !important; text-transform: uppercase !important; margin: 0 0 4px !important; }
+.ltw .evmap .ev-cell { background: #e3ecec !important; background: color-mix(in srgb, var(--accent) 12%, var(--surface)) !important; color: var(--accent) !important; box-shadow: none !important; height: auto !important; min-width: 30px !important; border: 0 !important; border-radius: 6px !important; padding: 4px 6px !important; font: 600 13px/1 var(--font-mono) !important; }
+.ltw .evmap .ev-cell:hover, .ltw .evmap .ev-cell[aria-pressed="true"] { background: var(--accent) !important; color: var(--surface) !important; }
+.ltw .evmap .ev-reset { background: none !important; color: var(--fg) !important; box-shadow: none !important; text-transform: none !important; letter-spacing: normal !important; height: auto !important; min-width: 0 !important; border: 1px solid var(--rule) !important; border-radius: 999px !important; padding: 5px 10px !important; font: 500 12.5px/1 var(--font-body) !important; }
+.ltw .evmap table { width: 100% !important; border-collapse: collapse !important; margin: 0 !important; }
+.ltw .evmap th, .ltw .evmap td { border: 1px solid var(--rule) !important; padding: 5px 6px !important; background: none !important; color: var(--fg) !important; }
+.ltw .evmap thead th { color: var(--muted) !important; font-weight: 500 !important; }
+.ltw .evmap .ev-unk ul { list-style: disc !important; padding-left: 18px !important; }
 """
 
 def main(src, key, dst):

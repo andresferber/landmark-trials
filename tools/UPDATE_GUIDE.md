@@ -262,3 +262,30 @@ and sends Andres a findings list. When he brings that list to a session to fix:
   text is gone, with no script errors. Then publish as in step 4.
 - Do not apply fixes on the 1st or 2nd of a month, when the topic updates and health check run.
 
+## 9. Primary bone lymphoma (key `pbl`): what is different
+Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a list of trials.
+- Scope: adults; true primary bone lymphoma only (no secondary bone involvement, no pediatric series, no primary
+  bone marrow lymphoma). Two context studies of any skeletal involvement (DSHNHL, Held 2013; Ghione 2024) are
+  labelled as context on their cards; do not add more of these without asking Andres.
+- Edit `tools/pbl/pbl_data.py` (entries `T`, `REG`, `CORE`, `UNKNOWN`) and `tools/pbl/ft.json` (PMID -> full-text
+  link, same format as `FT`), then rebuild; never hand-edit the page:
+  `python3 tools/pbl/build_pbl.py <page>`; `cd tools && python3 review/build_persp.py pbl <page> &&
+  python3 review/install_persptint.py <page>`. The builder derives the page from `source/flr.html`, so run it from
+  a current clone. Update `CHECKED` in build_pbl.py on each run that changes the page.
+- Entry fields: `ph` is the study-design label (one of DESIGNS), `hist` is DLBCL | Mixed | Non-DLBCL, `df` the
+  definition of primary bone lymphoma the study used ("Not stated in abstract." when so), `pf` prognostic factors,
+  `q` limitations, `ov` cohort overlap (IELSG-14 papers share one 499-patient database; all SEER papers overlap).
+- Inclusion: published since 2000, about 20 or more adults with primary bone lymphoma; smaller series or a case
+  report only where nothing larger exists (circulating tumor DNA, non-DLBCL histologies, PET). Always look for
+  anything on circulating tumor DNA, unifocal versus multifocal disease, and radiotherapy after rituximab-based
+  chemoimmunotherapy. Reviews and single case reports otherwise go under "Worth a look (not added)".
+- Search: the PubMed query is in the page's methods footer; in the window since the last update add
+  `AND <from>:<to>[edat]`. Check `CommentIn` for every entry.
+- Trials to watch, New drugs to watch and Drug mechanisms: Andres chose to leave them off. The tabs are in the
+  page but hidden while `WATCH.items`, `NEWD.items` and `MOAMAP` are empty; they appear by themselves if an entry
+  is added. At each update search ClinicalTrials.gov for "primary bone lymphoma", "lymphoma of bone" and
+  "osteolymphoma"; add a dedicated ongoing trial to `WATCH` in build_pbl.py if one appears, and tell Andres.
+- Perspective: tools/review/persp_pbl.py (no timeline). Andres's position: consolidative radiotherapy after
+  chemoimmunotherapy is the standard approach, with Rezazadeh 2024 and its editorial as the challenge to it.
+  Keep that framing unless he changes it.
+- topics.json count word is "studies". The loader gives the group "Lymphoma: rare presentations" its own colour.
