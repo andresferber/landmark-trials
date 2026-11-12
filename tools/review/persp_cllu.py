@@ -1,5 +1,5 @@
 TITLE = 'The evolution of first-line treatment of chronic lymphocytic leukemia, 2000–2026'
-UPDATED = 'November 12, 2026 · Pilot draft, pending review'
+UPDATED = 'November 12, 2026'
 TL_CAPTION = 'Timeline of key trials and US regulatory milestones'
 
 TAKE = [
@@ -61,7 +61,7 @@ BODY = """
 <li><b>Fixed duration or continuous therapy:</b> longer follow-up of CLL17, by IGHV and TP53 status, and how well each strategy can be repeated at relapse.</li>
 <li><b>Which fixed-duration regimen:</b> venetoclax with obinutuzumab or with a BTK inhibitor, and whether triplets are worth their toxicity [[CLL13/GAIA (Eichhorst)]] [[AMPLIFY (Brown)]].</li>
 <li><b>MRD-guided duration:</b> effective in FLAIR, but not yet tested with the newer BTK inhibitors.</li>
-<li><b>TP53-aberrant disease:</b> still the group with the shortest remissions and the least randomized evidence.</li>
+<li><b>TP53-aberrant disease:</b> still the group with the shortest remissions and the least randomized evidence. A nonrandomized cohort of zanubrutinib-venetoclax enrolled 66 patients with TP53 aberration among 114, with an estimated 24-month PFS of 92% [[SEQUOIA arm D (Shadman)]]; it has no randomized comparator.</li>
 <li><b>Early treatment:</b> whether a fixed-duration regimen in the highest-risk asymptomatic patients improves survival.</li>
 <li><b>Richter transformation:</b> not covered here; it will be a separate section built later.</li>
 </ul>
