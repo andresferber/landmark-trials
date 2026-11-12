@@ -7,6 +7,7 @@ TAKE = [
     'For 15 years nothing improved on it: dose density, a different anti-CD20 antibody, infusional chemotherapy, upfront transplant and maintenance all failed to improve survival.',
     'Less treatment is enough for favourable limited-stage disease: 4 cycles of R-CHOP, guided by risk factors or by interim PET.',
     'Adding a targeted drug chosen by cell of origin (bortezomib, ibrutinib, lenalidomide) failed in phase 3 trials.',
+    'Three phase 2 trials of targeted drugs with R-CHOP, or given before it (E1412, GUIDANCE-01, Smart Start), suggest that matching a drug to the genetic subtype may work; none has been confirmed in phase 3.',
     'Polatuzumab vedotin in place of vincristine (POLARIX) and tafasitamab-lenalidomide added to R-CHOP (frontMIND) each improved PFS, so far without an overall survival benefit.',
 ]
 
@@ -19,9 +20,10 @@ TIMELINE = [
     ('2013', 'R-CHOP-14 no better than R-CHOP-21; upfront transplant improves PFS but not survival (S9704)', 'young'),
     ('2017', 'Obinutuzumab no better than rituximab (GOYA)', 'young'),
     ('2019', 'Four cycles for favourable limited stage (FLYER); DA-EPOCH-R no better than R-CHOP; ibrutinib and bortezomib add-on trials negative', 'old'),
-    ('2021', 'Lenalidomide add-on negative (ROBUST)', 'p2'),
+    ('2021', 'Lenalidomide add-on negative in phase 3 (ROBUST) but improves PFS in randomized phase 2 (E1412)', 'p2'),
     ('2022', 'Pola-R-CHP improves PFS (POLARIX); first-line CAR-T tested in high-risk disease (ZUMA-12)', 'p2'),
     ('2023', 'FDA approves polatuzumab vedotin with R-CHP for untreated DLBCL', 'p2'),
+    ('2023', 'Phase 2: drug chosen by genetic subtype added to R-CHOP (GUIDANCE-01); rituximab, lenalidomide and ibrutinib before chemotherapy (Smart Start)', 'p2'),
     ('2026', 'Tafasitamab-lenalidomide with R-CHOP improves PFS (frontMIND); PET-adapted 4 cycles in low-risk disease (LNH2009-1B)', 'p2'),
 ]
 
