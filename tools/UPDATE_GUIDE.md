@@ -312,8 +312,12 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   could change practice (about 6-10 items); the note on the tab says so.
 - New drugs to watch: its own list, tools/newdrugs/richter.json, not shared with cllu/cllr. Only agents or regimens without a
   peer-reviewed report in Richter transformation; when one is published, it becomes a card and moves to "grad".
-- Perspective (tools/review/persp_richter.py): pilot draft, kept off the website until Andres approves it. Keep its numbers in
-  step with the cards (small factual edits, listed in the summary) and do not remove the pilot label.
+- Perspective (tools/review/persp_richter.py): approved by Andres on Nov 12, 2026 and live on the website. The usual Perspective rules apply
+  (small factual edits go live and are listed in the summary; rewriting a section needs his approval).
 - CORE is empty until Andres chooses. topics.json count word is "studies".
-- Drug mechanisms: the PD-1/PD-L1 (pd1) and blinatumomab (cd19tce) descriptions in tools/mechs/mech_master.json were written on
-  Nov 12, 2026 and await Andres's review.
+- Drug mechanisms: Andres approved the PD-1/PD-L1 (pd1) and blinatumomab (cd19tce) descriptions on Nov 12, 2026.
+- Papers Andres supplied (Nov 12, 2026): the BRUIN, MOLTO and EPCORE CLL-1 cards were completed from the full papers; GIVeRS
+  (Tadmor, Haematologica 2026, ahead of print: update the citation when it gets volume and pages; its registry record is
+  NCT04939363, although the paper's front matter prints the MOLTO number) and copanlisib-nivolumab (Shouse, Haematologica 2026)
+  were added as cards; the DESCAR-T registry letter (Bensaber, Br J Haematol 2025; 15 patients) is a related paper (`rel`) on
+  the international CAR T-cell card, since it is below the size rule for a card of its own.
