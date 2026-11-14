@@ -348,3 +348,32 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   (Kastritis, Blood 2015, a letter without abstract) need the full papers ("PDFs needed"); the EU approval date of ibrutinib and the
   regulatory status of pirtobrutinib are marked "verify". MAINTAIN (StiL NHL7-2008, rituximab maintenance after bendamustine-rituximab)
   had no full report in PubMed: add a card when one appears.
+
+## 12. Marginal zone lymphomas (key mzl): what is different
+- Scope (first build, Nov 14, 2026, at Andres's request; he has not yet reviewed it): one topic, with gastric MALT lymphoma, non-gastric MALT lymphoma,
+  nodal and splenic marginal zone lymphoma kept apart. Primary cutaneous and pediatric nodal marginal zone lymphoma are not covered.
+- Categories and overlap. Many trials, above all the older ones and all the recent drug trials, enrolled more than one subtype. Categories: gastric,
+  ngmalt, malt (MALT lymphoma, gastric and non-gastric together), nodal, splenic, mixed (trials across subtypes). Put a study in a subtype category only
+  when it enrolled that subtype alone (or almost alone); otherwise use malt or mixed. Every entry needs `sub`: the subtypes enrolled, with the number of
+  patients of each when the abstract or full paper gives it ("not reported in abstract" otherwise). Entries in malt and mixed, and subtype entries that
+  also enrolled another subtype, need `also`: the list of subtype keys (gastric, ngmalt, nodal, splenic) enrolled; "extranodal" without detail counts as
+  gastric and ngmalt. A subtype filter shows entries whose `s` or `also` matches. Do not use "all" as a category key (it is the key of the All filter).
+  Results of trials that mix follicular and marginal zone lymphoma must say which numbers are for marginal zone lymphoma.
+- Inclusion rule. Few randomized trials exist, so the phase 2 bar of section 2 is replaced by: every phase 3 or randomized trial with a full report that
+  enrolled marginal zone lymphoma; phase 2 trials that were the basis of an FDA or EMA approval or that defined a regimen or drug class in current use,
+  whatever the journal; the cohort studies of antibiotic, antiviral and radiation treatment on which practice rests; consensus statements, prognostic
+  scores and genomic studies of each subtype. Meeting-only results are not cards. Other papers go under "Worth a look (not added)".
+- Regulatory (US, confirmed Nov 14, 2026): zanubrutinib (accelerated, September 14, 2021), lenalidomide with rituximab (May 28, 2019) and lisocabtagene
+  maraleucel (December 4, 2025) are approved for relapsed marginal zone lymphoma; ibrutinib (accelerated January 18, 2017; withdrawn December 18, 2023)
+  and umbralisib (accelerated February 5, 2021; withdrawn June 1, 2022) are not. Cards of other drugs say "not approved for marginal zone lymphoma".
+  EU statements and the copanlisib withdrawal are marked "verify".
+- Guidelines: rows refer to the ESMO 2020 guideline (Zucca, Ann Oncol 2020), whose full text could not be read at the first build; they are marked "not
+  checked". When the text can be read (or Andres supplies it), check each row, remove the mark and complete the "ESMO guidelines" card. NCCN is "not checked".
+- Trials to watch: phase 3 trials plus up to three randomized or large phase 2 trials. New drugs to watch: its own list, tools/newdrugs/mzl.json; the
+  BTK degrader and sonrotoclax entries had no figures verified from a primary source at the first build.
+- Perspective (tools/review/persp_mzl.py): pilot draft, pending Andres's review; to_weebly.py keeps it off the website until then. Keep its numbers in
+  step with the cards and do not remove the pilot label.
+- CORE is empty until Andres chooses. topics.json count word is "studies". Default sort is category, newest first, in the order above.
+- Open items from the first build ("PDFs needed"): long-term results of MALT2008-01 (Salar, Blood 2017) and of rituximab in splenic disease (Kalpadakis,
+  Blood 2018), both without abstracts; the marginal zone subgroups of StiL NHL 1-2003, BRIGHT, FoRT, CHRONOS-3 and IELSG-19 (subtype proportions); the
+  GELA grading letter (Copie-Bergman, Gut 2003) and the ESMO 2020 guideline. The marginal zone cohort of inMIND had no report: add it when published.

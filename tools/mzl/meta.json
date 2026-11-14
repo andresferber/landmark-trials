@@ -1,0 +1,600 @@
+{
+ "REG": {
+  "HELYX I and II (Schmelz)": [
+   "NCT00154440"
+  ],
+  "Response-adapted 4 Gy radiotherapy (Gunther)": [
+   "NCT03680586"
+  ],
+  "Response-adapted 4 Gy orbital radiotherapy (Pinnix)": [
+   "NCT02494700"
+  ],
+  "IELSG-19 (Zucca)": [
+   "NCT00210353"
+  ],
+  "MALT2008-01 (Salar)": [
+   "NCT01015248"
+  ],
+  "IELSG-38 (Stathis)": [
+   "NCT01808599"
+  ],
+  "Early complete response as surrogate (Bommier)": [
+   "NCT00210353"
+  ],
+  "IELSG46 genetic classification (Bonfiglio)": [
+   "NCT02945319"
+  ],
+  "StiL NHL 1-2003 (Rummel)": [
+   "NCT00991211"
+  ],
+  "BRIGHT (Flinn)": [
+   "NCT00877006"
+  ],
+  "FoRT (Hoskin)": [
+   "NCT00310167"
+  ],
+  "PCYC-1121 (Noy)": [
+   "NCT01980628"
+  ],
+  "AUGMENT (Leonard)": [
+   "NCT01938001"
+  ],
+  "POD24 in the NF10 registry (Luminari)": [
+   "NCT02904577"
+  ],
+  "CHRONOS-3 (Matasar)": [
+   "NCT02367040"
+  ],
+  "UNITY-NHL (Fowler)": [
+   "NCT02793583"
+  ],
+  "ZUMA-5 (Jacobson)": [
+   "NCT03105336"
+  ],
+  "GALLIUM, marginal zone subgroup (Herold)": [
+   "NCT01332968"
+  ],
+  "ACE-LY-003 (Strati)": [
+   "NCT02180711"
+  ],
+  "SELENE (Nastoupil)": [
+   "NCT01974440"
+  ],
+  "MZL-IPI (Arcaini)": [
+   "NCT02904577"
+  ],
+  "BRUIN, marginal zone cohort (Patel)": [
+   "NCT03740529"
+  ],
+  "TRANSCEND FL, marginal zone cohort (Palomba)": [
+   "NCT04245839"
+  ]
+ },
+ "FT": {
+  "t(11;18) and response to eradication (Liu)": [
+   "doi",
+   "10.1053/gast.2002.33047",
+   "free"
+  ],
+  "GELA histological grading (Copie-Bergman)": [
+   "pmc",
+   "PMC1773845"
+  ],
+  "Long-term follow-up after eradication (Wündisch)": [
+   "doi",
+   "10.1200/JCO.2005.02.3903"
+  ],
+  "Rituximab in gastric MALT lymphoma (Martinelli)": [
+   "doi",
+   "10.1200/JCO.2005.08.128"
+  ],
+  "Antibiotics in H. pylori-negative disease (Raderer)": [
+   "pmc",
+   "PMC1856121"
+  ],
+  "Watch and wait for histological residuals (Fischbach)": [
+   "pmc",
+   "PMC2095715"
+  ],
+  "LY03 (Hancock)": [
+   "pmc",
+   "PMC2659366"
+  ],
+  "Pooled analysis of eradication (Zullo)": [
+   "doi",
+   "10.1016/j.cgh.2009.07.017",
+   "repo",
+   "http://www.cghjournal.org/article/S1542-3565%2809%2900673-9/abstract"
+  ],
+  "EGILS consensus (Ruskoné-Fourmestraux)": [
+   "doi",
+   "10.1136/gut.2010.224949",
+   "free"
+  ],
+  "Japanese multicenter cohort (Nakamura)": [
+   "doi",
+   "10.1136/gutjnl-2011-300495"
+  ],
+  "Radiotherapy, IELSG series (Wirth)": [
+   "doi",
+   "10.1093/annonc/mds623",
+   "free"
+  ],
+  "HELYX I and II (Schmelz)": [
+   "doi",
+   "10.1007/s00535-018-1517-4"
+  ],
+  "Response-adapted 4 Gy radiotherapy (Gunther)": [
+   "pmc",
+   "PMC11211047"
+  ],
+  "IELSG non-gastric series (Zucca)": [
+   "doi",
+   "10.1182/blood-2002-04-1279"
+  ],
+  "IELSG-27 (Ferreri)": [
+   "doi",
+   "10.1200/JCO.2011.41.4466",
+   "free"
+  ],
+  "TROG 05.02/ALLG NHL15 (MacManus)": [
+   "doi",
+   "10.1016/j.ejca.2021.05.004"
+  ],
+  "Response-adapted 4 Gy orbital radiotherapy (Pinnix)": [
+   "pmc",
+   "PMC11240230"
+  ],
+  "Rituximab, IELSG phase 2 (Conconi)": [
+   "doi",
+   "10.1182/blood-2002-11-3496",
+   "free"
+  ],
+  "Radiotherapy, Princess Margaret series (Goda)": [
+   "doi",
+   "10.1002/cncr.25226"
+  ],
+  "IELSG-19 (Zucca)": [
+   "doi",
+   "10.1200/JCO.2011.40.6272"
+  ],
+  "MALT2008-01 (Salar)": [
+   "doi",
+   "10.1016/S2352-3026(14)00021-0",
+   "repo",
+   "http://hdl.handle.net/20.500.11940/6312"
+  ],
+  "Radiotherapy, Memorial Sloan Kettering series (Teckie)": [
+   "doi",
+   "10.1016/j.ijrobp.2015.01.040"
+  ],
+  "ILROG radiotherapy guidelines (Yahalom)": [
+   "doi",
+   "10.1016/j.ijrobp.2015.01.009",
+   "free"
+  ],
+  "MALT-IPI (Thieblemont)": [
+   "doi",
+   "10.1182/blood-2017-03-771915",
+   "free"
+  ],
+  "IELSG-38 (Stathis)": [
+   "pmc",
+   "PMC11290511"
+  ],
+  "Early complete response as surrogate (Bommier)": [
+   "pmc",
+   "PMC13639446"
+  ],
+  "Genetics of nodal marginal zone lymphoma (Spina)": [
+   "pmc",
+   "PMC5016706"
+  ],
+  "Two-institution series (Starr)": [
+   "doi",
+   "10.1111/bjh.14228"
+  ],
+  "Memorial Sloan Kettering series (Stuver)": [
+   "pmc",
+   "PMC10469082"
+  ],
+  "Antiviral therapy in HCV-associated disease (Hermine)": [
+   "doi",
+   "10.1056/NEJMoa013376",
+   "free"
+  ],
+  "IIL prognostic score (Arcaini)": [
+   "doi",
+   "10.1182/blood-2005-11-4659",
+   "free"
+  ],
+  "Diagnostic and treatment guidelines (Matutes)": [
+   "doi",
+   "10.1038/sj.leu.2405068"
+  ],
+  "HPLL score (Montalbán)": [
+   "doi",
+   "10.1111/bjh.12011",
+   "free"
+  ],
+  "NOTCH2 mutations (Rossi; Kiel)": [
+   "pmc",
+   "PMC3428941"
+  ],
+  "Rituximab monotherapy (Kalpadakis)": [
+   "pmc",
+   "PMC3579603"
+  ],
+  "Splenectomy, 100 patients (Lenglet)": [
+   "doi",
+   "10.3109/10428194.2013.861067"
+  ],
+  "BRISMA/IELSG36 (Iannitto)": [
+   "doi",
+   "10.1111/bjh.15641",
+   "repo",
+   "https://hdl.handle.net/2434/1129998"
+  ],
+  "IELSG46 genetic classification (Bonfiglio)": [
+   "doi",
+   "10.1182/blood.2021012386",
+   "free"
+  ],
+  "StiL NHL 1-2003 (Rummel)": [
+   "doi",
+   "10.1016/S0140-6736(12)61763-2"
+  ],
+  "BRIGHT (Flinn)": [
+   "pmc",
+   "PMC4260975"
+  ],
+  "FoRT (Hoskin)": [
+   "doi",
+   "10.1016/S1470-2045(14)70036-1"
+  ],
+  "Histologic transformation (Conconi)": [
+   "doi",
+   "10.1093/annonc/mdv368",
+   "free"
+  ],
+  "E4402 RESORT, non-follicular cohort (Williams)": [
+   "pmc",
+   "PMC4900920"
+  ],
+  "Direct-acting antivirals in HCV-associated lymphoma (Arcaini)": [
+   "doi",
+   "10.1182/blood-2016-05-714667",
+   "free"
+  ],
+  "PCYC-1121 (Noy)": [
+   "pmc",
+   "PMC5399483"
+  ],
+  "CHRONOS-1 (Dreyling)": [
+   "doi",
+   "10.1200/JCO.2017.75.4648"
+  ],
+  "AUGMENT (Leonard)": [
+   "pmc",
+   "PMC7035866"
+  ],
+  "POD24 in the NF10 registry (Luminari)": [
+   "doi",
+   "10.1182/blood.2019001088",
+   "free"
+  ],
+  "Lenalidomide-rituximab, untreated (Becnel)": [
+   "pmc",
+   "PMC6619290"
+  ],
+  "ESMO guidelines (Zucca)": [
+   "doi",
+   "10.1016/j.annonc.2019.10.010",
+   "free"
+  ],
+  "CHRONOS-3 (Matasar)": [
+   "doi",
+   "10.1016/S1470-2045(21)00145-5",
+   "repo",
+   "https://ruj.uj.edu.pl/xmlui/handle/item/289981"
+  ],
+  "UNITY-NHL (Fowler)": [
+   "pmc",
+   "PMC8148421"
+  ],
+  "MAGNOLIA (Opat)": [
+   "pmc",
+   "PMC9401507"
+  ],
+  "ZUMA-5 (Jacobson)": [
+   "doi",
+   "10.1016/S1470-2045(21)00591-X"
+  ],
+  "GALLIUM, marginal zone subgroup (Herold)": [
+   "pmc",
+   "PMC8878871"
+  ],
+  "ACE-LY-003 (Strati)": [
+   "pmc",
+   "PMC9796553"
+  ],
+  "SELENE (Nastoupil)": [
+   "pmc",
+   "PMC10709678"
+  ],
+  "MZL-IPI (Arcaini)": [
+   "pmc",
+   "PMC11019091"
+  ],
+  "BRUIN, marginal zone cohort (Patel)": [
+   "pmc",
+   "PMC13083716"
+  ],
+  "TRANSCEND FL, marginal zone cohort (Palomba)": [
+   "doi",
+   "10.1016/S0140-6736(25)02435-3"
+  ]
+ },
+ "CM": {
+  "t(11;18) and response to eradication (Liu)": [],
+  "GELA histological grading (Copie-Bergman)": [],
+  "Long-term follow-up after eradication (Wündisch)": [],
+  "Rituximab in gastric MALT lymphoma (Martinelli)": [],
+  "Antibiotics in H. pylori-negative disease (Raderer)": [],
+  "Watch and wait for histological residuals (Fischbach)": [],
+  "LY03 (Hancock)": [
+   [
+    20425423,
+    "Armitage JO, Curr Hematol Malig Rep 2009",
+    "No advantage for chlorambucil maintenance therapy in gastric MALT lymphoma"
+   ]
+  ],
+  "Pooled analysis of eradication (Zullo)": [
+   [
+    20532704,
+    "Coyle WJ, Curr Gastroenterol Rep 2010",
+    "Clinical trial report: eradication of Helicobacter pylori and MALT Lymphoma: where do we stand?"
+   ]
+  ],
+  "EGILS consensus (Ruskoné-Fourmestraux)": [],
+  "Japanese multicenter cohort (Nakamura)": [],
+  "Radiotherapy, IELSG series (Wirth)": [],
+  "HELYX I and II (Schmelz)": [],
+  "Response-adapted 4 Gy radiotherapy (Gunther)": [],
+  "IELSG non-gastric series (Zucca)": [],
+  "IELSG-27 (Ferreri)": [],
+  "TROG 05.02/ALLG NHL15 (MacManus)": [],
+  "Response-adapted 4 Gy orbital radiotherapy (Pinnix)": [],
+  "Rituximab, IELSG phase 2 (Conconi)": [],
+  "Radiotherapy, Princess Margaret series (Goda)": [],
+  "IELSG-19 (Zucca)": [],
+  "MALT2008-01 (Salar)": [],
+  "Radiotherapy, Memorial Sloan Kettering series (Teckie)": [],
+  "ILROG radiotherapy guidelines (Yahalom)": [],
+  "MALT-IPI (Thieblemont)": [],
+  "IELSG-38 (Stathis)": [
+   [
+    38546661,
+    "Silvestre AS, Haematologica 2024",
+    "More is not always better, sometimes it is just more"
+   ]
+  ],
+  "Early complete response as surrogate (Bommier)": [
+   [
+    38300612,
+    "Casulo C, Blood 2024",
+    "How do you define treatment success in MZL?"
+   ]
+  ],
+  "Genetics of nodal marginal zone lymphoma (Spina)": [
+   [
+    27609538,
+    "Piris MA, Blood 2016",
+    "Nodal marginal zone mutational signature"
+   ]
+  ],
+  "Two-institution series (Starr)": [],
+  "Memorial Sloan Kettering series (Stuver)": [],
+  "Antiviral therapy in HCV-associated disease (Hermine)": [
+   [
+    12110734,
+    "Pagano JS, N Engl J Med 2002",
+    "Viruses and lymphomas"
+   ],
+   [
+    15534980,
+    "Bornstein JD, Gastroenterology 2003",
+    "Hepatitis C: beyond the liver"
+   ]
+  ],
+  "IIL prognostic score (Arcaini)": [],
+  "Diagnostic and treatment guidelines (Matutes)": [],
+  "HPLL score (Montalbán)": [],
+  "NOTCH2 mutations (Rossi; Kiel)": [],
+  "Rituximab monotherapy (Kalpadakis)": [],
+  "Splenectomy, 100 patients (Lenglet)": [],
+  "BRISMA/IELSG36 (Iannitto)": [],
+  "IELSG46 genetic classification (Bonfiglio)": [
+   [
+    35113148,
+    "Deaglio S, Blood 2022",
+    "A new taxonomy for splenic marginal zone lymphoma"
+   ]
+  ],
+  "StiL NHL 1-2003 (Rummel)": [
+   [
+    23433738,
+    "Jacobson CA, Lancet 2013",
+    "First-line treatment of indolent lymphoma: axing CHOP?"
+   ],
+   [
+    23591322,
+    "Doucet S, Nat Rev Clin Oncol 2013",
+    "Haematological cancer: Indolent lymphoma--why not to sprint at the start of a marathon"
+   ]
+  ],
+  "BRIGHT (Flinn)": [
+   [
+    24810622,
+    "Fowler N, Blood 2014",
+    "Indolent and mantle cell NHL: the future is BRIGHT"
+   ],
+   [
+    31735051,
+    "Visco C, Chin Clin Oncol 2020",
+    "Bendamustine plus rituximab: is it a BRIGHT idea?"
+   ]
+  ],
+  "FoRT (Hoskin)": [
+   [
+    24572076,
+    "Specht L, Lancet Oncol 2014",
+    "Radiotherapy for indolent lymphomas: how much is enough?"
+   ],
+   [
+    25538992,
+    "Herfarth K, Strahlenther Onkol 2014",
+    "[Radiation therapy (4 Gy vs. 24 Gy) in patients with indolent non-Hodgkins lymphoma: Results of the FORT Study]"
+   ]
+  ],
+  "Histologic transformation (Conconi)": [],
+  "E4402 RESORT, non-follicular cohort (Williams)": [],
+  "Direct-acting antivirals in HCV-associated lymphoma (Arcaini)": [
+   [
+    27884832,
+    "Villa D, Blood 2016",
+    "Novel antivirals for HCV-associated lymphomas"
+   ]
+  ],
+  "PCYC-1121 (Noy)": [
+   [
+    28316331,
+    "Hutchinson L, Nat Rev Clin Oncol 2017",
+    "Targeted therapies: Ibrutinib: new option for relapsed MZL"
+   ],
+   [
+    28428233,
+    "Barr PM, Blood 2017",
+    "Efficacy in the margins of NHL with ibrutinib"
+   ]
+  ],
+  "CHRONOS-1 (Dreyling)": [],
+  "AUGMENT (Leonard)": [
+   [
+    30901301,
+    "Barr PM, J Clin Oncol 2019",
+    "Augmenting Indolent Lymphoma Treatment Options With the Combination of Lenalidomide and Rituximab"
+   ]
+  ],
+  "POD24 in the NF10 registry (Luminari)": [
+   [
+    31488454,
+    "Maurer MJ, Blood 2019",
+    "POD24 in MZL: a means to an end or an end point in itself?"
+   ]
+  ],
+  "Lenalidomide-rituximab, untreated (Becnel)": [],
+  "ESMO guidelines (Zucca)": [],
+  "CHRONOS-3 (Matasar)": [
+   [
+    33879868,
+    "Killock D, Nat Rev Clin Oncol 2021",
+    "Copanlisib safe and active in combination"
+   ]
+  ],
+  "UNITY-NHL (Fowler)": [
+   [
+    33861621,
+    "Smith SD, J Clin Oncol 2021",
+    "Umbralisib: Walking the Tightrope of PI3K Inhibition in Indolent NHL"
+   ]
+  ],
+  "MAGNOLIA (Opat)": [],
+  "ZUMA-5 (Jacobson)": [
+   [
+    34895488,
+    "Holtzman NG, Lancet Oncol 2022",
+    "CAR T-cell therapy for indolent lymphoma: a new treatment paradigm?"
+   ],
+   [
+    34937949,
+    "Sidaway P, Nat Rev Clin Oncol 2022",
+    "Axicabtagene effective in indolent NHL"
+   ]
+  ],
+  "GALLIUM, marginal zone subgroup (Herold)": [],
+  "ACE-LY-003 (Strati)": [],
+  "SELENE (Nastoupil)": [
+   [
+    38015493,
+    "Schmitz N, Blood Adv 2023",
+    "Ibrutinib in the treatment of relapsed FL and MZL?"
+   ]
+  ],
+  "MZL-IPI (Arcaini)": [],
+  "BRUIN, marginal zone cohort (Patel)": [],
+  "TRANSCEND FL, marginal zone cohort (Palomba)": []
+ },
+ "CHK": {
+  "t(11;18) and response to eradication (Liu)": "Gastroenterology 2002;122:1286-94 | Liu H",
+  "GELA histological grading (Copie-Bergman)": "Gut 2003;52:1656 | Copie-Bergman C",
+  "Long-term follow-up after eradication (Wündisch)": "J Clin Oncol 2005;23:8018-24 | Wündisch T",
+  "Rituximab in gastric MALT lymphoma (Martinelli)": "J Clin Oncol 2005;23:1979-83 | Martinelli G",
+  "Antibiotics in H. pylori-negative disease (Raderer)": "Gut 2006;55:616-8 | Raderer M",
+  "Watch and wait for histological residuals (Fischbach)": "Gut 2007;56:1685-7 | Fischbach W",
+  "LY03 (Hancock)": "Br J Haematol 2009;144:367-75 | Hancock BW",
+  "Pooled analysis of eradication (Zullo)": "Clin Gastroenterol Hepatol 2010;8:105-10 | Zullo A",
+  "EGILS consensus (Ruskoné-Fourmestraux)": "Gut 2011;60:747-58 | Ruskoné-Fourmestraux A",
+  "Japanese multicenter cohort (Nakamura)": "Gut 2012;61:507-13 | Nakamura S",
+  "Radiotherapy, IELSG series (Wirth)": "Ann Oncol 2013;24:1344-51 | Wirth A",
+  "HELYX I and II (Schmelz)": "J Gastroenterol 2019;54:388-395 | Schmelz R",
+  "Response-adapted 4 Gy radiotherapy (Gunther)": "Lancet Haematol 2024;11:e521-e529 | Gunther JR",
+  "IELSG non-gastric series (Zucca)": "Blood 2003;101:2489-95 | Zucca E",
+  "IELSG-27 (Ferreri)": "J Clin Oncol 2012;30:2988-94 | Ferreri AJ",
+  "TROG 05.02/ALLG NHL15 (MacManus)": "Eur J Cancer 2021;152:129-138 | MacManus MP",
+  "Response-adapted 4 Gy orbital radiotherapy (Pinnix)": "JAMA Oncol 2024;10:1195-1203 | Pinnix CC",
+  "Rituximab, IELSG phase 2 (Conconi)": "Blood 2003;102:2741-5 | Conconi A",
+  "Radiotherapy, Princess Margaret series (Goda)": "Cancer 2010;116:3815-24 | Goda JS",
+  "IELSG-19 (Zucca)": "J Clin Oncol 2013;31:565-72 | Zucca E",
+  "MALT2008-01 (Salar)": "Lancet Haematol 2014;1:e104-11 | Salar A",
+  "Radiotherapy, Memorial Sloan Kettering series (Teckie)": "Int J Radiat Oncol Biol Phys 2015;92:130-7 | Teckie S",
+  "ILROG radiotherapy guidelines (Yahalom)": "Int J Radiat Oncol Biol Phys 2015;92:11-31 | Yahalom J",
+  "MALT-IPI (Thieblemont)": "Blood 2017;130:1409-1417 | Thieblemont C",
+  "IELSG-38 (Stathis)": "Haematologica 2024;109:2564-2573 | Stathis A",
+  "Early complete response as surrogate (Bommier)": "Blood 2024;143:422-428 | Bommier C",
+  "Genetics of nodal marginal zone lymphoma (Spina)": "Blood 2016;128:1362-73 | Spina V",
+  "Two-institution series (Starr)": "Br J Haematol 2016;175:275-280 | Starr AG",
+  "Memorial Sloan Kettering series (Stuver)": "Blood Adv 2023;7:4838-4847 | Stuver R",
+  "Antiviral therapy in HCV-associated disease (Hermine)": "N Engl J Med 2002;347:89-94 | Hermine O",
+  "IIL prognostic score (Arcaini)": "Blood 2006;107:4643-9 | Arcaini L",
+  "Diagnostic and treatment guidelines (Matutes)": "Leukemia 2008;22:487-95 | Matutes E",
+  "HPLL score (Montalbán)": "Br J Haematol 2012;159:164-71 | Montalbán C",
+  "NOTCH2 mutations (Rossi; Kiel)": "J Exp Med 2012;209:1537-51 | Rossi D",
+  "Rituximab monotherapy (Kalpadakis)": "Oncologist 2013;18:190-7 | Kalpadakis C",
+  "Splenectomy, 100 patients (Lenglet)": "Leuk Lymphoma 2014;55:1854-60 | Lenglet J",
+  "BRISMA/IELSG36 (Iannitto)": "Br J Haematol 2018;183:755-765 | Iannitto E",
+  "IELSG46 genetic classification (Bonfiglio)": "Blood 2022;139:732-747 | Bonfiglio F",
+  "StiL NHL 1-2003 (Rummel)": "Lancet 2013;381:1203-10 | Rummel MJ",
+  "BRIGHT (Flinn)": "Blood 2014;123:2944-52 | Flinn IW",
+  "FoRT (Hoskin)": "Lancet Oncol 2014;15:457-63 | Hoskin PJ",
+  "Histologic transformation (Conconi)": "Ann Oncol 2015;26:2329-35 | Conconi A",
+  "E4402 RESORT, non-follicular cohort (Williams)": "Br J Haematol 2016;173:867-75 | Williams ME",
+  "Direct-acting antivirals in HCV-associated lymphoma (Arcaini)": "Blood 2016;128:2527-2532 | Arcaini L",
+  "PCYC-1121 (Noy)": "Blood 2017;129:2224-2232 | Noy A",
+  "CHRONOS-1 (Dreyling)": "J Clin Oncol 2017;35:3898-3905 | Dreyling M",
+  "AUGMENT (Leonard)": "J Clin Oncol 2019;37:1188-1199 | Leonard JP",
+  "POD24 in the NF10 registry (Luminari)": "Blood 2019;134:798-801 | Luminari S",
+  "Lenalidomide-rituximab, untreated (Becnel)": "Br J Haematol 2019;185:874-882 | Becnel MR",
+  "ESMO guidelines (Zucca)": "Ann Oncol 2020;31:17-29 | Zucca E",
+  "CHRONOS-3 (Matasar)": "Lancet Oncol 2021;22:678-689 | Matasar MJ",
+  "UNITY-NHL (Fowler)": "J Clin Oncol 2021;39:1609-1618 | Fowler NH",
+  "MAGNOLIA (Opat)": "Clin Cancer Res 2021;27:6323-6332 | Opat S",
+  "ZUMA-5 (Jacobson)": "Lancet Oncol 2022;23:91-103 | Jacobson CA",
+  "GALLIUM, marginal zone subgroup (Herold)": "Hemasphere 2022;6:e699 | Herold M",
+  "ACE-LY-003 (Strati)": "Br J Haematol 2022;199:76-85 | Strati P",
+  "SELENE (Nastoupil)": "Blood Adv 2023;7:7141-7150 | Nastoupil LJ",
+  "MZL-IPI (Arcaini)": "EClinicalMedicine 2024;72:102592 | Arcaini L",
+  "BRUIN, marginal zone cohort (Patel)": "Blood Adv 2026;10:2441-2451 | Patel K",
+  "TRANSCEND FL, marginal zone cohort (Palomba)": "Lancet 2026;407:963-975 | Palomba ML"
+ }
+}

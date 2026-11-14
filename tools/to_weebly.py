@@ -60,6 +60,7 @@ GUARD = """
 .ltw .eyebrow { color: var(--accent) !important; }
 .ltw p, .ltw dd, .ltw li, .ltw span, .ltw div { font-family: var(--font-body); }
 .ltw .lt-head p, .ltw .lt-foot, .ltw .credit { color: var(--muted) !important; }
+.ltw .subnote { color: var(--muted) !important; font-size: 12.5px !important; margin: 8px 0 0 !important; }
 .ltw .design, .ltw dd { color: var(--fg) !important; }
 .ltw dd.qs { color: var(--accent) !important; }
 .ltw dt, .ltw .yr, .ltw .phase, .ltw .count, .ltw .stats b, .ltw .rec .rk { color: var(--muted) !important; }
