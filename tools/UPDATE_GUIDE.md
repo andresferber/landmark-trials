@@ -341,13 +341,19 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   that could change practice (about 6-10 items); the note on the tab says so. Names come from the registry (S2005 is a secondary ID).
 - New drugs to watch: its own list, tools/newdrugs/wm.json. Two entries (sonrotoclax, loncastuximab tesirine) had no figures verified
   from a primary source at the first build: fill them in when the abstract or paper can be read.
-- Perspective (tools/review/persp_wm.py): pilot draft, pending Andres's review; to_weebly.py keeps it off the website until then.
-  Keep its numbers in step with the cards and do not remove the pilot label.
+- Perspective (tools/review/persp_wm.py): approved by Andres (Nov 14, 2026); the usual Perspective rules apply.
+- Added at Andres's request (Nov 14, 2026), outside the inclusion rule: ibrutinib-venetoclax (Castillo 2024, final report 2026),
+  tirabrutinib, orelabrutinib, zanubrutinib phase 1/2 (Trotman), ibrutinib in Bing-Neel syndrome, ZID (Xiong 2025) and the
+  pooled ibrutinib-rituximab vs ibrutinib analysis (Guijosa 2025) (data: tools/wm/wm_entries_2026_11b.py). He declined
+  everolimus (Ghobrial 2010) and transformed WM (Durot 2017): do not add them.
+- MAINTAIN (StiL NHL7-2008) is the one card from a meeting abstract (ASH 2019, Blood 2019;134 Suppl 1:343), added at Andres's
+  request: it has p:0, murl (the abstract's DOI link) and meet:1, which show the source link to the abstract and the tag
+  "✓ meeting abstract" (tools/wm/patch_meeting.py adds the support). Skip p:0 when collecting PMIDs. When a full paper appears
+  in PubMed, replace c, p and the result with the paper's, remove murl and meet, and add a news item.
 - CORE is empty until Andres chooses. topics.json count word is "studies".
-- Open items from the first build: the Waldenström subgroup of StiL NHL 1-2003 (Lancet 2013) and the final analysis of DRC
-  (Kastritis, Blood 2015, a letter without abstract) need the full papers ("PDFs needed"); the EU approval date of ibrutinib and the
-  regulatory status of pirtobrutinib are marked "verify". MAINTAIN (StiL NHL7-2008, rituximab maintenance after bendamustine-rituximab)
-  had no full report in PubMed: add a card when one appears.
+- Open items: the EU approval date of ibrutinib, the regulatory status of pirtobrutinib and the Chinese approval status of
+  orelabrutinib for this disease are marked "verify". The StiL NHL 1-2003 subgroup and the DRC final analysis were completed
+  from the full papers (Nov 14, 2026).
 
 ## 12. Marginal zone lymphomas (key mzl): what is different
 - Scope (first build, Nov 14, 2026, at Andres's request; he has not yet reviewed it): one topic, with gastric MALT lymphoma, non-gastric MALT lymphoma,
