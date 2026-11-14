@@ -1,5 +1,5 @@
 TITLE = 'Waldenström macroglobulinemia: from alkylating agents to BTK inhibitors, 2003–2026'
-UPDATED = 'November 14, 2026 · Pilot draft, pending review'
+UPDATED = 'November 14, 2026'
 TL_CAPTION = 'Timeline of key studies and US regulatory milestones'
 
 TAKE = [
