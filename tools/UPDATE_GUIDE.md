@@ -321,3 +321,30 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   NCT04939363, although the paper's front matter prints the MOLTO number) and copanlisib-nivolumab (Shouse, Haematologica 2026)
   were added as cards; the DESCAR-T registry letter (Bensaber, Br J Haematol 2025; 15 patients) is a related paper (`rel`) on
   the international CAR T-cell card, since it is below the size rule for a card of its own.
+
+## 11. Waldenström macroglobulinemia / lymphoplasmacytic lymphoma (key wm): what is different
+- Scope (first build, Nov 14, 2026; Andres has not yet reviewed it): untreated and relapsed disease are one topic, because most trials
+  enrolled both. IgM MGUS and the IgM-related disorders (neuropathy, cold agglutinin disease, cryoglobulinemia, AL amyloidosis) are not covered.
+- Inclusion rule. Only a few randomized trials exist, so the phase 2 bar of section 2 is replaced by: every phase 3 or randomized trial
+  with a full report; phase 2 trials that were the basis of an FDA or EMA approval or that defined a regimen in current use or named in
+  the International Workshop (IWWM) consensus, whatever the journal; and the consensus definition, response criteria, prognostic models
+  and genomic studies on which trials and practice rest. Meeting-only results are not cards. Other phase 2 trials go under
+  "Worth a look (not added)".
+- Categories: btk (BTK inhibitors & venetoclax), chemo (rituximab, chemoimmunotherapy & transplantation), pi (proteasome inhibitor
+  combinations), risk (definition, risk & biology). Default sort is category, newest first, in that order.
+- Regulatory: only ibrutinib (with or without rituximab) and zanubrutinib are approved for this disease in the US. Cards of other drugs
+  say "not approved for Waldenström macroglobulinemia"; if an agency approves one (pirtobrutinib, sonrotoclax, iopofosine I 131,
+  venetoclax), replace the note with the fact, date and supporting trial, and add a news item.
+- Guidelines: rows cite the IWWM-11 (Semin Hematol 2023) and IWWM-12 (Semin Hematol 2025) consensus reports, from their abstracts.
+  NCCN is "not checked". When a new workshop report or an ESMO or EHA guideline appears, update the rows and the consensus card.
+- Trials to watch: only two phase 3 trials are registered, so the list also holds randomized and single-arm phase 2 trials of regimens
+  that could change practice (about 6-10 items); the note on the tab says so. Names come from the registry (S2005 is a secondary ID).
+- New drugs to watch: its own list, tools/newdrugs/wm.json. Two entries (sonrotoclax, loncastuximab tesirine) had no figures verified
+  from a primary source at the first build: fill them in when the abstract or paper can be read.
+- Perspective (tools/review/persp_wm.py): pilot draft, pending Andres's review; to_weebly.py keeps it off the website until then.
+  Keep its numbers in step with the cards and do not remove the pilot label.
+- CORE is empty until Andres chooses. topics.json count word is "studies".
+- Open items from the first build: the Waldenström subgroup of StiL NHL 1-2003 (Lancet 2013) and the final analysis of DRC
+  (Kastritis, Blood 2015, a letter without abstract) need the full papers ("PDFs needed"); the EU approval date of ibrutinib and the
+  regulatory status of pirtobrutinib are marked "verify". MAINTAIN (StiL NHL7-2008, rituximab maintenance after bendamustine-rituximab)
+  had no full report in PubMed: add a card when one appears.

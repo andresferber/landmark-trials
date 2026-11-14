@@ -1,0 +1,956 @@
+<title>Waldenström macroglobulinemia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column; sticky control strip; each trial is a ruled entry with a year gutter */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --fg: #1b2230;
+  --muted: #5d6677;
+  --rule: #dde1e8;
+  --accent: #2c4a8a;
+  --s-young: #1f6f5c; --s-young-bg: #e3f2ed;
+  --s-old: #8a5a12;   --s-old-bg: #f7eedd;
+  --s-p2: #5b4a9a;    --s-p2-bg: #ece8f7;
+  --s-rr: #9a2f3d;    --s-rr-bg: #f7e4e6;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+    --s-young: #7fd3bb; --s-young-bg: #163029;
+    --s-old: #e6b86a;   --s-old-bg: #33270f;
+    --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+    --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+  --s-young: #7fd3bb; --s-young-bg: #163029;
+  --s-old: #e6b86a;   --s-old-bg: #33270f;
+  --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+  --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
+header h1 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.7rem, 4.5vw, 2.3rem); line-height: 1.15; margin: 0 0 6px; text-wrap: balance; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--muted); max-width: 62ch; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+.controls { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 14px 12px; margin-top: 20px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 10px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 13px/1 var(--font-body); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.row2 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+input[type="search"] { flex: 1 1 220px; min-width: 0; font: 400 14px var(--font-body); padding: 9px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+select { font: 400 14px var(--font-body); padding: 9px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+.count { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+ol.list { list-style: none; margin: 0; padding: 0; }
+.trial { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 14px; padding-block: 18px; border-bottom: 1px solid var(--rule); }
+.yr { font-family: var(--font-mono); font-weight: 500; font-size: 15px; color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.name { font-family: var(--font-display); font-weight: 650; font-size: 1.15rem; margin: 0; }
+.tag { font: 500 11px/1 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; }
+.tag.young { color: var(--s-young); background: var(--s-young-bg); }
+.tag.old { color: var(--s-old); background: var(--s-old-bg); }
+.tag.p2 { color: var(--s-p2); background: var(--s-p2-bg); }
+.tag.rr { color: var(--s-rr); background: var(--s-rr-bg); }
+.tag.risk { color: var(--muted); background: var(--bg); box-shadow: inset 0 0 0 1px var(--rule); }
+.phase { font: 400 12px var(--font-mono); color: var(--muted); }
+.design { margin: 0; color: var(--fg); }
+dl { margin: 2px 0 0; display: grid; grid-template-columns: max-content minmax(0,1fr); gap: 4px 12px; font-size: 14px; }
+dt { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+dd { margin: 0; min-width: 0; }
+.result { font-variant-numeric: tabular-nums; }
+.stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; padding-block: 4px; }
+.stats b { font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.rec { display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; }
+.rec .rk { font: 500 10.5px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.rec .rk:first-child { margin-top: 0; }
+.rec ul { margin: 0; padding-left: 16px; }
+.rec li { margin: 1px 0; }
+.rec li.none { list-style: none; margin-left: -16px; color: var(--muted); }
+.rec p { margin: 0; }
+.rec a { color: var(--accent); text-underline-offset: 2px; }
+.qs { color: var(--accent); }
+.cite { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.cite a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.cite a:hover { text-decoration-thickness: 2px; }
+.cite a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.ok { color: var(--s-young); font-size: 12.5px; white-space: nowrap; }
+.flag { color: var(--s-old); font-size: 12.5px; }
+.empty { padding: 32px 0; color: var(--muted); }
+footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch; }
+@media (max-width: 480px) {
+  .trial { grid-template-columns: 1fr; gap: 4px; }
+  dl { grid-template-columns: 1fr; gap: 0 0; }
+  dt { line-height: 1.6; margin-top: 4px; }
+}
+.credit { margin: 10px 0 0; font-size: 11.5px; color: var(--muted); opacity: .8; }
+
+/* Added Oct 23, 2026: toxicity, core trials, evidence, trials to watch, print */
+.tox { color: var(--fg); }
+.core { font: 600 11px/1 var(--font-mono); letter-spacing: .04em; color: #8a5a12; background: #fbf1dc; padding: 4px 7px; border-radius: 4px; }
+.ok.full { color: var(--accent); }
+.trial.flash { animation: lt-flash 2.4s ease-out; }
+@keyframes lt-flash { 0% { background: rgba(240, 190, 60, .35); } 100% { background: transparent; } }
+.printbtn { font: 500 13px/1 var(--font-body); padding: 9px 14px; border-radius: 8px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; margin-left: auto; }
+.printbtn:hover { border-color: var(--accent); }
+.printbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.watch { margin-top: 28px; padding: 18px 18px 8px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+.watch[hidden] { display: none; }
+.watch h2 { font-family: var(--font-display); font-weight: 650; font-size: 1.25rem; margin: 0 0 4px; }
+.watch .wnote { margin: 0 0 12px; font-size: 13px; color: var(--muted); }
+.watch ul { list-style: none; margin: 0; padding: 0; }
+.watch li { padding: 10px 0; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 3px; }
+.watch .wn { font-weight: 600; }
+.watch .wm { font: 400 12.5px var(--font-mono); color: var(--muted); }
+.watch .wd { font-size: 14px; }
+.watch a { color: var(--accent); }
+@media print {
+  :root { --bg: #fff; --surface: #fff; --fg: #111; --muted: #444; --rule: #ccc; --accent: #1a3a7a; }
+  body { background: #fff; }
+  .controls, .printbtn { display: none !important; }
+  .trial { break-inside: avoid; page-break-inside: avoid; }
+  .watch { break-inside: avoid; }
+  a { text-decoration: none; }
+}
+
+/* Added Oct 23, 2026: share link and abbreviations */
+.share { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font: 500 12px/1 var(--font-body); padding: 4px 6px; border-radius: 6px; }
+.share:hover { color: var(--accent); background: var(--rule); }
+.share:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.share .lbl { display: none; }
+.share.copied .lbl { display: inline; color: var(--s-young); }
+.gloss { margin-top: 24px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); padding: 0 18px; }
+.gloss summary { cursor: pointer; padding: 14px 0; font-weight: 600; }
+.gloss dl { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 4px 16px; margin: 0 0 16px; font-size: 14px; }
+.gloss dt { font: 500 13px var(--font-mono); color: var(--fg); text-transform: none; letter-spacing: normal; }
+.gloss dd { margin: 0; color: var(--muted); }
+@media print { .share { display: none !important; } .gloss { break-inside: avoid; } }
+
+/* Added Oct 23, 2026: report link */
+.report { color: var(--muted); font-size: 12px; }
+.report:hover { color: var(--accent); }
+@media print { .report { display: none !important; } }
+
+/* Added Oct 23, 2026: drug mechanism reviews */
+.moas { display: flex; flex-direction: column; gap: 2px; }
+.moa b { font-weight: 600; }
+.moa a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.moa a:hover { text-decoration-thickness: 2px; }
+.moafree { font: 500 11px var(--font-mono); color: var(--s-young); border: 1px solid var(--rule); border-radius: 4px; padding: 0 4px; }
+
+/* Added Oct 24, 2026: site disclaimer */
+.sitedisc { margin: 12px 0 0; font-size: 12.5px; }
+
+/* Added Oct 24, 2026: category subtitles in the trial list */
+ol.list li.grp { list-style: none; padding: 22px 0 6px; border-bottom: 2px solid var(--fg); }
+ol.list li.grp h3 { margin: 0; font-family: var(--font-display); font-weight: 650; font-size: 1.2rem; }
+ol.list li.grp .gn { font: 500 12px var(--font-mono); color: var(--muted); margin-left: 8px; }
+
+/* Added Oct 24, 2026: Perspective (collapsible reader view) */
+.review { margin-top: 18px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+.review > summary { list-style: none; cursor: pointer; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 14px 18px; }
+.review > summary::-webkit-details-marker { display: none; }
+.review .rv-kicker { font: 500 11px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.review .rv-title { font-family: var(--font-display); font-weight: 650; font-size: 1.05rem; flex: 1 1 260px; }
+.review .rv-open { font: 500 13px/1 var(--font-body); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.review[open] .rv-open { font-size: 0; }
+.review[open] .rv-open::before { content: "Close"; font-size: 13px; }
+.review .rv-body { padding: 0 18px 18px; max-width: 72ch; font-size: 15.5px; line-height: 1.65; }
+.review .rv-body h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.12rem; margin: 22px 0 6px; }
+.review .rv-body p { margin: 0 0 12px; }
+.review .rv-body ul { margin: 0 0 12px; padding-left: 20px; }
+.review .rv-body li { margin: 4px 0; }
+.review .rv-meta { font-size: 12.5px; color: var(--muted); }
+.review .rv-disc { font-size: 13px; line-height: 1.5; color: var(--fg); background: var(--s-old-bg); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; margin: 8px 0 14px; }
+.review .rv-take { border-left: 3px solid var(--accent); background: var(--bg); padding: 4px 14px 6px; margin: 12px 0 16px; border-radius: 0 8px 8px 0; }
+.review .rv-take h3 { margin-top: 10px; }
+.review sup a { font: 600 11px var(--font-mono); text-decoration: none; color: var(--accent); padding: 0 1px; }
+.review a { color: var(--accent); }
+.review .rv-refs { font-size: 13.5px; padding-left: 22px; }
+.review .rv-endbar { display: flex; justify-content: center; margin: 18px 0 2px; }
+.review .rv-close { all: unset; cursor: pointer; font: 500 13px/1 var(--font-body); padding: 9px 16px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.review .rv-close:hover { border-color: var(--accent); color: var(--accent); }
+.review .rv-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media print { .review .rv-endbar { display: none; } }
+.rv-tl { margin: 8px 0 18px; }
+.rv-tl figcaption { font: 500 11px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.rv-tl ol { list-style: none; margin: 0; padding: 0 0 0 4px; border-left: 2px solid var(--rule); }
+.rv-tl li { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 10px; padding: 5px 0 5px 14px; font-size: 14px; line-height: 1.45; }
+.rv-tl li::before { content: ""; position: absolute; left: -7px; top: 10px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2px solid var(--muted); }
+.rv-tl li.tl-old::before { border-color: var(--s-old); background: var(--s-old-bg); }
+.rv-tl li.tl-young::before { border-color: var(--s-young); background: var(--s-young-bg); }
+.rv-tl li.tl-p2::before { border-color: var(--s-p2); background: var(--s-p2-bg); }
+.rv-tl li.tl-rr::before { border-color: var(--s-rr); background: var(--s-rr-bg); }
+.rv-tl .tl-y { font: 500 13px var(--font-mono); color: var(--muted); }
+@media print { .review .rv-open { display: none; } }
+
+/* Added Oct 24, 2026: section tabs, Trials to watch tab, New drugs to watch, comment link */
+.tabs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-top: 18px; padding: 6px 8px 0; background: #dbe3f1; background: color-mix(in srgb, var(--accent) 16%, var(--surface)); border: 1px solid var(--rule); border-radius: 10px 10px 0 0; }
+.tabs button { all: unset; cursor: pointer; font: 600 14px/1 var(--font-body); padding: 12px 14px; color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -1px; }
+.tabs button:hover { color: var(--fg); }
+.tabs button { border-radius: 8px 8px 0 0; }
+.tabs button:hover { background: var(--surface); }
+.tabs button[aria-selected="true"] { color: var(--fg); background: var(--surface); border-bottom-color: var(--accent); }
+.tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.tabs .tcount { font: 500 11px var(--font-mono); color: var(--muted); margin-left: 6px; }
+.tabs .tabmail { margin-left: auto; font: 500 13px/1 var(--font-body); color: var(--accent); text-decoration: none; padding: 8px 4px; }
+.tabs .tabmail:hover { text-decoration: underline; }
+.newdrugs[hidden] { display: none; }
+.newdrugs { padding-top: 12px; }
+.newdrugs .nd-note { font-size: 13.5px; color: var(--muted); margin: 4px 0 14px; max-width: 72ch; }
+.newdrugs .nd-mods { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.newdrugs .nd-item { border-top: 1px solid var(--rule); padding: 16px 0; display: flex; flex-direction: column; gap: 6px; }
+.newdrugs .nd-top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.newdrugs .nd-name { font-family: var(--font-display); font-weight: 650; font-size: 1.12rem; margin: 0; }
+.newdrugs .nd-mod { font: 500 11px/1 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; color: var(--s-p2); background: var(--s-p2-bg); }
+.newdrugs .nd-ev { font: 500 11.5px var(--font-mono); color: var(--muted); }
+.newdrugs .nd-ev.pr { color: var(--s-young); }
+.newdrugs dl { margin: 2px 0 0; }
+.newdrugs a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.newdrugs h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.1rem; margin: 22px 0 6px; }
+.newdrugs .nd-log { padding-left: 20px; }
+.newdrugs .nd-log li { margin: 6px 0; font-size: 14px; }
+.newdrugs .nd-rules { font-size: 12.5px; color: var(--muted); margin-top: 16px; max-width: 72ch; }
+@media print { .tabs { display: none; } }
+
+/* Added Oct 25, 2026: the same subtle tint for Endpoint, Result and Key toxicity on every card and page */
+:root { --f-ep-bg: #eef1f5; --f-res-bg: #e7effb; --f-tox-bg: #fcf8e6; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --f-ep-bg: #1e242e; --f-res-bg: #18253d; --f-tox-bg: #2d2915; } }
+:root[data-theme="dark"] { --f-ep-bg: #1e242e; --f-res-bg: #18253d; --f-tox-bg: #2d2915; }
+ol.list dl, .newdrugs dl { column-gap: 0; }
+ol.list dt, .newdrugs dt { padding-right: 12px; }
+dt.f-ep, dd.f-ep { background: var(--f-ep-bg); }
+dt.f-res, dd.f-res { background: var(--f-res-bg); }
+dt.f-tox, dd.f-tox { background: var(--f-tox-bg); }
+dt.f-ep, dt.f-res, dt.f-tox { padding: 2px 12px 2px 8px; border-radius: 6px 0 0 6px; }
+dd.f-ep, dd.f-res, dd.f-tox { padding: 2px 8px 2px 0; border-radius: 0 6px 6px 0; }
+@media (max-width: 480px) {
+  dt.f-ep, dt.f-res, dt.f-tox { border-radius: 6px 6px 0 0; padding-bottom: 0; }
+  dd.f-ep, dd.f-res, dd.f-tox { border-radius: 0 0 6px 6px; padding: 0 8px 4px 8px; }
+}
+
+/* Added Oct 28, 2026: warm parchment tint on the Perspective bar */
+:root { --rv-bg: #fbf8f1; --rv-stripe: #ae915a; --rv-ink: #7a5a22; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --rv-bg: #221e18; --rv-stripe: #c9a56a; --rv-ink: #dcbd85; } }
+:root[data-theme="dark"] { --rv-bg: #221e18; --rv-stripe: #c9a56a; --rv-ink: #dcbd85; }
+.review { border-left: 4px solid var(--rv-stripe); }
+.review > summary { background: var(--rv-bg); border-radius: 8px 11px 11px 8px; }
+.review[open] > summary { border-radius: 8px 11px 0 0; border-bottom: 1px solid var(--rule); margin-bottom: 14px; }
+.review .rv-kicker { color: var(--rv-ink); }
+.review .rv-open { background: var(--surface); border-color: var(--rv-stripe); color: var(--rv-ink); }
+@media print { .review > summary { background: none; } }
+
+/* Added Oct 28, 2026: Drug mechanisms tab */
+.mechs { margin-top: 14px; }
+.mechs a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.mechs .mx-note { font-size: 14px; color: var(--muted); margin: 0 0 6px; max-width: 72ch; }
+.mechs .mx-item { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+.mechs .mx-name { font-family: var(--font-display); font-weight: 650; font-size: 1.08rem; margin: 0 0 6px; }
+.mechs .mx-desc { margin: 0 0 8px; max-width: 78ch; font-size: 14.5px; line-height: 1.55; }
+.mechs .mx-rev, .mechs .mx-trials { margin: 4px 0 0; font-size: 14px; }
+.mechs .mx-k { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 8px; }
+.mechs .mx-trials { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.mechs a.mt { display: inline-block; text-decoration: none; color: var(--fg); border: 1px solid var(--rule); background: var(--surface); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
+.mechs a.mt:hover { border-color: var(--accent); color: var(--accent); }
+.mechs .mt-y { font: 500 11px var(--font-mono); color: var(--muted); margin-left: 4px; }
+@media print { .mechs { display: none; } }
+
+/* Added Oct 28, 2026: an open tab closes on a second click; the x is the cue */
+.tabs button[data-tab]:not([data-tab="trials"])[aria-selected="true"]::after { content: "\00d7"; margin-left: 8px; font-weight: 500; color: var(--muted); }
+.tabs button[data-tab]:not([data-tab="trials"])[aria-selected="true"]:hover::after { color: var(--fg); }
+
+/* Added Oct 28, 2026: tab bar pinned while a tab other than Landmark trials is open */
+.tabs-ph { margin-top: 18px; }
+.tabs.tabs-pinned { position: fixed; z-index: 9000; margin-top: 0; border-radius: 0 0 10px 10px; box-shadow: 0 6px 14px -8px rgba(16,24,40,.35); }
+@media print { .tabs.tabs-pinned { position: static; } }
+@media (max-width: 560px) { .tabs.tabs-pinned { padding-top: 2px; } .tabs.tabs-pinned button { padding: 8px 10px; } .tabs.tabs-pinned .tabmail { display: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Waldenström macroglobulinemia / lymphoplasmacytic lymphoma · 2003–2026</div>
+    <h1>Landmark studies in Waldenström macroglobulinemia and lymphoplasmacytic lymphoma</h1>
+    <p>Untreated and relapsed disease together: the consensus definition, prognostic scores and the MYD88 and CXCR4 genotypes; rituximab and chemoimmunotherapy; proteasome inhibitor regimens; and BTK inhibitors, venetoclax and pirtobrutinib: design, verified results, context, open questions and reception.</p>
+  </header>
+
+  <details class="review" id="review">
+    <summary><span class="rv-kicker">Perspective</span><span class="rv-title">Waldenström macroglobulinemia: from alkylating agents to BTK inhibitors, 2003–2026</span><span class="rv-open">Read the perspective</span></summary>
+    <div class="rv-body">
+      <p class="rv-meta">Andres Ferber, MD, with the assistance of Claude (Anthropic) · Last updated November 14, 2026 · Pilot draft, pending review · About 1,100 words. Numbers are taken from the verified trial entries on this page; numbered references jump to each trial.</p>
+      <p class="rv-disc"><b>Personal perspective, for education only.</b> This text reflects the author's own reading and opinion of the published evidence. It is not a clinical practice guideline, medical advice or a substitute for clinical judgment. Patient care should follow the primary literature, current guidelines (such as NCCN, ESMO, IMWG and ASCO), approved prescribing information and the individual patient's circumstances.</p>
+      <div class="rv-take"><h3>Key points</h3><ul><li>Waldenström macroglobulinemia is lymphoplasmacytic lymphoma in the marrow with an IgM protein of any level. Treatment is for symptoms, not for the IgM number.</li><li>MYD88 L265P is present in about nine patients in ten, and CXCR4 mutations in about a quarter. Together they predict how fast and how deeply a BTK inhibitor works.</li><li>Two approaches are standard for first treatment: fixed-duration chemoimmunotherapy (DRC or bendamustine-rituximab) and a continuous covalent BTK inhibitor. They have not been compared in a reported randomized trial.</li><li>Zanubrutinib and ibrutinib were similarly effective in ASPEN; zanubrutinib caused less atrial fibrillation and is the usual choice among covalent BTK inhibitors.</li><li>Proteasome inhibitor regimens give fast responses, but bortezomib added to DRC did not significantly improve PFS.</li><li>After a covalent BTK inhibitor, venetoclax and pirtobrutinib are active; neither is approved for this disease, and complete responses remain rare with every drug.</li></ul></div>
+      <figure class="rv-tl"><figcaption>Timeline of key studies and US regulatory milestones</figcaption><ol><li class="tl-p2"><span class="tl-y">2003</span><span class="tl-e">Consensus definition and criteria for starting treatment (IWWM-2)</span></li><li class="tl-old"><span class="tl-y">2004</span><span class="tl-e">Rituximab alone: objective response in about one patient in four; IgM flare described (E3A98)</span></li><li class="tl-old"><span class="tl-y">2007</span><span class="tl-e">DRC, a six-month regimen without stem-cell toxicity</span></li><li class="tl-p2"><span class="tl-y">2009</span><span class="tl-e">IPSSWM prognostic score; bortezomib, dexamethasone and rituximab (WMCTG 05-180)</span></li><li class="tl-p2"><span class="tl-y">2012</span><span class="tl-e">MYD88 L265P identified</span></li><li class="tl-old"><span class="tl-y">2013</span><span class="tl-e">Bendamustine-rituximab better than R-CHOP in indolent lymphoma (StiL NHL 1-2003); fludarabine better than chlorambucil (WM1)</span></li><li class="tl-p2"><span class="tl-y">2014</span><span class="tl-e">CXCR4 mutations and the three genotypes</span></li><li class="tl-young"><span class="tl-y">2015</span><span class="tl-e">Ibrutinib in previously treated disease; FDA approves ibrutinib, the first drug for this disease</span></li><li class="tl-young"><span class="tl-y">2018</span><span class="tl-e">Ibrutinib-rituximab better than rituximab (iNNOVATE); FDA approves the combination</span></li><li class="tl-young"><span class="tl-y">2020</span><span class="tl-e">Zanubrutinib compared with ibrutinib (ASPEN); acalabrutinib (ACE-WM-001)</span></li><li class="tl-young"><span class="tl-y">2021</span><span class="tl-e">FDA approves zanubrutinib</span></li><li class="tl-young"><span class="tl-y">2022</span><span class="tl-e">Fixed-duration venetoclax after previous treatment</span></li><li class="tl-p2"><span class="tl-y">2023</span><span class="tl-e">Bortezomib added to DRC: faster responses, no significant PFS gain (ECWM-1)</span></li><li class="tl-young"><span class="tl-y">2026</span><span class="tl-e">Pirtobrutinib after a covalent BTK inhibitor (BRUIN); acalabrutinib at five years</span></li></ol></figure>
+      <h3>Defining the disease and deciding when to treat</h3>
+<p>The 2002 workshop in Athens defined Waldenström macroglobulinemia as lymphoplasmacytic lymphoma in the bone marrow with an IgM monoclonal protein of any concentration, and separated symptomatic disease, which needs treatment, from asymptomatic disease<sup><a class="rref" href="#t-wm-consensus-definition-iwwm-2-owen" data-slug="consensus-definition-iwwm-2-owen" title="Consensus definition, IWWM-2 (Owen)">1</a></sup>. Those criteria are still the entry criteria of trials. Among asymptomatic patients, 72% progressed over a median follow-up of 7.8 years, and IgM, marrow infiltration, β2-microglobulin and albumin separate groups with a median time to progression of 1.8, 4.8 and 9.3 years<sup><a class="rref" href="#t-wm-asymptomatic-wm-risk-model-bustoros" data-slug="asymptomatic-wm-risk-model-bustoros" title="Asymptomatic WM risk model (Bustoros)">2</a></sup>. No trial has shown that treating before symptoms helps, and observation remains the standard<sup><a class="rref" href="#t-wm-iwwm-11-treatment-consensus-buske" data-slug="iwwm-11-treatment-consensus-buske" title="IWWM-11 treatment consensus (Buske)">3</a></sup>.</p>
+<p>For patients who start treatment, the IPSSWM uses age, hemoglobin, platelets, β2-microglobulin and the size of the monoclonal protein; 5-year survival was 87%, 68% and 36% in its three groups<sup><a class="rref" href="#t-wm-ipsswm-morel" data-slug="ipsswm-morel" title="IPSSWM (Morel)">4</a></sup>. The revised score, built in patients treated mostly with rituximab-based regimens, uses age, β2-microglobulin, albumin and LDH, with 10-year survival from 84% to 9% across five groups<sup><a class="rref" href="#t-wm-revised-ipsswm-kastritis" data-slug="revised-ipsswm-kastritis" title="Revised IPSSWM (Kastritis)">5</a></sup>. Both describe prognosis; neither selects treatment.</p>
+
+<h3>Genotype</h3>
+<p>Whole-genome sequencing found MYD88 L265P in 91% of patients with lymphoplasmacytic lymphoma<sup><a class="rref" href="#t-wm-myd88-l265p-treon" data-slug="myd88-l265p-treon" title="MYD88 L265P (Treon)">6</a></sup>, and then somatic CXCR4 mutations like those of WHIM syndrome. Patients with both mutations have more marrow disease and higher IgM; patients with neither have the lowest marrow burden, and wild-type MYD88 was associated with a higher risk of death<sup><a class="rref" href="#t-wm-myd88-and-cxcr4-genotype-treon" data-slug="myd88-and-cxcr4-genotype-treon" title="MYD88 and CXCR4 genotype (Treon)">7</a></sup>. The practical value of genotype came with BTK inhibitors, below.</p>
+
+<h3>Rituximab and chemoimmunotherapy</h3>
+<p>Rituximab alone gave an objective response in 27.5% of patients, and a companion series described the IgM flare, a rise in IgM in 10 of 11 patients that can cause hyperviscosity<sup><a class="rref" href="#t-wm-e3a98-gertz" data-slug="e3a98-gertz" title="E3A98 (Gertz)">8</a></sup>. Combinations did better. DRC gave responses in 83% of untreated patients, with a 2-year PFS of 67% and little hematologic toxicity, although responses took a median of 4.1 months<sup><a class="rref" href="#t-wm-drc-dimopoulos" data-slug="drc-dimopoulos" title="DRC (Dimopoulos)">9</a></sup>. Adding rituximab to CHOP raised the response rate from 67% to 94% in the only randomized test of rituximab with chemotherapy<sup><a class="rref" href="#t-wm-glsg-r-chop-vs-chop-buske" data-slug="glsg-r-chop-vs-chop-buske" title="GLSG R-CHOP vs CHOP (Buske)">10</a></sup>. Bendamustine-rituximab then replaced R-CHOP across indolent lymphomas, with a median PFS of 69.5 months against 31.2<sup><a class="rref" href="#t-wm-stil-nhl-1-2003-rummel" data-slug="stil-nhl-1-2003-rummel" title="StiL NHL 1-2003 (Rummel)">11</a></sup>; the trial's Waldenström subgroup was small. WM1, the largest randomized trial in this disease, showed longer PFS with fludarabine than with chlorambucil, 36.3 months against 27.1, and more second malignancies with chlorambucil; neither arm included rituximab<sup><a class="rref" href="#t-wm-wm1-leblond" data-slug="wm1-leblond" title="WM1 (Leblond)">12</a></sup>. Autologous transplantation gave a 5-year PFS of 39.7% in a registry series and is now rarely used<sup><a class="rref" href="#t-wm-ebmt-autologous-transplantation-kyriakou" data-slug="ebmt-autologous-transplantation-kyriakou" title="EBMT autologous transplantation (Kyriakou)">13</a></sup>.</p>
+
+<h3>Proteasome inhibitors</h3>
+<p>Bortezomib with dexamethasone and rituximab produced responses in 96% of untreated patients within a median of 1.4 months, but 61% stopped bortezomib early, mostly for neuropathy<sup><a class="rref" href="#t-wm-wmctg-05-180-bdr-treon" data-slug="wmctg-05-180-bdr-treon" title="WMCTG 05-180, BDR (Treon)">14</a></sup>. A weekly schedule gave a median PFS of 43 months with long follow-up<sup><a class="rref" href="#t-wm-emn-bdr-dimopoulos" data-slug="emn-bdr-dimopoulos" title="EMN BDR (Dimopoulos)">15</a></sup>. Carfilzomib and ixazomib regimens avoided most neuropathy<sup><a class="rref" href="#t-wm-card-treon" data-slug="card-treon" title="CaRD (Treon)">16</a></sup><sup><a class="rref" href="#t-wm-idr-castillo" data-slug="idr-castillo" title="IDR (Castillo)">17</a></sup>, and ixazomib with subcutaneous rituximab was active at relapse<sup><a class="rref" href="#t-wm-hovon124-ecwm-r2-kersten" data-slug="hovon124-ecwm-r2-kersten" title="HOVON124/ECWM-R2 (Kersten)">18</a></sup>. The randomized test came late: adding bortezomib to DRC shortened the time to first response from 5.5 to 3.0 months, but 24-month PFS was 80.6% against 72.8%, not a significant difference<sup><a class="rref" href="#t-wm-ecwm-1-buske" data-slug="ecwm-1-buske" title="ECWM-1 (Buske)">19</a></sup>.</p>
+
+<h3>BTK inhibitors</h3>
+<p>Ibrutinib gave responses in 90.5% of previously treated patients, and genotype mattered: major responses in 91.2% with MYD88 L265P and wild-type CXCR4, 61.9% when CXCR4 was also mutated, and 28.6% with wild-type MYD88. At five years, PFS was 70% and 38% in the first two groups<sup><a class="rref" href="#t-wm-ibrutinib-previously-treated-treon" data-slug="ibrutinib-previously-treated-treon" title="Ibrutinib, previously treated (Treon)">20</a></sup>. It was also active in disease refractory to rituximab<sup><a class="rref" href="#t-wm-innovate-arm-c-dimopoulos" data-slug="innovate-arm-c-dimopoulos" title="iNNOVATE arm C (Dimopoulos)">21</a></sup> and as first treatment, where CXCR4 mutations again slowed responses<sup><a class="rref" href="#t-wm-ibrutinib-treatment-naive-treon" data-slug="ibrutinib-treatment-naive-treon" title="Ibrutinib, treatment-naive (Treon)">22</a></sup>. In iNNOVATE, ibrutinib with rituximab gave a 30-month PFS of 82% against 28% with rituximab alone; the trial had no ibrutinib-alone arm, so what rituximab adds is not known<sup><a class="rref" href="#t-wm-innovate-dimopoulos" data-slug="innovate-dimopoulos" title="iNNOVATE (Dimopoulos)">23</a></sup>.</p>
+<p>ASPEN compared zanubrutinib with ibrutinib. It missed its primary endpoint, the rate of very good partial response, 28% against 19%, and 18-month PFS was similar, 85% and 84%; zanubrutinib caused less atrial fibrillation, 7.9% against 23.5% in the final analysis, and more neutropenia<sup><a class="rref" href="#t-wm-aspen-tam" data-slug="aspen-tam" title="ASPEN (Tam)">24</a></sup>. In patients without a MYD88 mutation, zanubrutinib gave major responses in 50%<sup><a class="rref" href="#t-wm-aspen-cohort-2-myd88-wild-type-dimopoulos" data-slug="aspen-cohort-2-myd88-wild-type-dimopoulos" title="ASPEN cohort 2, MYD88 wild-type (Dimopoulos)">25</a></sup>. Acalabrutinib, not approved for this disease, has five-year data: a 66-month PFS of 52.0% in relapsed and 83.6% in untreated patients<sup><a class="rref" href="#t-wm-ace-wm-001-owen" data-slug="ace-wm-001-owen" title="ACE-WM-001 (Owen)">26</a></sup>.</p>
+<p>All of these are continuous treatments with almost no complete responses. Progression on ibrutinib is associated with mutations at BTK Cys481, found in 3 of 6 progressing patients<sup><a class="rref" href="#t-wm-btk-cys481-resistance-mutations-xu" data-slug="btk-cys481-resistance-mutations-xu" title="BTK Cys481 resistance mutations (Xu)">27</a></sup>.</p>
+
+<h3>After a covalent BTK inhibitor</h3>
+<p>Two years of venetoclax gave responses in 84% of previously treated patients, half of them after a BTK inhibitor, with a median PFS of 36 months in the long-term report and no effect of CXCR4 mutations<sup><a class="rref" href="#t-wm-venetoclax-castillo" data-slug="venetoclax-castillo" title="Venetoclax (Castillo)">28</a></sup>. Pirtobrutinib, a noncovalent BTK inhibitor, gave responses in 81.0% of patients previously treated with a covalent one<sup><a class="rref" href="#t-wm-bruin-waldenstr-m-cohort-palomba" data-slug="bruin-waldenstr-m-cohort-palomba" title="BRUIN, Waldenström cohort (Palomba)">29</a></sup>. Neither is approved for Waldenström macroglobulinemia.</p>
+
+<h3>Where we are now</h3>
+<p>The points below are a personal summary, not a guideline; NCCN placements were not checked against the current document.</p>
+<ul>
+<li><b>Asymptomatic disease:</b> observation, with follow-up set by risk.</li>
+<li><b>Before treatment:</b> MYD88 and, where available, CXCR4 testing<sup><a class="rref" href="#t-wm-iwwm-11-treatment-consensus-buske" data-slug="iwwm-11-treatment-consensus-buske" title="IWWM-11 treatment consensus (Buske)">3</a></sup>.</li>
+<li><b>First treatment:</b> fixed-duration chemoimmunotherapy (DRC or bendamustine-rituximab) or a continuous covalent BTK inhibitor, usually zanubrutinib. The choice rests on age, comorbidity, genotype, how fast IgM must fall and the patient's preference for a fixed or continuous treatment.</li>
+<li><b>High IgM or hyperviscosity:</b> plasmapheresis first; avoid rituximab alone because of the IgM flare<sup><a class="rref" href="#t-wm-e3a98-gertz" data-slug="e3a98-gertz" title="E3A98 (Gertz)">8</a></sup>.</li>
+<li><b>MYD88 wild-type disease:</b> chemoimmunotherapy is often preferred; zanubrutinib is active<sup><a class="rref" href="#t-wm-aspen-cohort-2-myd88-wild-type-dimopoulos" data-slug="aspen-cohort-2-myd88-wild-type-dimopoulos" title="ASPEN cohort 2, MYD88 wild-type (Dimopoulos)">25</a></sup>.</li>
+<li><b>Relapse:</b> the class not yet used, chemoimmunotherapy or a BTK inhibitor; a proteasome inhibitor regimen is an alternative.</li>
+<li><b>After a covalent BTK inhibitor:</b> venetoclax or pirtobrutinib, both off-label, or a clinical trial.</li>
+</ul>
+
+<h3>Open questions</h3>
+<ul>
+<li><b>Chemoimmunotherapy or a BTK inhibitor first?</b> No randomized comparison has been reported.</li>
+<li><b>Fixed-duration targeted treatment:</b> can a BTK inhibitor with a BCL2 inhibitor replace continuous therapy? A trial of ibrutinib with venetoclax was stopped for ventricular arrhythmias, and newer combinations are in trials.</li>
+<li><b>CXCR4-mutated and MYD88 wild-type disease:</b> responses are slower or less deep, and no treatment is specific to them.</li>
+<li><b>Resistance:</b> what to give after both a covalent BTK inhibitor and venetoclax.</li>
+<li><b>Complete response:</b> rare with every current regimen; whether deeper responses change long-term outcome is not established.</li>
+</ul>
+
+<h3>What is coming</h3>
+<p>The trials under Trials to watch address the first two questions: ibrutinib-rituximab against DRC (RAINBOW), venetoclax-rituximab against DRC (VIWA-1) and against a BTK inhibitor (S2005), and carfilzomib added to ibrutinib (CZAR-1). After a BTK inhibitor, a phase 3 trial of the radiopharmaceutical iopofosine I 131 against rituximab, cyclophosphamide and dexamethasone is registered, and the BCL2 inhibitor sonrotoclax is in a phase 2 trial. BTK degraders, CAR T cells and an antibody-drug conjugate are under New drugs to watch.</p>
+      <h3>References</h3>
+      <ol class="rv-refs"><li><a class="rref" href="#t-wm-consensus-definition-iwwm-2-owen" data-slug="consensus-definition-iwwm-2-owen">Consensus definition, IWWM-2 (Owen)</a>. Semin Oncol 2003;30:110. <a href="https://pubmed.ncbi.nlm.nih.gov/12720118/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-asymptomatic-wm-risk-model-bustoros" data-slug="asymptomatic-wm-risk-model-bustoros">Asymptomatic WM risk model (Bustoros)</a>. J Clin Oncol 2019;37:1403. <a href="https://pubmed.ncbi.nlm.nih.gov/30990729/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-iwwm-11-treatment-consensus-buske" data-slug="iwwm-11-treatment-consensus-buske">IWWM-11 treatment consensus (Buske)</a>. Semin Hematol 2023;60:73. <a href="https://pubmed.ncbi.nlm.nih.gov/37099027/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-ipsswm-morel" data-slug="ipsswm-morel">IPSSWM (Morel)</a>. Blood 2009;113:4163. <a href="https://pubmed.ncbi.nlm.nih.gov/19196866/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-revised-ipsswm-kastritis" data-slug="revised-ipsswm-kastritis">Revised IPSSWM (Kastritis)</a>. Leukemia 2019;33:2654. <a href="https://pubmed.ncbi.nlm.nih.gov/31118465/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-myd88-l265p-treon" data-slug="myd88-l265p-treon">MYD88 L265P (Treon)</a>. N Engl J Med 2012;367:826. <a href="https://pubmed.ncbi.nlm.nih.gov/22931316/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-myd88-and-cxcr4-genotype-treon" data-slug="myd88-and-cxcr4-genotype-treon">MYD88 and CXCR4 genotype (Treon)</a>. Blood 2014;123:2791. <a href="https://pubmed.ncbi.nlm.nih.gov/24553177/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-e3a98-gertz" data-slug="e3a98-gertz">E3A98 (Gertz)</a>. Leuk Lymphoma 2004;45:2047. <a href="https://pubmed.ncbi.nlm.nih.gov/15370249/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-drc-dimopoulos" data-slug="drc-dimopoulos">DRC (Dimopoulos)</a>. J Clin Oncol 2007;25:3344. <a href="https://pubmed.ncbi.nlm.nih.gov/17577016/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-glsg-r-chop-vs-chop-buske" data-slug="glsg-r-chop-vs-chop-buske">GLSG R-CHOP vs CHOP (Buske)</a>. Leukemia 2009;23:153. <a href="https://pubmed.ncbi.nlm.nih.gov/18818699/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-stil-nhl-1-2003-rummel" data-slug="stil-nhl-1-2003-rummel">StiL NHL 1-2003 (Rummel)</a>. Lancet 2013;381:1203. <a href="https://pubmed.ncbi.nlm.nih.gov/23433739/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-wm1-leblond" data-slug="wm1-leblond">WM1 (Leblond)</a>. J Clin Oncol 2013;31:301. <a href="https://pubmed.ncbi.nlm.nih.gov/23233721/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-ebmt-autologous-transplantation-kyriakou" data-slug="ebmt-autologous-transplantation-kyriakou">EBMT autologous transplantation (Kyriakou)</a>. J Clin Oncol 2010;28:2227. <a href="https://pubmed.ncbi.nlm.nih.gov/20368570/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-wmctg-05-180-bdr-treon" data-slug="wmctg-05-180-bdr-treon">WMCTG 05-180, BDR (Treon)</a>. J Clin Oncol 2009;27:3830. <a href="https://pubmed.ncbi.nlm.nih.gov/19506160/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-emn-bdr-dimopoulos" data-slug="emn-bdr-dimopoulos">EMN BDR (Dimopoulos)</a>. Blood 2013;122:3276. <a href="https://pubmed.ncbi.nlm.nih.gov/24004667/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-card-treon" data-slug="card-treon">CaRD (Treon)</a>. Blood 2014;124:503. <a href="https://pubmed.ncbi.nlm.nih.gov/24859363/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-idr-castillo" data-slug="idr-castillo">IDR (Castillo)</a>. Clin Cancer Res 2018;24:3247. <a href="https://pubmed.ncbi.nlm.nih.gov/29661775/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-hovon124-ecwm-r2-kersten" data-slug="hovon124-ecwm-r2-kersten">HOVON124/ECWM-R2 (Kersten)</a>. J Clin Oncol 2022;40:40. <a href="https://pubmed.ncbi.nlm.nih.gov/34388022/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-ecwm-1-buske" data-slug="ecwm-1-buske">ECWM-1 (Buske)</a>. J Clin Oncol 2023;41:2607. <a href="https://pubmed.ncbi.nlm.nih.gov/36763945/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-ibrutinib-previously-treated-treon" data-slug="ibrutinib-previously-treated-treon">Ibrutinib, previously treated (Treon)</a>. N Engl J Med 2015;372:1430. <a href="https://pubmed.ncbi.nlm.nih.gov/25853747/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-innovate-arm-c-dimopoulos" data-slug="innovate-arm-c-dimopoulos">iNNOVATE arm C (Dimopoulos)</a>. Lancet Oncol 2017;18:241. <a href="https://pubmed.ncbi.nlm.nih.gov/27956157/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-ibrutinib-treatment-naive-treon" data-slug="ibrutinib-treatment-naive-treon">Ibrutinib, treatment-naive (Treon)</a>. J Clin Oncol 2018;36:2755. <a href="https://pubmed.ncbi.nlm.nih.gov/30044692/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-innovate-dimopoulos" data-slug="innovate-dimopoulos">iNNOVATE (Dimopoulos)</a>. N Engl J Med 2018;378:2399. <a href="https://pubmed.ncbi.nlm.nih.gov/29856685/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-aspen-tam" data-slug="aspen-tam">ASPEN (Tam)</a>. Blood 2020;136:2038. <a href="https://pubmed.ncbi.nlm.nih.gov/32731259/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-aspen-cohort-2-myd88-wild-type-dimopoulos" data-slug="aspen-cohort-2-myd88-wild-type-dimopoulos">ASPEN cohort 2, MYD88 wild-type (Dimopoulos)</a>. Blood Adv 2020;4:6009. <a href="https://pubmed.ncbi.nlm.nih.gov/33284944/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-ace-wm-001-owen" data-slug="ace-wm-001-owen">ACE-WM-001 (Owen)</a>. Lancet Haematol 2020;7:e112. <a href="https://pubmed.ncbi.nlm.nih.gov/31866281/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-btk-cys481-resistance-mutations-xu" data-slug="btk-cys481-resistance-mutations-xu">BTK Cys481 resistance mutations (Xu)</a>. Blood 2017;129:2519. <a href="https://pubmed.ncbi.nlm.nih.gov/28235842/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-venetoclax-castillo" data-slug="venetoclax-castillo">Venetoclax (Castillo)</a>. J Clin Oncol 2022;40:63. <a href="https://pubmed.ncbi.nlm.nih.gov/34793256/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-wm-bruin-waldenstr-m-cohort-palomba" data-slug="bruin-waldenstr-m-cohort-palomba">BRUIN, Waldenström cohort (Palomba)</a>. Lancet Haematol 2026;13:e284. <a href="https://pubmed.ncbi.nlm.nih.gov/42069409/" target="_blank" rel="noopener">PubMed ↗</a></li></ol>
+      <div class="rv-endbar"><button type="button" class="rv-close">Close the perspective ▴</button></div>
+    </div>
+  </details>
+
+  <div class="tabs" role="tablist" aria-label="Page sections">
+    <button type="button" role="tab" aria-selected="true" data-tab="trials">Landmark trials</button>
+    <button type="button" role="tab" aria-selected="false" data-tab="watch" title="Click again to return to the trial list">Trials to watch<span class="tcount"></span></button>
+    <button type="button" role="tab" aria-selected="false" data-tab="newdrugs" title="Click again to return to the trial list">New drugs to watch<span class="tcount"></span></button>
+    <button type="button" role="tab" aria-selected="false" data-tab="mech" title="Click again to return to the trial list">Drug mechanisms<span class="tcount"></span></button>
+    <a class="tabmail" href="mailto:andresferber@hotmail.com?subject=Landmark%20trials%20%28Waldenstr%C3%B6m%20macroglobulinemia%29%3A%20comment">✉ Send a comment</a>
+  </div>
+  <section class="newdrugs" hidden aria-label="New drugs to watch"></section>
+  <section class="mechs" hidden aria-label="Drug mechanisms"></section>
+
+  <div class="controls">
+    <div class="chips" role="group" aria-label="Filter by category" id="chips"></div>
+    <div class="row2">
+      <input type="search" id="q" placeholder="Search trial, drug, regimen…" aria-label="Search trials">
+      <select id="sort" aria-label="Sort order">
+        <option value="setting">Sort: category, newest first</option>
+        <option value="setting-asc">Sort: category, oldest first</option>
+        <option value="asc">Sort: oldest first</option>
+        <option value="desc">Sort: newest first</option>
+      </select>
+      <span class="count" id="count"></span>
+      <button type="button" class="printbtn" title="Print or save as PDF (prints the trials currently shown)">Print / PDF</button>
+    </div>
+  </div>
+
+  <ol class="list" id="list"></ol>
+
+  <section class="watch" hidden aria-label="Trials to watch"></section>
+
+  <details class="gloss"><summary>Abbreviations (43)</summary><dl><dt>AE</dt><dd>Adverse event</dd><dt>AL amyloidosis</dt><dd>Immunoglobulin light-chain amyloidosis</dd><dt>B-DRC</dt><dd>Bortezomib, dexamethasone, rituximab, cyclophosphamide</dd><dt>BCL2</dt><dd>B-cell lymphoma 2 protein (target of venetoclax)</dd><dt>BDR</dt><dd>Bortezomib, dexamethasone, rituximab</dd><dt>BTK</dt><dd>Bruton tyrosine kinase</dd><dt>CAR</dt><dd>Chimeric antigen receptor</dd><dt>CaRD</dt><dd>Carfilzomib, rituximab, dexamethasone</dd><dt>CHOP</dt><dd>Cyclophosphamide, doxorubicin, vincristine, prednisone</dd><dt>CI</dt><dd>Confidence interval</dd><dt>CLL</dt><dd>Chronic lymphocytic leukemia</dd><dt>CR</dt><dd>Complete response</dd><dt>CXCR4</dt><dd>C-X-C chemokine receptor 4 gene; WHIM-like mutations are nonsense or frameshift mutations of its C-terminal tail</dd><dt>DRC</dt><dd>Dexamethasone, rituximab, cyclophosphamide</dd><dt>EBMT</dt><dd>European Society for Blood and Marrow Transplantation</dd><dt>ECWM</dt><dd>European Consortium for Waldenström's Macroglobulinemia</dd><dt>EMA</dt><dd>European Medicines Agency</dd><dt>EMN</dt><dd>European Myeloma Network</dd><dt>EU</dt><dd>European Union</dd><dt>FDA</dt><dd>US Food and Drug Administration</dd><dt>GLSG</dt><dd>German Low-Grade Lymphoma Study Group</dd><dt>HR</dt><dd>Hazard ratio</dd><dt>IDR</dt><dd>Ixazomib, dexamethasone, rituximab</dd><dt>IgM</dt><dd>Immunoglobulin M</dd><dt>IPSSWM</dt><dd>International Prognostic Scoring System for Waldenström Macroglobulinemia</dd><dt>IWWM</dt><dd>International Workshop on Waldenström's Macroglobulinemia</dd><dt>LDH</dt><dd>Lactate dehydrogenase</dd><dt>Major response</dt><dd>Partial response or better</dd><dt>MGUS</dt><dd>Monoclonal gammopathy of undetermined significance</dd><dt>Minor response</dt><dd>A fall in serum IgM of at least 25% but less than 50%</dd><dt>MYD88</dt><dd>Myeloid differentiation primary response 88 gene; L265P is its recurrent activating mutation</dd><dt>NCCN</dt><dd>National Comprehensive Cancer Network</dd><dt>ORR</dt><dd>Overall response rate (minor response or better in this disease)</dd><dt>OS</dt><dd>Overall survival</dd><dt>PCR</dt><dd>Polymerase chain reaction</dd><dt>PFS</dt><dd>Progression-free survival</dd><dt>PLCG2</dt><dd>Phospholipase C gamma 2 gene, downstream of BTK</dd><dt>R-CHOP</dt><dd>Rituximab with CHOP</dd><dt>StiL</dt><dd>Study group indolent Lymphomas (Germany)</dd><dt>VGPR</dt><dd>Very good partial response</dd><dt>WHIM</dt><dd>Warts, hypogammaglobulinemia, infections and myelokathexis syndrome (germline CXCR4 mutations)</dd><dt>WM</dt><dd>Waldenström macroglobulinemia</dd><dt>WMCTG</dt><dd>Waldenström's Macroglobulinemia Clinical Trials Group</dd></dl></details>
+
+  <footer>
+    Every result was checked against the paper's PubMed abstract on November 14, 2026; "not reported in abstract" means the figure needs the full text. "Key toxicity" summarizes the main adverse events reported in the abstract; it is not a complete safety profile. "Drug mechanism" links one recent review per drug or drug class on how it works and how resistance develops, chosen from peer-reviewed journals as the most recent, comprehensive and high-quality review available (no promotional material), with free full text preferred when quality was comparable. "★ Core" marks studies selected as essential for teaching. Studies included: untreated and relapsed disease are one topic, because most trials in this disease enrolled both. Only a few randomized trials exist, so the list holds every phase 3 or randomized trial with a full report, the phase 2 trials that were the basis of an approval or that defined a regimen in current use (whatever the journal), and the consensus definition, response criteria, prognostic models and genomic studies on which trials and practice rest. Ibrutinib-venetoclax, tirabrutinib, orelabrutinib, everolimus, Bing-Neel syndrome and histological transformation are not listed as cards. IgM MGUS and IgM-related disorders (neuropathy, cold agglutinin disease, cryoglobulinemia, amyloidosis) are not covered. Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Free at publisher" links open a publisher page that is free to read; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed; "Free copy (repository)" links open a legal free copy in a university repository (sometimes the authors' manuscript). Free copies were found with Unpaywall (November 14, 2026). Registry links (NCT numbers) open the trial's registry record and were taken from each paper's PubMed record or abstract. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"); letters and author replies are not listed. FDA approval dates given in full were confirmed against FDA announcements or published reports, and the EU date for zanubrutinib against the EMA record (November 14, 2026); items marked "verify" could not be confirmed and will be checked at the next update. Guideline rows cite the International Workshop consensus reports; placements marked "NCCN not checked" could not be confirmed, because the NCCN guidelines require a login. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: November 14, 2026.
+    <p class="sitedisc"><b>For education only.</b> This site summarizes published research and the author's views. It is not medical advice, a clinical practice guideline or a substitute for professional judgment; treatment decisions should rely on the primary literature, current guidelines, approved prescribing information and the individual patient. This is an independent project, not affiliated with any institution or company.</p>
+    <p class="reportall">Comments and suggestions are welcome: <a href="mailto:andresferber@hotmail.com?subject=Landmark%20trials%20%28Waldenstr%C3%B6m%20macroglobulinemia%29%3A%20comment">send a comment</a>. Spotted an error or a missing trial? Use "Report an error" on any trial. Both go to andresferber@hotmail.com.</p>
+  </footer>
+  <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
+</div>
+
+<script>
+const SETTINGS = {
+  btk: "BTK inhibitors & venetoclax",
+  chemo: "Rituximab, chemoimmunotherapy & transplantation",
+  pi: "Proteasome inhibitor combinations",
+  risk: "Definition, risk & biology"
+};
+const CLS = { btk: "young", chemo: "old", pi: "p2", risk: "risk" };
+const order = ["btk","chemo","pi","risk"];
+const PM = id => "https://pubmed.ncbi.nlm.nih.gov/" + id + "/";
+
+const T = [
+// ---------- BTK inhibitors & venetoclax ----------
+{y:2015,n:"Ibrutinib, previously treated (Treon)",s:"btk",ph:"Phase 2",d:"Ibrutinib 420 mg once daily until progression in symptomatic Waldenström macroglobulinemia after at least one previous treatment, with MYD88 and CXCR4 genotyping",ep:"Response; effect of MYD88 and CXCR4 mutations on outcome",
+ r:"ORR 90.5%, major response 73.0%; median IgM fell from 3520 to 880 mg/dL and hemoglobin rose from 10.5 to 13.8 g/dL. Major response 91.2% with MYD88 L265P and wild-type CXCR4, 61.9% with MYD88 L265P and CXCR4 WHIM, 28.6% with wild-type MYD88. 2-year PFS 69.1%, OS 95.2%. Final analysis (59 mo): major response 79.4%; 5-year PFS 70% (MYD88 mutated, CXCR4 wild-type) vs 38% (both mutated); median PFS 0.4 years with wild-type MYD88 (4 patients, no major responses); 5-year OS 87%",N:"63",hr:"not applicable (single arm)",fu:"not reported in abstract (2-year estimates); 59 mo (final analysis)",
+ c:"N Engl J Med 2015;372:1430",p:25853747,extra:["Final analysis, J Clin Oncol 2021",32931398],
+ b:"MYD88 L265P signals through BTK, and laboratory work had shown that CXCR4 WHIM mutations confer resistance to ibrutinib.",
+ i:"The first drug approved for Waldenström macroglobulinemia, and the first trial to show that tumor genotype predicts depth and duration of response.",
+ q:"Continuous treatment with almost no complete responses; shorter remissions with CXCR4 mutations and little activity in MYD88 wild-type disease.",
+ cm:[[33444081,"Owen RG, J Clin Oncol 2021","Bruton Tyrosine Kinase Inhibitors in Waldenstrom Macroglobulinemia: Unprecedented Clinical Activity and Promising Future Directions"]],
+ reg:"Basis of the FDA approval of ibrutinib for Waldenström macroglobulinemia (January 29, 2015), the first approval for this disease. EU: approved in 2015 (date: verify).",gl:"A covalent BTK inhibitor is a standard option, first line or at relapse (IWWM-11 consensus, 2023); zanubrutinib is often preferred to ibrutinib for tolerability (NCCN not checked).",acc:"On-label."},
+{y:2017,n:"iNNOVATE arm C (Dimopoulos)",s:"btk",ph:"Phase 3 substudy",d:"Open-label, non-randomized substudy of iNNOVATE: ibrutinib 420 mg once daily until progression in disease refractory to rituximab (no response, or relapse within 12 months of the last dose); descriptive analyses only",ep:"ORR, PFS, OS, hemoglobin improvement, patient-reported outcomes",
+ r:"ORR 90%, major response 71%; 18-mo PFS 86% and OS 97%; median of 4 previous therapies. Final analysis (58 mo): median PFS 39 mo, 60-mo PFS 40%; ORR 87%, major response 77% at 60 mo; median PFS 18 mo with MYD88 L265P and CXCR4 WHIM vs not reached with wild-type CXCR4; median OS not reached",N:"31",hr:"not applicable (single arm)",fu:"18.1 mo; 58 mo (final analysis)",
+ c:"Lancet Oncol 2017;18:241",p:27956157,extra:["Final analysis, Clin Cancer Res 2021",34380643],
+ b:"The pivotal phase 2 trial had shown durable responses to ibrutinib in previously treated patients.",
+ i:"Confirmed in a multicenter setting that ibrutinib works when rituximab no longer does.",
+ q:"A small, descriptive cohort; again, remissions were shorter with CXCR4 mutations.",
+ cm:[[27956155,"Cheson BD, Lancet Oncol 2017","Ibrutinib in Waldenström's macroglobulinemia: revamping the landscape"]],
+ reg:"Supportive data for ibrutinib in Waldenström macroglobulinemia; not a separate approval.",gl:"A BTK inhibitor is a standard option after rituximab-based therapy (NCCN not checked).",acc:"On-label."},
+{y:2018,n:"iNNOVATE (Dimopoulos)",s:"btk",ph:"Phase 3",d:"Ibrutinib 420 mg daily vs placebo, each with rituximab, in symptomatic Waldenström macroglobulinemia, untreated or previously treated (not refractory to rituximab); double-blind",ep:"PFS (independent review)",
+ r:"30-mo PFS 82% vs 28%; major response 72% vs 32%; sustained hemoglobin improvement 73% vs 41%; benefit independent of MYD88 and CXCR4 genotype. Final analysis (50 mo): median PFS not reached vs 20.3 mo (HR 0.250); major response 76% vs 31%; median time to next treatment not reached vs 18 mo; median OS not reached in either arm",N:"150",hr:"0.20 (PFS); final: 0.250 (PFS)",fu:"not reported in abstract (30-mo estimates); 50 mo (final analysis)",
+ c:"N Engl J Med 2018;378:2399",p:29856685,extra:["Final analysis, J Clin Oncol 2022",34606378],
+ b:"Ibrutinib alone was active in single-arm trials; rituximab alone was a common, modestly effective treatment.",
+ i:"The first randomized trial of a BTK inhibitor in this disease, and the basis for ibrutinib-rituximab across lines of therapy.",
+ q:"The control was rituximab alone, and there was no ibrutinib-alone arm, so the contribution of rituximab to ibrutinib is unknown.",
+ cm:[[29930398,"Killock D, Nat Rev Clin Oncol 2018","Rituximab and ibrutinib synergize in Waldenström macroglobulinaemia"]],
+ reg:"FDA approval of ibrutinib with rituximab for Waldenström macroglobulinemia (August 27, 2018).",gl:"Ibrutinib with or without rituximab is an option; whether rituximab adds to a BTK inhibitor is not established (NCCN not checked).",acc:"On-label."},
+{y:2018,n:"Ibrutinib, treatment-naive (Treon)",s:"btk",ph:"Phase 2",d:"Ibrutinib 420 mg once daily until progression as first treatment of symptomatic Waldenström macroglobulinemia; all tumors genotyped for MYD88 and CXCR4",ep:"Response; effect of CXCR4 mutations on outcome",
+ r:"ORR 100%, major response 83%; major response 94% vs 71% and VGPR 31% vs 7% with wild-type vs mutated CXCR4; time to major response 1.8 vs 7.3 mo; 18-mo PFS 92%. Final report (50 mo): major response 87%, VGPR 30%; 4-year PFS 76% (59% with vs 92% without CXCR4 mutations, p = 0.06)",N:"30 (all MYD88 mutated; 14 with CXCR4 mutations)",hr:"not applicable (single arm)",fu:"14.6 mo; 50 mo (final report)",
+ c:"J Clin Oncol 2018;36:2755",p:30044692,extra:["Final report, Leukemia 2022",34531537],
+ b:"Ibrutinib was approved on data from previously treated patients.",
+ i:"Showed that ibrutinib alone is highly active as first treatment and that CXCR4 mutations slow and blunt the response there too.",
+ q:"Single center, 30 patients, and atrial fibrillation in 20% with longer follow-up. No comparison with fixed-duration chemoimmunotherapy.",
+ cm:[[30052482,"Gertz MA, J Clin Oncol 2018","Selecting Initial Therapy for Newly Diagnosed Waldenström Macroglobulinemia"]],
+ reg:"Not a separate approval; the FDA indication for ibrutinib is not restricted by line of therapy.",gl:"A covalent BTK inhibitor is an alternative to chemoimmunotherapy for first treatment, particularly for patients unsuitable for chemoimmunotherapy (IWWM-11 consensus, 2023; NCCN not checked).",acc:"On-label."},
+{y:2020,n:"ASPEN (Tam)",s:"btk",ph:"Phase 3",d:"Zanubrutinib 160 mg twice daily vs ibrutinib 420 mg once daily until progression in MYD88-mutated Waldenström macroglobulinemia (cohort 1), relapsed or refractory or untreated; open-label",ep:"Complete or very good partial response (independent review)",
+ r:"Primary endpoint not met: VGPR 28% vs 19% (p = 0.09), no complete responses; major response 77% vs 78%; 18-mo PFS 85% vs 84%. Final analysis (44.4 mo): CR + VGPR 36.3% vs 25.3%; with CXCR4 mutation 21.2% vs 10.0%; median PFS and OS not reached",N:"201 (102 zanubrutinib, 99 ibrutinib)",hr:"not reported in abstract",fu:"not reported in abstract (18-mo estimates); 44.4 mo (final analysis)",
+ c:"Blood 2020;136:2038",p:32731259,extra:["Final analysis, J Clin Oncol 2023",37478390],
+ b:"Ibrutinib was the only approved drug; its atrial fibrillation and bleeding were attributed partly to off-target kinase inhibition.",
+ i:"The only head-to-head trial of BTK inhibitors in this disease. Efficacy was similar and zanubrutinib was better tolerated, which made it the preferred covalent BTK inhibitor.",
+ q:"Formally a negative trial for its primary endpoint; PFS was not a powered comparison, and continuous treatment remains the rule.",
+ cm:[],
+ reg:"FDA approval of zanubrutinib for Waldenström macroglobulinemia (August 31, 2021), based on a non-comparative assessment of response and duration of response in the zanubrutinib arms. EU marketing authorisation November 22, 2021.",gl:"Named a suitable option, less toxic than ibrutinib and with deeper responses, in the IWWM-11 consensus (2023); NCCN not checked.",acc:"On-label."},
+{y:2020,n:"ASPEN cohort 2, MYD88 wild-type (Dimopoulos)",s:"btk",ph:"Phase 3 substudy",d:"Single-arm cohort of ASPEN: zanubrutinib 160 mg twice daily in Waldenström macroglobulinemia without a MYD88 mutation or with unknown mutation status",ep:"Response; PFS, duration of response, OS",
+ r:"Among 26 patients with confirmed MYD88 wild-type disease: VGPR 27%, major response 50%, no complete responses; 18-mo PFS 68% and OS 88%. Final analysis (in the ASPEN final report): CR + VGPR 30.8%, with one complete response",N:"28 (26 MYD88 wild-type; 23 relapsed or refractory, 5 untreated)",hr:"not applicable (single arm)",fu:"17.9 mo",
+ c:"Blood Adv 2020;4:6009",p:33284944,extra:["ASPEN final analysis, J Clin Oncol 2023",37478390],
+ b:"Ibrutinib had produced no major responses in MYD88 wild-type disease in its pivotal trial.",
+ i:"The best prospective evidence that a BTK inhibitor can work without a MYD88 mutation.",
+ q:"Twenty-six patients, no comparator, and shorter PFS than in MYD88-mutated disease. MYD88 wild-type disease also carries a higher risk of transformation.",
+ cm:[],
+ reg:"Included in the FDA review of zanubrutinib (response in 50% of 26 evaluable patients); the indication is not restricted by MYD88 status.",gl:"Zanubrutinib is an option whatever the MYD88 status; chemoimmunotherapy is often preferred for MYD88 wild-type disease (NCCN not checked).",acc:"On-label."},
+{y:2020,n:"ACE-WM-001 (Owen)",s:"btk",ph:"Phase 2",d:"Acalabrutinib 100 mg twice daily until progression in Waldenström macroglobulinemia, untreated (declined or not eligible for chemoimmunotherapy) or relapsed or refractory, without previous BTK inhibitor",ep:"ORR (investigator)",
+ r:"ORR 93% in untreated (13 of 14) and 93% in relapsed or refractory patients (86 of 92). At 63.7 mo: major response 78.6% and 81.5%; median PFS not estimable and 67.5 mo; 66-mo PFS 83.6% and 52.0%; 66-mo OS 90.9% and 71.2%",N:"106 (14 untreated, 92 relapsed or refractory)",hr:"not applicable (single arm)",fu:"27.4 mo; 63.7 mo (5-year report)",
+ c:"Lancet Haematol 2020;7:e112",p:31866281,extra:["5-year follow-up, Blood Adv 2026",41985004],
+ b:"Ibrutinib was the only BTK inhibitor with data in this disease.",
+ i:"The largest single-arm BTK inhibitor trial in Waldenström macroglobulinemia, with five years of follow-up; acalabrutinib is used off-label on this evidence.",
+ q:"No randomized comparison and no approval for this disease; 17.9% stopped for adverse events over five years.",
+ cm:[[42475551,"Yi S, Blood Adv 2026","Continuous or fixed-duration BTK inhibitor treatment for WM"]],
+ reg:"Acalabrutinib is not approved for Waldenström macroglobulinemia by the FDA or the EMA.",gl:"Listed as an option among BTK inhibitors (NCCN not checked).",acc:"Off-label in the US and EU."},
+{y:2022,n:"Venetoclax (Castillo)",s:"btk",ph:"Phase 2",d:"Venetoclax, escalated from 200 mg to 800 mg daily, for up to 2 years in previously treated Waldenström macroglobulinemia; half of the patients had received a BTK inhibitor",ep:"Response",
+ r:"ORR 84%, major response 81%, VGPR 19%; major response 50% in refractory vs 95% in relapsed disease; median PFS 30 mo at 33 mo; CXCR4 mutations did not affect response or PFS. At 81 mo: median PFS 36 mo, median treatment-free survival 43 mo; 7 of 9 patients retreated with venetoclax responded; no BCL2 G101V mutations detected",N:"32 (16 previously exposed to a BTK inhibitor; all MYD88 mutated)",hr:"not applicable (single arm)",fu:"33 mo; 81 mo (long-term report)",
+ c:"J Clin Oncol 2022;40:63",p:34793256,extra:["Long-term follow-up, Blood Adv 2025",40674749],
+ b:"BCL2 is overexpressed in lymphoplasmacytic cells, and BTK inhibitors require continuous treatment.",
+ i:"Established a fixed-duration oral option that works after a BTK inhibitor and is not affected by CXCR4 mutations.",
+ q:"Thirty-two patients; few deep responses and most patients relapse after stopping. Combinations with BTK inhibitors are being tested, after ventricular arrhythmias stopped a trial of ibrutinib-venetoclax.",
+ cm:[],
+ reg:"Venetoclax is not approved for Waldenström macroglobulinemia by the FDA or the EMA.",gl:"Discussed among the options after a covalent BTK inhibitor in the IWWM-12 consensus (panel 5, 2025); NCCN not checked.",acc:"Off-label in the US and EU."},
+{y:2026,n:"BRUIN, Waldenström cohort (Palomba)",s:"btk",ph:"Phase 1/2",d:"Pirtobrutinib, a noncovalent BTK inhibitor (200 mg once daily in 91%), in relapsed or refractory Waldenström macroglobulinemia within the BRUIN trial; 79% had received a covalent BTK inhibitor",ep:"Safety; response by IWWM-6 criteria (investigator)",
+ r:"Response (minor or better) 82.5%: 1 complete, 10.0% very good partial, 61.3% partial, 10.0% minor; 81.0% after a covalent BTK inhibitor and 88.2% in patients not previously exposed; median of 3 previous lines. PFS not reported in abstract",N:"80 (63 after a covalent BTK inhibitor)",hr:"not applicable (single arm)",fu:"35.0 mo",
+ c:"Lancet Haematol 2026;13:e284",p:42069409,
+ b:"Covalent BTK inhibitors fail through intolerance or resistance, often with mutations at BTK Cys481, where they bind.",
+ i:"The main evidence that a noncovalent BTK inhibitor is active after a covalent one in this disease.",
+ q:"Duration of benefit after a covalent BTK inhibitor (PFS not in the abstract), and how to sequence pirtobrutinib and venetoclax.",
+ cm:[],
+ reg:"Pirtobrutinib is not approved for Waldenström macroglobulinemia by the FDA or the EMA (verify).",gl:"Discussed among the options after a covalent BTK inhibitor in the IWWM-12 consensus (panel 5, 2025); NCCN not checked.",acc:"Off-label in the US and EU."},
+
+// ---------- Rituximab, chemoimmunotherapy & transplantation ----------
+{y:2004,n:"E3A98 (Gertz)",s:"chemo",ph:"Phase 2",d:"Rituximab 375 mg/m² weekly for 4 weeks in untreated or previously treated Waldenström macroglobulinemia",ep:"Response rate",
+ r:"Objective response 27.5% and minor response 24.6% (overall 52.2%); objective response 35.3% in untreated vs 20% in previously treated patients; median response duration 27 mo in untreated patients",N:"69 (34 untreated, 35 previously treated)",hr:"not applicable (single arm)",fu:"not reported in abstract",
+ c:"Leuk Lymphoma 2004;45:2047",p:15370249,extra:["IgM flare after rituximab (Treon), Ann Oncol 2004",15367407],
+ b:"Treatment relied on alkylating agents and purine analogs; lymphoplasmacytic cells strongly express CD20.",
+ i:"Defined what rituximab alone achieves, about one objective response in four, and became the reference for later combinations. A companion series described the IgM flare: an abrupt rise in IgM in 10 of 11 patients, with symptomatic hyperviscosity in some.",
+ q:"Slow and incomplete responses; rituximab alone is avoided when IgM is high because of the flare.",
+ cm:[],
+ reg:"Rituximab has no approval specific to Waldenström macroglobulinemia.",gl:"Rituximab alone is an option for selected patients with low tumor burden or IgM-related neuropathy; avoid it, or use plasmapheresis first, when IgM is high (NCCN not checked).",acc:"Widely covered as standard therapy."},
+{y:2007,n:"DRC (Dimopoulos)",s:"chemo",ph:"Phase 2",d:"Dexamethasone 20 mg and rituximab on day 1 with oral cyclophosphamide 100 mg/m² twice daily on days 1–5, every 21 days for 6 cycles, in untreated symptomatic Waldenström macroglobulinemia",ep:"Response rate",
+ r:"Response 83% (7% complete, 67% partial, 9% minor); median time to response 4.1 mo; 2-year PFS 67% (80% in responders); 2-year disease-specific survival 90%. Final analysis (Blood 2015): not reported in abstract (letter without abstract)",N:"72",hr:"not applicable (single arm)",fu:"not reported in abstract",
+ c:"J Clin Oncol 2007;25:3344",p:17577016,extra:["Final analysis, Blood 2015",26359434],
+ b:"Rituximab or an alkylating agent alone gave partial responses in 30% to 50% of patients.",
+ i:"Defined a six-month regimen without stem-cell toxicity or neuropathy that remains a first-line standard and the control arm of current trials.",
+ q:"Slow responses (median 4.1 months), a drawback when IgM must fall quickly; never compared with bendamustine-rituximab in a randomized trial.",
+ cm:[],
+ reg:"No approval specific to Waldenström macroglobulinemia.",gl:"With bendamustine-rituximab, a central first-line regimen (IWWM-11 consensus, 2023; NCCN not checked).",acc:"Widely covered as standard therapy."},
+{y:2009,n:"GLSG R-CHOP vs CHOP (Buske)",s:"chemo",ph:"Phase 3",d:"R-CHOP vs CHOP in untreated lymphoplasmacytic lymphoma within a German Low-Grade Lymphoma Study Group trial; 48 of 64 evaluable patients met criteria for Waldenström macroglobulinemia",ep:"Response; time to treatment failure",
+ r:"Response 94% vs 67% (91% vs 60% in the Waldenström subgroup); median time to treatment failure 63 vs 22 mo; no major difference in toxicity",N:"69 enrolled, 64 evaluable (34 R-CHOP, 30 CHOP)",hr:"not reported in abstract",fu:"42 mo",
+ c:"Leukemia 2009;23:153",p:18818699,
+ b:"Rituximab had been added to chemotherapy in follicular and mantle cell lymphoma, without randomized evidence in lymphoplasmacytic lymphoma.",
+ i:"The only randomized evidence that adding rituximab to chemotherapy improves outcome in this disease.",
+ q:"A small subgroup of a larger trial, and an anthracycline and vincristine regimen that less toxic combinations have since replaced.",
+ cm:[],
+ reg:"No approval specific to Waldenström macroglobulinemia.",gl:"R-CHOP is no longer a preferred regimen; the principle of adding rituximab to chemotherapy stands (NCCN not checked).",acc:"Widely covered as standard therapy."},
+{y:2010,n:"EBMT autologous transplantation (Kyriakou)",s:"chemo",ph:"Registry study",d:"Retrospective analysis of high-dose therapy and autologous stem-cell transplantation for Waldenström macroglobulinemia reported to the EBMT, 1991–2005; 93% had chemosensitive disease",ep:"Non-relapse mortality, relapse, PFS, OS",
+ r:"1-year non-relapse mortality 3.8%; 5-year relapse 52.1%, PFS 39.7% and OS 68.5%; outcomes worse with more lines of therapy and with chemorefractory disease; 5-year PFS 44% when used as consolidation in first response; second malignancies 8.4% at 5 years",N:"158",hr:"not applicable",fu:"4.2 years (surviving patients)",
+ c:"J Clin Oncol 2010;28:2227",p:20368570,
+ b:"The role of transplantation in an indolent disease of older patients was undefined.",
+ i:"The largest series of autologous transplantation: feasible in younger patients with chemosensitive relapse, not useful for refractory disease or after more than three lines.",
+ q:"Retrospective and from before BTK inhibitors and venetoclax, which have made transplantation uncommon.",
+ cm:[],
+ reg:"Not applicable.",gl:"An option for selected younger patients with chemosensitive relapse; rarely used now (NCCN not checked).",acc:"—"},
+{y:2013,n:"WM1 (Leblond)",s:"chemo",ph:"Phase 3",d:"Chlorambucil vs fludarabine as first treatment of Waldenström macroglobulinemia (339 patients), non-MALT marginal zone lymphoma (37) or lymphoplasmacytic lymphoma (38)",ep:"ORR",
+ r:"ORR 47.8% (fludarabine) vs 38.6% (chlorambucil), p = 0.07; median PFS 36.3 vs 27.1 mo; duration of response 38.3 vs 19.9 mo; in Waldenström macroglobulinemia, median OS not reached vs 69.8 mo (p = 0.014). 6-year cumulative incidence of second malignancies 3.7% vs 20.6%",N:"414",hr:"not reported in abstract",fu:"36 mo",
+ c:"J Clin Oncol 2013;31:301",p:23233721,
+ b:"Alkylating agents, purine analogs and antibodies were all in use, without a large randomized comparison.",
+ i:"The largest randomized trial in this disease. Fludarabine improved PFS and, in Waldenström macroglobulinemia, survival, and chlorambucil carried more second malignancies.",
+ q:"Neither arm included rituximab, and the trial was completed as both drugs were being replaced.",
+ cm:[],
+ reg:"No approval specific to Waldenström macroglobulinemia.",gl:"Historical: neither drug alone is a preferred first treatment now (NCCN not checked).",acc:"—"},
+{y:2013,n:"StiL NHL 1-2003 (Rummel)",s:"chemo",ph:"Phase 3",d:"Bendamustine-rituximab vs R-CHOP, up to 6 cycles, as first treatment of advanced indolent and mantle cell lymphoma, stratified by histology; non-inferiority design, with a Waldenström macroglobulinemia subgroup",ep:"PFS (non-inferiority)",
+ r:"All histologies: median PFS 69.5 vs 31.2 mo. Waldenström subgroup: size and PFS not reported in abstract",N:"549 randomized, 514 assessed (Waldenström subgroup: not reported in abstract)",hr:"0.58 (PFS, all histologies)",fu:"45 mo",
+ c:"Lancet 2013;381:1203",p:23433739,
+ b:"R-CHOP was the usual first-line chemoimmunotherapy for advanced indolent lymphoma.",
+ i:"Made bendamustine-rituximab a standard first treatment for indolent lymphomas, including Waldenström macroglobulinemia, with less hematologic toxicity, neuropathy and alopecia than R-CHOP.",
+ q:"The Waldenström subgroup was small, and bendamustine-rituximab has not been compared with DRC or with a BTK inhibitor in a randomized trial.",
+ cm:[[23433738,"Jacobson CA, Lancet 2013","First-line treatment of indolent lymphoma: axing CHOP?"],[23591322,"Doucet S, Nat Rev Clin Oncol 2013","Haematological cancer: Indolent lymphoma--why not to sprint at the start of a marathon"]],
+ reg:"Bendamustine has no approval specific to Waldenström macroglobulinemia.",gl:"With DRC, a central first-line regimen (IWWM-11 consensus, 2023). The same consensus notes that rituximab maintenance after bendamustine-rituximab was not superior to observation in a randomized trial (NCCN not checked).",acc:"Widely covered as standard therapy."},
+
+// ---------- Proteasome inhibitor combinations ----------
+{y:2009,n:"WMCTG 05-180, BDR (Treon)",s:"pi",ph:"Phase 2",d:"Bortezomib 1.3 mg/m² and dexamethasone on days 1, 4, 8 and 11 with rituximab on day 11: four induction cycles, then four maintenance cycles 3 months apart, in untreated symptomatic Waldenström macroglobulinemia",ep:"Response",
+ r:"ORR 96%, major response 83%, with 3 complete and 2 near-complete responses; median time to response 1.4 mo; 18 of 23 patients free of progression at 22.8 mo",N:"23",hr:"not applicable (single arm)",fu:"22.8 mo",
+ c:"J Clin Oncol 2009;27:3830",p:19506160,
+ b:"Bortezomib alone was active in relapsed disease; rituximab-based regimens gave slow responses.",
+ i:"Showed fast, deep responses with a regimen that spares stem cells and avoids alkylating agents, at the cost of neuropathy.",
+ q:"Twice-weekly intravenous bortezomib caused neuropathy in most patients, and 61% stopped bortezomib early; this led to weekly schedules.",
+ cm:[],
+ reg:"Bortezomib is not approved for Waldenström macroglobulinemia.",gl:"Bortezomib-rituximab combinations are an option, with weekly subcutaneous dosing preferred (NCCN not checked).",acc:"Off-label; commonly covered."},
+{y:2013,n:"EMN BDR (Dimopoulos)",s:"pi",ph:"Phase 2",d:"One cycle of bortezomib alone (to prevent IgM flare), then weekly bortezomib 1.6 mg/m² for four 35-day cycles, with dexamethasone and rituximab in cycles 2 and 5 (23 weeks in total), in untreated symptomatic Waldenström macroglobulinemia",ep:"Response",
+ r:"Response 85% (3% complete, 7% very good partial, 58% partial); IgM rise ≥25% after rituximab in 11%, no plasmapheresis needed; median PFS 42 mo; 3-year OS 81%. Final analysis (minimum follow-up 6 years): median PFS 43 mo, median duration of response 64.5 mo, 7-year OS 66%",N:"59",hr:"not applicable (single arm)",fu:"minimum 32 mo; minimum 6 years (final analysis)",
+ c:"Blood 2013;122:3276",p:24004667,extra:["Final analysis, Blood 2017",27872060],
+ b:"Twice-weekly bortezomib in WMCTG 05-180 caused frequent neuropathy.",
+ i:"Established weekly bortezomib with rituximab as a fixed-duration regimen without chemotherapy, with long follow-up and no secondary myelodysplasia.",
+ q:"Neuropathy still occurred in 46%. Its place beside DRC and bendamustine-rituximab was tested only later, in ECWM-1.",
+ cm:[[24203925,"Treon SP, Blood 2013","Proteasome inhibitors in Waldenström macroglobulinemia"],[28126954,"Kapoor P, Blood 2017","Another bidder (BDR) revisits"]],
+ reg:"Bortezomib is not approved for Waldenström macroglobulinemia.",gl:"An option for first treatment, particularly when IgM must fall quickly (NCCN not checked).",acc:"Off-label; commonly covered."},
+{y:2014,n:"CaRD (Treon)",s:"pi",ph:"Phase 2",d:"Carfilzomib (20 then 36 mg/m²), rituximab and dexamethasone for 6 induction cycles, then maintenance every 8 weeks for 8 cycles, in symptomatic Waldenström macroglobulinemia not previously treated with bortezomib or rituximab",ep:"Response",
+ r:"ORR 87.1% (1 complete, 10 very good partial, 10 partial, 6 minor responses), not affected by MYD88 L265P or CXCR4 WHIM status; 20 patients free of progression at 15.4 mo",N:"31 (from the response counts; total not stated in abstract)",hr:"not applicable (single arm)",fu:"15.4 mo",
+ c:"Blood 2014;124:503",p:24859363,
+ b:"Bortezomib regimens were limited by peripheral neuropathy.",
+ i:"Showed that a proteasome inhibitor regimen can avoid neuropathy, and that its activity does not depend on CXCR4 status.",
+ q:"Intravenous, with hyperlipasemia, falls in IgA and IgG, and one case of cardiomyopathy; rarely used now that oral agents exist.",
+ cm:[[25061164,"Morra E, Blood 2014","Carfilzomib: a new opportunity for WM patients"]],
+ reg:"Carfilzomib is not approved for Waldenström macroglobulinemia.",gl:"An alternative proteasome inhibitor regimen (NCCN not checked).",acc:"Off-label."},
+{y:2018,n:"IDR (Castillo)",s:"pi",ph:"Phase 2",d:"Oral ixazomib 4 mg and dexamethasone on days 1, 8 and 15 every 4 weeks, with rituximab from cycle 3: 6 induction cycles, then 6 maintenance cycles every 8 weeks, in untreated symptomatic Waldenström macroglobulinemia",ep:"Response",
+ r:"ORR 96%, major response 77%; median time to response 8 weeks (12 weeks with CXCR4 mutations). Long-term follow-up: VGPR 19% (7% with vs 36% without CXCR4 mutations); median PFS 40 mo, median duration of response 38 mo, median time to next treatment 40 mo, not affected by CXCR4 status",N:"26 (all MYD88 L265P; 15 with CXCR4 mutations)",hr:"not applicable (single arm)",fu:"22 mo; long-term follow-up not reported in abstract",
+ c:"Clin Cancer Res 2018;24:3247",p:29661775,extra:["Long-term follow-up, Blood Adv 2020",32822482],
+ b:"Bortezomib caused neuropathy and carfilzomib was intravenous, with cardiac concerns.",
+ i:"A mostly oral, neuropathy-sparing proteasome inhibitor regimen of fixed duration.",
+ q:"Twenty-six patients at one center; deep responses were uncommon, especially with CXCR4 mutations.",
+ cm:[],
+ reg:"Ixazomib is not approved for Waldenström macroglobulinemia.",gl:"An option among proteasome inhibitor regimens (NCCN not checked).",acc:"Off-label."},
+{y:2022,n:"HOVON124/ECWM-R2 (Kersten)",s:"pi",ph:"Phase 1/2",d:"Ixazomib 4 mg, dexamethasone and subcutaneous rituximab (from cycle 3) for 8 induction cycles, then rituximab maintenance, in relapsed or refractory Waldenström macroglobulinemia (median of 2 previous treatments)",ep:"ORR after induction",
+ r:"ORR 71% after 8 cycles (14% very good partial, 37% partial, 20% minor); best ORR 85%; median duration of response 36 mo; at 24 mo, PFS 56% and OS 88%; no infusion reactions or IgM flare with subcutaneous rituximab",N:"59",hr:"not applicable (single arm)",fu:"24 mo",
+ c:"J Clin Oncol 2022;40:40",p:34388022,
+ b:"IDR had been tested as first treatment in a single-center trial.",
+ i:"The largest prospective trial of an oral proteasome inhibitor regimen at relapse, and evidence that delaying rituximab and giving it subcutaneously avoids IgM flare.",
+ q:"Few patients had received a BTK inhibitor, so its activity after one is not known.",
+ cm:[],
+ reg:"Ixazomib is not approved for Waldenström macroglobulinemia.",gl:"An option at relapse (NCCN not checked).",acc:"Off-label."},
+{y:2023,n:"ECWM-1 (Buske)",s:"pi",ph:"Randomized trial",d:"DRC with or without bortezomib (B-DRC) for six cycles as first treatment of Waldenström macroglobulinemia; European Consortium for Waldenström's Macroglobulinemia",ep:"PFS",
+ r:"24-mo PFS 80.6% (B-DRC) vs 72.8% (DRC), p = 0.32; major response at end of treatment 80.6% vs 69.9%, CR or VGPR 17.2% vs 9.6%; median time to first response 3.0 vs 5.5 mo; major response after three cycles 57.0% vs 32.5%",N:"204 registered",hr:"not reported in abstract",fu:"27.5 mo",
+ c:"J Clin Oncol 2023;41:2607",p:36763945,
+ b:"DRC and bortezomib-rituximab regimens were both first-line standards, tested only in single-arm trials.",
+ i:"The only randomized trial of a proteasome inhibitor in this disease: bortezomib made responses faster and deeper but did not significantly improve PFS.",
+ q:"Follow-up of 27.5 months is short for this disease, and the comparison that matters now is with BTK inhibitors.",
+ cm:[],
+ reg:"Bortezomib is not approved for Waldenström macroglobulinemia.",gl:"Supports fixed-duration chemoimmunotherapy as a first-line standard; adding bortezomib is an option when a fast response is needed (NCCN not checked).",acc:"Off-label; commonly covered."},
+
+// ---------- Definition, risk & biology ----------
+{y:2003,n:"Consensus definition, IWWM-2 (Owen)",s:"risk",ph:"Consensus statement",d:"Consensus panel of the Second International Workshop on Waldenström's Macroglobulinemia (Athens, September 2002) on the clinicopathological definition",ep:"Not applicable",
+ r:"Waldenström macroglobulinemia is lymphoplasmacytic lymphoma in the bone marrow with an IgM monoclonal protein of any concentration; no IgM level reliably separates it from IgM MGUS. Proposed criteria to separate symptomatic disease that requires therapy from asymptomatic disease and MGUS, and the term IgM-related disorders for patients with IgM-related clinical features without overt lymphoma",N:"not applicable",hr:"not applicable",fu:"not applicable",
+ c:"Semin Oncol 2003;30:110",p:12720118,
+ b:"The term had been used loosely for any lymphoma with an IgM protein, and some definitions required a minimum IgM level.",
+ i:"The definition used by trials since, and the eligibility criterion (symptomatic disease by IWWM-2 criteria) of nearly every study on this page.",
+ q:"The boundary with IgM MGUS rests on the marrow biopsy; the IWWM-11 panel reaffirmed that no IgM or marrow threshold should be used.",
+ cm:[],
+ reg:"Not applicable.",gl:"The basis of the diagnostic and treatment-initiation criteria in current guidelines (NCCN not checked).",acc:"—"},
+{y:2009,n:"IPSSWM (Morel)",s:"risk",ph:"Prognostic model",d:"International Prognostic Scoring System developed in 587 patients with defined criteria for diagnosis and for starting treatment",ep:"Overall survival after starting treatment",
+ r:"Five adverse factors: age >65 years, hemoglobin ≤11.5 g/dL, platelets ≤100 × 10⁹/L, β2-microglobulin >3 mg/L, monoclonal protein >7.0 g/dL. Low risk (27%; 0–1 factor other than age), intermediate (38%; 2 factors, or age alone) and high (35%; more than 2 factors): 5-year survival 87%, 68% and 36%",N:"587",hr:"not applicable",fu:"median survival 87 mo",
+ c:"Blood 2009;113:4163",p:19196866,
+ b:"Several small scoring systems existed, none accepted internationally.",
+ i:"The standard prognostic score and stratification factor in trials for a decade.",
+ q:"Built before rituximab and BTK inhibitors, with age dominant; it estimates prognosis and does not guide the choice of treatment.",
+ cm:[],
+ reg:"Not applicable.",gl:"Used for prognosis and trial stratification, not to decide when or how to treat (NCCN not checked).",acc:"—"},
+{y:2012,n:"MYD88 L265P (Treon)",s:"risk",ph:"Laboratory study",d:"Whole-genome sequencing of lymphoplasmacytic cells from 30 patients (paired normal tissue in 10), with Sanger sequencing in an expanded cohort and in other B-cell disorders",ep:"Recurrent somatic mutations",
+ r:"MYD88 L265P in all 10 paired samples and 17 of 20 unpaired samples; by Sanger sequencing in 49 of 54 patients with Waldenström macroglobulinemia and 3 of 3 with non-IgM lymphoplasmacytic lymphoma (91%); absent or rare in myeloma, marginal zone lymphoma and IgM MGUS. Inhibiting MYD88 signaling reduced NF-κB activation in mutated cells",N:"30 sequenced; 57 in the validation cohort",hr:"not applicable",fu:"not applicable",
+ c:"N Engl J Med 2012;367:826",p:22931316,
+ b:"No underlying mutation was known; the diagnosis rested on morphology and immunophenotype.",
+ i:"Gave the disease a defining mutation, a diagnostic test that helps separate it from marginal zone lymphoma and myeloma, and the rationale for BTK inhibition.",
+ q:"More sensitive assays later found the mutation in many patients with IgM MGUS; about one patient in ten lacks it, and those patients have a different course.",
+ cm:[],
+ reg:"Not applicable.",gl:"MYD88 testing is recommended at diagnosis and, where possible, before treatment (IWWM-11 consensus, 2023).",acc:"—"},
+{y:2013,n:"Response criteria, IWWM-6 (Owen)",s:"risk",ph:"Consensus statement",d:"Update of the consensus response criteria from the Sixth International Workshop; revised by the IWWM-11 panel in 2023",ep:"Not applicable",
+ r:"IWWM-6: categorical responses (minor, partial, very good partial, complete) were updated because deeper responses predict outcome; IgM kinetics differ between treatments, and IgM and marrow responses can be discordant. IWWM-11 (2023): simplified criteria that use serum IgM alone for partial and very good partial response, with guidance on IgM flare, IgM rebound and extramedullary disease",N:"not applicable",hr:"not applicable",fu:"not applicable",
+ c:"Br J Haematol 2013;160:171",p:23150997,extra:["IWWM-11 diagnostic and response criteria, Semin Hematol 2023",37173155],
+ b:"Earlier workshop criteria predated the newer regimens and did not include very good partial response.",
+ i:"The response definitions used as endpoints in the BTK inhibitor trials, including the primary endpoint of ASPEN.",
+ q:"IgM is an imperfect surrogate: it falls slowly with antibodies, rebounds when BTK inhibitors are held, and may not match the marrow.",
+ cm:[],
+ reg:"IWWM-6 response was the efficacy measure in the FDA review of zanubrutinib.",gl:"Standard response criteria in trials and practice.",acc:"—"},
+{y:2014,n:"MYD88 and CXCR4 genotype (Treon)",s:"risk",ph:"Cohort study",d:"Genotyping of lymphoplasmacytic cells from 175 patients for MYD88 L265P and CXCR4 WHIM-like mutations, related to presentation and survival; follows the whole-genome study that found CXCR4 mutations in 27% of patients",ep:"Clinical presentation and overall survival by genotype",
+ r:"MYD88 L265P with a CXCR4 nonsense mutation: highest marrow involvement and IgM, more symptomatic disease and hyperviscosity. CXCR4 mutations: less adenopathy. Wild-type MYD88 and CXCR4: lowest marrow burden. Risk of death was related to wild-type MYD88 (HR 10.54, 95% CI 2.4–46.2), not to CXCR4 status",N:"175",hr:"10.54 (death, MYD88 wild-type)",fu:"not reported in abstract",
+ c:"Blood 2014;123:2791",p:24553177,extra:["Genomic landscape (Hunter), Blood 2014",24366360],
+ b:"MYD88 L265P had been described; whole-genome sequencing then found somatic CXCR4 mutations like the germline mutations of WHIM syndrome.",
+ i:"Defined the three genotypes that later predicted response to BTK inhibitors.",
+ q:"Single center; the survival effect of wild-type MYD88 rests on few events. CXCR4 testing is not standardized.",
+ cm:[[24786453,"Lenz G, Blood 2014","Waldenstrom macroglobulinemia: genetics dictates clinical course"]],
+ reg:"Not applicable.",gl:"MYD88 and CXCR4 status should be determined before treatment when possible, because they predict sensitivity to covalent BTK inhibitors (IWWM-11 consensus, 2023).",acc:"—"},
+{y:2017,n:"BTK Cys481 resistance mutations (Xu)",s:"risk",ph:"Laboratory study",d:"Sequencing of sorted lymphoplasmacytic cells from 6 patients who progressed on ibrutinib after a major response, with allele-specific PCR screening of 38 patients on ibrutinib without progression and 100 ibrutinib-naive patients",ep:"Mutations acquired at progression",
+ r:"BTK Cys481 variants in 3 of 6 progressing patients (2 with several BTK mutations), plus CARD11 and PLCG2 mutations; in 2 of 38 patients without clinical progression, both of whom later progressed; in none of 100 ibrutinib-naive patients. The mutations were subclonal, and 4 of the 5 patients with them also had a CXCR4 mutation",N:"6 with progression (38 on ibrutinib without progression; 100 untreated with ibrutinib)",hr:"not applicable",fu:"not applicable",
+ c:"Blood 2017;129:2519",p:28235842,
+ b:"The same mutations had been described in CLL resistant to ibrutinib.",
+ i:"Explained acquired resistance to covalent BTK inhibitors in this disease and gave the rationale for noncovalent inhibitors and BTK degraders.",
+ q:"Small numbers; half of the progressing patients had no BTK mutation. Testing at progression is not standard.",
+ cm:[],
+ reg:"Not applicable.",gl:"The IWWM-12 consensus (panel 5, 2025) proposed working definitions of intolerance and resistance to covalent BTK inhibitors.",acc:"—"},
+{y:2019,n:"Revised IPSSWM (Kastritis)",s:"risk",ph:"Prognostic model",d:"Revised score developed in 492 symptomatic patients (median follow-up 7 years) and validated in an independent cohort of 229",ep:"WM-related death and overall survival",
+ r:"Age (≤65, 66–75, ≥76 years), β2-microglobulin ≥4 mg/L, albumin <3.5 g/dL and LDH ≥250 IU/L define five groups: 3-year WM-related death 0%, 10%, 14%, 38% and 48%; 10-year survival 84%, 59%, 37%, 19% and 9%",N:"492 (validation 229)",hr:"not applicable",fu:"7 years (median)",
+ c:"Leukemia 2019;33:2654",p:31118465,
+ b:"The IPSSWM came from patients treated mostly without rituximab.",
+ i:"Updated prognosis for the chemoimmunotherapy era with simple tests, and identified very-low-risk and very-high-risk groups.",
+ q:"The authors asked for further validation; it predates wide use of BTK inhibitors and does not include genotype.",
+ cm:[],
+ reg:"Not applicable.",gl:"Used for prognosis, not to select treatment (NCCN not checked).",acc:"—"},
+{y:2019,n:"Asymptomatic WM risk model (Bustoros)",s:"risk",ph:"Prognostic model",d:"Cohort of 439 patients with asymptomatic Waldenström macroglobulinemia diagnosed and observed at one center, 1992–2014; model validated in two external cohorts",ep:"Time to progression to symptomatic disease",
+ r:"72% progressed over a median follow-up of 7.8 years. Independent predictors: IgM ≥4500 mg/dL, marrow infiltration ≥70%, β2-microglobulin ≥4.0 (mg/dL in the abstract) and albumin ≤3.5 g/dL. Three groups with median time to progression of 1.8, 4.8 and 9.3 years. Wild-type MYD88 was an independent predictor of progression (HR 2.7)",N:"439",hr:"2.7 (progression, MYD88 wild-type)",fu:"7.8 years",
+ c:"J Clin Oncol 2019;37:1403",p:30990729,
+ b:"About a quarter of patients are asymptomatic at diagnosis, and their risk of progression was poorly defined.",
+ i:"A validated tool to set the intensity of follow-up for patients under observation.",
+ q:"No trial has shown that treating high-risk asymptomatic disease improves outcome; observation remains the standard.",
+ cm:[],
+ reg:"Not applicable.",gl:"Watchful waiting remains the standard for asymptomatic patients without critically elevated IgM or compromised hematopoiesis (IWWM-11 consensus, 2023).",acc:"—"},
+{y:2023,n:"IWWM-11 treatment consensus (Buske)",s:"risk",ph:"Consensus statement",d:"Consensus panel 1 of the 11th International Workshop: management of symptomatic, untreated patients; with the IWWM-12 panel on intolerance and resistance to covalent BTK inhibitors (2025)",ep:"Not applicable",
+ r:"Watchful waiting for asymptomatic patients without critically elevated IgM or compromised hematopoiesis. First line: DRC or bendamustine-rituximab keep a central role (effective, fixed duration, affordable); covalent BTK inhibitors are a continuous alternative, particularly for patients unsuitable for chemoimmunotherapy, and zanubrutinib is a suitable option. Rituximab maintenance after bendamustine-rituximab was not superior to observation overall. Determine MYD88 and CXCR4 status before treatment when possible. Covalent BTK inhibitors are not recommended for AL amyloidosis; ibrutinib can be highly active in Bing-Neel syndrome",N:"not applicable",hr:"not applicable",fu:"not applicable",
+ c:"Semin Hematol 2023;60:73",p:37099027,extra:["IWWM-12 panel 5: BTK inhibitor intolerance and resistance, Semin Hematol 2025",40379542],
+ b:"Earlier workshop recommendations (IWWM-7, 8 and 10) predated ASPEN and the long-term BTK inhibitor data.",
+ i:"The current international statement of first-line options, and the source of several guideline rows on this page.",
+ q:"It does not rank chemoimmunotherapy against BTK inhibitors, because no randomized comparison has been reported.",
+ cm:[],
+ reg:"Not applicable.",gl:"International consensus; NCCN and ESMO guidelines not checked.",acc:"—"}
+];
+const REG = {"Ibrutinib, previously treated (Treon)": ["NCT01614821"], "iNNOVATE arm C (Dimopoulos)": ["NCT02165397"], "iNNOVATE (Dimopoulos)": ["NCT02165397"], "Ibrutinib, treatment-naive (Treon)": ["NCT02604511"], "ASPEN (Tam)": ["NCT03053440"], "ASPEN cohort 2, MYD88 wild-type (Dimopoulos)": ["NCT03053440"], "ACE-WM-001 (Owen)": ["NCT02180724"], "Venetoclax (Castillo)": ["NCT02677324"], "BRUIN, Waldenström cohort (Palomba)": ["NCT03740529"], "WM1 (Leblond)": ["NCT00566332", "NCT00608374"], "StiL NHL 1-2003 (Rummel)": ["NCT00991211"], "EMN BDR (Dimopoulos)": ["NCT00981708"], "CaRD (Treon)": ["NCT01470196"], "IDR (Castillo)": ["NCT02400437"], "ECWM-1 (Buske)": ["NCT01788020"]};
+// Full-text links: free full text in PubMed Central where available, otherwise the publisher's page via DOI (from PubMed, Oct 22, 2026).
+const FT = {"Ibrutinib, previously treated (Treon)": ["doi", "10.1056/NEJMoa1501548", "free"], "iNNOVATE arm C (Dimopoulos)": ["doi", "10.1016/S1470-2045(16)30632-5"], "iNNOVATE (Dimopoulos)": ["doi", "10.1056/NEJMoa1802917", "free"], "Ibrutinib, treatment-naive (Treon)": ["doi", "10.1200/JCO.2018.78.6426"], "ASPEN (Tam)": ["pmc", "PMC7596850"], "ASPEN cohort 2, MYD88 wild-type (Dimopoulos)": ["pmc", "PMC7724905"], "ACE-WM-001 (Owen)": ["doi", "10.1016/S2352-3026(19)30210-8", "repo", "https://dspace.library.uu.nl/handle/1874/394022"], "Venetoclax (Castillo)": ["pmc", "PMC8683218"], "BRUIN, Waldenström cohort (Palomba)": ["doi", "10.1016/S2352-3026(26)00037-2"], "E3A98 (Gertz)": ["doi", "10.1080/10428190410001714043"], "DRC (Dimopoulos)": ["doi", "10.1200/JCO.2007.10.9926", "free"], "GLSG R-CHOP vs CHOP (Buske)": ["doi", "10.1038/leu.2008.261"], "EBMT autologous transplantation (Kyriakou)": ["doi", "10.1200/JCO.2009.24.4905"], "WM1 (Leblond)": ["doi", "10.1200/JCO.2012.44.7920"], "StiL NHL 1-2003 (Rummel)": ["doi", "10.1016/S0140-6736(12)61763-2"], "WMCTG 05-180, BDR (Treon)": ["pmc", "PMC2727288"], "EMN BDR (Dimopoulos)": ["doi", "10.1182/blood-2013-05-503862", "free"], "CaRD (Treon)": ["doi", "10.1182/blood-2014-03-566273", "free"], "IDR (Castillo)": ["doi", "10.1158/1078-0432.CCR-18-0152"], "HOVON124/ECWM-R2 (Kersten)": ["pmc", "PMC8683241"], "ECWM-1 (Buske)": ["doi", "10.1200/JCO.22.01805"], "Consensus definition, IWWM-2 (Owen)": ["doi", "10.1053/sonc.2003.50082"], "IPSSWM (Morel)": ["doi", "10.1182/blood-2008-08-174961", "free"], "MYD88 L265P (Treon)": ["doi", "10.1056/NEJMoa1200710", "free"], "Response criteria, IWWM-6 (Owen)": ["doi", "10.1111/bjh.12102", "repo", "https://www.openaccessrepository.it/record/151148"], "MYD88 and CXCR4 genotype (Treon)": ["doi", "10.1182/blood-2014-01-550905"], "BTK Cys481 resistance mutations (Xu)": ["pmc", "PMC7484977"], "Revised IPSSWM (Kastritis)": ["doi", "10.1038/s41375-019-0431-y"], "Asymptomatic WM risk model (Bustoros)": ["pmc", "PMC6544461"], "IWWM-11 treatment consensus (Buske)": ["doi", "10.1053/j.seminhematol.2023.03.005", "repo", "https://pure.amsterdamumc.nl/en/publications/0bfb65a6-81b0-45ba-8d17-19674d299180"]};
+const FTLABEL = x => x[0] === 'pmc' ? 'Free full text' : (x[2] === 'free' ? 'Free at publisher' : 'Publisher');
+const FTTITLE = x => x[0] === 'pmc' ? 'Free full text in PubMed Central' : (x[2] === 'free' ? 'Free to read on the publisher site (checked with Unpaywall)' : 'Publisher page; full text may need a subscription or institutional access');
+const REPORT = t => 'mailto:andresferber@hotmail.com?subject=' + encodeURIComponent('Landmark trials (' + PAGETITLE + '): ' + t.n);
+const FTURL = x => x[0] === 'pmc' ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + x[1] + '/' : 'https://doi.org/' + x[1];
+const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
+T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, rel:t.rel || [], reg:t.reg, gl:t.gl, acc:t.acc}; });
+T.forEach(t => { t.trn = REG[t.n] || []; t.ft = FT[t.n] || null; });
+
+// Added Oct 23, 2026. TOX: key toxicity per trial from the PubMed abstract (or full paper where marked).
+// CORE: trials every trainee should know (chosen by Andres; edit this list to change the star and the "Core trials" filter).
+// WATCH: ongoing trials to watch, from ClinicalTrials.gov.
+// Added Oct 23, 2026. MOA: one recent review per drug or drug class on mechanism of action and resistance; MOAMAP: trial -> MOA keys.
+const MOA = {"btk": {"l": "BTK inhibitors (covalent and noncovalent)", "a": "Stanchina MD", "j": "Nat Rev Clin Oncol", "y": "2024", "t": "Navigating the changing landscape of BTK-targeted therapies for B cell lymphomas and chronic lymphocytic leukaemia", "p": "39487228", "pmc": ""}, "bcl2L": {"l": "BCL2 inhibitors", "a": "Vogler M", "j": "Signal Transduct Target Ther", "y": "2025", "t": "The BCL2 family: from apoptosis mechanisms to new advances in targeted therapy", "p": "40113751", "pmc": "PMC11926181"}, "cd20": {"l": "Anti-CD20 antibodies", "a": "Hasani R", "j": "Exp Hematol", "y": "2026", "t": "CD20-targeted immunotherapies in B-cell malignancies: mechanistic and clinical advances", "p": "42140572", "pmc": ""}, "benda": {"l": "Bendamustine", "a": "Lalic H", "j": "Oncol Rep", "y": "2022", "t": "Bendamustine: a review of pharmacology, clinical use and immunological effects", "p": "35506458", "pmc": "PMC9100486"}, "pi": {"l": "Proteasome inhibitors", "a": "Patiño-Escobar B", "j": "Trends Pharmacol Sci", "y": "2023", "t": "Overcoming proteasome inhibitor resistance in the immunotherapy era", "p": "37344251", "pmc": ""}};
+const MOAMAP = {"Ibrutinib, previously treated (Treon)": ["btk"], "iNNOVATE arm C (Dimopoulos)": ["btk"], "iNNOVATE (Dimopoulos)": ["btk"], "Ibrutinib, treatment-naive (Treon)": ["btk"], "ASPEN (Tam)": ["btk"], "ASPEN cohort 2, MYD88 wild-type (Dimopoulos)": ["btk"], "ACE-WM-001 (Owen)": ["btk"], "Venetoclax (Castillo)": ["bcl2L"], "BRUIN, Waldenström cohort (Palomba)": ["btk"], "E3A98 (Gertz)": ["cd20"], "DRC (Dimopoulos)": ["cd20"], "GLSG R-CHOP vs CHOP (Buske)": ["cd20"], "StiL NHL 1-2003 (Rummel)": ["benda"], "WMCTG 05-180, BDR (Treon)": ["pi"], "EMN BDR (Dimopoulos)": ["pi"], "CaRD (Treon)": ["pi"], "IDR (Castillo)": ["pi"], "HOVON124/ECWM-R2 (Kersten)": ["pi"], "ECWM-1 (Buske)": ["pi"]};
+const MECH = {"bcl2L": "BCL2 is a protein that keeps cells from dying, and mantle cell lymphoma and many other B-cell lymphomas depend on it. Venetoclax and the newer, more selective sonrotoclax block it, releasing the cell's own death program. BCL2 inhibition complements BTK inhibition, which is the rationale for combining them.", "benda": "An alkylating agent with a purine-like ring, which may explain its activity in lymphomas resistant to other alkylators. It damages DNA and causes prolonged lymphocyte depletion, which contributes to its infection risk.", "btk": "BTK carries the B-cell receptor's survival signal, on which mantle cell lymphoma and other B-cell lymphomas depend. Covalent inhibitors (ibrutinib, acalabrutinib, zanubrutinib) bind cysteine 481 permanently, and mutations there cause resistance; noncovalent pirtobrutinib binds reversibly and works despite them. The newer agents are more selective, with less atrial fibrillation and bleeding than ibrutinib.", "cd20": "Monoclonal antibodies against CD20, present on nearly all B cells and B-cell lymphomas. Rituximab kills mainly through complement and antibody-dependent cellular cytotoxicity; obinutuzumab, a glycoengineered type II antibody, relies more on direct cell death and cellular cytotoxicity and causes deeper B-cell depletion.", "pi": "Block the proteasome, the cell's machinery for clearing unwanted proteins, so misfolded proteins build up and trigger cell death. Myeloma cells, which make large amounts of immunoglobulin, are especially sensitive; in mantle cell lymphoma, bortezomib also suppresses NF-κB survival signalling. Bortezomib binds reversibly, carfilzomib irreversibly; ixazomib is taken by mouth."};
+const MOAURL = m => m.pmc ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + m.pmc + '/' : 'https://pubmed.ncbi.nlm.nih.gov/' + m.p + '/';
+const MOAHTML = t => (MOAMAP[t.n] || []).map(k => MOA[k]).filter(Boolean).map(m => '<span class="moa"><b>' + esc(m.l) + ':</b> <a href="' + esc(MOAURL(m)) + '" target="_blank" rel="noopener" title="' + esc(m.t) + '">' + esc(m.a) + ', ' + esc(m.j) + ' ' + esc(m.y) + ' ↗</a>' + (m.pmc ? ' <span class="moafree">free</span>' : '') + '</span>').join('');
+// NEWD: new drugs to watch (shared per disease).
+const NEWD = {"checked": "November 14, 2026", "note": "Agents with a new mechanism, target or modality that are not yet approved for this disease in the US or EU, selected from peer-reviewed early-phase trials and major meetings. Early response rates often fall with more patients and longer follow-up; meeting data are not peer-reviewed.", "scope": "Most new drugs for Waldenström macroglobulinemia are tested first after a BTK inhibitor, so this list covers untreated and relapsed disease together. The evidence is thin for several entries, and that is stated in each.", "items": [{"n": "BTK degrader (BGB-16673)", "mod": "Oral protein degrader", "tgt": "BTK (degraded rather than inhibited)", "ev": "Phase 1, meeting data (not yet peer-reviewed)", "pub": "ASH 2024; EHA 2025", "why": "Degrading BTK, rather than blocking it, can work against the Cys481 and other BTK mutations that cause resistance to covalent and noncovalent BTK inhibitors, the main unmet need after a BTK inhibitor.", "data": "CaDAnCe-101, Waldenström cohort (EHA 2025): 36 patients treated, all after a covalent BTK inhibitor, with a median of 3 previous lines; among 32 evaluable patients, ORR 84.4%, major response 75.0% and very good partial response 31.3%; median time to first response 1.0 month.", "safety": "Neutropenia 39% (grade 3 or higher, 31%), contusion 31%, diarrhea 25%; 2 patients stopped for adverse events.", "next": "No phase 3 trial in Waldenström macroglobulinemia was registered on ClinicalTrials.gov when checked; phase 3 trials are under way in CLL.", "src": [["ASH 2024 abstract 860", "https://ash.confex.com/ash/2024/webprogram/Paper199212.html"], ["EHA 2025 report (Cancer Network)", "https://www.cancernetwork.com/view/bgb-16673-shows-tolerability-activity-in-waldenstr-m-macroglobulinemia"]]}, {"n": "Iopofosine I 131", "mod": "Radiopharmaceutical (phospholipid ether carrying iodine-131), intravenous", "tgt": "Lipid rafts of tumor cell membranes", "ev": "Phase 2, meeting data (not yet peer-reviewed)", "pub": "ASH 2024", "why": "A targeted radiotherapy given as four infusions over two cycles, with a mechanism unrelated to BTK or BCL2, tested in patients who have had at least two previous lines.", "data": "CLOVER-WaM (ASH 2024; data cutoff May 31, 2024): 55 patients in the efficacy population; ORR 83.6%, major response 58.2% (primary endpoint), complete or very good partial response 7.3%.", "safety": "Cytopenias were the most common adverse events; one death from an adverse event (bacterial sepsis).", "next": "Phase 3 against rituximab, cyclophosphamide and dexamethasone after a BTK inhibitor (DCL-26-001, NCT07766421), registered and not yet recruiting.", "src": [["ASH 2024 abstract 861", "https://ash.confex.com/ash/2024/webprogram/Paper200277.html"], ["ASH 2024 report (Targeted Oncology)", "https://www.targetedonc.com/view/iopofosine-i-131-shows-potential-in-r-r-waldenstr-m-macroglobulinemia"]]}, {"n": "Sonrotoclax", "mod": "Oral small molecule", "tgt": "BCL2", "ev": "Phase 1, meeting data (not yet peer-reviewed); figures not verified here", "pub": "ASH 2024 (trial design); EHA 2025", "why": "A next-generation BCL2 inhibitor, more selective and potent than venetoclax in laboratory studies. Venetoclax is active in this disease but has no approval for it.", "data": "The phase 1 trial (BGB-11417-101) reported responses with sonrotoclax alone in relapsed or refractory disease at doses up to 640 mg; response rates could not be verified from a primary source for this page. A phase 2 trial (BGB-11417-203, 114 patients) tests it alone after a BTK inhibitor and with zanubrutinib as a fixed-duration first treatment.", "safety": "Not verified for this disease.", "next": "BGB-11417-203 (NCT05952037), with major response rate as primary endpoint; a French phase 2 trial of zanubrutinib with sonrotoclax in previously treated patients (WAZABI, NCT06547866).", "src": [["ASH 2024 abstract 1661.1 (trial design)", "https://ash.confex.com/ash/2024/webprogram/Paper198728.html"], ["Sarosiek S, Br J Haematol 2025 (review of BCL2 inhibition)", "https://pubmed.ncbi.nlm.nih.gov/41111358/"]]}, {"n": "CD20-directed CAR T cells", "mod": "Autologous CAR T-cell therapy", "tgt": "CD20", "ev": "Early-phase trial, peer-reviewed (brief abstract)", "pub": "Blood 2026", "why": "No CAR T-cell therapy is approved for Waldenström macroglobulinemia, and complete responses are rare with every approved drug.", "data": "In heavily pretreated patients with disease refractory to a BTK inhibitor, the rate of complete or very good partial response was 80%; the number of patients is not reported in the abstract.", "safety": "Not reported in abstract.", "next": "The authors call for larger trials (NCT03277729).", "src": [["Shadman M, Blood 2026", "https://pubmed.ncbi.nlm.nih.gov/42986912/"]]}, {"n": "Loncastuximab tesirine", "mod": "Antibody-drug conjugate, intravenous", "tgt": "CD19", "ev": "Phase 2, meeting data (not yet peer-reviewed)", "pub": "ASH 2024 (interim); ASH 2025", "why": "Six doses of a drug approved for large B-cell lymphoma, tested after rituximab and a BTK inhibitor, including in disease with CXCR4 or TP53 alterations.", "data": "Interim analysis (ASH 2024): 7 patients enrolled; the futility rule required more than 2 responses among the first 7. Higher response rates were reported at ASH 2025; those figures were not verified from the abstract for this page.", "safety": "Skin toxicity and asymptomatic GGT elevation, sometimes persistent after treatment; transient cytopenias; no discontinuations for toxicity in the interim analysis.", "next": "Phase 2 trial continuing (NCT05190705).", "src": [["ASH 2024 abstract 4404", "https://ash.confex.com/ash/2024/webprogram/Paper211573.html"]]}], "grad": [], "disc": []};
+const TOX = {"Ibrutinib, previously treated (Treon)": "Grade ≥2 neutropenia 22% and thrombocytopenia 14%, more common in heavily pretreated patients; atrial fibrillation 5%. Final analysis: grade ≥3 neutropenia 15.9%, thrombocytopenia 11.1%; atrial arrhythmia 12.7%, with 7 of 8 patients continuing treatment.", "iNNOVATE arm C (Dimopoulos)": "Grade ≥3 neutropenia 13%, hypertension 10%; serious adverse events 32%, mostly infections; 2 patients stopped for adverse events. Final analysis: no major hemorrhage or atrial fibrillation.", "iNNOVATE (Dimopoulos)": "Grade ≥3 atrial fibrillation 12% vs 1% and hypertension 13% vs 4%; fewer grade ≥3 infusion reactions (1% vs 16%) and less IgM flare (8% vs 47%) with ibrutinib-rituximab; major hemorrhage 4% in each group.", "Ibrutinib, treatment-naive (Treon)": "Grade 2–3 hypertension 13% and atrial fibrillation 10%; no grade 4 events. Final report: atrial fibrillation 20%.", "ASPEN (Tam)": "Final analysis, zanubrutinib vs ibrutinib: atrial fibrillation or flutter 7.9% vs 23.5%, hypertension 14.9% vs 25.5%, diarrhea 22.8% vs 34.7%, pneumonia 5.0% vs 18.4%; neutropenia 34.7% vs 20.4%. Fewer discontinuations for adverse events with zanubrutinib.", "ASPEN cohort 2, MYD88 wild-type (Dimopoulos)": "Hypertension in 3 patients, atrial fibrillation in 1 and major hemorrhage in 2; 2 patients stopped for adverse events.", "ACE-WM-001 (Owen)": "Grade 3–4 neutropenia 16% and pneumonia 7%; grade 3–4 atrial fibrillation 1% and bleeding 3%; one treatment-related death (intracranial hematoma). At 5 years: cardiac events of clinical interest 20.8%; 17.9% stopped for adverse events.", "Venetoclax (Castillo)": "Grade ≥3 neutropenia 45%, including one febrile neutropenia; laboratory tumor lysis in one patient, without clinical consequences; no deaths.", "BRUIN, Waldenström cohort (Palomba)": "Grade ≥3 adverse events 71%, most often anemia (24%) and neutropenia (19%); 15% stopped for adverse events; one treatment-related death (necrotising pneumonia).", "E3A98 (Gertz)": "Grade 4 toxicity in 11%. IgM flare in the companion series: IgM rose by more than 25% in 8 of 11 patients, with one subdural hemorrhage and worsening hyperviscosity symptoms in two others.", "DRC (Dimopoulos)": "Grade 3–4 neutropenia 9%; about 20% had toxicity related to rituximab.", "GLSG R-CHOP vs CHOP (Buske)": "No major difference between the arms; rates not reported in abstract.", "EBMT autologous transplantation (Kyriakou)": "Non-relapse mortality 3.8% at 1 year; second malignancies in 10 patients (8.4% at 5 years).", "WM1 (Leblond)": "Grade 3–4 neutropenia 36% (fludarabine) vs 17.8% (chlorambucil); second malignancies at 6 years 3.7% vs 20.6%.", "StiL NHL 1-2003 (Rummel)": "All histologies, bendamustine-rituximab vs R-CHOP: hematologic toxicity 30% vs 68%, infections 37% vs 50%, peripheral neuropathy 7% vs 29%, alopecia 0% vs 100%; erythematous skin reactions 16% vs 9%.", "WMCTG 05-180, BDR (Treon)": "Peripheral neuropathy was the most common toxicity (16 patients; resolved to grade ≤1 in 13) and led 61% to stop bortezomib early; herpes zoster in 4 of the first 7 patients, before antiviral prophylaxis.", "EMN BDR (Dimopoulos)": "Peripheral neuropathy 46% (grade ≥3, 7%); 8% stopped bortezomib for neuropathy. Final analysis: no secondary myelodysplasia.", "CaRD (Treon)": "Grade ≥2: asymptomatic hyperlipasemia 41.9%, neutropenia 12.9%, cardiomyopathy in one patient, peripheral neuropathy in one patient (grade 2); falls in IgA and IgG were common.", "IDR (Castillo)": "Grade ≥2 infusion-related reactions 19%, rash 8%, insomnia 8%; no grade 4 events or deaths in long-term follow-up.", "HOVON124/ECWM-R2 (Kersten)": "Mostly grade 2–3 cytopenias, grade 1–2 neurotoxicity and grade 2–3 infections; rates not reported in abstract.", "ECWM-1 (Buske)": "Grade ≥3 adverse events 49.5% (B-DRC) vs 49.0% (DRC); grade 3 peripheral sensory neuropathy in 2 patients with B-DRC and none with DRC.", "Consensus definition, IWWM-2 (Owen)": "Not applicable (consensus statement).", "IPSSWM (Morel)": "Not applicable (prognostic model).", "MYD88 L265P (Treon)": "Not applicable (laboratory study).", "Response criteria, IWWM-6 (Owen)": "Not applicable (consensus statement).", "MYD88 and CXCR4 genotype (Treon)": "Not applicable (cohort study of genotype).", "BTK Cys481 resistance mutations (Xu)": "Not applicable (laboratory study).", "Revised IPSSWM (Kastritis)": "Not applicable (prognostic model).", "Asymptomatic WM risk model (Bustoros)": "Not applicable (prognostic model).", "IWWM-11 treatment consensus (Buske)": "Not applicable (consensus statement)."};
+const CORE = [];
+const WATCH = {"note": "Only two phase 3 trials are registered for this disease, so the list also holds randomized and single-arm phase 2 trials of regimens that could change practice. Selected from ClinicalTrials.gov (checked November 14, 2026). Status and primary completion dates are as registered; some trials may already have presented results at meetings.", "items": [{"n": "RAINBOW", "d": "Rituximab-ibrutinib vs dexamethasone, rituximab and cyclophosphamide (DRC) as first treatment", "ph": "Phase 2/3", "st": "Recruiting", "pcd": "2030-03 (estimated)", "ep": "Response to rituximab-ibrutinib (phase 2); PFS (phase 3)", "nct": "NCT04061512"}, {"n": "DCL-26-001", "d": "Iopofosine I 131 vs rituximab, cyclophosphamide and dexamethasone in patients previously treated with a BTK inhibitor", "ph": "Phase 3", "st": "Not yet recruiting", "pcd": "2032-01 (estimated)", "ep": "PFS", "nct": "NCT07766421"}, {"n": "S2005", "d": "Venetoclax-rituximab vs a BTK inhibitor (ibrutinib-rituximab or zanubrutinib) as first treatment of Waldenström macroglobulinemia or lymphoplasmacytic lymphoma", "ph": "Phase 2 (randomized)", "st": "Recruiting", "pcd": "2028-03-31 (estimated)", "ep": "Very good partial response or better", "nct": "NCT04840602"}, {"n": "VIWA-1", "d": "Venetoclax-rituximab vs dexamethasone, rituximab and cyclophosphamide (DRC)", "ph": "Phase 2 (randomized)", "st": "Recruiting", "pcd": "2028-03 (estimated)", "ep": "Complete or very good partial response", "nct": "NCT05099471"}, {"n": "CZAR-1", "d": "Carfilzomib with ibrutinib vs ibrutinib alone", "ph": "Phase 2 (randomized)", "st": "Active, not recruiting", "pcd": "2028-05 (estimated)", "ep": "Complete or very good partial response", "nct": "NCT04263480"}, {"n": "BGB-11417-203", "d": "Sonrotoclax alone in relapsed or refractory disease (three cohorts) and with zanubrutinib, fixed duration, in untreated disease", "ph": "Phase 2 (registrational)", "st": "Active, not recruiting", "pcd": "2026-09-22", "ep": "Major response rate (cohort 1)", "nct": "NCT05952037"}, {"n": "WAZABI", "d": "Zanubrutinib with sonrotoclax (BGB-11417) in previously treated patients; single arm", "ph": "Phase 2", "st": "Not yet recruiting", "pcd": "2028-12-31 (estimated)", "ep": "Not specified in the registry record", "nct": "NCT06547866"}, {"n": "ZEBRA", "d": "Zanubrutinib, bendamustine and rituximab as first treatment; single arm", "ph": "Phase 2", "st": "Recruiting", "pcd": "2026-12-01 (estimated)", "ep": "Very good partial response or better", "nct": "NCT06561347"}, {"n": "BRAWM", "d": "Bendamustine, rituximab and acalabrutinib as first treatment; single arm", "ph": "Phase 2", "st": "Active, not recruiting", "pcd": "2025-12-31", "ep": "Best complete or very good partial response", "nct": "NCT04624906"}]};
+const PAGEKEY = "wm";
+const PAGETITLE = "Waldenström macroglobulinemia";
+const SLUG = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+T.forEach(t => { t.tx = TOX[t.n] || "Not reported in abstract"; t.core = CORE.includes(t.n); t.slug = SLUG(t.n);
+  t.full = [t.r, t.N, t.hr, t.fu, t.tx].some(x => /full paper/.test(String(x || ""))); });
+function eviHTML(t) {
+  return t.full
+    ? '<span class="ok full" title="Checked against the PubMed abstract; values marked “full paper” were checked against the full publication">✓ abstract + full paper</span>'
+    : '<span class="ok" title="Checked against the PubMed abstract">✓ abstract</span>';
+}
+
+
+let active = "all", sortMode = "setting";
+try { const s = localStorage.getItem("wm-sort"); if (s) sortMode = s; } catch(e) {}
+const chipsEl = document.getElementById("chips");
+[["all","All"], ["core","★ Core trials"], ...order.map(k => [k, SETTINGS[k]])].forEach(([k,label]) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.id = "chip-" + k; b.textContent = label;
+  b.setAttribute("aria-pressed", k === active);
+  b.addEventListener("click", () => { active = k; chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b)); render(); });
+  chipsEl.appendChild(b);
+});
+const sortEl = document.getElementById("sort"); sortEl.value = sortMode;
+sortEl.addEventListener("change", () => { sortMode = sortEl.value; try { localStorage.setItem("wm-sort", sortMode); } catch(e) {} render(); });
+const qEl = document.getElementById("q"); qEl.addEventListener("input", render);
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function recHTML(t){
+  const r = t.rc; if (!r) return "";
+  const cm = r.cm.length
+    ? r.cm.map(c => `<li><a href="https://pubmed.ncbi.nlm.nih.gov/${c[0]}/" target="_blank" rel="noopener">${esc(c[1])}</a>: ${esc(c[2])}</li>`).join("")
+    : '<li class="none">No commentary linked to this paper in PubMed</li>';
+  const rel = r.rel && r.rel.length
+    ? `<div class="rk">Related papers</div><ul>${r.rel.map(c => `<li><a href="https://pubmed.ncbi.nlm.nih.gov/${c[0]}/" target="_blank" rel="noopener">${esc(c[1])}</a>: ${esc(c[2])}</li>`).join("")}</ul>` : "";
+  return `<div class="rk">Commentary</div><ul>${cm}</ul>${rel}
+    <div class="rk">Regulatory</div><p>${esc(r.reg)}</p>
+    <div class="rk">Guidelines</div><p>${esc(r.gl)}</p>
+    <div class="rk">Access</div><p>${esc(r.acc)}</p>`;
+}
+const GRPHDR = (t, i, rows) => (sortMode === "setting" || sortMode === "setting-asc") && (i === 0 || rows[i - 1].s !== t.s)
+  ? '<li class="grp"><h3>' + esc(SETTINGS[t.s]) + '<span class="gn">' + rows.filter(r => r.s === t.s).length + '</span></h3></li>' : '';
+function render(){
+  const q = qEl.value.trim().toLowerCase();
+  let rows = T.filter(t => (active === "all" || (active === "core" ? t.core : t.s === active)) &&
+    (!q || [t.n,t.d,t.r,t.tx,t.i,t.b,t.q,t.c,t.ph,String(t.y),t.reg,t.gl,t.acc,t.cm.map(c=>c[1]+" "+c[2]).join(" "),(t.rel||[]).map(c=>c[1]+" "+c[2]).join(" ")].join(" ").toLowerCase().includes(q)));
+  rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
+    : (order.indexOf(a.s) - order.indexOf(b.s)) || (sortMode === "setting-asc" ? a.y - b.y : b.y - a.y));
+  document.getElementById("count").textContent = rows.length + " of " + T.length + " studies";
+  const list = document.getElementById("list");
+  if (!rows.length) { list.innerHTML = '<li class="empty">No studies match that search. Clear the search or pick another category.</li>'; return; }
+  list.innerHTML = rows.map((t, i) => GRPHDR(t, i, rows) + `
+    <li class="trial" data-trial="${t.slug}">
+      <div class="yr">${t.y}</div>
+      <div class="body">
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span>${t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : ''}<button type="button" class="share" data-slug="${t.slug}" title="Copy a link to this trial" aria-label="Copy a link to ${esc(t.n)}"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M8.5 11.5a3 3 0 0 0 4.2 0l2.6-2.6a3 3 0 0 0-4.2-4.2l-1 1M11.5 8.5a3 3 0 0 0-4.2 0l-2.6 2.6a3 3 0 0 0 4.2 4.2l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="lbl">Link copied</span></button></div>
+        <p class="design">${esc(t.d)}</p>
+        <div class="stats">
+          <span><b>N</b>${esc(t.N)}</span>
+          <span><b>HR</b>${esc(t.hr)}</span>
+          <span><b>Median F/U</b>${esc(t.fu)}</span>
+        </div>
+        <dl>
+          <dt class="f-ep">Endpoint</dt><dd class="f-ep">${esc(t.ep)}</dd>
+          <dt class="f-res">Result</dt><dd class="result f-res">${esc(t.r)} ${eviHTML(t)}</dd>
+          <dt class="f-tox">Key toxicity</dt><dd class="tox f-tox">${esc(t.tx)}</dd>
+          ${MOAMAP[t.n] ? `<dt>Drug mechanism</dt><dd class="moas">${MOAHTML(t)}</dd>` : ""}
+          <dt>Builds on</dt><dd>${esc(t.b)}</dd>
+          <dt>Changed</dt><dd>${esc(t.i)}</dd>
+          <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
+          <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${FTTITLE(t.ft)}">${FTLABEL(t.ft)} ↗</a>` : ''}${t.ft && t.ft[2] === 'repo' ? ` · <a class="ft" href="${esc(t.ft[3])}" target="_blank" rel="noopener" title="Free legal copy in a university repository, found through Unpaywall; it may be the authors' manuscript rather than the final journal version">Free copy (repository) ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')} · <a class="report" href="${esc(REPORT(t))}" title="Email a correction for this trial">Report an error</a></dd>
+        </dl>
+      </div>
+    </li>`).join("");
+}
+render();
+
+(function renderWatch(){
+  const listEl = document.getElementById("list");
+  const box = listEl.parentNode.querySelector(".watch");
+  if (!box) return;
+  if (!WATCH.items || !WATCH.items.length) { box.hidden = true; return; }
+  box.hidden = false;
+  box.innerHTML = '<h2>Trials to watch</h2><p class="wnote">' + esc(WATCH.note || "") + '</p><ul>' + WATCH.items.map(w =>
+    '<li><span class="wn">' + esc(w.n) + '</span><span class="wd">' + esc(w.d) + '</span><span class="wm">' +
+    [w.ph, w.st, w.pcd ? "primary completion " + w.pcd : "", w.ep ? "primary endpoint: " + w.ep : ""].filter(Boolean).map(esc).join(" · ") +
+    (w.nct ? ' · <a href="https://clinicaltrials.gov/study/' + esc(w.nct) + '" target="_blank" rel="noopener">' + esc(w.nct) + ' ↗</a>' : "") +
+    '</span>' + (w.note ? '<span class="wd">' + esc(w.note) + '</span>' : '') + '</li>').join("") + '</ul>';
+})();
+
+
+(function setupReviewRefs(){
+  const listEl = document.getElementById("list");
+  const box = listEl.parentNode.querySelector(".review");
+  if (!box) return;
+  box.addEventListener("click", e => {
+    if (e.target.closest(".rv-close")) {
+      box.open = false;
+      box.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    const a = e.target.closest("a.rref");
+    if (!a) return;
+    e.preventDefault();
+    const first = chipsEl.querySelector(".chip");
+    if (first && first.getAttribute("aria-pressed") !== "true") first.click();
+    if (qEl.value) { qEl.value = ""; render(); }
+    const li = listEl.querySelector('li[data-trial="' + a.getAttribute("data-slug") + '"]');
+    if (!li) return;
+    li.scrollIntoView({ behavior: "smooth", block: "start" });
+    li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+  });
+})();
+
+(function setupTabs(){
+  const listEl = document.getElementById("list");
+  const root = listEl.parentNode;
+  const tabs = root.querySelector(".tabs"), panel = root.querySelector(".newdrugs"), watch = root.querySelector(".watch"), controls = root.querySelector(".controls");
+  if (!tabs) return;
+  const L = (s) => '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + ' ↗</a>';
+  const nW = (typeof WATCH !== "undefined" && WATCH.items) ? WATCH.items.length : 0;
+  const nD = (typeof NEWD !== "undefined") ? NEWD.items.length : 0;
+  const cw = tabs.querySelector('[data-tab="watch"] .tcount'), cd = tabs.querySelector('[data-tab="newdrugs"] .tcount');
+  if (cw) cw.textContent = nW; if (cd) cd.textContent = nD;
+  let mod = "all";
+  function draw(){
+    if (!panel || !nD) return;
+    const mods = [...new Set(NEWD.items.map(d => d.mod))];
+    const items = NEWD.items.filter(d => mod === "all" || d.mod === mod);
+    const log = (arr, none) => '<ul class="nd-log">' + (arr.length ? arr.map(g => '<li><b>' + esc(g.n) + ':</b> ' + esc(g.txt) + ' ' + g.src.map(L).join(" · ") + '</li>').join("") : '<li>' + none + '</li>') + '</ul>';
+    panel.innerHTML = '<p class="nd-note">' + esc(NEWD.note) + (NEWD.scope ? ' ' + esc(NEWD.scope) : '') + ' Status checked ' + esc(NEWD.checked) + '.</p>' +
+      (mods.length > 1 ? '<div class="nd-mods">' + [["all","All"]].concat(mods.map(m => [m, m])).map(([k, l]) => '<button type="button" class="chip" data-mod="' + esc(k) + '" aria-pressed="' + (k === mod) + '">' + esc(l) + '</button>').join("") + '</div>' : '') +
+      items.map(d => '<div class="nd-item"><div class="nd-top"><h2 class="nd-name">' + esc(d.n) + '</h2><span class="nd-mod">' + esc(d.mod) + '</span><span class="nd-ev' + (/^Peer-reviewed/.test(d.ev) ? ' pr' : '') + '">' + esc(d.ev) + ' · ' + esc(d.pub) + '</span></div>' +
+        '<dl><dt>Target</dt><dd>' + esc(d.tgt) + '</dd><dt>Why it matters</dt><dd>' + esc(d.why) + '</dd><dt class="f-res">Key data</dt><dd class="f-res">' + esc(d.data) + '</dd><dt class="f-tox">Safety</dt><dd class="f-tox">' + esc(d.safety) + '</dd><dt>Next step</dt><dd>' + esc(d.next) + '</dd><dt>Sources</dt><dd class="nd-src">' + d.src.map(L).join(" · ") + '</dd></dl></div>').join("") +
+      '<h3>Moved on to phase 3 results</h3>' + log(NEWD.grad, "None so far.") +
+      '<h3>Discontinued</h3>' + log(NEWD.disc, "None so far.") +
+      '<p class="nd-rules">How this list is kept: agents with a new mechanism, target or modality (including phase 1 when the approach is new, and repurposed drugs with credible clinical data; no biosimilars and no preclinical-only agents). An agent moves to "Moved on" when phase 3 results are published, and to "Discontinued", with the reason and date, when development stops or a pivotal trial fails; discontinued entries are removed after 2 years. Checked at each scheduled update and after major meetings (ASH, ASCO, EHA, AACR, ESMO, IMS).</p>';
+    panel.querySelectorAll(".nd-mods .chip").forEach(b => b.addEventListener("click", () => { mod = b.getAttribute("data-mod"); draw(); }));
+  }
+  draw();
+  function show(which){
+    tabs.querySelectorAll("button[data-tab]").forEach(x => x.setAttribute("aria-selected", x.getAttribute("data-tab") === which));
+    if (controls) controls.style.display = which === "trials" ? "" : "none";
+    listEl.style.display = which === "trials" ? "" : "none";
+    if (watch) watch.style.display = (which === "newdrugs" || !nW) ? "none" : "";
+    if (panel) panel.hidden = which !== "newdrugs";
+    if (mpanel) mpanel.hidden = which !== "mech";
+    if (watch && which === "mech") watch.style.display = "none";
+  }
+  // Drug mechanisms tab: classes tested on this page, how they work, the review, and the trials that used them.
+  const mpanel = root.querySelector(".mechs");
+  const mKeys = (typeof MOA !== "undefined" && typeof MOAMAP !== "undefined" && typeof MECH !== "undefined")
+    ? Object.keys(MOA).filter(k => MECH[k] && T.some(t => (MOAMAP[t.n] || []).includes(k))) : [];
+  const cm = tabs.querySelector('[data-tab="mech"] .tcount'); if (cm) cm.textContent = mKeys.length;
+  if (mpanel && mKeys.length) {
+    mpanel.innerHTML = '<p class="mx-note">Each drug class tested in the trials on this page: how it works, a recent peer-reviewed review on mechanism and resistance, and the trials that used it. Select a trial to jump to its card.</p>' +
+      mKeys.map(k => { const m = MOA[k];
+        const trials = T.filter(t => (MOAMAP[t.n] || []).includes(k)).sort((a, b) => a.y - b.y);
+        return '<div class="mx-item"><h2 class="mx-name">' + esc(m.l) + '</h2><p class="mx-desc">' + esc(MECH[k]) + '</p>' +
+          '<p class="mx-rev"><span class="mx-k">Review</span> <a href="' + esc(MOAURL(m)) + '" target="_blank" rel="noopener">' + esc(m.a + ', ' + m.j + ' ' + m.y) + ' ↗</a>' + (m.pmc ? ' <span class="moafree">free</span>' : '') + '</p>' +
+          '<p class="mx-trials"><span class="mx-k">Trials on this page</span> ' + trials.map(t => '<a class="mt" href="#t-' + PAGEKEY + '-' + t.slug + '" data-slug="' + t.slug + '">' + esc(t.n) + ' <span class="mt-y">' + t.y + '</span></a>').join("") + '</p></div>'; }).join("");
+    mpanel.addEventListener("click", e => {
+      const a = e.target.closest("a.mt"); if (!a) return;
+      e.preventDefault();
+      show("trials");
+      tabs.dispatchEvent(new Event("tabschange"));
+      const first = chipsEl.querySelector(".chip");
+      if (first && first.getAttribute("aria-pressed") !== "true") first.click();
+      if (qEl.value) { qEl.value = ""; render(); }
+      const li = listEl.querySelector('li[data-trial="' + a.getAttribute("data-slug") + '"]');
+      if (!li) return;
+      li.scrollIntoView({ behavior: "smooth", block: "start" });
+      li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+    });
+  }
+  tabs.addEventListener("click", e => {
+    const b = e.target.closest("button[data-tab]"); if (!b) return;
+    const w = b.getAttribute("data-tab");
+    // Clicking the tab that is already open closes it and returns to the trial list.
+    if (w !== "trials" && b.getAttribute("aria-selected") === "true") {
+      show("trials");
+      tabs.dispatchEvent(new Event("tabschange"));
+      if (tabs._scrollHome) tabs._scrollHome(); else tabs.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      return;
+    }
+    show(w);
+    tabs.dispatchEvent(new Event("tabschange"));
+  });
+  show("trials");
+})();
+(function pinTabs(){
+  // Pin the tab bar while a tab other than Landmark trials is open.
+  const listEl = document.getElementById("list");
+  const root = listEl.parentNode;
+  const tabs = root.querySelector(".tabs");
+  if (!tabs) return;
+  const ph = document.createElement("div");
+  ph.className = "tabs-ph"; ph.hidden = true;
+  tabs.parentNode.insertBefore(ph, tabs);
+  let pinned = false;
+  function topOffset() {
+    // Below the website's pinned topic title bar, or any fixed site header; 0 on the standalone page.
+    const h = document.querySelector(".lta-head.lta-pinned");
+    if (h) return Math.max(0, h.getBoundingClientRect().bottom);
+    let off = 0;
+    try {
+      (document.elementsFromPoint(window.innerWidth / 2, 2) || []).forEach(el => {
+        if (root.contains(el)) return;
+        for (let n = el; n && n !== document.body; n = n.parentElement) {
+          const p = getComputedStyle(n).position;
+          if (p === "fixed" || p === "sticky") {
+            const r = n.getBoundingClientRect();
+            if (r.top <= 2 && r.bottom > off && r.bottom < window.innerHeight * 0.4) off = r.bottom;
+            break;
+          }
+        }
+      });
+    } catch (e) {}
+    return off;
+  }
+  function unpin() {
+    if (!pinned) return;
+    tabs.classList.remove("tabs-pinned");
+    tabs.style.top = tabs.style.left = tabs.style.width = "";
+    ph.hidden = true; pinned = false;
+  }
+  function update() {
+    const sel = tabs.querySelector('button[aria-selected="true"]');
+    const active = !!sel && sel.getAttribute("data-tab") !== "trials";
+    const off = topOffset();
+    const r = (pinned ? ph : tabs).getBoundingClientRect();
+    const rr = root.getBoundingClientRect();
+    const h = tabs.offsetHeight;
+    if (active && r.top < off && rr.bottom > off + h + 40) {
+      if (!pinned) { ph.style.height = h + "px"; ph.hidden = false; tabs.classList.add("tabs-pinned"); pinned = true; }
+      const pr = ph.getBoundingClientRect();
+      tabs.style.top = off + "px"; tabs.style.left = pr.left + "px"; tabs.style.width = pr.width + "px";
+    } else unpin();
+  }
+  let ticking = false;
+  const req = () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; update(); }); } };
+  window.addEventListener("scroll", req, { passive: true });
+  document.addEventListener("scroll", req, { passive: true, capture: true });
+  window.addEventListener("resize", req);
+  tabs.addEventListener("tabschange", () => { unpin(); req(); });
+  // Closing a tab returns to the top of the trial list, just below any pinned header.
+  tabs._scrollHome = () => {
+    const y = tabs.getBoundingClientRect().top + window.pageYOffset - topOffset() - 8;
+    if (tabs.getBoundingClientRect().top < topOffset()) window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+  };
+})();
+(function setupShare(){
+  const listEl = document.getElementById("list");
+  listEl.addEventListener("click", e => {
+    const b = e.target.closest(".share");
+    if (!b) return;
+    const slug = b.getAttribute("data-slug");
+    const inSite = !!listEl.closest(".ltw");
+    const base = inSite ? location.href.split("#")[0] : "https://andresferber.github.io/landmark-trials/";
+    const url = base + "#t-" + PAGEKEY + "-" + slug;
+    const done = () => { b.classList.add("copied"); setTimeout(() => b.classList.remove("copied"), 1800); };
+    const fallback = () => { const t = document.createElement("textarea"); t.value = url; t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); done(); } catch (x) {} t.remove(); };
+    try { navigator.clipboard.writeText(url).then(done, fallback); } catch (x) { fallback(); }
+  });
+})();
+(function setupPrint(){
+  const listEl = document.getElementById("list");
+  const wrap = listEl.closest(".wrap");
+  const btn = wrap && wrap.querySelector(".printbtn");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const root = wrap.closest(".ltw");
+    if (!root) { window.print(); return; }
+    const css = Array.prototype.map.call(document.querySelectorAll("style"), s => s.textContent).filter(c => c.includes("--font-display")).join("\n");
+    const clone = root.cloneNode(true);
+    clone.querySelectorAll(".controls, .printbtn").forEach(n => n.remove());
+    const w = window.open("", "_blank");
+    if (!w) { window.print(); return; }
+    const title = (wrap.querySelector("h1") || {}).textContent || "Landmark trials";
+    w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>' + esc(title) + '</title>' +
+      '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">' +
+      '<style>' + css + ' body{margin:0;background:#fff} .ltw{background:#fff} @media print{.ltw .trial{break-inside:avoid}}</style></head><body>' +
+      clone.outerHTML + '<script>window.onload=function(){setTimeout(function(){window.print()},400)}<\/script></body></html>');
+    w.document.close();
+  });
+  try { if (/[?&]print=1/.test(location.search)) setTimeout(() => window.print(), 500); } catch (e) {}
+})();
+</script>

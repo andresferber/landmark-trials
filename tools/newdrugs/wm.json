@@ -1,0 +1,82 @@
+{
+ "checked": "November 14, 2026",
+ "note": "Agents with a new mechanism, target or modality that are not yet approved for this disease in the US or EU, selected from peer-reviewed early-phase trials and major meetings. Early response rates often fall with more patients and longer follow-up; meeting data are not peer-reviewed.",
+ "scope": "Most new drugs for Waldenström macroglobulinemia are tested first after a BTK inhibitor, so this list covers untreated and relapsed disease together. The evidence is thin for several entries, and that is stated in each.",
+ "items": [
+  {
+   "n": "BTK degrader (BGB-16673)",
+   "mod": "Oral protein degrader",
+   "tgt": "BTK (degraded rather than inhibited)",
+   "ev": "Phase 1, meeting data (not yet peer-reviewed)",
+   "pub": "ASH 2024; EHA 2025",
+   "why": "Degrading BTK, rather than blocking it, can work against the Cys481 and other BTK mutations that cause resistance to covalent and noncovalent BTK inhibitors, the main unmet need after a BTK inhibitor.",
+   "data": "CaDAnCe-101, Waldenström cohort (EHA 2025): 36 patients treated, all after a covalent BTK inhibitor, with a median of 3 previous lines; among 32 evaluable patients, ORR 84.4%, major response 75.0% and very good partial response 31.3%; median time to first response 1.0 month.",
+   "safety": "Neutropenia 39% (grade 3 or higher, 31%), contusion 31%, diarrhea 25%; 2 patients stopped for adverse events.",
+   "next": "No phase 3 trial in Waldenström macroglobulinemia was registered on ClinicalTrials.gov when checked; phase 3 trials are under way in CLL.",
+   "src": [
+    ["ASH 2024 abstract 860", "https://ash.confex.com/ash/2024/webprogram/Paper199212.html"],
+    ["EHA 2025 report (Cancer Network)", "https://www.cancernetwork.com/view/bgb-16673-shows-tolerability-activity-in-waldenstr-m-macroglobulinemia"]
+   ]
+  },
+  {
+   "n": "Iopofosine I 131",
+   "mod": "Radiopharmaceutical (phospholipid ether carrying iodine-131), intravenous",
+   "tgt": "Lipid rafts of tumor cell membranes",
+   "ev": "Phase 2, meeting data (not yet peer-reviewed)",
+   "pub": "ASH 2024",
+   "why": "A targeted radiotherapy given as four infusions over two cycles, with a mechanism unrelated to BTK or BCL2, tested in patients who have had at least two previous lines.",
+   "data": "CLOVER-WaM (ASH 2024; data cutoff May 31, 2024): 55 patients in the efficacy population; ORR 83.6%, major response 58.2% (primary endpoint), complete or very good partial response 7.3%.",
+   "safety": "Cytopenias were the most common adverse events; one death from an adverse event (bacterial sepsis).",
+   "next": "Phase 3 against rituximab, cyclophosphamide and dexamethasone after a BTK inhibitor (DCL-26-001, NCT07766421), registered and not yet recruiting.",
+   "src": [
+    ["ASH 2024 abstract 861", "https://ash.confex.com/ash/2024/webprogram/Paper200277.html"],
+    ["ASH 2024 report (Targeted Oncology)", "https://www.targetedonc.com/view/iopofosine-i-131-shows-potential-in-r-r-waldenstr-m-macroglobulinemia"]
+   ]
+  },
+  {
+   "n": "Sonrotoclax",
+   "mod": "Oral small molecule",
+   "tgt": "BCL2",
+   "ev": "Phase 1, meeting data (not yet peer-reviewed); figures not verified here",
+   "pub": "ASH 2024 (trial design); EHA 2025",
+   "why": "A next-generation BCL2 inhibitor, more selective and potent than venetoclax in laboratory studies. Venetoclax is active in this disease but has no approval for it.",
+   "data": "The phase 1 trial (BGB-11417-101) reported responses with sonrotoclax alone in relapsed or refractory disease at doses up to 640 mg; response rates could not be verified from a primary source for this page. A phase 2 trial (BGB-11417-203, 114 patients) tests it alone after a BTK inhibitor and with zanubrutinib as a fixed-duration first treatment.",
+   "safety": "Not verified for this disease.",
+   "next": "BGB-11417-203 (NCT05952037), with major response rate as primary endpoint; a French phase 2 trial of zanubrutinib with sonrotoclax in previously treated patients (WAZABI, NCT06547866).",
+   "src": [
+    ["ASH 2024 abstract 1661.1 (trial design)", "https://ash.confex.com/ash/2024/webprogram/Paper198728.html"],
+    ["Sarosiek S, Br J Haematol 2025 (review of BCL2 inhibition)", "https://pubmed.ncbi.nlm.nih.gov/41111358/"]
+   ]
+  },
+  {
+   "n": "CD20-directed CAR T cells",
+   "mod": "Autologous CAR T-cell therapy",
+   "tgt": "CD20",
+   "ev": "Early-phase trial, peer-reviewed (brief abstract)",
+   "pub": "Blood 2026",
+   "why": "No CAR T-cell therapy is approved for Waldenström macroglobulinemia, and complete responses are rare with every approved drug.",
+   "data": "In heavily pretreated patients with disease refractory to a BTK inhibitor, the rate of complete or very good partial response was 80%; the number of patients is not reported in the abstract.",
+   "safety": "Not reported in abstract.",
+   "next": "The authors call for larger trials (NCT03277729).",
+   "src": [
+    ["Shadman M, Blood 2026", "https://pubmed.ncbi.nlm.nih.gov/42986912/"]
+   ]
+  },
+  {
+   "n": "Loncastuximab tesirine",
+   "mod": "Antibody-drug conjugate, intravenous",
+   "tgt": "CD19",
+   "ev": "Phase 2, meeting data (not yet peer-reviewed)",
+   "pub": "ASH 2024 (interim); ASH 2025",
+   "why": "Six doses of a drug approved for large B-cell lymphoma, tested after rituximab and a BTK inhibitor, including in disease with CXCR4 or TP53 alterations.",
+   "data": "Interim analysis (ASH 2024): 7 patients enrolled; the futility rule required more than 2 responses among the first 7. Higher response rates were reported at ASH 2025; those figures were not verified from the abstract for this page.",
+   "safety": "Skin toxicity and asymptomatic GGT elevation, sometimes persistent after treatment; transient cytopenias; no discontinuations for toxicity in the interim analysis.",
+   "next": "Phase 2 trial continuing (NCT05190705).",
+   "src": [
+    ["ASH 2024 abstract 4404", "https://ash.confex.com/ash/2024/webprogram/Paper211573.html"]
+   ]
+  }
+ ],
+ "grad": [],
+ "disc": []
+}
