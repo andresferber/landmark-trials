@@ -377,8 +377,12 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   checked". When the text can be read (or Andres supplies it), check each row, remove the mark and complete the "ESMO guidelines" card. NCCN is "not checked".
 - Trials to watch: phase 3 trials plus up to three randomized or large phase 2 trials. New drugs to watch: its own list, tools/newdrugs/mzl.json; the
   BTK degrader and sonrotoclax entries had no figures verified from a primary source at the first build.
-- Perspective (tools/review/persp_mzl.py): pilot draft, pending Andres's review; to_weebly.py keeps it off the website until then. Keep its numbers in
-  step with the cards and do not remove the pilot label.
+- Perspective (tools/review/persp_mzl.py): approved by Andres (Nov 14, 2026) and live on the website; the usual Perspective rules apply.
+- Added at Andres's request (Nov 14, 2026), outside the inclusion rule: AGMT MALT-2 (lenalidomide-rituximab in MALT lymphoma, Kiesewetter, Blood 2017,
+  a letter without an abstract: its figures come from the ASH 2015 final results, abstract 3973, and the ClinicalTrials.gov results record NCT01611259;
+  if Andres supplies the letter, check them against it and mark them "full paper"), CITADEL-204 (parsaclisib), orelabrutinib ICP-CL-00104 (Deng) and the
+  rituximab series in splenic disease of Tsimberidou (Cancer 2006) and Else (Br J Haematol 2012) (data: tools/mzl/mzl_entries_2026_11b.py, applied by
+  tools/mzl/add_mzl_entries.py). The Chinese approval of orelabrutinib (April 20, 2023) is from published reports and marked "verify".
 - CORE is empty until Andres chooses. topics.json count word is "studies". Default sort is category, newest first, in the order above.
 - Open items from the first build ("PDFs needed"): long-term results of MALT2008-01 (Salar, Blood 2017) and of rituximab in splenic disease (Kalpadakis,
   Blood 2018), both without abstracts; the marginal zone subgroups of StiL NHL 1-2003, BRIGHT, FoRT, CHRONOS-3 and IELSG-19 (subtype proportions); the
