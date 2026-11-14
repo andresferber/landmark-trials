@@ -68,7 +68,7 @@ BODY = """
 <li><b>First systemic treatment:</b> rituximab with chlorambucil or with bendamustine, or rituximab alone.</li>
 <li><b>Relapse (US):</b> zanubrutinib, lenalidomide-rituximab, and lisocabtagene maraleucel after two or more lines.</li>
 </ul>
-<p>Guideline placements were not checked against the ESMO text or NCCN (NCCN not checked); the list above reflects the trials on this page and the current US labels.</p>
+<p>The list above agrees with the ESMO 2020 guideline, checked against its full text; the relapse options reflect current US labels, which postdate it (NCCN not checked).</p>
 
 <h3>Open questions</h3>
 <ul>

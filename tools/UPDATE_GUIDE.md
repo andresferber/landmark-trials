@@ -373,8 +373,8 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   maraleucel (December 4, 2025) are approved for relapsed marginal zone lymphoma; ibrutinib (accelerated January 18, 2017; withdrawn December 18, 2023)
   and umbralisib (accelerated February 5, 2021; withdrawn June 1, 2022) are not. Cards of other drugs say "not approved for marginal zone lymphoma".
   EU statements and the copanlisib withdrawal are marked "verify".
-- Guidelines: rows refer to the ESMO 2020 guideline (Zucca, Ann Oncol 2020), whose full text could not be read at the first build; they are marked "not
-  checked". When the text can be read (or Andres supplies it), check each row, remove the mark and complete the "ESMO guidelines" card. NCCN is "not checked".
+- Guidelines: rows refer to the ESMO 2020 guideline (Zucca, Ann Oncol 2020) and its corrigendum, checked against the full text Andres supplied
+  (Nov 14, 2026), with ESMO levels of evidence in brackets; NCCN is "not checked". When a new ESMO, EHA or BSH guideline appears, recheck the rows.
 - Trials to watch: phase 3 trials plus up to three randomized or large phase 2 trials. New drugs to watch: its own list, tools/newdrugs/mzl.json; the
   BTK degrader and sonrotoclax entries had no figures verified from a primary source at the first build.
 - Perspective (tools/review/persp_mzl.py): approved by Andres (Nov 14, 2026) and live on the website; the usual Perspective rules apply.
@@ -384,6 +384,8 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   rituximab series in splenic disease of Tsimberidou (Cancer 2006) and Else (Br J Haematol 2012) (data: tools/mzl/mzl_entries_2026_11b.py, applied by
   tools/mzl/add_mzl_entries.py). The Chinese approval of orelabrutinib (April 20, 2023) is from published reports and marked "verify".
 - CORE is empty until Andres chooses. topics.json count word is "studies". Default sort is category, newest first, in the order above.
-- Open items from the first build ("PDFs needed"): long-term results of MALT2008-01 (Salar, Blood 2017) and of rituximab in splenic disease (Kalpadakis,
-  Blood 2018), both without abstracts; the marginal zone subgroups of StiL NHL 1-2003, BRIGHT, FoRT, CHRONOS-3 and IELSG-19 (subtype proportions); the
-  GELA grading letter (Copie-Bergman, Gut 2003) and the ESMO 2020 guideline. The marginal zone cohort of inMIND had no report: add it when published.
+- Full papers Andres supplied (Nov 14, 2026; values marked "full paper", applied by tools/mzl/mzl_fullpaper_2026_11.py): MALT2008-01 long-term
+  letter, Kalpadakis Blood 2018 letter, IELSG-19 final report (site proportions), the marginal zone subgroups of StiL NHL 1-2003, BRIGHT, FoRT
+  (long-term report) and CHRONOS-3, and the ESMO 2020 guideline: keep these values unless a newer paper supersedes them. Still "PDFs needed": the
+  GELA grading letter (Copie-Bergman, Gut 2003, PMID 14570741) and the AGMT MALT-2 letter (Kiesewetter, Blood 2017, PMID 27879257). The marginal
+  zone cohort of inMIND had no report: add it when published.
