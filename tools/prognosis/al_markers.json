@@ -1,0 +1,49 @@
+{
+ "checked": "November 15, 2026",
+ "note": "Prognostic and diagnostic-risk markers in AL amyloidosis, including laboratory and imaging measures, not yet validated for clinical decisions. Selected from peer-reviewed papers that test the marker in more than one cohort or bring a clearly new approach; single-cohort correlations with older methods are not listed.",
+ "scope": "This list belongs to the AL amyloidosis topic only.",
+ "items": [
+  {
+   "n": "Monoclonal light chain N-glycosylation on MASS-FIX",
+   "kind": "Prognostic",
+   "type": "Mass spectrometry",
+   "ev": "Independent validation",
+   "pub": "Leukemia 2020; Blood Cancer J 2021; Leukemia 2022",
+   "last": "2022-05",
+   "why": "A feature of the light chain itself, seen on routine MASS-FIX testing, that may flag the monoclonal gammopathies likely to become AL amyloidosis, before organ damage.",
+   "cohort": "414 people with MGUS from the Olmsted County screening cohort, followed for a median of 22.2 years (Dispenzieri 2020); 6,315 patients tested with MASS-FIX in routine practice at the Mayo Clinic (Mellors 2021); light chain sequences from 220 patients with AL amyloidosis or myeloma followed at the authors' centres in Italy, with published sequences (Nevone 2022).",
+   "data": "Glycosylated light chains in 6% of MGUS. 20-year progression to a malignant plasma cell disorder 67% vs 13% with vs without glycosylation, and to AL amyloidosis 21% vs 3%. In routine testing, glycosylation (5% of positive samples) was more common in AL amyloidosis, cold agglutinin disease, κ light chains and IgM. In κ light chains from AL amyloidosis, most glycosylation sites lay in framework region 3.",
+   "adj": "Progression risk was independent of the Mayo MGUS risk score; not adjusted for other factors in the abstracts.",
+   "missing": "Progression risk was measured in one cohort with few events; no study has tested whether screening glycosylated MGUS with cardiac and renal biomarkers leads to earlier diagnosis.",
+   "status": "MASS-FIX is a clinical test at some laboratories; using glycosylation to decide follow-up is research use.",
+   "next": "Not reported.",
+   "src": [
+    ["Dispenzieri A, Leukemia 2020", "https://pubmed.ncbi.nlm.nih.gov/32594098/"],
+    ["Mellors PW, Blood Cancer J 2021", "https://pubmed.ncbi.nlm.nih.gov/33664227/"],
+    ["Nevone A, Leukemia 2022", "https://pubmed.ncbi.nlm.nih.gov/35610346/"]
+   ],
+   "cites": {"pmid": "32594098", "total": 29, "recent": 10}
+  },
+  {
+   "n": "Free light chain mass spectrometry (FLC-MS) negativity after treatment",
+   "kind": "Prognostic; surrogate candidate",
+   "type": "Mass spectrometry",
+   "ev": "Discovery only",
+   "pub": "Blood 2024",
+   "last": "2024-01",
+   "why": "A blood test more sensitive than the free light chain assay, which separates complete responses with and without a detectable amyloidogenic light chain, without a marrow sample.",
+   "cohort": "487 patients with AL amyloidosis at the Mayo Clinic, with serum tested at diagnosis and 6 and 12 months after treatment.",
+   "data": "Light chain isotype by FLC-MS matched the fibril type in all patients. FLC-MS negative at 12 months: 20.7% of all patients and 39% of those in conventional complete response. In complete response at 12 months, median OS not reached if FLC-MS negative vs 108 months if positive (P=0.024); cardiac response 70% vs 50% (P=0.015). FLC-MS negativity at 12 months was independent in multivariable analysis.",
+   "adj": "Multivariable analysis reported; the factors included are not listed in the abstract.",
+   "missing": "One centre and one assay; no independent cohort, no comparison with marrow MRD in the same patients, and no trial that changes treatment by FLC-MS.",
+   "status": "Research use.",
+   "next": "Not reported.",
+   "src": [
+    ["Bomsztyk J, Blood 2024", "https://pubmed.ncbi.nlm.nih.gov/38194690/"]
+   ],
+   "cites": {"pmid": "38194690", "total": 23, "recent": 19}
+  }
+ ],
+ "failed": [],
+ "retired": []
+}

@@ -104,7 +104,7 @@ All data is in the main `<script>`:
 - `CORE`: names of core teaching trials. Andres chooses these: never add or remove names yourself.
   If a new trial looks core-worthy, suggest it in the summary.
 - `WATCH`: `{note, items:[{n, nct, ph, d, ep, st, pcd, note}]}`: ongoing trials to watch.
-- Prognosis tab (Andres, Oct 31, 2026 on ndmm; extended to smm and rrmm on Nov 10, 2026, with his approval). On smm
+- Prognosis tab (Andres, Oct 31, 2026 on ndmm; extended to smm and rrmm on Nov 10, 2026, and to al (AL amyloidosis) on Nov 15, 2026, with his approval). On smm
   the Established section is the existing Definition & risk entries (no extra category); on rrmm it is the
   "Risk & response" category, which tools/prognosis/rrmm_entries.py also sets up. Two sections:
   - Established: every `T` entry with a `PROG` record (category "risk"). `PROG`: name ->
@@ -135,8 +135,9 @@ All data is in the main `<script>`:
   - Build: after tools/mechs/install_mechtab.py, run tools/prognosis/<key>_entries.py (topic data)
     and `python3 tools/prognosis/install_progtab.py tools/prognosis/myeloma_markers.json
     source/<key>.html` (rerunnable; also refreshes `NEWM`). When editing markers, edit the JSON and
-    rerun the installer on every page that has the tab (smm, ndmm, rrmm). The installer's FOOTDATES
-    holds each page's footer dates. Do not extend the tab to other topics (lymphoma) without
+    rerun the installer on every page that has the tab (smm, ndmm, rrmm; al has its own list:
+    `python3 tools/prognosis/install_progtab.py tools/prognosis/al_markers.json source/al.html`). The installer's FOOTDATES
+    holds each page's footer dates, and CONS the consensus bodies named in a page's inclusion rule (default IMWG or IMS). Do not extend the tab to other topics (lymphoma) without
     Andres's approval.
 - Values marked "full paper" were checked against the full publication: keep them unless a newer
   paper supersedes them. The evidence tag ("✓ abstract" / "✓ abstract + full paper") is computed
@@ -391,7 +392,7 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   zone cohort of inMIND had no report: add it when published.
 
 ## 13. AL amyloidosis (key al): what is different
-- Scope (first build, Nov 15, 2026, at Andres's request; he has not yet reviewed it): systemic immunoglobulin light chain amyloidosis, grouped with the
+- Scope (first build, Nov 15, 2026, at Andres's request): systemic immunoglobulin light chain amyloidosis, grouped with the
   myeloma topics on the website. Andres asked for emphasis on diagnosis, prognostic markers, cardiac staging and management, and in particular on the
   diagnostic studies that distinguish AL from other types of amyloidosis. Localized AL amyloidosis, IgM-related AL amyloidosis and supportive care have no
   cards of their own; ATTR treatment is not covered (ATTR appears only as the main differential diagnosis).
@@ -416,11 +417,19 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   amyloidosis" and "light chain amyloidosis"). New drugs to watch: its own list, tools/newdrugs/al.json (BCMA CAR T cells, BCMA×CD3 bispecific
   antibodies, belantamab mafodotin); agents approved in myeloma count as new here. When a BCMA-directed trial in AL amyloidosis publishes a phase 2 or 3
   report that meets the rule, it becomes a card and moves to "grad".
-- Drug mechanisms: new class `fibril` (fibril-directed antibodies and doxycycline; review Wang, Blood Rev 2024), awaiting Andres's review.
-- Perspective (tools/review/persp_al.py): "Pilot draft, pending review", kept off the website until Andres approves it; keep its numbers in step with the
-  cards (small factual edits, listed in the summary) and do not remove the pilot label until he approves.
-- CORE is empty until Andres chooses. topics.json count word is "studies". No Prognosis tab (section 1 restricts it to the myeloma topics).
-- Values at the first build were checked against abstracts only; values not in an abstract say "not reported in abstract". PDFs that would complete
-  cards: Jaccard (N Engl J Med 2007, PMID 17855669: hazard ratio, treatment-related mortality), CyBorD European study (Palladini, Blood 2015, PMID
-  25987656: toxicity) and the doxycycline trial (Shen, Circulation 2022, PMID 34503349: toxicity).
-
+- Drug mechanisms: new class `fibril` (fibril-directed antibodies and doxycycline; review Wang, Blood Rev 2024), approved by Andres (Nov 15, 2026).
+- Perspective (tools/review/persp_al.py): approved by Andres (Nov 15, 2026) and live; the usual Perspective rules apply (small factual edits go live and
+  are listed in the summary; rewriting a section needs his approval).
+- CORE is empty until Andres chooses (he will pick them later). topics.json count word is "studies".
+- Prognosis tab (added Nov 15, 2026 at Andres's request; data tools/prognosis/al_entries.py). Established: the 13 entries of the risk category, each with a
+  PROG record; the inclusion wording names ISA, EHA-ISA or ESC consensus. PROGMAP (design-level use confirmed from the abstracts): ANDROMEDA (response
+  criteria as primary end point; stage IIIb excluded), BMDex vs MDex (Mayo 2004 stratification; IIIb excluded), EMN22 (IIIb only), CARES (stage IIIa or IIIb)
+  and the doxycycline trial (Mayo 2004 stage II-III). VITAL's stage IV finding was post hoc and is not linked. Markers to watch: its own list,
+  tools/prognosis/al_markers.json (light chain N-glycosylation on MASS-FIX; FLC mass spectrometry negativity). Light chain glycosylation had no new clinical
+  validation study after 2022 at the first build: apply the 24-month rule at the first update. Worth a look (not added): GDF-15 (Kastritis, Blood 2018;
+  Athens and Pavia cohorts, no later validation found) and clonal circulating plasma cells (Sidana, Leukemia 2018; one Mayo cohort).
+- Values at the first build were checked against abstracts only; values not in an abstract say "not reported in abstract". Andres supplied the PDFs of
+  Jaccard (N Engl J Med 2007), the CyBorD European study (Palladini, Blood 2015) and the doxycycline trial (Shen, Circulation 2022) on Nov 15, 2026; their
+  hazard ratio, follow-up and toxicity values are marked "(full paper)". No PDFs outstanding.
+- Open items: the European Commission approval date of daratumumab (given as June 2021) and anselamimab's regulatory status are marked "verify";
+  Andres is checking them.
