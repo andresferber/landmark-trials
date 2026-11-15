@@ -1,0 +1,96 @@
+{
+ "checked": "November 15, 2026",
+ "note": "Agents with a new mechanism, target or modality that are not yet approved for AL amyloidosis, selected from peer-reviewed early-phase trials, case series and major meetings. Early response rates often fall with more patients and longer follow-up; retrospective series select patients fit enough to be treated.",
+ "scope": "AL amyloidosis has its own list. Most of these agents are approved for multiple myeloma (see the myeloma topics); here they are new because of the frailty and organ damage of patients with amyloidosis.",
+ "items": [
+  {
+   "n": "BCMA-directed CAR T cells",
+   "mod": "Autologous cell therapy",
+   "tgt": "BCMA (some products also CD19)",
+   "ev": "Peer-reviewed phase 1 (small series)",
+   "pub": "J Clin Oncol 2025; J Am Soc Nephrol 2026",
+   "why": "A single infusion that can eradicate the plasma cell clone, tested in heavily pretreated patients, including after daratumumab and belantamab mafodotin; the question is whether frail patients with cardiac amyloid can tolerate it.",
+   "data": "HBI0101 (NXC-201), phase Ia/Ib (Lebel 2025): 16 patients after a median of 4 lines, 14 triple-class refractory, 13 with cardiac involvement; hematologic response 94%, complete response 75%, MRD negativity in 9 of 14 evaluable; organ response in 8 of 13 evaluable; median OS 10.1 months, with frequent deaths in the first year among patients with advanced cardiac disease. BCMA-CD19 dual-target product (Huang 2026): 6 patients, all with complete hematologic and renal response.",
+   "safety": "HBI0101: cytokine release syndrome in 14 of 16 (grade 3 in 3, none grade 4–5), no neurotoxicity, five grade 3 amyloid-related organ deteriorations that resolved. Dual-target product: one acute promyelocytic leukemia at 15 months.",
+   "next": "Phase 3 NEXICART-3 (NXC-201 vs daratumumab-CyBorD, newly diagnosed; not yet recruiting) and phase 1b/2 ALACRITY (AZD0120, BCMA and CD19, relapsed).",
+   "src": [
+    [
+     "Lebel E, J Clin Oncol 2025",
+     "https://pubmed.ncbi.nlm.nih.gov/39653116/"
+    ],
+    [
+     "Huang X, J Am Soc Nephrol 2026",
+     "https://pubmed.ncbi.nlm.nih.gov/41920709/"
+    ],
+    [
+     "NCT07709715",
+     "https://clinicaltrials.gov/study/NCT07709715"
+    ],
+    [
+     "NCT07081646",
+     "https://clinicaltrials.gov/study/NCT07081646"
+    ]
+   ]
+  },
+  {
+   "n": "BCMA×CD3 bispecific antibodies (teclistamab, elranatamab, linvoseltamab, etentamig)",
+   "mod": "Bispecific T-cell engager",
+   "tgt": "BCMA × CD3",
+   "ev": "Retrospective series and pooled analysis (peer-reviewed); prospective trials ongoing",
+   "pub": "Hemasphere 2026; Blood Adv 2026",
+   "why": "Off-the-shelf T-cell redirection with very fast, deep responses, now moving into first-line randomized trials against daratumumab-CyBorD.",
+   "data": "Teclistamab, German multicentre retrospective study (Carpinteiro 2026): 52 patients; very good partial response or better 81% at day 15 and 95% at 3 months; flow MRD negative in 23 of 24; cardiac and renal response at 6 months 65% and 78%; 1-year OS 83%. Pooled analysis of published BCMA-directed therapy (Alqazaqi 2026): bispecific antibodies in 82 patients, overall response 89%, MRD negativity in 86% of evaluable patients.",
+   "safety": "Teclistamab: cytokine release syndrome 37% (2 grade 3); 9 deaths, 6 from bacterial infections; immunoglobulin replacement was associated with fewer severe infections and deaths. Pooled: grade ≥3 infections 20% with bispecific antibodies.",
+   "next": "Phase 3 LINKER-AL1 (linvoseltamab vs daratumumab-VCd) and M24-473 (etentamig vs daratumumab-CyBorD), both newly diagnosed and not yet recruiting; phase 1/2 LINKER-AL2 (linvoseltamab, relapsed) and EMN40 (teclistamab, relapsed).",
+   "src": [
+    [
+     "Carpinteiro A, Hemasphere 2026",
+     "https://pubmed.ncbi.nlm.nih.gov/42311430/"
+    ],
+    [
+     "Alqazaqi R, Blood Adv 2026",
+     "https://pubmed.ncbi.nlm.nih.gov/42478693/"
+    ],
+    [
+     "NCT07901725",
+     "https://clinicaltrials.gov/study/NCT07901725"
+    ],
+    [
+     "NCT07793422",
+     "https://clinicaltrials.gov/study/NCT07793422"
+    ],
+    [
+     "NCT06292780",
+     "https://clinicaltrials.gov/study/NCT06292780"
+    ]
+   ]
+  },
+  {
+   "n": "Belantamab mafodotin",
+   "mod": "Antibody-drug conjugate",
+   "tgt": "BCMA (monomethyl auristatin F payload)",
+   "ev": "Retrospective series (peer-reviewed)",
+   "pub": "Br J Haematol 2024",
+   "why": "A BCMA-directed option without T-cell activation, of interest for frail patients who may not tolerate cytokine release syndrome.",
+   "data": "UK real-world series (Khwaja 2024): 31 patients after a median of three lines; best hematologic response 71%, complete or very good partial response 58%; median follow-up 12 months. Pooled analysis (Alqazaqi 2026): antibody-drug conjugates in 85 patients, overall response 68%.",
+   "safety": "Keratopathy in 68%, improving in all (Khwaja 2024); pooled grade ≥3 ocular toxicity 29%.",
+   "next": "Phase 2 ALANIS (belantamab mafodotin with CyBorD, newly diagnosed; recruiting) and a phase 1/2 trial in relapsed disease (NCT05145816).",
+   "src": [
+    [
+     "Khwaja J, Br J Haematol 2024",
+     "https://pubmed.ncbi.nlm.nih.gov/38171355/"
+    ],
+    [
+     "Alqazaqi R, Blood Adv 2026",
+     "https://pubmed.ncbi.nlm.nih.gov/42478693/"
+    ],
+    [
+     "NCT07224672",
+     "https://clinicaltrials.gov/study/NCT07224672"
+    ]
+   ]
+  }
+ ],
+ "grad": [],
+ "disc": []
+}

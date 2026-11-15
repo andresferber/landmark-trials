@@ -1,0 +1,1101 @@
+<title>AL Amyloidosis Landmark Studies</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column; sticky control strip; each trial is a ruled entry with a year gutter */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --fg: #1b2230;
+  --muted: #5d6677;
+  --rule: #dde1e8;
+  --accent: #2c4a8a;
+  --s-young: #1f6f5c; --s-young-bg: #e3f2ed;
+  --s-old: #8a5a12;   --s-old-bg: #f7eedd;
+  --s-p2: #5b4a9a;    --s-p2-bg: #ece8f7;
+  --s-rr: #9a2f3d;    --s-rr-bg: #f7e4e6;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+    --s-young: #7fd3bb; --s-young-bg: #163029;
+    --s-old: #e6b86a;   --s-old-bg: #33270f;
+    --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+    --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151c; --surface: #171c25; --fg: #e4e8ef; --muted: #98a1b2; --rule: #2a313d; --accent: #8fb0f2;
+  --s-young: #7fd3bb; --s-young-bg: #163029;
+  --s-old: #e6b86a;   --s-old-bg: #33270f;
+  --s-p2: #b9a8f0;    --s-p2-bg: #26203d;
+  --s-rr: #f19aa5;    --s-rr-bg: #3a1a1f;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
+header h1 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.7rem, 4.5vw, 2.3rem); line-height: 1.15; margin: 0 0 6px; text-wrap: balance; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--muted); max-width: 62ch; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+.controls { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 14px 12px; margin-top: 20px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 10px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 13px/1 var(--font-body); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.row2 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+input[type="search"] { flex: 1 1 220px; min-width: 0; font: 400 14px var(--font-body); padding: 9px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+select { font: 400 14px var(--font-body); padding: 9px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); color: var(--fg); }
+.count { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+ol.list { list-style: none; margin: 0; padding: 0; }
+.trial { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 14px; padding-block: 18px; border-bottom: 1px solid var(--rule); }
+.yr { font-family: var(--font-mono); font-weight: 500; font-size: 15px; color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.name { font-family: var(--font-display); font-weight: 650; font-size: 1.15rem; margin: 0; }
+.tag { font: 500 11px/1 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; }
+.tag.young { color: var(--s-young); background: var(--s-young-bg); }
+.tag.old { color: var(--s-old); background: var(--s-old-bg); }
+.tag.p2 { color: var(--s-p2); background: var(--s-p2-bg); }
+.tag.rr { color: var(--s-rr); background: var(--s-rr-bg); }
+.tag.risk { color: var(--muted); background: var(--bg); box-shadow: inset 0 0 0 1px var(--rule); }
+.phase { font: 400 12px var(--font-mono); color: var(--muted); }
+.design { margin: 0; color: var(--fg); }
+dl { margin: 2px 0 0; display: grid; grid-template-columns: max-content minmax(0,1fr); gap: 4px 12px; font-size: 14px; }
+dt { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+dd { margin: 0; min-width: 0; }
+.result { font-variant-numeric: tabular-nums; }
+.stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; padding-block: 4px; }
+.stats b { font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.rec { display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; }
+.rec .rk { font: 500 10.5px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.rec .rk:first-child { margin-top: 0; }
+.rec ul { margin: 0; padding-left: 16px; }
+.rec li { margin: 1px 0; }
+.rec li.none { list-style: none; margin-left: -16px; color: var(--muted); }
+.rec p { margin: 0; }
+.rec a { color: var(--accent); text-underline-offset: 2px; }
+.qs { color: var(--accent); }
+.cite { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.cite a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.cite a:hover { text-decoration-thickness: 2px; }
+.cite a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.ok { color: var(--s-young); font-size: 12.5px; white-space: nowrap; }
+.flag { color: var(--s-old); font-size: 12.5px; }
+.empty { padding: 32px 0; color: var(--muted); }
+footer { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch; }
+@media (max-width: 480px) {
+  .trial { grid-template-columns: 1fr; gap: 4px; }
+  dl { grid-template-columns: 1fr; gap: 0 0; }
+  dt { line-height: 1.6; margin-top: 4px; }
+}
+.credit { margin: 10px 0 0; font-size: 11.5px; color: var(--muted); opacity: .8; }
+
+/* Added Oct 23, 2026: toxicity, core trials, evidence, trials to watch, print */
+.tox { color: var(--fg); }
+.core { font: 600 11px/1 var(--font-mono); letter-spacing: .04em; color: #8a5a12; background: #fbf1dc; padding: 4px 7px; border-radius: 4px; }
+.ok.full { color: var(--accent); }
+.trial.flash { animation: lt-flash 2.4s ease-out; }
+@keyframes lt-flash { 0% { background: rgba(240, 190, 60, .35); } 100% { background: transparent; } }
+.printbtn { font: 500 13px/1 var(--font-body); padding: 9px 14px; border-radius: 8px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; margin-left: auto; }
+.printbtn:hover { border-color: var(--accent); }
+.printbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.watch { margin-top: 28px; padding: 18px 18px 8px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+.watch[hidden] { display: none; }
+.watch h2 { font-family: var(--font-display); font-weight: 650; font-size: 1.25rem; margin: 0 0 4px; }
+.watch .wnote { margin: 0 0 12px; font-size: 13px; color: var(--muted); }
+.watch ul { list-style: none; margin: 0; padding: 0; }
+.watch li { padding: 10px 0; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 3px; }
+.watch .wn { font-weight: 600; }
+.watch .wm { font: 400 12.5px var(--font-mono); color: var(--muted); }
+.watch .wd { font-size: 14px; }
+.watch a { color: var(--accent); }
+@media print {
+  :root { --bg: #fff; --surface: #fff; --fg: #111; --muted: #444; --rule: #ccc; --accent: #1a3a7a; }
+  body { background: #fff; }
+  .controls, .printbtn { display: none !important; }
+  .trial { break-inside: avoid; page-break-inside: avoid; }
+  .watch { break-inside: avoid; }
+  a { text-decoration: none; }
+}
+
+/* Added Oct 23, 2026: share link and abbreviations */
+.share { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font: 500 12px/1 var(--font-body); padding: 4px 6px; border-radius: 6px; }
+.share:hover { color: var(--accent); background: var(--rule); }
+.share:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.share .lbl { display: none; }
+.share.copied .lbl { display: inline; color: var(--s-young); }
+.gloss { margin-top: 24px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); padding: 0 18px; }
+.gloss summary { cursor: pointer; padding: 14px 0; font-weight: 600; }
+.gloss dl { display: grid; grid-template-columns: minmax(80px, max-content) 1fr; gap: 4px 16px; margin: 0 0 16px; font-size: 14px; }
+.gloss dt { font: 500 13px var(--font-mono); color: var(--fg); text-transform: none; letter-spacing: normal; }
+.gloss dd { margin: 0; color: var(--muted); }
+@media print { .share { display: none !important; } .gloss { break-inside: avoid; } }
+
+/* Added Oct 23, 2026: report link */
+.report { color: var(--muted); font-size: 12px; }
+.report:hover { color: var(--accent); }
+@media print { .report { display: none !important; } }
+
+/* Added Oct 23, 2026: drug mechanism reviews */
+.moas { display: flex; flex-direction: column; gap: 2px; }
+.moa b { font-weight: 600; }
+.moa a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.moa a:hover { text-decoration-thickness: 2px; }
+.moafree { font: 500 11px var(--font-mono); color: var(--s-young); border: 1px solid var(--rule); border-radius: 4px; padding: 0 4px; }
+
+/* Added Oct 24, 2026: site disclaimer */
+.sitedisc { margin: 12px 0 0; font-size: 12.5px; }
+
+/* Added Oct 24, 2026: category subtitles in the trial list */
+ol.list li.grp { list-style: none; padding: 22px 0 6px; border-bottom: 2px solid var(--fg); }
+ol.list li.grp h3 { margin: 0; font-family: var(--font-display); font-weight: 650; font-size: 1.2rem; }
+ol.list li.grp .gn { font: 500 12px var(--font-mono); color: var(--muted); margin-left: 8px; }
+
+/* Added Oct 24, 2026: Perspective (collapsible reader view) */
+.review { margin-top: 18px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+.review > summary { list-style: none; cursor: pointer; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 14px 18px; }
+.review > summary::-webkit-details-marker { display: none; }
+.review .rv-kicker { font: 500 11px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.review .rv-title { font-family: var(--font-display); font-weight: 650; font-size: 1.05rem; flex: 1 1 260px; }
+.review .rv-open { font: 500 13px/1 var(--font-body); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.review[open] .rv-open { font-size: 0; }
+.review[open] .rv-open::before { content: "Close"; font-size: 13px; }
+.review .rv-body { padding: 0 18px 18px; max-width: 72ch; font-size: 15.5px; line-height: 1.65; }
+.review .rv-body h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.12rem; margin: 22px 0 6px; }
+.review .rv-body p { margin: 0 0 12px; }
+.review .rv-body ul { margin: 0 0 12px; padding-left: 20px; }
+.review .rv-body li { margin: 4px 0; }
+.review .rv-meta { font-size: 12.5px; color: var(--muted); }
+.review .rv-disc { font-size: 13px; line-height: 1.5; color: var(--fg); background: var(--s-old-bg); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; margin: 8px 0 14px; }
+.review .rv-take { border-left: 3px solid var(--accent); background: var(--bg); padding: 4px 14px 6px; margin: 12px 0 16px; border-radius: 0 8px 8px 0; }
+.review .rv-take h3 { margin-top: 10px; }
+.review sup a { font: 600 11px var(--font-mono); text-decoration: none; color: var(--accent); padding: 0 1px; }
+.review a { color: var(--accent); }
+.review .rv-refs { font-size: 13.5px; padding-left: 22px; }
+.review .rv-endbar { display: flex; justify-content: center; margin: 18px 0 2px; }
+.review .rv-close { all: unset; cursor: pointer; font: 500 13px/1 var(--font-body); padding: 9px 16px; border-radius: 999px; border: 1px solid var(--rule); background: var(--bg); color: var(--fg); }
+.review .rv-close:hover { border-color: var(--accent); color: var(--accent); }
+.review .rv-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media print { .review .rv-endbar { display: none; } }
+.rv-tl { margin: 8px 0 18px; }
+.rv-tl figcaption { font: 500 11px/1.6 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.rv-tl ol { list-style: none; margin: 0; padding: 0 0 0 4px; border-left: 2px solid var(--rule); }
+.rv-tl li { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 10px; padding: 5px 0 5px 14px; font-size: 14px; line-height: 1.45; }
+.rv-tl li::before { content: ""; position: absolute; left: -7px; top: 10px; width: 10px; height: 10px; border-radius: 50%; background: var(--surface); border: 2px solid var(--muted); }
+.rv-tl li.tl-old::before { border-color: var(--s-old); background: var(--s-old-bg); }
+.rv-tl li.tl-young::before { border-color: var(--s-young); background: var(--s-young-bg); }
+.rv-tl li.tl-p2::before { border-color: var(--s-p2); background: var(--s-p2-bg); }
+.rv-tl li.tl-rr::before { border-color: var(--s-rr); background: var(--s-rr-bg); }
+.rv-tl .tl-y { font: 500 13px var(--font-mono); color: var(--muted); }
+@media print { .review .rv-open { display: none; } }
+
+/* Added Oct 24, 2026: section tabs, Trials to watch tab, New drugs to watch, comment link */
+.tabs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-top: 18px; padding: 6px 8px 0; background: #dbe3f1; background: color-mix(in srgb, var(--accent) 16%, var(--surface)); border: 1px solid var(--rule); border-radius: 10px 10px 0 0; }
+.tabs button { all: unset; cursor: pointer; font: 600 14px/1 var(--font-body); padding: 12px 14px; color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -1px; }
+.tabs button:hover { color: var(--fg); }
+.tabs button { border-radius: 8px 8px 0 0; }
+.tabs button:hover { background: var(--surface); }
+.tabs button[aria-selected="true"] { color: var(--fg); background: var(--surface); border-bottom-color: var(--accent); }
+.tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.tabs .tcount { font: 500 11px var(--font-mono); color: var(--muted); margin-left: 6px; }
+.tabs .tabmail { margin-left: auto; font: 500 13px/1 var(--font-body); color: var(--accent); text-decoration: none; padding: 8px 4px; }
+.tabs .tabmail:hover { text-decoration: underline; }
+.newdrugs[hidden] { display: none; }
+.newdrugs { padding-top: 12px; }
+.newdrugs .nd-note { font-size: 13.5px; color: var(--muted); margin: 4px 0 14px; max-width: 72ch; }
+.newdrugs .nd-mods { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.newdrugs .nd-item { border-top: 1px solid var(--rule); padding: 16px 0; display: flex; flex-direction: column; gap: 6px; }
+.newdrugs .nd-top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.newdrugs .nd-name { font-family: var(--font-display); font-weight: 650; font-size: 1.12rem; margin: 0; }
+.newdrugs .nd-mod { font: 500 11px/1 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; color: var(--s-p2); background: var(--s-p2-bg); }
+.newdrugs .nd-ev { font: 500 11.5px var(--font-mono); color: var(--muted); }
+.newdrugs .nd-ev.pr { color: var(--s-young); }
+.newdrugs dl { margin: 2px 0 0; }
+.newdrugs a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.newdrugs h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.1rem; margin: 22px 0 6px; }
+.newdrugs .nd-log { padding-left: 20px; }
+.newdrugs .nd-log li { margin: 6px 0; font-size: 14px; }
+.newdrugs .nd-rules { font-size: 12.5px; color: var(--muted); margin-top: 16px; max-width: 72ch; }
+@media print { .tabs { display: none; } }
+
+/* Added Oct 25, 2026: the same subtle tint for Endpoint, Result and Key toxicity on every card and page */
+:root { --f-ep-bg: #eef1f5; --f-res-bg: #e7effb; --f-tox-bg: #fcf8e6; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --f-ep-bg: #1e242e; --f-res-bg: #18253d; --f-tox-bg: #2d2915; } }
+:root[data-theme="dark"] { --f-ep-bg: #1e242e; --f-res-bg: #18253d; --f-tox-bg: #2d2915; }
+ol.list dl, .newdrugs dl { column-gap: 0; }
+ol.list dt, .newdrugs dt { padding-right: 12px; }
+dt.f-ep, dd.f-ep { background: var(--f-ep-bg); }
+dt.f-res, dd.f-res { background: var(--f-res-bg); }
+dt.f-tox, dd.f-tox { background: var(--f-tox-bg); }
+dt.f-ep, dt.f-res, dt.f-tox { padding: 2px 12px 2px 8px; border-radius: 6px 0 0 6px; }
+dd.f-ep, dd.f-res, dd.f-tox { padding: 2px 8px 2px 0; border-radius: 0 6px 6px 0; }
+@media (max-width: 480px) {
+  dt.f-ep, dt.f-res, dt.f-tox { border-radius: 6px 6px 0 0; padding-bottom: 0; }
+  dd.f-ep, dd.f-res, dd.f-tox { border-radius: 0 0 6px 6px; padding: 0 8px 4px 8px; }
+}
+
+/* Added Oct 28, 2026: warm parchment tint on the Perspective bar */
+:root { --rv-bg: #fbf8f1; --rv-stripe: #ae915a; --rv-ink: #7a5a22; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --rv-bg: #221e18; --rv-stripe: #c9a56a; --rv-ink: #dcbd85; } }
+:root[data-theme="dark"] { --rv-bg: #221e18; --rv-stripe: #c9a56a; --rv-ink: #dcbd85; }
+.review { border-left: 4px solid var(--rv-stripe); }
+.review > summary { background: var(--rv-bg); border-radius: 8px 11px 11px 8px; }
+.review[open] > summary { border-radius: 8px 11px 0 0; border-bottom: 1px solid var(--rule); margin-bottom: 14px; }
+.review .rv-kicker { color: var(--rv-ink); }
+.review .rv-open { background: var(--surface); border-color: var(--rv-stripe); color: var(--rv-ink); }
+@media print { .review > summary { background: none; } }
+
+/* Added Oct 28, 2026: Drug mechanisms tab */
+.mechs { margin-top: 14px; }
+.mechs a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.mechs .mx-note { font-size: 14px; color: var(--muted); margin: 0 0 6px; max-width: 72ch; }
+.mechs .mx-item { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+.mechs .mx-name { font-family: var(--font-display); font-weight: 650; font-size: 1.08rem; margin: 0 0 6px; }
+.mechs .mx-desc { margin: 0 0 8px; max-width: 78ch; font-size: 14.5px; line-height: 1.55; }
+.mechs .mx-rev, .mechs .mx-trials { margin: 4px 0 0; font-size: 14px; }
+.mechs .mx-k { font: 500 11px/1.9 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-right: 8px; }
+.mechs .mx-trials { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.mechs a.mt { display: inline-block; text-decoration: none; color: var(--fg); border: 1px solid var(--rule); background: var(--surface); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
+.mechs a.mt:hover { border-color: var(--accent); color: var(--accent); }
+.mechs .mt-y { font: 500 11px var(--font-mono); color: var(--muted); margin-left: 4px; }
+@media print { .mechs { display: none; } }
+
+/* Added Oct 28, 2026: an open tab closes on a second click; the x is the cue */
+.tabs button[data-tab]:not([data-tab="trials"])[aria-selected="true"]::after { content: "\00d7"; margin-left: 8px; font-weight: 500; color: var(--muted); }
+.tabs button[data-tab]:not([data-tab="trials"])[aria-selected="true"]:hover::after { color: var(--fg); }
+
+/* Added Oct 28, 2026: tab bar pinned while a tab other than Landmark trials is open */
+.tabs-ph { margin-top: 18px; }
+.tabs.tabs-pinned { position: fixed; z-index: 9000; margin-top: 0; border-radius: 0 0 10px 10px; box-shadow: 0 6px 14px -8px rgba(16,24,40,.35); }
+@media print { .tabs.tabs-pinned { position: static; } }
+@media (max-width: 560px) { .tabs.tabs-pinned { padding-top: 2px; } .tabs.tabs-pinned button { padding: 8px 10px; } .tabs.tabs-pinned .tabmail { display: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Immunoglobulin light chain (AL) amyloidosis · 2002–2026</div>
+    <h1>Landmark studies in AL amyloidosis</h1>
+    <p>How to prove the amyloid is AL and not ATTR, AA or a hereditary type (tissue typing, the monoclonal protein screen, bone scintigraphy and cardiac MRI); cardiac staging, prognostic markers and response criteria; first-line therapy and transplantation; relapsed disease; and fibril-directed antibodies: design, verified results, context, open questions and reception.</p>
+  </header>
+
+  <details class="review" id="review">
+    <summary><span class="rv-kicker">Perspective</span><span class="rv-title">AL amyloidosis: proving the diagnosis, staging the heart and chasing deep responses, 2002–2026</span><span class="rv-open">Read the perspective</span></summary>
+    <div class="rv-body">
+      <p class="rv-meta">Andres Ferber, MD, with the assistance of Claude (Anthropic) · Last updated November 15, 2026 · Pilot draft, pending review · About 1,600 words. Numbers are taken from the verified trial entries on this page; numbered references jump to each trial.</p>
+      <p class="rv-disc"><b>Personal perspective, for education only.</b> This text reflects the author's own reading and opinion of the published evidence. It is not a clinical practice guideline, medical advice or a substitute for clinical judgment. Patient care should follow the primary literature, current guidelines (such as NCCN, ESMO, IMWG and ASCO), approved prescribing information and the individual patient's circumstances.</p>
+      <div class="rv-take"><h3>Key points</h3><ul><li>A monoclonal protein in a patient with amyloid does not make the amyloid AL. The deposit itself must be typed before chemotherapy, by mass spectrometry where possible.</li><li>The hematologic screen is serum free light chains with immunofixation of both serum and urine. Bone scintigraphy is positive in about half of patients with cardiac AL, so a positive scan with a monoclonal protein needs a biopsy with typing.</li><li>The heart decides early survival. Mayo 2004 staging with the European stage IIIb is the working standard; the AL International Staging System adds an ultra-high-risk stage IIIC.</li><li>The aim of treatment is a hematologic complete response, reached quickly, because organ recovery and survival follow the depth of response.</li><li>Daratumumab with bortezomib, cyclophosphamide and dexamethasone is the standard first treatment, with longer overall survival in the final ANDROMEDA analysis. Stage IIIb, excluded from that trial, remains the main unmet need.</li><li>Fibril-directed antibodies have not improved outcomes overall in randomized trials; a signal in κ disease with anselamimab needs confirmation.</li></ul></div>
+      <figure class="rv-tl"><figcaption>Timeline of key studies and US regulatory milestones</figcaption><ol><li class="tl-p2"><span class="tl-y">2002</span><span class="tl-e">Hereditary amyloidosis found in 9.7% of patients thought to have AL</span></li><li class="tl-p2"><span class="tl-y">2004</span><span class="tl-e">Mayo 2004 cardiac staging; melphalan-dexamethasone; 8-year transplant series</span></li><li class="tl-young"><span class="tl-y">2007</span><span class="tl-e">High-dose melphalan with transplantation not better than melphalan-dexamethasone in a randomized trial</span></li><li class="tl-p2"><span class="tl-y">2009</span><span class="tl-e">Free light chains with serum and urine immunofixation; mass spectrometry typing</span></li><li class="tl-p2"><span class="tl-y">2012</span><span class="tl-e">Validated hematologic and cardiac response criteria; revised Mayo 2012 staging</span></li><li class="tl-p2"><span class="tl-y">2013</span><span class="tl-e">European stage IIIb (NT-proBNP &gt;8500 ng/L) defined</span></li><li class="tl-young"><span class="tl-y">2015</span><span class="tl-e">CyBorD in 230 patients; t(11;14) predicts a poorer result with bortezomib</span></li><li class="tl-p2"><span class="tl-y">2016</span><span class="tl-e">Nonbiopsy criteria for cardiac ATTR, valid only without a monoclonal protein</span></li><li class="tl-young"><span class="tl-y">2020</span><span class="tl-e">Bortezomib added to melphalan-dexamethasone improves survival; daratumumab alone active at relapse</span></li><li class="tl-young"><span class="tl-y">2021</span><span class="tl-e">ANDROMEDA; FDA accelerated approval of daratumumab with VCd, the first approved therapy</span></li><li class="tl-old"><span class="tl-y">2022</span><span class="tl-e">First phase 3 trial at relapse (TOURMALINE-AL1); doxycycline adds nothing to CyBorD</span></li><li class="tl-rr"><span class="tl-y">2023</span><span class="tl-e">Birtamimab (VITAL) stopped for futility; graded cardiac response criteria</span></li><li class="tl-young"><span class="tl-y">2025</span><span class="tl-e">FDA traditional approval of daratumumab with VCd, based on survival</span></li><li class="tl-rr"><span class="tl-y">2026</span><span class="tl-e">ANDROMEDA final analysis; AL-ISS stage IIIC; daratumumab in stage IIIb; anselamimab (CARES) misses its primary end point</span></li></ol></figure>
+      <h3>Proving that the amyloid is AL</h3>
+<p>For years, a monoclonal protein in a patient with systemic amyloid was taken as proof of AL type. Genetic screening of 350 patients diagnosed with AL amyloidosis without a family history found an amyloidogenic mutation in 9.7%, most often in fibrinogen A α-chain or transthyretin, and a quarter of those patients also had a low-grade monoclonal gammopathy<sup><a class="rref" href="#t-al-hereditary-amyloidosis-misdiagnosed-as-al-lachmann" data-slug="hereditary-amyloidosis-misdiagnosed-as-al-lachmann" title="Hereditary amyloidosis misdiagnosed as AL (Lachmann)">1</a></sup>. The overlap is larger in older patients: a monoclonal gammopathy was found in 39% of patients with wild-type ATTR and 49% with ATTR V122I<sup><a class="rref" href="#t-al-mgus-in-attr-amyloidosis-phull" data-slug="mgus-in-attr-amyloidosis-phull" title="MGUS in ATTR amyloidosis (Phull)">2</a></sup>. Clinical features help but do not type the amyloid; AL, hereditary ATTR and wild-type ATTR behave as different cardiac diseases<sup><a class="rref" href="#t-al-al-vs-attr-cardiac-profiles-rapezzi" data-slug="al-vs-attr-cardiac-profiles-rapezzi" title="AL vs ATTR cardiac profiles (Rapezzi)">3</a></sup>.</p>
+<p>The deposit itself has to be typed. Abdominal fat aspiration is the simplest tissue test, with a sensitivity of 80% on routine reading and 93% with careful reading of three smears<sup><a class="rref" href="#t-al-abdominal-fat-aspiration-van-gameren" data-slug="abdominal-fat-aspiration-van-gameren" title="Abdominal fat aspiration (van Gameren)">4</a></sup>. Immunohistochemistry read by an expert pathologist typed most cases<sup><a class="rref" href="#t-al-immunohistochemistry-typing-sch-nland" data-slug="immunohistochemistry-typing-sch-nland" title="Immunohistochemistry typing (Schönland)">5</a></sup>, but laser microdissection with mass spectrometry, introduced in 2009 with 98% accuracy in a cardiac validation set<sup><a class="rref" href="#t-al-mass-spectrometry-typing-vrana" data-slug="mass-spectrometry-typing-vrana" title="Mass spectrometry typing (Vrana)">6</a></sup>, is now the reference method. In 16,175 specimens typed by mass spectrometry, AL accounted for 59.0% and ATTR for 28.4%, followed by ALECT2, AA and heavy chain amyloid, with an organ-by-type map that sets the pretest probability of AL for each biopsy site<sup><a class="rref" href="#t-al-mass-spectrometry-typing-16-175-samples-dasari" data-slug="mass-spectrometry-typing-16-175-samples-dasari" title="Mass spectrometry typing, 16,175 samples (Dasari)">7</a></sup>. In the kidney, about one amyloid in seven was not immunoglobulin-derived, and immunofluorescence missed 7.3% of light chain cases<sup><a class="rref" href="#t-al-renal-amyloidosis-typing-474-cases-said" data-slug="renal-amyloidosis-typing-474-cases-said" title="Renal amyloidosis typing, 474 cases (Said)">8</a></sup>.</p>
+<p>The clone is found with blood and urine tests, and no single test is enough. Immunofixation was more sensitive than the free light chain ratio (96% against 76%), and serum and urine immunofixation together with the free light chain ratio identified the amyloidogenic light chain in every patient<sup><a class="rref" href="#t-al-free-light-chains-with-immunofixation-palladini" data-slug="free-light-chains-with-immunofixation-palladini" title="Free light chains with immunofixation (Palladini)">9</a></sup>.</p>
+
+<h3>Cardiac imaging and the boundary with ATTR</h3>
+<p>Cardiac MRI showed the typical global subendocardial late enhancement of cardiac amyloid<sup><a class="rref" href="#t-al-cardiac-mri-in-cardiac-amyloidosis-maceira" data-slug="cardiac-mri-in-cardiac-amyloidosis-maceira" title="Cardiac MRI in cardiac amyloidosis (Maceira)">10</a></sup>, but it does not separate AL from ATTR. Bone scintigraphy does so only in part. Myocardial uptake was more than 99% sensitive for cardiac ATTR, and grade 2 or 3 uptake with no monoclonal protein in serum or urine was 100% specific, allowing ATTR to be diagnosed without a biopsy; the false positives came almost entirely from cardiac AL<sup><a class="rref" href="#t-al-nonbiopsy-diagnosis-of-cardiac-attr-gillmore" data-slug="nonbiopsy-diagnosis-of-cardiac-attr-gillmore" title="Nonbiopsy diagnosis of cardiac ATTR (Gillmore)">11</a></sup>. Half of patients with cardiac AL took up the tracer, usually at low grade<sup><a class="rref" href="#t-al-dpd-scintigraphy-in-al-and-attr-hutt" data-slug="dpd-scintigraphy-in-al-and-attr-hutt" title="DPD scintigraphy in AL and ATTR (Hutt)">12</a></sup>. The European cardiology algorithm therefore starts with scintigraphy and the monoclonal protein tests together, and requires tissue typing whenever a monoclonal protein is found<sup><a class="rref" href="#t-al-esc-position-statement-on-cardiac-amyloidosis-garcia-pavia" data-slug="esc-position-statement-on-cardiac-amyloidosis-garcia-pavia" title="ESC position statement on cardiac amyloidosis (Garcia-Pavia)">13</a></sup>. For hematologists, this means that the patient with a monoclonal gammopathy and a positive scan needs a biopsy, often endomyocardial, before any treatment.</p>
+
+<h3>Staging: the heart decides</h3>
+<p>The Mayo 2004 system used NT-proBNP and troponin to define three stages, with median survival of 26.4, 10.5 and 3.5 months<sup><a class="rref" href="#t-al-mayo-2004-cardiac-staging-dispenzieri" data-slug="mayo-2004-cardiac-staging-dispenzieri" title="Mayo 2004 cardiac staging (Dispenzieri)">14</a></sup>. Stage III proved too broad: among 346 patients in stage III, NT-proBNP above 8500 ng/L and systolic pressure below 100 mm Hg identified a group with a median survival of 3 months, and 42% of all stage III patients died before their first response assessment<sup><a class="rref" href="#t-al-european-stage-iiib-nt-probnp-8500-ng-l-wechalekar" data-slug="european-stage-iiib-nt-probnp-8500-ng-l-wechalekar" title="European stage IIIb, NT-proBNP &gt;8500 ng/L (Wechalekar)">15</a></sup>. This European stage IIIb has since defined trial eligibility. The revised Mayo 2012 system added the size of the clone (dFLC)<sup><a class="rref" href="#t-al-revised-mayo-2012-staging-kumar" data-slug="revised-mayo-2012-staging-kumar" title="Revised Mayo 2012 staging (Kumar)">16</a></sup>, and a BNP-based version serves centres without NT-proBNP<sup><a class="rref" href="#t-al-boston-university-bnp-staging-lilleness" data-slug="boston-university-bnp-staging-lilleness" title="Boston University BNP staging (Lilleness)">17</a></sup>. The kidney has its own stages, built on proteinuria and eGFR<sup><a class="rref" href="#t-al-renal-staging-and-response-palladini" data-slug="renal-staging-and-response-palladini" title="Renal staging and response (Palladini)">18</a></sup>.</p>
+<p>The clone also carries prognosis. More than 10% marrow plasma cells carried an outlook similar to overt myeloma<sup><a class="rref" href="#t-al-marrow-plasma-cells-10-kourelis" data-slug="marrow-plasma-cells-10-kourelis" title="Marrow plasma cells &gt;10% (Kourelis)">19</a></sup>, and t(11;14), the commonest cytogenetic abnormality, was associated with shorter survival with bortezomib-dexamethasone, while the myeloma high-risk abnormalities were not<sup><a class="rref" href="#t-al-t-11-14-and-bortezomib-bochtler" data-slug="t-11-14-and-bortezomib-bochtler" title="t(11;14) and bortezomib (Bochtler)">20</a></sup>. In the daratumumab era, two newer tools refine cardiac risk. The AL International Staging System adds echocardiographic strain and defines a stage IIIC, about 5% of patients, with a median survival of 7 months<sup><a class="rref" href="#t-al-al-iss-with-stage-iiic-khwaja" data-slug="al-iss-with-stage-iiic-khwaja" title="AL-ISS with stage IIIC (Khwaja)">21</a></sup>. Extracellular volume on cardiac MRI measures the amyloid load and suggests that the depth of response needed for survival rises with it<sup><a class="rref" href="#t-al-extracellular-volume-by-cardiac-mri-porcari" data-slug="extracellular-volume-by-cardiac-mri-porcari" title="Extracellular volume by cardiac MRI (Porcari)">22</a></sup>.</p>
+
+<h3>Response: how deep and how fast</h3>
+<p>The 2005 consensus gave the field a common language for organ involvement<sup><a class="rref" href="#t-al-consensus-organ-involvement-and-response-criteria-gertz" data-slug="consensus-organ-involvement-and-response-criteria-gertz" title="Consensus organ involvement and response criteria (Gertz)">23</a></sup>. The 2012 criteria, validated against survival in 816 patients, defined complete response, very good partial response (dFLC below 40 mg/L) and partial response, and showed that free light chain and NT-proBNP changes predict survival as early as 3 months<sup><a class="rref" href="#t-al-hematologic-and-cardiac-response-criteria-palladini" data-slug="hematologic-and-cardiac-response-criteria-palladini" title="Hematologic and cardiac response criteria (Palladini)">24</a></sup>. They made early response the reason to change treatment. Cardiac response is now graded: 5-year overall survival was 93%, 79%, 65% and 33% for cardiac complete, very good partial, partial and no response<sup><a class="rref" href="#t-al-graded-cardiac-response-criteria-muchtar" data-slug="graded-cardiac-response-criteria-muchtar" title="Graded cardiac response criteria (Muchtar)">25</a></sup>. Even complete hematologic response may leave minimal residual disease, found in 54% of complete responders and associated with fewer organ responses<sup><a class="rref" href="#t-al-mrd-by-next-generation-flow-palladini" data-slug="mrd-by-next-generation-flow-palladini" title="MRD by next-generation flow (Palladini)">26</a></sup>.</p>
+
+<h3>First-line treatment: from melphalan to daratumumab</h3>
+<p>Oral melphalan with high-dose dexamethasone gave hematologic responses in 67% of patients ineligible for transplantation<sup><a class="rref" href="#t-al-melphalan-dexamethasone-palladini" data-slug="melphalan-dexamethasone-palladini" title="Melphalan-dexamethasone (Palladini)">27</a></sup>. High-dose melphalan with transplantation gave a complete response in 40% and a median survival of 4.6 years in selected patients, at the cost of 13% mortality within 100 days<sup><a class="rref" href="#t-al-high-dose-melphalan-and-transplantation-8-year-series-skinner" data-slug="high-dose-melphalan-and-transplantation-8-year-series-skinner" title="High-dose melphalan and transplantation, 8-year series (Skinner)">28</a></sup>. The only randomized comparison found no advantage for transplantation: median survival was 22.2 months against 56.9 months with melphalan-dexamethasone<sup><a class="rref" href="#t-al-high-dose-melphalan-vs-mdex-jaccard" data-slug="high-dose-melphalan-vs-mdex-jaccard" title="High-dose melphalan vs MDex (Jaccard)">29</a></sup>. Transplantation has since become safer, with 100-day mortality falling from 20% to 5% in North America<sup><a class="rref" href="#t-al-cibmtr-transplantation-trends-d-souza" data-slug="cibmtr-transplantation-trends-d-souza" title="CIBMTR transplantation trends (D&#x27;Souza)">30</a></sup>, and a small randomized trial suggested that bortezomib induction before it deepens response<sup><a class="rref" href="#t-al-bortezomib-dexamethasone-induction-before-transplantation-huang" data-slug="bortezomib-dexamethasone-induction-before-transplantation-huang" title="Bortezomib-dexamethasone induction before transplantation (Huang)">31</a></sup>. Whether transplantation adds to modern induction is being tested again.</p>
+<p>Bortezomib changed the backbone. CyBorD gave a hematologic response in 60% of 230 patients, but only 42% in stage IIIb<sup><a class="rref" href="#t-al-cybord-european-study-palladini" data-slug="cybord-european-study-palladini" title="CyBorD, European study (Palladini)">32</a></sup>. Adding bortezomib to melphalan-dexamethasone raised the 3-month response rate from 52% to 79% and halved mortality, the first survival gain in a controlled trial<sup><a class="rref" href="#t-al-bmdex-vs-mdex-kastritis" data-slug="bmdex-vs-mdex-kastritis" title="BMDex vs MDex (Kastritis)">33</a></sup>. ANDROMEDA then added subcutaneous daratumumab to VCd: hematologic complete response rose from 18.1% to 53.3%, and cardiac and renal responses roughly doubled<sup><a class="rref" href="#t-al-andromeda-kastritis" data-slug="andromeda-kastritis" title="ANDROMEDA (Kastritis)">34</a></sup>. At a median follow-up of 61.4 months, complete response was 59.5% against 19.2%, and both major organ deterioration progression-free survival (HR 0.44) and overall survival (HR 0.62) were longer. The FDA granted accelerated approval in January 2021 and traditional approval in November 2025.</p>
+
+<h3>Stage IIIb</h3>
+<p>Patients in stage IIIb were excluded from ANDROMEDA and from most trials. In the EMN22 trial, daratumumab alone in 40 such patients gave a hematologic response within a median of 1 week and a 6-month overall survival of 65%, with cardiac failure and sudden death as the main serious events<sup><a class="rref" href="#t-al-emn22-daratumumab-in-stage-iiib-kastritis" data-slug="emn22-daratumumab-in-stage-iiib-kastritis" title="EMN22, daratumumab in stage IIIb (Kastritis)">35</a></sup>. The US prescribing information does not recommend daratumumab for stage IIIb outside trials, while the EHA-ISA guideline lists daratumumab, alone or in dose-modified combinations, for these patients.</p>
+
+<h3>Relapsed disease</h3>
+<p>Treatment at relapse borrows from myeloma and is chosen by previous exposure, depth and duration of the first response, and frailty. Lenalidomide at a reduced dose<sup><a class="rref" href="#t-al-lenalidomide-dexamethasone-sanchorawala" data-slug="lenalidomide-dexamethasone-sanchorawala" title="Lenalidomide-dexamethasone (Sanchorawala)">36</a></sup>, pomalidomide<sup><a class="rref" href="#t-al-pomalidomide-dexamethasone-dispenzieri" data-slug="pomalidomide-dexamethasone-dispenzieri" title="Pomalidomide-dexamethasone (Dispenzieri)">37</a></sup>, once-weekly bortezomib<sup><a class="rref" href="#t-al-bortezomib-once-vs-twice-weekly-reece" data-slug="bortezomib-once-vs-twice-weekly-reece" title="Bortezomib, once vs twice weekly (Reece)">38</a></sup> and bendamustine, used mainly when the clone is lymphoplasmacytic<sup><a class="rref" href="#t-al-bendamustine-dexamethasone-lentzsch" data-slug="bendamustine-dexamethasone-lentzsch" title="Bendamustine-dexamethasone (Lentzsch)">39</a></sup>, all came from single-arm trials. The only phase 3 trial at relapse, TOURMALINE-AL1, did not improve the hematologic response rate with ixazomib (53% against 51%), although time to vital organ deterioration or death was longer<sup><a class="rref" href="#t-al-tourmaline-al1-dispenzieri" data-slug="tourmaline-al1-dispenzieri" title="TOURMALINE-AL1 (Dispenzieri)">40</a></sup>. Anti-CD38 antibodies gave fast, deep responses in daratumumab-naive patients: very good partial response or better in 47.5%<sup><a class="rref" href="#t-al-daratumumab-monotherapy-relapsed-roussel" data-slug="daratumumab-monotherapy-relapsed-roussel" title="Daratumumab monotherapy, relapsed (Roussel)">41</a></sup> and complete or very good partial response in 86%<sup><a class="rref" href="#t-al-daratumumab-monotherapy-relapsed-sanchorawala" data-slug="daratumumab-monotherapy-relapsed-sanchorawala" title="Daratumumab monotherapy, relapsed (Sanchorawala)">42</a></sup>, and 57% with isatuximab<sup><a class="rref" href="#t-al-swog-s1702-isatuximab-parker" data-slug="swog-s1702-isatuximab-parker" title="SWOG S1702, isatuximab (Parker)">43</a></sup>. In patients with t(11;14), venetoclax-based regimens gave very good partial or complete responses in 78%, against 30% without the translocation, in a retrospective series<sup><a class="rref" href="#t-al-venetoclax-t-11-14-premkumar" data-slug="venetoclax-t-11-14-premkumar" title="Venetoclax, t(11;14) (Premkumar)">44</a></sup>.</p>
+
+<h3>Removing the amyloid</h3>
+<p>Chemotherapy stops new light chain production but does not remove what is deposited. NEOD001, later birtamimab, was well tolerated and associated with cardiac and renal responses in a first trial<sup><a class="rref" href="#t-al-neod001-birtamimab-phase-1-2-gertz" data-slug="neod001-birtamimab-phase-1-2-gertz" title="NEOD001 (birtamimab) phase 1/2 (Gertz)">45</a></sup>, but the phase 3 VITAL trial was stopped for futility; a post hoc survival benefit in Mayo stage IV disease was not confirmed by AFFIRM-AL, as reported by the sponsor<sup><a class="rref" href="#t-al-vital-birtamimab-gertz" data-slug="vital-birtamimab-gertz" title="VITAL, birtamimab (Gertz)">46</a></sup>. In the two CARES trials of anselamimab with chemotherapy in stage IIIa and IIIb disease, the primary end point was not met; in 72 patients with κ disease, mortality and cardiovascular hospitalizations were lower, a hypothesis that needs confirmation<sup><a class="rref" href="#t-al-cares-anselamimab-wechalekar" data-slug="cares-anselamimab-wechalekar" title="CARES, anselamimab (Wechalekar)">47</a></sup>. Doxycycline added to CyBorD did not improve progression-free survival in a randomized trial<sup><a class="rref" href="#t-al-doxycycline-with-cybord-shen" data-slug="doxycycline-with-cybord-shen" title="Doxycycline with CyBorD (Shen)">48</a></sup>.</p>
+
+<h3>Where we are now</h3>
+<p>Typing the deposit, ideally by mass spectrometry, and testing for the clone with free light chains and serum and urine immunofixation are the start of every case; a positive bone scan does not exclude AL in a patient with a monoclonal protein. Patients are staged by the heart, with the European IIIb and, increasingly, the AL-ISS IIIC. For most newly diagnosed patients, daratumumab-VCd is the standard; transplantation is reserved for selected patients. The goal is a hematologic complete response, ideally with a very low involved free light chain, and treatment is changed early when the response is inadequate (EHA-ISA 2023; NCCN not checked). At relapse, the choice follows previous exposure, with venetoclax for t(11;14). No fibril-directed therapy is approved.</p>
+
+<h3>Open questions</h3>
+<ul>
+<li>How to treat stage IIIb and IIIC disease, where many deaths occur before any treatment can work.</li>
+<li>Whether transplantation adds anything after daratumumab-based induction, and how long daratumumab should be continued.</li>
+<li>Whether treatment should be guided by cardiac amyloid load, MRD, or t(11;14) status, none of which has been tested prospectively.</li>
+<li>Whether the κ subgroup benefit with anselamimab is real.</li>
+<li>Which treatment after daratumumab: no randomized trial has addressed this setting.</li>
+</ul>
+
+<h3>What is coming</h3>
+<p>BCMA-directed therapies are moving into first-line trials. Three phase 3 trials, not yet recruiting, compare linvoseltamab, etentamig and NXC-201 CAR T cells with daratumumab-CyBorD in newly diagnosed patients, and SWOG S2213 tests transplantation after daratumumab-VCd induction. These trials and the newer agents are on the Trials to watch and New drugs to watch tabs.</p>
+      <h3>References</h3>
+      <ol class="rv-refs"><li><a class="rref" href="#t-al-hereditary-amyloidosis-misdiagnosed-as-al-lachmann" data-slug="hereditary-amyloidosis-misdiagnosed-as-al-lachmann">Hereditary amyloidosis misdiagnosed as AL (Lachmann)</a>. N Engl J Med 2002;346:1786. <a href="https://pubmed.ncbi.nlm.nih.gov/12050338/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-mgus-in-attr-amyloidosis-phull" data-slug="mgus-in-attr-amyloidosis-phull">MGUS in ATTR amyloidosis (Phull)</a>. Amyloid 2018;25:62. <a href="https://pubmed.ncbi.nlm.nih.gov/29424556/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-al-vs-attr-cardiac-profiles-rapezzi" data-slug="al-vs-attr-cardiac-profiles-rapezzi">AL vs ATTR cardiac profiles (Rapezzi)</a>. Circulation 2009;120:1203. <a href="https://pubmed.ncbi.nlm.nih.gov/19752327/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-abdominal-fat-aspiration-van-gameren" data-slug="abdominal-fat-aspiration-van-gameren">Abdominal fat aspiration (van Gameren)</a>. Arthritis Rheum 2006;54:2015. <a href="https://pubmed.ncbi.nlm.nih.gov/16732553/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-immunohistochemistry-typing-sch-nland" data-slug="immunohistochemistry-typing-sch-nland">Immunohistochemistry typing (Schönland)</a>. Blood 2012;119:488. <a href="https://pubmed.ncbi.nlm.nih.gov/22106346/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-mass-spectrometry-typing-vrana" data-slug="mass-spectrometry-typing-vrana">Mass spectrometry typing (Vrana)</a>. Blood 2009;114:4957. <a href="https://pubmed.ncbi.nlm.nih.gov/19797517/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-mass-spectrometry-typing-16-175-samples-dasari" data-slug="mass-spectrometry-typing-16-175-samples-dasari">Mass spectrometry typing, 16,175 samples (Dasari)</a>. Mayo Clin Proc 2020;95:1852. <a href="https://pubmed.ncbi.nlm.nih.gov/32861330/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-renal-amyloidosis-typing-474-cases-said" data-slug="renal-amyloidosis-typing-474-cases-said">Renal amyloidosis typing, 474 cases (Said)</a>. Clin J Am Soc Nephrol 2013;8:1515. <a href="https://pubmed.ncbi.nlm.nih.gov/23704299/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-free-light-chains-with-immunofixation-palladini" data-slug="free-light-chains-with-immunofixation-palladini">Free light chains with immunofixation (Palladini)</a>. Clin Chem 2009;55:499. <a href="https://pubmed.ncbi.nlm.nih.gov/19131635/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-cardiac-mri-in-cardiac-amyloidosis-maceira" data-slug="cardiac-mri-in-cardiac-amyloidosis-maceira">Cardiac MRI in cardiac amyloidosis (Maceira)</a>. Circulation 2005;111:186. <a href="https://pubmed.ncbi.nlm.nih.gov/15630027/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-nonbiopsy-diagnosis-of-cardiac-attr-gillmore" data-slug="nonbiopsy-diagnosis-of-cardiac-attr-gillmore">Nonbiopsy diagnosis of cardiac ATTR (Gillmore)</a>. Circulation 2016;133:2404. <a href="https://pubmed.ncbi.nlm.nih.gov/27143678/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-dpd-scintigraphy-in-al-and-attr-hutt" data-slug="dpd-scintigraphy-in-al-and-attr-hutt">DPD scintigraphy in AL and ATTR (Hutt)</a>. Eur Heart J Cardiovasc Imaging 2014;15:1289. <a href="https://pubmed.ncbi.nlm.nih.gov/24939945/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-esc-position-statement-on-cardiac-amyloidosis-garcia-pavia" data-slug="esc-position-statement-on-cardiac-amyloidosis-garcia-pavia">ESC position statement on cardiac amyloidosis (Garcia-Pavia)</a>. Eur Heart J 2021;42:1554. <a href="https://pubmed.ncbi.nlm.nih.gov/33825853/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-mayo-2004-cardiac-staging-dispenzieri" data-slug="mayo-2004-cardiac-staging-dispenzieri">Mayo 2004 cardiac staging (Dispenzieri)</a>. J Clin Oncol 2004;22:3751. <a href="https://pubmed.ncbi.nlm.nih.gov/15365071/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-european-stage-iiib-nt-probnp-8500-ng-l-wechalekar" data-slug="european-stage-iiib-nt-probnp-8500-ng-l-wechalekar">European stage IIIb, NT-proBNP &gt;8500 ng/L (Wechalekar)</a>. Blood 2013;121:3420. <a href="https://pubmed.ncbi.nlm.nih.gov/23479568/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-revised-mayo-2012-staging-kumar" data-slug="revised-mayo-2012-staging-kumar">Revised Mayo 2012 staging (Kumar)</a>. J Clin Oncol 2012;30:989. <a href="https://pubmed.ncbi.nlm.nih.gov/22331953/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-boston-university-bnp-staging-lilleness" data-slug="boston-university-bnp-staging-lilleness">Boston University BNP staging (Lilleness)</a>. Blood 2019;133:215. <a href="https://pubmed.ncbi.nlm.nih.gov/30333122/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-renal-staging-and-response-palladini" data-slug="renal-staging-and-response-palladini">Renal staging and response (Palladini)</a>. Blood 2014;124:2325. <a href="https://pubmed.ncbi.nlm.nih.gov/25115890/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-marrow-plasma-cells-10-kourelis" data-slug="marrow-plasma-cells-10-kourelis">Marrow plasma cells &gt;10% (Kourelis)</a>. J Clin Oncol 2013;31:4319. <a href="https://pubmed.ncbi.nlm.nih.gov/24145344/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-t-11-14-and-bortezomib-bochtler" data-slug="t-11-14-and-bortezomib-bochtler">t(11;14) and bortezomib (Bochtler)</a>. J Clin Oncol 2015;33:1371. <a href="https://pubmed.ncbi.nlm.nih.gov/25779559/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-al-iss-with-stage-iiic-khwaja" data-slug="al-iss-with-stage-iiic-khwaja">AL-ISS with stage IIIC (Khwaja)</a>. J Clin Oncol 2026;44:311. <a href="https://pubmed.ncbi.nlm.nih.gov/41353737/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-extracellular-volume-by-cardiac-mri-porcari" data-slug="extracellular-volume-by-cardiac-mri-porcari">Extracellular volume by cardiac MRI (Porcari)</a>. JAMA Cardiol 2024;9:982. <a href="https://pubmed.ncbi.nlm.nih.gov/39167388/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-consensus-organ-involvement-and-response-criteria-gertz" data-slug="consensus-organ-involvement-and-response-criteria-gertz">Consensus organ involvement and response criteria (Gertz)</a>. Am J Hematol 2005;79:319. <a href="https://pubmed.ncbi.nlm.nih.gov/16044444/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-hematologic-and-cardiac-response-criteria-palladini" data-slug="hematologic-and-cardiac-response-criteria-palladini">Hematologic and cardiac response criteria (Palladini)</a>. J Clin Oncol 2012;30:4541. <a href="https://pubmed.ncbi.nlm.nih.gov/23091105/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-graded-cardiac-response-criteria-muchtar" data-slug="graded-cardiac-response-criteria-muchtar">Graded cardiac response criteria (Muchtar)</a>. J Clin Oncol 2023;41:1393. <a href="https://pubmed.ncbi.nlm.nih.gov/36215675/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-mrd-by-next-generation-flow-palladini" data-slug="mrd-by-next-generation-flow-palladini">MRD by next-generation flow (Palladini)</a>. Blood Cancer J 2021;11:34. <a href="https://pubmed.ncbi.nlm.nih.gov/33594045/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-melphalan-dexamethasone-palladini" data-slug="melphalan-dexamethasone-palladini">Melphalan-dexamethasone (Palladini)</a>. Blood 2004;103:2936. <a href="https://pubmed.ncbi.nlm.nih.gov/15070667/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-high-dose-melphalan-and-transplantation-8-year-series-skinner" data-slug="high-dose-melphalan-and-transplantation-8-year-series-skinner">High-dose melphalan and transplantation, 8-year series (Skinner)</a>. Ann Intern Med 2004;140:85. <a href="https://pubmed.ncbi.nlm.nih.gov/14734330/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-high-dose-melphalan-vs-mdex-jaccard" data-slug="high-dose-melphalan-vs-mdex-jaccard">High-dose melphalan vs MDex (Jaccard)</a>. N Engl J Med 2007;357:1083. <a href="https://pubmed.ncbi.nlm.nih.gov/17855669/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-cibmtr-transplantation-trends-d-souza" data-slug="cibmtr-transplantation-trends-d-souza">CIBMTR transplantation trends (D&#x27;Souza)</a>. J Clin Oncol 2015;33:3741. <a href="https://pubmed.ncbi.nlm.nih.gov/26371138/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-bortezomib-dexamethasone-induction-before-transplantation-huang" data-slug="bortezomib-dexamethasone-induction-before-transplantation-huang">Bortezomib-dexamethasone induction before transplantation (Huang)</a>. BMC Med 2014;12:2. <a href="https://pubmed.ncbi.nlm.nih.gov/24386911/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-cybord-european-study-palladini" data-slug="cybord-european-study-palladini">CyBorD, European study (Palladini)</a>. Blood 2015;126:612. <a href="https://pubmed.ncbi.nlm.nih.gov/25987656/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-bmdex-vs-mdex-kastritis" data-slug="bmdex-vs-mdex-kastritis">BMDex vs MDex (Kastritis)</a>. J Clin Oncol 2020;38:3252. <a href="https://pubmed.ncbi.nlm.nih.gov/32730181/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-andromeda-kastritis" data-slug="andromeda-kastritis">ANDROMEDA (Kastritis)</a>. N Engl J Med 2021;385:46. <a href="https://pubmed.ncbi.nlm.nih.gov/34192431/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-emn22-daratumumab-in-stage-iiib-kastritis" data-slug="emn22-daratumumab-in-stage-iiib-kastritis">EMN22, daratumumab in stage IIIb (Kastritis)</a>. Blood 2026;148:1973. <a href="https://pubmed.ncbi.nlm.nih.gov/42296025/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-lenalidomide-dexamethasone-sanchorawala" data-slug="lenalidomide-dexamethasone-sanchorawala">Lenalidomide-dexamethasone (Sanchorawala)</a>. Blood 2007;109:492. <a href="https://pubmed.ncbi.nlm.nih.gov/16960148/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-pomalidomide-dexamethasone-dispenzieri" data-slug="pomalidomide-dexamethasone-dispenzieri">Pomalidomide-dexamethasone (Dispenzieri)</a>. Blood 2012;119:5397. <a href="https://pubmed.ncbi.nlm.nih.gov/22493299/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-bortezomib-once-vs-twice-weekly-reece" data-slug="bortezomib-once-vs-twice-weekly-reece">Bortezomib, once vs twice weekly (Reece)</a>. Blood 2011;118:865. <a href="https://pubmed.ncbi.nlm.nih.gov/21562045/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-bendamustine-dexamethasone-lentzsch" data-slug="bendamustine-dexamethasone-lentzsch">Bendamustine-dexamethasone (Lentzsch)</a>. J Clin Oncol 2020;38:1455. <a href="https://pubmed.ncbi.nlm.nih.gov/32083996/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-tourmaline-al1-dispenzieri" data-slug="tourmaline-al1-dispenzieri">TOURMALINE-AL1 (Dispenzieri)</a>. Leukemia 2022;36:225. <a href="https://pubmed.ncbi.nlm.nih.gov/34168284/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-daratumumab-monotherapy-relapsed-roussel" data-slug="daratumumab-monotherapy-relapsed-roussel">Daratumumab monotherapy, relapsed (Roussel)</a>. Blood 2020;135:1531. <a href="https://pubmed.ncbi.nlm.nih.gov/32108228/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-daratumumab-monotherapy-relapsed-sanchorawala" data-slug="daratumumab-monotherapy-relapsed-sanchorawala">Daratumumab monotherapy, relapsed (Sanchorawala)</a>. Blood 2020;135:1541. <a href="https://pubmed.ncbi.nlm.nih.gov/31978210/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-swog-s1702-isatuximab-parker" data-slug="swog-s1702-isatuximab-parker">SWOG S1702, isatuximab (Parker)</a>. Blood 2025;146:2507. <a href="https://pubmed.ncbi.nlm.nih.gov/40925099/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-venetoclax-t-11-14-premkumar" data-slug="venetoclax-t-11-14-premkumar">Venetoclax, t(11;14) (Premkumar)</a>. Blood Cancer J 2021;11:10. <a href="https://pubmed.ncbi.nlm.nih.gov/33431806/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-neod001-birtamimab-phase-1-2-gertz" data-slug="neod001-birtamimab-phase-1-2-gertz">NEOD001 (birtamimab) phase 1/2 (Gertz)</a>. J Clin Oncol 2016;34:1097. <a href="https://pubmed.ncbi.nlm.nih.gov/26858336/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-vital-birtamimab-gertz" data-slug="vital-birtamimab-gertz">VITAL, birtamimab (Gertz)</a>. Blood 2023;142:1208. <a href="https://pubmed.ncbi.nlm.nih.gov/37366170/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-cares-anselamimab-wechalekar" data-slug="cares-anselamimab-wechalekar">CARES, anselamimab (Wechalekar)</a>. J Clin Oncol 2026;44:1899. <a href="https://pubmed.ncbi.nlm.nih.gov/42212672/" target="_blank" rel="noopener">PubMed ↗</a></li><li><a class="rref" href="#t-al-doxycycline-with-cybord-shen" data-slug="doxycycline-with-cybord-shen">Doxycycline with CyBorD (Shen)</a>. Circulation 2022;145:8. <a href="https://pubmed.ncbi.nlm.nih.gov/34503349/" target="_blank" rel="noopener">PubMed ↗</a></li></ol>
+      <div class="rv-endbar"><button type="button" class="rv-close">Close the perspective ▴</button></div>
+    </div>
+  </details>
+
+  <div class="tabs" role="tablist" aria-label="Page sections">
+    <button type="button" role="tab" aria-selected="true" data-tab="trials">Landmark trials</button>
+    <button type="button" role="tab" aria-selected="false" data-tab="watch" title="Click again to return to the trial list">Trials to watch<span class="tcount"></span></button>
+    <button type="button" role="tab" aria-selected="false" data-tab="newdrugs" title="Click again to return to the trial list">New drugs to watch<span class="tcount"></span></button>
+    <button type="button" role="tab" aria-selected="false" data-tab="mech" title="Click again to return to the trial list">Drug mechanisms<span class="tcount"></span></button>
+    <a class="tabmail" href="mailto:andresferber@hotmail.com?subject=Landmark%20trials%20%28AL%20amyloidosis%29%3A%20comment">✉ Send a comment</a>
+  </div>
+  <section class="newdrugs" hidden aria-label="New drugs to watch"></section>
+  <section class="mechs" hidden aria-label="Drug mechanisms"></section>
+
+  <div class="controls">
+    <div class="chips" role="group" aria-label="Filter by category" id="chips"></div>
+    <div class="row2">
+      <input type="search" id="q" placeholder="Search trial, drug, regimen…" aria-label="Search trials">
+      <select id="sort" aria-label="Sort order">
+        <option value="setting">Sort: category, newest first</option>
+        <option value="setting-asc">Sort: category, oldest first</option>
+        <option value="asc">Sort: oldest first</option>
+        <option value="desc">Sort: newest first</option>
+      </select>
+      <span class="count" id="count"></span>
+      <button type="button" class="printbtn" title="Print or save as PDF (prints the trials currently shown)">Print / PDF</button>
+    </div>
+  </div>
+
+  <ol class="list" id="list"></ol>
+
+  <section class="watch" hidden aria-label="Trials to watch"></section>
+
+  <details class="gloss"><summary>Abbreviations (56)</summary><dl><dt>AA amyloidosis</dt><dd>Amyloidosis derived from serum amyloid A protein (chronic inflammation)</dd><dt>AH</dt><dd>Immunoglobulin heavy chain amyloidosis</dd><dt>AL amyloidosis</dt><dd>Immunoglobulin light chain amyloidosis</dd><dt>AL-ISS</dt><dd>AL International Staging System</dd><dt>ALECT2</dt><dd>Amyloidosis derived from leukocyte chemotactic factor 2</dd><dt>ASCO</dt><dd>American Society of Clinical Oncology</dd><dt>ATTR</dt><dd>Transthyretin amyloidosis, wild-type (ATTRwt) or hereditary (variant)</dd><dt>BCL2</dt><dd>B-cell lymphoma 2 protein (target of venetoclax)</dd><dt>BCMA</dt><dd>B-cell maturation antigen</dd><dt>BMDex / VMDex</dt><dd>Bortezomib, melphalan and dexamethasone</dd><dt>BNP</dt><dd>Brain (B-type) natriuretic peptide</dd><dt>CAR</dt><dd>Chimeric antigen receptor</dd><dt>CD19 / CD3 / CD38</dt><dd>Cell-surface antigens: B-cell (CD19), T-cell receptor complex (CD3) and plasma cell (CD38, target of daratumumab and isatuximab)</dd><dt>CI</dt><dd>Confidence interval</dd><dt>CIBMTR</dt><dd>Center for International Blood and Marrow Transplant Research</dd><dt>Complete hematologic response</dt><dd>Normal free light chain ratio with negative serum and urine immunofixation</dd><dt>CRAB</dt><dd>Hypercalcemia, renal failure, anemia and bone lesions (myeloma-defining features)</dd><dt>CyBorD / VCd</dt><dd>Cyclophosphamide, bortezomib and dexamethasone</dd><dt>dFLC</dt><dd>Difference between involved and uninvolved serum free light chains</dd><dt>DPD</dt><dd>99mTc-3,3-diphosphono-1,2-propanodicarboxylic acid, a bone scintigraphy tracer</dd><dt>ECV</dt><dd>Extracellular volume (cardiac MRI)</dd><dt>eGFR</dt><dd>Estimated glomerular filtration rate</dd><dt>EHA</dt><dd>European Hematology Association</dd><dt>EMN</dt><dd>European Myeloma Network</dd><dt>ESC</dt><dd>European Society of Cardiology</dd><dt>ESMO</dt><dd>European Society for Medical Oncology</dd><dt>FDA</dt><dd>US Food and Drug Administration</dd><dt>FISH</dt><dd>Fluorescence in situ hybridization</dd><dt>FLC</dt><dd>Free light chain</dd><dt>HR</dt><dd>Hazard ratio</dd><dt>IgM</dt><dd>Immunoglobulin M</dd><dt>IMiD</dt><dd>Immunomodulatory drug (lenalidomide, pomalidomide)</dd><dt>IMWG</dt><dd>International Myeloma Working Group</dd><dt>ISA</dt><dd>International Society of Amyloidosis</dd><dt>LV</dt><dd>Left ventricular</dd><dt>MDex</dt><dd>Melphalan and high-dose dexamethasone</dd><dt>MGUS</dt><dd>Monoclonal gammopathy of undetermined significance</dd><dt>MOD-PFS</dt><dd>Major organ deterioration progression-free survival (hematologic progression, major organ deterioration or death)</dd><dt>MRD</dt><dd>Minimal residual disease</dd><dt>MRI</dt><dd>Magnetic resonance imaging</dd><dt>NCCN</dt><dd>National Comprehensive Cancer Network</dd><dt>NT-proBNP</dt><dd>N-terminal pro-brain natriuretic peptide</dd><dt>NYHA</dt><dd>New York Heart Association (heart failure class)</dd><dt>OS</dt><dd>Overall survival</dd><dt>PFS</dt><dd>Progression-free survival</dd><dt>QRS</dt><dd>Ventricular depolarization complex on the electrocardiogram</dd><dt>ROC</dt><dd>Receiver operating characteristic</dd><dt>SPECT</dt><dd>Single-photon emission computed tomography</dd><dt>Stage IIIb</dt><dd>Mayo 2004 stage III with NT-proBNP above 8500 ng/L (European modification)</dd><dt>SWOG</dt><dd>SWOG Cancer Research Network</dd><dt>t(11;14)</dt><dd>Translocation between chromosomes 11 and 14 (CCND1-IGH)</dd><dt>T1</dt><dd>Longitudinal relaxation time (cardiac MRI mapping)</dd><dt>TTR</dt><dd>Transthyretin</dd><dt>V122I</dt><dd>Valine-to-isoleucine substitution at position 122 of transthyretin, a hereditary ATTR variant</dd><dt>Very good partial response</dt><dd>dFLC below 40 mg/L</dd><dt>κ / λ</dt><dd>Kappa / lambda light chain isotype</dd></dl></details>
+
+  <footer>
+    Every result was checked against the paper's PubMed abstract on November 15, 2026; "not reported in abstract" means the figure needs the full text. "Key toxicity" summarizes the main adverse events reported in the abstract; it is not a complete safety profile. "Drug mechanism" links one recent review per drug or drug class on how it works and how resistance develops, chosen from peer-reviewed journals as the most recent, comprehensive and high-quality review available (no promotional material), with free full text preferred when quality was comparable. "★ Core" marks studies selected as essential for teaching. Studies included: AL amyloidosis has few randomized trials, so the list holds every phase 3 or randomized trial with a full report, phase 2 trials that defined a regimen in current use or were the basis of an approval or guideline recommendation (whatever the journal), large multicentre cohort studies that defined a regimen or the outcome of a high-risk group, and the diagnostic, typing, staging and response studies on which trials and practice rest. Because the diagnosis turns on proving that the amyloid is AL type, the first category covers the studies that separate AL from ATTR, AA, ALECT2 and hereditary amyloidoses: tissue typing, the monoclonal protein screen, bone scintigraphy and cardiac MRI. Supportive care, localized AL amyloidosis and IgM-related AL amyloidosis are not covered as separate cards. Each result is tagged "✓ abstract" or "✓ abstract + full paper" by what it was checked against. "Free full text" links open the article in PubMed Central; "Free at publisher" links open a publisher page that is free to read; "Publisher" links open the publisher's page, where a subscription or institutional access may be needed; "Free copy (repository)" links open a legal free copy in a university repository (sometimes the authors' manuscript). Free copies were found with Unpaywall (November 15, 2026). Registry links (NCT numbers) open the trial's registry record and were taken from each paper's PubMed record or abstract. Source links go to the PubMed record (PMIDs checked against journal, volume, pages and first author). "Builds on", "Changed" and "Open questions" are interpretive summaries, not data from the papers. Commentaries are those PubMed links to each paper ("Comment in"); letters and author replies are not listed. FDA approval dates given in full were confirmed against FDA announcements (November 15, 2026); items marked "verify" could not be confirmed and will be checked at the next update. Guideline rows cite the EHA-ISA 2023 guideline on non-transplant chemotherapy (full text), the EHA-ISA 2022 transplant guideline (abstract) and the ESC 2021 position statement on cardiac amyloidosis (its diagnostic algorithm checked against published summaries; the full text could not be opened); placements marked "NCCN not checked" could not be confirmed, because the NCCN guidelines require a login. No public data report insurance approval rates; US coverage generally follows the FDA label and NCCN compendium listing. Last checked: November 15, 2026.
+    <p class="sitedisc"><b>For education only.</b> This site summarizes published research and the author's views. It is not medical advice, a clinical practice guideline or a substitute for professional judgment; treatment decisions should rely on the primary literature, current guidelines, approved prescribing information and the individual patient. This is an independent project, not affiliated with any institution or company.</p>
+    <p class="reportall">Comments and suggestions are welcome: <a href="mailto:andresferber@hotmail.com?subject=Landmark%20trials%20%28AL%20amyloidosis%29%3A%20comment">send a comment</a>. Spotted an error or a missing trial? Use "Report an error" on any trial. Both go to andresferber@hotmail.com.</p>
+  </footer>
+  <p class="credit">Created by Andres Ferber, MD, with the assistance of Claude (Anthropic).</p>
+</div>
+
+<script>
+const SETTINGS = {
+  diag: "Diagnosis & amyloid typing",
+  risk: "Staging, prognosis & response criteria",
+  front: "Newly diagnosed: plasma cell-directed therapy & transplantation",
+  rel: "Relapsed disease",
+  fib: "Fibril-directed therapy"
+};
+const CLS = { diag: "risk", risk: "p2", front: "young", rel: "old", fib: "rr" };
+const order = ["diag","risk","front","rel","fib"];
+const PM = id => "https://pubmed.ncbi.nlm.nih.gov/" + id + "/";
+
+const T = [
+// ---------- Diagnosis & amyloid typing ----------
+{y:2002,n:"Hereditary amyloidosis misdiagnosed as AL (Lachmann)",s:"diag",ph:"Cohort study (genetic screening)",d:"Screening for amyloidogenic mutations (transthyretin, fibrinogen A α-chain, lysozyme, apolipoprotein A-I) in 350 patients with systemic amyloidosis thought to be AL type on clinical and laboratory grounds, without a family history",ep:"Proportion with a hereditary amyloidosis",
+ r:"Amyloidogenic mutations in 34 of 350 patients (9.7%), most often fibrinogen A α-chain (18) and transthyretin (13); hereditary amyloidosis confirmed by further investigation in all 34. A low-grade monoclonal gammopathy was present in 8 of the 34 (24%)",N:"350",hr:"not applicable",fu:"not applicable",
+ c:"N Engl J Med 2002;346:1786",p:12050338,
+ b:"Hereditary amyloidosis was considered extremely rare and was sought only when there was a family history; a monoclonal protein in a patient with amyloid was taken as proof of AL type.",
+ i:"Showed that about one patient in ten labelled AL had a hereditary amyloidosis, and that a monoclonal protein does not prove AL type. Typing the deposit itself, and genetic testing when AL is not confirmed, became the rule.",
+ q:"A referral series from one national centre, before mass spectrometry typing; the proportion depends on the population and on how carefully AL is confirmed.",
+ cm:[[12050344,"Saraiva MJ, N Engl J Med 2002","Sporadic cases of hereditary systemic amyloidosis"]],
+ reg:"Not applicable.",gl:"The deposit must be typed; mass spectrometry is the gold standard, with immunohistochemistry or immunoelectron microscopy in specialised centres, and TTR genetic testing in ATTR (ESC 2021 position statement; NCCN not checked).",acc:"—"},
+{y:2005,n:"Cardiac MRI in cardiac amyloidosis (Maceira)",s:"diag",ph:"Diagnostic study",d:"Late gadolinium enhancement cardiovascular magnetic resonance with T1 mapping of gadolinium kinetics in 30 patients with cardiac amyloidosis, compared with 16 hypertensive controls, with histological correlation",ep:"Enhancement pattern and diagnostic concordance",
+ r:"Global subendocardial late gadolinium enhancement in 20 patients (69%), who had greater LV mass; subendocardial T1 shorter than in controls (427 vs 579 ms at 4 minutes). Combining late enhancement with a T1 threshold gave 97% concordance with the diagnosis of cardiac amyloid. Histology: interstitial amyloid expansion 30.5% with only 1.3% fibrosis",N:"30 (plus 16 controls)",hr:"not applicable",fu:"not applicable",
+ c:"Circulation 2005;111:186",p:15630027,
+ b:"Echocardiography suggested cardiac amyloid (thick walls, low voltage) but was neither sensitive nor specific, and endomyocardial biopsy was the only proof.",
+ i:"Defined the characteristic enhancement pattern and made cardiac MRI a standard non-invasive test for cardiac amyloid; later extracellular volume mapping built on it.",
+ q:"Does not distinguish AL from ATTR, and gadolinium is limited in advanced kidney disease; a small series.",
+ cm:[[15657385,"Kwong RY, Circulation 2005","Cardiovascular magnetic resonance in cardiac amyloidosis"]],
+ reg:"Not applicable.",gl:"Cardiac MRI is a step of the diagnostic algorithm, notably when a monoclonal protein is present and scintigraphy is negative (ESC 2021 position statement; NCCN not checked).",acc:"—"},
+{y:2006,n:"Abdominal fat aspiration (van Gameren)",s:"diag",ph:"Diagnostic study",d:"Congo red-stained subcutaneous abdominal fat aspirates in all consecutive patients with established or suspected systemic amyloidosis at one referral centre (1994–2004), read quickly (one smear, one observer) and thoroughly (three smears, two observers)",ep:"Sensitivity and specificity for systemic amyloidosis",
+ r:"In 120 patients with established systemic amyloidosis (70 AL, 38 AA, 12 ATTR): sensitivity 80% with routine reading, 93% with thorough reading; specificity 100% in 45 controls. Among 162 patients with suspected amyloidosis, 69 had amyloidosis, and fat aspiration was positive in 66 (96%); rectal biopsy added little after a negative aspirate",N:"120 established, 162 suspected, 45 controls",hr:"not applicable",fu:"not applicable",
+ c:"Arthritis Rheum 2006;54:2015",p:16732553,
+ b:"Rectal and organ biopsies were the usual way to prove systemic amyloid; fat aspiration was simple but its sensitivity was uncertain.",
+ i:"Supported fat aspiration as the first, low-risk tissue test for systemic amyloidosis, with organ biopsy when it is negative and suspicion remains.",
+ q:"Sensitivity depends on the observer, the amyloid type and the amount of tissue; a negative aspirate does not exclude amyloidosis, and the aspirate is often too small for mass spectrometry typing.",
+ cm:[],
+ reg:"Not applicable.",gl:"Histological confirmation may come from cardiac or extracardiac tissue (ESC 2021 position statement; NCCN not checked).",acc:"—"},
+{y:2009,n:"Free light chains with immunofixation (Palladini)",s:"diag",ph:"Diagnostic study (prospective)",d:"Serum free light chain κ/λ ratio, commercial serum and urine immunofixation and a high-resolution immunofixation, in 121 consecutive patients whose amyloidogenic light chain had been identified in the deposits by immunoelectron microscopy",ep:"Diagnostic sensitivity of each test and combination",
+ r:"Serum and urine immunofixation identified the light chain more often than the free light chain ratio (96% vs 76%). Serum immunofixation with the free light chain assay detected it in 96%; serum and urine immunofixation with the free light chain ratio, 100%. Six patients with a biclonal gammopathy were excluded",N:"121 (115 analysed)",hr:"not applicable",fu:"not applicable",
+ c:"Clin Chem 2009;55:499",p:19131635,
+ b:"The free light chain assay had become available, and it was unclear which test, or which combination, was needed to find a small amyloidogenic clone.",
+ i:"Established that no single test is enough: the free light chain assay with immunofixation of both serum and urine is the standard screen for the clone in suspected AL amyloidosis.",
+ q:"Finding a clone does not prove AL type, because monoclonal gammopathies are common in older patients with ATTR amyloidosis; the deposit must be typed.",
+ cm:[],
+ reg:"Not applicable.",gl:"Serum and urine immunofixation with the serum free light chain ratio are the first step, together with bone scintigraphy, in suspected cardiac amyloidosis (ESC 2021 position statement; NCCN not checked).",acc:"—"},
+{y:2009,n:"AL vs ATTR cardiac profiles (Rapezzi)",s:"diag",ph:"Cohort study",d:"Longitudinal study at two Italian centres of 233 patients with a clear-cut type of cardiac amyloidosis: AL (157), hereditary ATTR (61) and wild-type ATTR (15)",ep:"Clinical, instrumental and outcome profiles by type",
+ r:"Wild-type ATTR occurred almost only in elderly men and had the thickest left ventricular walls and a moderately reduced ejection fraction; low QRS voltage was less frequent in hereditary ATTR than in AL (25% vs 60%); AL showed the greatest hemodynamic impairment. On multivariate analysis, hereditary ATTR predicted better survival and wild-type ATTR freedom from major cardiac events",N:"233",hr:"not reported in abstract",fu:"not reported in abstract",
+ c:"Circulation 2009;120:1203",p:19752327,
+ b:"Cardiac amyloidosis was studied as a single entity, although its types differ in cause, course and treatment.",
+ i:"Showed that AL, hereditary ATTR and wild-type ATTR are different cardiac diseases, and that a thick heart with low voltage, or a thick heart in an older man, should prompt typing rather than assumption.",
+ q:"Features overlap too much to type the amyloid clinically; a small wild-type group, before bone scintigraphy and mass spectrometry were in routine use.",
+ cm:[],
+ reg:"Not applicable.",gl:"Red flags and the diagnostic algorithm for cardiac amyloidosis (ESC 2021 position statement; NCCN not checked).",acc:"—"},
+{y:2009,n:"Mass spectrometry typing (Vrana)",s:"diag",ph:"Diagnostic study",d:"Laser microdissection of Congo red-positive deposits followed by tandem mass spectrometry-based proteomics, in 50 well-characterised cases (training set) and an independent validation set of 41 cardiac cases",ep:"Accuracy of amyloid typing against clinicopathological gold standard",
+ r:"The amyloid type was identified with 100% specificity and sensitivity in the training set and 98% in the validation set",N:"91 (50 + 41)",hr:"not applicable",fu:"not applicable",
+ c:"Blood 2009;114:4957",p:19797517,
+ b:"Immunohistochemistry and immunofluorescence were the standard typing methods, with limited sensitivity and specificity, especially for light chains.",
+ i:"Introduced laser microdissection and mass spectrometry as the reference method for typing amyloid in routine biopsy specimens.",
+ q:"Available in reference laboratories only; a deposit can contain more than one protein, so results need clinical interpretation.",
+ cm:[],
+ reg:"Not applicable.",gl:"Mass spectrometry is the gold standard for typing (ESC 2021 position statement; NCCN not checked).",acc:"—"},
+{y:2012,n:"Immunohistochemistry typing (Schönland)",s:"diag",ph:"Diagnostic study",d:"Systematic clinical, laboratory, genetic and immunohistochemical work-up of 117 patients with systemic amyloidosis at one centre, with immunohistochemistry read by a specialised pathologist",ep:"Accuracy of immunohistochemical subtyping",
+ r:"Immunohistochemistry classified 94% of cases. In 51 patients whose type was confirmed by typical clinical features or an amyloidogenic mutation, it typed 49 correctly (sensitivity 96%, specificity 100%). In 66 harder cases (AL without typical features, wild-type ATTR, or hereditary amyloidosis with a monoclonal gammopathy) it defined the type in 61 (92%)",N:"117",hr:"not applicable",fu:"not applicable",
+ c:"Blood 2012;119:488",p:22106346,
+ b:"Immunohistochemistry was widely used but had a reputation for unreliable light chain staining.",
+ i:"Showed that immunohistochemistry with specialised antibodies and expert reading, combined with clinical data and genotyping, types most cases, and that mass spectrometry is needed for those it leaves unclear.",
+ q:"Results from one expert laboratory; accuracy is lower where antibodies and expertise are less specialised.",
+ cm:[],
+ reg:"Not applicable.",gl:"Immunohistochemistry or immunoelectron microscopy are routinely used for typing in specialised centres; mass spectrometry is the gold standard (ESC 2021 position statement; NCCN not checked).",acc:"—"},
+{y:2013,n:"Renal amyloidosis typing, 474 cases (Said)",s:"diag",ph:"Pathology series",d:"Clinicopathological series of 474 renal amyloidosis cases at the Mayo Clinic renal pathology laboratory (2007–2011), typed by immunofluorescence and, when needed, laser microdissection with mass spectrometry",ep:"Amyloid type and clinicopathological correlation",
+ r:"Immunoglobulin amyloidosis 85.9%, AA 7.0%, LECT2 2.7%, fibrinogen A α-chain 1.3%, apolipoproteins AI, AII or AIV 0.6%, unclassified 2.3%. Mass spectrometry was needed to type 16% of cases; immunofluorescence missed 28 of 384 light chain cases (7.3%). LECT2 and apolipoprotein amyloid were interstitial; fibrinogen amyloid was glomerular. Immunoglobulin amyloidosis had more proteinuria and lower creatinine",N:"474",hr:"not applicable",fu:"not applicable",
+ c:"Clin J Am Soc Nephrol 2013;8:1515",p:23704299,
+ b:"Renal amyloid was assumed to be AL or AA; LECT2 amyloidosis had only recently been described.",
+ i:"Showed that about one renal amyloid in seven is not immunoglobulin-derived, that LECT2 is the commonest of the rarer types, and that the pattern of deposition and mass spectrometry help separate them.",
+ q:"A single referral laboratory in the US; the frequency of LECT2 and AA amyloid varies with ethnicity and region.",
+ cm:[],
+ reg:"Not applicable.",gl:"Renal-specific guideline text not checked (NCCN not checked).",acc:"—"},
+{y:2014,n:"DPD scintigraphy in AL and ATTR (Hutt)",s:"diag",ph:"Diagnostic study",d:"99mTc-DPD bone scintigraphy in 321 patients referred with suspected cardiac amyloidosis to the UK National Amyloidosis Centre, including 44 with AL amyloidosis",ep:"Cardiac uptake by amyloid type",
+ r:"All 158 patients with ATTR amyloidosis and clinical cardiac involvement had cardiac uptake (median grade 2). Eighteen of 35 patients with AL amyloidosis and cardiac involvement (51%) also had cardiac uptake, usually low grade (median grade 1)",N:"321",hr:"not applicable",fu:"not applicable",
+ c:"Eur Heart J Cardiovasc Imaging 2014;15:1289",p:24939945,
+ b:"Bone-seeking tracers were known to localise in cardiac ATTR amyloid, and scintigraphy was being proposed as a way to recognise it.",
+ i:"Showed that about half of patients with cardiac AL amyloidosis take up the tracer, so a positive scan alone cannot separate AL from ATTR: the monoclonal protein screen must be done at the same time.",
+ q:"Grades of uptake overlap; the result depends on the tracer and on timing, and SPECT imaging is needed to avoid blood-pool artefact.",
+ cm:[[25104807,"Bengel FM, Eur Heart J Cardiovasc Imaging 2014","The non-invasive biopsy: molecular imaging for the detection of cardiac involvement in systemic disease"]],
+ reg:"Not applicable.",gl:"Scintigraphy is read together with monoclonal protein tests; with a monoclonal protein and a positive scan, histology with typing is required, usually by endomyocardial biopsy (ESC 2021 position statement; NCCN not checked).",acc:"—"},
+{y:2016,n:"Nonbiopsy diagnosis of cardiac ATTR (Gillmore)",s:"diag",ph:"Diagnostic study (multicentre)",d:"Bone scintigraphy and monoclonal protein tests in 1217 patients referred to specialist centres with suspected cardiac amyloidosis: 857 with histologically proven amyloid (374 by endomyocardial biopsy) and 360 with non-amyloid cardiomyopathy",ep:"Sensitivity, specificity and positive predictive value for cardiac ATTR amyloid",
+ r:"Myocardial uptake was more than 99% sensitive and 86% specific for cardiac ATTR amyloid; false positives came almost entirely from cardiac AL amyloidosis. Grade 2 or 3 uptake together with no monoclonal protein in serum or urine had a specificity and positive predictive value of 100% (95% CI of the positive predictive value 98.0–100)",N:"1217",hr:"not applicable",fu:"not applicable",
+ c:"Circulation 2016;133:2404",p:27143678,
+ b:"Cardiac ATTR amyloidosis needed histological proof, and the series on bone scintigraphy were small.",
+ i:"Defined the noninvasive criteria for cardiac ATTR amyloidosis now used worldwide; for hematologists, it made the monoclonal protein screen the step that decides whether a biopsy is needed, because a monoclonal protein with a positive scan still requires tissue typing.",
+ q:"The criteria apply only when serum and urine immunofixation and free light chains are all normal; in patients with a monoclonal gammopathy, histology remains mandatory.",
+ cm:[],
+ reg:"Not applicable.",gl:"Basis of the noninvasive criteria for ATTR (grade 2–3 uptake without a monoclonal protein) and of the need for histology when a monoclonal protein is present (ESC 2021 position statement; NCCN not checked).",acc:"—"},
+{y:2018,n:"MGUS in ATTR amyloidosis (Phull)",s:"diag",ph:"Cohort study (retrospective)",d:"Prevalence of a monoclonal gammopathy (abnormal free light chain ratio or positive serum immunofixation) in patients with biopsy-proven wild-type ATTR or genopositive ATTR V122I amyloidosis at the Boston University Amyloidosis Center (2003–2016)",ep:"Prevalence of MGUS",
+ r:"A monoclonal gammopathy of undetermined significance was present in 55 of 140 patients with wild-type ATTR (39%) and 28 of 57 with ATTR V122I (49%)",N:"197",hr:"not applicable",fu:"not applicable",
+ c:"Amyloid 2018;25:62",p:29424556,
+ b:"Monoclonal gammopathies rise with age, and ATTR amyloidosis affects older patients, but the size of the overlap was not known.",
+ i:"Showed that a monoclonal protein is found in a large share of patients with ATTR amyloidosis, so a monoclonal gammopathy in a patient with cardiac amyloid does not establish AL type: the deposit must be typed before chemotherapy.",
+ q:"A referral cohort that included a lenient definition (abnormal free light chain ratio alone, often affected by kidney function); rates in unselected patients are lower.",
+ cm:[],
+ reg:"Not applicable.",gl:"With a monoclonal protein and a positive scan, AL, ATTR or both are possible, and histology with typing is required (ESC 2021 position statement; NCCN not checked).",acc:"—"},
+{y:2020,n:"Mass spectrometry typing, 16,175 samples (Dasari)",s:"diag",ph:"Laboratory series",d:"Mass spectrometry-based proteomic typing of 16,175 amyloid specimens at one reference laboratory over 11 years (2008–2018)",ep:"Frequency of amyloid types by organ",
+ r:"21 established types: AL 59.0%, ATTR 28.4%, ALECT2 3.2%, AA 2.9%, heavy chain (AH) 2.3%, insulin 1.2%, and 15 rarer types below 1% each; organ-by-type and type-by-organ maps; amino acid substitutions of hereditary amyloidosis detected with 100% specificity",N:"16,175 specimens",hr:"not applicable",fu:"not applicable",
+ c:"Mayo Clin Proc 2020;95:1852",p:32861330,
+ b:"Mass spectrometry typing had been validated in small series; the full range of types seen in practice was not mapped.",
+ i:"Showed how often each type appears in each organ, which sets the pretest probability of AL for a given biopsy site, and that one assay identifies all types, including hereditary variants.",
+ q:"A referral laboratory, so its case mix is enriched for difficult cases; the result types the deposit but does not replace clinical correlation.",
+ cm:[[32861319,"Lavatelli F, Mayo Clin Proc 2020","Proteomics Fundamentally Advance the Diagnosis and Management of Amyloidosis"]],
+ reg:"Not applicable.",gl:"Mass spectrometry is the gold standard for typing (ESC 2021 position statement; NCCN not checked).",acc:"—"},
+{y:2021,n:"ESC position statement on cardiac amyloidosis (Garcia-Pavia)",s:"diag",ph:"Position statement",d:"Position statement of the European Society of Cardiology Working Group on Myocardial and Pericardial Diseases",ep:"Not applicable",
+ r:"Invasive and noninvasive definitions of cardiac amyloidosis, clinical scenarios that should raise suspicion, and a diagnostic algorithm that starts with scintigraphy together with serum free light chains and serum and urine immunofixation, with tissue typing when a monoclonal protein is found; also monitoring and treatment",N:"not applicable",hr:"not applicable",fu:"not applicable",
+ c:"Eur Heart J 2021;42:1554",p:33825853,
+ b:"The nonbiopsy criteria for ATTR, and the overlap between ATTR and monoclonal gammopathy, needed a common algorithm across cardiology and hematology.",
+ i:"The algorithm most cardiologists follow; it puts the hematologic screen at the first step, so hematologists see patients with a monoclonal protein and cardiac amyloid before any treatment is chosen.",
+ q:"A cardiology document: it does not cover the hematologic management of AL amyloidosis in detail.",
+ cm:[],
+ reg:"Not applicable.",gl:"Position statement; NCCN not checked.",acc:"—"},
+
+// ---------- Staging, prognosis & response criteria ----------
+{y:2004,n:"Mayo 2004 cardiac staging (Dispenzieri)",s:"risk",ph:"Prognostic model",d:"Retrospective model in 242 patients with newly diagnosed AL amyloidosis seen at the Mayo Clinic (1979–2000) with stored serum: NT-proBNP with troponin T or troponin I at set thresholds",ep:"Overall survival",
+ r:"Thresholds: NT-proBNP <332 ng/L, troponin T <0.035 µg/L, troponin I <0.1 µg/L. Stage I (both low), II (one high), III (both high): 33%, 30% and 37% of patients, with median survival 26.4, 10.5 and 3.5 months (troponin T model); 27.2, 11.1 and 4.1 months with troponin I",N:"242",hr:"not applicable",fu:"not reported in abstract",
+ c:"J Clin Oncol 2004;22:3751",p:15365071,
+ b:"Troponin T and NT-proBNP had each been shown to predict survival, but there was no staging system, so trials could not be compared.",
+ i:"The first staging system for AL amyloidosis, still the basis of trial eligibility and stratification; it showed that the heart, measured by two blood tests, decides early survival.",
+ q:"Built before modern therapy and before high-sensitivity troponin assays; stage III proved too broad, which led to the European stage IIIb.",
+ cm:[],
+ reg:"Not applicable.",gl:"First-line recommendations are organised by cardiac stage (I–IIIa vs IIIb, European modification) (EHA-ISA 2023; NCCN not checked).",acc:"—"},
+{y:2005,n:"Consensus organ involvement and response criteria (Gertz)",s:"risk",ph:"Consensus statement",d:"Consensus panel of 13 specialists at the 10th International Symposium on Amyloid and Amyloidosis (Tours, April 2004)",ep:"Not applicable",
+ r:"Uniform definitions of involvement of each organ and of hematologic and organ response, for use in trials and reports",N:"not applicable",hr:"not applicable",fu:"not applicable",
+ c:"Am J Hematol 2005;79:319",p:16044444,
+ b:"Each centre used its own definitions, so response rates could not be compared.",
+ i:"The common language of organ involvement used in trial eligibility since; its hematologic and cardiac response definitions were later replaced by the validated 2012 criteria.",
+ q:"Expert opinion, not validated against survival; organ criteria have since been refined and graded.",
+ cm:[],
+ reg:"Not applicable.",gl:"Hematologic and cardiac response now follow the ISA criteria based on the 2012 validation; organ involvement definitions remain in use in trials (NCCN not checked).",acc:"—"},
+{y:2012,n:"Revised Mayo 2012 staging (Kumar)",s:"risk",ph:"Prognostic model",d:"Model in 810 patients with newly diagnosed AL amyloidosis, tested in 303 patients undergoing transplantation and 103 patients in clinical trials, adding plasma cell features to the cardiac biomarkers",ep:"Overall survival",
+ r:"Only the difference between involved and uninvolved free light chains (dFLC), troponin T and NT-proBNP were independent. One point each for dFLC ≥18 mg/dL, troponin T ≥0.025 ng/mL, NT-proBNP ≥1800 pg/mL: stages I–IV (25%, 27%, 25%, 23%) with median OS 94.1, 40.3, 14 and 5.8 months; validated in the other datasets",N:"810 (plus 303 and 103 for validation)",hr:"not applicable",fu:"not reported in abstract",
+ c:"J Clin Oncol 2012;30:989",p:22331953,
+ b:"The Mayo 2004 stages captured the heart but not the size of the clone, on which long-term outcome depends.",
+ i:"Added the clone (dFLC) to the cardiac markers; widely used for long-term prognosis and in transplant series.",
+ q:"Mixes clone and organ damage in one score; less useful for early mortality than the cardiac stages with the European modification.",
+ cm:[],
+ reg:"Not applicable.",gl:"Used for prognosis; first-line recommendations use the cardiac stages (EHA-ISA 2023; NCCN not checked).",acc:"—"},
+{y:2012,n:"Hematologic and cardiac response criteria (Palladini)",s:"risk",ph:"Response criteria (validation study)",d:"816 patients from seven referral centres in Europe and the US, validated in 374 patients at Pavia, with free light chain and NT-proBNP measured before and 3 and/or 6 months after first-line therapy",ep:"Overall survival by response level",
+ r:"Four levels of hematologic response, each with longer survival: complete response (normal free light chain ratio and negative serum and urine immunofixation), very good partial response (dFLC <40 mg/L), partial response (dFLC fall >50%) and no response. Changes in cardiac function were reliably assessed with NT-proBNP. Changes in free light chains and NT-proBNP predicted survival as early as 3 months",N:"816 (plus 374 for validation)",hr:"not applicable",fu:"not reported in abstract",
+ c:"J Clin Oncol 2012;30:4541",p:23091105,
+ b:"The 2005 consensus criteria were not validated against survival and did not measure response depth by free light chains.",
+ i:"The standard response criteria and the surrogate end points of trials since 2012; they made early free light chain and NT-proBNP response the basis for changing treatment.",
+ q:"Validated in first-line therapy and in patients with measurable free light chains; patients with dFLC below 50 mg/L need other criteria, and binary cardiac response was later graded.",
+ cm:[],
+ reg:"Hematologic complete response by these criteria was the primary end point supporting the 2021 FDA accelerated approval of daratumumab with VCd (ANDROMEDA).",gl:"Goal of treatment: hematologic complete response, ideally with involved free light chain <20 mg/L or dFLC <10 mg/L; consider changing treatment with less than very good partial response by cycle 3 or less than partial response by cycle 2 (EHA-ISA 2023; NCCN not checked).",acc:"—"},
+{y:2013,n:"European stage IIIb, NT-proBNP >8500 ng/L (Wechalekar)",s:"risk",ph:"Cohort study (multicentre)",d:"Treatment outcomes in 346 patients with Mayo 2004 cardiac stage III AL amyloidosis from the UK, Italy, Germany and Greece",ep:"Overall survival and its predictors",
+ r:"Median OS 7 months (3, 6, 12 and 24 months: 73%, 55%, 46%, 29%); 42% died before the first response assessment. Hematologic response 33% (complete 12%); 2-year OS 85% with complete response, 53% with partial response, 22% without response. NT-proBNP >8500 ng/L and systolic blood pressure <100 mm Hg were the only independent factors and identified a subgroup with median OS of 3 months",N:"346",hr:"not reported in abstract",fu:"not reported in abstract",
+ c:"Blood 2013;121:3420",p:23479568,
+ b:"Patients in Mayo stage III were excluded from most trials, so their outcome with treatment was not known.",
+ i:"Defined the European modification: stage IIIb (NT-proBNP >8500 ng/L), the group with the highest early mortality, excluded from ANDROMEDA and since studied in its own trials. It also showed that a good hematologic response saves lives even in stage III.",
+ q:"Retrospective and treated mostly with older regimens; within stage IIIb, very high troponin and low blood pressure identify still-worse outcomes.",
+ cm:[[23620568,"Gertz MA, Blood 2013","Allaying and alleviating amyloid agony and anxiety"]],
+ reg:"Not applicable. The US prescribing information for daratumumab-hyaluronidase does not recommend it for Mayo stage IIIB disease outside controlled trials.",gl:"Stage IIIb: dose-modified daratumumab-CyBorD or daratumumab alone; dose-modified CyBorD or VMDex as alternatives (EHA-ISA 2023; NCCN not checked).",acc:"—"},
+{y:2013,n:"Marrow plasma cells >10% (Kourelis)",s:"risk",ph:"Cohort study (retrospective)",d:"1,255 patients seen within 90 days of AL diagnosis at the Mayo Clinic (2000–2010), grouped as AL with myeloma-defining CRAB features, AL with >10% marrow plasma cells, and AL with ≤10%",ep:"Overall survival",
+ r:"AL with CRAB 8%, AL with >10% plasma cells 38%, AL alone 54%: median OS 10.6, 16.2 and 46 months. More than 10% plasma cells (with or without CRAB) kept its adverse effect independent of age, Mayo stage, previous transplantation and dFLC",N:"1,255",hr:"not reported in abstract",fu:"not reported in abstract",
+ c:"J Clin Oncol 2013;31:4319",p:24145344,
+ b:"Myeloma with AL amyloidosis was defined by CRAB features; the role of marrow plasma cell burden alone was uncertain.",
+ i:"Showed that more than 10% marrow plasma cells carries a prognosis similar to overt myeloma, making clone size a prognostic factor beyond the free light chains.",
+ q:"Retrospective, single centre and before daratumumab; the cut-off was chosen by ROC analysis in the same cohort.",
+ cm:[],
+ reg:"Not applicable.",gl:"Transplantation remains important in first-line therapy of AL amyloidosis with symptomatic myeloma (EHA-ISA 2023; NCCN not checked).",acc:"—"},
+{y:2014,n:"Renal staging and response (Palladini)",s:"risk",ph:"Prognostic model and response criteria",d:"Newly diagnosed patients from Pavia (461, testing) and Heidelberg (271, validation)",ep:"Progression to dialysis",
+ r:"Proteinuria >5 g/24 h and eGFR <50 mL/min predicted dialysis best. Neither: low risk (0% and 4% at 3 years in the two cohorts); both: high risk (60% and 85%). Renal progression: ≥25% fall in eGFR. Renal response: ≥30% fall in proteinuria, or below 0.5 g/24 h, without renal progression. Very good partial or complete hematologic response at 6 months improved renal outcome",N:"732 (461 + 271)",hr:"not applicable",fu:"not reported in abstract",
+ c:"Blood 2014;124:2325",p:25115890,
+ b:"The kidney is involved in about 70% of patients, but no validated renal staging or response criteria existed.",
+ i:"The renal stages and renal response and progression criteria used in trials and practice.",
+ q:"Binary response; graded renal criteria were later proposed (Muchtar, JAMA Oncol 2024).",
+ cm:[[25301329,"Dispenzieri A, Blood 2014","Renal risk and response in amyloidosis"]],
+ reg:"Not applicable.",gl:"Standard renal staging and response criteria in trials (NCCN not checked).",acc:"—"},
+{y:2015,n:"t(11;14) and bortezomib (Bochtler)",s:"risk",ph:"Cohort study (cytogenetics)",d:"Interphase FISH in 101 consecutive patients treated first-line with bortezomib-dexamethasone, ineligible for high-dose therapy, at Heidelberg; validated in 32 patients treated with bortezomib, cyclophosphamide and dexamethasone",ep:"Hematologic event-free survival, OS and response by FISH abnormality",
+ r:"With vs without t(11;14): median hematologic event-free survival 3.4 vs 8.8 months, OS 8.7 vs 40.7 months, very good partial response or better 23% vs 47%. t(11;14) was independently adverse for hematologic event-free survival (HR 2.94) and OS (HR 3.13). The myeloma high-risk abnormalities (t(4;14), t(14;16), del(17p), gain 1q21) were not adverse with bortezomib",N:"101 (plus 32 for validation)",hr:"2.94 (hematologic event-free survival); 3.13 (OS)",fu:"not reported in abstract",
+ c:"J Clin Oncol 2015;33:1371",p:25779559,
+ b:"The same group had found t(11;14) to be favourable with melphalan-dexamethasone; t(11;14) is the commonest abnormality in AL amyloidosis.",
+ i:"Made FISH part of the baseline work-up, because t(11;14) predicts a poorer result with bortezomib and, later, good responses to venetoclax.",
+ q:"Single-centre and before daratumumab, whose activity does not appear to depend on t(11;14); no randomized trial has yet assigned treatment by FISH.",
+ cm:[],
+ reg:"Not applicable.",gl:"t(11;14) is present in about half of patients and CyBorD may be less effective; venetoclax is an option at relapse with t(11;14) (EHA-ISA 2023; NCCN not checked).",acc:"—"},
+{y:2019,n:"Boston University BNP staging (Lilleness)",s:"risk",ph:"Prognostic model",d:"Derivation in 249 consecutive patients with BNP, NT-proBNP and troponin I measured together; survival tested in a complementary cohort of 592 patients with 10 years of follow-up",ep:"Overall survival",
+ r:"BNP >81 pg/mL best matched Mayo 2004 stage and identified cardiac involvement. Stages by BNP >81 pg/mL and troponin I >0.1 ng/mL agreed with Mayo 2004 (κ 0.854). In the survival cohort, stages I, II, III and IIIb (25%, 44%, 15%, 16%) had median survival not reached, 9.4, 4.3 and 1 year",N:"249 (derivation) + 592 (survival)",hr:"not applicable",fu:"10 years (survival cohort)",
+ c:"Blood 2019;133:215",p:30333122,
+ b:"Mayo staging needs NT-proBNP, which many centres, especially in the US, did not offer.",
+ i:"Gave centres that measure BNP an equivalent staging system.",
+ q:"Single-centre derivation; BNP thresholds depend on the assay and on kidney function.",
+ cm:[[30655301,"Venner CP, Blood 2019","AL amyloidosis cardiac staging updated using BNP"]],
+ reg:"Not applicable.",gl:"An alternative where NT-proBNP is not available (NCCN not checked).",acc:"—"},
+{y:2021,n:"MRD by next-generation flow (Palladini)",s:"risk",ph:"Cohort study",d:"Minimal residual disease by next-generation flow cytometry in 92 patients in hematologic complete response",ep:"Organ response and hematologic progression by MRD status",
+ r:"MRD persisted in 54% of patients in complete response (median 0.03% abnormal plasma cells). Undetectable MRD was associated with more renal (90% vs 62%) and cardiac responses (95% vs 75%); hematologic progression at 1 year 0% with undetectable MRD vs 25% with persistent MRD",N:"92",hr:"not reported in abstract",fu:"not reported in abstract",
+ c:"Blood Cancer J 2021;11:34",p:33594045,
+ b:"Even complete hematologic response does not always bring organ recovery, perhaps because a small clone persists.",
+ i:"Supports MRD testing in complete responders, especially when organs have not recovered.",
+ q:"Whether further treatment of MRD-positive patients in complete response improves outcome has not been tested.",
+ cm:[],
+ reg:"Not applicable.",gl:"MRD negativity cannot be proposed as the goal of therapy in all patients; consolidation may be considered in very good partial or complete response with persistent MRD and no organ response (EHA-ISA 2023; NCCN not checked).",acc:"—"},
+{y:2023,n:"Graded cardiac response criteria (Muchtar)",s:"risk",ph:"Response criteria (multicentre validation)",d:"651 patients with at least a hematologic partial response and evaluable cardiac involvement; four levels of response by depth of NT-proBNP or BNP fall, as best response and at 6, 12 and 24 months",ep:"Overall survival",
+ r:"Best cardiac complete response 16%, very good partial response 26.4%, partial response 22.9%, no response 34.7%. Cardiac complete response more frequent in stage II than IIIa and IIIb (22% vs 13.5% vs 3.2%). 5-year OS 93%, 79%, 65% and 33% by level; four levels predicted survival better than two from 12 months",N:"651",hr:"not reported in abstract",fu:"not reported in abstract",
+ c:"J Clin Oncol 2023;41:1393",p:36215675,
+ b:"Cardiac response was binary, and earlier single-centre work had suggested depth matters.",
+ i:"Graded cardiac response, now reported in trials, and evidence that diagnosis at an earlier stage makes deep cardiac response more likely.",
+ q:"Retrospective; natriuretic peptides are affected by kidney function and atrial fibrillation; imaging-based response is not included.",
+ cm:[],
+ reg:"Not applicable.",gl:"Not yet in the EHA-ISA 2023 guideline (NCCN not checked).",acc:"—"},
+{y:2024,n:"Extracellular volume by cardiac MRI (Porcari)",s:"risk",ph:"Cohort study (prospective imaging)",d:"Consecutive patients newly diagnosed with AL amyloidosis at the UK National Amyloidosis Centre (2015–2021) with echocardiography, biomarkers and cardiac MRI with extracellular volume (ECV) mapping at diagnosis",ep:"All-cause mortality and the hematologic response needed by ECV group",
+ r:"ECV was independently associated with mortality over a median of 40.5 months. At 6 months, survival did not depend on hematologic response when ECV was <0.30, needed at least partial response with ECV 0.31–0.40, and needed complete response with ECV >0.40. With ECV >0.40, deep response at 1 month was associated with better survival than at 6 months",N:"560",hr:"not reported in abstract",fu:"40.5 mo",
+ c:"JAMA Cardiol 2024;9:982",p:39167388,
+ b:"Treatment targets were the same for every patient, whatever the amount of cardiac amyloid, and biomarkers measure cardiac strain rather than amyloid load.",
+ i:"Suggests that the amount of cardiac amyloid, measured by ECV, sets how deep and how fast the hematologic response must be, a basis for individualised targets.",
+ q:"Single centre; ECV-guided treatment has not been tested prospectively, and MRI is not available everywhere.",
+ cm:[],
+ reg:"Not applicable.",gl:"Not yet in guidelines (NCCN not checked).",acc:"—"},
+{y:2026,n:"AL-ISS with stage IIIC (Khwaja)",s:"risk",ph:"Prognostic model (international validation)",d:"AL International Staging System derived at the UK National Amyloidosis Centre (2015–2019) and validated in cohorts from Greece, Italy, the Netherlands, Switzerland, the US and the UK (2015–2024), adding echocardiographic longitudinal strain to NT-proBNP and high-sensitivity troponin T",ep:"Overall survival",
+ r:"Longitudinal strain ≥−9%, NT-proBNP (332 and 8500 ng/L) and high-sensitivity troponin T ≥50 ng/L were independent; stages I, II, IIIA, IIIB and IIIC. Validation cohort (43% treated first-line with daratumumab): 17%, 41%, 29%, 9% and 5%; median OS not reached for stages I–II, 67, 26 and 7 months for IIIA, IIIB and IIIC. Among daratumumab-treated patients, 1-year OS 53% in IIIC vs 68% in IIIB. Harrell C 0.69",N:"2,493 (573 derivation, 1,920 validation)",hr:"not applicable",fu:"34 mo",
+ c:"J Clin Oncol 2026;44:311",p:41353737,
+ b:"Outcomes improved with modern therapy and daratumumab, weakening the separation of the older stages, and stage IIIb remained heterogeneous.",
+ i:"A staging system for the daratumumab era that identifies an ultra-high-risk stage IIIC (about 5% of patients).",
+ q:"Requires strain imaging, which depends on the operator and vendor; whether IIIC should change treatment has not been tested.",
+ cm:[],
+ reg:"Not applicable.",gl:"Too recent for guidelines (NCCN not checked).",acc:"—"},
+
+// ---------- Newly diagnosed: plasma cell-directed therapy & transplantation ----------
+{y:2004,n:"High-dose melphalan and transplantation, 8-year series (Skinner)",s:"front",ph:"Cohort study (single centre)",d:"701 consecutive new patients at the Boston University referral clinic; high-dose intravenous melphalan (100–200 mg/m²) and autologous stem cell transplantation for those meeting eligibility criteria",ep:"Survival and organ response",
+ r:"394 (56%) were eligible and 312 started treatment. Median survival 4.6 years among those treated; complete hematologic response at 1 year 40%, associated with longer survival and greater organ improvement. Mortality within 100 days 13%, highest with cardiomyopathy",N:"701 (312 treated)",hr:"not applicable",fu:"8-year study period",
+ c:"Ann Intern Med 2004;140:85",p:14734330,
+ b:"Oral melphalan and prednisone gave few responses; transplantation was being adapted from myeloma.",
+ i:"The largest early series of transplantation, which established deep hematologic response as the route to organ recovery and long survival, and also showed the early mortality of transplanting patients with cardiac disease.",
+ q:"Highly selected patients, with no comparison group; the 13% early mortality shaped later eligibility rules.",
+ cm:[],
+ reg:"Not applicable (melphalan is not specifically approved for AL amyloidosis).",gl:"Eligibility, risk-adapted melphalan dosing and supportive care are set out in the EHA-ISA 2022 transplant guideline (abstract checked); transplantation remains important first-line in AL with symptomatic myeloma and in IgM-related AL amyloidosis (EHA-ISA 2023; NCCN not checked).",acc:"Transplant coverage generally follows NCCN listing (NCCN not checked)."},
+{y:2004,n:"Melphalan-dexamethasone (Palladini)",s:"front",ph:"Phase 2",d:"Oral melphalan with high-dose dexamethasone in 46 patients ineligible for stem cell transplantation",ep:"Hematologic and organ response",
+ r:"Hematologic response 67%, complete remission 33%; organ improvement in 22 of the responders (48%). Severe adverse events in 5 patients (11%), 3 hospitalised; no treatment-related deaths",N:"46",hr:"not applicable (single arm)",fu:"not reported in abstract",
+ c:"Blood 2004;103:2936",p:15070667,
+ b:"Melphalan-prednisone was slow and gave few responses; high-dose dexamethasone gave rapid responses.",
+ i:"Defined MDex, the standard for transplant-ineligible patients for a decade and the control arm of later randomized trials.",
+ q:"A small, single-centre study; full doses of dexamethasone are poorly tolerated in patients with advanced cardiac disease.",
+ cm:[],
+ reg:"Not applicable.",gl:"Bortezomib-MDex (VMDex) is an alternative first-line regimen in stage I–IIIa (EHA-ISA 2023; NCCN not checked).",acc:"Off-label; inexpensive."},
+{y:2007,n:"High-dose melphalan vs MDex (Jaccard)",s:"front",ph:"Phase 3",d:"Multicentre randomized trial: high-dose intravenous melphalan with autologous stem cell rescue vs oral melphalan with high-dose dexamethasone, in newly diagnosed patients aged 18–70",ep:"Overall survival (intention to treat)",
+ r:"Median OS 22.2 months with high-dose melphalan vs 56.9 months with MDex (P=0.04). OS similar in high-risk patients; in low-risk patients, 3-year OS 58% vs 80% (P=0.13, not significant)",N:"100 (50 per arm)",hr:"not reported in abstract",fu:"3 years",
+ c:"N Engl J Med 2007;357:1083",p:17855669,
+ b:"Single-centre series suggested better responses and survival with transplantation than with standard chemotherapy, but there had been no randomized comparison.",
+ i:"The only completed randomized trial of transplantation in AL amyloidosis; it found no advantage and made MDex the standard for most patients in Europe.",
+ q:"High treatment-related mortality (24%, as cited by the CIBMTR analysis) and patients who never reached transplantation weighed against the transplant arm; with today's selection and lower early mortality, the question is being asked again (SWOG S2213).",
+ cm:[],
+ reg:"Not applicable.",gl:"Only about 20% of newly diagnosed patients are eligible for transplantation (EHA-ISA 2023; NCCN not checked).",acc:"—"},
+{y:2014,n:"Bortezomib-dexamethasone induction before transplantation (Huang)",s:"front",ph:"Randomized trial (single centre)",d:"Two cycles of bortezomib-dexamethasone followed by high-dose melphalan and stem cell transplantation vs transplantation alone, in newly diagnosed patients, all with renal involvement",ep:"Hematologic and organ response",
+ r:"Hematologic response at 12 months 85.7% vs 53.5%; complete remission at 12 and 24 months 67.9% and 70% vs 35.7% and 35% (P=0.03); 24-month survival 95.0% vs 69.4% (P=0.03). Treatment-related mortality 3.6% overall",N:"56 (28 per arm)",hr:"not reported in abstract",fu:"28 mo",
+ c:"BMC Med 2014;12:2",p:24386911,
+ b:"Bortezomib was active in AL amyloidosis, but its role before transplantation was unknown.",
+ i:"The only randomized evidence that induction before transplantation deepens response; induction became the usual practice.",
+ q:"Small, single-centre and mostly renal disease; the survival difference rests on few events.",
+ cm:[],
+ reg:"Not applicable.",gl:"The role of induction before transplantation is addressed in the EHA-ISA 2022 transplant guideline (abstract checked; recommendation not checked; NCCN not checked).",acc:"Off-label."},
+{y:2015,n:"CyBorD, European study (Palladini)",s:"front",ph:"Cohort study (multicentre)",d:"Frontline cyclophosphamide, bortezomib and dexamethasone in 230 patients from European centres",ep:"Hematologic and organ response, survival",
+ r:"Hematologic response 60% (62% in 201 patients with measurable disease), very good partial response or better 43%; cardiac response 17%, renal response 25%. Stage III with NT-proBNP >8500 ng/L: response 42%, very good partial response or better 23%, median survival 7 months, but 2-year survival 67% in responders",N:"230",hr:"not applicable",fu:"not reported in abstract",
+ c:"Blood 2015;126:612",p:25987656,
+ b:"Small series of CyBorD had shown high response rates, with uncertain benefit in advanced cardiac disease.",
+ i:"Confirmed CyBorD as the standard frontline backbone in a large population; it became the control arm of ANDROMEDA.",
+ q:"Retrospective; modest organ responses and poor outcomes in stage IIIb left room for better therapy.",
+ cm:[[26228167,"Cibeira MT, Blood 2015","Upfront CyBorD in AL amyloidosis"]],
+ reg:"Not applicable (bortezomib is not specifically approved for AL amyloidosis).",gl:"CyBorD is an alternative when daratumumab is unavailable; dose-modified CyBorD in stage IIIb (EHA-ISA 2023; NCCN not checked).",acc:"Off-label; widely covered."},
+{y:2015,n:"CIBMTR transplantation trends (D'Souza)",s:"front",ph:"Registry study",d:"1,536 patients with AL amyloidosis transplanted at 134 North American centres (1995–2012), in three periods",ep:"Early mortality and overall survival",
+ r:"Mortality at 30 and 100 days fell from 11% and 20% (1995–2000) to 5% and 11% (2001–2006) and 3% and 5% (2007–2012); 5-year OS 55%, 61% and 77%. Centres performing more than four AL transplants a year had better survival; cardiac involvement predicted early mortality",N:"1,536",hr:"not reported in abstract",fu:"not reported in abstract",
+ c:"J Clin Oncol 2015;33:3741",p:26371138,
+ b:"Early mortality of 24% after transplantation in the randomized comparison with oral chemotherapy had limited its use.",
+ i:"Showed that careful selection and experience have made transplantation safe in eligible patients, and reopened the question of a randomized comparison.",
+ q:"Registry data with selection bias; only transplanted patients, so no comparison with non-transplant therapy.",
+ cm:[[26371139,"Bar N, J Clin Oncol 2015","Stem-Cell Transplantation for Amyloidosis: Improving Outcomes but Not for the Faint of Heart"]],
+ reg:"Not applicable.",gl:"Transplantation for carefully selected patients (EHA-ISA 2022 transplant guideline, abstract checked; NCCN not checked).",acc:"—"},
+{y:2020,n:"BMDex vs MDex (Kastritis)",s:"front",ph:"Phase 3",d:"Open-label, multicentre randomized trial of melphalan-dexamethasone with or without bortezomib, stratified by cardiac stage; stage IIIb excluded",ep:"Hematologic response at 3 months",
+ r:"Hematologic response at 3 months 79% vs 52% (P=0.002); very good partial or complete response 64% vs 39%; overall survival improved, with mortality halved (HR 0.50). Grade 3–4 adverse events in 20% vs 10% of cycles",N:"109",hr:"0.50 (OS)",fu:"not reported in abstract",
+ c:"J Clin Oncol 2020;38:3252",p:32730181,
+ b:"MDex was a standard, and bortezomib was widely added to alkylator regimens without randomized proof.",
+ i:"The first controlled study to show a survival advantage in AL amyloidosis, establishing bortezomib in first-line therapy.",
+ q:"Enrolment took five years; stage IIIb excluded; the comparator is now rarely used, as daratumumab-VCd has become the standard.",
+ cm:[[32749940,"Pratt G, J Clin Oncol 2020","Bortezomib, Melphalan, Dexamethasone: A New Standard of Care for AL Amyloidosis?"]],
+ reg:"Not approved for AL amyloidosis.",gl:"VMDex is an alternative first-line regimen in stage I–IIIa (EHA-ISA 2023; NCCN not checked).",acc:"Off-label."},
+{y:2021,n:"ANDROMEDA (Kastritis)",s:"front",ph:"Phase 3",d:"Six cycles of bortezomib, cyclophosphamide and dexamethasone (VCd) with or without subcutaneous daratumumab, followed by daratumumab every 4 weeks for up to 24 cycles, in newly diagnosed patients; stage IIIb excluded",ep:"Hematologic complete response",
+ r:"Hematologic complete response 53.3% vs 18.1% (relative risk 2.9); major organ deterioration or hematologic progression-free survival favoured daratumumab (HR 0.58); cardiac responses at 6 months 41.5% vs 22.2%, renal 53.0% vs 23.9%. Final analysis (61.4 mo): complete response 59.5% vs 19.2%; MOD-PFS HR 0.44 and OS HR 0.62; cardiac and renal responses 2 to 3 times more frequent",N:"388",hr:"0.58 (MOD-PFS); final: 0.44 (MOD-PFS), 0.62 (OS)",fu:"11.4 mo; 61.4 mo (final analysis)",
+ c:"N Engl J Med 2021;385:46",p:34192431,extra:["Final survival analysis, Blood 2026",42118698],
+ b:"Daratumumab had given rapid, deep responses in relapsed AL amyloidosis, and VCd was the most widely used frontline regimen.",
+ i:"The first approved therapy for AL amyloidosis and the current standard first-line treatment; the final analysis showed that deeper hematologic response translated into longer survival.",
+ q:"Stage IIIb patients, those at greatest risk, were excluded; whether transplantation adds to daratumumab-VCd, and how long to continue daratumumab, are untested.",
+ cm:[[34345020,"Onuora S, Nat Rev Rheumatol 2021","New treatments for amyloidosis"],[42658522,"Chakraborty R, Blood 2026","Daratumumab in AL amyloidosis: survival, cardiac CR, and beyond"]],
+ reg:"FDA accelerated approval of daratumumab-hyaluronidase with VCd for newly diagnosed AL amyloidosis (January 15, 2021), based on hematologic complete response; traditional approval (November 19, 2025), based on MOD-PFS and OS in the final analysis. Not recommended for NYHA class IIIB or IV or Mayo stage IIIB disease outside controlled trials. European Commission approval in June 2021.",gl:"Daratumumab-CyBorD is the preferred first-line regimen in stage I–IIIa without significant neuropathy (EHA-ISA 2023; NCCN not checked).",acc:"On-label."},
+{y:2026,n:"EMN22, daratumumab in stage IIIb (Kastritis)",s:"front",ph:"Phase 2",d:"Prospective European Myeloma Network trial of daratumumab monotherapy for up to 2 years in previously untreated patients with Mayo 2004/European stage IIIB disease; bortezomib and dexamethasone could be added for inadequate response after 3 cycles",ep:"6-month overall survival",
+ r:"6-month OS 65% (95% CI 48.2–77.6), median OS 10.4 months; best hematologic response by 6 months 75% (very good partial response or better 47.5%, complete 12.5%); median time to first response 1 week. Cardiac response at 6 months 30%. Ten patients (25%) needed bortezomib-dexamethasone",N:"40",hr:"not applicable (single arm)",fu:"not reported in abstract",
+ c:"Blood 2026;148:1973",p:42296025,
+ b:"Patients with stage IIIb disease were excluded from ANDROMEDA and had a median survival of a few months; daratumumab acts within days.",
+ i:"The first prospective trial dedicated to stage IIIb, supporting daratumumab as the backbone in advanced cardiac disease.",
+ q:"Small and single-arm, compared only with historical cohorts; early cardiac deaths remain frequent.",
+ cm:[[42879177,"Dispenzieri A, Blood 2026","The enigma of rapid response vs safety in AL amyloidosis"]],
+ reg:"Daratumumab-hyaluronidase is not recommended for Mayo stage IIIB disease outside controlled trials (US prescribing information).",gl:"Daratumumab alone was already listed for stage IIIb before this trial was published, and is preferred with significant neuropathy (EHA-ISA 2023; NCCN not checked).",acc:"Off-label for stage IIIB."},
+
+// ---------- Relapsed disease ----------
+{y:2007,n:"Lenalidomide-dexamethasone (Sanchorawala)",s:"rel",ph:"Phase 2",d:"Lenalidomide alone and with dexamethasone in 34 patients, most previously treated",ep:"Hematologic response and tolerability",
+ r:"25 mg/day was poorly tolerated; 15 mg/day was generally tolerated. Among 24 evaluable patients, hematologic complete response 29% and partial response 38% (overall 67%). Fatigue and myelosuppression (35%) were the commonest adverse events; thromboembolism (9%) the most serious",N:"34",hr:"not applicable (single arm)",fu:"not reported in abstract",
+ c:"Blood 2007;109:492",p:16960148,
+ b:"Thalidomide and lenalidomide were active in myeloma; thalidomide was poorly tolerated in AL amyloidosis.",
+ i:"Established lenalidomide-dexamethasone at a reduced dose as a regimen for relapsed AL amyloidosis.",
+ q:"Lenalidomide can raise NT-proBNP and worsen kidney function, which complicates cardiac and renal response assessment.",
+ cm:[],
+ reg:"Not approved for AL amyloidosis.",gl:"After a proteasome inhibitor, in IMiD-naive patients: lenalidomide-dexamethasone with or without cyclophosphamide (EHA-ISA 2023; NCCN not checked).",acc:"Off-label."},
+{y:2011,n:"Bortezomib, once vs twice weekly (Reece)",s:"rel",ph:"Phase 1/2",d:"Single-agent bortezomib at the doses chosen in phase 1: 1.6 mg/m² once weekly or 1.3 mg/m² twice weekly, in relapsed AL amyloidosis",ep:"Hematologic response and safety",
+ r:"Hematologic response 68.8% (once weekly) and 66.7% (twice weekly), complete response 37.5% and 24.2%; 1-year hematologic progression-free 72.2% and 74.6%, 1-year survival 93.8% and 84.0%. Organ responses (all 70 patients): renal 29%, cardiac 13%. Final analysis: 4-year OS 75.0% and 63.0%",N:"70",hr:"not applicable (non-randomized)",fu:"not reported in abstract; about 3 additional years (final analysis)",
+ c:"Blood 2011;118:865",p:21562045,extra:["Long-term follow-up, Blood 2014",25202139],
+ b:"Bortezomib was active in myeloma and in small series of AL amyloidosis.",
+ i:"The first prospective study of bortezomib in AL amyloidosis; it supported once-weekly dosing, which became standard.",
+ q:"Relapsed patients only; the arms were not randomized.",
+ cm:[[21799093,"Dimopoulos MA, Blood 2011","Bortezomib for AL amyloidosis: moving forward"]],
+ reg:"Not approved for AL amyloidosis.",gl:"Proteasome inhibitor-naive patients or those with a prolonged response to one: CyBorD or VMDex; retreatment encouraged after a prolonged response without neuropathy (EHA-ISA 2023; NCCN not checked).",acc:"Off-label."},
+{y:2012,n:"Pomalidomide-dexamethasone (Dispenzieri)",s:"rel",ph:"Phase 2",d:"Oral pomalidomide with weekly dexamethasone in 33 previously treated patients with reasonably preserved organ function",ep:"Hematologic response",
+ r:"Confirmed hematologic response 48%, median time to response 1.9 months; organ improvement in 5 patients. Median OS 28 and PFS 14 months; 1-year OS 76% and PFS 59%. Hematologic and NT-proBNP responses were discordant",N:"33",hr:"not applicable (single arm)",fu:"not reported in abstract",
+ c:"Blood 2012;119:5397",p:22493299,
+ b:"Lenalidomide was active in relapsed AL amyloidosis; pomalidomide was active in relapsed myeloma.",
+ i:"Established pomalidomide-dexamethasone as an option at relapse, including after lenalidomide.",
+ q:"NT-proBNP can rise with IMiDs without cardiac progression, which complicates assessment.",
+ cm:[],
+ reg:"Not approved for AL amyloidosis.",gl:"Lenalidomide-refractory disease: pomalidomide-dexamethasone or bendamustine (EHA-ISA 2023; NCCN not checked).",acc:"Off-label."},
+{y:2020,n:"Daratumumab monotherapy, relapsed (Roussel)",s:"rel",ph:"Phase 2",d:"Six 28-day cycles of intravenous daratumumab in 40 previously treated patients with dFLC >50 mg/L, at 15 centres",ep:"Hematologic response",
+ r:"Hematologic response in 22 patients; very good partial response or better 47.5%; median time to response 1 week; patients with no response after 4 doses rarely responded later. Renal responses in 8 and cardiac in 7 patients. 2-year OS 74%",N:"40",hr:"not applicable (single arm)",fu:"26 mo",
+ c:"Blood 2020;135:1531",p:32108228,
+ b:"Daratumumab was approved in myeloma, and clonal plasma cells in AL amyloidosis express CD38.",
+ i:"With the parallel US trial, showed rapid, deep responses with daratumumab alone, the basis for ANDROMEDA.",
+ q:"Time-limited treatment; only patients with measurable dFLC.",
+ cm:[[32353125,"Dispenzieri A, Blood 2020","AL patients don't dare go without dara"]],
+ reg:"Daratumumab is approved only with VCd for newly diagnosed AL amyloidosis; monotherapy at relapse is off-label.",gl:"After a proteasome inhibitor, in daratumumab-naive patients: daratumumab alone or in combination (EHA-ISA 2023; NCCN not checked).",acc:"Off-label."},
+{y:2020,n:"Daratumumab monotherapy, relapsed (Sanchorawala)",s:"rel",ph:"Phase 2",d:"Intravenous daratumumab 16 mg/kg (weekly for 8 weeks, every 2 weeks to week 24, then every 4 weeks) for up to 24 months in 22 previously treated patients",ep:"Safety, tolerability and hematologic response",
+ r:"Complete or very good partial response 86%; median time to first and best response 4 weeks and 3 months. Renal response in 10 of 15 patients (67%), cardiac response in 7 of 14 (50%). No grade 3–4 infusion reactions",N:"22",hr:"not applicable (single arm)",fu:"not reported in abstract",
+ c:"Blood 2020;135:1541",p:31978210,
+ b:"Daratumumab was approved in myeloma; retrospective reports suggested activity in AL amyloidosis.",
+ i:"Confirmed deep responses and organ responses with daratumumab alone.",
+ q:"Small and selected; most patients had had transplantation or a proteasome inhibitor.",
+ cm:[[32353125,"Dispenzieri A, Blood 2020","AL patients don't dare go without dara"]],
+ reg:"Daratumumab is approved only with VCd for newly diagnosed AL amyloidosis; monotherapy at relapse is off-label.",gl:"After a proteasome inhibitor, in daratumumab-naive patients: daratumumab alone or in combination (EHA-ISA 2023; NCCN not checked).",acc:"Off-label."},
+{y:2020,n:"Bendamustine-dexamethasone (Lentzsch)",s:"rel",ph:"Phase 2",d:"Bendamustine 100 mg/m² on days 1 and 2 with weekly dexamethasone 40 mg in 28-day cycles, after at least one previous therapy",ep:"Partial hematologic response or better",
+ r:"Partial response or better 57% (complete 11%, very good partial 18%); organ response 29% of 24 evaluable patients. Median OS 18.2 months, PFS 11.3 months. Therapy-related grade 3–4 adverse events 65%",N:"31",hr:"not applicable (single arm)",fu:"not reported in abstract",
+ c:"J Clin Oncol 2020;38:1455",p:32083996,
+ b:"Bendamustine was active in myeloma and in lymphoplasmacytic disorders.",
+ i:"An option for relapsed disease, particularly for IgM-associated AL amyloidosis with a lymphoplasmacytic clone.",
+ q:"Small; modest depth of response.",
+ cm:[],
+ reg:"Not approved for AL amyloidosis.",gl:"Lenalidomide-refractory disease; its main role is in IgM-related AL amyloidosis, where rituximab-bendamustine is a preferred option (EHA-ISA 2023; NCCN not checked).",acc:"Off-label."},
+{y:2021,n:"Venetoclax, t(11;14) (Premkumar)",s:"rel",ph:"Cohort study (retrospective, multicentre)",d:"Venetoclax-containing regimens in 43 previously treated patients at 14 centres in the US and Europe; 31 with t(11;14)",ep:"Hematologic response and PFS",
+ r:"Hematologic response 68%, very good partial or complete 63%. With vs without t(11;14): response 81% vs 40%, very good partial or complete 78% vs 30%; median PFS not reached vs 6.7 months (HR 0.14). Organ response 38%; grade ≥3 adverse events 19%",N:"43",hr:"0.14 (PFS, t(11;14) vs not)",fu:"not reported in abstract",
+ c:"Blood Cancer J 2021;11:10",p:33431806,
+ b:"About half of AL clones carry t(11;14), which predicts sensitivity to BCL2 inhibition in myeloma and a poorer result with bortezomib in AL amyloidosis.",
+ i:"Made venetoclax a widely used option for relapsed disease with t(11;14).",
+ q:"Retrospective and heterogeneous; prospective trials are ongoing, and in relapsed myeloma venetoclax was associated with more deaths overall in a randomized trial (BELLINI).",
+ cm:[],
+ reg:"Not approved for AL amyloidosis.",gl:"Venetoclax for relapse with t(11;14), alone or with bortezomib-dexamethasone; prospective evaluation urgently needed (EHA-ISA 2023; NCCN not checked).",acc:"Off-label."},
+{y:2022,n:"TOURMALINE-AL1 (Dispenzieri)",s:"rel",ph:"Phase 3",d:"Ixazomib-dexamethasone vs physician's choice (dexamethasone with or without melphalan, cyclophosphamide, thalidomide or lenalidomide) after 1–2 previous lines; the first phase 3 trial in relapsed disease",ep:"Hematologic response rate; 2-year vital organ deterioration or death (only the first tested at this analysis)",
+ r:"Best hematologic response 53% vs 51% (P=0.76); complete response 26% vs 18%. Median time to vital organ deterioration or death 34.8 vs 26.1 months (HR 0.53). Median treatment duration 11.7 vs 5.0 months",N:"168",hr:"0.53 (vital organ deterioration or death)",fu:"not reported in abstract",
+ c:"Leukemia 2022;36:225",p:34168284,
+ b:"No randomized trial existed in relapsed AL amyloidosis; ixazomib is an oral proteasome inhibitor.",
+ i:"Missed its first primary end point, but all time-to-event results favoured ixazomib; it showed that randomized trials in relapsed disease are feasible.",
+ q:"Few patients had received bortezomib before, which limits relevance now; the comparator was heterogeneous.",
+ cm:[],
+ reg:"Not approved for AL amyloidosis.",gl:"Ixazomib-dexamethasone for proteasome inhibitor-naive patients or those with a prolonged response to one (EHA-ISA 2023; NCCN not checked).",acc:"Off-label."},
+{y:2025,n:"SWOG S1702, isatuximab (Parker)",s:"rel",ph:"Phase 2",d:"Cooperative-group trial of isatuximab 20 mg/kg (weekly in cycle 1, then every 2 weeks through cycle 24) in relapsed AL amyloidosis",ep:"Hematologic response",
+ r:"Among 35 evaluable patients, hematologic response 77.1%, very good partial response or better 57%; median time to partial response 1.1 months. Renal response 7 of 14 (50%), cardiac response 8 of 14 (57%). Treatment-related grade ≥3 lymphopenia 8.5%, infection 6%",N:"43 (35 evaluable)",hr:"not applicable (single arm)",fu:"not reported in abstract",
+ c:"Blood 2025;146:2507",p:40925099,
+ b:"Daratumumab was active in relapsed AL amyloidosis; isatuximab binds a different CD38 epitope.",
+ i:"A second anti-CD38 antibody with substantial activity in relapsed disease.",
+ q:"Few patients had received daratumumab before, so activity after daratumumab is not established.",
+ cm:[[41264329,"Muchtar E, Blood 2025","Isatuximab: surface strike, deep response in AL amyloidosis"]],
+ reg:"Not approved for AL amyloidosis.",gl:"Isatuximab is listed, at the lowest evidence grade, for daratumumab-naive patients after a proteasome inhibitor; the guideline predates this trial (EHA-ISA 2023; NCCN not checked).",acc:"Off-label."},
+
+// ---------- Fibril-directed therapy ----------
+{y:2016,n:"NEOD001 (birtamimab) phase 1/2 (Gertz)",s:"fib",ph:"Phase 1/2",d:"Monthly intravenous NEOD001, an antibody against misfolded light chain aggregates, at 0.5–24 mg/kg (3+3 design) in patients with persistent organ dysfunction after at least a partial hematologic response",ep:"Maximum tolerated and recommended dose; safety",
+ r:"No drug-related serious adverse events, dose-limiting toxicities or antidrug antibodies; recommended dose 24 mg/kg every 28 days. Cardiac response in 8 of 14 evaluable patients (57%) and renal response in 9 of 15 (60%)",N:"27",hr:"not applicable (single arm)",fu:"not reported in abstract",
+ c:"J Clin Oncol 2016;34:1097",p:26858336,
+ b:"Chemotherapy stops new light chain production but does not remove deposited amyloid.",
+ i:"The first clinical study of an antibody directed at amyloid deposits; the organ responses led to the phase 3 VITAL trial.",
+ q:"Organ responses without a control group in patients already responding to chemotherapy; the phase 3 trials did not confirm a benefit.",
+ cm:[],
+ reg:"Not approved; development stopped in 2025 after AFFIRM-AL.",gl:"Anti-fibril antibodies are not recommended outside clinical trials (EHA-ISA 2023; NCCN not checked).",acc:"—"},
+{y:2022,n:"Doxycycline with CyBorD (Shen)",s:"fib",ph:"Randomized trial (multicentre)",d:"Open-label randomized trial in Mayo 2004 stage II–III disease: doxycycline 100 mg twice daily with 9 cycles of CyBorD vs CyBorD alone",ep:"2-year progression-free survival (death, hematologic or organ progression)",
+ r:"Progression in 45.7% vs 42.9%; PFS HR 0.97 (95% CI 0.59–1.60; P=0.91). No differences in cardiac PFS (HR 0.91) or OS (HR 1.04); deaths 35.7% in each group",N:"140",hr:"0.97 (PFS); 1.04 (OS)",fu:"24.4 mo",
+ c:"Circulation 2022;145:8",p:34503349,
+ b:"Doxycycline disrupts amyloid fibrils in laboratory models, and a retrospective study had associated it with better survival.",
+ i:"A negative randomized trial; doxycycline should not be given to treat cardiac AL amyloidosis outside trials.",
+ q:"Open-label; it does not exclude a small effect or benefit with other backbones.",
+ cm:[[34965166,"Grodin JL, Circulation 2022","Continued Refinement of the Treatment for Light-Chain Cardiac Amyloidosis"]],
+ reg:"Not approved for AL amyloidosis.",gl:"Lowest evidence grade; the guideline notes that this randomized trial failed to show benefit (EHA-ISA 2023; NCCN not checked).",acc:"—"},
+{y:2023,n:"VITAL, birtamimab (Gertz)",s:"fib",ph:"Phase 3",d:"Double-blind, placebo-controlled trial of birtamimab 24 mg/kg every 28 days with standard of care in newly diagnosed, treatment-naive patients",ep:"Time to all-cause mortality or adjudicated cardiac hospitalization ≥91 days after the first infusion",
+ r:"Stopped early for futility: no difference in the primary end point (HR 0.826; P=0.303). Post hoc, in Mayo stage IV, time to all-cause mortality improved at 9 months (HR 0.413; 74% vs 49% alive). Adverse event rates similar",N:"260",hr:"0.826 (primary end point)",fu:"not reported in abstract",
+ c:"Blood 2023;142:1208",p:37366170,
+ b:"Organ responses in the phase 1/2 study.",
+ i:"Negative overall; the post hoc stage IV signal led to AFFIRM-AL, which did not confirm it (reported by the sponsor in May 2025, not yet peer-reviewed).",
+ q:"Why a post hoc survival signal was not confirmed, and whether any patient group benefits from this class.",
+ cm:[[37796521,"Huart A, Blood 2023","Birtamimab: a new amyloidosis treatment?"]],
+ reg:"Not approved. AFFIRM-AL (NCT04973137) in Mayo stage IV disease did not meet its primary end point of time to all-cause mortality (HR 0.915, reported May 2025; not yet peer-reviewed), and development was stopped.",gl:"Anti-fibril antibodies are not recommended outside clinical trials (EHA-ISA 2023; NCCN not checked).",acc:"—"},
+{y:2026,n:"CARES, anselamimab (Wechalekar)",s:"fib",ph:"Phase 3 (two trials)",d:"Two randomized, placebo-controlled trials in newly diagnosed patients with European modification of Mayo 2004 stage IIIa or IIIb disease: anselamimab, a fibril-binding antibody, or placebo with CyBorD (with or without daratumumab)",ep:"Hierarchical composite of all-cause mortality and cardiovascular hospitalizations (win ratio)",
+ r:"Win ratio 1.11 (P=0.332); all-cause mortality HR 0.80 (P=0.290); cardiovascular hospitalizations 0.59 vs 0.89 per patient-year (P=0.145). In κ isotype (72 patients): win ratio 2.06 (P=0.100), mortality HR 0.38 and hospitalization rate ratio 0.29 (nominal P values), with better Kansas City Cardiomyopathy Questionnaire scores; no benefit with λ isotype. Safety similar between arms",N:"406",hr:"0.80 (all-cause mortality)",fu:"not reported in abstract",
+ c:"J Clin Oncol 2026;44:1899",p:42212672,
+ b:"Fibril-directed antibodies aim to remove deposited amyloid, the cause of organ failure, while chemotherapy stops new production; birtamimab had failed.",
+ i:"Did not meet its primary end point; the κ subgroup result is hypothesis-generating and needs confirmation.",
+ q:"Is the κ signal real or a chance finding in a subgroup of 72 patients, and why would isotype matter for a fibril-binding antibody?",
+ cm:[],
+ reg:"Not approved; regulatory status after CARES: verify.",gl:"Anti-fibril antibodies are not recommended outside clinical trials; the guideline predates this trial (EHA-ISA 2023; NCCN not checked).",acc:"—"}
+];
+const REG = {"Boston University BNP staging (Lilleness)": ["NCT00898235"], "High-dose melphalan vs MDex (Jaccard)": ["NCT00344526"], "Bortezomib-dexamethasone induction before transplantation (Huang)": ["NCT01998503"], "BMDex vs MDex (Kastritis)": ["NCT01277016"], "ANDROMEDA (Kastritis)": ["NCT03201965"], "EMN22, daratumumab in stage IIIb (Kastritis)": ["NCT04131309"], "Bortezomib, once vs twice weekly (Reece)": ["NCT00298766"], "Pomalidomide-dexamethasone (Dispenzieri)": ["NCT00558896"], "Daratumumab monotherapy, relapsed (Roussel)": ["NCT02816476"], "Daratumumab monotherapy, relapsed (Sanchorawala)": ["NCT02841033"], "Bendamustine-dexamethasone (Lentzsch)": ["NCT01222260"], "TOURMALINE-AL1 (Dispenzieri)": ["NCT01659658"], "SWOG S1702, isatuximab (Parker)": ["NCT03499808"], "NEOD001 (birtamimab) phase 1/2 (Gertz)": ["NCT01707264"], "Doxycycline with CyBorD (Shen)": ["NCT03401372"], "VITAL, birtamimab (Gertz)": ["NCT02312206"], "CARES, anselamimab (Wechalekar)": ["NCT04512235", "NCT04504825"]};
+// Full-text links: free full text in PubMed Central where available, otherwise the publisher's page via DOI (from PubMed, Oct 22, 2026).
+const FT = {"Hereditary amyloidosis misdiagnosed as AL (Lachmann)": ["doi", "10.1056/NEJMoa013354", "free"], "Cardiac MRI in cardiac amyloidosis (Maceira)": ["doi", "10.1161/01.CIR.0000152819.97857.9D"], "Abdominal fat aspiration (van Gameren)": ["doi", "10.1002/art.21902"], "Free light chains with immunofixation (Palladini)": ["doi", "10.1373/clinchem.2008.117143", "repo", "http://hdl.handle.net/2434/71838"], "AL vs ATTR cardiac profiles (Rapezzi)": ["doi", "10.1161/CIRCULATIONAHA.108.843334"], "Mass spectrometry typing (Vrana)": ["doi", "10.1182/blood-2009-07-230722", "free"], "Immunohistochemistry typing (Schönland)": ["doi", "10.1182/blood-2011-06-358507", "free"], "Renal amyloidosis typing, 474 cases (Said)": ["pmc", "PMC3805078"], "DPD scintigraphy in AL and ATTR (Hutt)": ["doi", "10.1093/ehjci/jeu107"], "Nonbiopsy diagnosis of cardiac ATTR (Gillmore)": ["doi", "10.1161/CIRCULATIONAHA.116.021612"], "MGUS in ATTR amyloidosis (Phull)": ["pmc", "PMC6157907"], "Mass spectrometry typing, 16,175 samples (Dasari)": ["doi", "10.1016/j.mayocp.2020.06.029", "free"], "ESC position statement on cardiac amyloidosis (Garcia-Pavia)": ["pmc", "PMC8060056"], "Mayo 2004 cardiac staging (Dispenzieri)": ["doi", "10.1200/JCO.2004.03.029", "free"], "Consensus organ involvement and response criteria (Gertz)": ["doi", "10.1002/ajh.20381"], "Revised Mayo 2012 staging (Kumar)": ["pmc", "PMC3675680"], "Hematologic and cardiac response criteria (Palladini)": ["doi", "10.1200/JCO.2011.37.7614"], "European stage IIIb, NT-proBNP >8500 ng/L (Wechalekar)": ["doi", "10.1182/blood-2012-12-473066"], "Marrow plasma cells >10% (Kourelis)": ["pmc", "PMC4881366"], "Renal staging and response (Palladini)": ["doi", "10.1182/blood-2014-04-570010"], "t(11;14) and bortezomib (Bochtler)": ["doi", "10.1200/JCO.2014.57.4947"], "Boston University BNP staging (Lilleness)": ["doi", "10.1182/blood-2018-06-858951", "free"], "MRD by next-generation flow (Palladini)": ["pmc", "PMC7887224"], "Graded cardiac response criteria (Muchtar)": ["pmc", "PMC10489422"], "Extracellular volume by cardiac MRI (Porcari)": ["pmc", "PMC11339700"], "AL-ISS with stage IIIC (Khwaja)": ["pmc", "PMC12834270"], "High-dose melphalan and transplantation, 8-year series (Skinner)": ["doi", "10.7326/0003-4819-140-2-200401200-00008"], "Melphalan-dexamethasone (Palladini)": ["doi", "10.1182/blood-2003-08-2788", "repo", "http://hdl.handle.net/11577/1343402"], "High-dose melphalan vs MDex (Jaccard)": ["doi", "10.1056/NEJMoa070484"], "Bortezomib-dexamethasone induction before transplantation (Huang)": ["pmc", "PMC3895846"], "CyBorD, European study (Palladini)": ["doi", "10.1182/blood-2015-01-620302", "repo", "https://www.openaccessrepository.it/record/153260"], "CIBMTR transplantation trends (D'Souza)": ["pmc", "PMC4737858"], "BMDex vs MDex (Kastritis)": ["doi", "10.1200/JCO.20.01285", "repo", "https://discovery.ucl.ac.uk/10114981/9/Wechalekar_Bortezomib%2C%20Melphalan%2C%20and%20Dexamethasone%20for%20Light-Chain%20Amyloidosis_VoR.pdf"], "ANDROMEDA (Kastritis)": ["doi", "10.1056/NEJMoa2028631", "free"], "EMN22, daratumumab in stage IIIb (Kastritis)": ["doi", "10.1182/blood.2025032897"], "Lenalidomide-dexamethasone (Sanchorawala)": ["doi", "10.1182/blood-2006-07-030544"], "Bortezomib, once vs twice weekly (Reece)": ["doi", "10.1182/blood-2011-02-334227", "free"], "Pomalidomide-dexamethasone (Dispenzieri)": ["pmc", "PMC3369677"], "Daratumumab monotherapy, relapsed (Roussel)": ["doi", "10.1182/blood.2019004369"], "Daratumumab monotherapy, relapsed (Sanchorawala)": ["pmc", "PMC7193185"], "Bendamustine-dexamethasone (Lentzsch)": ["pmc", "PMC7193746"], "Venetoclax, t(11;14) (Premkumar)": ["pmc", "PMC7801694"], "TOURMALINE-AL1 (Dispenzieri)": ["pmc", "PMC8727292"], "SWOG S1702, isatuximab (Parker)": ["pmc", "PMC12809217"], "NEOD001 (birtamimab) phase 1/2 (Gertz)": ["pmc", "PMC5470113"], "Doxycycline with CyBorD (Shen)": ["doi", "10.1161/CIRCULATIONAHA.121.055953", "free"], "VITAL, birtamimab (Gertz)": ["pmc", "PMC10644097"], "CARES, anselamimab (Wechalekar)": ["pmc", "PMC13340455"]};
+const FTLABEL = x => x[0] === 'pmc' ? 'Free full text' : (x[2] === 'free' ? 'Free at publisher' : 'Publisher');
+const FTTITLE = x => x[0] === 'pmc' ? 'Free full text in PubMed Central' : (x[2] === 'free' ? 'Free to read on the publisher site (checked with Unpaywall)' : 'Publisher page; full text may need a subscription or institutional access');
+const REPORT = t => 'mailto:andresferber@hotmail.com?subject=' + encodeURIComponent('Landmark trials (' + PAGETITLE + '): ' + t.n);
+const FTURL = x => x[0] === 'pmc' ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + x[1] + '/' : 'https://doi.org/' + x[1];
+const REGURL = id => /^NCT/.test(id) ? 'https://clinicaltrials.gov/study/' + id : /^ISRCTN/.test(id) ? 'https://www.isrctn.com/' + id : 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' + id;
+T.forEach(t => { t.ok = 1; t.url = PM(t.p); if (t.extra) t.extra = [t.extra[0] + ", PMID " + t.extra[1], PM(t.extra[1])]; t.rc = {cm:t.cm, rel:t.rel || [], reg:t.reg, gl:t.gl, acc:t.acc}; });
+T.forEach(t => { t.trn = REG[t.n] || []; t.ft = FT[t.n] || null; });
+
+// Added Oct 23, 2026. TOX: key toxicity per trial from the PubMed abstract (or full paper where marked).
+// CORE: trials every trainee should know (chosen by Andres; edit this list to change the star and the "Core trials" filter).
+// WATCH: ongoing trials to watch, from ClinicalTrials.gov.
+// Added Oct 23, 2026. MOA: one recent review per drug or drug class on mechanism of action and resistance; MOAMAP: trial -> MOA keys.
+const MOA = {"pi": {"l": "Proteasome inhibitors", "a": "Patiño-Escobar B", "j": "Trends Pharmacol Sci", "y": "2023", "t": "Overcoming proteasome inhibitor resistance in the immunotherapy era", "p": "37344251", "pmc": ""}, "cd38": {"l": "Anti-CD38 antibodies", "a": "Horenstein AL", "j": "Front Immunol", "y": "2025", "t": "Monoclonal anti-CD38 therapy in human myeloma: retrospects and prospects", "p": "40013150", "pmc": "PMC11860881"}, "imid": {"l": "IMiDs and CELMoDs (cereblon modulators)", "a": "Bazarbachi AH", "j": "J Clin Oncol", "y": "2026", "t": "Immunomodulatory drugs and cereblon E3 ligase modulators in multiple myeloma: 30 years in the making", "p": "42721415", "pmc": ""}, "bcl2": {"l": "Venetoclax (BCL2 inhibition)", "a": "Sim S", "j": "Haematologica", "y": "2026", "t": "Translocation t(11;14) and BCL2-inhibition in multiple myeloma", "p": "41437818", "pmc": "PMC13482237"}, "benda": {"l": "Bendamustine", "a": "Lalic H", "j": "Oncol Rep", "y": "2022", "t": "Bendamustine: a review of pharmacology, clinical use and immunological effects", "p": "35506458", "pmc": "PMC9100486"}, "fibril": {"l": "Fibril-directed therapy (anti-amyloid antibodies, doxycycline)", "a": "Wang J", "j": "Blood Rev", "y": "2024", "t": "Current status and prospect of anti-amyloid fibril therapy in AL amyloidosis", "p": "38692939", "pmc": ""}};
+const MOAMAP = {"Bortezomib-dexamethasone induction before transplantation (Huang)": ["pi"], "CyBorD, European study (Palladini)": ["pi"], "BMDex vs MDex (Kastritis)": ["pi"], "ANDROMEDA (Kastritis)": ["cd38"], "EMN22, daratumumab in stage IIIb (Kastritis)": ["cd38"], "Lenalidomide-dexamethasone (Sanchorawala)": ["imid"], "Bortezomib, once vs twice weekly (Reece)": ["pi"], "Pomalidomide-dexamethasone (Dispenzieri)": ["imid"], "Daratumumab monotherapy, relapsed (Roussel)": ["cd38"], "Daratumumab monotherapy, relapsed (Sanchorawala)": ["cd38"], "Bendamustine-dexamethasone (Lentzsch)": ["benda"], "Venetoclax, t(11;14) (Premkumar)": ["bcl2"], "TOURMALINE-AL1 (Dispenzieri)": ["pi"], "SWOG S1702, isatuximab (Parker)": ["cd38"], "NEOD001 (birtamimab) phase 1/2 (Gertz)": ["fibril"], "Doxycycline with CyBorD (Shen)": ["fibril"], "VITAL, birtamimab (Gertz)": ["fibril"], "CARES, anselamimab (Wechalekar)": ["fibril"]};
+const MECH = {"bcl2": "Venetoclax inhibits BCL2, a protein that keeps cells from dying. Myeloma with t(11;14) is often dependent on BCL2, which is why the benefit concentrates in that subgroup.", "benda": "An alkylating agent with a purine-like ring, which may explain its activity in lymphomas resistant to other alkylators. It damages DNA and causes prolonged lymphocyte depletion, which contributes to its infection risk.", "cd38": "Monoclonal antibodies against CD38, which is highly expressed on myeloma cells. They kill through complement, antibody-dependent cellular cytotoxicity and phagocytosis, and also deplete CD38-positive immunosuppressive cells. Daratumumab and isatuximab.", "fibril": "Chemotherapy stops new light chain production but does not remove amyloid already deposited in organs. Fibril-directed antibodies (birtamimab, anselamimab) bind epitopes exposed on misfolded light chain aggregates and deposits and mark them for removal by macrophages, with the aim of restoring organ function faster; doxycycline was tested because it disrupts fibril formation in laboratory models. None has shown benefit in a randomized trial overall, and none is approved.", "imid": "Bind cereblon and redirect its ubiquitin ligase to destroy the transcription factors Ikaros and Aiolos, which kills myeloma cells and activates T and NK cells. Lenalidomide and pomalidomide are IMiDs; the newer CELMoDs (iberdomide, mezigdomide) bind cereblon more tightly and degrade the targets faster and more completely, so they keep activity in IMiD-refractory disease.", "pi": "Block the proteasome, the cell's machinery for clearing unwanted proteins, so misfolded proteins build up and trigger cell death. Myeloma cells, which make large amounts of immunoglobulin, are especially sensitive; in mantle cell lymphoma, bortezomib also suppresses NF-κB survival signalling. Bortezomib binds reversibly, carfilzomib irreversibly; ixazomib is taken by mouth."};
+const MOAURL = m => m.pmc ? 'https://pmc.ncbi.nlm.nih.gov/articles/' + m.pmc + '/' : 'https://pubmed.ncbi.nlm.nih.gov/' + m.p + '/';
+const MOAHTML = t => (MOAMAP[t.n] || []).map(k => MOA[k]).filter(Boolean).map(m => '<span class="moa"><b>' + esc(m.l) + ':</b> <a href="' + esc(MOAURL(m)) + '" target="_blank" rel="noopener" title="' + esc(m.t) + '">' + esc(m.a) + ', ' + esc(m.j) + ' ' + esc(m.y) + ' ↗</a>' + (m.pmc ? ' <span class="moafree">free</span>' : '') + '</span>').join('');
+// NEWD: new drugs to watch (shared per disease).
+const NEWD = {"checked": "November 15, 2026", "note": "Agents with a new mechanism, target or modality that are not yet approved for AL amyloidosis, selected from peer-reviewed early-phase trials, case series and major meetings. Early response rates often fall with more patients and longer follow-up; retrospective series select patients fit enough to be treated.", "scope": "AL amyloidosis has its own list. Most of these agents are approved for multiple myeloma (see the myeloma topics); here they are new because of the frailty and organ damage of patients with amyloidosis.", "items": [{"n": "BCMA-directed CAR T cells", "mod": "Autologous cell therapy", "tgt": "BCMA (some products also CD19)", "ev": "Peer-reviewed phase 1 (small series)", "pub": "J Clin Oncol 2025; J Am Soc Nephrol 2026", "why": "A single infusion that can eradicate the plasma cell clone, tested in heavily pretreated patients, including after daratumumab and belantamab mafodotin; the question is whether frail patients with cardiac amyloid can tolerate it.", "data": "HBI0101 (NXC-201), phase Ia/Ib (Lebel 2025): 16 patients after a median of 4 lines, 14 triple-class refractory, 13 with cardiac involvement; hematologic response 94%, complete response 75%, MRD negativity in 9 of 14 evaluable; organ response in 8 of 13 evaluable; median OS 10.1 months, with frequent deaths in the first year among patients with advanced cardiac disease. BCMA-CD19 dual-target product (Huang 2026): 6 patients, all with complete hematologic and renal response.", "safety": "HBI0101: cytokine release syndrome in 14 of 16 (grade 3 in 3, none grade 4–5), no neurotoxicity, five grade 3 amyloid-related organ deteriorations that resolved. Dual-target product: one acute promyelocytic leukemia at 15 months.", "next": "Phase 3 NEXICART-3 (NXC-201 vs daratumumab-CyBorD, newly diagnosed; not yet recruiting) and phase 1b/2 ALACRITY (AZD0120, BCMA and CD19, relapsed).", "src": [["Lebel E, J Clin Oncol 2025", "https://pubmed.ncbi.nlm.nih.gov/39653116/"], ["Huang X, J Am Soc Nephrol 2026", "https://pubmed.ncbi.nlm.nih.gov/41920709/"], ["NCT07709715", "https://clinicaltrials.gov/study/NCT07709715"], ["NCT07081646", "https://clinicaltrials.gov/study/NCT07081646"]]}, {"n": "BCMA×CD3 bispecific antibodies (teclistamab, elranatamab, linvoseltamab, etentamig)", "mod": "Bispecific T-cell engager", "tgt": "BCMA × CD3", "ev": "Retrospective series and pooled analysis (peer-reviewed); prospective trials ongoing", "pub": "Hemasphere 2026; Blood Adv 2026", "why": "Off-the-shelf T-cell redirection with very fast, deep responses, now moving into first-line randomized trials against daratumumab-CyBorD.", "data": "Teclistamab, German multicentre retrospective study (Carpinteiro 2026): 52 patients; very good partial response or better 81% at day 15 and 95% at 3 months; flow MRD negative in 23 of 24; cardiac and renal response at 6 months 65% and 78%; 1-year OS 83%. Pooled analysis of published BCMA-directed therapy (Alqazaqi 2026): bispecific antibodies in 82 patients, overall response 89%, MRD negativity in 86% of evaluable patients.", "safety": "Teclistamab: cytokine release syndrome 37% (2 grade 3); 9 deaths, 6 from bacterial infections; immunoglobulin replacement was associated with fewer severe infections and deaths. Pooled: grade ≥3 infections 20% with bispecific antibodies.", "next": "Phase 3 LINKER-AL1 (linvoseltamab vs daratumumab-VCd) and M24-473 (etentamig vs daratumumab-CyBorD), both newly diagnosed and not yet recruiting; phase 1/2 LINKER-AL2 (linvoseltamab, relapsed) and EMN40 (teclistamab, relapsed).", "src": [["Carpinteiro A, Hemasphere 2026", "https://pubmed.ncbi.nlm.nih.gov/42311430/"], ["Alqazaqi R, Blood Adv 2026", "https://pubmed.ncbi.nlm.nih.gov/42478693/"], ["NCT07901725", "https://clinicaltrials.gov/study/NCT07901725"], ["NCT07793422", "https://clinicaltrials.gov/study/NCT07793422"], ["NCT06292780", "https://clinicaltrials.gov/study/NCT06292780"]]}, {"n": "Belantamab mafodotin", "mod": "Antibody-drug conjugate", "tgt": "BCMA (monomethyl auristatin F payload)", "ev": "Retrospective series (peer-reviewed)", "pub": "Br J Haematol 2024", "why": "A BCMA-directed option without T-cell activation, of interest for frail patients who may not tolerate cytokine release syndrome.", "data": "UK real-world series (Khwaja 2024): 31 patients after a median of three lines; best hematologic response 71%, complete or very good partial response 58%; median follow-up 12 months. Pooled analysis (Alqazaqi 2026): antibody-drug conjugates in 85 patients, overall response 68%.", "safety": "Keratopathy in 68%, improving in all (Khwaja 2024); pooled grade ≥3 ocular toxicity 29%.", "next": "Phase 2 ALANIS (belantamab mafodotin with CyBorD, newly diagnosed; recruiting) and a phase 1/2 trial in relapsed disease (NCT05145816).", "src": [["Khwaja J, Br J Haematol 2024", "https://pubmed.ncbi.nlm.nih.gov/38171355/"], ["Alqazaqi R, Blood Adv 2026", "https://pubmed.ncbi.nlm.nih.gov/42478693/"], ["NCT07224672", "https://clinicaltrials.gov/study/NCT07224672"]]}], "grad": [], "disc": []};
+const TOX = {"Hereditary amyloidosis misdiagnosed as AL (Lachmann)": "Not applicable (genetic screening study).", "Cardiac MRI in cardiac amyloidosis (Maceira)": "Not applicable (diagnostic study).", "Abdominal fat aspiration (van Gameren)": "Not applicable (diagnostic study).", "Free light chains with immunofixation (Palladini)": "Not applicable (diagnostic study).", "AL vs ATTR cardiac profiles (Rapezzi)": "Not applicable (cohort study).", "Mass spectrometry typing (Vrana)": "Not applicable (diagnostic study).", "Immunohistochemistry typing (Schönland)": "Not applicable (diagnostic study).", "Renal amyloidosis typing, 474 cases (Said)": "Not applicable (pathology series).", "DPD scintigraphy in AL and ATTR (Hutt)": "Not applicable (diagnostic study).", "Nonbiopsy diagnosis of cardiac ATTR (Gillmore)": "Not applicable (diagnostic study).", "MGUS in ATTR amyloidosis (Phull)": "Not applicable (cohort study).", "Mass spectrometry typing, 16,175 samples (Dasari)": "Not applicable (laboratory series).", "ESC position statement on cardiac amyloidosis (Garcia-Pavia)": "Not applicable (position statement).", "Mayo 2004 cardiac staging (Dispenzieri)": "Not applicable (prognostic model).", "Consensus organ involvement and response criteria (Gertz)": "Not applicable (consensus statement).", "Revised Mayo 2012 staging (Kumar)": "Not applicable (prognostic model).", "Hematologic and cardiac response criteria (Palladini)": "Not applicable (response criteria).", "European stage IIIb, NT-proBNP >8500 ng/L (Wechalekar)": "Not reported in abstract (cohort study of treatment outcomes); 42% died before the first response assessment.", "Marrow plasma cells >10% (Kourelis)": "Not applicable (cohort study).", "Renal staging and response (Palladini)": "Not applicable (prognostic model).", "t(11;14) and bortezomib (Bochtler)": "Not applicable (cohort study of cytogenetics).", "Boston University BNP staging (Lilleness)": "Not applicable (prognostic model).", "MRD by next-generation flow (Palladini)": "Not applicable (cohort study).", "Graded cardiac response criteria (Muchtar)": "Not applicable (response criteria).", "Extracellular volume by cardiac MRI (Porcari)": "Not applicable (imaging cohort).", "AL-ISS with stage IIIC (Khwaja)": "Not applicable (prognostic model).", "High-dose melphalan and transplantation, 8-year series (Skinner)": "Mortality within 100 days of transplantation 13%, highest with cardiomyopathy.", "Melphalan-dexamethasone (Palladini)": "Severe adverse events in 11% (3 of 5 hospitalised); no treatment-related deaths.", "High-dose melphalan vs MDex (Jaccard)": "Not reported in abstract; early mortality of 24% with transplantation in this trial, as cited by the CIBMTR analysis (D'Souza 2015).", "Bortezomib-dexamethasone induction before transplantation (Huang)": "Treatment-related mortality 3.6% (2 deaths within 100 days of transplantation).", "CyBorD, European study (Palladini)": "Not reported in abstract.", "CIBMTR transplantation trends (D'Souza)": "Mortality at 30 and 100 days 3% and 5% in 2007–2012 (11% and 20% in 1995–2000).", "BMDex vs MDex (Kastritis)": "Grade 3–4 adverse events in 20% vs 10% of cycles, mostly cytopenias, peripheral neuropathy and heart failure.", "ANDROMEDA (Kastritis)": "Grade 3–4 lymphopenia 13.0% vs 10.1%, pneumonia 7.8% vs 4.3%, cardiac failure 6.2% vs 4.8%, diarrhea 5.7% vs 3.7%; systemic administration reactions 7.3%; deaths 27 vs 29, mostly from cardiomyopathy.", "EMN22, daratumumab in stage IIIb (Kastritis)": "Serious adverse events: cardiac failure 25%, sudden cardiac death 10%, acute kidney injury 7.5%; quality of life stable.", "Lenalidomide-dexamethasone (Sanchorawala)": "25 mg/day poorly tolerated; fatigue and myelosuppression 35%; thromboembolism 9%.", "Bortezomib, once vs twice weekly (Reece)": "Grade ≥3 toxicity 50% (once weekly) vs 79% (twice weekly); discontinuation for toxicity 28% vs 38%, dose reduction 22% vs 53%.", "Pomalidomide-dexamethasone (Dispenzieri)": "Grade 3–5 neutropenia and fatigue the most common.", "Daratumumab monotherapy, relapsed (Roussel)": "No unexpected adverse events; rates not reported in abstract.", "Daratumumab monotherapy, relapsed (Sanchorawala)": "No grade 3–4 infusion reactions; grade ≥3 respiratory infections 18% and atrial fibrillation 18%.", "Bendamustine-dexamethasone (Lentzsch)": "Therapy-related grade 3–4 adverse events 65% (myelosuppression, fatigue, nausea and vomiting); no grade 5 events.", "Venetoclax, t(11;14) (Premkumar)": "Grade ≥3 adverse events 19%, 7% from infections.", "TOURMALINE-AL1 (Dispenzieri)": "Diarrhea 34% vs 30%, rash 33% vs 20%, cardiac arrhythmias 26% vs 15%, nausea 24% vs 14%.", "SWOG S1702, isatuximab (Parker)": "Treatment-related grade ≥3 lymphopenia 8.5% and infection 6%.", "NEOD001 (birtamimab) phase 1/2 (Gertz)": "No drug-related serious adverse events, dose-limiting toxicities or antidrug antibodies; fatigue, upper respiratory infection, cough and dyspnea most frequent.", "Doxycycline with CyBorD (Shen)": "Not reported in abstract.", "VITAL, birtamimab (Gertz)": "Treatment-emergent and serious adverse events similar between arms.", "CARES, anselamimab (Wechalekar)": "Generally well tolerated; safety comparable between arms."};
+const CORE = [];
+const WATCH = {"note": "Ongoing phase 3 trials, with up to three phase 2 trials designed to support an approval, selected from ClinicalTrials.gov (checked November 15, 2026). Status and primary completion dates are as registered; some trials may already have presented results at meetings.", "items": [{"n": "S2213", "d": "Daratumumab-VCd induction followed by autologous transplantation vs daratumumab-VCd consolidation, both with daratumumab maintenance, in newly diagnosed AL amyloidosis", "ph": "Phase 3", "st": "Recruiting", "pcd": "2030-07-29 (estimated)", "ep": "Major organ deterioration progression-free survival", "nct": "NCT06022939"}, {"n": "SCTC21C-B301", "d": "SCTC21C (subcutaneous) with bortezomib, cyclophosphamide and dexamethasone vs VCd alone in newly diagnosed AL amyloidosis", "ph": "Phase 3", "st": "Recruiting", "pcd": "2027-12 (estimated)", "ep": "Overall complete hematologic response", "nct": "NCT07388602"}, {"n": "LINKER-AL1", "d": "Linvoseltamab (BCMA×CD3 bispecific) alone vs daratumumab-VCd in newly diagnosed AL amyloidosis", "ph": "Phase 3", "st": "Not yet recruiting", "pcd": "2035-07-25 (estimated)", "ep": "Safety; hematologic complete response by blinded independent review", "nct": "NCT07901725"}, {"n": "M24-473", "d": "Etentamig (BCMA×CD3 bispecific, subcutaneous) vs daratumumab-CyBorD in newly diagnosed AL amyloidosis", "ph": "Phase 3", "st": "Not yet recruiting", "pcd": "2034-12 (estimated)", "ep": "Adverse events; hematologic complete response; MOD-PFS (randomized portion)", "nct": "NCT07793422"}, {"n": "NEXICART-3", "d": "NXC-201 (BCMA CAR T cells) vs daratumumab-CyBorD in newly diagnosed AL amyloidosis", "ph": "Phase 3", "st": "Not yet recruiting", "pcd": "2028-12 (estimated)", "ep": "Overall complete hematologic response; MOD-PFS", "nct": "NCT07709715"}, {"n": "LINKER-AL2", "d": "Linvoseltamab in relapsed or refractory AL amyloidosis", "ph": "Phase 1/2 (registrational)", "st": "Recruiting", "pcd": "2028-08-20 (estimated)", "ep": "Dose-limiting toxicity (phase 1); hematologic complete response by independent review (phase 2)", "nct": "NCT06292780"}, {"n": "ALACRITY", "d": "AZD0120 (GC012F), CAR T cells targeting CD19 and BCMA, in relapsed or refractory AL amyloidosis", "ph": "Phase 1b/2 (registrational)", "st": "Recruiting", "pcd": "2029-08-15 (estimated)", "ep": "Adverse events (phase 1b); complete response (phase 2)", "nct": "NCT07081646"}, {"n": "CM336-026101", "d": "CM336 (BCMA/CD3 bispecific antibody), two dose levels, in relapsed or refractory AL amyloidosis", "ph": "Phase 2 (registrational)", "st": "Recruiting", "pcd": "2026-06-30 (estimated)", "ep": "Efficacy (as registered)", "nct": "NCT07039578"}]};
+const PAGEKEY = "al";
+const PAGETITLE = "AL amyloidosis";
+const SLUG = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+T.forEach(t => { t.tx = TOX[t.n] || "Not reported in abstract"; t.core = CORE.includes(t.n); t.slug = SLUG(t.n);
+  t.full = [t.r, t.N, t.hr, t.fu, t.tx].some(x => /full paper/.test(String(x || ""))); });
+function eviHTML(t) {
+  return t.full
+    ? '<span class="ok full" title="Checked against the PubMed abstract; values marked “full paper” were checked against the full publication">✓ abstract + full paper</span>'
+    : '<span class="ok" title="Checked against the PubMed abstract">✓ abstract</span>';
+}
+
+
+let active = "all", sortMode = "setting";
+try { const s = localStorage.getItem("al-sort"); if (s) sortMode = s; } catch(e) {}
+const chipsEl = document.getElementById("chips");
+[["all","All"], ["core","★ Core trials"], ...order.map(k => [k, SETTINGS[k]])].forEach(([k,label]) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.id = "chip-" + k; b.textContent = label;
+  b.setAttribute("aria-pressed", k === active);
+  b.addEventListener("click", () => { active = k; chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b)); render(); });
+  chipsEl.appendChild(b);
+});
+const sortEl = document.getElementById("sort"); sortEl.value = sortMode;
+sortEl.addEventListener("change", () => { sortMode = sortEl.value; try { localStorage.setItem("al-sort", sortMode); } catch(e) {} render(); });
+const qEl = document.getElementById("q"); qEl.addEventListener("input", render);
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function recHTML(t){
+  const r = t.rc; if (!r) return "";
+  const cm = r.cm.length
+    ? r.cm.map(c => `<li><a href="https://pubmed.ncbi.nlm.nih.gov/${c[0]}/" target="_blank" rel="noopener">${esc(c[1])}</a>: ${esc(c[2])}</li>`).join("")
+    : '<li class="none">No commentary linked to this paper in PubMed</li>';
+  const rel = r.rel && r.rel.length
+    ? `<div class="rk">Related papers</div><ul>${r.rel.map(c => `<li><a href="https://pubmed.ncbi.nlm.nih.gov/${c[0]}/" target="_blank" rel="noopener">${esc(c[1])}</a>: ${esc(c[2])}</li>`).join("")}</ul>` : "";
+  return `<div class="rk">Commentary</div><ul>${cm}</ul>${rel}
+    <div class="rk">Regulatory</div><p>${esc(r.reg)}</p>
+    <div class="rk">Guidelines</div><p>${esc(r.gl)}</p>
+    <div class="rk">Access</div><p>${esc(r.acc)}</p>`;
+}
+const GRPHDR = (t, i, rows) => (sortMode === "setting" || sortMode === "setting-asc") && (i === 0 || rows[i - 1].s !== t.s)
+  ? '<li class="grp"><h3>' + esc(SETTINGS[t.s]) + '<span class="gn">' + rows.filter(r => r.s === t.s).length + '</span></h3></li>' : '';
+function render(){
+  const q = qEl.value.trim().toLowerCase();
+  let rows = T.filter(t => (active === "all" || (active === "core" ? t.core : t.s === active)) &&
+    (!q || [t.n,t.d,t.r,t.tx,t.i,t.b,t.q,t.c,t.ph,String(t.y),t.reg,t.gl,t.acc,t.cm.map(c=>c[1]+" "+c[2]).join(" "),(t.rel||[]).map(c=>c[1]+" "+c[2]).join(" ")].join(" ").toLowerCase().includes(q)));
+  rows.sort((a,b) => sortMode === "asc" ? a.y - b.y : sortMode === "desc" ? b.y - a.y
+    : (order.indexOf(a.s) - order.indexOf(b.s)) || (sortMode === "setting-asc" ? a.y - b.y : b.y - a.y));
+  document.getElementById("count").textContent = rows.length + " of " + T.length + " studies";
+  const list = document.getElementById("list");
+  if (!rows.length) { list.innerHTML = '<li class="empty">No studies match that search. Clear the search or pick another category.</li>'; return; }
+  list.innerHTML = rows.map((t, i) => GRPHDR(t, i, rows) + `
+    <li class="trial" data-trial="${t.slug}">
+      <div class="yr">${t.y}</div>
+      <div class="body">
+        <div class="top"><h2 class="name">${esc(t.n)}</h2><span class="tag ${CLS[t.s]}">${esc(SETTINGS[t.s])}</span><span class="phase">${esc(t.ph)}</span>${t.core ? '<span class="core" title="Core trial for teaching">★ Core</span>' : ''}<button type="button" class="share" data-slug="${t.slug}" title="Copy a link to this trial" aria-label="Copy a link to ${esc(t.n)}"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M8.5 11.5a3 3 0 0 0 4.2 0l2.6-2.6a3 3 0 0 0-4.2-4.2l-1 1M11.5 8.5a3 3 0 0 0-4.2 0l-2.6 2.6a3 3 0 0 0 4.2 4.2l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="lbl">Link copied</span></button></div>
+        <p class="design">${esc(t.d)}</p>
+        <div class="stats">
+          <span><b>N</b>${esc(t.N)}</span>
+          <span><b>HR</b>${esc(t.hr)}</span>
+          <span><b>Median F/U</b>${esc(t.fu)}</span>
+        </div>
+        <dl>
+          <dt class="f-ep">Endpoint</dt><dd class="f-ep">${esc(t.ep)}</dd>
+          <dt class="f-res">Result</dt><dd class="result f-res">${esc(t.r)} ${eviHTML(t)}</dd>
+          <dt class="f-tox">Key toxicity</dt><dd class="tox f-tox">${esc(t.tx)}</dd>
+          ${MOAMAP[t.n] ? `<dt>Drug mechanism</dt><dd class="moas">${MOAHTML(t)}</dd>` : ""}
+          <dt>Builds on</dt><dd>${esc(t.b)}</dd>
+          <dt>Changed</dt><dd>${esc(t.i)}</dd>
+          <dt>Open questions</dt><dd class="qs">${esc(t.q)}</dd>
+          <dt>Reception</dt><dd class="rec">${recHTML(t)}</dd>
+          <dt>Source</dt><dd class="cite"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.c)} ↗</a>${t.ft ? ` · <a class="ft" href="${esc(FTURL(t.ft))}" target="_blank" rel="noopener" title="${FTTITLE(t.ft)}">${FTLABEL(t.ft)} ↗</a>` : ''}${t.ft && t.ft[2] === 'repo' ? ` · <a class="ft" href="${esc(t.ft[3])}" target="_blank" rel="noopener" title="Free legal copy in a university repository, found through Unpaywall; it may be the authors' manuscript rather than the final journal version">Free copy (repository) ↗</a>` : ''}${t.extra ? ` · <a href="${esc(t.extra[1])}" target="_blank" rel="noopener">${esc(t.extra[0])} ↗</a>` : ''}${t.trn.map(id => ` · <a class="trn" href="${esc(REGURL(id))}" target="_blank" rel="noopener" title="Trial registry record">${esc(id)} ↗</a>`).join('')} · <a class="report" href="${esc(REPORT(t))}" title="Email a correction for this trial">Report an error</a></dd>
+        </dl>
+      </div>
+    </li>`).join("");
+}
+render();
+
+(function renderWatch(){
+  const listEl = document.getElementById("list");
+  const box = listEl.parentNode.querySelector(".watch");
+  if (!box) return;
+  if (!WATCH.items || !WATCH.items.length) { box.hidden = true; return; }
+  box.hidden = false;
+  box.innerHTML = '<h2>Trials to watch</h2><p class="wnote">' + esc(WATCH.note || "") + '</p><ul>' + WATCH.items.map(w =>
+    '<li><span class="wn">' + esc(w.n) + '</span><span class="wd">' + esc(w.d) + '</span><span class="wm">' +
+    [w.ph, w.st, w.pcd ? "primary completion " + w.pcd : "", w.ep ? "primary endpoint: " + w.ep : ""].filter(Boolean).map(esc).join(" · ") +
+    (w.nct ? ' · <a href="https://clinicaltrials.gov/study/' + esc(w.nct) + '" target="_blank" rel="noopener">' + esc(w.nct) + ' ↗</a>' : "") +
+    '</span>' + (w.note ? '<span class="wd">' + esc(w.note) + '</span>' : '') + '</li>').join("") + '</ul>';
+})();
+
+
+(function setupReviewRefs(){
+  const listEl = document.getElementById("list");
+  const box = listEl.parentNode.querySelector(".review");
+  if (!box) return;
+  box.addEventListener("click", e => {
+    if (e.target.closest(".rv-close")) {
+      box.open = false;
+      box.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    const a = e.target.closest("a.rref");
+    if (!a) return;
+    e.preventDefault();
+    const first = chipsEl.querySelector(".chip");
+    if (first && first.getAttribute("aria-pressed") !== "true") first.click();
+    if (qEl.value) { qEl.value = ""; render(); }
+    const li = listEl.querySelector('li[data-trial="' + a.getAttribute("data-slug") + '"]');
+    if (!li) return;
+    li.scrollIntoView({ behavior: "smooth", block: "start" });
+    li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+  });
+})();
+
+(function setupTabs(){
+  const listEl = document.getElementById("list");
+  const root = listEl.parentNode;
+  const tabs = root.querySelector(".tabs"), panel = root.querySelector(".newdrugs"), watch = root.querySelector(".watch"), controls = root.querySelector(".controls");
+  if (!tabs) return;
+  const L = (s) => '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + ' ↗</a>';
+  const nW = (typeof WATCH !== "undefined" && WATCH.items) ? WATCH.items.length : 0;
+  const nD = (typeof NEWD !== "undefined") ? NEWD.items.length : 0;
+  const cw = tabs.querySelector('[data-tab="watch"] .tcount'), cd = tabs.querySelector('[data-tab="newdrugs"] .tcount');
+  if (cw) cw.textContent = nW; if (cd) cd.textContent = nD;
+  let mod = "all";
+  function draw(){
+    if (!panel || !nD) return;
+    const mods = [...new Set(NEWD.items.map(d => d.mod))];
+    const items = NEWD.items.filter(d => mod === "all" || d.mod === mod);
+    const log = (arr, none) => '<ul class="nd-log">' + (arr.length ? arr.map(g => '<li><b>' + esc(g.n) + ':</b> ' + esc(g.txt) + ' ' + g.src.map(L).join(" · ") + '</li>').join("") : '<li>' + none + '</li>') + '</ul>';
+    panel.innerHTML = '<p class="nd-note">' + esc(NEWD.note) + (NEWD.scope ? ' ' + esc(NEWD.scope) : '') + ' Status checked ' + esc(NEWD.checked) + '.</p>' +
+      (mods.length > 1 ? '<div class="nd-mods">' + [["all","All"]].concat(mods.map(m => [m, m])).map(([k, l]) => '<button type="button" class="chip" data-mod="' + esc(k) + '" aria-pressed="' + (k === mod) + '">' + esc(l) + '</button>').join("") + '</div>' : '') +
+      items.map(d => '<div class="nd-item"><div class="nd-top"><h2 class="nd-name">' + esc(d.n) + '</h2><span class="nd-mod">' + esc(d.mod) + '</span><span class="nd-ev' + (/^Peer-reviewed/.test(d.ev) ? ' pr' : '') + '">' + esc(d.ev) + ' · ' + esc(d.pub) + '</span></div>' +
+        '<dl><dt>Target</dt><dd>' + esc(d.tgt) + '</dd><dt>Why it matters</dt><dd>' + esc(d.why) + '</dd><dt class="f-res">Key data</dt><dd class="f-res">' + esc(d.data) + '</dd><dt class="f-tox">Safety</dt><dd class="f-tox">' + esc(d.safety) + '</dd><dt>Next step</dt><dd>' + esc(d.next) + '</dd><dt>Sources</dt><dd class="nd-src">' + d.src.map(L).join(" · ") + '</dd></dl></div>').join("") +
+      '<h3>Moved on to phase 3 results</h3>' + log(NEWD.grad, "None so far.") +
+      '<h3>Discontinued</h3>' + log(NEWD.disc, "None so far.") +
+      '<p class="nd-rules">How this list is kept: agents with a new mechanism, target or modality (including phase 1 when the approach is new, and repurposed drugs with credible clinical data; no biosimilars and no preclinical-only agents). An agent moves to "Moved on" when phase 3 results are published, and to "Discontinued", with the reason and date, when development stops or a pivotal trial fails; discontinued entries are removed after 2 years. Checked at each scheduled update and after major meetings (ASH, ASCO, EHA, AACR, ESMO, IMS).</p>';
+    panel.querySelectorAll(".nd-mods .chip").forEach(b => b.addEventListener("click", () => { mod = b.getAttribute("data-mod"); draw(); }));
+  }
+  draw();
+  function show(which){
+    tabs.querySelectorAll("button[data-tab]").forEach(x => x.setAttribute("aria-selected", x.getAttribute("data-tab") === which));
+    if (controls) controls.style.display = which === "trials" ? "" : "none";
+    listEl.style.display = which === "trials" ? "" : "none";
+    if (watch) watch.style.display = (which === "newdrugs" || !nW) ? "none" : "";
+    if (panel) panel.hidden = which !== "newdrugs";
+    if (mpanel) mpanel.hidden = which !== "mech";
+    if (watch && which === "mech") watch.style.display = "none";
+  }
+  // Drug mechanisms tab: classes tested on this page, how they work, the review, and the trials that used them.
+  const mpanel = root.querySelector(".mechs");
+  const mKeys = (typeof MOA !== "undefined" && typeof MOAMAP !== "undefined" && typeof MECH !== "undefined")
+    ? Object.keys(MOA).filter(k => MECH[k] && T.some(t => (MOAMAP[t.n] || []).includes(k))) : [];
+  const cm = tabs.querySelector('[data-tab="mech"] .tcount'); if (cm) cm.textContent = mKeys.length;
+  if (mpanel && mKeys.length) {
+    mpanel.innerHTML = '<p class="mx-note">Each drug class tested in the trials on this page: how it works, a recent peer-reviewed review on mechanism and resistance, and the trials that used it. Select a trial to jump to its card.</p>' +
+      mKeys.map(k => { const m = MOA[k];
+        const trials = T.filter(t => (MOAMAP[t.n] || []).includes(k)).sort((a, b) => a.y - b.y);
+        return '<div class="mx-item"><h2 class="mx-name">' + esc(m.l) + '</h2><p class="mx-desc">' + esc(MECH[k]) + '</p>' +
+          '<p class="mx-rev"><span class="mx-k">Review</span> <a href="' + esc(MOAURL(m)) + '" target="_blank" rel="noopener">' + esc(m.a + ', ' + m.j + ' ' + m.y) + ' ↗</a>' + (m.pmc ? ' <span class="moafree">free</span>' : '') + '</p>' +
+          '<p class="mx-trials"><span class="mx-k">Trials on this page</span> ' + trials.map(t => '<a class="mt" href="#t-' + PAGEKEY + '-' + t.slug + '" data-slug="' + t.slug + '">' + esc(t.n) + ' <span class="mt-y">' + t.y + '</span></a>').join("") + '</p></div>'; }).join("");
+    mpanel.addEventListener("click", e => {
+      const a = e.target.closest("a.mt"); if (!a) return;
+      e.preventDefault();
+      show("trials");
+      tabs.dispatchEvent(new Event("tabschange"));
+      const first = chipsEl.querySelector(".chip");
+      if (first && first.getAttribute("aria-pressed") !== "true") first.click();
+      if (qEl.value) { qEl.value = ""; render(); }
+      const li = listEl.querySelector('li[data-trial="' + a.getAttribute("data-slug") + '"]');
+      if (!li) return;
+      li.scrollIntoView({ behavior: "smooth", block: "start" });
+      li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+    });
+  }
+  tabs.addEventListener("click", e => {
+    const b = e.target.closest("button[data-tab]"); if (!b) return;
+    const w = b.getAttribute("data-tab");
+    // Clicking the tab that is already open closes it and returns to the trial list.
+    if (w !== "trials" && b.getAttribute("aria-selected") === "true") {
+      show("trials");
+      tabs.dispatchEvent(new Event("tabschange"));
+      if (tabs._scrollHome) tabs._scrollHome(); else tabs.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      return;
+    }
+    show(w);
+    tabs.dispatchEvent(new Event("tabschange"));
+  });
+  show("trials");
+})();
+(function pinTabs(){
+  // Pin the tab bar while a tab other than Landmark trials is open.
+  const listEl = document.getElementById("list");
+  const root = listEl.parentNode;
+  const tabs = root.querySelector(".tabs");
+  if (!tabs) return;
+  const ph = document.createElement("div");
+  ph.className = "tabs-ph"; ph.hidden = true;
+  tabs.parentNode.insertBefore(ph, tabs);
+  let pinned = false;
+  function topOffset() {
+    // Below the website's pinned topic title bar, or any fixed site header; 0 on the standalone page.
+    const h = document.querySelector(".lta-head.lta-pinned");
+    if (h) return Math.max(0, h.getBoundingClientRect().bottom);
+    let off = 0;
+    try {
+      (document.elementsFromPoint(window.innerWidth / 2, 2) || []).forEach(el => {
+        if (root.contains(el)) return;
+        for (let n = el; n && n !== document.body; n = n.parentElement) {
+          const p = getComputedStyle(n).position;
+          if (p === "fixed" || p === "sticky") {
+            const r = n.getBoundingClientRect();
+            if (r.top <= 2 && r.bottom > off && r.bottom < window.innerHeight * 0.4) off = r.bottom;
+            break;
+          }
+        }
+      });
+    } catch (e) {}
+    return off;
+  }
+  function unpin() {
+    if (!pinned) return;
+    tabs.classList.remove("tabs-pinned");
+    tabs.style.top = tabs.style.left = tabs.style.width = "";
+    ph.hidden = true; pinned = false;
+  }
+  function update() {
+    const sel = tabs.querySelector('button[aria-selected="true"]');
+    const active = !!sel && sel.getAttribute("data-tab") !== "trials";
+    const off = topOffset();
+    const r = (pinned ? ph : tabs).getBoundingClientRect();
+    const rr = root.getBoundingClientRect();
+    const h = tabs.offsetHeight;
+    if (active && r.top < off && rr.bottom > off + h + 40) {
+      if (!pinned) { ph.style.height = h + "px"; ph.hidden = false; tabs.classList.add("tabs-pinned"); pinned = true; }
+      const pr = ph.getBoundingClientRect();
+      tabs.style.top = off + "px"; tabs.style.left = pr.left + "px"; tabs.style.width = pr.width + "px";
+    } else unpin();
+  }
+  let ticking = false;
+  const req = () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; update(); }); } };
+  window.addEventListener("scroll", req, { passive: true });
+  document.addEventListener("scroll", req, { passive: true, capture: true });
+  window.addEventListener("resize", req);
+  tabs.addEventListener("tabschange", () => { unpin(); req(); });
+  // Closing a tab returns to the top of the trial list, just below any pinned header.
+  tabs._scrollHome = () => {
+    const y = tabs.getBoundingClientRect().top + window.pageYOffset - topOffset() - 8;
+    if (tabs.getBoundingClientRect().top < topOffset()) window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+  };
+})();
+(function setupShare(){
+  const listEl = document.getElementById("list");
+  listEl.addEventListener("click", e => {
+    const b = e.target.closest(".share");
+    if (!b) return;
+    const slug = b.getAttribute("data-slug");
+    const inSite = !!listEl.closest(".ltw");
+    const base = inSite ? location.href.split("#")[0] : "https://andresferber.github.io/landmark-trials/";
+    const url = base + "#t-" + PAGEKEY + "-" + slug;
+    const done = () => { b.classList.add("copied"); setTimeout(() => b.classList.remove("copied"), 1800); };
+    const fallback = () => { const t = document.createElement("textarea"); t.value = url; t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); done(); } catch (x) {} t.remove(); };
+    try { navigator.clipboard.writeText(url).then(done, fallback); } catch (x) { fallback(); }
+  });
+})();
+(function setupPrint(){
+  const listEl = document.getElementById("list");
+  const wrap = listEl.closest(".wrap");
+  const btn = wrap && wrap.querySelector(".printbtn");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const root = wrap.closest(".ltw");
+    if (!root) { window.print(); return; }
+    const css = Array.prototype.map.call(document.querySelectorAll("style"), s => s.textContent).filter(c => c.includes("--font-display")).join("\n");
+    const clone = root.cloneNode(true);
+    clone.querySelectorAll(".controls, .printbtn").forEach(n => n.remove());
+    const w = window.open("", "_blank");
+    if (!w) { window.print(); return; }
+    const title = (wrap.querySelector("h1") || {}).textContent || "Landmark trials";
+    w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>' + esc(title) + '</title>' +
+      '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">' +
+      '<style>' + css + ' body{margin:0;background:#fff} .ltw{background:#fff} @media print{.ltw .trial{break-inside:avoid}}</style></head><body>' +
+      clone.outerHTML + '<script>window.onload=function(){setTimeout(function(){window.print()},400)}<\/script></body></html>');
+    w.document.close();
+  });
+  try { if (/[?&]print=1/.test(location.search)) setTimeout(() => window.print(), 500); } catch (e) {}
+})();
+</script>

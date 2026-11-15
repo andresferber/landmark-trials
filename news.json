@@ -1,6 +1,11 @@
 {
  "items": [
   {
+   "date": "2026-11-15",
+   "key": "al",
+   "text": "New topic: AL amyloidosis, in the myeloma group: 48 studies on how to prove the amyloid is AL and not ATTR or a hereditary type, cardiac staging and response criteria, first-line therapy and transplantation, relapsed disease and fibril-directed antibodies, with trials to watch and new drugs to watch."
+  },
+  {
    "date": "2026-11-14",
    "key": "mzl",
    "text": "New disease: marginal zone lymphomas, with gastric MALT, non-gastric MALT, nodal and splenic disease kept apart and the trials that enrolled several subtypes grouped separately: 65 studies on antibiotics and antivirals, radiotherapy, rituximab and chemoimmunotherapy, BTK inhibitors, lenalidomide, PI3K inhibitors and CAR T cells, with trials to watch and new drugs to watch."
@@ -24,11 +29,6 @@
    "date": "2026-11-12",
    "key": "cllu",
    "text": "New disease: chronic lymphocytic leukemia. The first topic, untreated CLL, covers 30 studies from chemoimmunotherapy to continuous BTK inhibitors and fixed-duration venetoclax combinations, with a Perspective, trials to watch and new drugs to watch."
-  },
-  {
-   "date": "2026-11-11",
-   "key": "pbl",
-   "text": "New topic: primary bone lymphoma, an evidence map of 39 studies in adults (treatment series, registries, prognosis, single versus multiple lesions, biology, circulating tumor DNA, non-DLBCL histologies, imaging), with a grid showing what has and has not been published, and a Perspective on how to read this evidence."
   }
  ]
 }

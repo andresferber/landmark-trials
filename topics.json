@@ -112,6 +112,14 @@
       "file": "topics/rrmm.html",
       "updated": "2026-11-10",
       "group": "Myeloma"
+    },
+    {
+      "key": "al",
+      "title": "AL amyloidosis",
+      "count": "48 studies",
+      "file": "topics/al.html",
+      "updated": "2026-11-15",
+      "group": "Myeloma"
     }
   ]
 }

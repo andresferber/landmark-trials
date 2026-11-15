@@ -389,3 +389,38 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   (long-term report) and CHRONOS-3, and the ESMO 2020 guideline: keep these values unless a newer paper supersedes them. Still "PDFs needed": the
   GELA grading letter (Copie-Bergman, Gut 2003, PMID 14570741) and the AGMT MALT-2 letter (Kiesewetter, Blood 2017, PMID 27879257). The marginal
   zone cohort of inMIND had no report: add it when published.
+
+## 13. AL amyloidosis (key al): what is different
+- Scope (first build, Nov 15, 2026, at Andres's request; he has not yet reviewed it): systemic immunoglobulin light chain amyloidosis, grouped with the
+  myeloma topics on the website. Andres asked for emphasis on diagnosis, prognostic markers, cardiac staging and management, and in particular on the
+  diagnostic studies that distinguish AL from other types of amyloidosis. Localized AL amyloidosis, IgM-related AL amyloidosis and supportive care have no
+  cards of their own; ATTR treatment is not covered (ATTR appears only as the main differential diagnosis).
+- Categories: diag (diagnosis & amyloid typing), risk (staging, prognosis & response criteria), front (newly diagnosed: plasma cell-directed therapy &
+  transplantation), rel (relapsed disease), fib (fibril-directed therapy). Default sort is category, newest first, in that order.
+- Inclusion rule. Few randomized trials exist, so the phase 2 bar of section 2 is replaced by: every phase 3 or randomized trial with a full report;
+  phase 2 trials that defined a regimen in current use or were the basis of an approval or guideline recommendation, whatever the journal; large
+  multicentre cohort studies that defined a regimen or the outcome of a high-risk group (for example stage IIIb); and the diagnostic, typing, staging and
+  response studies on which trials and practice rest (validated in more than one cohort, or adopted by ISA, EHA-ISA or ESC documents). Meeting-only
+  results are not cards. Other papers go under "Worth a look (not added)".
+- Regulatory (US, confirmed Nov 15, 2026): daratumumab-hyaluronidase with bortezomib, cyclophosphamide and dexamethasone is the only approved therapy
+  (accelerated approval January 15, 2021; traditional approval November 19, 2025, on MOD-PFS and OS; not recommended for NYHA IIIB/IV or Mayo stage
+  IIIB outside trials; European Commission approval June 2021). Cards of other drugs say "not approved for AL amyloidosis"; if an agency approves one,
+  replace the note with the fact, date and supporting trial, and add a news item. Birtamimab: AFFIRM-AL missed its primary end point (sponsor report,
+  May 2025; HR 0.915) and development stopped; add the peer-reviewed report to the VITAL card when it appears. Anselamimab: regulatory status after CARES
+  is marked "verify".
+- Guidelines: treatment rows cite the EHA-ISA 2023 non-transplant guideline (Wechalekar, Amyloid 2023, open access; checked against the full text,
+  Nov 15, 2026), transplant rows the EHA-ISA 2022 transplant guideline (abstract only), diagnostic rows the ESC 2021 position statement (its algorithm
+  checked against published summaries; the full text could not be opened). NCCN is "not checked". When a new EHA-ISA, ISA or IMWG document appears,
+  recheck the rows.
+- Trials to watch: phase 3 trials plus up to three phase 2 trials designed to support an approval (search ClinicalTrials.gov with query.cond "AL
+  amyloidosis" and "light chain amyloidosis"). New drugs to watch: its own list, tools/newdrugs/al.json (BCMA CAR T cells, BCMA×CD3 bispecific
+  antibodies, belantamab mafodotin); agents approved in myeloma count as new here. When a BCMA-directed trial in AL amyloidosis publishes a phase 2 or 3
+  report that meets the rule, it becomes a card and moves to "grad".
+- Drug mechanisms: new class `fibril` (fibril-directed antibodies and doxycycline; review Wang, Blood Rev 2024), awaiting Andres's review.
+- Perspective (tools/review/persp_al.py): "Pilot draft, pending review", kept off the website until Andres approves it; keep its numbers in step with the
+  cards (small factual edits, listed in the summary) and do not remove the pilot label until he approves.
+- CORE is empty until Andres chooses. topics.json count word is "studies". No Prognosis tab (section 1 restricts it to the myeloma topics).
+- Values at the first build were checked against abstracts only; values not in an abstract say "not reported in abstract". PDFs that would complete
+  cards: Jaccard (N Engl J Med 2007, PMID 17855669: hazard ratio, treatment-related mortality), CyBorD European study (Palladini, Blood 2015, PMID
+  25987656: toxicity) and the doxycycline trial (Shen, Circulation 2022, PMID 34503349: toxicity).
+
