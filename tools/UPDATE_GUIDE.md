@@ -381,14 +381,15 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
 - Perspective (tools/review/persp_mzl.py): approved by Andres (Nov 14, 2026) and live on the website; the usual Perspective rules apply.
 - Added at Andres's request (Nov 14, 2026), outside the inclusion rule: AGMT MALT-2 (lenalidomide-rituximab in MALT lymphoma, Kiesewetter, Blood 2017,
   a letter without an abstract: its figures come from the ASH 2015 final results, abstract 3973, and the ClinicalTrials.gov results record NCT01611259;
-  if Andres supplies the letter, check them against it and mark them "full paper"), CITADEL-204 (parsaclisib), orelabrutinib ICP-CL-00104 (Deng) and the
+  checked against the letter itself on Nov 15, 2026 and marked "full paper"), CITADEL-204 (parsaclisib), orelabrutinib ICP-CL-00104 (Deng) and the
   rituximab series in splenic disease of Tsimberidou (Cancer 2006) and Else (Br J Haematol 2012) (data: tools/mzl/mzl_entries_2026_11b.py, applied by
   tools/mzl/add_mzl_entries.py). The Chinese approval of orelabrutinib (April 20, 2023) is from published reports and marked "verify".
 - CORE is empty until Andres chooses. topics.json count word is "studies". Default sort is category, newest first, in the order above.
 - Full papers Andres supplied (Nov 14, 2026; values marked "full paper", applied by tools/mzl/mzl_fullpaper_2026_11.py): MALT2008-01 long-term
   letter, Kalpadakis Blood 2018 letter, IELSG-19 final report (site proportions), the marginal zone subgroups of StiL NHL 1-2003, BRIGHT, FoRT
-  (long-term report) and CHRONOS-3, and the ESMO 2020 guideline: keep these values unless a newer paper supersedes them. Still "PDFs needed": the
-  GELA grading letter (Copie-Bergman, Gut 2003, PMID 14570741) and the AGMT MALT-2 letter (Kiesewetter, Blood 2017, PMID 27879257). The marginal
+  (long-term report) and CHRONOS-3, and the ESMO 2020 guideline: keep these values unless a newer paper supersedes them. On Nov 15, 2026 he also supplied the
+  GELA grading letter (Copie-Bergman, Gut 2003, PMID 14570741) and the AGMT MALT-2 letter (Kiesewetter, Blood 2017, PMID 27879257); their cards are completed from the letters
+  (tools/mzl/mzl_fullpaper_2026_11c.py) and no PDFs are outstanding for this topic. The marginal
   zone cohort of inMIND had no report: add it when published.
 
 ## 13. AL amyloidosis (key al): what is different
