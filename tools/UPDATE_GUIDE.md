@@ -315,7 +315,7 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   peer-reviewed report in Richter transformation; when one is published, it becomes a card and moves to "grad".
 - Perspective (tools/review/persp_richter.py): approved by Andres on Nov 12, 2026 and live on the website. The usual Perspective rules apply
   (small factual edits go live and are listed in the summary; rewriting a section needs his approval).
-- CORE is empty until Andres chooses. topics.json count word is "studies".
+- CORE chosen by Andres on Nov 15, 2026 (see the page); never add or remove names yourself. topics.json count word is "studies".
 - Drug mechanisms: Andres approved the PD-1/PD-L1 (pd1) and blinatumomab (cd19tce) descriptions on Nov 12, 2026.
 - Papers Andres supplied (Nov 12, 2026): the BRUIN, MOLTO and EPCORE CLL-1 cards were completed from the full papers; GIVeRS
   (Tadmor, Haematologica 2026, ahead of print: update the citation when it gets volume and pages; its registry record is
@@ -351,7 +351,7 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   request: it has p:0, murl (the abstract's DOI link) and meet:1, which show the source link to the abstract and the tag
   "✓ meeting abstract" (tools/wm/patch_meeting.py adds the support). Skip p:0 when collecting PMIDs. When a full paper appears
   in PubMed, replace c, p and the result with the paper's, remove murl and meet, and add a news item.
-- CORE is empty until Andres chooses. topics.json count word is "studies".
+- CORE chosen by Andres on Nov 15, 2026 (see the page); never add or remove names yourself. topics.json count word is "studies".
 - Open items: the EU approval date of ibrutinib, the regulatory status of pirtobrutinib and the Chinese approval status of
   orelabrutinib for this disease are marked "verify". The StiL NHL 1-2003 subgroup and the DRC final analysis were completed
   from the full papers (Nov 14, 2026).
@@ -384,7 +384,7 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   checked against the letter itself on Nov 15, 2026 and marked "full paper"), CITADEL-204 (parsaclisib), orelabrutinib ICP-CL-00104 (Deng) and the
   rituximab series in splenic disease of Tsimberidou (Cancer 2006) and Else (Br J Haematol 2012) (data: tools/mzl/mzl_entries_2026_11b.py, applied by
   tools/mzl/add_mzl_entries.py). The Chinese approval of orelabrutinib (April 20, 2023) is from published reports and marked "verify".
-- CORE is empty until Andres chooses. topics.json count word is "studies". Default sort is category, newest first, in the order above.
+- CORE chosen by Andres on Nov 15, 2026 (see the page); never add or remove names yourself. topics.json count word is "studies". Default sort is category, newest first, in the order above.
 - Full papers Andres supplied (Nov 14, 2026; values marked "full paper", applied by tools/mzl/mzl_fullpaper_2026_11.py): MALT2008-01 long-term
   letter, Kalpadakis Blood 2018 letter, IELSG-19 final report (site proportions), the marginal zone subgroups of StiL NHL 1-2003, BRIGHT, FoRT
   (long-term report) and CHRONOS-3, and the ESMO 2020 guideline: keep these values unless a newer paper supersedes them. On Nov 15, 2026 he also supplied the
@@ -421,7 +421,7 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
 - Drug mechanisms: new class `fibril` (fibril-directed antibodies and doxycycline; review Wang, Blood Rev 2024), approved by Andres (Nov 15, 2026).
 - Perspective (tools/review/persp_al.py): approved by Andres (Nov 15, 2026) and live; the usual Perspective rules apply (small factual edits go live and
   are listed in the summary; rewriting a section needs his approval).
-- CORE is empty until Andres chooses (he will pick them later). topics.json count word is "studies".
+- CORE chosen by Andres on Nov 15, 2026 (see the page); never add or remove names yourself. topics.json count word is "studies".
 - Prognosis tab (added Nov 15, 2026 at Andres's request; data tools/prognosis/al_entries.py). Established: the 13 entries of the risk category, each with a
   PROG record; the inclusion wording names ISA, EHA-ISA or ESC consensus. PROGMAP (design-level use confirmed from the abstracts): ANDROMEDA (response
   criteria as primary end point; stage IIIb excluded), BMDex vs MDex (Mayo 2004 stratification; IIIb excluded), EMN22 (IIIb only), CARES (stage IIIa or IIIb)
