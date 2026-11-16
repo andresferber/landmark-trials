@@ -440,3 +440,8 @@ Values marked "(full paper)" and applied by tools/review/fullpaper_2026_11_15.py
 Alizadeh, Hans, R-IPI), relapsed DLBCL (CORAL) and Waldenström (ASPEN primary report, WM1, ECWM-1). Keep these values unless a newer paper supersedes
 them. Where a paper reports no hazard ratio, the card says so rather than "not reported in abstract". Also supplied the same day: the two marginal zone
 letters (section 12).
+
+## 15. Papers Andres supplied as PDFs on Nov 15, 2026 (second batch)
+Values marked "(full paper)" and applied by tools/review/fullpaper_2026_11_16.py (rerunnable): relapsed DLBCL (BELINDA), AL amyloidosis (VITAL, CARES)
+and Waldenström (Treon, ibrutinib in previously treated disease). Keep these values unless a newer paper supersedes them. Treon 2015 and CARES report no
+median follow-up (the cards give treatment duration and the analysis timing instead). No PDFs outstanding for these four.
