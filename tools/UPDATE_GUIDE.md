@@ -434,3 +434,9 @@ Andres asked for this niche topic on Nov 11, 2026. It is an evidence map, not a 
   hazard ratio, follow-up and toxicity values are marked "(full paper)". No PDFs outstanding.
 - Open items: the European Commission approval date of daratumumab (given as June 2021) and anselamimab's regulatory status are marked "verify";
   Andres is checking them.
+
+## 14. Papers Andres supplied as PDFs on Nov 15, 2026
+Values marked "(full paper)" and applied by tools/review/fullpaper_2026_11_15.py (rerunnable): untreated DLBCL (ECOG 4494, MInT, FLYER,
+Alizadeh, Hans, R-IPI), relapsed DLBCL (CORAL) and Waldenström (ASPEN primary report, WM1, ECWM-1). Keep these values unless a newer paper supersedes
+them. Where a paper reports no hazard ratio, the card says so rather than "not reported in abstract". Also supplied the same day: the two marginal zone
+letters (section 12).

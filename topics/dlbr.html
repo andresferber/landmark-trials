@@ -253,6 +253,7 @@
 .ltw .eyebrow { color: var(--accent) !important; }
 .ltw p, .ltw dd, .ltw li, .ltw span, .ltw div { font-family: var(--font-body); }
 .ltw .lt-head p, .ltw .lt-foot, .ltw .credit { color: var(--muted) !important; }
+.ltw .subnote { color: var(--muted) !important; font-size: 12.5px !important; margin: 8px 0 0 !important; }
 .ltw .design, .ltw dd { color: var(--fg) !important; }
 .ltw dd.qs { color: var(--accent) !important; }
 .ltw dt, .ltw .yr, .ltw .phase, .ltw .count, .ltw .stats b, .ltw .rec .rk { color: var(--muted) !important; }
@@ -312,6 +313,14 @@
 .ltw a.pchip { color: var(--fg) !important; text-decoration: none !important; background: var(--surface) !important; border: 1px solid var(--rule) !important; border-radius: 999px !important; padding: 3px 10px !important; }
 .ltw .pchip-y, .ltw .prog .pg-k, .ltw .ptype { color: var(--muted) !important; }
 .ltw .prog details.mw-log ul { list-style: disc !important; padding-left: 20px !important; }
+.ltw .evmap .ev-h { color: var(--accent) !important; font: 500 11px/1.4 var(--font-mono) !important; letter-spacing: .08em !important; text-transform: uppercase !important; margin: 0 0 4px !important; }
+.ltw .evmap .ev-cell { background: #e3ecec !important; background: color-mix(in srgb, var(--accent) 12%, var(--surface)) !important; color: var(--accent) !important; box-shadow: none !important; height: auto !important; min-width: 30px !important; border: 0 !important; border-radius: 6px !important; padding: 4px 6px !important; font: 600 13px/1 var(--font-mono) !important; }
+.ltw .evmap .ev-cell:hover, .ltw .evmap .ev-cell[aria-pressed="true"] { background: var(--accent) !important; color: var(--surface) !important; }
+.ltw .evmap .ev-reset { background: none !important; color: var(--fg) !important; box-shadow: none !important; text-transform: none !important; letter-spacing: normal !important; height: auto !important; min-width: 0 !important; border: 1px solid var(--rule) !important; border-radius: 999px !important; padding: 5px 10px !important; font: 500 12.5px/1 var(--font-body) !important; }
+.ltw .evmap table { width: 100% !important; border-collapse: collapse !important; margin: 0 !important; }
+.ltw .evmap th, .ltw .evmap td { border: 1px solid var(--rule) !important; padding: 5px 6px !important; background: none !important; color: var(--fg) !important; }
+.ltw .evmap thead th { color: var(--muted) !important; font-weight: 500 !important; }
+.ltw .evmap .ev-unk ul { list-style: disc !important; padding-left: 18px !important; }
 
 </style>
 <div class="ltw" id="lt-dlbr">
@@ -437,7 +446,7 @@ const T = [
  q:"Historical comparison in patients mostly not previously exposed to rituximab; the benefit after first-line R-CHOP is smaller (CORAL).",
  cm:[],reg:"No regulatory action.",gl:"A standard platinum-based salvage regimen (NCCN not checked).",acc:"—"},
 {y:2010,n:"CORAL (Gisselbrecht)",s:"sal",ph:"Phase 3",d:"R-ICE vs R-DHAP for 3 cycles, then high-dose therapy and autologous transplant in responders; DLBCL in first relapse or refractory to first-line therapy. Second randomization after transplant: rituximab every 2 months for 1 year vs observation",ep:"Response rate; event-free survival",
- r:"Response 63.5% vs 62.8% (R-ICE vs R-DHAP); no difference in 3-year EFS or OS. 3-year EFS 21% with prior rituximab vs 47% without, and 20% for relapse within 12 months vs 45% later. Maintenance part: 4-year EFS 52% vs 53% (P=.7)",N:"396 (salvage comparison); 242 randomized to maintenance",hr:"not reported in abstract",fu:"not reported in abstract (3-year estimates); 44 mo (maintenance part)",
+ r:"Response 63.5% vs 62.8% (R-ICE vs R-DHAP); no difference in 3-year EFS or OS. 3-year EFS 21% with prior rituximab vs 47% without, and 20% for relapse within 12 months vs 45% later. Maintenance part: 4-year EFS 52% vs 53% (P=.7). 3-year EFS 31% (R-ICE 26%, R-DHAP 35%; P=.6), PFS 37% (31% vs 42%; P=.4), OS 49% (47% vs 51%; P=.4) (full paper)",N:"396 (salvage comparison); 242 randomized to maintenance",hr:"No treatment-arm hazard ratio reported; in the Cox model the treatment arm was not significant, while early relapse, prior rituximab and secondary age-adjusted IPI were (P<.001 for EFS, PFS and OS; prior rituximab P=.01) (full paper)",fu:"27 mo (3-year estimates); 44 mo (maintenance part) (full paper)",
  c:"J Clin Oncol 2010;28:4184",p:20660832,extra:["Rituximab maintenance after transplant, J Clin Oncol 2012",23091101],
  b:"Salvage regimens had never been compared, and their value after first-line rituximab was unknown.",
  i:"No salvage regimen is better than another. Identified early relapse after rituximab-containing therapy as the group with a poor outcome, the population later chosen for the second-line CAR-T trials. No role for rituximab maintenance after transplant.",
